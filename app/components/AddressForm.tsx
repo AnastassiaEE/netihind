@@ -3,7 +3,7 @@
 import SearchBar from "./SearchBar";
 import Button from "./Button";
 import { useState, useEffect, useRef, SetStateAction } from "react";
-import Papa from 'papaparse';
+import { parse } from 'papaparse';
 
 
 export default function AddressForm() {
@@ -21,7 +21,7 @@ export default function AddressForm() {
     const keyupTimer = useRef<ReturnType<typeof setTimeout>| null>(null);
 
     const parseCsvFile = (pathToFile: string, delimeter: string) => {
-        Papa.parse(pathToFile, {
+        parse(pathToFile, {
             download: true,
             header: true,
             delimeter: delimeter,
