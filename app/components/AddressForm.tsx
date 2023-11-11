@@ -49,6 +49,9 @@ export default function AddressForm() {
 
     useEffect(() => {
         parseCsvFile('/addresses.csv', ';');
+
+        const date1 = new Date("1996-04-05:00:00.000Z");
+        console.log(date1.toLocaleString())
     }, [])
 
     useEffect(() => {
