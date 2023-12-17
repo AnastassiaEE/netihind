@@ -1,10 +1,11 @@
 'use client'
 
-import { createContext, useState } from "react";
+import { ReactNode, createContext, useState } from "react";
 
+/*
 export const AddressContext = createContext('');
 
-export const AddressProvider = ({children}) => {
+export const AddressProvider = ({children}: {children: ReactNode}) => {
     const [houseInput, setHouseInput] = useState('');
     const [apartmentInput, setApartmentInput] = useState('');
     const [selectedHouse, setSelectedHouse] = useState('');
@@ -26,3 +27,4 @@ export const AddressProvider = ({children}) => {
 }
 
 export const useAddress = () => (AddressContext);
+*/
