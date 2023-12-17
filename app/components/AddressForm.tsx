@@ -3,7 +3,7 @@
 import SearchBar from "./SearchBar";
 import Button from "./Button";
 import { useState, useEffect, useRef, SetStateAction } from "react";
-import { parse } from 'papaparse';
+import { parse, ParseResult } from 'papaparse';
 
 
 export default function AddressForm() {
@@ -20,15 +20,16 @@ export default function AddressForm() {
 
     const keyupTimer = useRef<ReturnType<typeof setTimeout>| null>(null);
 
+
     const parseCsvFile = (pathToFile: string, delimeter: string) => {
         parse(pathToFile, {
-            download: true,
             header: true,
-            delimeter: delimeter,
+            download: true,
             skipEmptyLines: true,
-            complete: function(result: { data: {[key: string]: string}[]}) {
+            delimiter: delimeter,
+            complete: (result: { data: {[key: string]: string}[]}) => {
                 setParsedCsvData(result.data);   
-                console.log(result);
+
             }
         }); 
     }
@@ -49,14 +50,11 @@ export default function AddressForm() {
 
     useEffect(() => {
         parseCsvFile('/addresses.csv', ';');
-
-        const date1 = new Date("1996-04-05:00:00.000Z");
-        console.log(date1.toLocaleString())
     }, [])
 
     useEffect(() => {
         if (houseInput.length > 1) {
-            delayInput(filterHouses, 1000);
+            //delayInput(filterHouses, 1000);
         }
         return() => {
             keyupTimer.current && clearTimeout(keyupTimer.current);
@@ -66,7 +64,7 @@ export default function AddressForm() {
 
     
     useEffect(() => {
-        console.log(filteredHouses);
+        console.log(parsedCsvData);
        
         /*
         const data = filteredAddresses.reduce((result, add) => {
@@ -79,7 +77,7 @@ export default function AddressForm() {
             }, {})
         console.log(data);
         */
-    }, [filteredHouses])
+    }, [parsedCsvData])
     
     
     const handleHouseInputChange = (value: string) => {
