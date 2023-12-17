@@ -54,7 +54,7 @@ export default function AddressForm() {
 
     useEffect(() => {
         if (houseInput.length > 1) {
-            //delayInput(filterHouses, 1000);
+            delayInput(filterHouses, 1000);
         }
         return() => {
             keyupTimer.current && clearTimeout(keyupTimer.current);
@@ -80,11 +80,10 @@ export default function AddressForm() {
     }, [parsedCsvData])
     
     
-    const handleHouseInputChange = (value: string) => {
-        setHouseInput(value.replace(/\s{2,}/g, ' ').trimStart());  
+    const handleHouseInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setHouseInput(e.target.value.replace(/\s{2,}/g, ' ').trimStart());  
     }
     
-
     return (    
         <>
             <SearchBar 

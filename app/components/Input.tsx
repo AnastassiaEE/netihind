@@ -1,7 +1,16 @@
 import styles from '../styles/Input.module.css';
 import classNames from 'classnames';
 
-export default function Input({placeholder, handleChange, inputValue, focus}: {placeholder: string, handleChange: Function, inputValue: string, focus: Function}) {
+export default function Input({
+    placeholder, 
+    handleChange, 
+    inputValue, 
+    handleFocus
+}: {
+    placeholder: string, 
+    handleChange: React.ChangeEventHandler<HTMLInputElement>, 
+    inputValue: string, 
+    handleFocus: React.FocusEventHandler<HTMLInputElement>}) {
 
     return (
         <div className="input-group">
@@ -9,8 +18,8 @@ export default function Input({placeholder, handleChange, inputValue, focus}: {p
             type="text" 
             className={classNames(styles['form-control'])}
             placeholder={placeholder}
-            onChange={(e) => handleChange(e.target.value)}
-            onFocus={() => focus}
+            onChange={handleChange}
+            onFocus={handleFocus}
             value={inputValue}/>
         </div>
         
