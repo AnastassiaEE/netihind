@@ -6,7 +6,7 @@ export default function SearchBar({placeholder, handleChange, inputValue, childr
 
     const [isFocused, setIsFocused] = useState<boolean>(false);
 
-    const onFocus = () => {
+    const onFocus = (e: FocusEvent) => {
         setIsFocused(!isFocused);
         console.log(isFocused);
     }
