@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import { ReactNode } from "react";
 
 const config: Config = {
   content: [
@@ -6,15 +7,35 @@ const config: Config = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  theme: {
-    extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
-    },
+  theme: {    
   },
-  plugins: [],
+  extend: { 
+  },
+  corePlugins: {
+    container: false
+  },
+  plugins: [
+    function ({ addComponents } : {addComponents: any}) {
+      addComponents({
+        '.container': {
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          maxWidth: '95%',
+          '@screen sm': {
+            maxWidth: '640px',
+          },
+          '@screen md': {
+            maxWidth: '768px',
+          },
+          '@screen lg': {
+            maxWidth: '1024px',
+          },
+          '@screen xl': {
+            maxWidth: '1280px',
+          },
+        }
+      })
+    }
+  ],
 }
 export default config
