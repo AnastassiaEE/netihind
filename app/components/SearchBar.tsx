@@ -1,5 +1,6 @@
 import { ReactNode, useEffect, useState } from "react";
 import Input from "./Input";
+import React from "react";
 
 
 export default function SearchBar({
@@ -15,18 +16,24 @@ export default function SearchBar({
 }) {
     const [isFocused, setIsFocused] = useState<boolean>(false);
 
-    const onFocus = () => {
-        setIsFocused(!isFocused);
-        console.log(isFocused);
+    const handleFocus = (focustState: boolean) => {
+        focustState ? setIsFocused(true) : setIsFocused(false);
     }
 
     return (
         <>
-            <Input placeholder={placeholder} handleChange={handleChange} inputValue={inputValue} handleFocus={onFocus}/>
-            <ul style={{height: '200px', overflow: 'scroll'}}>
-                {children}
-            </ul>
-            
+            <Input 
+                placeholder={placeholder} 
+                handleChange={handleChange} 
+                inputValue={inputValue} 
+                handleFocus={() => handleFocus(true)}
+                handleBlur={() => handleFocus(false)}/>
+
+            {isFocused && React.Children.count(children) > 0 &&
+                <ul style={{maxHeight: '200px', overflow: 'scroll'}}>
+                    {children}
+                </ul> 
+            }
         </>
     )
 }

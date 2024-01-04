@@ -14,6 +14,7 @@ export default function AddressForm() {
     const [isButtonActive, setIsButtonActive] = useState(false);
     const [parsedCsvData, setParsedCsvData] = useState<{[key: string]: string}[]>([]);
     const [filteredHouses, setFilteredHouses] = useState<{[key: string]: string}[]>([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     const houseReg = /^[^\d]*[\d\/A-Za-z]*$/g;
     const apartmentReg = /(?<=\-)\d*$/g;
@@ -40,6 +41,7 @@ export default function AddressForm() {
     } 
 
     const filterHouses = () => {
+        setIsLoading(true);
         setFilteredHouses(
             parsedCsvData
             .filter((address) => {
@@ -48,6 +50,7 @@ export default function AddressForm() {
         )
     }
 
+
     useEffect(() => {
         parseCsvFile('/addresses.csv', ';');
     }, [])
@@ -55,6 +58,8 @@ export default function AddressForm() {
     useEffect(() => {
         if (houseInput.length > 1) {
             delayInput(filterHouses, 1000);
+        } else {
+            setFilteredHouses([]);
         }
         return() => {
             keyupTimer.current && clearTimeout(keyupTimer.current);
@@ -62,7 +67,12 @@ export default function AddressForm() {
     }, [houseInput]);
     
 
+    useEffect(() => {
+        setIsLoading(false);
+    }, [filteredHouses])
     
+
+    /*
     useEffect(() => {
         console.log(parsedCsvData);
        
@@ -76,27 +86,32 @@ export default function AddressForm() {
             }
             }, {})
         console.log(data);
-        */
+        
     }, [parsedCsvData])
+    */
     
     
     const handleHouseInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setHouseInput(e.target.value.replace(/\s{2,}/g, ' ').trimStart());  
     }
-    
+
+    let housesList;
+    if (houseInput.length === 1) {
+        housesList = 'Введите минимум 2 символа';
+    } else if (houseInput.length > 1) {
+        housesList = filteredHouses.map(house => 
+            <li key={house['LAHIAADRESS']}> 
+                {house['LAHIAADRESS']}, {house['SIHTNUMBER']}, {house['TAISAADRESS'].split(', ')[1]}, {house['TAISAADRESS'].split(', ')[0]} 
+            </li>)
+    }
+
     return (    
         <>
             <SearchBar 
                 placeholder={"Адрес"} 
                 handleChange={handleHouseInputChange} 
-                inputValue={houseInput}>
-
-                {houseInput.length > 1 && filteredHouses.map(house => 
-                    <li key={house['LAHIAADRESS']}> 
-                        {house['LAHIAADRESS']}, {house['SIHTNUMBER']}, {house['TAISAADRESS'].split(', ')[1]}, {house['TAISAADRESS'].split(', ')[0]}
-                    </li>
-                )}
-                    
+                inputValue={houseInput}>   
+                {isLoading ? '***': housesList}    
             </SearchBar>
             
             <Button active={false}> Найти провайдеров </Button> 

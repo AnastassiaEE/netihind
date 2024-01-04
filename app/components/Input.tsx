@@ -5,12 +5,14 @@ export default function Input({
     placeholder, 
     handleChange, 
     inputValue, 
-    handleFocus
+    handleFocus,
+    handleBlur
 }: {
     placeholder: string, 
     handleChange: React.ChangeEventHandler<HTMLInputElement>, 
     inputValue: string, 
-    handleFocus: React.FocusEventHandler<HTMLInputElement>}) {
+    handleFocus: React.FocusEventHandler<HTMLInputElement>,
+    handleBlur: React.FocusEventHandler<HTMLInputElement>}) {
 
     return (
         <div className="input-group">
@@ -20,6 +22,7 @@ export default function Input({
             placeholder={placeholder}
             onChange={handleChange}
             onFocus={handleFocus}
+            onBlur={handleBlur}
             value={inputValue}/>
         </div>
         
