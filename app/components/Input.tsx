@@ -2,29 +2,25 @@ import styles from '../styles/Input.module.css';
 import classNames from 'classnames';
 
 export default function Input({
+    className,
     placeholder, 
     handleChange, 
     inputValue, 
     handleFocus,
-    handleBlur
 }: {
+    className: string,
     placeholder: string, 
     handleChange: React.ChangeEventHandler<HTMLInputElement>, 
     inputValue: string, 
-    handleFocus: React.FocusEventHandler<HTMLInputElement>,
-    handleBlur: React.FocusEventHandler<HTMLInputElement>}) {
+    handleFocus: React.FocusEventHandler<HTMLInputElement>}) {
 
     return (
-        <div className="input-group">
-            <input 
-            type="text" 
-            className={classNames(styles['form-control'])}
-            placeholder={placeholder}
-            onChange={handleChange}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
-            value={inputValue}/>
-        </div>
-        
+        <input 
+        type="text" 
+        className={classNames(styles['form-control'], className)}
+        placeholder={placeholder}
+        onChange={handleChange}
+        onFocus={handleFocus}
+        value={inputValue}/>
     )
 }
