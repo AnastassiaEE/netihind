@@ -1,4 +1,5 @@
-import { ReactNode, useRef, useState } from "react";
+'use client'
+import { ReactNode, useEffect, useRef, useState } from "react";
 import Input from "./Input";
 import React from "react";
 
@@ -21,10 +22,18 @@ export default function SearchBar({
         setIsFocused(true);
     }
 
-    document.addEventListener('click', (event) => {
-        if(!(searchBarRef.current as HTMLDivElement).contains(event.target as Node) && isFocused) setIsFocused(false);
-    });    
-
+    useEffect(() => {
+        const handleClickOutsideSearhbar = (e: MouseEvent) => {
+            if(!(searchBarRef.current)?.contains(e.target as Node)) {
+                setIsFocused(false);
+            }
+        }
+        window.addEventListener('click', handleClickOutsideSearhbar)
+        return () => {
+            window.removeEventListener('click', handleClickOutsideSearhbar);
+        }
+    }, [])
+    
     return (
         <div className="search-bar" ref={searchBarRef}>
             <Input  
