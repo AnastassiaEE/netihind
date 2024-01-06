@@ -23,14 +23,14 @@ export default function SearchBar({
     }
 
     useEffect(() => {
-        const handleClickOutsideSearhbar = (e: MouseEvent) => {
+        const handleClickOutsideSearchbar = (e: MouseEvent) => {
             if(!(searchBarRef.current)?.contains(e.target as Node)) {
                 setIsFocused(false);
             }
         }
-        window.addEventListener('click', handleClickOutsideSearhbar)
+        window.addEventListener('mousedown', handleClickOutsideSearchbar)
         return () => {
-            window.removeEventListener('click', handleClickOutsideSearhbar);
+            window.removeEventListener('mousedown', handleClickOutsideSearchbar);
         }
     }, [])
     
