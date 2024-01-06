@@ -2,8 +2,8 @@
 
 import SearchBar from "./SearchBar";
 import Button from "./Button";
-import { useState, useEffect, useRef, SetStateAction } from "react";
-import { parse, ParseResult } from 'papaparse';
+import { useState, useEffect, useRef } from "react";
+import { parse } from 'papaparse';
 
 
 export default function AddressForm() {
@@ -50,7 +50,7 @@ export default function AddressForm() {
     }
 
     useEffect(() => {
-        parseCsvFile('/addresses.csv', ';');
+        parseCsvFile('addresses.csv', ';');
     }, [])
 
     useEffect(() => {
