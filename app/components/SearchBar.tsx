@@ -8,12 +8,16 @@ export default function SearchBar({
     placeholder, 
     handleChange, 
     inputValue, 
-    children
+    children,
+    isFeedback,
+    feedback
 }: {
     placeholder: string, 
     handleChange: React.ChangeEventHandler<HTMLInputElement>, 
     inputValue: string, 
-    children: ReactNode
+    children: ReactNode,
+    isFeedback: boolean,
+    feedback: string
 }) {
     const [isFocused, setIsFocused] = useState<boolean>(false);
     const searchBarRef = useRef<HTMLDivElement>(null);
@@ -41,7 +45,9 @@ export default function SearchBar({
                 placeholder={placeholder} 
                 handleChange={handleChange} 
                 inputValue={inputValue} 
-                handleFocus={handleFocus}/>
+                handleFocus={handleFocus}
+                isFeedback={isFeedback}
+                feedback={feedback}/>
 
             {isFocused && React.Children.count(children) > 0 &&
                 <ul style={{maxHeight: '200px', overflow: 'scroll'}}>

@@ -9,13 +9,15 @@ import { parse } from 'papaparse';
 export default function AddressForm() {
     const [addressInput, setAddressInput] = useState('');
     const [apartmentInput, setApartmentInput] = useState('');
-    const [selectedAddress, setSelectedAddress] = useState('');
-    const [selectedApartment, setSelectedApartment] = useState('');
+    const [selectedAddress, setSelectedAddress] = useState<string>('');
+    const [selectedApartment, setSelectedApartment] = useState<string|null>(null);
     const [parsedCsvData, setParsedCsvData] = useState<{[key: string]: string}[]>([]);
     const [filteredAddresses, setFilteredAddresses] = useState<{[key: string]: string}[]>([]);
     const [filteredApartments, setFilteredApartments] = useState<string[]>([]);
     const [addressApartments, setAddressApartments] = useState<string[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isAddressFeedback, setIsAddressFeedback] = useState(false);
+    const [isApartmentFeedback, setIsApartmentFeedback] = useState(false);
 
     const addressRegex = /^[^\d]*[\d\/A-Za-z]*$/g;
     const apartmentRegex = /(?<=\-).*$/g;
@@ -35,6 +37,43 @@ export default function AddressForm() {
         })
     }
 
+    useEffect(() => {
+        parseCsvFile('addresses.csv', ';');
+    }, [])
+
+    useEffect(() => {
+        addressInput.length > 1 ? delayInput(filterAddresses, 1000) : setFilteredAddresses([]);
+        return() => {
+            keyupTimer.current && clearTimeout(keyupTimer.current);
+        }
+    }, [addressInput]);
+
+    useEffect(() => {
+      apartmentInput.length > 0 ? filterApartments(): setFilteredApartments([]);
+    }, [apartmentInput])
+
+    useEffect(() => {
+        setIsLoading(false);
+    }, [filteredAddresses])
+
+    useEffect(() => {
+        if (selectedAddress !== '') {
+            setAddressApartments(
+                parsedCsvData
+                .filter((address) => {
+                    return address['LAHIAADRESS'].match(new RegExp(`${selectedAddress}-.*`, 'g'))?.[0] ?? '';    
+                })
+                .map((address) => {
+                    return address['LAHIAADRESS'].match(apartmentRegex)?.[0] ?? '';
+                })   
+            )
+        }
+    }, [selectedAddress])
+
+    useEffect(() => {
+        addressApartments.length > 0 ? setSelectedApartment(''): setSelectedApartment(null);
+    }, [addressApartments])
+    
     const delayInput = (filterFunction: () => void, delay: number) => {
         keyupTimer.current && clearTimeout(keyupTimer.current);
         keyupTimer.current = setTimeout(filterFunction, delay);
@@ -52,51 +91,25 @@ export default function AddressForm() {
 
     const filterApartments = () => {
         setFilteredApartments(
-            addressApartments.filter(apartment => {
+            addressApartments
+            .filter(apartment => {
                 return apartment.startsWith(apartmentInput.trim());
             })
         )
     }
+    
+    const closeApartmentField = () => {
+        setAddressApartments([]);
+        setApartmentInput('');
+        setIsApartmentFeedback(false);
+    }
 
-    useEffect(() => {
-        parseCsvFile('addresses.csv', ';');
-    }, [])
-
-    useEffect(() => {
-        addressInput.length > 1 ? delayInput(filterAddresses, 1000) : setFilteredAddresses([]);
-        return() => {
-            keyupTimer.current && clearTimeout(keyupTimer.current);
-        }
-    }, [addressInput]);
-
-    useEffect(() => {
-      filterApartments();
-    }, [apartmentInput])
-
-    useEffect(() => {
-        setIsLoading(false);
-    }, [filteredAddresses])
-
-    useEffect(() => {
-        if (selectedAddress === '') {
-            setAddressApartments([]);
-      } else {
-        setAddressApartments(
-            parsedCsvData
-            .filter((address) => {
-                return address['LAHIAADRESS'].match(new RegExp(`${selectedAddress}-.*`, 'g'))?.[0] ?? '';    
-            })
-            .map((address) => {
-                return address['LAHIAADRESS'].match(apartmentRegex)?.[0] ?? '';
-            })   
-        )
-      }
-    }, [selectedAddress])
-        
- 
     const handleAddressInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setAddressInput(e.target.value.replace(/\s{2,}/g, ' ').trimStart());  
-        setSelectedAddress('');
+        if (selectedAddress !== '') {
+            setSelectedAddress('');
+            closeApartmentField();
+        }
     }
 
     const handleApartmentInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -107,11 +120,26 @@ export default function AddressForm() {
     const handleAddressClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
         setAddressInput((e.target as HTMLAnchorElement).innerText.trim());
         setSelectedAddress((e.target as HTMLAnchorElement).getAttribute('data-address') ?? '');
+        setIsAddressFeedback(false);
     }
 
     const handleApartmentClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
         setApartmentInput((e.target as HTMLAnchorElement).innerText.trim());
         setSelectedApartment((e.target as HTMLAnchorElement).getAttribute('data-address') ?? '');
+        setIsApartmentFeedback(false);
+    }
+
+    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (selectedAddress === '') {
+            setIsAddressFeedback(true);
+        } else if (selectedAddress !== '' && selectedApartment === null) {
+            console.log('form');
+        } else if (selectedAddress !== '' && selectedApartment === '') {
+            setIsApartmentFeedback(true);
+        } else if (selectedAddress !== '' && selectedApartment !== '') {
+            console.log('form');
+        }
     }
 
     let addressesList;
@@ -126,19 +154,23 @@ export default function AddressForm() {
     }
 
     return (    
-        <>
+        <form action="" onSubmit={onSubmit}>
             <SearchBar 
                 placeholder={"Адрес"} 
                 handleChange={handleAddressInputChange} 
-                inputValue={addressInput}>   
+                inputValue={addressInput}
+                isFeedback={isAddressFeedback}
+                feedback={"Выберите адресс"}>   
                 {isLoading ? '***': addressesList} 
             </SearchBar>
             
-            {addressApartments.length > 0 &&
+            {selectedApartment !== null &&
                 <SearchBar
                     placeholder={"Номер квартиры"}
                     handleChange={handleApartmentInputChange}
-                    inputValue={apartmentInput}>
+                    inputValue={apartmentInput}
+                    isFeedback={isApartmentFeedback}
+                    feedback={"Выберите квартиру"}>
                     {filteredApartments.map(apartment => 
                     <li key={apartment}>
                         <a data-address={apartment} onClick={handleApartmentClick}> {apartment} </a>
@@ -146,29 +178,8 @@ export default function AddressForm() {
                     )}
                 </SearchBar>
             }
-            <Button active={false}> Найти провайдеров </Button> 
-        </>
+            <input type="submit" value="Найти провайдеров" />
+        </form>
     )
 }
-
-
-
-   /*
-    useEffect(() => {
-        console.log(parsedCsvData);
-       
-        /*
-        const data = filteredAddresses.reduce((result, add) => {
-            const key = add['LAHIAADRESS'].match(/^.+(?=\-)|^.+/g)[0];
-            return {
-                ...result,
-                [key]:  [...(result?.[key] ?? []), 
-                            add['LAHIAADRESS'].match(/(?<=\-)\d*$/g)?.[0] ?? '']
-            }
-            }, {})
-        console.log(data);
-        
-    }, [parsedCsvData])
-    */
-    
     
