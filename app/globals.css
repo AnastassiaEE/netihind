@@ -28,7 +28,6 @@ h1 {
 
 .text {
     color: rgb(var(--text-color));
-    @apply text-lg;
 }
 
 .text-highlighted {

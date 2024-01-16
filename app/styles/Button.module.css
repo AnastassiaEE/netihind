@@ -11,10 +11,12 @@
         box-shadow 0.2s ease-in-out;
     background-color: rgb(var(--purple));
     box-shadow: 0 0.5rem 1.125rem -0.5rem rgba(var(--purple), 0.9);
+    width: 100%;
 }
 
 .btn:hover {
     background-color: rgb(var(--blue));
+    cursor: pointer;
 }
 
 .btn:disabled {

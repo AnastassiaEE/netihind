@@ -5,6 +5,7 @@ import React from "react";
 
 
 export default function SearchBar({
+    className,
     placeholder, 
     handleChange, 
     inputValue, 
@@ -12,6 +13,7 @@ export default function SearchBar({
     isFeedback,
     feedback
 }: {
+    className: string,
     placeholder: string, 
     handleChange: React.ChangeEventHandler<HTMLInputElement>, 
     inputValue: string, 
@@ -39,7 +41,7 @@ export default function SearchBar({
     }, [])
     
     return (
-        <div className="search-bar" ref={searchBarRef}>
+        <div className={className} ref={searchBarRef}>
             <Input  
                 className="search-bar__input"
                 placeholder={placeholder} 

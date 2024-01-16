@@ -1,9 +1,10 @@
 'use client'
 
 import SearchBar from "./SearchBar";
-import Button from "./Button";
 import { useState, useEffect, useRef } from "react";
 import { parse } from 'papaparse';
+import buttonStyles from "../styles/Button.module.css";
+import classNames from "classnames";
 
 
 export default function AddressForm() {
@@ -154,8 +155,9 @@ export default function AddressForm() {
     }
 
     return (    
-        <form action="" onSubmit={onSubmit}>
+        <form action="" onSubmit={onSubmit} className="flex flex-wrap items-center gap-x-1.5">
             <SearchBar 
+                className={"grow basis-auto"}
                 placeholder={"Адрес"} 
                 handleChange={handleAddressInputChange} 
                 inputValue={addressInput}
@@ -166,6 +168,7 @@ export default function AddressForm() {
             
             {selectedApartment !== null &&
                 <SearchBar
+                    className={"basis-3/12 md:basis-2/12"}
                     placeholder={"Номер квартиры"}
                     handleChange={handleApartmentInputChange}
                     inputValue={apartmentInput}
@@ -178,7 +181,10 @@ export default function AddressForm() {
                     )}
                 </SearchBar>
             }
-            <input type="submit" value="Найти провайдеров" />
+            <div className="basis-full mt-3 sm:basis-auto sm:mt-0">
+            <input type="submit" value="Найти провайдеров" className={classNames(buttonStyles.btn)}/>
+            </div>
+            
         </form>
     )
 }

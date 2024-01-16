@@ -22,7 +22,7 @@ export default function Input({
         <>
             <input 
             type="text" 
-            className={classNames(styles['form-control'], className)}
+            className={classNames(styles['input'], className)}
             placeholder={placeholder}
             onChange={handleChange}
             onFocus={handleFocus}
