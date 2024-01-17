@@ -1,4 +1,4 @@
-import styles from '../styles/Input.module.css';
+import inputStyles from '../styles/Input.module.css';
 import classNames from 'classnames';
 
 export default function Input({
@@ -21,12 +21,12 @@ export default function Input({
     return (
         <>
             <input 
-            type="text" 
-            className={classNames(styles['input'], className)}
-            placeholder={placeholder}
-            onChange={handleChange}
-            onFocus={handleFocus}
-            value={inputValue}/>
+                type="text" 
+                className={classNames(inputStyles['input'], className)}
+                placeholder={placeholder}
+                onChange={handleChange}
+                onFocus={handleFocus}
+                value={inputValue}/>
             {isFeedback &&
                 <div className="invalid-feedback" style={{color: "red"}}>
                     {feedback}

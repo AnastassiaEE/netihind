@@ -145,7 +145,7 @@ export default function AddressForm() {
 
     let addressesList;
     if (addressInput.length === 1) {
-        addressesList = 'Введите минимум 2 символа';
+        addressesList = <>Введите минимум 2 символа</>;
     } else if (addressInput.length > 1) {
         addressesList = filteredAddresses.map(address => 
             <li key={address['LAHIAADRESS']}>
@@ -163,7 +163,7 @@ export default function AddressForm() {
                 inputValue={addressInput}
                 isFeedback={isAddressFeedback}
                 feedback={"Выберите адресс"}>   
-                {isLoading ? '***': addressesList} 
+                {isLoading ? <>***</>: addressesList} 
             </SearchBar>
             
             {selectedApartment !== null &&
@@ -175,14 +175,14 @@ export default function AddressForm() {
                     isFeedback={isApartmentFeedback}
                     feedback={"Выберите квартиру"}>
                     {filteredApartments.map(apartment => 
-                    <li key={apartment}>
-                        <a data-address={apartment} onClick={handleApartmentClick}> {apartment} </a>
-                    </li>
+                        <li key={apartment}>
+                            <a data-address={apartment} onClick={handleApartmentClick}> {apartment} </a>
+                        </li>
                     )}
                 </SearchBar>
             }
             <div className="basis-full mt-3 sm:basis-auto sm:mt-0">
-            <input type="submit" value="Найти провайдеров" className={classNames(buttonStyles.btn)}/>
+                <input type="submit" value="Найти провайдеров" className={classNames(buttonStyles.btn, "text-base")}/>
             </div>
             
         </form>

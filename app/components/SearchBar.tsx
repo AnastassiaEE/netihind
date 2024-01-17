@@ -1,6 +1,8 @@
 'use client'
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Input from "./Input";
+import classNames from 'classnames';
+import dropdownMenuStyles from '../styles/DropdownMenu.module.css';
 import React from "react";
 
 
@@ -17,7 +19,7 @@ export default function SearchBar({
     placeholder: string, 
     handleChange: React.ChangeEventHandler<HTMLInputElement>, 
     inputValue: string, 
-    children: ReactNode,
+    children: React.ReactNode,
     isFeedback: boolean,
     feedback: string
 }) {
@@ -41,9 +43,9 @@ export default function SearchBar({
     }, [])
     
     return (
-        <div className={className} ref={searchBarRef}>
+        <div className={classNames(className, "relative")} ref={searchBarRef}>
             <Input  
-                className="search-bar__input"
+                className=""
                 placeholder={placeholder} 
                 handleChange={handleChange} 
                 inputValue={inputValue} 
@@ -52,8 +54,12 @@ export default function SearchBar({
                 feedback={feedback}/>
 
             {isFocused && React.Children.count(children) > 0 &&
-                <ul style={{maxHeight: '200px', overflow: 'scroll'}}>
-                    {children}
+                <ul className={classNames(dropdownMenuStyles.menu, "absolute w-full")}>
+                    <>
+                    {React.Children.map(children, child => {
+                        return React.cloneElement(child as React.ReactElement, {className: dropdownMenuStyles.item})
+                    })}
+                    </>
                 </ul> 
             }
         </div>
