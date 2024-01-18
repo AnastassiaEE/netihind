@@ -54,12 +54,11 @@ export default function SearchBar({
                 feedback={feedback}/>
 
             {isFocused && React.Children.count(children) > 0 &&
-                <ul className={classNames(dropdownMenuStyles.menu, "absolute w-full")}>
-                    <>
+                <ul className={classNames(dropdownMenuStyles.menu, "absolute w-full top-[120%]")}>
                     {React.Children.map(children, child => {
-                        return React.cloneElement(child as React.ReactElement, {className: dropdownMenuStyles.item})
+                        return React.cloneElement(child as React.ReactElement, {className: dropdownMenuStyles.item })
                     })}
-                    </>
+                    
                 </ul> 
             }
         </div>
