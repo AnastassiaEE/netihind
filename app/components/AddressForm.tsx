@@ -1,10 +1,9 @@
 'use client'
 
-import SearchBar from "./SearchBar";
 import { useState, useEffect, useRef } from "react";
 import { parse } from 'papaparse';
-import buttonStyles from "../styles/Button.module.css";
-import classNames from "classnames";
+import SearchBar from "./SearchBar";
+import Button from "./Button";
 
 
 export default function AddressForm() {
@@ -182,9 +181,8 @@ export default function AddressForm() {
                 </SearchBar>
             }
             <div className="basis-full mt-3 sm:basis-auto sm:mt-0">
-                <input type="submit" value="Найти провайдеров" className={classNames(buttonStyles.btn, "text-base")}/>
-            </div>
-            
+                <Button variant="primary" size="lg"> Найти провайдеров </Button>
+            </div>    
         </form>
     )
 }

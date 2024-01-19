@@ -52,7 +52,6 @@ export default function SearchBar({
                 handleFocus={handleFocus}
                 isFeedback={isFeedback}
                 feedback={feedback}/>
-
             {isFocused && React.Children.count(children) > 0 &&
                 <ul className={classNames(dropdownMenuStyles.menu, "absolute w-full top-[120%]")}>
                     {React.Children.map(children, child => {
