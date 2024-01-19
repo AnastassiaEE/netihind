@@ -24,7 +24,6 @@ export default function AddressForm() {
 
     const keyupTimer = useRef<ReturnType<typeof setTimeout>| null>(null);
 
-
     const parseCsvFile = (pathToFile: string, delimeter: string) => {
         parse(pathToFile, {
             header: true,
@@ -157,22 +156,24 @@ export default function AddressForm() {
         <form action="" onSubmit={onSubmit} className="flex flex-wrap items-center gap-x-1.5">
             <SearchBar 
                 className={"grow basis-auto"}
-                placeholder={"Адрес"} 
+                size="lg"
+                placeholder="Адрес"
                 handleChange={handleAddressInputChange} 
                 inputValue={addressInput}
                 isFeedback={isAddressFeedback}
-                feedback={"Выберите адресс"}>   
+                feedback="Выберите адресс">   
                 {isLoading ? <>***</>: addressesList} 
             </SearchBar>
             
             {selectedApartment !== null &&
                 <SearchBar
-                    className={"basis-3/12 md:basis-2/12"}
-                    placeholder={"Номер квартиры"}
+                    className="basis-3/12 md:basis-2/12"
+                    size="lg"
+                    placeholder="Номер квартиры"
                     handleChange={handleApartmentInputChange}
                     inputValue={apartmentInput}
                     isFeedback={isApartmentFeedback}
-                    feedback={"Выберите квартиру"}>
+                    feedback="Выберите квартиру">
                     {filteredApartments.map(apartment => 
                         <li key={apartment}>
                             <a data-address={apartment} onClick={handleApartmentClick}> {apartment} </a>

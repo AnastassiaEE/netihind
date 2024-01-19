@@ -1,8 +1,22 @@
-import inputStyles from '../styles/Input.module.css';
-import classNames from 'classnames';
+const baseClasses = 'w-full\
+ bg-white\
+ text-slate-600\
+ border\
+ border-gray-300\
+ rounded-md\
+ transition all\
+ focus:border-indigo-500/30\
+ focus:outline-none\
+ focus:drop-shadow-[0_0.5rem_1.125rem_rgba(99,102,241,0.2)]\
+ placeholder: text-grey-300';
+
+const sizes: {[key: string]: string} = {
+    sm: '',
+    lg: 'text-base px-5 py-3'
+}
 
 export default function Input({
-    className,
+    size,
     placeholder, 
     handleChange, 
     inputValue, 
@@ -10,7 +24,7 @@ export default function Input({
     isFeedback,
     feedback
 }: {
-    className: string,
+    size: string,
     placeholder: string, 
     handleChange: React.ChangeEventHandler<HTMLInputElement>, 
     inputValue: string, 
@@ -22,7 +36,7 @@ export default function Input({
         <>
             <input 
                 type="text" 
-                className={classNames(inputStyles['input'], className)}
+                className={`${baseClasses} ${sizes[size]}`} 
                 placeholder={placeholder}
                 onChange={handleChange}
                 onFocus={handleFocus}
