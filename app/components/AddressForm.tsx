@@ -141,13 +141,16 @@ export default function AddressForm() {
         }
     }
 
+    const listItemClasses = 'text-slate-600 cursor-pointer hover:bg-indigo-500/30';
+    const listAnchorClasses = 'block px-4 py-3';
+
     let addressesList;
     if (addressInput.length === 1) {
         addressesList = <>Введите минимум 2 символа</>;
     } else if (addressInput.length > 1) {
         addressesList = filteredAddresses.map(address => 
-            <li key={address['LAHIAADRESS']}>
-                <a data-address={address['LAHIAADRESS']} onClick={handleAddressClick}> {address['LAHIAADRESS']}, {address['SIHTNUMBER']}, {address['TAISAADRESS'].split(', ')[1]}, {address['TAISAADRESS'].split(', ')[0]} </a>
+            <li key={address['LAHIAADRESS']} className={listItemClasses}>
+                <a data-address={address['LAHIAADRESS']} onClick={handleAddressClick} className={listAnchorClasses}> {address['LAHIAADRESS']}, {address['SIHTNUMBER']}, {address['TAISAADRESS'].split(', ')[1]}, {address['TAISAADRESS'].split(', ')[0]} </a>
             </li>
         )
     }
@@ -175,12 +178,13 @@ export default function AddressForm() {
                     isFeedback={isApartmentFeedback}
                     feedback="Выберите квартиру">
                     {filteredApartments.map(apartment => 
-                        <li key={apartment}>
-                            <a data-address={apartment} onClick={handleApartmentClick}> {apartment} </a>
+                        <li key={apartment} className={listItemClasses}>
+                            <a data-address={apartment} onClick={handleApartmentClick} className={listAnchorClasses}> {apartment} </a>
                         </li>
                     )}
                 </SearchBar>
             }
+            
             <div className="basis-full mt-3 sm:basis-auto sm:mt-0">
                 <Button variant="primary" size="lg"> Найти провайдеров </Button>
             </div>    

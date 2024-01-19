@@ -61,11 +61,9 @@ export default function SearchBar({
                 isFeedback={isFeedback}
                 feedback={feedback}/>
             {isFocused && React.Children.count(children) > 0 &&
-                <div className="w-full absolute rounded-md overflow-hidden" style={{top:'calc(100% + 10px)'}}>
-                    <ul className="bg-white border-indigo-500/30 overflow-auto" style={{maxHeight: `${dropdownHeight}`}}>
-                        {React.Children.map(children, child => {
-                            return React.cloneElement(child as React.ReactElement, {className: dropdownMenuStyles.item})
-                        })}
+                <div className="bg-white border border-indigo-500/30 rounded-md w-full absolute overflow-hidden" style={{top:'calc(100% + 10px)'}}>
+                    <ul className="overflow-auto" style={{maxHeight: `${dropdownHeight}`}}>
+                        {children}
                     </ul>  
                 </div>
             }
