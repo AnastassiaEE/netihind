@@ -133,7 +133,7 @@ export default function AddressForm() {
 
     return (    
         <form action="" onSubmit={handleSubmit} className="flex flex-wrap items-center gap-x-1.5">
-            <Searchbar 
+            <Searchbar
                 className={"grow basis-auto"}
                 data={addresses}
                 size="lg"
