@@ -1,28 +1,25 @@
-'use client'
+import React from "react";
 import { useEffect, useRef, useState } from "react";
 import Input from "./Input";
-import classNames from 'classnames';
-import dropdownMenuStyles from '../styles/DropdownMenu.module.css';
-import React from "react";
+import DropdownBox from "./DropdownBox";
 
-
-export default function SearchBar({
+export default function Searchbar({
     className,
+    data,
     size,
     placeholder, 
     handleChange, 
     inputValue, 
-    children,
-    isFeedback,
+    isInvalid,
     feedback
 }: {
     className: string,
-    size: string,
+    data: {[key:string]: any}[],
+    size: string, 
     placeholder: string, 
     handleChange: React.ChangeEventHandler<HTMLInputElement>, 
     inputValue: string, 
-    children: React.ReactNode,
-    isFeedback: boolean,
+    isInvalid: boolean,
     feedback: string
 }) {
     const [isFocused, setIsFocused] = useState<boolean>(false);
@@ -43,7 +40,7 @@ export default function SearchBar({
             window.removeEventListener('mousedown', handleClickOutsideSearchbar);
         }
     }, [])
-
+    
     let dropdownHeight = '25vh';
     if (searchBarRef.current !== null) {
         const inputHeight = searchBarRef.current.getElementsByTagName('input')[0].offsetHeight;
@@ -51,21 +48,17 @@ export default function SearchBar({
     }
 
     return (
-        <div className={classNames(className, "relative")} ref={searchBarRef}>
+        <div className={className + " relative"} ref={searchBarRef}>
             <Input  
                 size={size}
                 placeholder={placeholder} 
                 handleChange={handleChange} 
                 inputValue={inputValue} 
                 handleFocus={handleFocus}
-                isFeedback={isFeedback}
+                isInvalid={isInvalid}
                 feedback={feedback}/>
-            {isFocused && React.Children.count(children) > 0 &&
-                <div className="bg-white border border-indigo-500/30 rounded-md w-full absolute overflow-hidden" style={{top:'calc(100% + 10px)'}}>
-                    <ul className="overflow-auto" style={{maxHeight: `${dropdownHeight}`}}>
-                        {children}
-                    </ul>  
-                </div>
+            {isFocused && data.length > 0 &&
+                <DropdownBox height={dropdownHeight} data={data} size={size}/> 
             }
         </div>
     )

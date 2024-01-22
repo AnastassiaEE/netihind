@@ -2,20 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-    @apply box-border m-0 p-0;
-}
-
-:root {
-    --purple: 99, 102, 241;
-    --purple-warm: 139, 92, 246;
-    --pink: 217, 70, 239;
-    --blue: 64, 68, 238;
-    --white: 255, 255, 255;
-    --title-color: 19, 16, 34;
-    --text-color: 88, 92, 123;
-    --blue-bg: 243, 246, 255;
-}
 
 
 
