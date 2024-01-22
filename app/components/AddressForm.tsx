@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef, MouseEvent } from "react";
+import { useState, useEffect, useRef } from "react";
 import { parse } from 'papaparse';
 import Button from "./Button";
 import Searchbar from "./Searchbar";
