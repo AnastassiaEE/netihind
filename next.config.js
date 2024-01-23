@@ -1,11 +1,8 @@
-/** @type {import('next').NextConfig} */
+/**
+ * @type {import('next').NextConfig}
+ */
 const nextConfig = {
-    output: 'export',
-    /*
-    sassOptions: {
-        includePaths: [path.join(__dirname, 'styles')],
-    },
-    */
-}
-
-module.exports = nextConfig
+    /* config options here */
+  }
+   
+  module.exports = nextConfig
