@@ -20,7 +20,6 @@ export default function AddressForm() {
 
     const addressRegex = /^[^\d]*[\d\/A-Za-z]*$/g;
     const apartmentRegex = /(?<=\-).*$/g;
-
     const keyupTimer = useRef<ReturnType<typeof setTimeout>| null>(null);
 
     const parseCsvFile = (pathToFile: string, delimeter: string) => {
@@ -58,7 +57,6 @@ export default function AddressForm() {
                 .map(address => address['LAHIAADRESS'].match(apartmentRegex)?.[0] ?? '')   
             )
         }
-        console.log('test')
     }, [selectedAddress])
 
     useEffect(() => {
