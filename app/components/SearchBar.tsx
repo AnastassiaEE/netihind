@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import Input from "./Input";
 import DropdownBox from "./DropdownBox";
 
-export function Searchbar({
+export default function Searchbar({
     className,
     data,
     size,
