@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { parse } from 'papaparse';
 import Button from "./Button";
-import Searchbar from '@/app/components/Searchbar';
+import Searchbar from "./Searchbar";
 
 
 export default function AddressForm() { 
