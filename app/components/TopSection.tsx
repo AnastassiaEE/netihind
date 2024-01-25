@@ -2,7 +2,7 @@ import AddressForm from './AddressForm';
 
 export default function TopSection() {
     return(
-        <section className="h-screen flex items-center bg-gradient-to-tl from-indigo-500/20 from-0% via-violet-500/20 via-20% via-fuchsia-500/10 to-70%">
+        <section className="h-screen flex items-center bg-gradient-to-tl from-indigo-500/10 from-0% via-violet-500/10 via-20% via-fuchsia-500/10 to-70%">
             <div className="container">
                 <div className="flex">
                     <div className="w-12/12">

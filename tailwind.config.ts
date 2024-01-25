@@ -22,16 +22,19 @@ const config: Config = {
           marginRight: 'auto',
           maxWidth: '95%',
           '@screen sm': {
-            maxWidth: '540px',
+            maxWidth: '640px',
           },
           '@screen md': {
-            maxWidth: '720px',
+            maxWidth: '768px',
           },
           '@screen lg': {
-            maxWidth: '960px',
+            maxWidth: '1024px',
           },
           '@screen xl': {
-            maxWidth: '1140px',
+            maxWidth: '1280px',
+          },
+          '@screen 2xl': {
+            maxWidth: '1536px',
           },
         }
       })
