@@ -44,11 +44,11 @@ export default function Searchbar({
     let dropdownHeight = '25vh';
     if (searchBarRef.current !== null) {
         const inputHeight = searchBarRef.current.getElementsByTagName('input')[0].offsetHeight;
-        dropdownHeight = window.innerHeight - (searchBarRef.current.offsetTop  + inputHeight + 20) + 'px';
+        dropdownHeight = window.innerHeight - ((searchBarRef.current?.offsetParent as HTMLElement)?.offsetTop + searchBarRef.current?.offsetTop   + inputHeight + 20) + 'px';
     }
-
+    
     return (
-        <div className={className + " relative"} ref={searchBarRef}>
+        <div className={`${className} relative`} ref={searchBarRef}>
             <Input  
                 size={size}
                 placeholder={placeholder} 

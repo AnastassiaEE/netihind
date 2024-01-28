@@ -17,7 +17,7 @@ export default function DropdownBox ({
 }) {
 
     return (
-        <div className="bg-white border border-indigo-500/30 rounded-md w-full absolute overflow-hidden" style={{top:'calc(100% + 10px)'}}>
+        <div className="bg-white border border-indigo-500/30 rounded-md w-full absolute z-10 overflow-hidden" style={{top:'calc(100% + 10px)'}}>
             <ul className="overflow-auto" style={{maxHeight: `${height}`}}>
                {data.map(d => 
                     <li key={d.key} className={listItemClasses}>
