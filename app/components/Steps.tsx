@@ -42,7 +42,7 @@ export default function Steps({stepsText}: {stepsText: {[key: string]: string}[]
     return (
         <div className="flex flex-col md:flex-row">
             {stepsText.map((text, i) => 
-                <div className={"flex flex-row md:flex-col basis-0 grow relative max-md:py-6 md:px-6 " + drawLine(i)}>
+                <div key={text.title} className={"flex flex-row md:flex-col basis-0 grow relative max-md:py-6 md:px-6 " + drawLine(i)}>
                     <div className="bg-indigo-50 rounded-full flex justify-center items-center shrink-0 relative z-10 w-20 h-20 md:mx-auto md:mb-6">
                         <span className="bg-white text-2xl font-extrabold rounded-full flex justify-center items-center shadow-md w-14 h-14"> {i + 1} </span>
                     </div>
