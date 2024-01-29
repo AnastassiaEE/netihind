@@ -29,7 +29,7 @@ export default function Steps({stepsText}: {stepsText: {[key: string]: string}[]
                           before:w-px\
                           before:h-2/4`;
 
-    function drawLine(index)  {
+    const drawLine = index =>  {
         if (index === 0) {
             return bottomLineStyle + " " + rightLineStyle;
         } else if (index === stepsText.length - 1) {

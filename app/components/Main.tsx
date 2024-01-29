@@ -1,6 +1,6 @@
-import InfoSection from "./InfoSection";
-import StepsSection from "./StepsSection";
-import TopSection from "./TopSection";
+import InfoSection from "./sections/InfoSection";
+import StepsSection from "./sections/StepsSection";
+import TopSection from "./sections/TopSection";
 
 export default function Main() {
     return (

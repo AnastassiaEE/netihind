@@ -1,4 +1,4 @@
-import SectionLayout from "../layouts/SectionLayout"
+import SectionLayout from "../../layouts/SectionLayout"
 
 export default function InfoSection() {
     return (
