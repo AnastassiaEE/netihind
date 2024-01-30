@@ -44,7 +44,7 @@ export default function Input({
                 value={inputValue}
                 />
             {isInvalid &&
-                <div className={(size == "sm" ? "text-xs" : "text-sm") + " text-red-700 font-medium static sm:absolute"}>
+                <div className={`${size == "sm" ? "text-xs" : "text-sm"} text-red-700 font-medium static sm:absolute`}>
                     {feedback}
                 </div>
             }
