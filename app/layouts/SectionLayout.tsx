@@ -3,7 +3,7 @@ export default function SectionLayout({children, bg}: {
     bg: string
   }) {
     return (
-      <section className={`${bg} pt-28`}>{children}</section>
+      <section className={`${bg} py-28`}>{children}</section>
     )
   }
   
