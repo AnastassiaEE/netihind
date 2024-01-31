@@ -1,9 +1,14 @@
-export default function SectionLayout({children, bg}: {
+export default function SectionLayout({children, bg, paddings}: {
     children: React.ReactNode,
-    bg: string
+    bg: string,
+    paddings: string
   }) {
     return (
-      <section className={`${bg} py-28`}>{children}</section>
+      <section className={`${bg} ${paddings}`}>
+        <div className="container">
+          {children}
+        </div>
+      </section>
     )
   }
   

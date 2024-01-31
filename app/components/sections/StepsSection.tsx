@@ -9,12 +9,10 @@ const text = [
 
 export default function StepsSection() {
     return (
-        <SectionLayout bg="white">
-            <div className="container">
-                <h2 className="text-4xl font-extrabold text-center mb-6"> Rhoncus est pellentesque </h2>
-                <p className="text-slate-600 text-lg text-center mb-12">Ut faucibus pulvinar elementum integer enim. Euismod lacinia at quis risus sed vulputate.</p>
-                <Steps stepsText={text}/>
-            </div>
+        <SectionLayout bg="white" paddings="pt-24">
+            <h2 className="text-4xl font-extrabold text-center mb-6"> Rhoncus est pellentesque </h2>
+            <p className="text-slate-600 text-lg text-center mb-12">Ut faucibus pulvinar elementum integer enim. Euismod lacinia at quis risus sed vulputate.</p>
+            <Steps stepsText={text}/>
         </SectionLayout>
     )
 }

@@ -10,18 +10,16 @@ const questions = [
 
 export default function QuestionsSection() {
     return (
-        <SectionLayout bg="bg-white">
-             <div className="container">
-                <div className="flex flex-col md:flex-row items-center justify-between">
-                    <div className="md:w-4/12">
-                        <h2 className="text-4xl font-extrabold mb-6"> Rhoncus est pellentesque </h2>
-                        <div className="text-slate-600 text-lg max-md:mb-12">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
+        <SectionLayout bg="bg-white" paddings="py-24">
+            <div className="flex flex-col md:flex-row items-center justify-between">
+                <div className="md:w-4/12">
+                    <h2 className="text-4xl font-extrabold mb-6"> Rhoncus est pellentesque </h2>
+                    <div className="text-slate-600 text-lg max-md:mb-12">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                     </div>
-                    <div className="md:w-7/12">
-                        <Accordion data={questions}></Accordion>
-                    </div>
+                </div>
+                <div className="md:w-7/12">
+                    <Accordion data={questions}></Accordion>
                 </div>
             </div>
         </SectionLayout>
