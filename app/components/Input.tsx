@@ -5,7 +5,8 @@ const baseClasses = 'w-full\
  rounded-md\
  transition all\
  focus:outline-none\
- focus:drop-shadow-[0_0.5rem_1.125rem_rgba(99,102,241,0.2)]\
+ focus:shadow-xl\
+ focus:shadow-indigo-500/10\
  placeholder: text-grey-300';
 
 const sizes: {[key: string]: string} = {

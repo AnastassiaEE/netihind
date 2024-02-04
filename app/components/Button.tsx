@@ -9,9 +9,10 @@ const baseClasses = 'w-full\
 const variants: {[key: string]: string} = {
     primary: 'bg-indigo-500\
  text-white\
- drop-shadow-[0_0.5rem_1.125rem_rgba(99,102,241,0.5)]\
+ shadow-lg\
+ shadow-indigo-500/50\
  hover:bg-indigo-600\
- hover:filter-none',
+ hover:shadow-none',
     secondary: 'bg-white\
  text-indigo-500\
  hover:bg-indigo-500\

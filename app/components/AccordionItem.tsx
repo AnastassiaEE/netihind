@@ -15,7 +15,8 @@ const closedArrowStyle = `bg-indigo-50`;
 const openedArrowStyle = 
 `bg-indigo-500\
  outline-none\
- drop-shadow-[0_0.3rem_0.2rem_rgba(99,102,241,0.4)]`;
+ shadow-md\
+ shadow-indigo-500/50`;
 
 
 export default function AccordionItem({
