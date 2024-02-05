@@ -1,4 +1,5 @@
 import BlogSection from "./sections/BlogSection";
+import ContactsSection from "./sections/ContactsSection";
 import InfoSection from "./sections/InfoSection";
 import QuestionsSection from "./sections/QuestionsSection";
 import StepsSection from "./sections/StepsSection";
@@ -12,6 +13,7 @@ export default function Main() {
             <StepsSection/>
             <QuestionsSection/>
             <BlogSection/>
+            <ContactsSection/>
         </>
     )
 }

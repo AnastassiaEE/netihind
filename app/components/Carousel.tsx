@@ -1,10 +1,8 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/bundle';
-import { Pagination } from 'swiper/modules';
-import { Navigation } from 'swiper/modules';
+import { Pagination, Navigation } from 'swiper/modules';
 import { useState } from 'react';
-import  ChevronLeft  from '@mui/icons-material/ChevronLeft';
-import  ChevronRight  from '@mui/icons-material/ChevronRight';
+import { ChevronLeft, ChevronRight }  from '@mui/icons-material';
 
 const baseArrowStyle = 
 `bg-white\
@@ -46,7 +44,7 @@ export default function Carousel({posts}: {posts: {[key:string]: string}[]}) {
 
     const handleArrowHover = arrow => arrow === 'left'? setIsLeftArrowHovered(true): setIsRightArrowHovered(true);
     const handleArrowLeave = arrow => arrow === 'left'? setIsLeftArrowHovered(false): setIsRightArrowHovered(false);
-    
+
     return (
         <div className="relative xl:px-20">
             <div className={`prev ${baseArrowStyle} ${isLeftArrowHovered && hoveredArrowStyle} absolute left-0 top-1/2 -translate-y-1/2`} 
