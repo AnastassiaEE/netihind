@@ -1,4 +1,6 @@
 import { useRef } from "react";
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import ExpandLess from '@mui/icons-material/ExpandLess';
 
 const baseArrowStyle = 
 `font-semibold\
@@ -8,7 +10,8 @@ const baseArrowStyle =
  shrink-0\
  items-center\
  w-9\
- h-9`;
+ h-9\
+ transition-colors`;
 
 const closedArrowStyle = `bg-indigo-50`;
 
@@ -44,7 +47,7 @@ export default function AccordionItem({
                 aria-controls={id}> 
                 <span className="text-base font-semibold">{title}</span>
                 <span className={`${isOpened ? openedArrowStyle: closedArrowStyle} ${baseArrowStyle}`}>
-                    <img src={isOpened ? 'images/white_arrow.png': 'images/black_arrow.png'} alt="Accordion item button arrow" className={`${isOpened && "rotate-180"} transition-all w-1/3`}/>
+                    {isOpened ? <ExpandLess sx={{color: 'white'}}/> : <ExpandMore sx={{color: 'black'}}/>}
                 </span>
             </button>
             <div id={id} className={`transition-all duration-700`} style={isOpened ? {'height': `${collapsible.current.offsetHeight}px`} : {'height': 0}}>
