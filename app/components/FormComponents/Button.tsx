@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 const baseClasses = 'w-full\
  font-semibold\
  text-center\
@@ -20,11 +22,11 @@ const variants: {[key: string]: string} = {
 }
   
 const sizes: {[key: string]: string} = {
-  sm: '',
+  sm: 'text-sm px-5 py-2',
   lg: 'text-base px-5 py-3',
 }
 
-export default function Button({
+export default memo(function Button({
   children,
   variant,
   size
@@ -34,6 +36,6 @@ export default function Button({
   size: string
 }) {
   return (
-    <button className={`${baseClasses} ${variants[variant]} ${sizes[size]}`}> {children} </button>
+    <button type="submit" className={`${baseClasses} ${variants[variant]} ${sizes[size]}`}> {children} </button>
   )
-}
+})

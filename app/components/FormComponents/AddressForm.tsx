@@ -1,22 +1,19 @@
 'use client'
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { parse } from 'papaparse';
 import Button from "./Button";
 import Searchbar from "./Searchbar";
 
 
 export default function AddressForm() { 
-    const [addressInput, setAddressInput] = useState('');
-    const [apartmentInput, setApartmentInput] = useState('');
-    const [selectedAddress, setSelectedAddress] = useState<string>('');
-    const [selectedApartment, setSelectedApartment] = useState<string|null>(null);
+    const [inputs, setInputs] = useState({address: '', apartment: ''});
+    const [selected, setSelected] = useState({address: '', apartment: null});
     const [parsedCsvData, setParsedCsvData] = useState<{[key: string]: string}[]>([]);
     const [filteredAddresses, setFilteredAddresses] = useState<{[key: string]: string}[]>([]);
     const [filteredApartments, setFilteredApartments] = useState<string[]>([]);
     const [addressApartments, setAddressApartments] = useState<string[]>([]);
-    const [isAddressInvalid, setIsAddressInvalid] = useState(false);
-    const [isApartmentInvalid, setIsApartmentInvalid] = useState(false);
+    const [errors, setErrors] = useState({address: '', apartment: ''});
 
     const addressRegex = /^[^\d]*[\d\/A-Za-z]*$/g;
     const apartmentRegex = /(?<=\-).*$/g;
@@ -39,28 +36,28 @@ export default function AddressForm() {
     }, [])
 
     useEffect(() => {
-        addressInput.length > 1 ? delayInput(filterAddresses, 1000) : setFilteredAddresses([]);
+        inputs.address.length > 1 ? delayInput(filterAddresses, 1000) : setFilteredAddresses([]);
         return() => {
             keyupTimer.current && clearTimeout(keyupTimer.current);
         }
-    }, [addressInput]);
+    }, [inputs.address]);
 
     useEffect(() => {
-      apartmentInput.length > 0 ? filterApartments(): setFilteredApartments([]);
-    }, [apartmentInput])
+      inputs.apartment.length > 0 ? filterApartments(): setFilteredApartments([]);
+    }, [inputs.apartment])
 
     useEffect(() => {
-        if (selectedAddress !== '') {
+        if (selected.address !== '') {
             setAddressApartments(
                 parsedCsvData
-                .filter(address => address['LAHIAADRESS'].match(new RegExp(`${selectedAddress}-.*`, 'g'))?.[0])
+                .filter(address => address['LAHIAADRESS'].match(new RegExp(`${selected.address}-.*`, 'g'))?.[0])
                 .map(address => address['LAHIAADRESS'].match(apartmentRegex)?.[0] ?? '')   
             )
         }
-    }, [selectedAddress])
+    }, [selected.address])
 
     useEffect(() => {
-        addressApartments.length > 0 ? setSelectedApartment(''): setSelectedApartment(null);
+        addressApartments.length > 0 ? setSelected({...selected, apartment: ''}): setSelected({...selected, apartment: null});
     }, [addressApartments])
     
     const delayInput = (filterFunction: () => void, delay: number) => {
@@ -71,60 +68,70 @@ export default function AddressForm() {
     const filterAddresses = () => {
         setFilteredAddresses(
             parsedCsvData
-            .filter(address => `${address['LAHIAADRESS'].match(addressRegex)?.[0]}, ${address['SIHTNUMBER']}, ${address['TAISAADRESS'].split(', ')[1]}, ${address['TAISAADRESS'].split(', ')[0]}`.startsWith(addressInput.trim()))
+            .filter(address => `${address['LAHIAADRESS'].match(addressRegex)?.[0]}, ${address['SIHTNUMBER']}, ${address['TAISAADRESS'].split(', ')[1]}, ${address['TAISAADRESS'].split(', ')[0]}`.startsWith(inputs.address.trim()))
         )
     }
 
     const filterApartments = () => {
         setFilteredApartments(
             addressApartments
-            .filter(apartment => apartment.startsWith(apartmentInput.trim()))
+            .filter(apartment => apartment.startsWith(inputs.apartment.trim()))
         )
     }
     
     const closeApartmentField = () => {
         setAddressApartments([]);
-        setApartmentInput('');
-        setIsApartmentInvalid(false);
+        setInputs({...inputs, apartment: ''});
     }
 
-    const handleAddressInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setAddressInput(e.target.value.replace(/\s{2,}/g, ' ').trimStart());  
-        if (selectedAddress !== '') {
-            setSelectedAddress('');
+    const handleAddressInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+        setInputs({...inputs, address: e.target.value.replace(/\s{2,}/g, ' ').trimStart()});  
+        if (selected.address !== '') {
+            setSelected({...selected, address: ''});
             closeApartmentField();
         }
-    }
+    }, [inputs.address])
 
     const handleApartmentInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setApartmentInput(e.target.value.replace(/\s{2,}/g, ' ').trimStart());  
-        setSelectedApartment('');
+        setInputs({...inputs, apartment: e.target.value.replace(/\s{2,}/g, ' ').trimStart()});
+        setSelected({...selected, apartment: ''});
     }
 
     const handleAddressClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        setAddressInput((e.target as HTMLAnchorElement).innerText.trim());
-        setSelectedAddress((e.target as HTMLAnchorElement).getAttribute('data-search-item') ?? '');
-        setIsAddressInvalid(false);
+        setInputs({...inputs, address: (e.target as HTMLAnchorElement).innerText.trim()});
+        setSelected({...selected, address: (e.target as HTMLAnchorElement).getAttribute('data-search-item') ?? ''});
+        setErrors({...errors, address: ''});
     }
 
     const handleApartmentClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        setApartmentInput((e.target as HTMLAnchorElement).innerText.trim());
-        setSelectedApartment((e.target as HTMLAnchorElement).getAttribute('data-search-item') ?? '');
-        setIsApartmentInvalid(false);
+        setInputs({...inputs, apartment: (e.target as HTMLAnchorElement).innerText.trim()});
+        setSelected({...selected, apartment: (e.target as HTMLAnchorElement).getAttribute('data-search-item') ?? ''})
+        setErrors({...errors, apartment: ''});
+    }
+
+    const validateForm = () => {
+        const {address, apartment} = selected;
+        if (inputs.address.length <= 1) {
+            setErrors({...errors, address: 'Введите минимум 2 символа'});
+            return false;
+        } else if (address === '') {
+            setErrors({...errors, address: 'Выберите адресс'});
+            return false;
+        } else if (address !== '' && apartment === '') {
+            setErrors({...errors, apartment: 'Выберите квартиру'});
+            return false;
+        } else if (address !== '' && (apartment !== '' || apartment === null)) {
+            return true;
+        }
     }
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (selectedAddress === '') {
-            setIsAddressInvalid(true);
-        } else if (selectedAddress !== '' && selectedApartment === null) {
-            console.log('form');
-        } else if (selectedAddress !== '' && selectedApartment === '') {
-            setIsApartmentInvalid(true);
-        } else if (selectedAddress !== '' && selectedApartment !== '') {
+        if (validateForm()) {
             console.log('form');
         }
     }
+
 
     const addresses = filteredAddresses.map(address => ({key: address['LAHIAADRESS'], fn: handleAddressClick, data: `${address['LAHIAADRESS']}, ${address['SIHTNUMBER']}, ${address['TAISAADRESS'].split(', ')[1]}, ${address['TAISAADRESS'].split(', ')[0]}`}))
     const apartments = filteredApartments.map(apartment => ({key: apartment, fn: handleApartmentClick, data: apartment})) 
@@ -135,22 +142,24 @@ export default function AddressForm() {
                 className={"grow basis-auto"}
                 data={addresses}
                 size="lg"
+                name="address"
                 placeholder="Адрес"
                 handleChange={handleAddressInputChange} 
-                inputValue={addressInput}
-                isInvalid={isAddressInvalid}
-                feedback="Выберите адрес"/>   
+                value={inputs.address}
+                isInvalid={errors.address !== ''}
+                error={errors.address}/>   
      
-            {selectedApartment !== null &&
+            {selected.apartment !== null &&
                 <Searchbar
                     className="basis-3/12 md:basis-2/12"
                     data={apartments}
                     size="lg"
+                    name="address"
                     placeholder="Номер квартиры"
                     handleChange={handleApartmentInputChange}
-                    inputValue={apartmentInput}
-                    isInvalid={isApartmentInvalid}
-                    feedback="Выберите квартиру"/>
+                    value={inputs.apartment}
+                    isInvalid={errors.apartment !== ''}
+                    error={errors.apartment}/>
             }
             <div className="basis-full mt-3 sm:basis-auto sm:mt-0">
                 <Button variant="primary" size="lg"> Найти провайдеров </Button>

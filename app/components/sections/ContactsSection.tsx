@@ -2,11 +2,12 @@ import SectionLayout from "../../layouts/SectionLayout";
 import Phone  from '@mui/icons-material/PhoneOutlined'; 
 import Mail from '@mui/icons-material/MailOutlineOutlined'; 
 import LocationOn  from '@mui/icons-material/LocationOnOutlined'; 
+import ContactForm from "../FormComponents/ContactForm";
 
 export default function ContactsSection() {
     return (
         <SectionLayout bg="bg-white" paddings="py-24">
-            <div className="flex">
+            <div className="flex justify-between">
                 <div className="w-1/2">
                     <div className="mb-20">
                         <h2 className="text-4xl font-extrabold mb-6"> Get in Touch </h2>
@@ -30,7 +31,11 @@ export default function ContactsSection() {
                         </ul>
                     </div>
                 </div>
-                <div className="w-1/2"></div>
+                <div className="w-1/3">
+                    <div className="shadow-md rounded-lg p-6">
+                        <ContactForm/>
+                    </div>
+                </div>
                 
             </div>
         </SectionLayout>

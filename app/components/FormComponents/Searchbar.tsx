@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useEffect, useRef, useState } from "react";
 import Input from "./Input";
 import DropdownBox from "./DropdownBox";
@@ -7,27 +7,31 @@ export default function Searchbar({
     className,
     data,
     size,
+    name,
+    label,
     placeholder, 
     handleChange, 
-    inputValue, 
+    value, 
     isInvalid,
-    feedback
+    error
 }: {
     className: string,
     data: {[key:string]: any}[],
     size: string, 
+    name: string,
+    label?: string,
     placeholder: string, 
     handleChange: React.ChangeEventHandler<HTMLInputElement>, 
-    inputValue: string, 
+    value: string, 
     isInvalid: boolean,
-    feedback: string
+    error: string
 }) {
     const [isFocused, setIsFocused] = useState<boolean>(false);
     const searchBarRef = useRef<HTMLDivElement>(null);
 
     const handleFocus = () => {
         setIsFocused(true);
-    }
+    };
 
     useEffect(() => {
         const handleClickOutsideSearchbar = (e: MouseEvent) => {
@@ -51,12 +55,13 @@ export default function Searchbar({
         <div className={`${className} relative`} ref={searchBarRef}>
             <Input  
                 size={size}
+                name={name}
                 placeholder={placeholder} 
                 handleChange={handleChange} 
-                inputValue={inputValue} 
+                value={value} 
                 handleFocus={handleFocus}
                 isInvalid={isInvalid}
-                feedback={feedback}/>
+                error={error}/>
             {isFocused && data.length > 0 &&
                 <DropdownBox height={dropdownHeight} data={data} size={size}/> 
             }
