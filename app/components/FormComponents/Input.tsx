@@ -1,5 +1,7 @@
 'use client'
 
+import { memo } from "react";
+
 const baseClasses = 'w-full\
  bg-white\
  text-slate-600\
@@ -21,8 +23,8 @@ const labelSizes: {[key: string]: string} = {
     lg: 'text-base mb-2.5'
 }
 
-export default function Input({
-    size,
+export default memo(function Input({
+    size = 'sm',
     name,
     type = 'text',
     label,
@@ -30,10 +32,10 @@ export default function Input({
     handleChange, 
     value, 
     handleFocus,
-    isInvalid,
+    isValid,
     error
 }: {
-    size: string,
+    size?: string,
     name: string,
     type?: string,
     label?: string,
@@ -41,12 +43,11 @@ export default function Input({
     handleChange?: React.ChangeEventHandler<HTMLInputElement>, 
     value?: string, 
     handleFocus?: React.FocusEventHandler<HTMLInputElement>,
-    isInvalid: boolean,
-    error: string
+    isValid?: boolean,
+    error?: string
 }) {
-
-    const borderColor = isInvalid ? 'border-red-500' : 'border-gray-300 focus:border-indigo-500/30';
-
+    const borderColor = !isValid ? 'border-red-500' : 'border-gray-300 focus:border-indigo-500/30';
+    
     return (
         <>
             {label && <label htmlFor={name} className={`${labelSizes[size]} font-semibold block`}> {label} </label>}
@@ -58,11 +59,11 @@ export default function Input({
                 onFocus={handleFocus}
                 value={value}
                 />
-            {isInvalid &&
+            {!isValid &&
                 <div className={`${size == "sm" ? "text-xs" : "text-sm"} text-red-700 font-medium static sm:absolute`}>
                     {error}
                 </div>
             }
         </>
     )
-}
+})

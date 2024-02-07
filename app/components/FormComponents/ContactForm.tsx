@@ -44,23 +44,21 @@ export default function ContactForm() {
         <form action="" noValidate onSubmit={handleSubmit}>
             <div className="mb-6">
                 <Input 
-                    size="sm"
                     name="name"
                     label="Full Name"
                     handleChange={(e) => handleChange(e, 'name')}
                     value={values.name}
-                    isInvalid={errors.name !== ''}
+                    isValid={errors.name === ''}
                     error={errors.name}/>
             </div>
             <div className="mb-6">
                 <Input
-                    size="sm"
                     name="email"
                     type="email"
                     label="Email"
                     handleChange={(e) => handleChange(e, 'email')}
                     value={values.email}
-                    isInvalid={errors.email !== ''}
+                    isValid={errors.email === ''}
                     error={errors.email}/>
             </div>
             <Button variant="primary" size="lg">Send</Button>

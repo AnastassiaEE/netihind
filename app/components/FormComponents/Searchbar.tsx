@@ -8,30 +8,28 @@ export default function Searchbar({
     data,
     size,
     name,
-    label,
     placeholder, 
     handleChange, 
     value, 
-    isInvalid,
+    isValid,
     error
 }: {
     className: string,
     data: {[key:string]: any}[],
-    size: string, 
+    size?: string, 
     name: string,
-    label?: string,
     placeholder: string, 
     handleChange: React.ChangeEventHandler<HTMLInputElement>, 
     value: string, 
-    isInvalid: boolean,
+    isValid: boolean,
     error: string
 }) {
     const [isFocused, setIsFocused] = useState<boolean>(false);
     const searchBarRef = useRef<HTMLDivElement>(null);
 
-    const handleFocus = () => {
+    const handleFocus = useCallback(() => {
         setIsFocused(true);
-    };
+    }, [isFocused]);
 
     useEffect(() => {
         const handleClickOutsideSearchbar = (e: MouseEvent) => {
@@ -48,7 +46,7 @@ export default function Searchbar({
     let dropdownHeight = '25vh';
     if (searchBarRef.current !== null) {
         const inputHeight = searchBarRef.current.getElementsByTagName('input')[0].offsetHeight;
-        dropdownHeight = window.innerHeight - ((searchBarRef.current?.offsetParent as HTMLElement)?.offsetTop + searchBarRef.current?.offsetTop   + inputHeight + 20) + 'px';
+        dropdownHeight = window.innerHeight - ((searchBarRef.current?.offsetParent as HTMLElement)?.offsetTop + searchBarRef.current?.offsetTop + inputHeight + 20) + 'px';
     }
     
     return (
@@ -60,7 +58,7 @@ export default function Searchbar({
                 handleChange={handleChange} 
                 value={value} 
                 handleFocus={handleFocus}
-                isInvalid={isInvalid}
+                isValid={isValid}
                 error={error}/>
             {isFocused && data.length > 0 &&
                 <DropdownBox height={dropdownHeight} data={data} size={size}/> 
