@@ -1,6 +1,3 @@
-'use client'
-
-import { useState } from "react";
 import SectionLayout from "../../layouts/SectionLayout";
 import Carousel from "../Carousel";
 

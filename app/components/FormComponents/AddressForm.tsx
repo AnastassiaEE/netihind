@@ -8,11 +8,9 @@ import Searchbar from "./Searchbar";
 
 export default function AddressForm() { 
     const [inputs, setInputs] = useState({address: '', apartment: ''});
-    const [selected, setSelected] = useState({address: '', apartment: null});
+    const [selected, setSelected] = useState({address: '', apartment: ''});
     const [parsedCsvData, setParsedCsvData] = useState<{[key: string]: string}[]>([]);
     const [filteredAddresses, setFilteredAddresses] = useState<{[key: string]: string}[]>([]);
-    const [filteredApartments, setFilteredApartments] = useState<string[]>([]);
-    const [addressApartments, setAddressApartments] = useState<string[]>([]);
     const [errors, setErrors] = useState({address: '', apartment: ''});
 
     const addressRegex = /^[^\d]*[\d\/A-Za-z]*$/g;
@@ -56,60 +54,19 @@ export default function AddressForm() {
     }, [inputs.address]);
 
     /**
-     * When the user enters the apartment number:
-     *  if the length of the entered number is at least 1 character, all address apartments are filtered by the entered one;
-     *  if the length is 0, filtered apartments are cleared.
-     */
-    useEffect(() => {
-      inputs.apartment.length > 0 ? filterApartments(): setFilteredApartments([]);
-    }, [inputs.apartment])
-
-
-    /**
-     * When the user selects an address from the drop-down list:
-     *  1) the function finds all address-apartment values ​​based on the selected address;
-     *  2) from the found values, the function extracts apartment numbers.
-     * If the address is not selected:
-     *  apartment field is hidden.
-     *  
-     */
-    useEffect(() => {
-        if (selected.address === '') {
-            hideApartmentField();
-        } else {
-            setAddressApartments(
-                parsedCsvData
-                .filter(address => address['LAHIAADRESS'].match(new RegExp(`${selected.address}-.*`, 'g'))?.[0])
-                .map(address => address['LAHIAADRESS'].match(apartmentRegex)?.[0] ?? '')   
-            )
-        }
-    }, [selected.address])
-
-    /**
-     * If apartments were found at the selected address:
-     *  indicate that the field for the apartment number exists but empty (apartment: '').
-     * If the address does not have any apartments:
-     *  indicate that field for the apartment number does not exist (apartment: null)
-     */ 
-    useEffect(() => {
-        addressApartments.length > 0 ? setSelected({...selected, apartment: ''}): setSelected({...selected, apartment: null});
-    }, [addressApartments])
-    
-    /**
      * Сreates a delay before address filtering.
      * This is necessary so that address filtering does not occur every time the user enters a character in the address field.
      * @param filterFunction    callback function for filtering addresses
      * @param delay             delay before address filtering
      */
     const delayInput = (filterFunction: () => void, delay: number) => {
-        keyupTimer.current && clearTimeout(keyupTimer.current);
         keyupTimer.current = setTimeout(filterFunction, delay);
     } 
 
     /**
      * Filters addresses based on the value entered in the address field.
      */
-    const filterAddresses = () => {
+     const filterAddresses = () => {
         setFilteredAddresses(
             parsedCsvData
             .filter(address => `${address['LAHIAADRESS'].match(addressRegex)?.[0]}, ${address['SIHTNUMBER']}, ${address['TAISAADRESS'].split(', ')[1]}, ${address['TAISAADRESS'].split(', ')[0]}`.startsWith(inputs.address.trim()))
@@ -119,31 +76,34 @@ export default function AddressForm() {
     /**
      * Filters selected address apartments based on the value entered in the apartment field.
      */
-    const filterApartments = () => {
-        setFilteredApartments(
-            addressApartments
-            .filter(apartment => apartment.startsWith(inputs.apartment.trim()))
-        )
+     const filterApartments = () => {
+        return addressApartments?.filter(apartment => apartment.startsWith(inputs.apartment.trim()))
     }
 
     /**
-     * Hides apartment fields:
-     *  1) clears selected address apartments;
-     *  2) clears apartment field;
-     *  3) clears apartment fileds error. 
+     * When the user selects an address from the drop-down list:
+     *  1) find all address-apartment values ​​based on the selected address;
+     *  2) from the found values extract apartment numbers.
      */
-    const hideApartmentField = () => {
-        setAddressApartments([]);
-        setInputs({...inputs, apartment: ''});
-        setErrors({...errors, apartment: ''});
-    }
+    const addressApartments = selected.address === '' ? null :
+        parsedCsvData
+        .filter(address => address['LAHIAADRESS'].match(new RegExp(`${selected.address}-.*`, 'g'))?.[0])
+        .map(address => address['LAHIAADRESS'].match(apartmentRegex)?.[0] ?? '');
 
+     /**
+     * When the user enters the apartment number:
+     *  if the length of the entered number is at least 1 character, all address apartments are filtered by the entered one;
+     *  if the length is 0, filtered apartments are cleared.
+     */
+     const filteredApartments = inputs.apartment.length > 0 ? filterApartments(): [];
+     
     /**
      * Saves the value entered in the address field and deletes selected address.
      */
     const handleAddressInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        setInputs(prevState => ({...prevState, address: e.target.value.replace(/\s{2,}/g, ' ').trimStart()}));  
-        setSelected(prevState => ({...prevState, address: ''}));
+        setInputs({address: e.target.value.replace(/\s{2,}/g, ' ').trimStart(), apartment: ''});  
+        setSelected({address: '', apartment: ''});
+        setErrors({...errors, apartment: ''});
     }, [inputs.address]);
 
     /**
@@ -186,16 +146,16 @@ export default function AddressForm() {
      */
     const validateForm = () => {
         const {address, apartment} = selected;
-        if (inputs.address.length <= 1) {
+        if (inputs.address.length < 2) {
             setErrors({...errors, address: 'Введите минимум 2 символа'});
             return false;
         } else if (address === '') {
             setErrors({...errors, address: 'Выберите адресс'});
             return false;
-        } else if (address !== '' && apartment === '') {
+        } else if (address !== '' && apartment === '' && addressApartments?.length > 0) {
             setErrors({...errors, apartment: 'Выберите квартиру'});
             return false;
-        } else if (address !== '' && (apartment !== '' || apartment === null)) {
+        } else if (address !== '' && (apartment !== '' || addressApartments?.length === 0)) {
             return true;
         }
     }
@@ -226,7 +186,7 @@ export default function AddressForm() {
                 value={inputs.address}
                 isValid={errors.address === ''}
                 error={errors.address}/>   
-            {selected.apartment !== null &&
+            {addressApartments?.length > 0 &&
                 <Searchbar
                     className="basis-3/12 md:basis-2/12"
                     data={getApartments()}
