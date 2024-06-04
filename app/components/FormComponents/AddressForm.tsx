@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { parse } from 'papaparse';
 import Button from "./Button";
 import Searchbar from "./Searchbar";
+import { getAddress, getApartment, removeExtraChars, removeExtraSpaces } from "../../utils/addressFormatter";
 
 
 export default function AddressForm() { 
@@ -13,8 +14,6 @@ export default function AddressForm() {
     const [filteredAddresses, setFilteredAddresses] = useState<{[key: string]: string}[]>([]);
     const [errors, setErrors] = useState({address: '', apartment: ''});
 
-    const addressRegex = /^[^\d]*[\d\/A-Za-z]*$/g;
-    const apartmentRegex = /(?<=\-).*$/g;
     const keyupTimer = useRef<ReturnType<typeof setTimeout>| null>(null);
 
     /**
@@ -69,7 +68,7 @@ export default function AddressForm() {
      const filterAddresses = () => {
         setFilteredAddresses(
             parsedCsvData
-            .filter(address => `${address['LAHIAADRESS'].match(addressRegex)?.[0]}, ${address['SIHTNUMBER']}, ${address['TAISAADRESS'].split(', ')[1]}, ${address['TAISAADRESS'].split(', ')[0]}`.toLowerCase().startsWith(inputs.address.trim().toLowerCase()))
+            .filter(address => `${removeExtraChars(getAddress(address['LAHIAADRESS']))}, ${address['SIHTNUMBER']}, ${address['TAISAADRESS'].split(', ')[1]}, ${address['TAISAADRESS'].split(', ')[0]}`.toLowerCase().startsWith(removeExtraChars(inputs.address).trim().toLowerCase()))
         )
     }
 
@@ -88,7 +87,7 @@ export default function AddressForm() {
     const addressApartments = selected.address === '' ? null :
         parsedCsvData
         .filter(address => address['LAHIAADRESS'].match(new RegExp(`${selected.address}-.*`, 'g'))?.[0])
-        .map(address => address['LAHIAADRESS'].match(apartmentRegex)?.[0] ?? '');
+        .map(address => getApartment(address['LAHIAADRESS']) ?? '');
 
      /**
      * When the user enters the apartment number:
@@ -101,7 +100,7 @@ export default function AddressForm() {
      * Saves the value entered in the address field and deletes selected address.
      */
     const handleAddressInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        setInputs({address: e.target.value.replace(/\s{2,}/g, ' ').trimStart(), apartment: ''});  
+        setInputs({address: removeExtraSpaces(e.target.value).trimStart(), apartment: ''});  
         setSelected({address: '', apartment: ''});
         setErrors({...errors, apartment: ''});
     }, [inputs.address]);
@@ -110,7 +109,7 @@ export default function AddressForm() {
      * Saves the value entered in the apartment field and deletes selected apartment.
      */
     const handleApartmentInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        setInputs(prevState => ({...prevState, apartment: e.target.value.replace(/\s{2,}/g, ' ').trimStart()}));
+        setInputs(prevState => ({...prevState, apartment: removeExtraSpaces(e.target.value).trimStart()}));
         setSelected(prevState => ({...prevState, apartment: ''}));
     }, [inputs.apartment])
 
@@ -171,14 +170,14 @@ export default function AddressForm() {
         }
     }
     
-    const getAddresses = () => filteredAddresses.map(address => ({key: address['LAHIAADRESS'], fn: handleAddressClick, data: `${address['LAHIAADRESS']}, ${address['SIHTNUMBER']}, ${address['TAISAADRESS'].split(', ')[1]}, ${address['TAISAADRESS'].split(', ')[0]}`}));
-    const getApartments = () => filteredApartments.map(apartment => ({key: apartment, fn: handleApartmentClick, data: apartment}));
+    const addresses = filteredAddresses.map(address => ({key: address['LAHIAADRESS'], fn: handleAddressClick, data: `${address['LAHIAADRESS']}, ${address['SIHTNUMBER']}, ${address['TAISAADRESS'].split(', ')[1]}, ${address['TAISAADRESS'].split(', ')[0]}`}));
+    const apartments = filteredApartments.map(apartment => ({key: apartment, fn: handleApartmentClick, data: apartment}));
 
     return (    
         <form action="" onSubmit={handleSubmit} className="flex flex-wrap items-center gap-x-1.5">
             <Searchbar
                 className={"grow basis-auto"}
-                data={getAddresses()}
+                data={addresses}
                 size="lg"
                 name="address"
                 placeholder="Адрес"
@@ -189,7 +188,7 @@ export default function AddressForm() {
             {addressApartments?.length >     0 &&
                 <Searchbar
                     className="basis-3/12 md:basis-2/12"
-                    data={getApartments()}
+                    data={apartments}
                     size="lg"
                     name="address"
                     placeholder="Номер квартиры"
