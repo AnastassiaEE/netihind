@@ -69,7 +69,7 @@ export default function AddressForm() {
      const filterAddresses = () => {
         setFilteredAddresses(
             parsedCsvData
-            .filter(address => `${address['LAHIAADRESS'].match(addressRegex)?.[0]}, ${address['SIHTNUMBER']}, ${address['TAISAADRESS'].split(', ')[1]}, ${address['TAISAADRESS'].split(', ')[0]}`.startsWith(inputs.address.trim()))
+            .filter(address => `${address['LAHIAADRESS'].match(addressRegex)?.[0]}, ${address['SIHTNUMBER']}, ${address['TAISAADRESS'].split(', ')[1]}, ${address['TAISAADRESS'].split(', ')[0]}`.toLowerCase().startsWith(inputs.address.trim().toLowerCase()))
         )
     }
 
@@ -186,7 +186,7 @@ export default function AddressForm() {
                 value={inputs.address}
                 isValid={errors.address === ''}
                 error={errors.address}/>   
-            {addressApartments?.length > 0 &&
+            {addressApartments?.length >     0 &&
                 <Searchbar
                     className="basis-3/12 md:basis-2/12"
                     data={getApartments()}
