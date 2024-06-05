@@ -179,18 +179,16 @@ export default function AddressForm() {
                 className={"grow basis-auto"}
                 data={addresses}
                 size="lg"
-                name="address"
                 placeholder="Адрес"
                 handleChange={handleAddressInputChange} 
                 value={inputs.address}
                 isValid={errors.address === ''}
                 error={errors.address}/>   
-            {addressApartments?.length >     0 &&
+            {addressApartments?.length > 0 &&
                 <Searchbar
                     className="basis-3/12 md:basis-2/12"
                     data={apartments}
                     size="lg"
-                    name="address"
                     placeholder="Номер квартиры"
                     handleChange={handleApartmentInputChange}
                     value={inputs.apartment}

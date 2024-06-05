@@ -33,8 +33,8 @@ export default memo(function Input({
     isValid,
     error
 }: {
-    size?: string,
-    name: string,
+    size?: 'sm' | 'lg',
+    name?: string,
     type?: string,
     label?: string,
     placeholder?: string, 

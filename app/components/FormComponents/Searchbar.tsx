@@ -16,8 +16,8 @@ export default function Searchbar({
 }: {
     className: string,
     data: {[key:string]: any}[],
-    size?: string, 
-    name: string,
+    size?: 'sm' | 'lg', 
+    name?: string,
     placeholder: string, 
     handleChange: React.ChangeEventHandler<HTMLInputElement>, 
     value: string, 
@@ -51,7 +51,7 @@ export default function Searchbar({
     
     return (
         <div className={`${className} relative`} ref={searchBarRef}>
-            <Input  
+            <Input 
                 size={size}
                 name={name}
                 placeholder={placeholder} 
