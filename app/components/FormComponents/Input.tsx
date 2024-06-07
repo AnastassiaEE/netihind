@@ -58,7 +58,7 @@ export default memo(function Input({
                 value={value}
                 />
             {!isValid &&
-                <div className={`${size == "sm" ? "text-xs" : "text-sm"} text-red-700 font-medium static sm:absolute`}>
+                <div className={`${size == "sm" ? "text-xs" : "text-sm"} text-red-700 font-medium absolute`}>
                     {error}
                 </div>
             }

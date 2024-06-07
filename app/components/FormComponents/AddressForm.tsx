@@ -195,7 +195,7 @@ export default function AddressForm() {
                     isValid={errors.apartment === ''}
                     error={errors.apartment}/>
             }
-            <div className="basis-full mt-3 sm:basis-auto sm:mt-0">
+            <div className={`basis-full ${errors.apartment !== '' ? 'mt-12': 'mt-7'} sm:basis-auto sm:mt-0`}>
                 <Button variant="primary" size="lg"> Найти провайдеров </Button>
             </div>    
         </form>

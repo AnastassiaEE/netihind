@@ -2,8 +2,9 @@ import React, { useCallback } from "react";
 import { useEffect, useRef, useState } from "react";
 import Input from "./Input";
 import DropdownBox from "./DropdownBox";
+import { memo } from 'react';
 
-export default function Searchbar({
+const Searchbar = memo(function Searchbar({
     className,
     data,
     size,
@@ -31,6 +32,7 @@ export default function Searchbar({
         setIsFocused(true);
     }, [isFocused]);
 
+
     useEffect(() => {
         const handleClickOutsideSearchbar = (e: MouseEvent) => {
             if(!(searchBarRef.current)?.contains(e.target as Node)) {
@@ -46,7 +48,7 @@ export default function Searchbar({
     let dropdownHeight = '25vh';
     if (searchBarRef.current !== null) {
         const inputHeight = searchBarRef.current.getElementsByTagName('input')[0].offsetHeight;
-        dropdownHeight = window.innerHeight - ((searchBarRef.current?.offsetParent as HTMLElement)?.offsetTop + searchBarRef.current?.offsetTop + inputHeight + 20) + 'px';
+        dropdownHeight = window.innerHeight + document.getElementsByTagName('html')[0].scrollTop - (searchBarRef.current?.offsetTop + inputHeight) - 20 + 'px';
     }
     
     return (
@@ -65,4 +67,5 @@ export default function Searchbar({
             }
         </div>
     )
-}
+})
+export default Searchbar;

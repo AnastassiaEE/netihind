@@ -14,7 +14,7 @@ export default function InfoSection() {
                     </div>
                 </div>
                 <div className="md:w-5/12">
-                    <div className="relative">
+                    <div className="relative z-0">
                         <img src="images/man.png" alt="" className="relative z-10 w-full"/>
                         <div className="bg-gradient-to-br from-indigo-500 from-10% via-violet-500 to-fuchsia-500 to-60% rounded-3xl absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] h-[90%]">
                         </div>
