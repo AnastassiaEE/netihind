@@ -45,12 +45,6 @@ const Searchbar = memo(function Searchbar({
         }
     }, [])
     
-    let dropdownHeight = '25vh';
-    if (searchBarRef.current !== null) {
-        const inputHeight = searchBarRef.current.getElementsByTagName('input')[0].offsetHeight;
-        dropdownHeight = window.innerHeight + document.getElementsByTagName('html')[0].scrollTop - (searchBarRef.current?.offsetTop + inputHeight) - 20 + 'px';
-    }
-    
     return (
         <div className={`${className} relative`} ref={searchBarRef}>
             <Input 
@@ -63,7 +57,7 @@ const Searchbar = memo(function Searchbar({
                 isValid={isValid}
                 error={error}/>
             {isFocused && data.length > 0 &&
-                <DropdownBox height={dropdownHeight} data={data} size={size}/> 
+                <DropdownBox searchbar={searchBarRef.current} data={data} size={size}/> 
             }
         </div>
     )
