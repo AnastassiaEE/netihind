@@ -13,10 +13,10 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.7",
     "classnames": "^2.3.2",
-    "next": "13.5.4",
+    "next": "^14.2.4",
     "papaparse": "^5.4.1",
-    "react": "^18",
-    "react-dom": "^18",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "swiper": "^11.0.5"
   },
   "devDependencies": {
@@ -26,7 +26,7 @@
     "@types/react-dom": "^18",
     "autoprefixer": "^10",
     "eslint": "^8",
-    "eslint-config-next": "13.5.4",
+    "eslint-config-next": "^14.2.4",
     "postcss": "^8",
     "sass": "^1.68.0",
     "tailwindcss": "^3",
