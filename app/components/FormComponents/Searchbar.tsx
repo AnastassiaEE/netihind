@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import Input from "./Input";
 import DropdownBox from "./DropdownBox";
 import { memo } from 'react';
+import IconInput from "./IconInput";
 
 const Searchbar = memo(function Searchbar({
     className,
@@ -13,7 +14,8 @@ const Searchbar = memo(function Searchbar({
     handleChange, 
     value, 
     isValid,
-    error
+    error,
+    icon
 }: {
     className: string,
     data: {[key:string]: any}[],
@@ -23,7 +25,8 @@ const Searchbar = memo(function Searchbar({
     handleChange: React.ChangeEventHandler<HTMLInputElement>, 
     value: string, 
     isValid: boolean,
-    error: string
+    error: string,
+    icon?
 }) {
     const [isFocused, setIsFocused] = useState<boolean>(false);
     const searchBarRef = useRef<HTMLDivElement>(null);
@@ -47,6 +50,18 @@ const Searchbar = memo(function Searchbar({
     
     return (
         <div className={`${className} relative`} ref={searchBarRef}>
+            {icon ?
+            <IconInput 
+                size={size}
+                name={name}
+                placeholder={placeholder} 
+                handleChange={handleChange} 
+                value={value} 
+                handleFocus={handleFocus}
+                isValid={isValid}
+                error={error}
+                icon={icon}/>
+            :
             <Input 
                 size={size}
                 name={name}
@@ -56,6 +71,7 @@ const Searchbar = memo(function Searchbar({
                 handleFocus={handleFocus}
                 isValid={isValid}
                 error={error}/>
+            }
             {isFocused && data.length > 0 &&
                 <DropdownBox searchbar={searchBarRef.current} data={data} size={size}/> 
             }

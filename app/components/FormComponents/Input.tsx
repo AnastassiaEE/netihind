@@ -1,4 +1,5 @@
-import { memo } from "react";
+import classNames from "classnames";
+import { cloneElement, memo, useEffect } from "react";
 
 const baseClasses = 'w-full\
  bg-white\
@@ -31,7 +32,9 @@ export default memo(function Input({
     value, 
     handleFocus,
     isValid,
-    error
+    error,
+    className,
+    children
 }: {
     size?: 'sm' | 'lg',
     name?: string,
@@ -42,21 +45,26 @@ export default memo(function Input({
     value?: string, 
     handleFocus?: React.FocusEventHandler<HTMLInputElement>,
     isValid?: boolean,
-    error?: string
+    error?: string,
+    className?: string,
+    children?
 }) {
     const borderColor = !isValid ? 'border-red-500' : 'border-gray-300 focus:border-indigo-500/30';
     
     return (
         <>
             {label && <label htmlFor={name} className={`${labelSizes[size]} font-semibold block`}> {label} </label>}
-            <input 
-                type={type} 
-                className={`${baseClasses} ${sizes[size]} ${borderColor}`}  
-                placeholder={placeholder}
-                onChange={handleChange}
-                onFocus={handleFocus}
-                value={value}
-                />
+            <div>
+                {children}
+                <input 
+                    type={type} 
+                    className={`${baseClasses} ${sizes[size]} ${borderColor} ${className} transition-[padding]`}  
+                    placeholder={placeholder}
+                    onChange={handleChange}
+                    onFocus={handleFocus}
+                    value={value}
+                    />
+            </div>
             {!isValid &&
                 <div className={`${size == "sm" ? "text-xs" : "text-sm"} text-red-700 font-medium absolute`}>
                     {error}
