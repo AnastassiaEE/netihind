@@ -1,33 +1,37 @@
-export default function Steps({stepsText}: {stepsText: {[key: string]: string}[]}) {
-
-    
-    const rightLineStyle = `md:after:bg-indigo-100\
-                            md:after:absolute\
-                            md:after:left-2/4\
-                            md:after:top-10\
-                            md:after:w-2/4\
-                            md:after:h-px`;
+const rightLineStyle = 
+`md:after:bg-indigo-100\
+ md:after:absolute\
+ md:after:left-2/4\
+ md:after:top-10\
+ md:after:w-2/4\
+ md:after:h-px`;
    
-    const leftLineStyle = `md:before:bg-indigo-100\
-                           md:before:absolute\ 
-                           md:before:left-0\
-                           md:before:top-10\
-                           md:before:w-2/4\
-                           md:before:h-px`;
+const leftLineStyle = 
+`md:before:bg-indigo-100\
+ md:before:absolute\ 
+ md:before:left-0\
+ md:before:top-10\
+ md:before:w-2/4\
+ md:before:h-px`;
 
-    const bottomLineStyle = `after:bg-indigo-100\
-                             after:absolute\
-                             after:left-10\
-                             after:top-2/4\
-                             after:w-px\
-                             after:h-2/4`;
+const bottomLineStyle = 
+`after:bg-indigo-100\
+ after:absolute\
+ after:left-10\
+ after:top-2/4\
+ after:w-px\
+ after:h-2/4`;
 
-    const topLineStyle = `before:bg-indigo-100\
-                          before:absolute\
-                          before:left-10\
-                          before:top-0\
-                          before:w-px\
-                          before:h-2/4`;
+const topLineStyle = 
+`before:bg-indigo-100\
+ before:absolute\
+ before:left-10\
+ before:top-0\
+ before:w-px\
+ before:h-2/4`;
+
+
+export default function Steps({stepsText}: {stepsText: {[key: string]: string}[]}) {
 
     const drawLine = index =>  {
         if (index === 0) {
