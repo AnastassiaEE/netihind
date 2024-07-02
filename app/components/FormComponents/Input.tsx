@@ -3,7 +3,6 @@ import { cloneElement, memo, useEffect } from "react";
 
 const baseClasses = 'w-full\
  bg-white\
- text-slate-600\
  border\
  rounded-md\
  transition all\
@@ -58,7 +57,7 @@ export default memo(function Input({
                 {children}
                 <input 
                     type={type} 
-                    className={`${baseClasses} ${sizes[size]} ${borderColor} ${className} transition-[padding]`}  
+                    className={`${baseClasses} ${sizes[size]} ${borderColor} ${className} ${!isValid ? 'text-red-500': 'text-slate-600'} transition-[padding]`}  
                     placeholder={placeholder}
                     onChange={handleChange}
                     onFocus={handleFocus}

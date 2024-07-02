@@ -1,6 +1,5 @@
 const baseClasses = 'w-full\
  bg-white\
- text-slate-600\
  border\
  rounded-md\
  transition all\
@@ -48,7 +47,7 @@ export default function Textarea({
         <>
             {label && <label htmlFor={name} className={`${labelSizes[size]} font-semibold block`}> {label} </label>}
             <textarea
-                className={`${baseClasses} ${sizes[size]} ${borderColor} ${className} transition-[padding]`}  
+                className={`${baseClasses} ${sizes[size]} ${borderColor} ${className} ${!isValid ? 'text-red-500': 'text-slate-600'} transition-[padding]`}  
                 placeholder={placeholder}
                 onChange={handleChange}
                 value={value}>
