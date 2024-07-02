@@ -137,7 +137,7 @@ export default function ContactForm() {
                 {isLoading ? <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24"><LoopIcon></LoopIcon></svg>: <>Send</>}
             </Button>
             
-            {/*!isLoading && */
+            {!isLoading && 
                 <div className={`text-sm mt-4 ${message?.type === 'success' ? 'text-green-600': undefined} ${message?.type === 'error' ? 'text-yellow-600': undefined}`}> 
                     {message?.type === 'success' && <CheckCircleIcon className="mr-2"></CheckCircleIcon>}
                     {message?.type === 'error' && <ErrorIcon className="mr-2"></ErrorIcon>}

@@ -7,8 +7,8 @@ import ContactForm from "../FormComponents/ContactForm";
 export default function ContactsSection() {
     return (
         <SectionLayout bg="bg-white" paddings="py-24">
-            <div className="flex justify-between">
-                <div className="w-1/2">
+            <div className="md:flex md:justify-between md:items-center">
+                <div className="md:w-1/2 max-md:mb-12">
                     <div className="mb-20">
                         <h2 className="text-4xl font-extrabold mb-6"> Get in Touch </h2>
                         <p className="text-slate-600 text-base">Proin ipsum pharetra, senectus eget scelerisque varius pretium platea velit. Lacus, eget eu vitae nullam proin turpis etiam mi sit. Non feugiat feugiat egestas nulla nec. Arcu tempus, eget elementum dolor ullamcorper sodales ultrices eros.</p>
@@ -31,7 +31,7 @@ export default function ContactsSection() {
                         </ul>
                     </div>
                 </div>
-                <div className="w-1/3">
+                <div className="md:w-1/3">
                     <div className="shadow-md rounded-lg p-6">
                         <ContactForm/>
                     </div>
