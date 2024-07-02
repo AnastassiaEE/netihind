@@ -24,8 +24,12 @@ export default function IconInput({
     handleFocus?: React.FocusEventHandler<HTMLInputElement>,
     isValid?: boolean,
     error?: string,
-    icon?
+    icon
 }) {
+    let inputPadding = undefined;
+    if (icon.isVisible) {
+        inputPadding = size === 'sm' ? 'pl-10': 'pl-14'; 
+    }
 
     return (
         <Input
@@ -39,14 +43,14 @@ export default function IconInput({
             handleFocus={handleFocus}
             isValid={isValid}
             error={error}
-            className={icon.isVisible ? "pl-14": undefined}>
+            className={inputPadding}>
                 
             <div className={`absolute h-full flex items-center px-3 ${icon.isVisible ? "block": "hidden"}`}> 
                 {cloneElement(
-                    icon?.icon, 
+                    icon.icon, 
                     {
-                        className: `${icon?.handleClick ? "cursor-pointer": undefined} rotate-180 transition-all`,
-                        onClick: icon?.handleClick,
+                        className: `${icon.handleClick ? "cursor-pointer": undefined} rotate-180 transition-all`,
+                        onClick: icon.handleClick,
                     }
                 )}
             </div>

@@ -1,6 +1,3 @@
-import classNames from "classnames";
-import { cloneElement, memo, useEffect } from "react";
-
 const baseClasses = 'w-full\
  bg-white\
  text-slate-600\
@@ -22,49 +19,40 @@ const labelSizes: {[key: string]: string} = {
     lg: 'text-base mb-2.5'
 }
 
-export default memo(function Input({
+export default function Textarea({
     size = 'sm',
     name,
-    type = 'text',
     label,
     placeholder, 
     handleChange, 
     value, 
-    handleFocus,
     isValid,
     error,
     className,
-    children
 }: {
     size?: 'sm' | 'lg',
     name?: string,
-    type?: string,
     label?: string,
     placeholder?: string, 
-    handleChange?: React.ChangeEventHandler<HTMLInputElement>, 
+    handleChange?: React.ChangeEventHandler<HTMLTextAreaElement>, 
     value?: string, 
-    handleFocus?: React.FocusEventHandler<HTMLInputElement>,
     isValid?: boolean,
     error?: string,
     className?: string,
-    children?
+    
 }) {
     const borderColor = !isValid ? 'border-red-500' : 'border-gray-300 focus:border-indigo-500/30';
+    
     
     return (
         <>
             {label && <label htmlFor={name} className={`${labelSizes[size]} font-semibold block`}> {label} </label>}
-            <div className="relative">
-                {children}
-                <input 
-                    type={type} 
-                    className={`${baseClasses} ${sizes[size]} ${borderColor} ${className} transition-[padding]`}  
-                    placeholder={placeholder}
-                    onChange={handleChange}
-                    onFocus={handleFocus}
-                    value={value}
-                    />
-            </div>
+            <textarea
+                className={`${baseClasses} ${sizes[size]} ${borderColor} ${className} transition-[padding]`}  
+                placeholder={placeholder}
+                onChange={handleChange}
+                value={value}>
+            </textarea>
             {!isValid &&
                 <div className={`${size == "sm" ? "text-xs" : "text-sm"} text-red-700 font-medium absolute`}>
                     {error}
@@ -72,4 +60,4 @@ export default memo(function Input({
             }
         </>
     )
-})
+}

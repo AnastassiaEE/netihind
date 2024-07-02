@@ -30,7 +30,7 @@ const topLineStyle =
  before:w-px\
  before:h-2/4`;
 
-
+ 
 export default function Steps({stepsText}: {stepsText: {[key: string]: string}[]}) {
 
     const drawLine = index =>  {

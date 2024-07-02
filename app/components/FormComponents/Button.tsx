@@ -23,19 +23,21 @@ const variants: {[key: string]: string} = {
   
 const sizes: {[key: string]: string} = {
   sm: 'text-sm px-5 py-2',
-  lg: 'text-base px-5 py-3',
+  lg: 'text-base h-12 px-5 py-3',
 }
 
 export default memo(function Button({
   children,
   variant,
-  size
+  size,
+  disabled = false
 }: {
   children: React.ReactNode,
   variant: string,
-  size: string
+  size: string,
+  disabled?: boolean
 }) {
   return (
-    <button type="submit" className={`${baseClasses} ${variants[variant]} ${sizes[size]}`}> {children} </button>
+    <button type="submit" className={`${baseClasses} ${variants[variant]} ${sizes[size]} flex justify-center ${disabled ? 'hover:cursor-not-allowed': undefined}`} disabled={disabled}> {children} </button>
   )
 })
