@@ -17,30 +17,30 @@ export default function ContactForm() {
     const [values, setValues] = useState({name: '', email: '', phone: '', message: ''});
     const [isLoading, setIsLoading] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
-    const [message, setMessage] = useState(undefined);
+    const [response, setResponse] = useState<{type: string, message: string}>();
     const messages = [{type: 'success', message: 'Your message has been successfully sent!'}, {type: 'error', message: 'Something went wrong!'}];
     
     useEffect(() => {
-        let timer = undefined;
+        let timer = null;
         if(isLoading) {
             timer = setTimeout(() => {
                 setIsLoading(false);
-                const message = messages[Math.floor(Math.random() * 2)];
-                if(message.type === 'success') setValues({name: '', email: '', phone: '', message: ''});
-                setMessage(message);
+                const res = messages[Math.floor(Math.random() * 2)];
+                if(res.type === 'success') setValues({name: '', email: '', phone: '', message: ''});
+                setResponse(res);
          }, 2000)
     }
       return () => {
-        clearTimeout(timer);
+        timer && clearTimeout(timer);
       }
     }, [isLoading])
     
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement>, field) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement>, field: string) => {
         setValues(prevState => ({...prevState, [field]: e.target.value})); 
         if(isSubmitted) validateField(field, e.target.value); 
     }
 
-    const validateField = (field, value) => {
+    const validateField = (field: string, value: string) => {
         let error = '';
         switch (field) {
             case 'name':
@@ -138,10 +138,10 @@ export default function ContactForm() {
             </Button>
             
             {!isLoading && 
-                <div className={`text-sm mt-4 ${message?.type === 'success' ? 'text-green-600': undefined} ${message?.type === 'error' ? 'text-yellow-600': undefined}`}> 
-                    {message?.type === 'success' && <CheckCircleIcon className="mr-2"></CheckCircleIcon>}
-                    {message?.type === 'error' && <ErrorIcon className="mr-2"></ErrorIcon>}
-                    {message?.message}
+                <div className={`text-sm mt-4 ${response?.type === 'success' ? 'text-green-600': undefined} ${response?.type === 'error' ? 'text-yellow-600': undefined}`}> 
+                    {response?.type === 'success' && <CheckCircleIcon className="mr-2"></CheckCircleIcon>}
+                    {response?.type === 'error' && <ErrorIcon className="mr-2"></ErrorIcon>}
+                    {response?.message}
                 </div>
             }
         </form>
