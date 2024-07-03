@@ -86,10 +86,11 @@ export default function AddressForm() {
      *  1) find all address-apartment values ​​based on the selected address;
      *  2) from the found values extract apartment numbers.
      */
-    const addressApartments = selected.address === '' ? null :
+    const addressApartments = selected.address === '' ? [] :
         parsedCsvData
         .filter(address => address['LAHIAADRESS'].match(new RegExp(`${selected.address}-.*`, 'g'))?.[0])
         .map(address => getApartment(address['LAHIAADRESS']) ?? '');
+    
 
      /**
      * When the user enters the apartment number:
@@ -97,6 +98,7 @@ export default function AddressForm() {
      *  if the length is 0, filtered apartments are cleared.
      */
      const filteredApartments = inputs.apartment.length > 0 ? filterApartments(): [];
+     
      
     /**
      * Saves the value entered in the address field and deletes selected address.
@@ -162,10 +164,10 @@ export default function AddressForm() {
         } else if (address === '') {
             setErrors({...errors, address: 'Выберите адресс'});
             return false;
-        } else if (address !== '' && apartment === '' && addressApartments?.length > 0) {
+        } else if (address !== '' && apartment === '' && addressApartments.length > 0) {
             setErrors({...errors, apartment: 'Выберите квартиру'});
             return false;
-        } else if (address !== '' && (apartment !== '' || addressApartments?.length === 0)) {
+        } else if (address !== '' && (apartment !== '' || addressApartments.length === 0)) {
             return true;
         }
     }
@@ -196,7 +198,7 @@ export default function AddressForm() {
                 isValid={errors.address === ''}
                 error={errors.address}
                 icon={{icon: <CloseIcon fontSize="large" sx={{color: grey[400]}}/>, isVisible: inputs.address !== '', handleClick: handleRemoveAddress}}/>   
-            {addressApartments?.length > 0 &&
+            {addressApartments.length > 0 &&
                 <Searchbar
                     className="basis-3/12 md:basis-2/12"
                     data={apartments}
