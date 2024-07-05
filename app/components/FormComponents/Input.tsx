@@ -46,7 +46,7 @@ export default memo(function Input({
     isValid?: boolean,
     error?: string,
     className?: string,
-    children?
+    children?: React.ReactNode
 }) {
     const borderColor = !isValid ? 'border-red-500' : 'border-gray-300 focus:border-indigo-500/30';
     

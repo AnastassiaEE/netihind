@@ -24,7 +24,7 @@ export default function IconInput({
     handleFocus?: React.FocusEventHandler<HTMLInputElement>,
     isValid?: boolean,
     error?: string,
-    icon
+    icon: {[key: string]: any}
 }) {
     let inputPadding = undefined;
     if (icon.isVisible) {

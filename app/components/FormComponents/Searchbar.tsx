@@ -26,7 +26,7 @@ const Searchbar = memo(function Searchbar({
     value: string, 
     isValid: boolean,
     error: string,
-    icon?
+    icon?: {[key: string]: any}
 }) {
     const [isFocused, setIsFocused] = useState<boolean>(false);
     const searchBarRef = useRef<HTMLDivElement>(null);
