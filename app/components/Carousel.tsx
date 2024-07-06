@@ -44,8 +44,8 @@ export default function Carousel({posts}: {posts: {[key:string]: string}[]}) {
       },
     }
 
-    const handleArrowHover = arrow => arrow === 'left'? setIsLeftArrowHovered(true): setIsRightArrowHovered(true);
-    const handleArrowLeave = arrow => arrow === 'left'? setIsLeftArrowHovered(false): setIsRightArrowHovered(false);
+    const handleArrowHover = (arrow: string) => arrow === 'left'? setIsLeftArrowHovered(true): setIsRightArrowHovered(true);
+    const handleArrowLeave = (arrow: string) => arrow === 'left'? setIsLeftArrowHovered(false): setIsRightArrowHovered(false);
 
     return (
         <div className="relative xl:px-20">
