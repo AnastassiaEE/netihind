@@ -13,8 +13,8 @@ export default function DropdownBox ({
     data,
     size = 'sm'
 }: {
-    searchbar: HTMLElement
-    data: {[key:string]: any}[],
+    searchbar: HTMLElement | null
+    data: {[key:string]: any}[]
     size?: string
 }) {
 

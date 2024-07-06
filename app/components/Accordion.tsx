@@ -5,10 +5,10 @@ import AccordionItem from "./AccordionItem"
 
 export default function Accordion({data}: {data: {[key:string]: string}[]}) {
 
-    const [openedId, setOpenedId] = useState(null);
+    const [openedId, setOpenedId] = useState<string | null>(null);
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-        const clickedId = (e.target as HTMLButtonElement).closest('button').getAttribute('aria-controls');
+        const clickedId = (e.target as HTMLButtonElement).closest('button')?.getAttribute('aria-controls') ?? null;
         clickedId === openedId ? setOpenedId(null) : setOpenedId(clickedId);
     }
     

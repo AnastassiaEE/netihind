@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { LegacyRef, MutableRefObject, useRef } from "react";
 import { ExpandMore, ExpandLess } from '@mui/icons-material';
 
 const baseArrowStyle = 
@@ -34,7 +34,7 @@ export default function AccordionItem({
     isOpened: boolean,
     id: string
 }) {
-    const collapsible = useRef(null);
+    const collapsible = useRef<HTMLDivElement | null>(null);
     
     return (
         <div className="border-x border-b border-slate-200 first:border-t first:rounded-t-lg last:border-b last:rounded-b-lg overflow-hidden">
@@ -49,13 +49,11 @@ export default function AccordionItem({
                     {isOpened ? <ExpandLess sx={{color: 'white'}}/> : <ExpandMore sx={{color: 'black'}}/>}
                 </span>
             </button>
-            <div id={id} className={`transition-all duration-700`} style={isOpened ? {'height': `${collapsible.current.offsetHeight}px`} : {'height': 0}}>
+            <div id={id} className={`transition-all duration-700`} style={isOpened ? {'height': `${collapsible.current?.offsetHeight}px`} : {'height': 0}}>
                 <div ref={collapsible} className="text-slate-600 text-sm p-6">
                     {text}
                 </div>
-                
-            </div>
-            
+            </div> 
         </div>
     )
 }

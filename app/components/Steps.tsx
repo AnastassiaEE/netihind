@@ -33,7 +33,7 @@ const topLineStyle =
  
 export default function Steps({stepsText}: {stepsText: {[key: string]: string}[]}) {
 
-    const drawLine = index =>  {
+    const drawLine = (index: number) =>  {
         if (index === 0) {
             return bottomLineStyle + " " + rightLineStyle;
         } else if (index === stepsText.length - 1) {
