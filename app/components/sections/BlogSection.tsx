@@ -3,9 +3,9 @@ import Carousel from "../Carousel";
 
 const posts = [
   {title: 'Iaculis nunc sed augue lacus1.', image: 'images/computer.jpg', alt: 'Computer with coffee', link: '', date: '05.04.2022'},
-  {title: 'Iaculis nunc sed augue lacus2.', image: 'images/computer.jpg', link: '', date: '05.04.2022'},
-  {title: 'Iaculis nunc sed augue lacus3.', image: 'images/computer.jpg', link: '', date: '05.04.2022'},
-  {title: 'Iaculis nunc sed augue lacus4.', image: 'images/computer.jpg', link: '', date: '05.04.2022'},
+  {title: 'Iaculis nunc sed augue lacus2.', image: 'images/computer.jpg', alt: 'Computer with coffee', link: '', date: '05.04.2022'},
+  {title: 'Iaculis nunc sed augue lacus3.', image: 'images/computer.jpg', alt: 'Computer with coffee', link: '', date: '05.04.2022'},
+  {title: 'Iaculis nunc sed augue lacus4.', image: 'images/computer.jpg', alt: 'Computer with coffee', link: '', date: '05.04.2022'},
 ]
 
 export default function BlogSection() {
