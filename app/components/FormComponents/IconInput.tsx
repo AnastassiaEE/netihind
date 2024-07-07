@@ -1,5 +1,6 @@
-import { cloneElement } from "react"
+'use client'
 import Input from "./Input"
+import colors from 'tailwindcss/colors'
 
 export default function IconInput({
     size = 'sm',
@@ -28,7 +29,7 @@ export default function IconInput({
 }) {
     let inputPadding = undefined;
     if (icon.isVisible) {
-        inputPadding = size === 'sm' ? 'pl-10': 'pl-14'; 
+        inputPadding = size === 'sm' ? 'pl-10': 'pl-12'; 
     }
 
     return (
@@ -46,13 +47,7 @@ export default function IconInput({
             className={inputPadding}>
                 
             <div className={`absolute h-full flex items-center px-3 ${icon.isVisible ? "block": "hidden"}`}> 
-                {cloneElement(
-                    icon.icon, 
-                    {
-                        className: `${icon.handleClick ? "cursor-pointer": undefined} rotate-180 transition-all`,
-                        onClick: icon.handleClick,
-                    }
-                )}
+                <icon.Icon fontSize={size === "lg" ? "medium": "small"} sx={{color: colors.gray['400']}} className={icon.handleClick ? "cursor-pointer": undefined} onClick={icon.handleClick}></icon.Icon> 
             </div>
         </Input>
     )

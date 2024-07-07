@@ -6,7 +6,6 @@ import Button from "./Button";
 import Searchbar from "./Searchbar";
 import { getAddress, getApartment, removeExtraChars, removeExtraSpaces } from "../../utils/addressFormatter";
 import CloseIcon from '@mui/icons-material/Close';
-import { grey } from '@mui/material/colors';
 
 
 export default function AddressForm() { 
@@ -197,7 +196,7 @@ export default function AddressForm() {
                 value={inputs.address}
                 isValid={errors.address === ''}
                 error={errors.address}
-                icon={{icon: <CloseIcon fontSize="large" sx={{color: grey[400]}}/>, isVisible: inputs.address !== '', handleClick: handleRemoveAddress}}/>   
+                icon={{Icon: CloseIcon, isVisible: inputs.address !== '', handleClick: handleRemoveAddress}}/>   
             {addressApartments.length > 0 &&
                 <Searchbar
                     className="basis-3/12 md:basis-2/12"

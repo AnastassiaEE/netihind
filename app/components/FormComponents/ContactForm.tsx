@@ -9,7 +9,6 @@ import AddIcon from '@mui/icons-material/Add';
 import LoopIcon from '@mui/icons-material/Loop';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ErrorIcon from '@mui/icons-material/Error';
-import { grey } from '@mui/material/colors';
 
 export default function ContactForm() {
 
@@ -122,7 +121,7 @@ export default function ContactForm() {
                     value={values.phone}
                     isValid={errors.phone === ''}
                     error={errors.phone}
-                    icon={{icon: <AddIcon sx={{color: grey[400]}}/>, isVisible: true}}/>
+                    icon={{Icon: AddIcon, isVisible: true}}/>
             </div>
             <div className="mb-6">
                 <Textarea
