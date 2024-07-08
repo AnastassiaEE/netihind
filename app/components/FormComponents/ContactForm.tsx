@@ -17,9 +17,9 @@ export default function ContactForm() {
     const [isLoading, setIsLoading] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [response, setResponse] = useState<{type: string, message: string}>();
-    const messages = [{type: 'success', message: 'Your message has been successfully sent!'}, {type: 'error', message: 'Something went wrong!'}];
     
     useEffect(() => {
+        const messages = [{type: 'success', message: 'Your message has been successfully sent!'}, {type: 'error', message: 'Something went wrong!'}];
         let timer = null;
         if(isLoading) {
             timer = setTimeout(() => {

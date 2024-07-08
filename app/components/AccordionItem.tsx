@@ -1,4 +1,6 @@
-import { LegacyRef, MutableRefObject, useRef } from "react";
+'use client'
+
+import { useRef } from "react";
 import { ExpandMore, ExpandLess } from '@mui/icons-material';
 
 const baseArrowStyle = 
@@ -19,7 +21,6 @@ const openedArrowStyle =
  outline-none\
  shadow-md\
  shadow-indigo-500/50`;
-
 
 export default function AccordionItem({
     title,

@@ -5,6 +5,7 @@ import 'swiper/css/bundle';
 import { Pagination, Navigation } from 'swiper/modules';
 import { useState } from 'react';
 import { ChevronLeft, ChevronRight }  from '@mui/icons-material';
+import Image from 'next/image';
 
 const baseArrowStyle = 
 `bg-white\
@@ -78,7 +79,12 @@ export default function Carousel({posts}: {posts: {[key:string]: string}[]}) {
                     <article className="bg-white rounded-lg shadow-md h-full">
                     <div className="relative w-full h-60">
                         <a href={post.link} className="absolute w-full h-full"></a>
-                        <img src={post.image} alt={post.alt} className="rounded-t-lg object-cover w-full h-full" />
+                        <Image 
+                            src={post.image} 
+                            alt={post.alt} 
+                            width={0}
+                            height={0}
+                            className="rounded-t-lg object-cover w-full h-full"/>
                     </div>
                     <div className="p-6">
                         <div className="text-gray-400 text-sm flex justify-end mb-4">{post.date}</div>

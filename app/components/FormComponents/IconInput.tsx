@@ -1,4 +1,5 @@
 'use client'
+
 import Input from "./Input"
 import colors from 'tailwindcss/colors'
 

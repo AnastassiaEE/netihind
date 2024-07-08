@@ -1,4 +1,5 @@
 'use client'
+
 import Image from 'next/image'
 import mainLogo from '../../public/images/gradientmainlogo.svg';
 import Link from 'next/link';

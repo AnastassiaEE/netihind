@@ -1,12 +1,11 @@
 'use client'
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { parse } from 'papaparse';
 import Button from "./Button";
 import Searchbar from "./Searchbar";
 import { getAddress, getApartment, removeExtraChars, removeExtraSpaces } from "../../utils/addressFormatter";
 import CloseIcon from '@mui/icons-material/Close';
-
 
 export default function AddressForm() { 
     const [inputs, setInputs] = useState({address: '', apartment: ''});
@@ -42,6 +41,16 @@ export default function AddressForm() {
     }, [])
 
     /**
+     * Filters addresses based on the value entered in the address field.
+     */
+    const filterAddresses = useCallback(() => {
+        setFilteredAddresses(
+            parsedCsvData
+            .filter(address => `${removeExtraChars(getAddress(address['LAHIAADRESS']))}, ${address['SIHTNUMBER']}, ${address['TAISAADRESS'].split(', ')[1]}, ${address['TAISAADRESS'].split(', ')[0]}`.toLowerCase().startsWith(removeExtraChars(inputs.address).trim().toLowerCase()))
+        )
+    }, [inputs.address, parsedCsvData])
+
+    /**
      * When the user enters an address:
      *  if the address length is more than 1 character, all addresses are filtered by the entered one (with a delay of 1 second);
      *  if the length is 1 or less, filtered addresses are cleared.
@@ -51,7 +60,7 @@ export default function AddressForm() {
         return() => {
             keyupTimer.current && clearTimeout(keyupTimer.current);
         }
-    }, [inputs.address]);
+    }, [inputs.address, filterAddresses]);
 
     /**
      * Сreates a delay before address filtering.
@@ -62,16 +71,6 @@ export default function AddressForm() {
     const delayInput = (filterFunction: () => void, delay: number) => {
         keyupTimer.current = setTimeout(filterFunction, delay);
     } 
-
-    /**
-     * Filters addresses based on the value entered in the address field.
-     */
-     const filterAddresses = () => {
-        setFilteredAddresses(
-            parsedCsvData
-            .filter(address => `${removeExtraChars(getAddress(address['LAHIAADRESS']))}, ${address['SIHTNUMBER']}, ${address['TAISAADRESS'].split(', ')[1]}, ${address['TAISAADRESS'].split(', ')[0]}`.toLowerCase().startsWith(removeExtraChars(inputs.address).trim().toLowerCase()))
-        )
-    }
 
     /**
      * Filters selected address apartments based on the value entered in the apartment field.

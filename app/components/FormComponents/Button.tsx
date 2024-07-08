@@ -1,4 +1,4 @@
-import { memo } from "react";
+'use client'
 
 const baseClasses = 'w-full\
  font-semibold\
@@ -26,7 +26,7 @@ const sizes: {[key: string]: string} = {
   lg: 'text-base h-12 px-5 py-3',
 }
 
-export default memo(function Button({
+export default function Button({
   children,
   variant,
   size,
@@ -40,4 +40,4 @@ export default memo(function Button({
   return (
     <button type="submit" className={`${baseClasses} ${variants[variant]} ${sizes[size]} flex justify-center ${disabled ? 'hover:cursor-not-allowed': undefined}`} disabled={disabled}> {children} </button>
   )
-})
+}

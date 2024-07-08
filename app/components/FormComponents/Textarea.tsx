@@ -1,3 +1,5 @@
+'use client'
+
 const baseClasses = 'w-full\
  bg-white\
  border\
@@ -41,7 +43,6 @@ export default function Textarea({
     
 }) {
     const borderColor = !isValid ? 'border-red-500' : 'border-gray-300 focus:border-indigo-500/30';
-    
     
     return (
         <>

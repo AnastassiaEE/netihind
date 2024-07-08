@@ -1,5 +1,4 @@
-import classNames from "classnames";
-import { cloneElement, memo, useEffect } from "react";
+'use client'
 
 const baseClasses = 'w-full\
  bg-white\
@@ -21,7 +20,7 @@ const labelSizes: {[key: string]: string} = {
     lg: 'text-base mb-2.5'
 }
 
-export default memo(function Input({
+export default function Input({
     size = 'sm',
     name,
     type = 'text',
@@ -71,4 +70,4 @@ export default memo(function Input({
             }
         </>
     )
-})
+}
