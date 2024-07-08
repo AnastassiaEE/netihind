@@ -2,8 +2,7 @@
 import Image from 'next/image'
 import mainLogo from '../../public/images/gradientmainlogo.svg';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import usePrevState from './hooks/usePrevState';
+import { useEffect, useRef, useState } from 'react';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -14,16 +13,13 @@ import colors from 'tailwindcss/colors';
 
 export default function Navbar() {
 
-    const [y, setY] = useState(window.scrollY);
+    const [y, setY] = useState(0);
     const [isSideNavOpen, setIsSideNavOpen] = useState(false);
-    //const prevY = usePrevState(y);
-    
-    //const direction = prevY < y ? 'down': 'up';
-    const firstSection = document.getElementsByTagName('section')[0];
-    const firstSectionBottomPos = firstSection?.offsetTop + firstSection?.offsetHeight;
+
+    const firstSectionBottomPos = useRef(0);
     
     let style = 'absolute top-0 left-0';
-    if (y >= firstSectionBottomPos) {
+    if (y > firstSectionBottomPos.current) {
         style = 'fixed animate-show shadow-md';
     }
 
@@ -51,12 +47,14 @@ export default function Navbar() {
     const sideNavStyle = isSideNavOpen ? 'translate-x-0' : 'translate-x-full';
 
     useEffect(() => {
+        const firstSection = document.getElementsByTagName('section')[0];
+        firstSectionBottomPos.current = firstSection.offsetTop + firstSection.offsetHeight;
         const handleNavigation = () => {
             setY(window.scrollY);
          }
         window.addEventListener("scroll", handleNavigation);
         return () => window.removeEventListener("scroll", handleNavigation);
-    });
+    }, []);
 
     return (
         <header className={`bg-white ${style} w-full z-50`}> 
