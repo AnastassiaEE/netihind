@@ -190,6 +190,7 @@ export default function AddressForm() {
                 className={"grow basis-auto"}
                 data={addresses}
                 size="lg"
+                name="address"
                 placeholder="Адрес"
                 handleChange={handleAddressInputChange} 
                 value={inputs.address}
@@ -201,6 +202,7 @@ export default function AddressForm() {
                     className="basis-3/12 md:basis-2/12"
                     data={apartments}
                     size="lg"
+                    name="apartment"
                     placeholder="Номер квартиры"
                     handleChange={handleApartmentInputChange}
                     value={inputs.apartment}

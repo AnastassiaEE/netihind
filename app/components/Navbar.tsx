@@ -66,7 +66,9 @@ export default function Navbar() {
                             <Image
                                 className="w-36"
                                 src={mainLogo}
-                                alt="navbar logo"/>
+                                alt="navbar logo"
+                                width={0}
+                                height={0}/>
                         </Link>   
                         <div className="flex items-center max-md:hidden">
                             <ul className="flex text-base text-slate-600 font-semibold">

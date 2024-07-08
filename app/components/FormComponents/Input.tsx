@@ -55,6 +55,7 @@ export default function Input({
             <div className="relative">
                 {children}
                 <input 
+                    id={name}
                     type={type} 
                     className={`${baseClasses} ${sizes[size]} ${borderColor} ${className} ${!isValid ? 'text-red-500': 'text-slate-600'} transition-[padding]`}  
                     placeholder={placeholder}

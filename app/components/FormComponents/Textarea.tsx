@@ -48,6 +48,7 @@ export default function Textarea({
         <>
             {label && <label htmlFor={name} className={`${labelSizes[size]} font-semibold block`}> {label} </label>}
             <textarea
+                id={name}
                 className={`${baseClasses} ${sizes[size]} ${borderColor} ${className} ${!isValid ? 'text-red-500': 'text-slate-600'} transition-[padding]`}  
                 placeholder={placeholder}
                 onChange={handleChange}

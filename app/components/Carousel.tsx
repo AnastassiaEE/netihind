@@ -50,12 +50,12 @@ export default function Carousel({posts}: {posts: {[key:string]: string}[]}) {
 
     return (
         <div className="relative xl:px-20">
-            <div className={`prev ${baseArrowStyle} ${isLeftArrowHovered && hoveredArrowStyle} absolute left-0 top-1/2 -translate-y-1/2`} 
+            <div className={`prev ${baseArrowStyle} ${isLeftArrowHovered ? hoveredArrowStyle : undefined} absolute left-0 top-1/2 -translate-y-1/2`} 
                     onMouseEnter={() => handleArrowHover('left')}
                     onMouseLeave={() => handleArrowLeave('left')}>
                     {<ChevronLeft sx={isLeftArrowHovered? {color: 'white'}: {color: 'black'}}/>}
             </div>
-            <div className={`next ${baseArrowStyle} ${isRightArrowHovered && hoveredArrowStyle} absolute right-0 top-1/2 -translate-y-1/2`} 
+            <div className={`next ${baseArrowStyle} ${isRightArrowHovered ? hoveredArrowStyle : undefined} absolute right-0 top-1/2 -translate-y-1/2`} 
                     onMouseEnter={() => handleArrowHover('right')}
                     onMouseLeave={() => handleArrowLeave('right')}>
                     {<ChevronRight sx={isRightArrowHovered ? {color: 'white'}: {color: 'black'}}/>}
