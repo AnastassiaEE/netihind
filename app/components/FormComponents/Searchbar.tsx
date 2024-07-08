@@ -1,3 +1,4 @@
+'use client'
 import React, { useCallback } from "react";
 import { useEffect, useRef, useState } from "react";
 import Input from "./Input";

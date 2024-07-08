@@ -1,3 +1,4 @@
+'use client'
 import { useEffect, useState } from "react";
 
 const listItemClasses = 'text-slate-600 cursor-pointer hover:bg-indigo-500/30';

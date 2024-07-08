@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import { parse } from 'papaparse';
 import Button from "./Button";
 import Searchbar from "./Searchbar";
@@ -102,19 +102,19 @@ export default function AddressForm() {
     /**
      * Saves the value entered in the address field and deletes selected address.
      */
-    const handleAddressInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleAddressInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputs({address: removeExtraSpaces(e.target.value).trimStart(), apartment: ''});  
         setSelected({address: '', apartment: ''});
         setErrors({...errors, apartment: ''});
-    }, [inputs.address]);
+    };
 
     /**
      * Saves the value entered in the apartment field and deletes selected apartment.
      */
-    const handleApartmentInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleApartmentInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputs(prevState => ({...prevState, apartment: removeExtraSpaces(e.target.value).trimStart()}));
         setSelected(prevState => ({...prevState, apartment: ''}));
-    }, [inputs.apartment])
+    }
 
     /**
      * Processes a click on an address in a drop-down menu:
