@@ -6,7 +6,18 @@ const config: Config = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  theme: {    
+  theme: {   
+    extend: {
+      animation: {
+        show: 'show .25s cubic-bezier(0.4, 0, 0.2, 1)',
+      }, 
+      keyframes: {
+        show: {
+          '0%': { transform: 'translateY(-100%)' },
+          '100%': { transform: 'translateY(0)' }
+        }
+      }
+    } 
   },
   extend: { 
   },
