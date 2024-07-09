@@ -1,7 +1,6 @@
 'use client'
 
 import Input from "./Input"
-import colors from 'tailwindcss/colors'
 
 export default function IconInput({
     size = 'sm',
@@ -30,8 +29,10 @@ export default function IconInput({
 }) {
     let inputPadding = undefined;
     if (icon.isVisible) {
-        inputPadding = size === 'sm' ? 'pl-10': 'pl-12'; 
+        inputPadding = size === 'sm' ? 'pl-10' : 'pl-12'; 
     }
+
+    const ic = <icon.Icon fontSize={size === "lg" ? "medium" : "small"} className="text-muted"/>;
 
     return (
         <Input
@@ -47,8 +48,8 @@ export default function IconInput({
             error={error}
             className={inputPadding}>
                 
-            <div className={`absolute h-full flex items-center px-3 ${icon.isVisible ? "block": "hidden"}`}> 
-                <icon.Icon fontSize={size === "lg" ? "medium": "small"} sx={{color: colors.gray['400']}} className={icon.handleClick ? "cursor-pointer": undefined} onClick={icon.handleClick}></icon.Icon> 
+            <div className={`absolute h-full flex items-center px-3 ${icon.isVisible ? "block" : "hidden"}`}> 
+                {icon.handleClick ? <button type="button" onClick={icon.handleClick}> {ic} </button> : <>{ic}</>}
             </div>
         </Input>
     )

@@ -11,22 +11,22 @@ export default function ContactsSection() {
                 <div className="md:w-1/2 max-md:mb-12">
                     <div className="mb-20">
                         <h2 className="text-4xl font-extrabold mb-6"> Get in Touch </h2>
-                        <p className="text-slate-600 text-base">Proin ipsum pharetra, senectus eget scelerisque varius pretium platea velit. Lacus, eget eu vitae nullam proin turpis etiam mi sit. Non feugiat feugiat egestas nulla nec. Arcu tempus, eget elementum dolor ullamcorper sodales ultrices eros.</p>
+                        <p className="text-muted-dark text-base">Proin ipsum pharetra, senectus eget scelerisque varius pretium platea velit. Lacus, eget eu vitae nullam proin turpis etiam mi sit. Non feugiat feugiat egestas nulla nec. Arcu tempus, eget elementum dolor ullamcorper sodales ultrices eros.</p>
                     </div>
                     <div>
                         <h3 className="text-3xl font-extrabold mb-6">Contact Info</h3>
                         <ul>
                             <li className="flex items-center mb-5">
-                                <Phone sx={{color: '#6366f1'}}/>
-                                <a href="tel:+37256979125" className="text-slate-700 text-base font-semibold transition-colors pl-2 hover:text-indigo-500">+372 56 979 125</a>
+                                <Phone className="text-primary"/>
+                                <a href="tel:+37256979125" className="text-base font-semibold transition-colors pl-2 hover:text-primary">+372 56 979 125</a>
                             </li>
                             <li className="flex items-center mb-5">
-                                <Mail sx={{color: '#6366f1'}}/>
-                                <a href="mailto:martsenkoanastassia56@gmail.com" className="text-slate-700 text-base font-semibold transition-colors pl-2 hover:text-indigo-500">martsenkoanastassia56@gmail.com</a>
+                                <Mail className="text-primary"/>
+                                <a href="mailto:martsenkoanastassia56@gmail.com" className="text-base font-semibold transition-colors pl-2 hover:text-primary">martsenkoanastassia56@gmail.com</a>
                             </li>
                             <li className="flex items-center">
-                                <LocationOn sx={{color: '#6366f1'}}/>
-                                <a href="#" className="text-slate-700 text-base font-semibold transition-colors pl-2 hover:text-indigo-500">Akadeemia tee 14-42</a>
+                                <LocationOn className="text-primary"/>
+                                <a href="#" className="text-base font-semibold transition-colors pl-2 hover:text-primary">Akadeemia tee 14-42</a>
                             </li>
                         </ul>
                     </div>

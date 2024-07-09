@@ -71,10 +71,10 @@ export default function Navbar() {
                                 height={0}/>
                         </Link>   
                         <div className="flex items-center max-md:hidden">
-                            <ul className="flex text-base text-slate-600 font-semibold">
+                            <ul className="flex text-base text-muted-dark font-semibold">
                                 {links.map(({name, link}) => {
                                     return (
-                                        <li key={name}><Link href={link} className="px-4 py-2 hover:text-indigo-500 transition-colors">{name}</Link></li>
+                                        <li key={name}><Link href={link} className="px-4 py-2 hover:text-primary transition-colors">{name}</Link></li>
                                     )
                                 })}
                             </ul>
@@ -84,32 +84,32 @@ export default function Navbar() {
                         <ul className="flex">
                             {iconLinks.map(iconLink => {
                                 return (
-                                    <li  key={iconLink.key} className="p-2"> <IconLink iconLink={iconLink}/> </li>
+                                    <li key={iconLink.key} className="p-2"> <IconLink iconLink={iconLink}/> </li>
                                 )
                             })}
                             <button type="button" className="ml-6 md:hidden" onClick={() => openSideNav(true)}>
-                                <MenuIcon fontSize="large" sx={{color: colors.slate['600']}}/>
+                                <MenuIcon fontSize="large"className="text-muted-dark"/>
                             </button>
                         </ul>
                     </div>
                 </div>
             </div>
             <div className={`fixed top-0 right-0 w-80 max-w-full h-full z-50 bg-white shadow-md transition-transform duration-300 ${sideNavStyle} md:hidden`}>
-                <div className="flex justify-between px-6 py-5 border-b border-slate-200">
+                <div className="flex justify-between px-6 py-5 border-b border-muted-light">
                     <h5 className="text-xl font-extrabold">Menu</h5>
-                    <button type="button" className="h-max" onClick={() => openSideNav(false)}><CloseIcon sx={{color: colors.gray['400'], "&:hover": { color: colors.black}, transition: 'all cubic-bezier(0.4, 0, 0.2, 1) .25s'}}/></button>
+                    <button type="button" className="h-max" onClick={() => openSideNav(false)}><CloseIcon className="text-muted hover:text-black transition-colors duration-300"/></button>
                 </div>
                 <div className="p-6">
-                    <ul className="text-base text-slate-600 font-semibold">
+                    <ul className="text-base text-muted-dark font-semibold">
                         {links.map(({name, link}) => {
                             return (
-                                <li key={name}><Link href={link} className="flex py-2 hover:text-indigo-500 transition-colors">{name}</Link></li>
+                                <li key={name}><Link href={link} className="flex py-2 hover:text-primary transition-colors">{name}</Link></li>
                             )
                         })}
                     </ul>
                 </div>
             </div>
-            <div className={`fixed top-0 left-0 w-screen h-screen bg-black opacity-70 ${!isSideNavOpen ? "hidden" : undefined}`} onClick={() => openSideNav(false)}></div>
+            <div className={`fixed top-0 left-0 w-screen h-screen bg-black/70 ${!isSideNavOpen ? "hidden" : undefined}`} onClick={() => openSideNav(false)}></div>
         </header>
     )
 }

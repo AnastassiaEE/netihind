@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 
-const listItemClasses = 'text-slate-600 cursor-pointer hover:bg-indigo-500/30';
+const listItemClasses = 'text-muted-dark cursor-pointer hover:bg-primary/30';
 const listAnchorClasses = 'block';
 
 const sizes: {[key: string]: string} = {
@@ -37,7 +37,7 @@ export default function DropdownBox({
     }, [getHeightAndPos])
 
     return (
-        <div className="bg-white border border-indigo-500/30 rounded-md w-full absolute z-10 overflow-hidden" style={heightAndPos.pos === 'up' ? {bottom: '100%'}: undefined}>
+        <div className="bg-white border border-primary/30 rounded-md w-full absolute z-10 overflow-hidden" style={heightAndPos.pos === 'up' ? {bottom: '100%'} : undefined}>
             <ul className="overflow-auto" style={{maxHeight: `${heightAndPos.height}px`}}>
                {data.map(d => 
                     <li key={d.key} className={listItemClasses}>

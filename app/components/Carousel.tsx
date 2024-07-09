@@ -6,6 +6,7 @@ import { Pagination, Navigation } from 'swiper/modules';
 import { useState } from 'react';
 import { ChevronLeft, ChevronRight }  from '@mui/icons-material';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const baseArrowStyle = 
 `bg-white\
@@ -19,13 +20,13 @@ const baseArrowStyle =
  h-9\
  cursor-pointer\
  shadow-md\
- shadow-zinc-900/30\
+ shadow-black/30\
  transition-colors\
  max-xl:hidden`;
 
 const hoveredArrowStyle = 
-`!bg-indigo-500\
- !shadow-indigo-500/50`;
+`!bg-primary\
+ !shadow-primary/50`;
 
 export default function Carousel({posts}: {posts: {[key:string]: string}[]}) {
     const [isLeftArrowHovered, setIsLeftArrowHovered] = useState(false);
@@ -53,12 +54,12 @@ export default function Carousel({posts}: {posts: {[key:string]: string}[]}) {
             <div className={`prev ${baseArrowStyle} ${isLeftArrowHovered ? hoveredArrowStyle : undefined} absolute left-0 top-1/2 -translate-y-1/2`} 
                     onMouseEnter={() => handleArrowHover('left')}
                     onMouseLeave={() => handleArrowLeave('left')}>
-                    {<ChevronLeft sx={isLeftArrowHovered? {color: 'white'}: {color: 'black'}}/>}
+                    {<ChevronLeft className={isLeftArrowHovered ? "text-white" : "text-black"}/>}
             </div>
             <div className={`next ${baseArrowStyle} ${isRightArrowHovered ? hoveredArrowStyle : undefined} absolute right-0 top-1/2 -translate-y-1/2`} 
                     onMouseEnter={() => handleArrowHover('right')}
                     onMouseLeave={() => handleArrowLeave('right')}>
-                    {<ChevronRight sx={isRightArrowHovered ? {color: 'white'}: {color: 'black'}}/>}
+                    {<ChevronRight className={isRightArrowHovered ? "text-white" : "text-black"}/>}
             </div>
             <div className="swiper-pagination !-bottom-10"></div>
             <Swiper
@@ -70,8 +71,8 @@ export default function Carousel({posts}: {posts: {[key:string]: string}[]}) {
                 pagination={{
                     clickable: true,
                     el: '.swiper-pagination',
-                    bulletClass: 'pagination-bullet bg-zinc-400 inline-block rounded-lg cursor-pointer transition-all duration-500 w-1.5 h-1.5 mx-1.5',
-                    bulletActiveClass: 'pagination-bullet-active !bg-indigo-500 !w-6',
+                    bulletClass: 'pagination-bullet bg-muted inline-block rounded-lg cursor-pointer transition-all duration-500 w-1.5 h-1.5 mx-1.5',
+                    bulletActiveClass: 'pagination-bullet-active !bg-primary !w-6',
                 }}
                 modules={[Pagination, Navigation]}>
                 {posts.map(post => 
@@ -87,8 +88,8 @@ export default function Carousel({posts}: {posts: {[key:string]: string}[]}) {
                             className="rounded-t-lg object-cover w-full h-full"/>
                     </div>
                     <div className="p-6">
-                        <div className="text-gray-400 text-sm flex justify-end mb-4">{post.date}</div>
-                        <h3><a href={post.link}>{post.title}</a></h3>
+                        <div className="text-muted text-sm flex justify-end mb-4">{post.date}</div>
+                        <h3><Link href={post.link}>{post.title}</Link></h3>
                     </div>
                     </article>
                 </SwiperSlide>

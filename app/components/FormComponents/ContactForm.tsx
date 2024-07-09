@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import Button from "./Button"
 import Input from "./Input"
 import IconInput from "./IconInput";
@@ -133,13 +133,13 @@ export default function ContactForm() {
                     error={errors.message}/> 
             </div>
             <Button variant="primary" size="lg" disabled={isLoading}>
-                {isLoading ? <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24"><LoopIcon></LoopIcon></svg>: <>Send</>}
+                {isLoading ? <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24"><LoopIcon/></svg>: <>Send</>}
             </Button>
             
             {!isLoading && 
-                <div className={`text-sm mt-4 ${response?.type === 'success' ? 'text-green-600': undefined} ${response?.type === 'error' ? 'text-yellow-600': undefined}`}> 
-                    {response?.type === 'success' && <CheckCircleIcon className="mr-2"></CheckCircleIcon>}
-                    {response?.type === 'error' && <ErrorIcon className="mr-2"></ErrorIcon>}
+                <div className={`text-sm mt-4 ${response?.type === 'success' ? 'text-green-600' : undefined} ${response?.type === 'error' ? 'text-yellow-600' : undefined}`}> 
+                    {response?.type === 'success' && <CheckCircleIcon className="mr-2"/>}
+                    {response?.type === 'error' && <ErrorIcon className="mr-2"/>}
                     {response?.message}
                 </div>
             }

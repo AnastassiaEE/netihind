@@ -7,8 +7,8 @@ const baseClasses = 'w-full\
  transition all\
  focus:outline-none\
  focus:shadow-lg\
- focus:shadow-indigo-500/10\
- placeholder: text-grey-300';
+ focus:shadow-primary/10\
+ placeholder:text-muted';
 
 const sizes: {[key: string]: string} = {
     sm: 'text-sm px-4 py-2.5',
@@ -47,7 +47,7 @@ export default function Input({
     className?: string,
     children?: React.ReactNode
 }) {
-    const borderColor = !isValid ? 'border-red-500' : 'border-gray-300 focus:border-indigo-500/30';
+    const borderColor = isValid ? 'border-valid focus:border-primary/30' : 'border-invalid';
     
     return (
         <>
@@ -57,7 +57,7 @@ export default function Input({
                 <input 
                     id={name}
                     type={type} 
-                    className={`${baseClasses} ${sizes[size]} ${borderColor} ${className} ${!isValid ? 'text-red-500': 'text-slate-600'} transition-[padding]`}  
+                    className={`${baseClasses} ${sizes[size]} ${borderColor} ${className} text-muted-dark transition-[padding]`}  
                     placeholder={placeholder}
                     onChange={handleChange}
                     onFocus={handleFocus}
@@ -65,7 +65,7 @@ export default function Input({
                     />
             </div>
             {!isValid &&
-                <div className={`${size == "sm" ? "text-xs" : "text-sm"} text-red-700 font-medium absolute`}>
+                <div className={`${size == "sm" ? "text-xs" : "text-sm"} text-error font-medium absolute`}>
                     {error}
                 </div>
             }

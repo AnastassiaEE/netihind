@@ -14,13 +14,13 @@ const baseArrowStyle =
  h-9\
  transition-colors`;
 
-const closedArrowStyle = `bg-indigo-50`;
+const closedArrowStyle = `bg-neutral-light`;
 
 const openedArrowStyle = 
-`bg-indigo-500\
+`bg-primary\
  outline-none\
  shadow-md\
- shadow-indigo-500/50`;
+ shadow-primary/50`;
 
 export default function AccordionItem({
     title,
@@ -38,7 +38,7 @@ export default function AccordionItem({
     const collapsible = useRef<HTMLDivElement | null>(null);
     
     return (
-        <div className="border-x border-b border-slate-200 first:border-t first:rounded-t-lg last:border-b last:rounded-b-lg overflow-hidden">
+        <div className="border-x border-b border-muted-light first:border-t first:rounded-t-lg last:border-b last:rounded-b-lg overflow-hidden">
             <button 
                 type="button" 
                 className={`flex justify-between items-center ${isOpened && "border-b"} w-full p-6`}
@@ -46,12 +46,12 @@ export default function AccordionItem({
                 aria-expanded={isOpened ? 'true': 'false'}
                 aria-controls={id}> 
                 <span className="text-base font-semibold">{title}</span>
-                <span className={`${isOpened ? openedArrowStyle: closedArrowStyle} ${baseArrowStyle}`}>
-                    {isOpened ? <ExpandLess sx={{color: 'white'}}/> : <ExpandMore sx={{color: 'black'}}/>}
+                <span className={`${isOpened ? openedArrowStyle : closedArrowStyle} ${baseArrowStyle}`}>
+                    {isOpened ? <ExpandLess className="text-white"/> : <ExpandMore className="text-black"/>}
                 </span>
             </button>
             <div id={id} className={`transition-all duration-700`} style={isOpened ? {'height': `${collapsible.current?.offsetHeight}px`} : {'height': 0}}>
-                <div ref={collapsible} className="text-slate-600 text-sm p-6">
+                <div ref={collapsible} className="text-muted-dark text-sm p-6">
                     {text}
                 </div>
             </div> 

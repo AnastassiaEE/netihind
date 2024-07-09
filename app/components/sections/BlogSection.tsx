@@ -10,7 +10,7 @@ const posts = [
 
 export default function BlogSection() {
     return (
-        <SectionLayout bg="bg-indigo-50" paddings="py-24">
+        <SectionLayout bg="bg-neutral-light" paddings="py-24">
             <h2 className="text-4xl font-extrabold text-center mb-10"> Rhoncus est pellentesque </h2>
             <Carousel posts={posts}/>    
         </SectionLayout>

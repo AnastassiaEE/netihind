@@ -3,21 +3,21 @@
 const baseClasses = 'w-full\
  font-semibold\
  text-center\
- border border-indigo-500\
+ border border-primary\
  rounded-lg\
  transition all\
  hover:cursor-pointer';
 
 const variants: {[key: string]: string} = {
-    primary: 'bg-indigo-500\
+    primary: 'bg-primary\
  text-white\
  shadow-lg\
- shadow-indigo-500/50\
- hover:bg-indigo-600\
+ shadow-primary/50\
+ hover:bg-primary-dark\
  hover:shadow-none',
     secondary: 'bg-white\
- text-indigo-500\
- hover:bg-indigo-500\
+ text-primary\
+ hover:bg-primary\
  hover:text-white'
 }
   
