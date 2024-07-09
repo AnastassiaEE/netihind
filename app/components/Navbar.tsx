@@ -21,7 +21,7 @@ export default function Navbar() {
     
     let style = 'absolute top-0 left-0';
     if (y > firstSectionBottomPos.current) {
-        style = 'fixed animate-show shadow-md';
+        style = 'fixed animate-show shadow-md bg-white';
     }
 
     const iconLinks = [
@@ -58,7 +58,7 @@ export default function Navbar() {
     }, []);
 
     return (
-        <header className={`bg-white ${style} w-full z-50`}> 
+        <header className={`${style} w-full z-50`}> 
             <div className="container">
                 <div className="flex justify-between p-4">
                     <div className="flex">
