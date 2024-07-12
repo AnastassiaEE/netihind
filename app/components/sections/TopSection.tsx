@@ -1,4 +1,4 @@
-import AddressForm from '../FormComponents/AddressForm';
+import AddressForm from '../form/AddressForm';
 import MeshSvg from '../MeshSvg';
 
 export default function TopSection() {

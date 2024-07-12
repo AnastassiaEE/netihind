@@ -1,15 +1,14 @@
 'use client'
 
 import Image from 'next/image'
-import mainLogo from '../../public/images/gradientmainlogo.svg';
+import mainLogo from '../../../public/images/gradientmainlogo.svg';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import IconLink from './IconLink';
-import colors from 'tailwindcss/colors';
+import IconLink from '../IconLink';
 
 
 export default function Navbar() {
