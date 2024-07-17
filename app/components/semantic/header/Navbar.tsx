@@ -1,3 +1,4 @@
+import mainLogo from '../../../../public/images/gradientmainlogo.svg';
 import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Navigation from '../../semantic/navigation/Navigation';
@@ -11,7 +12,7 @@ export default function Navbar({children} : {children: React.ReactNode}) {
         <div className="flex justify-between items-center p-4">
             <div className="flex items-center">
                 <div className="mr-6">
-                    <Logo/>
+                    <Logo src={mainLogo}/>
                 </div>
                 <div className="max-md:hidden">
                     <Navigation linkColor="muted-dark">
