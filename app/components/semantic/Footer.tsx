@@ -1,10 +1,10 @@
 import whitelogo from "../../../public/images/whitelogo.svg";
 import NavigationItem from "./navigation/NavigationItem";
 import Navigation from "./navigation/Navigation";
+import SocialLinks from "../SocialLinks";
 import SocialLink from "../SocialLink";
 import Logo from "./header/Logo";
-import Image from "next/image"
-import SocialLinks from "../SocialLinks";
+import Link from "next/link";
 
 export default function Footer() {
     return(
@@ -14,10 +14,10 @@ export default function Footer() {
                     <Logo src={whitelogo}/>
                 </div>
                 <div className="flex justify-center pt-4 pb-6">
-                    <Navigation linkColor="white">
-                        <NavigationItem name="Home" link="#" padding="px-1 px-4"/>
-                        <NavigationItem name="Link" link="#"/>
-                        <NavigationItem name="Link" link="#"/>
+                    <Navigation linkColor="white opacity-80">
+                        <NavigationItem link="#" padding="px-1 px-4">Home</NavigationItem>
+                        <NavigationItem link="#">Link</NavigationItem>
+                        <NavigationItem link="#">Link</NavigationItem>
                     </Navigation>
                 </div>
                 <div className="flex justify-center pt-6">
@@ -29,7 +29,9 @@ export default function Footer() {
                         <SocialLink type="youtube"/>
                     </SocialLinks>
                 </div>
-                <div></div>
+                <div className="flex justify-center pt-12 text-sm text-white/60">
+                    <p> © All rights reserved. Made by <span className="text-white/80 font-semibold"><NavigationItem link="#">Lorem Ipsum</NavigationItem></span></p>
+                </div>
             </div>
         </footer>
     )

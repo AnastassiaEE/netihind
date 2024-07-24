@@ -35,9 +35,18 @@ const config: Config = {
         valid: colors.gray['300'],
         invalid: colors.red['500'],
 
-        error: colors.red['800']
-        
-      } 
+        error: colors.red['800'],
+
+        'facebook-logo': '#0866FF',
+        'instagram-logo-shadow': '#dc2743',
+        'twitter-logo': '#333333',
+        'youtube-logo': 'rgb(255, 0, 0)',
+        'linkedin-logo': '#0077B5'
+      },
+
+      backgroundImage: {
+        'instagram-logo': 'linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)'
+      }
     },
   },
   corePlugins: {

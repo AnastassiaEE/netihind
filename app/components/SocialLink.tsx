@@ -6,13 +6,12 @@ import XIcon from '@mui/icons-material/X';
 import Link from "next/link";
 
 const types: {[key:string]: {Icon: any, color: string}} = {
-    'facebook': {Icon: FacebookIcon, color: 'hover:bg-[#0866FF] hover:shadow-[#0866FF]'},
-    'x': {Icon: XIcon, color: ''},
-    'instagram': {Icon: InstagramIcon, color: ''},
-    'linkedin': {Icon: LinkedInIcon, color: ''},
-    'youtube': {Icon: YouTubeIcon, color: ''}
+    'facebook': {Icon: FacebookIcon, color: 'hover:bg-facebook-logo hover:shadow-facebook-logo/40'},
+    'x': {Icon: XIcon, color: 'hover:bg-twitter-logo hover:shadow-twitter-logo/40'},
+    'instagram': {Icon: InstagramIcon, color: 'hover:bg-instagram-logo hover:shadow-instagram-logo-shadow/40'},
+    'linkedin': {Icon: LinkedInIcon, color: 'hover:bg-linkedin-logo hover:shadow-linkedin-logo/40'},
+    'youtube': {Icon: YouTubeIcon, color: 'hover:bg-youtube-logo hover:shadow-youtube-logo/40'}
 }
-
 export default function SocialLink({
     type,
     margin
@@ -25,7 +24,7 @@ export default function SocialLink({
     return(
         <Link 
             href="#" 
-            className={`flex justify-center items-center w-11 h-11 bg-white/5 rounded-md transition-colors duration-300 hover:shadow-md ${types[type].color} ${margin}`}>
+            className={`flex justify-center items-center w-11 h-11 bg-white/5 rounded-md transition-colors ease-in hover:shadow-lg ${types[type].color} ${margin}`}>
             <Icon fontSize="small" className="text-white"/>
         </Link>
     )

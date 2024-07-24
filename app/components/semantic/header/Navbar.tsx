@@ -1,8 +1,8 @@
 import mainLogo from '../../../../public/images/gradientmainlogo.svg';
 import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import Navigation from '../../semantic/navigation/Navigation';
 import NavigationItem from "../navigation/NavigationItem";
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import HeaderItems from "./HeaderItems";
 import HeaderItem from "./HeaderItem";
 import Logo from "./Logo";
@@ -16,9 +16,9 @@ export default function Navbar({children} : {children: React.ReactNode}) {
                 </div>
                 <div className="max-md:hidden">
                     <Navigation linkColor="muted-dark">
-                        <NavigationItem link="#" name="Link1"/>
-                        <NavigationItem link="#" name="Link1"/>
-                        <NavigationItem link="#" name="Link1"/>
+                        <NavigationItem link="#">Link1</NavigationItem>
+                        <NavigationItem link="#">Link2</NavigationItem>
+                        <NavigationItem link="#">Link3</NavigationItem>
                     </Navigation>
                 </div>
             </div>
