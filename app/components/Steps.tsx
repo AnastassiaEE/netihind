@@ -1,3 +1,5 @@
+import React, { Children, isValidElement } from "react";
+
 const rightLineStyle = 
 `md:after:bg-neutral\
  md:after:absolute\
@@ -30,13 +32,12 @@ const topLineStyle =
  before:w-px\
  before:h-2/4`;
 
- 
-export default function Steps({stepsText}: {stepsText: {[key: string]: string}[]}) {
+export default function Steps({children}: {children: React.ReactNode}) {
 
     const drawLine = (index: number) =>  {
         if (index === 0) {
             return bottomLineStyle + " " + rightLineStyle;
-        } else if (index === stepsText.length - 1) {
+        } else if (index === Children.toArray(children).length - 1) {
             return topLineStyle + " " + leftLineStyle;
         } else {
             return bottomLineStyle + " " + topLineStyle + " " + rightLineStyle + " " + leftLineStyle;
@@ -45,17 +46,20 @@ export default function Steps({stepsText}: {stepsText: {[key: string]: string}[]
    
     return (
         <div className="flex flex-col md:flex-row">
-            {stepsText.map((text, i) => 
-                <div key={text.title} className={"flex flex-row md:flex-col basis-0 grow relative max-md:py-6 md:px-6 " + drawLine(i)}>
-                    <div className="bg-neutral-light rounded-full flex justify-center items-center shrink-0 relative z-10 w-20 h-20 md:mx-auto md:mb-6">
-                        <span className="bg-white text-2xl font-extrabold rounded-full flex justify-center items-center shadow-md w-14 h-14"> {i + 1} </span>
-                    </div>
-                    <div className="max-md:pl-6 md:text-center">
-                        <div className="text-2xl font-extrabold mb-4">{text.title}</div>
-                        <p className="text-muted-dark text-base">{text.description}</p>
-                    </div>
-                </div>
-            )}
+                {React.Children.map(children, (child, index) => {
+                        if (!isValidElement(child)) {
+                            return child;
+                        } else {
+                            return React.cloneElement(
+                                child as React.ReactElement,
+                                {   index: index + 1,
+                                    padding: 'max-md:py-6 md:px-6',
+                                    lines: drawLine(index)
+                                }
+                            )
+                        }
+                    })
+                } 
         </div>
     )
 }
