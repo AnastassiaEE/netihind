@@ -1,8 +1,8 @@
+import LocationOn  from '@mui/icons-material/LocationOnOutlined'; 
+import Mail from '@mui/icons-material/MailOutlineOutlined'; 
 import SectionLayout from "../../layouts/SectionLayout";
 import Phone  from '@mui/icons-material/PhoneOutlined'; 
-import Mail from '@mui/icons-material/MailOutlineOutlined'; 
-import LocationOn  from '@mui/icons-material/LocationOnOutlined'; 
-import ContactForm from "../form/ContactForm";
+import ContactForm from "../ui/form/ContactForm";
 
 export default function ContactsSection() {
     return (

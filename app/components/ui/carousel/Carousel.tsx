@@ -1,12 +1,12 @@
 'use client'
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css/bundle';
-import { Pagination, Navigation } from 'swiper/modules';
-import { useState } from 'react';
 import { ChevronLeft, ChevronRight }  from '@mui/icons-material';
+import { Pagination, Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import 'swiper/css/bundle';
 
 const baseArrowStyle = 
 `bg-white\

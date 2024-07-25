@@ -1,6 +1,6 @@
+import AccordionItem from "../ui/accordion/AccordionItem";
 import SectionLayout from "../../layouts/SectionLayout";
-import Accordion from "../Accordion";
-import AccordionItem from "../AccordionItem";
+import Accordion from "../ui/accordion/Accordion";
 
 const questions = [
     {question: 'Turpis egestas pretium aenean pharetra1?', answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Nulla malesuada pellentesque elit eget gravida cum. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Donec pretium vulputate sapien nec.'},

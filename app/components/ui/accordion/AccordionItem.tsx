@@ -1,7 +1,7 @@
 'use client'
 
-import { Children, useRef, useState } from "react";
 import { ExpandMore, ExpandLess } from '@mui/icons-material';
+import { Children, useRef, useState } from "react";
 
 const baseArrowStyle = 
 `font-semibold\

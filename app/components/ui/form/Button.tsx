@@ -1,5 +1,3 @@
-'use client'
-
 const baseClasses = 'w-full\
  font-semibold\
  text-center\

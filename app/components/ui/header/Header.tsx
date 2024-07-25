@@ -1,10 +1,10 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react';
-import Navbar from './Navbar';
-import Sidebar from './Sidebar';
 import Hamburger from './Hamburger';
-import Overlay from '../../Overlay';
+import Overlay from '../Overlay';
+import Sidebar from './Sidebar';
+import Navbar from './Navbar';
 
 export default function Header() {
 

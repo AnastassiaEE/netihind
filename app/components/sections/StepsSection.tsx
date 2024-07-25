@@ -1,6 +1,6 @@
 import SectionLayout from "../../layouts/SectionLayout";
-import Steps from "../Steps";
-import Step from "../Step";
+import Steps from "../ui/steps/Steps";
+import Step from "../ui/steps/Step";
 
 const text: {title: string, description: string}[] = [
     {title: 'Accumsan', description: 'Sed turpis tincidunt id aliquet risus feugiat in ante.'}, 

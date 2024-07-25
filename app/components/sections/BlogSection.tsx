@@ -1,5 +1,5 @@
 import SectionLayout from "../../layouts/SectionLayout";
-import Carousel from "../Carousel";
+import Carousel from "../ui/carousel/Carousel";
 
 const posts = [
   {title: 'Iaculis nunc sed augue lacus1.', image: 'images/computer.jpg', alt: 'Computer with coffee', link: '', date: '05.04.2022'},

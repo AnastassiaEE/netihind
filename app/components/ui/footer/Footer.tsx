@@ -1,10 +1,9 @@
-import whitelogo from "../../../public/images/whitelogo.svg";
-import NavigationItem from "./navigation/NavigationItem";
-import Navigation from "./navigation/Navigation";
-import SocialLinks from "../SocialLinks";
-import SocialLink from "../SocialLink";
-import Logo from "./header/Logo";
-import Link from "next/link";
+import whitelogo from "../../../../public/images/whitelogo.svg"
+import NavigationItem from "../navigation/NavigationItem";
+import SocialLinks from "../social-links/SocialLinks";
+import SocialLink from "../social-links/SocialLink";
+import Navigation from "../navigation/Navigation";
+import Logo from "../Logo";
 
 export default function Footer() {
     return(

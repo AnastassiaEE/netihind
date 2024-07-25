@@ -1,11 +1,11 @@
 'use client'
 
+import { getAddress, getApartment, removeExtraChars, removeExtraSpaces } from "../../../utils/addressFormatter";
 import { useState, useEffect, useRef, useCallback } from "react";
+import CloseIcon from '@mui/icons-material/Close';
+import Searchbar from "./Searchbar";
 import { parse } from 'papaparse';
 import Button from "./Button";
-import Searchbar from "./Searchbar";
-import { getAddress, getApartment, removeExtraChars, removeExtraSpaces } from "../../utils/addressFormatter";
-import CloseIcon from '@mui/icons-material/Close';
 
 export default function AddressForm() { 
     const [inputs, setInputs] = useState({address: '', apartment: ''});

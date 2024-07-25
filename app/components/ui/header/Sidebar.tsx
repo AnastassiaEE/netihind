@@ -1,5 +1,5 @@
-import Navigation from "../navigation/Navigation";
 import NavigationItem from "../navigation/NavigationItem";
+import Navigation from "../navigation/Navigation";
 import CloseIcon from '@mui/icons-material/Close';
 
 export default function Sidebar({

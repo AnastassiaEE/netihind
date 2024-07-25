@@ -1,10 +1,10 @@
 'use client'
 
-import React from "react";
 import { useEffect, useRef, useState } from "react";
-import Input from "./Input";
 import DropdownBox from "./DropdownBox";
 import IconInput from "./IconInput";
+import Input from "./Input";
+import React from "react";
 
 const Searchbar = function Searchbar({
     className,
