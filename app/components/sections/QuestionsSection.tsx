@@ -1,11 +1,12 @@
 import SectionLayout from "../../layouts/SectionLayout";
 import Accordion from "../Accordion";
+import AccordionItem from "../AccordionItem";
 
 const questions = [
-    {title: 'Turpis egestas pretium aenean pharetra1?', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Nulla malesuada pellentesque elit eget gravida cum. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Donec pretium vulputate sapien nec.'},
-    {title: 'Turpis egestas pretium aenean pharetra2?', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Nulla malesuada pellentesque elit eget gravida cum. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Donec pretium vulputate sapien nec.'},
-    {title: 'Turpis egestas pretium aenean pharetra3?', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Nulla malesuada pellentesque elit eget gravida cum. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Donec pretium vulputate sapien nec.'},
-    {title: 'Turpis egestas pretium aenean pharetra4?', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Nulla malesuada pellentesque elit eget gravida cum. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Donec pretium vulputate sapien nec.'},
+    {question: 'Turpis egestas pretium aenean pharetra1?', answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Nulla malesuada pellentesque elit eget gravida cum. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Donec pretium vulputate sapien nec.'},
+    {question: 'Turpis egestas pretium aenean pharetra2?', answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Nulla malesuada pellentesque elit eget gravida cum. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Donec pretium vulputate sapien nec.'},
+    {question: 'Turpis egestas pretium aenean pharetra3?', answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Nulla malesuada pellentesque elit eget gravida cum. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Donec pretium vulputate sapien nec.'},
+    {question: 'Turpis egestas pretium aenean pharetra4?', answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Nulla malesuada pellentesque elit eget gravida cum. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Donec pretium vulputate sapien nec.'},
 ]
 
 export default function QuestionsSection() {
@@ -19,7 +20,16 @@ export default function QuestionsSection() {
                     </div>
                 </div>
                 <div className="md:w-7/12">
-                    <Accordion data={questions}></Accordion>
+                    <Accordion>
+                        {questions.map((_, index) => {
+                            return (
+                                <AccordionItem key={index}> 
+                                    <>{questions[index].question}</>
+                                    <>{questions[index].answer}</>
+                                </AccordionItem>
+                            )
+                        })}
+                    </Accordion>
                 </div>
             </div>
         </SectionLayout>
