@@ -16,7 +16,7 @@ export default function StepsSection() {
             <Steps>
                 {text.map((_, index) => {
                     return (
-                        <Step key={index}> 
+                        <Step key={index} index={index + 1}> 
                             <>{text[index].title}</>
                             <>{text[index].description}</>
                         </Step>

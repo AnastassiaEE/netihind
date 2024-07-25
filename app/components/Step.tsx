@@ -6,13 +6,14 @@ export default function Step({
     padding,
     children
 }: {
-    index?: number,
+    index: number,
     lines?: string,
     padding?: string,
     children: React.ReactNode
 }) {  
     const title = Children.toArray(children)[0] 
     const desc = Children.toArray(children)[1] 
+
     return (
         <div className={`flex flex-row md:flex-col basis-0 grow relative ${padding} ${lines}`}>
             <div className="bg-neutral-light rounded-full flex justify-center items-center shrink-0 relative z-10 w-20 h-20 md:mx-auto md:mb-6">

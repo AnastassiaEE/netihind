@@ -35,9 +35,9 @@ const topLineStyle =
 export default function Steps({children}: {children: React.ReactNode}) {
 
     const drawLine = (index: number) =>  {
-        if (index === 0) {
+        if (index === 1) {
             return bottomLineStyle + " " + rightLineStyle;
-        } else if (index === Children.toArray(children).length - 1) {
+        } else if (index === Children.toArray(children).length) {
             return topLineStyle + " " + leftLineStyle;
         } else {
             return bottomLineStyle + " " + topLineStyle + " " + rightLineStyle + " " + leftLineStyle;
@@ -46,15 +46,15 @@ export default function Steps({children}: {children: React.ReactNode}) {
    
     return (
         <div className="flex flex-col md:flex-row">
-                {React.Children.map(children, (child, index) => {
+                {React.Children.map(children, (child) => {
                         if (!isValidElement(child)) {
                             return child;
                         } else {
                             return React.cloneElement(
                                 child as React.ReactElement,
-                                {   index: index + 1,
+                                { 
                                     padding: 'max-md:py-6 md:px-6',
-                                    lines: drawLine(index)
+                                    lines: drawLine(child.props.index)
                                 }
                             )
                         }
