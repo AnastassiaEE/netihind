@@ -1,18 +1,7 @@
 'use client'
 
-import { ExpandMore, ExpandLess } from '@mui/icons-material';
 import { Children, useRef, useState } from "react";
-
-const baseArrowStyle = 
-`font-semibold\
- rounded-full\
- flex\
- justify-center\
- shrink-0\
- items-center\
- w-9\
- h-9\
- transition-colors`;
+import CircleArrow from '../arrow/CircleArrow';
 
 const closedArrowStyle = `bg-neutral-light`;
 
@@ -20,7 +9,8 @@ const openedArrowStyle =
 `bg-primary\
  outline-none\
  shadow-md\
- shadow-primary/50`;
+ shadow-primary/50\
+ text-white`;
 
 export default function AccordionItem({
     children
@@ -62,15 +52,13 @@ export default function AccordionItem({
                 aria-expanded={isOpened ? 'true': 'false'}
                 aria-controls={ID.current}> 
                 <span className="text-base font-semibold">{question}</span>
-                <span className={`${isOpened ? openedArrowStyle : closedArrowStyle} ${baseArrowStyle}`}>
-                    {isOpened ? <ExpandLess className="text-white"/> : <ExpandMore className="text-black"/>}
-                </span>
+                {isOpened ? <CircleArrow direction="up" style={openedArrowStyle}/> : <CircleArrow direction="down" style={closedArrowStyle}/>}
             </button>
             <div id={ID.current} className={`transition-all duration-700`} style={isOpened ? {'height': `${collapsible.current?.offsetHeight}px`} : {'height': 0}}>
                 <div ref={collapsible} className="text-muted-dark text-sm p-6">
                     {answer}
                 </div>
-            </div> 
+            </div>
         </div>
     )
 }
