@@ -20,8 +20,8 @@ export default function CircleArrow({
     style?: string
 }) {
     return (
-        <div className={`${baseArrowStyle} ${style}`}>
+        <span className={`${baseArrowStyle} ${style}`}>
             <Arrow direction={direction}/>
-        </div>
+        </span>
     )
 }
