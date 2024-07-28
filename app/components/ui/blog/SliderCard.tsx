@@ -2,7 +2,6 @@ import Image, { StaticImageData } from 'next/image';
 import { Children } from 'react';
 import Link from 'next/link';
 
-
 export default function SliderCard({
     href,
     src,
@@ -14,8 +13,8 @@ export default function SliderCard({
     alt: string,
     children: React.ReactNode
 }) {
-    const date = Children.toArray(children)[0]
-    const title = Children.toArray(children)[1]
+    const [date, title] = Children.toArray(children)
+
     return (
         <article className="bg-white rounded-lg shadow-md h-full">
             <div className="relative w-full h-60">
