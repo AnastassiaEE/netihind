@@ -1,18 +1,18 @@
-import { isValidElement } from "react"
+import AccordionItem from "./AccordionItem";
 import React from "react";
 
-export default function Accordion({children}: {children: React.ReactNode}) {
-    
+export default function Accordion({items}: {items: {[key: string]: string}[]}) {
     return (
         <div>
-            {React.Children.map(children, (child) => {
-                    if (!isValidElement(child)) {
-                        return child;
-                    } else {
-                        return React.cloneElement(child as React.ReactElement)
-                    }
-                })
-            } 
+            {items.map((item, index) => {
+                const [header, body] = Object.keys(item)
+                return (
+                    <AccordionItem key={index}> 
+                        <>{item[header]}</>
+                        <>{item[body]}</>
+                    </AccordionItem>
+                )
+            })}
         </div>
     )
 }
