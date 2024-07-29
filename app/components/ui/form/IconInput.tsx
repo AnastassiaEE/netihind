@@ -16,7 +16,7 @@ export default function IconInput({
     icon
 }: {
     size?: 'sm' | 'lg',
-    name?: string,
+    name: string,
     type?: string,
     inputmode?: "email" | "search" | "text" | "tel" | "url" | "none" | "numeric" | "decimal" | undefined,
     label?: string,

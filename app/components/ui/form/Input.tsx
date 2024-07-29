@@ -1,4 +1,5 @@
 import FieldError from "./FieldError";
+import FieldLabel from "./FieldLabel";
 
 const baseClasses = 'w-full\
  bg-white\
@@ -13,11 +14,6 @@ const baseClasses = 'w-full\
 const sizes: {[key: string]: string} = {
     sm: 'text-sm px-4 py-2.5',
     lg: 'text-base px-5 py-3'
-}
-
-const labelSizes: {[key: string]: string} = {
-    sm: 'text-sm mb-1.5',
-    lg: 'text-base mb-2.5'
 }
 
 export default function Input({
@@ -37,7 +33,7 @@ export default function Input({
     children,
 }: {
     size?: 'sm' | 'lg',
-    name?: string,
+    name: string,
     type?: string,
     inputmode?: "email" | "search" | "text" | "tel" | "url" | "none" | "numeric" | "decimal" | undefined,
     label?: string,
@@ -55,7 +51,7 @@ export default function Input({
     
     return (
         <>
-            {label && <label htmlFor={name} className={`${labelSizes[size]} font-semibold block`}> {label} </label>}
+            {label && <FieldLabel htmlFor={name} size={size}>{label}</FieldLabel>}
             <div className="relative">
                 {children}
                 <input 

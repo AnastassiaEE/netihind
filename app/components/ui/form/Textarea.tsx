@@ -1,4 +1,5 @@
 import FieldError from "./FieldError";
+import FieldLabel from "./FieldLabel";
 
 const baseClasses = 'w-full\
  bg-white\
@@ -15,11 +16,6 @@ const sizes: {[key: string]: string} = {
     lg: 'text-base px-5 py-3'
 }
 
-const labelSizes: {[key: string]: string} = {
-    sm: 'text-sm mb-1.5',
-    lg: 'text-base mb-2.5'
-}
-
 export default function Textarea({
     size = 'sm',
     name,
@@ -33,7 +29,7 @@ export default function Textarea({
     className,
 }: {
     size?: 'sm' | 'lg',
-    name?: string,
+    name: string,
     label?: string,
     placeholder?: string, 
     handleChange?: React.ChangeEventHandler<HTMLTextAreaElement>, 
@@ -42,13 +38,12 @@ export default function Textarea({
     isValid?: boolean,
     error?: string,
     className?: string,
-    
 }) {
-    const borderColor = isValid ?  'border-valid focus:border-primary/30' : 'border-invalid';
+    const borderColor = isValid ? 'border-valid focus:border-primary/30' : 'border-invalid';
     
     return (
         <>
-            {label && <label htmlFor={name} className={`${labelSizes[size]} font-semibold block`}> {label} </label>}
+            {label && <FieldLabel htmlFor={name} size={size}> {label} </FieldLabel>}
             <textarea
                 id={name}
                 className={`${baseClasses} ${sizes[size]} ${borderColor} ${className} text-muted-dark transition-[padding]`}  
