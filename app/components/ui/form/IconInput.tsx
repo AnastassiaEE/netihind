@@ -4,6 +4,7 @@ export default function IconInput({
     size = 'sm',
     name,
     type = 'text',
+    inputmode,
     label,
     placeholder, 
     handleChange, 
@@ -17,6 +18,7 @@ export default function IconInput({
     size?: 'sm' | 'lg',
     name?: string,
     type?: string,
+    inputmode?: "email" | "search" | "text" | "tel" | "url" | "none" | "numeric" | "decimal" | undefined,
     label?: string,
     placeholder?: string, 
     handleChange?: React.ChangeEventHandler<HTMLInputElement>, 
@@ -39,6 +41,7 @@ export default function IconInput({
             size={size}
             name={name}
             type={type}
+            inputmode={inputmode}
             label={label}
             placeholder={placeholder}
             handleChange={handleChange}

@@ -22,6 +22,7 @@ export default function Input({
     size = 'sm',
     name,
     type = 'text',
+    inputmode,
     label,
     placeholder, 
     handleChange, 
@@ -36,6 +37,7 @@ export default function Input({
     size?: 'sm' | 'lg',
     name?: string,
     type?: string,
+    inputmode?: "email" | "search" | "text" | "tel" | "url" | "none" | "numeric" | "decimal" | undefined,
     label?: string,
     placeholder?: string, 
     handleChange?: React.ChangeEventHandler<HTMLInputElement>, 
@@ -57,6 +59,7 @@ export default function Input({
                 <input 
                     id={name}
                     type={type} 
+                    inputMode={inputmode}
                     className={`${baseClasses} ${sizes[size]} ${borderColor} ${className} text-muted-dark transition-[padding]`}  
                     placeholder={placeholder}
                     onChange={handleChange}

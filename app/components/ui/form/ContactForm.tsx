@@ -38,6 +38,7 @@ export default function ContactForm() {
                 <Input
                     name="email"
                     type="email"
+                    inputmode="email"
                     label="Email"
                     handleChange={(e) => handleChange(e, 'email')}
                     handleBlur={(e) => handleBlur(e, 'email')}
@@ -48,7 +49,8 @@ export default function ContactForm() {
             <div className="mb-6">
                 <IconInput
                     name="phone"
-                    type="phone"
+                    type="tel"
+                    inputmode="tel"
                     label="Phone"
                     handleChange={(e) => handleChange(e, 'phone')}
                     handleBlur={(e) => handleBlur(e, 'phone')}
