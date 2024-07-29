@@ -1,3 +1,5 @@
+import FieldError from "./FieldError";
+
 const baseClasses = 'w-full\
  bg-white\
  border\
@@ -55,11 +57,7 @@ export default function Textarea({
                 onBlur={handleBlur}
                 value={value}>
             </textarea>
-            {!isValid &&
-                <div className={`${size == "sm" ? "text-xs" : "text-sm"} text-error font-medium absolute`}>
-                    {error}
-                </div>
-            }
+            {!isValid &&<FieldError size={size}>{error}</FieldError>}
         </>
     )
 }
