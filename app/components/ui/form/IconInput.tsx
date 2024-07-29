@@ -7,8 +7,9 @@ export default function IconInput({
     label,
     placeholder, 
     handleChange, 
-    value, 
     handleFocus,
+    handleBlur,
+    value,
     isValid,
     error,
     icon
@@ -19,8 +20,9 @@ export default function IconInput({
     label?: string,
     placeholder?: string, 
     handleChange?: React.ChangeEventHandler<HTMLInputElement>, 
-    value?: string, 
     handleFocus?: React.FocusEventHandler<HTMLInputElement>,
+    handleBlur?: React.FocusEventHandler<HTMLInputElement>,
+    value: string,
     isValid?: boolean,
     error?: string,
     icon: {[key: string]: any}
@@ -40,12 +42,12 @@ export default function IconInput({
             label={label}
             placeholder={placeholder}
             handleChange={handleChange}
-            value={value}
             handleFocus={handleFocus}
+            handleBlur={handleBlur}
+            value={value}
             isValid={isValid}
             error={error}
-            className={inputPadding}>
-                
+            className={inputPadding}>  
             <div className={`absolute h-full flex items-center px-3 ${icon.isVisible ? "block" : "hidden"}`}> 
                 {icon.handleClick ? <button type="button" onClick={icon.handleClick}> {ic} </button> : <>{ic}</>}
             </div>

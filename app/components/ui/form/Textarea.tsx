@@ -24,6 +24,7 @@ export default function Textarea({
     label,
     placeholder, 
     handleChange, 
+    handleBlur,
     value, 
     isValid,
     error,
@@ -34,6 +35,7 @@ export default function Textarea({
     label?: string,
     placeholder?: string, 
     handleChange?: React.ChangeEventHandler<HTMLTextAreaElement>, 
+    handleBlur?: React.FocusEventHandler<HTMLTextAreaElement>
     value?: string, 
     isValid?: boolean,
     error?: string,
@@ -50,6 +52,7 @@ export default function Textarea({
                 className={`${baseClasses} ${sizes[size]} ${borderColor} ${className} text-muted-dark transition-[padding]`}  
                 placeholder={placeholder}
                 onChange={handleChange}
+                onBlur={handleBlur}
                 value={value}>
             </textarea>
             {!isValid &&

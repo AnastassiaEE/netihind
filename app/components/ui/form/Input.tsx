@@ -25,12 +25,13 @@ export default function Input({
     label,
     placeholder, 
     handleChange, 
-    value, 
     handleFocus,
+    handleBlur,
+    value, 
     isValid,
     error,
     className,
-    children
+    children,
 }: {
     size?: 'sm' | 'lg',
     name?: string,
@@ -38,12 +39,13 @@ export default function Input({
     label?: string,
     placeholder?: string, 
     handleChange?: React.ChangeEventHandler<HTMLInputElement>, 
-    value?: string, 
     handleFocus?: React.FocusEventHandler<HTMLInputElement>,
+    handleBlur?: React.FocusEventHandler<HTMLInputElement>, 
+    value?: string, 
     isValid?: boolean,
     error?: string,
     className?: string,
-    children?: React.ReactNode
+    children?: React.ReactNode,
 }) {
     const borderColor = isValid ? 'border-valid focus:border-primary/30' : 'border-invalid';
     
@@ -59,6 +61,7 @@ export default function Input({
                     placeholder={placeholder}
                     onChange={handleChange}
                     onFocus={handleFocus}
+                    onBlur={handleBlur}
                     value={value}
                     />
             </div>
