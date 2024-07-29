@@ -21,7 +21,7 @@ const Searchbar = function Searchbar({
     className: string,
     data: {[key:string]: any}[],
     size?: 'sm' | 'lg', 
-    name?: string,
+    name: string,
     placeholder: string, 
     handleChange: React.ChangeEventHandler<HTMLInputElement>, 
     value: string, 
