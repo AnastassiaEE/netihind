@@ -1,8 +1,8 @@
 'use client'
 
-import useBoolean from "../../../hooks/useBoolean";
-import { Children, useId, useRef } from "react";
+import { Children } from "react";
 import CircleArrow from '../arrow/CircleArrow';
+import useAccordionItem from "../../../hooks/useAccordionItem";
 
 const closedArrowStyle = `bg-neutral-light`;
 
@@ -15,10 +15,7 @@ const openedArrowStyle =
 
 export default function AccordionItem({children}:{children: React.ReactNode}) {
 
-    const {value: isOpened, toggle} = useBoolean(false);
-
-    const collapsible = useRef<HTMLDivElement | null>(null);
-    const id = useRef(useId());
+    const { isOpened, toggle, collapsible, id } = useAccordionItem();
 
     const [question, answer] = Children.toArray(children)
     
