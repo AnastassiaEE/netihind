@@ -1,14 +1,13 @@
 'use client'
 
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import ErrorIcon from '@mui/icons-material/Error';
+import useContactForm from '../../../hooks/useContactForm';
+import FormResponse from './FormResponse';
 import LoopIcon from '@mui/icons-material/Loop';
 import AddIcon from '@mui/icons-material/Add';
 import IconInput from "./IconInput";
 import Textarea from "./Textarea";
 import Button from "./Button"
 import Input from "./Input"
-import useContactForm from '../../../hooks/useContactForm';
 
 export default function ContactForm() {
 
@@ -73,13 +72,7 @@ export default function ContactForm() {
                 {isLoading ? <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24"><LoopIcon/></svg>: <>Send</>}
             </Button>
             
-            {!isLoading && 
-                <div className={`text-sm mt-4 ${response?.type === 'success' ? 'text-green-600' : undefined} ${response?.type === 'error' ? 'text-yellow-600' : undefined}`}> 
-                    {response?.type === 'success' && <CheckCircleIcon className="mr-2"/>}
-                    {response?.type === 'error' && <ErrorIcon className="mr-2"/>}
-                    {response?.message}
-                </div>
-            }
+            {!isLoading && <FormResponse type={response?.type}> {response?.message} </FormResponse>}
         </form>
     )   
 }
