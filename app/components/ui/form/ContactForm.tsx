@@ -68,7 +68,7 @@ export default function ContactForm() {
                     isValid={errors.message === ''}
                     error={errors.message}/> 
             </div>
-            <Button variant="primary" size="lg" disabled={isLoading}>
+            <Button type="submit" size="lg" disabled={isLoading}>
                 {isLoading ? <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24"><LoopIcon/></svg>: <>Send</>}
             </Button>
             

@@ -25,17 +25,19 @@ const sizes: {[key: string]: string} = {
 }
 
 export default function Button({
-  children,
-  variant,
-  size,
-  disabled = false
+  type = 'button',
+  variant = 'primary',
+  size = 'sm',
+  disabled = false,
+  children
 }: {
-  children: React.ReactNode,
-  variant: string,
-  size: string,
+  type?: 'button' | 'submit' | 'reset',
+  variant?: 'primary' | 'secondary',
+  size?: 'sm' | 'lg',
   disabled?: boolean
+  children: React.ReactNode,
 }) {
   return (
-    <button type="submit" className={`${baseClasses} ${variants[variant]} ${sizes[size]} flex justify-center ${disabled ? 'hover:cursor-not-allowed': undefined}`} disabled={disabled}> {children} </button>
+    <button type={type} className={`${baseClasses} ${variants[variant]} ${sizes[size]} flex justify-center ${disabled ? 'hover:cursor-not-allowed': undefined}`} disabled={disabled}> {children} </button>
   )
 }

@@ -210,7 +210,7 @@ export default function AddressForm() {
                     error={errors.apartment}/>
             }
             <div className={`basis-full ${errors.apartment !== '' ? 'mt-12': 'mt-7'} sm:basis-auto sm:mt-0`}>
-                <Button variant="primary" size="lg"> Найти провайдеров </Button>
+                <Button type="submit" size="lg"> Найти провайдеров </Button>
             </div>    
         </form>
     )
