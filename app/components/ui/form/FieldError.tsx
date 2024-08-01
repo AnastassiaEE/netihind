@@ -2,7 +2,7 @@ export default function FieldError({
     size = 'sm', 
     children
 }: {
-    size: 'sm' | 'lg',
+    size?: 'sm' | 'lg',
     children: React.ReactNode
 }) {
     return (

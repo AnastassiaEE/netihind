@@ -9,7 +9,7 @@ export default function FieldLabel({
     children
 }: {
     htmlFor: string, 
-    size: 'sm' | 'lg',
+    size?: 'sm' | 'lg',
     children: React.ReactNode
 }) {
     return (
