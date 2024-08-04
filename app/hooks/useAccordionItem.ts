@@ -1,5 +1,3 @@
-'use client' 
-
 import { useId, useRef } from "react";
 import useBoolean from "./useBoolean";
 
