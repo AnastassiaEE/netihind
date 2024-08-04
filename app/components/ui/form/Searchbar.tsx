@@ -5,11 +5,12 @@ import DropdownBox from "./DropdownBox";
 import IconInput from "./IconInput";
 import Input from "./Input";
 import React from "react";
+import useSearcharbar from "../../../hooks/useSearchbar";
 
 const Searchbar = function Searchbar({
     className,
     data,
-    size,
+    size = 'sm',
     name,
     placeholder, 
     handleChange, 
@@ -18,7 +19,7 @@ const Searchbar = function Searchbar({
     error,
     icon
 }: {
-    className: string,
+    className?: string,
     data: {[key:string]: any}[],
     size?: 'sm' | 'lg', 
     name: string,
@@ -29,24 +30,8 @@ const Searchbar = function Searchbar({
     error: string,
     icon?: {[key: string]: any}
 }) {
-    const [isFocused, setIsFocused] = useState<boolean>(false);
-    const searchBarRef = useRef<HTMLDivElement>(null);
 
-    const handleFocus = () => {
-        setIsFocused(true);
-    };
-
-    useEffect(() => {
-        const handleClickOutsideSearchbar = (e: MouseEvent) => {
-            if(!(searchBarRef.current)?.contains(e.target as Node)) {
-                setIsFocused(false);
-            }
-        }
-        window.addEventListener('mousedown', handleClickOutsideSearchbar)
-        return () => {
-            window.removeEventListener('mousedown', handleClickOutsideSearchbar);
-        }
-    }, [])
+    const {isFocused, setFocused, searchBarRef} = useSearcharbar();
     
     return (
         <div className={`${className} relative`} ref={searchBarRef}>
@@ -56,8 +41,8 @@ const Searchbar = function Searchbar({
                 name={name}
                 placeholder={placeholder} 
                 handleChange={handleChange} 
+                handleFocus={setFocused}
                 value={value} 
-                handleFocus={handleFocus}
                 isValid={isValid}
                 error={error}
                 icon={icon}/>
@@ -67,14 +52,12 @@ const Searchbar = function Searchbar({
                 name={name}
                 placeholder={placeholder} 
                 handleChange={handleChange} 
+                handleFocus={setFocused}
                 value={value} 
-                handleFocus={handleFocus}
                 isValid={isValid}
                 error={error}/>
             }
-            {isFocused && data.length > 0 &&
-                <DropdownBox searchbar={searchBarRef.current} data={data} size={size}/> 
-            }
+            {isFocused && data.length > 0 && <DropdownBox searchbar={searchBarRef.current} data={data} size={size}/>}
         </div>
     )
 }
