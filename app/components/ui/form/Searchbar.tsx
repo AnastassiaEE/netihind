@@ -1,13 +1,10 @@
-'use client'
-
-import { useEffect, useRef, useState } from "react";
 import DropdownBox from "./DropdownBox";
 import IconInput from "./IconInput";
 import Input from "./Input";
 import React from "react";
 import useSearcharbar from "../../../hooks/useSearchbar";
 
-const Searchbar = function Searchbar({
+export default function Searchbar({
     className,
     data,
     size = 'sm',
@@ -61,4 +58,3 @@ const Searchbar = function Searchbar({
         </div>
     )
 }
-export default Searchbar;
