@@ -1,6 +1,4 @@
-'use client'
-
-import { useCallback, useEffect, useState } from "react";
+import useDropdownBox from "../../../hooks/useDropdownBox";
 
 const listItemClasses = 'text-muted-dark cursor-pointer hover:bg-primary/30';
 const listAnchorClasses = 'block';
@@ -19,22 +17,7 @@ export default function DropdownBox({
     data: {[key:string]: any}[]
     size?: string
 }) {
-    const [heightAndPos, setHeightAndPos] = useState({height: 0, pos: 'down'});
-
-    const getHeightAndPos = useCallback(() => {  
-        const inputHeight = searchbar?.offsetHeight ?? 0;
-        const spaceAboveSearchbar = (searchbar?.getBoundingClientRect().top ?? 0) - document.getElementsByTagName('header')[0].offsetHeight;
-        const spaceUnderSearchbar = window.innerHeight - ((searchbar?.getBoundingClientRect().top ?? 0) + inputHeight);
-        if (spaceAboveSearchbar > spaceUnderSearchbar) {
-            setHeightAndPos({height: spaceAboveSearchbar - 10, pos: 'up'});
-        } else {
-            setHeightAndPos({height: spaceUnderSearchbar - 10, pos: 'down'});
-        }
-    }, [searchbar])
-
-    useEffect(() => {
-        getHeightAndPos();
-    }, [getHeightAndPos])
+    const {heightAndPos} = useDropdownBox(searchbar);
 
     return (
         <div className="bg-white border border-primary/30 rounded-md w-full absolute z-10 overflow-hidden" style={heightAndPos.pos === 'up' ? {bottom: '100%'} : undefined}>
