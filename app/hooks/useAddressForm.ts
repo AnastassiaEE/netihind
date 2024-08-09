@@ -99,7 +99,7 @@ export default function useAddressForm() {
      /**
      * Cleares address field.
      */
-     const removeAddress = (e: React.MouseEvent<HTMLElement>) => {
+     const removeAddress = () => {
         setValues({address: '', apartment: ''});
         setSelected({address: '', apartment: ''});
         setErrors({address: '', apartment: ''});
@@ -150,7 +150,7 @@ export default function useAddressForm() {
      * Handles form submission. 
      * @param e form event
      */
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (validateForm()) {
             console.log('form');

@@ -6,7 +6,6 @@ import Input from "./Input";
 import React from "react";
 
 export default function Searchbar({
-    className,
     data,
     size = 'sm',
     name,
@@ -18,13 +17,12 @@ export default function Searchbar({
     error,
     icon,
 }: {
-    className?: string,
     data: string[],
     size?: 'sm' | 'lg', 
     name: string,
     placeholder: string, 
-    handleChange: React.ChangeEventHandler<HTMLInputElement>, 
-    handleItemClick: React.MouseEventHandler<HTMLAnchorElement>,
+    handleChange: React.ChangeEventHandler, 
+    handleItemClick: React.MouseEventHandler,
     value: string, 
     isValid: boolean,
     error: string,
@@ -34,7 +32,7 @@ export default function Searchbar({
     const {isFocused, setFocused, searchBarRef} = useSearcharbar();
     
     return (
-        <div className={`${className} relative`} ref={searchBarRef}>
+        <div className="relative" ref={searchBarRef}>
             {icon ?
                 <IconInput 
                     size={size}

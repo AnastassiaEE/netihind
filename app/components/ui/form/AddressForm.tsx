@@ -23,30 +23,33 @@ export default function AddressForm() {
 
     return (    
         <form action="" onSubmit={handleSubmit} className="flex flex-wrap items-center gap-x-1.5">
-            <Searchbar
-                className={"grow basis-auto"}
-                data={addresses}
-                size="lg"
-                name="address"
-                placeholder="Адрес"
-                handleChange={handleAddressInputChange} 
-                handleItemClick={handleAddressClick}
-                value={values.address}
-                isValid={errors.address === ''}
-                error={errors.address}
-                icon={{Icon: CloseIcon, isVisible: values.address !== '', handleClick: removeAddress}}/>
-            {allAddressApartments.length > 0 &&
+            <div className="grow basis-auto">
                 <Searchbar
-                    className="basis-3/12 md:basis-2/12"
-                    data={apartments}
+                    data={addresses}
                     size="lg"
-                    name="apartment"
-                    placeholder="Номер квартиры"
-                    handleChange={handleApartmentInputChange}
-                    handleItemClick={handleApartmentClick}
-                    value={values.apartment}
-                    isValid={errors.apartment === ''}
-                    error={errors.apartment}/>
+                    name="address"
+                    placeholder="Адрес"
+                    handleChange={handleAddressInputChange} 
+                    handleItemClick={handleAddressClick}
+                    value={values.address}
+                    isValid={errors.address === ''}
+                    error={errors.address}
+                    icon={{Icon: CloseIcon, isVisible: values.address !== '', handleClick: removeAddress}}/>
+            </div>
+            {allAddressApartments.length > 0 &&
+                <div className="basis-3/12 md:basis-2/12">
+                    <Searchbar
+                        data={apartments}
+                        size="lg"
+                        name="apartment"
+                        placeholder="Номер квартиры"
+                        handleChange={handleApartmentInputChange}
+                        handleItemClick={handleApartmentClick}
+                        value={values.apartment}
+                        isValid={errors.apartment === ''}
+                        error={errors.apartment}/>
+                </div>
+                
             }
             <div className={`basis-full ${errors.apartment !== '' ? 'mt-12': 'mt-7'} sm:basis-auto sm:mt-0`}>
                 <Button type="submit" size="lg"> Найти провайдеров </Button>
