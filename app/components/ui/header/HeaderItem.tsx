@@ -1,14 +1,15 @@
+import { SvgIconComponent } from "@mui/icons-material"
 import Link from "next/link"
 
 export default function HeaderItem({
-    link, 
+    href, 
     Icon
 }: {
-    link: string,
-    Icon: any
+    href: string,
+    Icon: SvgIconComponent
 }) {
     return (
-        <Link href={link} className="block relative">
+        <Link href={href} className="block relative">
             <Icon 
                 fontSize="large" 
                 strokeWidth={1} 

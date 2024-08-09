@@ -1,5 +1,5 @@
-import mainLogo from '../../../../public/images/gradientmainlogo.svg';
 import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
+import mainLogo from '../../../../public/images/gradientmainlogo.svg';
 import NavigationItem from "../navigation/NavigationItem";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Navigation from '../navigation/Navigation';
@@ -24,8 +24,8 @@ export default function Navbar({children} : {children: React.ReactNode}) {
             </div>
             <div className="flex items-center">
                 <HeaderItems>
-                    <HeaderItem link="#" Icon={FavoriteIcon}/>
-                    <HeaderItem link="#" Icon={SignalCellularAltIcon}/>
+                    <HeaderItem href="#" Icon={FavoriteIcon}/>
+                    <HeaderItem href="#" Icon={SignalCellularAltIcon}/>
                 </HeaderItems>  
                 {children}
             </div>

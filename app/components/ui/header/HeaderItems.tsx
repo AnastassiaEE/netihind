@@ -7,9 +7,11 @@ export default function HeaderItems({children}: {children: React.ReactNode}) {
                 if (!isValidElement(child)) {
                     return child;
                 } else {
-                    return <li className="p-2">
-                        {React.cloneElement(child as React.ReactElement)}
-                    </li>
+                    return (
+                        <li className="p-2">
+                            {React.cloneElement(child as React.ReactElement)}
+                        </li>
+                    )
                 }
             })}
         </ul>
