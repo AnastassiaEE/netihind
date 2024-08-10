@@ -1,11 +1,13 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import PageLayout from './layouts/PageLayout';
-import { useEffect } from 'react';
+import Footer from './components/ui/footer/Footer';
+import Header from './components/ui/header/Header';
+import Main from './Main';
 
-export default function Home() {
-
+export default function Page() {
   return (
-    <PageLayout/>
+    <>
+      <Header/>
+      <Main/>
+      <Footer/>
+    </>
   )
 }
