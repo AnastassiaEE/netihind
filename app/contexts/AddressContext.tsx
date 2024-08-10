@@ -2,29 +2,19 @@
 
 import { ReactNode, createContext, useState } from "react";
 
-/*
-export const AddressContext = createContext('');
+export const AddressContext = createContext<{
+    selected: {address: string; apartment: string},
+    setSelected: React.Dispatch<React.SetStateAction<{address: string; apartment: string}>>
+} | null>(null);
 
 export const AddressProvider = ({children}: {children: ReactNode}) => {
-    const [houseInput, setHouseInput] = useState('');
-    const [apartmentInput, setApartmentInput] = useState('');
-    const [selectedHouse, setSelectedHouse] = useState('');
-    const [selectedApartment, setSelectedApartment] = useState('');
+    const [selected, setSelected] = useState({address: '', apartment: ''});
     return (
         <AddressContext.Provider value={{
-            houseInput,
-            setHouseInput,
-            apartmentInput,
-            setApartmentInput,
-            selectedHouse, 
-            setSelectedHouse,
-            selectedApartment,
-            setSelectedApartment
+            selected,
+            setSelected
         }}>
-        {children}
+            {children}
         </AddressContext.Provider>
     )
 }
-
-export const useAddress = () => (AddressContext);
-*/

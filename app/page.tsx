@@ -1,13 +1,10 @@
-import Footer from './components/ui/footer/Footer';
-import Header from './components/ui/header/Header';
+import PageLayout from './layouts/PageLayout';
 import Main from './Main';
 
 export default function Page() {
   return (
-    <>
-      <Header/>
+    <PageLayout>
       <Main/>
-      <Footer/>
-    </>
+    </PageLayout>
   )
 }

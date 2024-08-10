@@ -1,16 +1,14 @@
-import Header from "../components/ui/header/Header";
-import Footer from "../components/ui/footer/Footer";
 import { Suspense } from "react";
 import Loading from "./loading";
 import Main from "./Main";
-
+import PageLayout from "../layouts/PageLayout";
 
 export default function Page() {
     return (
         <Suspense fallback={<Loading/>}>
-            <Header/>
-            <Main/>
-            <Footer/>
+            <PageLayout>
+                <Main/>
+            </PageLayout>
         </Suspense>
     )
 }
