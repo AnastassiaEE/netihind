@@ -28,7 +28,7 @@ export default function IconInput({
     value: string,
     isValid?: boolean,
     error?: string,
-    icon: {Icon: SvgIconComponent, isVisible: boolean, handleClick: React.MouseEventHandler}
+    icon: {Icon: SvgIconComponent, isVisible: boolean, handleClick?: React.MouseEventHandler}
 }) {
     let inputPadding = undefined;
     if (icon.isVisible) {
