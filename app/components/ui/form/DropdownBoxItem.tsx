@@ -12,7 +12,7 @@ export default function DropdownBoxItem({
     size?: 'sm' | 'lg'
 }) {
     return (
-        <li key={data} className="text-muted-dark cursor-pointer hover:bg-primary/30'">
+        <li key={data} className="block text-muted-dark cursor-pointer hover:bg-primary/30">
             <a 
                 data-search-item={data} 
                 onClick={handleClick} 
