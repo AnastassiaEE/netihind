@@ -36,6 +36,8 @@ const config: Config = {
         invalid: colors.red['500'],
 
         error: colors.red['800'],
+        success: colors.green['500'],
+        'success-dark': colors.green['600'],
 
         'facebook-logo': '#0866FF',
         'instagram-logo-shadow': '#dc2743',
