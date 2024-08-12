@@ -8,7 +8,7 @@ export default function PageLayout({
     headerVariant
 }: {
     children: React.ReactNode,
-    headerVariant: React.ComponentProps<typeof Header>['variant']
+    headerVariant?: React.ComponentProps<typeof Header>['variant']
 }) {
     return (
         <AddressProvider>
