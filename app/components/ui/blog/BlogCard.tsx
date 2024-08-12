@@ -28,7 +28,7 @@ export default function BlogCard({
             </div>
             <div className="p-6">
                 <div className="text-muted text-sm flex justify-end mb-4">{date}</div>
-                <h3><Link href={href}>{title}</Link></h3>
+                <h3 className="text-lg font-bold text-muted-dark hover:text-primary transition-colors"><Link href={href}>{title}</Link></h3>
             </div>
         </article>
     )
