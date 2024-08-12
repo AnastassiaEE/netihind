@@ -10,7 +10,7 @@ const TOOLBAR_SHOW_POSITION = 400;
 
 const variants = {
     primary: 'bg-white',
-    secondary: 'bg-white shadow-md'
+    secondary: 'bg-white shadow-lg'
 }
 
 export default function Header({
@@ -41,7 +41,7 @@ export default function Header({
                     </Navbar> 
                 </div>
             </header>
-            <div className={`${toolbarVisibility} ${variants.secondary} z-10 w-full fixed top-0`}>
+            <div className={`${toolbarVisibility} ${variants.secondary} z-20 w-full fixed top-0`}>
                 <div className="container">
                     <Navbar>
                         <div className="ml-5 md:hidden">
