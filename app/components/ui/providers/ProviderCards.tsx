@@ -10,11 +10,12 @@ export default function ProviderCards({items}: {items: {[key: string]: any}[]}) 
     return (
         <Swiper 
           slidesPerView={'auto'}
-          spaceBetween={30} 
+          spaceBetween={20} 
           className="cursor-grabbing">
             {items.map(item => 
-                <SwiperSlide key={item.phone} className="!w-48">
+                <SwiperSlide key={item.phone} className="!w-52 md:!w-64">
                     <ProviderCard 
+                        name={item.name}
                         phone={item.phone} 
                         img={item.image}
                         alt={item.alt}
