@@ -1,6 +1,6 @@
 export default function MeshSvg({children}: {children: React.ReactNode}) {
     return (
-        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="820.000000pt" height="839.000000pt" viewBox="0 0 820.000000 839.000000" preserveAspectRatio="xMidYMid meet" className="absolute right-0 max-md:top-0 bottom-0 -z-10 w-[250px] md:w-[500px] h-auto">
+        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="820.000000pt" height="839.000000pt" viewBox="0 0 820.000000 839.000000" preserveAspectRatio="xMidYMid meet" className="w-full h-auto">
                 {children}
                 <g transform="translate(0.000000,839.000000) scale(0.100000,-0.100000)" fill="url(#gradient)" stroke="none">
                     <path d="M3354 7957 c-19 -16 -29 -37 -33 -66 l-6 -43 -210 -98 c-115 -55
