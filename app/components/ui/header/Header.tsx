@@ -6,9 +6,18 @@ import Overlay from '../Overlay';
 import Sidebar from './Sidebar';
 import Navbar from './Navbar';
 
-const HEADER_SHOW_POSITION = 400;
+const TOOLBAR_SHOW_POSITION = 400;
 
-export default function Header() {
+const variants = {
+    primary: 'bg-white',
+    secondary: 'bg-white shadow-md'
+}
+
+export default function Header({
+    variant = 'secondary'
+}: {
+    variant?: 'primary' | 'secondary'
+}) {
 
     const {
         y,
@@ -16,26 +25,37 @@ export default function Header() {
         handleSidebar
     } = useHeader();
     
-    let style = 'absolute top-0 left-0';
-    if (y > HEADER_SHOW_POSITION) {
-        style = 'fixed animate-show shadow-md bg-white';
+    let toolbarVisibility = `hidden`;
+    if (y > TOOLBAR_SHOW_POSITION) {
+        toolbarVisibility = `animate-show`;
     }
 
     return (
-        <header className={`${style} w-full z-50`}> 
-            <div className="container">
-                <Navbar>
-                    <div className="ml-5 md:hidden">
-                        <Hamburger handleClick={() => handleSidebar(true)}/>
-                    </div>
-                </Navbar>
-                <Sidebar 
-                    handleClose={() => handleSidebar(false)} 
-                    isOpened={isSidebarOpened}/>
+        <>
+            <header className={variants[variant]} > 
+                <div className="container">
+                    <Navbar>
+                        <div className="ml-5 md:hidden">
+                            <Hamburger handleClick={() => handleSidebar(true)}/>
+                        </div>
+                    </Navbar> 
+                </div>
+            </header>
+            <div className={`${toolbarVisibility} ${variants.secondary} z-10 w-full fixed top-0`}>
+                <div className="container">
+                    <Navbar>
+                        <div className="ml-5 md:hidden">
+                            <Hamburger handleClick={() => handleSidebar(true)}/>
+                        </div>
+                    </Navbar> 
+                </div>
             </div>
+            <Sidebar 
+                handleClose={() => handleSidebar(false)} 
+                isOpened={isSidebarOpened}/>
             <Overlay 
                 isVisible={isSidebarOpened} 
                 handleClick={() => handleSidebar(false)}/>
-        </header>
+        </>
     )
 }

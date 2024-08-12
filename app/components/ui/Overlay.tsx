@@ -7,7 +7,7 @@ export default function Overlay({
 }) {
     return (
         <div 
-            className={`fixed top-0 left-0 w-screen h-screen bg-black/70 ${!isVisible ? "hidden" : undefined}`} 
+            className={`fixed top-0 left-0 w-screen h-screen bg-black/70 z-20 ${!isVisible ? "hidden" : undefined}`} 
             onClick={handleClick}>
         </div>
     )
