@@ -6,7 +6,7 @@ const nextConfig = {
     pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
     output: 'export',
     reactStrictMode: false,
-    basePath: "/netihind",
+    basePath: "https://anastassiaee.github.io/Netihind/",
     images: { unoptimized: true },
     /*
     sassOptions: {
