@@ -9,7 +9,8 @@ export default function ParallaxBg({img}: {img: StaticImageData}) {
         <ParallaxProvider>
             <ParallaxBanner style={{ aspectRatio: '2 / 1', height: '36.45vw', minHeight: '300px' }}>
                 <ParallaxBannerLayer 
-                    image={img.blurDataURL}
+                    image={img?.src}
+                    translateY={[-20, 20]}
                     speed={-20} />
             </ParallaxBanner>  
         </ParallaxProvider>
