@@ -55,6 +55,7 @@ const config: Config = {
     container: false
   },
   plugins: [
+    require('@tailwindcss/typography'),
     function ({ addComponents } : {addComponents: any}) {
       addComponents({
         '.container': {
