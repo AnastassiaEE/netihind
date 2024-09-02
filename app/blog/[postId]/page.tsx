@@ -1,11 +1,9 @@
-import { StaticImageData } from "next/image";
-import ParallaxBg from "../../components/ui/ParallaxBg";
-import posts from "../../data/posts"
-import PageLayout from "../../layouts/PageLayout";
-import { MDXRemote } from 'next-mdx-remote/rsc'
-import MdxLayout from "../../layouts/MdxLayout";
 import BlogPostHeaderSection from "../../components/sections/BlogPostHeaderSection";
 import BlogPostContentSection from "../../components/sections/BlogPostContentSection";
+import ParallaxBg from "../../components/ui/ParallaxBg";
+import PageLayout from "../../layouts/PageLayout";
+import { StaticImageData } from "next/image";
+import posts from "../../data/posts"
 
 export const dynamicParams = false
 
