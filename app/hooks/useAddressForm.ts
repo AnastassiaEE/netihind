@@ -1,6 +1,8 @@
 import { getAddress, getApartment, removeExtraChars, removeExtraSpaces } from "../utils/addressFormatter";
 import { useEffect, useRef, useState } from "react";
 import useCsvParser from "./useCsvParser";
+import { useRouter } from "next/navigation";
+
 
 export default function useAddressForm() {
 
@@ -13,6 +15,8 @@ export default function useAddressForm() {
     const [errors, setErrors] = useState({address: '', apartment: ''});
 
     const keyupTimer = useRef<ReturnType<typeof setTimeout>| null>(null);
+
+    const router = useRouter()
 
     /**
      * Сreates a delay before address filtering.
@@ -153,7 +157,7 @@ export default function useAddressForm() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (validateForm()) {
-            console.log('form');
+            router.push('/address')
         }
     }
 
