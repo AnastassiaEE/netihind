@@ -5,7 +5,7 @@ const styles = `prose\
  prose-h2:mb-4\
  prose-h2:mt-0\
  prose-p:text-base\
- prose-p:mb-6\
+ prose-p:not(:last-child):mb-6\
  prose-p:mt-0\
  prose-p:text-muted-dark\
  prose-ul:mb-6\
