@@ -17,9 +17,9 @@ export default function Sidebar({
             </div>
             <div className="p-6">
                 <Navigation linkColor="muted-dark" type="vertical">
-                    <NavigationItem link="#">Link1</NavigationItem>
-                    <NavigationItem link="#">Link2</NavigationItem>
-                    <NavigationItem link="#">Link3</NavigationItem>
+                    <NavigationItem href="/blog">Blog</NavigationItem>
+                    <NavigationItem href="#">Link2</NavigationItem>
+                    <NavigationItem href="#">Link3</NavigationItem>
                 </Navigation>
             </div>
         </div>

@@ -16,9 +16,9 @@ export default function Navbar({children} : {children: React.ReactNode}) {
                 </div>
                 <div className="max-md:hidden">
                     <Navigation linkColor="muted-dark">
-                        <NavigationItem link="#">Link1</NavigationItem>
-                        <NavigationItem link="#">Link2</NavigationItem>
-                        <NavigationItem link="#">Link3</NavigationItem>
+                        <NavigationItem href="/blog">Blog</NavigationItem>
+                        <NavigationItem href="#">Link2</NavigationItem>
+                        <NavigationItem href="#">Link3</NavigationItem>
                     </Navigation>
                 </div>
             </div>

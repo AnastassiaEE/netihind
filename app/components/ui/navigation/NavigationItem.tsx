@@ -1,15 +1,15 @@
 import Link from "next/link"
 
 export default function NavigationLink({
-    link,
+    href,
     padding,
     children
 }: {
-    link: string,
+    href: string,
     padding?: string,
     children: React.ReactNode
 }) {
     return (
-        <Link href={link} className={`display-block hover:text-primary transition-colors ${padding}`}>{children}</Link>
+        <Link href={href} className={`display-block hover:text-primary transition-colors ${padding}`}>{children}</Link>
     )
 }
