@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Logo({src}: {src: any}) {
     return (
-        <Link href="/home">
+        <Link href="/">
             <Image
                 className="w-36"
                 src={src}
