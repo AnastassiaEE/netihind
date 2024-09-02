@@ -1,7 +1,23 @@
+const styles = `prose\
+ prose-h2:text-2xl\
+ prose-h2:font-extrabold\
+ prose-h2:text-black\
+ prose-h2:mb-4\
+ prose-h2:mt-0\
+ prose-p:text-base\
+ prose-p:mb-6\
+ prose-p:mt-0\
+ prose-p:text-muted-dark\
+ prose-ul:mb-6\
+ prose-ul:mt-0\
+ prose-li:mb-1
+ prose-li:marker:text-muted-dark
+ `
+
 export default function MdxLayout({ children }: { children: React.ReactNode }) {
   // Create any shared layout or styles here
   return (
-    <div className="prose prose-headings:mt-8 prose-headings:font-semibold prose-headings:text-black prose-h1:text-5xl prose-h2:text-4xl prose-h3:text-3xl prose-h4:text-2xl prose-h5:text-xl prose-h6:text-lg dark:prose-headings:text-white">
+    <div className={styles}>
       {children}
     </div>
   )

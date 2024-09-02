@@ -17,7 +17,7 @@ export default function Post({ params }: {params: {postId: string}}) {
             <BlogPostHeaderSection 
                 title={post?.title as string} 
                 date={post?.date as string}/>
-            <ParallaxBg img={post?.image as StaticImageData}></ParallaxBg>
+                <ParallaxBg img={post?.image as StaticImageData}/>
             <BlogPostContentSection content={post?.content as string}/>
         </PageLayout>
     )
