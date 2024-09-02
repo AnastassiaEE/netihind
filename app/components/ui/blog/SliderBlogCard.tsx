@@ -2,7 +2,7 @@ import Image, { StaticImageData } from 'next/image';
 import { Children } from 'react';
 import Link from 'next/link';
 
-export default function BlogCard({
+export default function SliderBlogCard({
     href,
     src,
     alt, 

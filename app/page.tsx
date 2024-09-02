@@ -1,7 +1,7 @@
 import QuestionsSection from "./components/sections/QuestionsSection";
 import ContactsSection from "./components/sections/ContactsSection";
 import StepsSection from "./components/sections/StepsSection";
-import BlogSection from "./components/sections/BlogSection";
+import SliderBlogSection from "./components/sections/SliderBlogSection";
 import InfoSection from "./components/sections/InfoSection";
 import TopSection from "./components/sections/TopSection";
 import PageLayout from './layouts/PageLayout';
@@ -13,7 +13,7 @@ export default function Page() {
       <InfoSection/>
       <StepsSection/>
       <QuestionsSection/>
-      <BlogSection/>
+      <SliderBlogSection/>
       <ContactsSection/>
     </PageLayout>
   )

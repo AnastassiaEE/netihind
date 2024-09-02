@@ -3,7 +3,7 @@
 import { Pagination, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import CircleArrow from '../arrow/CircleArrow';
-import BlogCard from './BlogCard';
+import SliderBlogCard from './SliderBlogCard';
 import 'swiper/css/bundle';
 
 const baseArrowStyle = 
@@ -46,7 +46,7 @@ const pagination = {
 
 const modules = [Pagination, Navigation]
 
-export default function BlogCards({items}: {items: {[key: string]: any}[]}) {
+export default function SliderBlogCards({items}: {items: {[key: string]: any}[]}) {
     return (
         <div className="relative xl:px-20">
             <div className="prev absolute left-0 top-1/2 -translate-y-1/2">
@@ -64,13 +64,13 @@ export default function BlogCards({items}: {items: {[key: string]: any}[]}) {
                 modules={modules}>
                 {items.map(post => 
                     <SwiperSlide key={post.title} className="pb-4 !h-auto">
-                        <BlogCard 
+                        <SliderBlogCard 
                             href={post.href}
                             src={post.image}
                             alt={post.alt}>
                             <>{post.date}</>
                             <>{post.title}</>
-                        </BlogCard>
+                        </SliderBlogCard>
                     </SwiperSlide>
                 )}   
             </Swiper>
