@@ -18,7 +18,7 @@ export default function BlogCard({
     return (
         <article className="bg-white rounded-lg shadow-md h-full">
             <div className="relative w-full h-60">
-                <a href={href} className="absolute w-full h-full"></a>
+                <Link href={href} className="block absolute w-full h-60"/>
                 <Image 
                     src={src} 
                     alt={alt} 
