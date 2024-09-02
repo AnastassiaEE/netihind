@@ -10,6 +10,6 @@ export default function NavigationLink({
     children: React.ReactNode
 }) {
     return (
-        <Link href={href} className={`display-block hover:text-primary transition-colors ${padding}`}>{children}</Link>
+        <Link href={href} className={`block hover:text-primary transition-colors ${padding}`}>{children}</Link>
     )
 }
