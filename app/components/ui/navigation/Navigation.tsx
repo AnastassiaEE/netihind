@@ -19,7 +19,7 @@ export default function Navigation({
                         return <li>
                             {React.cloneElement(
                             child as React.ReactElement,
-                            {padding: `${type === 'horizontal' ? "px-4" : undefined} py-2`})}
+                            {padding: `${type === 'horizontal' ? "px-4" : undefined} py-2 block`})}
                         </li>
                     }
                })}
