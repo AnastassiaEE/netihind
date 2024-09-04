@@ -14,12 +14,11 @@ const columns = [
 
 const numberStyle = 'font-extrabold text-lg block'
 const measureStyle = 'text-base block'
-const cellStyle = 'break-word px-2 py-5'
-const gridTemplate = "minmax(0,max-content)_minmax(0,_max-content)_minmax(0,_max-content)_minmax(0,_max-content)_minmax(0,_max-content)";
+const cellStyle = 'flex justify-center items-center break-word py-5'
 
 const getCellBg = (index: number) => {
     if(index % 2 == 0) {
-        return '';
+        return 'bg-neutral-light';
     }   
     return '';
 }
@@ -27,30 +26,32 @@ const getCellBg = (index: number) => {
 export default function TariffsTable({items}: {items: {[key:string]:any}[]}) {
     return (
         <div className="flex justify-center">
-            <div className={`text-center text-muted-dark grid grid-rows-10 grid-cols-[repeat(5,minmax(max-content,100%))] place-items-center`}>
+            <div className={`text-center text-muted-dark grid grid-rows-10 grid-cols-tariffs w-full`}>
                     {columns.map((column) => 
-                        <div key={column} className={`font-extrabold ${cellStyle} px-16`}>{column}</div> 
+                        <div key={column} className={`font-extrabold ${cellStyle}`}>{column}</div> 
                     )}
                
                     {items.map((tariff, index) =>
                        <>
-                            <div className={`${cellStyle} ${getCellBg(index)} flex flex-col items-center `}>
+                            <div className={`${cellStyle} ${getCellBg(index)} flex-col rounded-l-md`}>
                                 <Image 
                                     src={providers[tariff.provider].image}
                                     alt={providers[tariff.provider].alt}
                                     width={0}
                                     height={0}
                                     className="w-10 h-auto mb-3"/>  
-                                <span className="block">{tariff.provider}</span> 
+                                <span>{tariff.provider}</span> 
                             </div>
-                            <div className={`${cellStyle}`}>
-                                <span className={numberStyle}>{tariff.speed}</span>
-                                <span className={measureStyle}>MBIT/S</span>
+                            <div className={`${cellStyle} ${getCellBg(index)}`}>
+                                <div>
+                                    <span className={numberStyle}>{tariff.speed}</span>
+                                    <span className={measureStyle}>MBIT/S</span>
+                                </div>
                             </div>
                             <div className={`${cellStyle} ${getCellBg(index)}`}>
                                 {tariff.chanels ? <span className={numberStyle}>{tariff.chanels}</span> : <CancelIcon/>}
                             </div>
-                            <div className={`${cellStyle} ${getCellBg(index)} flex`}>
+                            <div className={`${cellStyle} ${getCellBg(index)}`}>
                                 {tariff.mobileCommunication ?  
                                     <>    
                                         {tariff.mobileCommunication.data ? 
@@ -58,23 +59,23 @@ export default function TariffsTable({items}: {items: {[key:string]:any}[]}) {
                                                 <span className={numberStyle}>{tariff.mobileCommunication.data}</span>
                                                 <span className={measureStyle}>GB</span>
                                             </div>
-                                            : <CancelIcon/>}
+                                            : <div className="mx-1"><CancelIcon/></div>}
                                         {tariff.mobileCommunication.time ?
                                             <div className="mx-1">
                                                     <span className={numberStyle}>{tariff.mobileCommunication.time}</span>
                                                     <span className={measureStyle}>MIN</span>
                                             </div>
-                                            : <CancelIcon/>}
+                                            : <div className="mx-1"><CancelIcon/></div>}
                                         {tariff.mobileCommunication?.sms ?
                                             <div className="mx-1">
                                                 <span className={numberStyle}>{tariff.mobileCommunication.sms}</span>
                                                 <span className={measureStyle}>SMS</span>
                                             </div>
-                                            : <CancelIcon/>}      
+                                            : <div className="mx-1"><CancelIcon/></div>}      
                                     </>   
                                 : <CancelIcon/>}
                             </div>
-                            <div className={`${cellStyle} ${getCellBg(index)}`}>
+                            <div className={`${cellStyle} ${getCellBg(index)} flex-col rounded-r-md`}>
                                 <div className="mb-4">
                                     <span className={`${numberStyle} bg-gradient-to-r from-primary via-secondary to-accent w-full py-1 text-white rounded-md`}>{tariff.price}</span>
                                     <span className={measureStyle}>€ / MONTH</span>
@@ -83,7 +84,6 @@ export default function TariffsTable({items}: {items: {[key:string]:any}[]}) {
                                     <Button variant="secondary"roundedClass="rounded-l-md"><ContactSupportIcon/></Button>
                                     <Button roundedClass="rounded-r-md">Сonnect</Button>
                                 </div>
-                                
                             </div>
                         </>
                     )}

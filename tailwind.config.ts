@@ -48,6 +48,9 @@ const config: Config = {
 
       backgroundImage: {
         'instagram-logo': 'linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)'
+      },
+      gridTemplateColumns: {
+        'tariffs': 'repeat(5, minmax(max-content, 100%))'
       }
     },
   },
