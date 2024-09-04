@@ -2,7 +2,6 @@ const baseClasses = 'w-full\
  font-semibold\
  text-center\
  border\
- rounded-lg\
  transition all\
  hover:cursor-pointer\
  flex\
@@ -39,16 +38,18 @@ export default function Button({
   type = 'button',
   variant = 'primary',
   size = 'sm',
+  roundedClass = 'rounded-md',
   disabled = false,
   children
 }: {
   type?: 'button' | 'submit' | 'reset',
   variant?: 'primary' | 'secondary' | 'success',
   size?: 'sm' | 'lg',
+  roundedClass?: string,
   disabled?: boolean
   children: React.ReactNode,
 }) {
   return (
-    <button type={type} className={`${baseClasses} ${variants[variant]} ${sizes[size]} ${disabled ? 'hover:cursor-not-allowed': undefined}`} disabled={disabled}> {children} </button>
+    <button type={type} className={`${baseClasses} ${variants[variant]} ${sizes[size]} ${disabled ? 'hover:cursor-not-allowed': undefined} ${roundedClass}`} disabled={disabled}> {children} </button>
   )
 }
