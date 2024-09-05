@@ -1,6 +1,7 @@
 const addressTariffs = [
     {
         id: 1,
+        name: 'Lorem ipsum odor amet',
         provider: 'Telia Eesti AS',
         speed: 100,
         chanels: 120,
@@ -13,6 +14,7 @@ const addressTariffs = [
     },
     {
         id: 2,
+        name: 'Lorem ipsum odor amet',
         provider: 'Telia Eesti AS',
         speed: 200,
         chanels: 100,
@@ -25,6 +27,7 @@ const addressTariffs = [
     },
     {
         id: 3,
+        name: 'Lorem ipsum odor amet',
         provider: 'Tele2 Eesti AS',
         speed: 100,
         chanels: 200,
@@ -37,6 +40,7 @@ const addressTariffs = [
     },
     {
         id: 4,
+        name: 'Lorem ipsum odor amet',
         provider: 'STV AS',
         speed: 150,
         chanels: 200,
@@ -49,6 +53,7 @@ const addressTariffs = [
     },
     {
         id: 5,
+        name: 'Lorem ipsum odor amet',
         provider: 'STV AS',
         speed: 150,
         mobileCommunication: {
@@ -60,6 +65,7 @@ const addressTariffs = [
     },
     {
         id: 6,
+        name: 'Lorem ipsum odor amet',
         provider: 'Telset AS',
         speed: 150,
         chanels: 300,
@@ -72,6 +78,7 @@ const addressTariffs = [
     },
     {
         id: 7,
+        name: 'Lorem ipsum odor amet',
         provider: 'Telset AS',
         speed: 200,
         chanels: 700,
@@ -79,6 +86,7 @@ const addressTariffs = [
     },
     {
         id: 8,
+        name: 'Lorem ipsum odor amet',
         provider: 'Majanet OÜ',
         speed: 100,
         chanels: 50,
@@ -91,6 +99,7 @@ const addressTariffs = [
     },
     {
         id: 9,
+        name: 'Lorem ipsum odor amet',
         provider: 'Tele2 Eesti AS',
         speed: 100,
         mobileCommunication: {
