@@ -39,17 +39,21 @@ export default function Button({
   variant = 'primary',
   size = 'sm',
   disabled = false,
+  name,
   className = 'rounded-md',
+  handleClick,
   children
 }: {
   type?: 'button' | 'submit' | 'reset',
   variant?: 'primary' | 'secondary' | 'success',
   size?: 'sm' | 'lg',
   disabled?: boolean,
+  name?: string
   className?: string,
+  handleClick?: React.MouseEventHandler<HTMLButtonElement>
   children: React.ReactNode,
 }) {
   return (
-    <button type={type} className={`${baseClasses} ${variants[variant]} ${sizes[size]} ${disabled ? 'hover:cursor-not-allowed': undefined} ${className}`} disabled={disabled}> {children} </button>
+    <button type={type} name={name} onClick={handleClick} className={`${baseClasses} ${variants[variant]} ${sizes[size]} ${disabled ? 'hover:cursor-not-allowed': undefined} ${className}`} disabled={disabled}> {children} </button>
   )
 }
