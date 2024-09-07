@@ -1,6 +1,10 @@
-export default function SectionLayout({children, bg, paddings}: {
+export default function SectionLayout({
+  children, 
+  bg, 
+  paddings
+}: {
     children: React.ReactNode,
-    bg: string,
+    bg?: string,
     paddings: string
   }) {
     return (

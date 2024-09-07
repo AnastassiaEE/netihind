@@ -16,7 +16,7 @@ export default function Footer() {
                     <Navigation linkColor="white opacity-80">
                         <NavigationItem href="/" padding="px-1 px-4">Home</NavigationItem>
                         <NavigationItem href="/blog">Blog</NavigationItem>
-                        <NavigationItem href="#">Link</NavigationItem>
+                        <NavigationItem href="/about">About Us</NavigationItem>
                     </Navigation>
                 </div>
                 <div className="flex justify-center pt-6">
