@@ -1,10 +1,10 @@
-import RelatedBlogPostsSection from "../../components/sections/RelatedBlogPostsSection";
-import BlogPostContentSection from "../../components/sections/BlogPostContentSection";
-import BlogPostHeaderSection from "../../components/sections/BlogPostHeaderSection";
-import ParallaxBg from "../../components/ui/ParallaxBg";
-import PageLayout from "../../layouts/PageLayout";
+import RelatedBlogPostsSection from "../../../components/sections/RelatedBlogPostsSection";
+import BlogPostContentSection from "../../../components/sections/BlogPostContentSection";
+import BlogPostHeaderSection from "../../../components/sections/BlogPostHeaderSection";
+import ParallaxBg from "../../../components/ui/ParallaxBg";
+import PageLayout from "../../../layouts/PageLayout";
 import { StaticImageData } from "next/image";
-import posts from "../../data/posts"
+import posts from "../../../data/posts"
 
 export const dynamicParams = false
 

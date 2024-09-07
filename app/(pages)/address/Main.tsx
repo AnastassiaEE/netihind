@@ -1,5 +1,5 @@
-import AddressProvidersSection from "../components/sections/AddressProvidersSection";
-import AddressTariffsSection from "../components/sections/AddressTariffsSection";
+import AddressProvidersSection from "../../components/sections/AddressProvidersSection";
+import AddressTariffsSection from "../../components/sections/AddressTariffsSection";
 import { Suspense } from "react";
 import Loading from "./loading";
 
