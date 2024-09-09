@@ -1,4 +1,4 @@
-import '@/globals.css'
+import '@/app/globals.css'
 import type { Metadata } from 'next'
 import { Manrope } from 'next/font/google'
 import i18nConfig from '@/i18nConfig';
