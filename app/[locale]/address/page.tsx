@@ -1,5 +1,5 @@
 import Main from "./Main";
-import PageLayout from "../../layouts/PageLayout";
+import PageLayout from "@/layouts/PageLayout";
 
 export default function Page() {
     return (
