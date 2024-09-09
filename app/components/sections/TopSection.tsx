@@ -3,7 +3,7 @@ import MeshSvg from '../ui/MeshSvg';
 
 export default function TopSection() {
     return(
-        <section className={`md:relative max-md:h-[calc(100dvh)] max-md:flex max-md:items-center md:py-52 bg-gradient-to-t from-primary/20 from-0% via-secondary/10 via-40% via-accent/10 to-80%`}>
+        <section className="md:h-screen max-md:h-[calc(100dvh)] max-md:flex max-md:items-center md:pt-28 bg-gradient-to-t from-primary/20 from-0% via-secondary/10 via-40% via-accent/10 to-80%">
             <div className="absolute right-0 max-md:top-[80px] bottom-[50px] -z-10 w-[230px] md:w-[500px] h-auto">
                 <MeshSvg>
                     <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%" > 
