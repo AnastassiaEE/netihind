@@ -2,11 +2,11 @@ import React, { isValidElement } from 'react'
 
 export default function Navigation({
     type = 'horizontal', 
-    linkColor,
+    linkColor = 'muted-dark',
     children
 }: {
     type?: 'horizontal' | 'vertical' 
-    linkColor: string,
+    linkColor?: string,
     children: React.ReactNode
 }) {
     return (

@@ -2,7 +2,7 @@ import whitelogo from "../../../../public/images/whitelogo.svg"
 import NavigationItem from "../navigation/NavigationItem";
 import SocialLinks from "../social-links/SocialLinks";
 import SocialLink from "../social-links/SocialLink";
-import Navigation from "../navigation/Navigation";
+import Navbar from "../navigation/Navbar";
 import Logo from "../Logo";
 
 export default function Footer() {
@@ -13,11 +13,9 @@ export default function Footer() {
                     <Logo src={whitelogo} sizeClass="w-36"/>
                 </div>
                 <div className="flex justify-center pt-4 pb-6">
-                    <Navigation linkColor="white opacity-80">
+                    <Navbar linkColor="white opacity-80">
                         <NavigationItem href="/" padding="px-1 px-4">Home</NavigationItem>
-                        <NavigationItem href="/blog">Blog</NavigationItem>
-                        <NavigationItem href="/about">About Us</NavigationItem>
-                    </Navigation>
+                    </Navbar>
                 </div>
                 <div className="flex justify-center pt-6">
                     <SocialLinks>

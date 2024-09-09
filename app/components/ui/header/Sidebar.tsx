@@ -1,5 +1,5 @@
 import CloseIcon from '@mui/icons-material/Close';
-import Navbar from "./Navbar";
+import Navbar from "../navigation/Navbar";
 
 export default function Sidebar({
     isOpened,
