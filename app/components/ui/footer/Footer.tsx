@@ -10,7 +10,7 @@ export default function Footer() {
         <footer className="bg-gray-900 pt-12 pb-6">
             <div className="container">
                 <div className="flex justify-center mb-2">
-                    <Logo src={whitelogo}/>
+                    <Logo src={whitelogo} sizeClass="w-36"/>
                 </div>
                 <div className="flex justify-center pt-4 pb-6">
                     <Navigation linkColor="white opacity-80">
