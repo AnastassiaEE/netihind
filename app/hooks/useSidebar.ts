@@ -1,9 +1,7 @@
 import useBoolean from "./useBoolean";
-import useScrollPosition from "./useScrollPosition";
 
-export default function useHeader() {
+export default function useSidebar() {
 
-    const y = useScrollPosition();
     const {
         value: isSidebarOpened, 
         setTrue: openSidebar, 
@@ -21,7 +19,6 @@ export default function useHeader() {
     }
     
     return {
-        y,
         isSidebarOpened,
         handleSidebar
     }

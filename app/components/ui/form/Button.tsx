@@ -31,7 +31,7 @@ const variants: {[key: string]: string} = {
   
 const sizes: {[key: string]: string} = {
   sm: 'text-sm px-3 py-2',
-  lg: 'text-base h-12 px-5 py-3',
+  lg: 'text-base px-5 py-3',
 }
 
 export default function Button({

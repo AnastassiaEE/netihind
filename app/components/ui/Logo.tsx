@@ -1,11 +1,11 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
-export default function Logo({src}: {src: any}) {
+export default function Logo({src, sizeClass}: {src: StaticImageData, sizeClass: string}) {
     return (
         <Link href="/">
             <Image
-                className="w-36"
+                className={sizeClass}
                 src={src}
                 alt="logo"
                 width={0}

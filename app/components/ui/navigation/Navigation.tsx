@@ -1,8 +1,8 @@
 import React, { isValidElement } from 'react'
 
 export default function Navigation({
-    linkColor,
     type = 'horizontal', 
+    linkColor,
     children
 }: {
     type?: 'horizontal' | 'vertical' 
