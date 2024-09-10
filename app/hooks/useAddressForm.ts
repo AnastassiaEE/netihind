@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import useCsvParser from "./useCsvParser";
 import { useRouter } from "next/navigation";
 
-
 export default function useAddressForm() {
 
     const { data } = useCsvParser('addresses.csv', ';');
@@ -16,7 +15,7 @@ export default function useAddressForm() {
 
     const keyupTimer = useRef<ReturnType<typeof setTimeout>| null>(null);
 
-    const router = useRouter()
+    const router = useRouter();
 
     /**
      * Сreates a delay before address filtering.
@@ -137,13 +136,13 @@ export default function useAddressForm() {
     const validateForm = () => {
         const {address, apartment} = selected;
         if (values.address.length < 2) {
-            setErrors({...errors, address: 'Введите минимум 2 символа'});
+            setErrors({...errors, address: 'errors.enter'});
             return false;
         } else if (address === '') {
-            setErrors({...errors, address: 'Выберите адрес'});
+            setErrors({...errors, address: 'errors.address'});
             return false;
         } else if (address !== '' && apartment === '' && allAddressApartments.length > 0) {
-            setErrors({...errors, apartment: 'Выберите квартиру'});
+            setErrors({...errors, apartment: 'errors.apartment'});
             return false;
         } else if (address !== '' && (apartment !== '' || allAddressApartments.length === 0)) {
             return true;

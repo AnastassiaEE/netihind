@@ -31,12 +31,12 @@ export default function AddressForm() {
                     data={addresses}
                     size="lg"
                     name="address"
-                    placeholder={t('address-placeholder')}
+                    placeholder={t('placeholders.address')}
                     handleChange={handleAddressInputChange} 
                     handleItemClick={handleAddressClick}
                     value={values.address}
                     isValid={errors.address === ''}
-                    error={errors.address}
+                    error={t(errors.address)}
                     icon={{Icon: CloseIcon, isVisible: values.address !== '', handleClick: removeAddress}}/>
             </div>
             {allAddressApartments.length > 0 &&
@@ -45,17 +45,16 @@ export default function AddressForm() {
                         data={apartments}
                         size="lg"
                         name="apartment"
-                        placeholder={t('apartment-placeholder')}
+                        placeholder={t('placeholders.apartment')}
                         handleChange={handleApartmentInputChange}
                         handleItemClick={handleApartmentClick}
                         value={values.apartment}
                         isValid={errors.apartment === ''}
-                        error={errors.apartment}/>
+                        error={t(errors.apartment)}/>
                 </div>
-                
             }
             <div className={`basis-full ${errors.apartment !== '' ? 'mt-12': 'mt-7'} sm:basis-auto sm:mt-0`}>
-                <Button type="submit" size="lg"> {t('find-button')} </Button>
+                <Button type="submit" size="lg"> {t('buttons.find')} </Button>
             </div>    
         </form>
     )

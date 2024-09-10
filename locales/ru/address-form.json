@@ -1,5 +1,14 @@
 {
-    "address-placeholder": "Адрес",
-    "apartment-placeholder": "Квартира",
-    "find-button": "Найти провайдеров"
+    "placeholders": {
+        "address": "Адрес",
+        "apartment": "Квартира"
+    },
+    "buttons": {
+        "find": "Найти провайдеров"
+    },
+    "errors": {
+        "enter": "Введите минимум 2 символа",
+        "address": "Выберите адрес",
+        "apartment": "Выберите квартиру"
+    }
 }
