@@ -7,13 +7,15 @@ const variants = {
 }
 
 export default function Header({
-    variant = 'secondary'
+    variant = 'secondary',
+    position = 'static'
 }: {
-    variant?: 'primary' | 'secondary'
+    variant?: 'primary' | 'secondary',
+    position?: 'static' | 'absolute'
 }) {
 
     return (
-        <header className={`bg-white ${variants[variant]} absolute w-full z-50`}> 
+        <header className={`bg-white ${variants[variant]} ${position} w-full top-0`}> 
             <div className="max-md:hidden"><DesktopHeader/></div>
             <div className="md:hidden"><MobileHeader/></div>
         </header> 

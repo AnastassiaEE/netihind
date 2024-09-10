@@ -6,7 +6,7 @@ import ContactForm from "../ui/form/ContactForm";
 
 export default function ContactsSection() {
     return (
-        <SectionLayout bg="bg-white" paddings="py-24">
+        <SectionLayout bg="bg-white" className="py-24">
             <div className="md:flex md:justify-between md:items-center">
                 <div className="md:w-1/2 max-md:mb-12">
                     <div className="mb-20">

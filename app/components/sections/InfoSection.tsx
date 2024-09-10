@@ -4,7 +4,7 @@ import BgPhoto from "../ui/BgPhoto"
 
 export default function InfoSection() {
     return (
-        <SectionLayout bg="bg-white" paddings="pt-24"> 
+        <SectionLayout bg="bg-white" className="pt-24"> 
             <div className="flex flex-col md:flex-row items-center justify-between">
                 <div className="md:w-6/12">
                     <h2 className="text-4xl font-extrabold mb-6"> Rhoncus est pellentesque </h2>

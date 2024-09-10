@@ -4,7 +4,7 @@ import questions from "../../data/questions";
 
 export default function QuestionsSection() {
     return (
-        <SectionLayout bg="bg-white" paddings="py-24">
+        <SectionLayout bg="bg-white" className="py-24">
             <div className="flex flex-col md:flex-row items-center justify-between">
                 <div className="md:w-4/12">
                     <h2 className="text-4xl font-extrabold mb-6"> Rhoncus est pellentesque </h2>

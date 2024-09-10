@@ -21,7 +21,7 @@ export default async function Home({
       namespaces={i18nNamespaces}
       locale={locale}
       resources={resources}>
-      <PageLayout headerVariant="primary">
+      <PageLayout headerVariant="primary" headerPosition="absolute">
         <TopSection/>
         <InfoSection/>
         <StepsSection/>

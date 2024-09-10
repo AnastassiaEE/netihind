@@ -10,7 +10,7 @@ const text: {title: string, description: string}[] = [
 ]
 export default function StepsSection() {
     return (
-        <SectionLayout bg="white" paddings="pt-24">
+        <SectionLayout bg="white" className="pt-24">
             <h2 className="text-4xl font-extrabold text-center mb-6"> Rhoncus est pellentesque </h2>
             <p className="text-muted-dark text-lg text-center mb-12">Ut faucibus pulvinar elementum integer enim. Euismod lacinia at quis risus sed vulputate.</p>
             <Steps>

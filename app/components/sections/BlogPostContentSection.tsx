@@ -4,7 +4,7 @@ import MdxLayout from "../../layouts/MdxLayout";
 
 export default function BlogPostContentSection({content}: {content: string}) {
     return (
-        <SectionLayout bg={""} paddings={"py-24"}>
+        <SectionLayout className="py-24">
             <MdxLayout>
                 <MDXRemote source={content} />
             </MdxLayout>
