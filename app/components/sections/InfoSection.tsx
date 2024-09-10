@@ -13,9 +13,9 @@ export default function InfoSection() {
                 <div className="md:w-6/12">
                     <h2 className="text-4xl font-extrabold mb-6"> {t('title')} </h2>
                     <div className="text-muted-dark text-base">
-                    <Trans components={{'p': <p />}}>
-                        {t('content')}
-                    </Trans>
+                        <Trans i18nKey="content" components={{p: <p/>}}>
+                            {t('content')}
+                        </Trans>   
                     </div>
                 </div>
                 <div className="md:w-5/12">
