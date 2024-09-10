@@ -42,7 +42,13 @@ export default function TopSection() {
                 </MeshSvg>
             </div>
             <div className="lg:w-10/12 md:-translate-y-16">
-                <h1 className="max-md:text-[calc(1.475rem+2.7vw)] md:text-5xl !leading-snug font-extrabold mb-4"><Trans i18nKey="header"><span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent">{t('header')}</span></Trans></h1>
+                <h1 className="max-md:text-[calc(1.475rem+2.7vw)] md:text-5xl !leading-snug font-extrabold mb-4">
+                    <Trans 
+                        i18nKey="title" 
+                        components={{
+                            'span': <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent"/>
+                        }}/>
+                </h1>
                 <p className="text-lg text-muted-dark mb-4">{t('description')}</p>
                 <AddressForm/>
             </div>
