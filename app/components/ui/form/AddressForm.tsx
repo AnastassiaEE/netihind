@@ -4,8 +4,11 @@ import useAddressForm from '../../../hooks/useAddressForm';
 import CloseIcon from '@mui/icons-material/Close';
 import Searchbar from "./Searchbar";
 import Button from "./Button";
+import { useTranslation } from 'react-i18next';
 
 export default function AddressForm() { 
+
+    const { t } = useTranslation(['address-form'])
 
     const {
         addresses, 
@@ -28,7 +31,7 @@ export default function AddressForm() {
                     data={addresses}
                     size="lg"
                     name="address"
-                    placeholder="Адрес"
+                    placeholder={t('address-placeholder')}
                     handleChange={handleAddressInputChange} 
                     handleItemClick={handleAddressClick}
                     value={values.address}
@@ -42,7 +45,7 @@ export default function AddressForm() {
                         data={apartments}
                         size="lg"
                         name="apartment"
-                        placeholder="Номер квартиры"
+                        placeholder={t('apartment-placeholder')}
                         handleChange={handleApartmentInputChange}
                         handleItemClick={handleApartmentClick}
                         value={values.apartment}
@@ -52,7 +55,7 @@ export default function AddressForm() {
                 
             }
             <div className={`basis-full ${errors.apartment !== '' ? 'mt-12': 'mt-7'} sm:basis-auto sm:mt-0`}>
-                <Button type="submit" size="lg"> Найти провайдеров </Button>
+                <Button type="submit" size="lg"> {t('find-button')} </Button>
             </div>    
         </form>
     )

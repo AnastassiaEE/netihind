@@ -1,6 +1,9 @@
+'use client'
+
 import SectionLayout from '@/layouts/SectionLayout';
 import AddressForm from '../ui/form/AddressForm';
 import MeshSvg from '../ui/MeshSvg';
+import { Trans, useTranslation } from 'react-i18next';
 
 const sectionStyle =
 `max-md:h-[calc(100dvh)]\
@@ -20,6 +23,7 @@ const bg =
  via-accent/10 to-80%`
 
 export default function TopSection() {
+    const { t } = useTranslation(['top-section']);
     return(
         <SectionLayout className={sectionStyle} bg={bg}>
             <div className="absolute right-0 max-md:top-[80px] bottom-[50px] -z-10 w-[230px] md:w-[500px] h-auto">
@@ -38,8 +42,8 @@ export default function TopSection() {
                 </MeshSvg>
             </div>
             <div className="lg:w-10/12 md:-translate-y-16">
-                <h1 className="max-md:text-[calc(1.475rem+2.7vw)] md:text-5xl !leading-snug font-extrabold mb-4"> Поиск <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent">провайдеров</span> домашнего интернета по адресу </h1>
-                <p className="text-lg text-muted-dark mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi non arcu risus quis varius quam quisque id diam.</p>
+                <h1 className="max-md:text-[calc(1.475rem+2.7vw)] md:text-5xl !leading-snug font-extrabold mb-4"><Trans i18nKey="header"><span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent">{t('header')}</span></Trans></h1>
+                <p className="text-lg text-muted-dark mb-4">{t('description')}</p>
                 <AddressForm/>
             </div>
         </SectionLayout>
