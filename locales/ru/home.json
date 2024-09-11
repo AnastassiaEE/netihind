@@ -1,0 +1,63 @@
+{
+    "top-section": {
+        "title": "Поиск <span>провайдеров</span> домашнего интернета по адресу",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi non arcu risus quis varius quam quisque id diam."
+    },
+    "info-section": {
+        "title": "Rhoncus est pellentesque (ru)",
+        "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Faucibus turpis in eu mi bibendum neque egestas. Integer quis auctor elit sed vulputate. Varius vel pharetra vel turpis nunc eget lorem dolor sed. Habitant morbi tristique senectus et. Sed risus pretium quam vulputate dignissim suspendisse.</p><p>Ut faucibus pulvinar elementum integer enim. Euismod lacinia at quis risus sed vulputate.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent semper feugiat nibh sed pulvinar proin gravida.</p>"
+    },
+    "steps-section": {
+        "title": "Как это работает?",
+        "description": "Ut faucibus pulvinar elementum integer enim. Euismod lacinia at quis risus sed vulputate.",
+        "steps": {
+            "step1": {
+                "title": "Accumsan",
+                "description": "Sed turpis tincidunt id aliquet risus feugiat in ante."
+            },
+            "step2": {
+                "title": "Consectetur",
+                "description": "Maecenas ultricies mi eget mauris pharetra et ultrices neque."
+            },
+            "step3": {
+                "title": "Neque",
+                "description": "Turpis egestas pretium aenean pharetra magna ac placerat vestibulum."
+            },
+            "step4": {
+                "title": "Faucibus",
+                "description": "Vulputate sapien nec sagittis aliquam malesuada bibendum arcu vitae."
+            }
+        }
+    },
+    "questions-section": {
+        "title": "Есть вопросы? Ознакомьтесь с часто задаваемыми вопросами.",
+        "description": "Остались вопросы без ответа и вам нужно связаться?",
+        "questions": {
+            "question1": {
+                "question": "Turpis egestas pretium aenean pharetra1?",
+                "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Nulla malesuada pellentesque elit eget gravida cum. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Donec pretium vulputate sapien nec."
+            },
+            "question2": {
+                "question": "Turpis egestas pretium aenean pharetra2?",
+                "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Nulla malesuada pellentesque elit eget gravida cum. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Donec pretium vulputate sapien nec."
+            },
+            "question3": {
+                "question": "Turpis egestas pretium aenean pharetra3?",
+                "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Nulla malesuada pellentesque elit eget gravida cum. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Donec pretium vulputate sapien nec."
+            },
+            "question4": {
+                "question": "Turpis egestas pretium aenean pharetra4?",
+                "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Nulla malesuada pellentesque elit eget gravida cum. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Donec pretium vulputate sapien nec."
+            }
+        },
+        "contact-button": "Свяжитесь с нами сейчас"
+    },
+    "blog-section": {
+        "title": "Последние новости"
+    },
+    "contacts-section": {
+        "title": "Свяжитесь с нами",
+        "description": "Proin ipsum pharetra, senectus eget scelerisque varius pretium platea velit. Lacus, eget eu vitae nullam proin turpis etiam mi sit. Non feugiat feugiat egestas nulla nec. Arcu tempus, eget elementum dolor ullamcorper sodales ultrices eros.",
+        "subtitle": "Контакты"
+    }
+}

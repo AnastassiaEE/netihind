@@ -1,24 +1,23 @@
-import SectionLayout from "../../layouts/SectionLayout";
-import Steps from "../ui/steps/Steps";
-import Step from "../ui/steps/Step";
+'use client'
 
-const text: {title: string, description: string}[] = [
-    {title: 'Accumsan', description: 'Sed turpis tincidunt id aliquet risus feugiat in ante.'}, 
-    {title: 'Consectetur', description: 'Maecenas ultricies mi eget mauris pharetra et ultrices neque.'}, 
-    {title: 'Neque', description: 'Turpis egestas pretium aenean pharetra magna ac placerat vestibulum.'}, 
-    {title: 'Faucibus', description: 'Vulputate sapien nec sagittis aliquam malesuada bibendum arcu vitae.'}
-]
+import SectionLayout from "@/layouts/SectionLayout";
+import Steps from "@/components/ui/steps/Steps";
+import Step from "@/components/ui/steps/Step";
+import steps from "@/data/steps"
+import { useTranslation } from "react-i18next";
+
 export default function StepsSection() {
+    const { t } = useTranslation();
     return (
         <SectionLayout bg="white" className="pt-24">
-            <h2 className="text-4xl font-extrabold text-center mb-6"> Rhoncus est pellentesque </h2>
-            <p className="text-muted-dark text-lg text-center mb-12">Ut faucibus pulvinar elementum integer enim. Euismod lacinia at quis risus sed vulputate.</p>
+            <h2 className="text-4xl font-extrabold text-center mb-6"> {t('steps-section.title')} </h2>
+            <p className="text-muted-dark text-lg text-center mb-12">{t('steps-section.description')}</p>
             <Steps>
-                {text.map((_, index) => {
+                {steps.map((_, index) => {
                     return (
                         <Step key={index} index={index + 1}> 
-                            <>{text[index].title}</>
-                            <>{text[index].description}</>
+                            <>{t(steps[index].title)}</>
+                            <>{t(steps[index].description)}</>
                         </Step>
                     )
                 })}

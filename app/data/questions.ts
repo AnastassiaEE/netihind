@@ -1,8 +1,8 @@
-const questions = [
-    {question: 'Turpis egestas pretium aenean pharetra1?', answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Nulla malesuada pellentesque elit eget gravida cum. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Donec pretium vulputate sapien nec.'},
-    {question: 'Turpis egestas pretium aenean pharetra2?', answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Nulla malesuada pellentesque elit eget gravida cum. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Donec pretium vulputate sapien nec.'},
-    {question: 'Turpis egestas pretium aenean pharetra3?', answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Nulla malesuada pellentesque elit eget gravida cum. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Donec pretium vulputate sapien nec.'},
-    {question: 'Turpis egestas pretium aenean pharetra4?', answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Nulla malesuada pellentesque elit eget gravida cum. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Donec pretium vulputate sapien nec.'},
+const questions: {question: string, answer: string}[] = [
+    {question: 'questions-section.questions.question1.question', answer: 'questions-section.questions.question1.answer'},
+    {question: 'questions-section.questions.question2.question', answer: 'questions-section.questions.question2.answer'},
+    {question: 'questions-section.questions.question3.question', answer: 'questions-section.questions.question3.answer'},
+    {question: 'questions-section.questions.question4.question', answer: 'questions-section.questions.question4.answer'},
 ]
 
 export default questions
