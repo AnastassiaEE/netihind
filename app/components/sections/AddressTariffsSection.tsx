@@ -1,7 +1,7 @@
-import SectionLayout from "../../layouts/SectionLayout";
-import addressTariffs from "../../data/addressTariffs";
-import Tariffs from "../ui/tariffs/Tariffs";
-import TariffsButtonsFilter from "../ui/tariffs/TariffsButtonsFilter";
+import SectionLayout from "@/layouts/SectionLayout";
+import addressTariffs from "@/data/addressTariffs";
+import Tariffs from "@/components/ui/tariffs/Tariffs";
+import TariffsButtonsFilter from "@/components/ui/tariffs/TariffsButtonsFilter";
 
 export default function AddressTariffsSection() {
     return (

@@ -1,6 +1,6 @@
 'use client'
 
-import useAddressForm from '../../../hooks/useAddressForm';
+import useAddressForm from '@/hooks/useAddressForm';
 import CloseIcon from '@mui/icons-material/Close';
 import Searchbar from "./Searchbar";
 import Button from "./Button";

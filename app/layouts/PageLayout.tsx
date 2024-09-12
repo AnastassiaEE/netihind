@@ -1,6 +1,6 @@
 
-import Header from "../components/ui/header/Header";
-import Footer from "../components/ui/footer/Footer";
+import Header from "@/components/ui/header/Header";
+import Footer from "@/components/ui/footer/Footer";
 
 export default function PageLayout({
     headerVariant,

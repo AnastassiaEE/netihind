@@ -1,17 +1,17 @@
 'use client'
 
-import secondaryLogo from '../../../../public/images/gradientsecondarylogo.svg';
+import secondaryLogo from '@/public/images/gradientsecondarylogo.svg';
 import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import useScrollPosition from "../../../hooks/useScrollPosition";
-import useSidebar from "../../../hooks/useSidebar";
-import ConsultationButton from "../buttons/ConsultationButton";
+import useScrollPosition from "@/hooks/useScrollPosition";
+import useSidebar from "@/hooks/useSidebar";
+import ConsultationButton from "@/components/ui/buttons/ConsultationButton";
 import Hamburger from "./Hamburger";
-import Logo from "../Logo";
+import Logo from "@/components/ui/Logo";
 import HeaderItems from "./HeaderItems";
 import HeaderItem from "./HeaderItem";
 import Sidebar from "./Sidebar";
-import Overlay from "../Overlay";
+import Overlay from "@/components/ui/Overlay";
 
 const TOOLBAR_SHOW_POSITION = 400;
 

@@ -1,10 +1,10 @@
 import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import mainLogo from '../../../../public/images/gradientmainlogo.svg';
-import ConsultationButton from '../buttons/ConsultationButton';
+import mainLogo from '@/public/images/gradientmainlogo.svg';
+import ConsultationButton from '@/components/ui/buttons/ConsultationButton';
 import HeaderItems from './HeaderItems';
 import HeaderItem from './HeaderItem';
-import Logo from "../Logo";
+import Logo from "@/components/ui/Logo";
 
 export default function TopHeader() {
     return (

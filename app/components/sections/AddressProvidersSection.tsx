@@ -1,6 +1,6 @@
-import ProviderCards from "../ui/providers/ProviderCards";
-import SectionLayout from "../../layouts/SectionLayout";
-import providers from "../../data/providers";
+import ProviderCards from "@/components/ui/providers/ProviderCards";
+import SectionLayout from "@/layouts/SectionLayout";
+import providers from "@/data/providers";
 
 
 export default async function AddressProvidersSection() {

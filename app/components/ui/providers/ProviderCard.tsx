@@ -1,6 +1,6 @@
 import Image, { StaticImageData } from "next/image";
 import PhoneIcon from '@mui/icons-material/Phone';
-import Button from "../form/Button";
+import Button from "@/components/ui/form/Button";
 
 export default function ProviderCard({
     name, 

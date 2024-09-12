@@ -1,5 +1,5 @@
-import LanguageSwitcher from '../language-switcher/LanguageSwitcher';
-import Navbar from '../navigation/Navbar';
+import LanguageSwitcher from '@/components/ui/language-switcher/LanguageSwitcher';
+import Navbar from '@/components/ui/navigation/Navbar';
 
 export default function BottomHeader() {
     return (

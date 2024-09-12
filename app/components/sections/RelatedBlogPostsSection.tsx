@@ -1,5 +1,5 @@
-import SectionLayout from "../../layouts/SectionLayout";
-import Button from "../ui/form/Button";
+import SectionLayout from "@/layouts/SectionLayout";
+import Button from "@/components/ui/form/Button";
 import Link from "next/link";
 
 export default function RelatedBlogPostsSection() {

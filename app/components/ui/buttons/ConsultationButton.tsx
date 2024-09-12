@@ -1,7 +1,7 @@
 'use client'
 
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
-import Button from "../form/Button";
+import Button from "@/components/ui/form/Button";
 
 export default function ConsultationButton({
     type = 'desktop'

@@ -2,7 +2,7 @@
 
 import { Children } from "react";
 import CircleArrow from '../arrow/CircleArrow';
-import useAccordionItem from "../../../hooks/useAccordionItem";
+import useAccordionItem from "@/hooks/useAccordionItem";
 
 const closedArrowStyle = `bg-neutral-light`;
 

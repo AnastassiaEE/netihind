@@ -1,6 +1,6 @@
-import SectionLayout from "../../layouts/SectionLayout";
-import ListBlogCards from "../ui/blog/ListBlogCards";
-import posts from "../../data/posts";
+import SectionLayout from "@/layouts/SectionLayout";
+import ListBlogCards from "@/components/ui/blog/ListBlogCards";
+import posts from "@/data/posts";
 
 export default function ListBlogSection() {
     return (

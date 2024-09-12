@@ -1,17 +1,17 @@
 'use client'
 
-import secondaryLogo from '../../../../public/images/gradientsecondarylogo.svg';
+import secondaryLogo from '@/public/images/gradientsecondarylogo.svg';
 import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import ConsultationButton from "../buttons/ConsultationButton";
+import ConsultationButton from "@/components/ui/buttons/ConsultationButton";
 import StickyHeader from "./StickyHeader";
 import HeaderItems from "./HeaderItems";
 import HeaderItem from "./HeaderItem";
 import Hamburger from "./Hamburger";
 import Sidebar from "./Sidebar";
-import Overlay from "../Overlay";
-import useSidebar from "../../../hooks/useSidebar";
-import Logo from "../Logo";
+import Overlay from "@/components/ui/Overlay";
+import useSidebar from "@/hooks/useSidebar";
+import Logo from "@/components/ui/Logo";
 
 export default function MobileHeader() {
 

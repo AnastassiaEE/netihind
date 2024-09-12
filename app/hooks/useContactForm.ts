@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { validateField } from "../utils/fieldsValidator";
+import { validateField } from "@/utils/fieldsValidator";
 
 export default function useContactForm() {
 

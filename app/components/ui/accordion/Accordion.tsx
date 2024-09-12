@@ -1,6 +1,6 @@
 'use client'
 
-import AccordionItem from "@/components/ui/accordion/AccordionItem";
+import AccordionItem from "./AccordionItem";
 import React from "react";
 import { useTranslation } from "react-i18next";
 

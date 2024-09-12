@@ -1,4 +1,4 @@
-import useDropdownBox from "../../../hooks/useDropdownBox";
+import useDropdownBox from "@/hooks/useDropdownBox";
 import DropdownBoxItem from "./DropdownBoxItem";
 
 export default function DropdownBox({

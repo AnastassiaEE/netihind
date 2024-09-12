@@ -22,6 +22,8 @@
       "@/components/*": ["app/components/*"],
       "@/layouts/*": ["app/layouts/*"],
       "@/data/*": ["app/data/*"],
+      "@/hooks/*": ["app/hooks/*"],
+      "@/utils/*": ["app/utils/*"],
       "@/app/*": ["app/*"],
       "@/*": ["./*"]
     }

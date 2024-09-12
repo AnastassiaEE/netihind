@@ -1,6 +1,6 @@
 'use client'
 
-import useContactForm from '../../../hooks/useContactForm';
+import useContactForm from '@/hooks/useContactForm';
 import FormResponse from './FormResponse';
 import LoopIcon from '@mui/icons-material/Loop';
 import AddIcon from '@mui/icons-material/Add';

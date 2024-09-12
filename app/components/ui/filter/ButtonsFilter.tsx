@@ -1,7 +1,7 @@
 'use client'
 
-import useButtonsFilter from "../../../hooks/useButtonsFilter";
-import Button from "../form/Button";
+import useButtonsFilter from "@/hooks/useButtonsFilter";
+import Button from "@/components/ui/form/Button";
 
 export default function ButtonsFilter({buttons}: {buttons: {[key:string]: boolean}}) {
     const {usedFilters, handleFilterClick} = useButtonsFilter(buttons); 
