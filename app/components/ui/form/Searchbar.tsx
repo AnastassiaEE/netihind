@@ -1,4 +1,4 @@
-import useSearcharbar from "../../../hooks/useSearchbar";
+import useSearcharbar from "@/hooks/useSearchbar";
 import { SvgIconComponent } from "@mui/icons-material"
 import DropdownBox from "./DropdownBox";
 import IconInput from "./IconInput";
