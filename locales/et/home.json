@@ -9,23 +9,23 @@
     },
     "steps-section": {
         "title": "Kuidas see toimib?",
-        "description": "Ut faucibus pulvinar elementum integer enim. Euismod lacinia at quis risus sed vulputate.",
+        "description": "4 lihtsat sammu Interneti-ühenduse loomiseks.",
         "steps": {
             "step1": {
-                "title": "Accumsan",
-                "description": "Sed turpis tincidunt id aliquet risus feugiat in ante."
+                "title": "Vormi täitmine",
+                "description": "Täitke ankeet oma nime, aadressi, telefoninumbri ja eelistatud kontaktiajaga. Vajadusel jätke sõnum."
             },
             "step2": {
-                "title": "Consectetur",
-                "description": "Maecenas ultricies mi eget mauris pharetra et ultrices neque."
+                "title": "Konsultatsioon ja paketi valik",
+                "description": "Võtame teiega ühendust tasuta konsultatsiooni saamiseks, aitame teil valida kõige sobivaima paketi. Anname teenusepakkujale infot edasi."
             },
             "step3": {
-                "title": "Neque",
-                "description": "Turpis egestas pretium aenean pharetra magna ac placerat vestibulum."
+                "title": "Kõne valitud teenusepakkuja poolt",
+                "description": "Teenusepakkuja võtab teiega ühendust, et arutada lepingu tingimusi ning leppida kokku millal tehnik võib paigaldada koduinterneti."
             },
             "step4": {
-                "title": "Faucibus",
-                "description": "Vulputate sapien nec sagittis aliquam malesuada bibendum arcu vitae."
+                "title": "Liitumine",
+                "description": "Tehnik tuleb kohal ja paigaldab koduinterneti ja siis allkirjastate lepingut ära."
             }
         }
     },

@@ -20,7 +20,7 @@ export default function Step({
                 <span className="bg-white text-2xl font-extrabold rounded-full flex justify-center items-center shadow-md w-14 h-14"> {index} </span>
             </div>
             <div className="max-md:pl-6 md:text-center">
-                <div className="text-2xl font-extrabold mb-4">{title}</div>
+                <div className="text-[calc(1.275rem+0.3vw)] lg:text-2xl font-extrabold mb-4 md:h-24">{title}</div>
                 <p className="text-muted-dark text-base">{desc}</p>
             </div>
     </div>

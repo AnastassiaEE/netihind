@@ -9,23 +9,23 @@
     },
     "steps-section": {
         "title": "Как это работает?",
-        "description": "Ut faucibus pulvinar elementum integer enim. Euismod lacinia at quis risus sed vulputate.",
+        "description": "4 простых шага, которые могут помочь Вам подключить интернет.",
         "steps": {
             "step1": {
-                "title": "Accumsan",
-                "description": "Sed turpis tincidunt id aliquet risus feugiat in ante."
+                "title": "Заполнение анкеты",
+                "description": "Укажите имя, адрес, номер телефона и предпочтительное время связи. При необходимости оставьте сообщение."
             },
             "step2": {
-                "title": "Consectetur",
-                "description": "Maecenas ultricies mi eget mauris pharetra et ultrices neque."
+                "title": "Консультация и выбор пакета",
+                "description": "Мы свяжемся с Вами для бесплатной консультации, поможем выбрать лучшего для Вас оператора, после чего передим заявку на подключение оператору выбранной Вами сети."
             },
             "step3": {
-                "title": "Neque",
-                "description": "Turpis egestas pretium aenean pharetra magna ac placerat vestibulum."
+                "title": "Звонок от оператора сети",
+                "description": "С Вами свяжется оператор сети, чтобы обговорить условия договора и выбрать время для приезда мастера."
             },
             "step4": {
-                "title": "Faucibus",
-                "description": "Vulputate sapien nec sagittis aliquam malesuada bibendum arcu vitae."
+                "title": "Подключение",
+                "description": "Мастер приезжает на место и устанавливает выбранный Вами пакет, после чего Вы подписываете договор с провайдером."
             }
         }
     },

@@ -36,11 +36,11 @@ export default function Steps({children}: {children: React.ReactNode}) {
 
     const drawLine = (index: number) =>  {
         if (index === 1) {
-            return bottomLineStyle + " " + rightLineStyle;
+            return `${bottomLineStyle} ${rightLineStyle}`;
         } else if (index === Children.toArray(children).length) {
-            return topLineStyle + " " + leftLineStyle;
+            return `${topLineStyle} ${leftLineStyle}`;
         } else {
-            return bottomLineStyle + " " + topLineStyle + " " + rightLineStyle + " " + leftLineStyle;
+            return `${bottomLineStyle} ${topLineStyle} ${rightLineStyle} ${leftLineStyle}`;
         }
     }
    
@@ -53,7 +53,7 @@ export default function Steps({children}: {children: React.ReactNode}) {
                             return React.cloneElement(
                                 child as React.ReactElement,
                                 { 
-                                    padding: 'max-md:py-6 md:px-6',
+                                    padding: 'max-md:py-6 md:px-4 lg:px-6',
                                     lines: drawLine(child.props.index)
                                 }
                             )
