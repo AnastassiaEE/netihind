@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 
 export default function AddressForm() { 
 
-    const { t } = useTranslation(['address-form'])
+    const { t } = useTranslation(['form'])
 
     const {
         addresses, 
@@ -31,7 +31,7 @@ export default function AddressForm() {
                     data={addresses}
                     size="lg"
                     name="address"
-                    placeholder={t('placeholders.address')}
+                    placeholder={t('address.placeholders.address')}
                     handleChange={handleAddressInputChange} 
                     handleItemClick={handleAddressClick}
                     value={values.address}
@@ -45,7 +45,7 @@ export default function AddressForm() {
                         data={apartments}
                         size="lg"
                         name="apartment"
-                        placeholder={t('placeholders.apartment')}
+                        placeholder={t('address.placeholders.apartment')}
                         handleChange={handleApartmentInputChange}
                         handleItemClick={handleApartmentClick}
                         value={values.apartment}
@@ -54,7 +54,7 @@ export default function AddressForm() {
                 </div>
             }
             <div className={`basis-full ${errors.apartment !== '' ? 'mt-12': 'mt-7'} sm:basis-auto sm:mt-0`}>
-                <Button type="submit" size="lg"> {t('buttons.find')} </Button>
+                <Button type="submit" size="lg"> {t('address.buttons.find')} </Button>
             </div>    
         </form>
     )

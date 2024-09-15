@@ -136,13 +136,13 @@ export default function useAddressForm() {
     const validateForm = () => {
         const {address, apartment} = selected;
         if (values.address.length < 2) {
-            setErrors({...errors, address: 'errors.enter'});
+            setErrors({...errors, address: 'address.errors.short-address'});
             return false;
         } else if (address === '') {
-            setErrors({...errors, address: 'errors.address'});
+            setErrors({...errors, address: 'address.errors.invalid-address'});
             return false;
         } else if (address !== '' && apartment === '' && allAddressApartments.length > 0) {
-            setErrors({...errors, apartment: 'errors.apartment'});
+            setErrors({...errors, apartment: 'address.errors.invalid-apartment'});
             return false;
         } else if (address !== '' && (apartment !== '' || allAddressApartments.length === 0)) {
             return true;

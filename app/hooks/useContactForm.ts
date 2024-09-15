@@ -14,7 +14,7 @@ export default function useContactForm() {
     }
 
     useEffect(() => {
-        const messages = [{type: 'success', message: 'Your message has been successfully sent!'}, {type: 'error', message: 'Something went wrong!'}];
+        const messages = [{type: 'success', message: 'success.sent-successfully'}, {type: 'error', message: 'errors.something-went-wrong'}];
         let timer = null;
         if(isLoading) {
             timer = setTimeout(() => {
