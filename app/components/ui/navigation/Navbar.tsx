@@ -15,7 +15,7 @@ export default function Navbar({
             {children}
             <NavigationItem href="/blog">Blog</NavigationItem>
             <NavigationItem href="/about">About Us</NavigationItem>
-            <NavigationItem href="#">Link3</NavigationItem>
+            <NavigationItem href="/contacts">Contacts</NavigationItem>
         </Navigation>
     )
 }
