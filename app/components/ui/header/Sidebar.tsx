@@ -4,6 +4,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import Navigation from '@/components/ui/navigation/Navigation';
 import NavigationItem from '@/components/ui/navigation/NavigationItem';
 import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '../language-switcher/LanguageSwitcher';
 
 export default function Sidebar({
     isOpened,
@@ -21,12 +22,17 @@ export default function Sidebar({
                 <button type="button" className="h-max" onClick={handleClose}><CloseIcon className="text-muted hover:text-black transition-colors"/></button>
             </div>
             <div className="p-6">
-            <Navigation type="vertical">
-                <NavigationItem href="/blog">{t('blog')}</NavigationItem>
-                <NavigationItem href="/about">{t('about-us')}</NavigationItem>
-                <NavigationItem href="/contacts">{t('contacts')}</NavigationItem>
-            </Navigation>
+                <Navigation type="vertical">
+                    <NavigationItem href="/blog">{t('blog')}</NavigationItem>
+                    <NavigationItem href="/about">{t('about-us')}</NavigationItem>
+                    <NavigationItem href="/contacts">{t('contacts')}</NavigationItem>
+                </Navigation>
+                <div className="py-8">
+                    <LanguageSwitcher/>
+                </div>
+                
             </div>
+            
         </div>
     )
 }
