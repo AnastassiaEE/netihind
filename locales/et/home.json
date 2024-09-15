@@ -1,7 +1,7 @@
 {
     "top-section": {
         "title": "Otsige koduseid <span>Interneti-teenuse pakkujaid</span> aadressi järgi",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi non arcu risus quis varius quam quisque id diam."
+        "description": "Kas ei tea, milline teenusepakkuja teie kodus on? Kas soovid valida endale sobiva koduse internetipaketi? Andke meile teada ja vaatame koos üle! Täitke vorm ja saate tasuta konsultatsiooni."
     },
     "info-section": {
         "title": "Rhoncus est pellentesque (et)",
@@ -9,45 +9,45 @@
     },
     "steps-section": {
         "title": "Kuidas see toimib?",
-        "description": "4 lihtsat sammu Interneti-ühenduse loomiseks.",
+        "description": "4 lihtsat sammu, mis aitavad Teil ühendada koduse Interneti.",
         "steps": {
             "step1": {
                 "title": "Vormi täitmine",
-                "description": "Täitke ankeet oma nime, aadressi, telefoninumbri ja eelistatud kontaktiajaga. Vajadusel jätke sõnum."
+                "description": "Täitke vorm oma nime, aadressi, telefoninumbri ja eelistatud kontaktiajaga. Vajadusel jätke sõnum."
             },
             "step2": {
                 "title": "Konsultatsioon ja paketi valik",
-                "description": "Võtame teiega ühendust tasuta konsultatsiooni saamiseks, aitame teil valida kõige sobivaima paketi. Anname teenusepakkujale infot edasi."
+                "description": "Võtame Teiega ühendust tasuta konsultatsiooni saamiseks, aitame Teil valida koduse internetipaketi ning seejärel edastame infot valitud paketi teenusepakkujale."
             },
             "step3": {
                 "title": "Kõne valitud teenusepakkuja poolt",
-                "description": "Teenusepakkuja võtab teiega ühendust, et arutada lepingu tingimusi ning leppida kokku millal tehnik võib paigaldada koduinterneti."
+                "description": "Teenusepakkuja võtab Teiega ühendust et leppida kokku, millal tehnik võib paigaldada koduinterneti."
             },
             "step4": {
                 "title": "Liitumine",
-                "description": "Tehnik tuleb kohal ja paigaldab koduinterneti ja siis allkirjastate lepingut ära."
+                "description": "Tehnik tuleb kohale ja paigaldab koduinterneti, misjärel allkirjastate lepingu."
             }
         }
     },
     "questions-section": {
-        "title": "Kas teil on küsimusi? Vaadake meie korduma kippuvaid küsimusi.",
-        "description": "Kas teil on endiselt vastamata küsimusi ja soovite ühendust võtta?",
+        "title": "Kas Teil on küsimusi? Vaadake meie korduma kippuvaid küsimusi.",
+        "description": "Kas Teil on endiselt vastamata küsimusi ja soovite meiega ühendust võtta?",
         "questions": {
             "question1": {
-                "question": "Turpis egestas pretium aenean pharetra1?",
-                "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Nulla malesuada pellentesque elit eget gravida cum. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Donec pretium vulputate sapien nec."
+                "question": "Miks pean oma telefoni numbrit jagama?",
+                "answer": "Telefoninumbrit on vaja selleks, et Netihindi operaator saaks Teiega ühendust võtta ja kodust internetiühendust taotleda, samal ajal saame vastata küsimustele erinevate teenusepakkujate paketide ja jooksvate soodustuste kohta."
             },
             "question2": {
-                "question": "Turpis egestas pretium aenean pharetra2?",
-                "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Nulla malesuada pellentesque elit eget gravida cum. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Donec pretium vulputate sapien nec."
+                "question": "Miks pean kirjutama oma aadressi?",
+                "answer": "Igas majas on oma interneti kaablid ja erinevad tehnoloogiad. Aadressi järgi näeme, millised tehnoloogiad on Teie majas saadaval ja selle põhjal valida Teile sobivaima paketi."
             },
             "question3": {
-                "question": "Turpis egestas pretium aenean pharetra3?",
-                "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Nulla malesuada pellentesque elit eget gravida cum. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Donec pretium vulputate sapien nec."
+                "question": "Miks ma pean liituma läbi Netihind?",
+                "answer": "<ul><li><bullet/>Säästame Teie aega. Anname Teile teavet kõigi teenusepakkujate pakkumiste kohta. Te ei pea mitut saiti korraga avama.</li><li><bullet/>Sõltumatu arvamus. Meie töötame kõigi teenusepakkujatega ning lähtuvalt teie vajadustest saame valida parima lahenduse.</li></ul>"
             },
             "question4": {
-                "question": "Turpis egestas pretium aenean pharetra4?",
-                "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Nulla malesuada pellentesque elit eget gravida cum. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Donec pretium vulputate sapien nec."
+                "question": "Miks Netihind veebilehe kasutamine on tasuta?",
+                "answer": "Teenus on kasutajatele täiesti tasuta. Aitame Teil valida enda jaoks parima lahenduse. Teenusepakkuja maksab meile Teie liitumise eest."
             }
         },
         "contact-button": "Võtke meiega kohe ühendust"
@@ -57,7 +57,7 @@
     },
     "contacts-section": {
         "title": "Võtke meiega ühendust",
-        "description": "Proin ipsum pharetra, senectus eget scelerisque varius pretium platea velit. Lacus, eget eu vitae nullam proin turpis etiam mi sit. Non feugiat feugiat egestas nulla nec. Arcu tempus, eget elementum dolor ullamcorper sodales ultrices eros.",
+        "description": "Kui Teil on küsimusi, andke meile teada ja me võtame Teiega esimesel võimalusel ühendust või võtke meiega ise ühendust!",
         "subtitle": "Kontaktid"
     }
 }
