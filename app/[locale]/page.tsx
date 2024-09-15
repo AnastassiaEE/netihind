@@ -8,7 +8,7 @@ import PageLayout from '@/layouts/PageLayout';
 import initTranslations from '@/app/i18n';
 import TranslationsProvider from "@/components/TranslationProvider";
 
-const i18nNamespaces = ['home', 'form'];
+const i18nNamespaces = ['home', 'form', 'navigation'];
 
 export default async function Home({
   params: { locale } 
