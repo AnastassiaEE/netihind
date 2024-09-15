@@ -14,9 +14,7 @@ export default function Accordion({items}: {items: {[key: string]: string}[]}) {
                 return (
                     <AccordionItem key={index}> 
                         <>{t(item[header])}</>
-                        <Trans i18nKey={t(item[body])} components={{ul: <ul/>, li: <li/>, bullet: <CheckIcon fontSize="small" className="text-primary mr-1.5"/>}}>
-                            {t(item[body])}
-                        </Trans>     
+                        <Trans i18nKey={t(item[body])} components={{ul: <ul/>, li: <li/>, bullet: <CheckIcon fontSize="small" className="text-primary mr-1.5"/>}}/>    
                     </AccordionItem>
                 )
             })}
