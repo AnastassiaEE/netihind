@@ -24,6 +24,7 @@
       "@/data/*": ["app/data/*"],
       "@/hooks/*": ["app/hooks/*"],
       "@/utils/*": ["app/utils/*"],
+      "@/markdown/*": ["app/markdown/*"],
       "@/app/*": ["app/*"],
       "@/*": ["./*"]
     }
