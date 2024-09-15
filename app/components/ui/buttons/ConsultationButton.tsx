@@ -2,12 +2,16 @@
 
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
 import Button from "@/components/ui/form/Button";
+import { useTranslation } from 'react-i18next';
 
 export default function ConsultationButton({
     type = 'desktop'
 }: {
     type?: 'desktop' | 'mobile' 
 }) {
+
+    const { t } = useTranslation('form');
+
     return (
         <a href="tel:+37256979125">
             <Button size="lg" className={`!pt-0.5 !pb-1 ${type == 'mobile' && '!px-2'} rounded-md`}>
@@ -16,7 +20,7 @@ export default function ConsultationButton({
                     { type == 'desktop' &&
                         <div className="flex flex-col text-left">
                             <span className="text-base font-bold">+37256979125</span>
-                            <span className="text-xs uppercase">Free consultation</span>
+                            <span className="text-xs uppercase">{t('buttons.free-consultation')}</span>
                         </div>
                     }
                 </div>
