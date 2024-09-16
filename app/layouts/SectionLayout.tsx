@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 export default function SectionLayout({
   bg, 
   className,
@@ -7,8 +9,14 @@ export default function SectionLayout({
     className?: string
     children: React.ReactNode,
   }) {
+    
+    const sectionClasses = classNames({
+      [bg as string]: bg !== undefined,
+      [className as string]: className !== undefined,
+    });
+
     return (
-      <section className={`${bg} ${className}`}>
+      <section className={sectionClasses}>
         <div className="container">
           {children}
         </div>

@@ -3,8 +3,11 @@ import type { Metadata } from 'next'
 import { Manrope } from 'next/font/google'
 import i18nConfig from '@/i18nConfig';
 import { dir } from 'i18next';
+import initTranslations from '../i18n';
+import TranslationsProvider from '@/components/TranslationProvider';
 
 const inter = Manrope({ subsets: ['latin'] })
+const i18nNamespaces = ['home', 'form', 'navigation', 'about'];
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -15,16 +18,24 @@ export function generateStaticParams() {
   return i18nConfig.locales.map(locale => ({ locale }));
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   params: { locale },
   children
 }: {
   params: { locale: string };
   children: React.ReactNode
 }) {
+  const { t, resources } = await initTranslations(locale, i18nNamespaces);
   return (
     <html lang={locale} dir={dir(locale)}>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}> 
+        <TranslationsProvider
+          namespaces={i18nNamespaces}
+          locale={locale}
+          resources={resources}>
+          {children}
+      </TranslationsProvider>
+      </body>
     </html>
   )
 }

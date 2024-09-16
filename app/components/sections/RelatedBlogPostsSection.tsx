@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function RelatedBlogPostsSection() {
     return (
-        <SectionLayout className="pb-24">
+        <SectionLayout>
             <div className="flex justify-end">
                 <div className="w-full md:w-44">
                     <Link href="/blog">

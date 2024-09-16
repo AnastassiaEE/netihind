@@ -11,7 +11,7 @@ export default function AboutSection({locale}: {locale: string}) {
     const AboutMdxEt = dynamic(() => import(''+'@/markdown/et/about.mdx'), {loading: () => <Loading/>}) 
     const AboutMdxRu = dynamic(() => import(''+'@/markdown/ru/about.mdx'), {loading: () => <Loading/>}) 
     return (
-        <SectionLayout className="p-24">
+        <SectionLayout>
             <h1 className="text-4xl font-extrabold mb-10">{t('title')}</h1>
             <MdxLayout>
                 {locale === 'et' && <AboutMdxEt/>}
