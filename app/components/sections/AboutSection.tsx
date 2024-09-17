@@ -12,7 +12,7 @@ export default function AboutSection({locale}: {locale: string}) {
     const AboutMdxRu = dynamic(() => import(''+'@/markdown/ru/about.mdx'), {loading: () => <PingLoader/>}) 
     return (
         <SectionLayout>
-            <h1 className="text-4xl font-extrabold mb-10">{t('title')}</h1>
+            <h1 className="text-[calc(1.375rem+1.5vw)] md:text-4xl font-extrabold mb-10">{t('title')}</h1>
             <MdxLayout>
                 {locale === 'et' && <AboutMdxEt/>}
                 {locale === 'ru' && <AboutMdxRu/>}

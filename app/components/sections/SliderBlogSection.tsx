@@ -9,7 +9,7 @@ export default function BlogSection() {
     const { t } = useTranslation()
     return (
         <SectionLayout bg="bg-neutral-light" className="py-24">
-            <h2 className="text-4xl font-extrabold text-center mb-10"> {t('blog-section.title')} </h2>
+            <h2 className="text-[calc(1.375rem+1.5vw)] md:text-4xl font-extrabold text-center mb-10"> {t('blog-section.title')} </h2>
             <SliderBlogCards items={posts}/> 
         </SectionLayout>
     )

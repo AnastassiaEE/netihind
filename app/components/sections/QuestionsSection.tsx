@@ -11,7 +11,7 @@ export default function QuestionsSection() {
         <SectionLayout bg="bg-white" className="py-24">
             <div className="flex flex-col md:flex-row items-center justify-between">
                 <div className="md:w-4/12">
-                    <h2 className="text-4xl font-extrabold mb-6"> {t('questions-section.title')} </h2>
+                    <h2 className="text-[calc(1.375rem+1.5vw)] md:text-4xl font-extrabold mb-6"> {t('questions-section.title')} </h2>
                     <div className="text-muted-dark text-lg max-md:mb-12">
                         <p>{t('questions-section.description')}</p>
                     </div>

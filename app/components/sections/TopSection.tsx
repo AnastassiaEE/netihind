@@ -42,7 +42,7 @@ export default function TopSection() {
                 </MeshSvg>
             </div>
             <div className="lg:w-10/12 md:-translate-y-16">
-                <h1 className="max-md:text-[calc(1.475rem+2.7vw)] md:text-5xl !leading-snug font-extrabold mb-4">
+                <h1 className="text-[calc(1.475rem+2.7vw)] md:text-5xl !leading-snug font-extrabold mb-4">
                     <Trans 
                         i18nKey="top-section.title" 
                         components={{

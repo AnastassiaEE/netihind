@@ -14,11 +14,11 @@ export default function ContactsSection() {
             <div className="md:flex md:justify-between md:items-center">
                 <div className="md:w-1/2 max-md:mb-12">
                     <div className="mb-20">
-                        <h2 className="text-4xl font-extrabold mb-6"> {t('contacts-section.title')} </h2>
+                        <h2 className="text-[calc(1.375rem+1.5vw)] md:text-4xl font-extrabold mb-6"> {t('contacts-section.title')} </h2>
                         <p className="text-muted-dark text-base"> {t('contacts-section.description')}</p>
                     </div>
                     <div>
-                        <h3 className="text-3xl font-extrabold mb-6">{t('contacts-section.subtitle')}</h3>
+                        <h3 className="text-[calc(1.325rem+0.9vw)] md:text-3xl font-extrabold mb-6">{t('contacts-section.subtitle')}</h3>
                         <ul>
                             <li className="flex items-center mb-5">
                                 <Phone className="text-primary"/>

@@ -11,7 +11,7 @@ export default function InfoSection() {
         <SectionLayout bg="bg-white" className="pt-24"> 
             <div className="flex flex-col md:flex-row items-center justify-between">
                 <div className="md:w-6/12">
-                    <h2 className="text-4xl font-extrabold mb-6"> {t('info-section.title')} </h2>
+                    <h2 className="text-[calc(1.375rem+1.5vw)] md:text-4xl font-extrabold mb-6"> {t('info-section.title')} </h2>
                     <div className="text-muted-dark text-base">
                         <Trans i18nKey="info-section.content" components={{p: <p/>}}>
                             {t('info-section.content')}

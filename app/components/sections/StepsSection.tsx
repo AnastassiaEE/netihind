@@ -10,7 +10,7 @@ export default function StepsSection() {
     const { t } = useTranslation();
     return (
         <SectionLayout bg="white" className="pt-24">
-            <h2 className="text-4xl font-extrabold text-center mb-6"> {t('steps-section.title')} </h2>
+            <h2 className="text-[calc(1.375rem+1.5vw)] md:text-4xl font-extrabold text-center mb-6"> {t('steps-section.title')} </h2>
             <p className="text-muted-dark text-lg text-center mb-12">{t('steps-section.description')}</p>
             <Steps>
                 {steps.map((_, index) => {
