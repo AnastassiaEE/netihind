@@ -29,6 +29,7 @@
     "react-dom": "^18.3.1",
     "react-i18next": "^15.0.1",
     "react-scroll-parallax": "^3.4.5",
+    "remark-gfm": "^4.0.0",
     "swiper": "^11.0.5"
   },
   "devDependencies": {
