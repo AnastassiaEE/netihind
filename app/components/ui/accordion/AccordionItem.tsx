@@ -34,7 +34,7 @@ export default function AccordionItem({children}:{children: React.ReactNode}) {
 
     const [question, answer] = Children.toArray(children)
 
-    const buttonClasses = classNames('flex justify-between items-center w-full p-6', {
+    const buttonClasses = classNames('flex justify-between items-center text-left w-full p-6', {
         'border-b': isOpened
     })
     

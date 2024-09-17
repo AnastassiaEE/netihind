@@ -3,7 +3,7 @@
 import AccordionItem from "./AccordionItem";
 import React from "react";
 import { Trans, useTranslation } from "react-i18next";
-import CheckIcon from '@mui/icons-material/Check';
+import Check from "@/components/ui/icons/Check";
 
 export default function Accordion({items}: {items: {[key: string]: string}[]}) {
     const { t } = useTranslation();
@@ -14,7 +14,7 @@ export default function Accordion({items}: {items: {[key: string]: string}[]}) {
                 return (
                     <AccordionItem key={index}> 
                         <>{t(item[header])}</>
-                        <Trans i18nKey={t(item[body])} components={{ul: <ul/>, li: <li/>, bullet: <CheckIcon fontSize="small" className="text-primary mr-1.5"/>}}/>    
+                        <Trans i18nKey={t(item[body])} components={{ul: <ul/>, li: <li className="mb-2"/>, bullet: <Check size="small"/>}}/>    
                     </AccordionItem>
                 )
             })}
