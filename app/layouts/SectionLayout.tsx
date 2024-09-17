@@ -1,26 +1,22 @@
 import classNames from 'classnames';
 
 export default function SectionLayout({
-  bg, 
+  bg,
   className,
-  children, 
+  children,
 }: {
-    bg?: string,
-    className?: string
-    children: React.ReactNode,
-  }) {
-    
-    const sectionClasses = classNames({
-      [bg as string]: bg !== undefined,
-      [className as string]: className !== undefined,
-    });
+  bg?: string;
+  className?: string;
+  children: React.ReactNode;
+}) {
+  const sectionClasses = classNames({
+    [bg as string]: bg !== undefined,
+    [className as string]: className !== undefined,
+  });
 
-    return (
-      <section className={sectionClasses}>
-        <div className="container">
-          {children}
-        </div>
-      </section>
-    )
-  }
-  
+  return (
+    <section className={sectionClasses}>
+      <div className="container">{children}</div>
+    </section>
+  );
+}

@@ -1,4 +1,4 @@
-import classNames from "classnames"
+import classNames from 'classnames';
 
 const styles = classNames(
   'prose',
@@ -11,19 +11,15 @@ const styles = classNames(
   'prose-p:mt-0',
   'prose-p:text-muted-dark',
   'prose-ul:not(:last-child):mb-6',
- 
+
   'prose-ul:list-none',
   'prose-ul:p-0',
   'hover:prose-a:text-primary',
   'prose-a:transition-colors',
-  'max-w-none'
-)
+  'max-w-none',
+);
 
 export default function MdxLayout({ children }: { children: React.ReactNode }) {
   // Create any shared layout or styles here
-  return (
-    <div className={styles}>
-      {children}
-    </div>
-  )
+  return <div className={styles}>{children}</div>;
 }
