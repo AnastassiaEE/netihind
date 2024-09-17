@@ -1,3 +1,5 @@
+import classNames from "classnames"
+
 export default function FieldError({
     size = 'sm', 
     children
@@ -5,7 +7,11 @@ export default function FieldError({
     size?: 'sm' | 'lg',
     children: React.ReactNode
 }) {
+    const errorClasses = classNames('text-error font-medium absolute', {
+        "text-xs": size === 'sm',
+        "text-sm": size === 'lg'
+    })
     return (
-        <div className={`${size == "sm" ? "text-xs" : "text-sm"} text-error font-medium absolute`}>{children}</div>
+        <div className={errorClasses}>{children}</div>
     )
 }

@@ -5,6 +5,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import Searchbar from "./Searchbar";
 import Button from "./Button";
 import { useTranslation } from 'react-i18next';
+import classNames from 'classnames';
 
 export default function AddressForm() { 
 
@@ -24,6 +25,10 @@ export default function AddressForm() {
         handleSubmit
     } = useAddressForm();
 
+    const buttonBlockClasses = classNames('basis-full sm:basis-auto', {
+        'max-sm:mt-12': errors.apartment !== '',
+        'max-sm:mt-7': errors.apartment === ''
+    })
     return (    
         <form action="" onSubmit={handleSubmit} className="flex flex-wrap items-center gap-x-1.5">
             <div className="grow basis-auto">
@@ -53,7 +58,7 @@ export default function AddressForm() {
                         error={t(errors.apartment)}/>
                 </div>
             }
-            <div className={`basis-full ${errors.apartment !== '' ? 'mt-12': 'mt-7'} sm:basis-auto sm:mt-0`}>
+            <div className={buttonBlockClasses}>
                 <Button type="submit" size="lg"> {t('address.buttons.find')} </Button>
             </div>    
         </form>

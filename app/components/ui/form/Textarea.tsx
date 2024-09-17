@@ -1,15 +1,20 @@
 import FieldError from "./FieldError";
 import FieldLabel from "./FieldLabel";
+import classNames from "classnames";
 
-const baseClasses = 'w-full\
- bg-white\
- border\
- rounded-md\
- transition all\
- focus:outline-none\
- focus:shadow-lg\
- focus:shadow-indigo-500/10\
- placeholder: text-grey-300';
+const baseClasses = classNames(
+    'w-full',
+    'bg-white',
+    'border',
+    'rounded-md',
+    'text-muted-dark',
+    'transition-[padding]',
+    'transition all',
+    'focus:outline-none',
+    'focus:shadow-lg',
+    'focus:shadow-indigo-500/10',
+    'placeholder: text-grey-300'
+)
 
 const sizes: {[key: string]: string} = {
     sm: 'text-sm px-4 py-2.5',
@@ -39,14 +44,19 @@ export default function Textarea({
     error?: string,
     className?: string,
 }) {
-    const borderColor = isValid ? 'border-valid focus:border-primary/30' : 'border-invalid';
+
+    const textAreaClasses = classNames(baseClasses, sizes[size], {
+        'border-valid focus:border-primary/30': isValid,
+        'border-invalid': !isValid,
+        [className as string]: className !== undefined
+    })
     
     return (
         <>
             {label && <FieldLabel htmlFor={name} size={size}> {label} </FieldLabel>}
             <textarea
                 id={name}
-                className={`${baseClasses} ${sizes[size]} ${borderColor} ${className} text-muted-dark transition-[padding]`}  
+                className={textAreaClasses}  
                 placeholder={placeholder}
                 onChange={handleChange}
                 onBlur={handleBlur}

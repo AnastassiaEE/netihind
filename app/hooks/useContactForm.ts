@@ -22,11 +22,11 @@ export default function useContactForm() {
                 const res = messages[Math.floor(Math.random() * 2)];
                 if(res.type === 'success') resetValues();
                 setResponse(res);
-         }, 2000)
-    }
-      return () => {
-        timer && clearTimeout(timer);
-      }
+            }, 2000)
+        }
+        return () => {
+            timer && clearTimeout(timer);
+        }
     }, [isLoading])
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement>, field: string) => {

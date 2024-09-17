@@ -1,3 +1,5 @@
+import classNames from "classnames";
+
 const sizes: {[key: string]: string} = {
     sm: 'text-sm',
     lg: 'text-base'
@@ -18,7 +20,20 @@ export default function Checkbox({
     handleCheck: React.ChangeEventHandler<HTMLInputElement>,
     children: React.ReactNode
 }) {
-    const borderColor = isValid ? 'border-valid' : 'border-invalid';
+    const checkboxClasses = classNames(
+        'appearance-none',
+        'cursor-pointer',
+        'w-4',
+        'h-4',
+        'border',
+        'rounded-[.185em]',
+        'checked:bg-primary',
+        'checked:border-primary',
+        'checked:bg-[url("/images/tick.svg")]',
+        'mr-2', {
+        'border-valid': isValid,
+        'border-invalid': !isValid
+    })
 
     return (
         <div className="flex items-center">
@@ -26,10 +41,10 @@ export default function Checkbox({
                 id={name}
                 name={name} 
                 type="checkbox"
-                className={`appearance-none cursor-pointer w-4 h-4 border rounded-[.185em] ${borderColor} checked:bg-primary checked:border-primary checked:bg-[url('/images/tick.svg')] mr-2`}
+                className={checkboxClasses}
                 checked={isChecked}
                 onChange={handleCheck}/>
-                <label htmlFor={name} className={`${sizes[size]}`}> {children} </label>
+                <label htmlFor={name} className={sizes[size]}> {children} </label>
         </div>  
     )
 }

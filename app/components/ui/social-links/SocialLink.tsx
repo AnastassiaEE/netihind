@@ -4,6 +4,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import XIcon from '@mui/icons-material/X';
 import Link from "next/link";
+import classNames from 'classnames';
 
 const types: {[key:string]: {Icon: any, color: string}} = {
     'facebook': {Icon: FacebookIcon, color: 'hover:bg-facebook-logo hover:shadow-facebook-logo/40'},
@@ -21,10 +22,25 @@ export default function SocialLink({
 }) {
     const Icon = types[type].Icon
 
+    const socialLinkClasses = classNames(
+        'flex',
+        'justify-center',
+        'items-center',
+        'w-11',
+        'h-11',
+        'bg-white/5',
+        'rounded-md',
+        'transition-colors',
+        'ease-in',
+        'hover:shadow-lg',
+        types[type].color, {
+            [margin as string]: margin
+        })
+
     return(
         <Link 
             href="#" 
-            className={`flex justify-center items-center w-11 h-11 bg-white/5 rounded-md transition-colors ease-in hover:shadow-lg ${types[type].color} ${margin}`}>
+            className={socialLinkClasses}>
             <Icon fontSize="small" className="text-white"/>
         </Link>
     )

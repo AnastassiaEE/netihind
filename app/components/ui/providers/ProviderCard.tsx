@@ -1,6 +1,21 @@
 import Image, { StaticImageData } from "next/image";
 import PhoneIcon from '@mui/icons-material/Phone';
 import Button from "@/components/ui/form/Button";
+import classNames from "classnames";
+
+const cardWrapperClasses = classNames(
+    'w-52',
+    'h-52',
+    'md:w-64',
+    'md:h-64',
+    'bg-white',
+    'shadow-lg',
+    'rounded-md',
+    'p-5',
+    'flex',
+    'flex-col',
+    'justify-between'
+)
 
 export default function ProviderCard({
     name, 
@@ -16,7 +31,7 @@ export default function ProviderCard({
     tariffsPath: string
 }) {
     return (
-        <div className="w-52 h-52 md:w-64 md:h-64 bg-white shadow-lg rounded-md p-5 flex flex-col justify-between">
+        <div className={cardWrapperClasses}>
             <div>
                 <div className="h-14 mb-4">
                     <Image src={img} alt={alt} className="h-full w-auto"/>

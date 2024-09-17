@@ -1,5 +1,6 @@
 import { SvgIconComponent } from "@mui/icons-material";
-import Input from "./Input"
+import Input from "./Input";
+import classNames from "classnames";
 
 export default function IconInput({
     size = 'sm',
@@ -30,10 +31,16 @@ export default function IconInput({
     error?: string,
     icon: {Icon: SvgIconComponent, isVisible: boolean, handleClick?: React.MouseEventHandler}
 }) {
-    let inputPadding = undefined;
-    if (icon.isVisible) {
-        inputPadding = size === 'sm' ? 'pl-10' : 'pl-12'; 
-    }
+    
+    const inputClasses = classNames({
+        'pl-10': icon.isVisible && size === 'sm',
+        'pl-12': icon.isVisible && size === 'lg'
+    })
+
+    const iconWrapperClasses = classNames('absolute h-full flex items-center px-3', {
+        'block': icon.isVisible,
+        'hidden': !icon.isVisible
+    })
 
     const Icon = <icon.Icon fontSize={size === "lg" ? "medium" : "small"} className="text-muted"/>;
 
@@ -51,8 +58,8 @@ export default function IconInput({
             value={value}
             isValid={isValid}
             error={error}
-            className={inputPadding}>  
-            <div className={`absolute h-full flex items-center px-3 ${icon.isVisible ? "block" : "hidden"}`}> 
+            className={inputClasses}>  
+            <div className={iconWrapperClasses}> 
                 {icon.handleClick ? <button type="button" onClick={icon.handleClick}> {Icon} </button> : <>{Icon}</>}
             </div>
         </Input>

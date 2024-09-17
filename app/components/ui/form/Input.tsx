@@ -1,15 +1,20 @@
 import FieldError from "./FieldError";
 import FieldLabel from "./FieldLabel";
+import classNames from "classnames";
 
-const baseClasses = 'w-full\
- bg-white\
- border\
- rounded-md\
- transition all\
- focus:outline-none\
- focus:shadow-lg\
- focus:shadow-primary/10\
- placeholder:text-muted';
+const baseClasses = classNames(
+    'w-full',
+    'bg-white',
+    'border',
+    'rounded-md',
+    'transition all',
+    'transition-[padding]',
+    'focus:outline-none',
+    'focus:shadow-lg',
+    'focus:shadow-primary/10',
+    'placeholder:text-muted',
+    'text-muted-dark',
+);
 
 const sizes: {[key: string]: string} = {
     sm: 'text-sm px-4 py-2.5',
@@ -47,7 +52,12 @@ export default function Input({
     className?: string,
     children?: React.ReactNode,
 }) {
-    const borderColor = isValid ? 'border-valid focus:border-primary/30' : 'border-invalid';
+
+    const inputClasses = classNames(baseClasses, sizes[size], {
+        'border-valid focus:border-primary/30': isValid,
+        'border-invalid': !isValid,
+        [className as string]: className !== undefined
+    })
     
     return (
         <>
@@ -58,7 +68,7 @@ export default function Input({
                     id={name}
                     type={type} 
                     inputMode={inputmode}
-                    className={`${baseClasses} ${sizes[size]} ${borderColor} ${className} text-muted-dark transition-[padding]`}  
+                    className={inputClasses}  
                     placeholder={placeholder}
                     onChange={handleChange}
                     onFocus={handleFocus}

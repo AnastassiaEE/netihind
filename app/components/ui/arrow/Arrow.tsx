@@ -1,14 +1,13 @@
 import { ChevronLeft }  from '@mui/icons-material';
-
-const directions: {[key: string]: string} = {
-    'left': '',
-    'right': 'rotate-180',
-    'up': 'rotate-90',
-    'down': '-rotate-90'
-}
+import classNames from 'classnames';
 
 export default function Arrow({direction}: {direction: string}) {
-    return (
-        <ChevronLeft className={directions[direction]}/>
-    )
+    
+    const arrowClasses = classNames({
+        'rotate-180': direction === 'right',
+        'rotate-90': direction === 'up',
+        '-rotate-90': direction === 'down'
+    })
+
+    return <ChevronLeft className={arrowClasses}/>
 }

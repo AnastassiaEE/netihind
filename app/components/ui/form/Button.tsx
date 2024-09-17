@@ -1,32 +1,42 @@
-const baseClasses = 'w-full\
- font-semibold\
- text-center\
- border\
- transition all\
- hover:cursor-pointer\
- flex\
- items-center\
- justify-center';
+import classNames from "classnames";
+
+const baseClasses = classNames(
+  'w-full',
+  'font-semibold',
+  'text-center',
+  'border',
+  'rounded-md',
+  'transition all',
+  'flex',
+  'items-center',
+  'justify-center'
+);
 
 const variants: {[key: string]: string} = {
-    primary: 'bg-primary\
- text-white\
- border-primary\
- shadow-lg\
- shadow-primary/50\
- hover:bg-primary-dark\
- hover:shadow-none',
-    secondary: 'bg-white\
- text-primary\
- border-primary\
- hover:bg-primary\
- hover:text-white',
-    success: 'bg-success\
- text-white\
- border-success\
- hover:bg-success-dark\
- hover:border-success-dark\
- hover:text-white'
+    primary: classNames(
+      'bg-primary',
+      'text-white',
+      'border-primary',
+      'shadow-lg',
+      'shadow-primary/50',
+      'hover:bg-primary-dark',
+      'hover:shadow-none'
+    ),
+    secondary: classNames(
+      'bg-white',
+      'text-primary',
+      'border-primary',
+      'hover:bg-primary',
+      'hover:text-white'
+    ),
+    success: classNames(
+      'bg-success',
+      'text-white',
+      'border-success',
+      'hover:bg-success-dark',
+      'hover:border-success-dark',
+      'hover:text-white'
+    )
 }
   
 const sizes: {[key: string]: string} = {
@@ -40,7 +50,7 @@ export default function Button({
   size = 'sm',
   disabled = false,
   name,
-  className = 'rounded-md',
+  className,
   handleClick,
   children
 }: {
@@ -53,7 +63,12 @@ export default function Button({
   handleClick?: React.MouseEventHandler<HTMLButtonElement>
   children: React.ReactNode,
 }) {
+
+  const buttonClasses = classNames(baseClasses, variants[variant], sizes[size], {
+    'hover:cursor-not-allowed': disabled,
+    [className as string]: className !== undefined
+  })
   return (
-    <button type={type} name={name} onClick={handleClick} className={`${baseClasses} ${variants[variant]} ${sizes[size]} ${disabled ? 'hover:cursor-not-allowed': undefined} ${className}`} disabled={disabled}> {children} </button>
+    <button type={type} name={name} onClick={handleClick} className={buttonClasses} disabled={disabled}> {children} </button>
   )
 }

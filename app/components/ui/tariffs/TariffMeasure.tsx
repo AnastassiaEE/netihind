@@ -1,3 +1,5 @@
+import classNames from "classnames"
+
 export default function MeasureCell({
     number,
     unit,
@@ -9,9 +11,13 @@ export default function MeasureCell({
     empty?: boolean
     className?: string
 }) {
+    const numberClasses = classNames('font-extrabold text-lg', {
+        [className as string]: className !== undefined
+    })
+
     return (
         <div className="flex flex-col text-center mx-1">
-            <span className={`font-extrabold text-lg ${className}`}>{number ?? '—'}</span>
+            <span className={numberClasses}>{number ?? '—'}</span>
             {!empty && <span className='text-base'>{unit}</span>}
         </div>
     )

@@ -12,8 +12,6 @@ import Input from "./Input"
 import Link from 'next/link';
 import { Trans, useTranslation } from 'react-i18next';
 
-
-
 export default function ContactForm() {
 
     const { t } = useTranslation(['form']);
@@ -90,7 +88,6 @@ export default function ContactForm() {
             <Button type="submit" size="lg" disabled={isLoading}>
                 {isLoading ? <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24"><LoopIcon/></svg>: <>{t('buttons.send')}</>}
             </Button>
-            
             {!isLoading && <FormResponse type={response?.type}> {response && t(response.message)} </FormResponse>}
         </form>
     )   

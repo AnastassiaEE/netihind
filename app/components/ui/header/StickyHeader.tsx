@@ -12,6 +12,7 @@ import HeaderItems from "./HeaderItems";
 import HeaderItem from "./HeaderItem";
 import Sidebar from "./Sidebar";
 import Overlay from "@/components/ui/Overlay";
+import classNames from 'classnames';
 
 const TOOLBAR_SHOW_POSITION = 400;
 
@@ -33,14 +34,32 @@ export default function StickyHeader({
         toolbarVisibility = `animate-show`;
     }
 
+    const stickyHeaderWrapperClasses = classNames(
+        'sticky-header',
+        'bg-white',
+        'shadow-lg',
+        'z-20',
+        'w-full',
+        'fixed',
+        'top-0',
+        'left-0',
+        'p-4',
+        toolbarVisibility
+    )
+
+    const buttonsWrapperClasses = classNames('flex items-center', {
+        'gap-10': type === 'desktop',
+        'gap-4': type === 'mobile'
+    })
+
     return (
-        <div className={`sticky-header ${toolbarVisibility} bg-white shadow-lg z-20 w-full fixed top-0 left-0 p-4`}>
+        <div className={stickyHeaderWrapperClasses}>
             <div className="container">
                 <div className="flex justify-between">
                     <div className="mr-6">
                         <Logo src={secondaryLogo} sizeClass="w-12"/>
                     </div>
-                    <div className={`flex items-center ${type == 'desktop' ? 'gap-10' : 'gap-4'}`}>
+                    <div className={buttonsWrapperClasses}>
                         <ConsultationButton type={type}/>
                         <HeaderItems>
                             <HeaderItem href="#" Icon={FavoriteIcon}/>

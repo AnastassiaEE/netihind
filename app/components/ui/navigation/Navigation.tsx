@@ -1,4 +1,5 @@
 import React, { isValidElement } from 'react'
+import classNames from 'classnames'
 
 export default function Navigation({
     type = 'horizontal', 
@@ -9,9 +10,20 @@ export default function Navigation({
     linkColor?: string,
     children: React.ReactNode
 }) {
+    const navigationListClasses = classNames(
+        'text-base',
+        `text-${linkColor}`,
+        'font-semibold', {
+            'flex flex-wrap justify-center': type === 'horizontal'
+        })
+
+    const navigationItemClasses = classNames('py-2 block', {
+        'px-4': type === 'horizontal'
+    })
+
     return (
         <nav>
-            <ul className={`${type === 'horizontal' && "flex flex-wrap justify-center"} text-base text-${linkColor} font-semibold`}>
+            <ul className={navigationListClasses}>
                 {React.Children.map(children, (child) => {
                     if (!isValidElement(child)) {
                         return child;
@@ -19,7 +31,7 @@ export default function Navigation({
                         return <li>
                             {React.cloneElement(
                                 child as React.ReactElement,
-                                {padding: `${type === 'horizontal' && "px-4"} py-2 block`}
+                                {padding: navigationItemClasses}
                             )}
                         </li>
                     }

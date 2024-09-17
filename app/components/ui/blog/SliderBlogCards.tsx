@@ -5,18 +5,18 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import CircleArrow from '@/components/ui/arrow/CircleArrow';
 import SliderBlogCard from './SliderBlogCard';
 import 'swiper/css/bundle';
+import classNames from 'classnames';
 
-const baseArrowStyle = 
-`text-black\
- bg-white\
- shadow-md\
- shadow-black/30\
- max-xl:hidden`;
-
-const hoveredArrowStyle = 
-`hover:bg-primary\
- hover:shadow-primary/50\
- hover:text-white`;
+const arrowClasses = classNames(
+  'text-black',
+  'bg-white',
+  'shadow-md',
+  'shadow-black/30',
+  'max-xl:hidden',
+  'hover:bg-primary',
+  'hover:shadow-primary/50',
+  'hover:text-white',
+)
 
  const breakpoints = {
   0: {
@@ -50,10 +50,10 @@ export default function SliderBlogCards({items}: {items: {[key: string]: any}[]}
     return (
         <div className="relative xl:px-20">
             <div className="prev absolute left-0 top-1/2 -translate-y-1/2">
-                <CircleArrow direction="left" style={`${baseArrowStyle} ${hoveredArrowStyle}`}/>
+                <CircleArrow direction="left" style={arrowClasses}/>
             </div>
             <div className="next absolute right-0 top-1/2 -translate-y-1/2">
-                <CircleArrow direction="right" style={`${baseArrowStyle} ${hoveredArrowStyle}`}/>
+                <CircleArrow direction="right" style={arrowClasses}/>
             </div>
             
             <div className="swiper-pagination !-bottom-10"></div>
