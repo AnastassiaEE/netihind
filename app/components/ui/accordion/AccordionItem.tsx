@@ -1,7 +1,7 @@
 'use client'
 
 import { Children } from "react";
-import CircleArrow from '../arrow/CircleArrow';
+import CircleArrow from '../icons/CircleArrow';
 import useAccordionItem from "@/hooks/useAccordionItem";
 import classNames from "classnames";
 

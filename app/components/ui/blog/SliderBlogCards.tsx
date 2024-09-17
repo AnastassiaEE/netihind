@@ -2,7 +2,7 @@
 
 import { Pagination, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import CircleArrow from '@/components/ui/arrow/CircleArrow';
+import CircleArrow from '@/components/ui/icons/CircleArrow';
 import SliderBlogCard from './SliderBlogCard';
 import 'swiper/css/bundle';
 import classNames from 'classnames';
