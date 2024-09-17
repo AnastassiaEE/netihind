@@ -1,35 +1,34 @@
-'use client'
+'use client';
 
 import useAddressForm from '@/hooks/useAddressForm';
 import CloseIcon from '@mui/icons-material/Close';
-import Searchbar from "./Searchbar";
-import Button from "./Button";
+import Searchbar from './Searchbar';
+import Button from './Button';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 
-export default function AddressForm() { 
-
-    const { t } = useTranslation(['form'])
+export default function AddressForm() {
+    const { t } = useTranslation(['form']);
 
     const {
-        addresses, 
+        addresses,
         allAddressApartments,
         apartments,
         values,
         errors,
         handleAddressInputChange,
         handleApartmentInputChange,
-        handleAddressClick, 
+        handleAddressClick,
         handleApartmentClick,
         removeAddress,
-        handleSubmit
+        handleSubmit,
     } = useAddressForm();
 
     const buttonBlockClasses = classNames('basis-full sm:basis-auto', {
         'max-sm:mt-12': errors.apartment !== '',
-        'max-sm:mt-7': errors.apartment === ''
-    })
-    return (    
+        'max-sm:mt-7': errors.apartment === '',
+    });
+    return (
         <form action="" onSubmit={handleSubmit} className="flex flex-wrap items-center gap-x-1.5">
             <div className="grow basis-auto">
                 <Searchbar
@@ -37,14 +36,15 @@ export default function AddressForm() {
                     size="lg"
                     name="address"
                     placeholder={t('address.placeholders.address')}
-                    handleChange={handleAddressInputChange} 
+                    handleChange={handleAddressInputChange}
                     handleItemClick={handleAddressClick}
                     value={values.address}
                     isValid={errors.address === ''}
                     error={t(errors.address)}
-                    icon={{Icon: CloseIcon, isVisible: values.address !== '', handleClick: removeAddress}}/>
+                    icon={{ Icon: CloseIcon, isVisible: values.address !== '', handleClick: removeAddress }}
+                />
             </div>
-            {allAddressApartments.length > 0 &&
+            {allAddressApartments.length > 0 && (
                 <div className="basis-3/12 md:basis-2/12">
                     <Searchbar
                         data={apartments}
@@ -55,13 +55,15 @@ export default function AddressForm() {
                         handleItemClick={handleApartmentClick}
                         value={values.apartment}
                         isValid={errors.apartment === ''}
-                        error={t(errors.apartment)}/>
+                        error={t(errors.apartment)}
+                    />
                 </div>
-            }
+            )}
             <div className={buttonBlockClasses}>
-                <Button type="submit" size="lg"> {t('address.buttons.find')} </Button>
-            </div>    
+                <Button type="submit" size="lg">
+                    {t('address.buttons.find')}
+                </Button>
+            </div>
         </form>
-    )
+    );
 }
-    

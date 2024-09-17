@@ -1,9 +1,22 @@
-export default function MeshSvg({children}: {children: React.ReactNode}) {
+export default function MeshSvg({ children }: { children: React.ReactNode }) {
     return (
-        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="820.000000pt" height="839.000000pt" viewBox="0 0 820.000000 839.000000" preserveAspectRatio="xMidYMid meet" className="w-full h-auto">
-                {children}
-                <g transform="translate(0.000000,839.000000) scale(0.100000,-0.100000)" fill="url(#gradient)" stroke="none">
-                    <path d="M3354 7957 c-19 -16 -29 -37 -33 -66 l-6 -43 -210 -98 c-115 -55
+        <svg
+            version="1.0"
+            xmlns="http://www.w3.org/2000/svg"
+            width="820.000000pt"
+            height="839.000000pt"
+            viewBox="0 0 820.000000 839.000000"
+            preserveAspectRatio="xMidYMid meet"
+            className="w-full h-auto"
+        >
+            {children}
+            <g
+                transform="translate(0.000000,839.000000) scale(0.100000,-0.100000)"
+                fill="url(#gradient)"
+                stroke="none"
+            >
+                <path
+                    d="M3354 7957 c-19 -16 -29 -37 -33 -66 l-6 -43 -210 -98 c-115 -55
                     -219 -99 -229 -100 -11 0 -36 -11 -56 -25 -40 -28 -1396 -665 -1415 -665 -7 0
                     -18 6 -24 14 -31 37 -126 22 -150 -22 -16 -29 -14 -89 4 -115 13 -21 -11 -63
                     -474 -822 l-488 -800 -52 0 c-48 0 -56 -3 -87 -37 -24 -27 -34 -47 -34 -70 0
@@ -356,8 +369,9 @@ export default function MeshSvg({children}: {children: React.ReactNode}) {
                     101 -8 108 -11z m305 -21 c37 -3 66 -7 65 -8 -4 -4 -291 -65 -305 -65 -19 0
                     -35 39 -28 67 l6 26 97 -7 c53 -3 128 -9 165 -13z m542 -37 c828 -59 845 -60
                     845 -73 0 -11 -153 -13 -817 -12 -450 1 -811 3 -803 6 8 2 114 26 235 53 171
-                    37 233 47 280 44 33 -2 150 -11 260 -18z"/>
-                </g>
-            </svg>
-    )
+                    37 233 47 280 44 33 -2 150 -11 260 -18z"
+                />
+            </g>
+        </svg>
+    );
 }

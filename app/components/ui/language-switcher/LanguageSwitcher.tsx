@@ -13,7 +13,6 @@ export default function LanguageSwitcher() {
   const currentPathname = usePathname();
 
   const handleClick = (e: React.MouseEvent<HTMLSpanElement>) => {
-    
     const newLocale = (e.target as HTMLSpanElement).getAttribute('data-lang');
 
     // set cookie for next-i18n-router
@@ -24,11 +23,9 @@ export default function LanguageSwitcher() {
 
     // redirect to the new locale path
     if (currentLocale === i18nConfig.defaultLocale && !i18nConfig.prefixDefault) {
-        router.push('/' + newLocale + currentPathname);
+      router.push('/' + newLocale + currentPathname);
     } else {
-      router.push(
-        currentPathname.replace(`/${currentLocale}`, `/${newLocale}`)
-      );
+      router.push(currentPathname.replace(`/${currentLocale}`, `/${newLocale}`));
     }
 
     router.refresh();
@@ -36,15 +33,8 @@ export default function LanguageSwitcher() {
 
   return (
     <div className="flex items-center gap-4">
-      <Language 
-        lang="et" 
-        current={currentLocale === 'et'}
-        handleClick={handleClick}/>
-      <Language 
-        lang="ru"
-        current={currentLocale === 'ru'} 
-        handleClick={handleClick}/>
+      <Language lang="et" current={currentLocale === 'et'} handleClick={handleClick} />
+      <Language lang="ru" current={currentLocale === 'ru'} handleClick={handleClick} />
     </div>
-   
   );
 }

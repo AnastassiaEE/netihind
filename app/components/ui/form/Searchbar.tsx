@@ -1,66 +1,69 @@
-import useSearcharbar from "@/hooks/useSearchbar";
-import { SvgIconComponent } from "@mui/icons-material"
-import DropdownBox from "./DropdownBox";
-import IconInput from "./IconInput";
-import Input from "./Input";
-import React from "react";
+import useSearcharbar from '@/hooks/useSearchbar';
+import { SvgIconComponent } from '@mui/icons-material';
+import DropdownBox from './DropdownBox';
+import IconInput from './IconInput';
+import Input from './Input';
+import React from 'react';
 
 export default function Searchbar({
     data,
     size = 'sm',
     name,
-    placeholder, 
-    handleChange, 
+    placeholder,
+    handleChange,
     handleItemClick,
-    value, 
+    value,
     isValid,
     error,
     icon,
 }: {
-    data: string[],
-    size?: 'sm' | 'lg', 
-    name: string,
-    placeholder: string, 
-    handleChange: React.ChangeEventHandler, 
-    handleItemClick: React.MouseEventHandler,
-    value: string, 
-    isValid: boolean,
-    error: string,
-    icon?: {Icon: SvgIconComponent, isVisible: boolean, handleClick: React.MouseEventHandler}
+    data: string[];
+    size?: 'sm' | 'lg';
+    name: string;
+    placeholder: string;
+    handleChange: React.ChangeEventHandler;
+    handleItemClick: React.MouseEventHandler;
+    value: string;
+    isValid: boolean;
+    error: string;
+    icon?: { Icon: SvgIconComponent; isVisible: boolean; handleClick: React.MouseEventHandler };
 }) {
+    const { isFocused, setFocused, searchBarRef } = useSearcharbar();
 
-    const {isFocused, setFocused, searchBarRef} = useSearcharbar();
-    
     return (
         <div className="relative" ref={searchBarRef}>
-            {icon ?
-                <IconInput 
+            {icon ? (
+                <IconInput
                     size={size}
                     name={name}
-                    placeholder={placeholder} 
-                    handleChange={handleChange} 
+                    placeholder={placeholder}
+                    handleChange={handleChange}
                     handleFocus={setFocused}
-                    value={value} 
+                    value={value}
                     isValid={isValid}
                     error={error}
-                    icon={icon}/>
-                :
-                <Input 
+                    icon={icon}
+                />
+            ) : (
+                <Input
                     size={size}
                     name={name}
-                    placeholder={placeholder} 
-                    handleChange={handleChange} 
+                    placeholder={placeholder}
+                    handleChange={handleChange}
                     handleFocus={setFocused}
-                    value={value} 
+                    value={value}
                     isValid={isValid}
-                    error={error}/>
-            }
-            {isFocused && data.length > 0 && 
-                <DropdownBox 
-                    searchbar={searchBarRef.current} 
-                    data={data} 
+                    error={error}
+                />
+            )}
+            {isFocused && data.length > 0 && (
+                <DropdownBox
+                    searchbar={searchBarRef.current}
+                    data={data}
                     size={size}
-                    handleItemClick={handleItemClick}/>}
+                    handleItemClick={handleItemClick}
+                />
+            )}
         </div>
-    )
+    );
 }

@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import CloseIcon from '@mui/icons-material/Close';
 import Navigation from '@/components/ui/navigation/Navigation';
@@ -11,10 +11,10 @@ export default function Sidebar({
     isOpened,
     handleClose,
 }: {
-    isOpened: boolean,
-    handleClose: React.MouseEventHandler,
+    isOpened: boolean;
+    handleClose: React.MouseEventHandler;
 }) {
-    const { t } = useTranslation('navigation')
+    const { t } = useTranslation('navigation');
 
     const sidebarWrapperClasses = classNames(
         'fixed',
@@ -26,15 +26,19 @@ export default function Sidebar({
         'z-50',
         'bg-white',
         'shadow-md',
-        'transition-transform duration-300', {
+        'transition-transform duration-300',
+        {
             'translate-x-0': isOpened,
-            'translate-x-full': !isOpened
-        })
+            'translate-x-full': !isOpened,
+        },
+    );
     return (
         <div className={sidebarWrapperClasses}>
             <div className="flex justify-between px-6 py-5 border-b border-muted-light">
                 <h5 className="text-xl font-extrabold">{t('menu')}</h5>
-                <button type="button" className="h-max" onClick={handleClose}><CloseIcon className="text-muted hover:text-black transition-colors"/></button>
+                <button type="button" className="h-max" onClick={handleClose}>
+                    <CloseIcon className="text-muted hover:text-black transition-colors" />
+                </button>
             </div>
             <div className="p-6">
                 <Navigation type="vertical">
@@ -43,9 +47,9 @@ export default function Sidebar({
                     <NavigationItem href="/contacts">{t('contacts')}</NavigationItem>
                 </Navigation>
                 <div className="py-8">
-                    <LanguageSwitcher/>
+                    <LanguageSwitcher />
                 </div>
-            </div> 
+            </div>
         </div>
-    )
+    );
 }

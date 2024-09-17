@@ -1,6 +1,6 @@
-import FieldError from "./FieldError";
-import FieldLabel from "./FieldLabel";
-import classNames from "classnames";
+import FieldError from './FieldError';
+import FieldLabel from './FieldLabel';
+import classNames from 'classnames';
 
 const baseClasses = classNames(
     'w-full',
@@ -16,10 +16,10 @@ const baseClasses = classNames(
     'text-muted-dark',
 );
 
-const sizes: {[key: string]: string} = {
+const sizes: { [key: string]: string } = {
     sm: 'text-sm px-4 py-2.5',
-    lg: 'text-base px-5 py-3'
-}
+    lg: 'text-base px-5 py-3',
+};
 
 export default function Input({
     size = 'sm',
@@ -27,56 +27,68 @@ export default function Input({
     type = 'text',
     inputmode,
     label,
-    placeholder, 
-    handleChange, 
+    placeholder,
+    handleChange,
     handleFocus,
     handleBlur,
-    value, 
+    value,
     isValid,
     error,
     className,
     children,
 }: {
-    size?: 'sm' | 'lg',
-    name: string,
-    type?: string,
-    inputmode?: "email" | "search" | "text" | "tel" | "url" | "none" | "numeric" | "decimal" | undefined,
-    label?: string,
-    placeholder?: string, 
-    handleChange?: React.ChangeEventHandler<HTMLInputElement>, 
-    handleFocus?: React.FocusEventHandler<HTMLInputElement>,
-    handleBlur?: React.FocusEventHandler<HTMLInputElement>, 
-    value?: string, 
-    isValid?: boolean,
-    error?: string,
-    className?: string,
-    children?: React.ReactNode,
+    size?: 'sm' | 'lg';
+    name: string;
+    type?: string;
+    inputmode?:
+    | 'email'
+    | 'search'
+    | 'text'
+    | 'tel'
+    | 'url'
+    | 'none'
+    | 'numeric'
+    | 'decimal'
+    | undefined;
+    label?: string;
+    placeholder?: string;
+    handleChange?: React.ChangeEventHandler<HTMLInputElement>;
+    handleFocus?: React.FocusEventHandler<HTMLInputElement>;
+    handleBlur?: React.FocusEventHandler<HTMLInputElement>;
+    value?: string;
+    isValid?: boolean;
+    error?: string;
+    className?: string;
+    children?: React.ReactNode;
 }) {
-
     const inputClasses = classNames(baseClasses, sizes[size], {
         'border-valid focus:border-primary/30': isValid,
         'border-invalid': !isValid,
-        [className as string]: className !== undefined
-    })
-    
+        [className as string]: className !== undefined,
+    });
+
     return (
         <>
-            {label && <FieldLabel htmlFor={name} size={size}>{label}</FieldLabel>}
+            {label && (
+                <FieldLabel htmlFor={name} size={size}>
+                    {label}
+                </FieldLabel>
+            )}
             <div className="relative">
                 {children}
-                <input 
+                <input
                     id={name}
-                    type={type} 
+                    type={type}
                     inputMode={inputmode}
-                    className={inputClasses}  
+                    className={inputClasses}
                     placeholder={placeholder}
                     onChange={handleChange}
                     onFocus={handleFocus}
                     onBlur={handleBlur}
                     value={value}
-                    />
+                />
             </div>
-            {!isValid &&<FieldError size={size}>{error}</FieldError>}
+            {!isValid && <FieldError size={size}>{error}</FieldError>}
         </>
-    )
+    );
 }

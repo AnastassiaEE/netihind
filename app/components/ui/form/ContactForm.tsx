@@ -1,19 +1,18 @@
-'use client'
+'use client';
 
 import useContactForm from '@/hooks/useContactForm';
 import FormResponse from './FormResponse';
 import LoopIcon from '@mui/icons-material/Loop';
 import AddIcon from '@mui/icons-material/Add';
-import IconInput from "./IconInput";
+import IconInput from './IconInput';
 import Checkbox from './Checkbox';
-import Textarea from "./Textarea";
-import Button from "./Button"
-import Input from "./Input"
+import Textarea from './Textarea';
+import Button from './Button';
+import Input from './Input';
 import Link from 'next/link';
 import { Trans, useTranslation } from 'react-i18next';
 
 export default function ContactForm() {
-
     const { t } = useTranslation(['form']);
 
     const {
@@ -24,20 +23,21 @@ export default function ContactForm() {
         handleChange,
         handleCheck,
         handleBlur,
-        handleSubmit
-    } = useContactForm()
+        handleSubmit,
+    } = useContactForm();
 
     return (
         <form action="" noValidate onSubmit={handleSubmit}>
             <div className="mb-6">
-                <Input 
+                <Input
                     name="name"
                     label={t('labels.name')}
                     handleChange={(e) => handleChange(e, 'name')}
                     handleBlur={(e) => handleBlur(e, 'name')}
                     value={values.name as string}
                     isValid={errors.name === ''}
-                    error={t(errors.name)}/>
+                    error={t(errors.name)}
+                />
             </div>
             <div className="mb-6">
                 <Input
@@ -49,7 +49,8 @@ export default function ContactForm() {
                     handleBlur={(e) => handleBlur(e, 'email')}
                     value={values.email as string}
                     isValid={errors.email === ''}
-                    error={t(errors.email)}/>
+                    error={t(errors.email)}
+                />
             </div>
             <div className="mb-6">
                 <IconInput
@@ -62,7 +63,8 @@ export default function ContactForm() {
                     value={values.phone as string}
                     isValid={errors.phone === ''}
                     error={t(errors.phone)}
-                    icon={{Icon: AddIcon, isVisible: true}}/>
+                    icon={{ Icon: AddIcon, isVisible: true }}
+                />
             </div>
             <div className="mb-6">
                 <Textarea
@@ -72,25 +74,41 @@ export default function ContactForm() {
                     handleBlur={(e) => handleBlur(e, 'message')}
                     value={values.message as string}
                     isValid={errors.message === ''}
-                    error={t(errors.message)}/> 
+                    error={t(errors.message)}
+                />
             </div>
             <div className="mb-6">
-                <Checkbox 
+                <Checkbox
                     name="policy"
                     handleCheck={(e) => handleCheck(e, 'policy')}
                     isChecked={values.policy as boolean}
-                    isValid={errors.policy === ''}> 
-                    <Trans 
+                    isValid={errors.policy === ''}
+                >
+                    <Trans
                         i18nKey={t('checkboxes.privacy-policy')}
-                        components={{a: <Link href="/privacy-policy" className="transition-colors hover:text-primary font-semibold"/>}}/>
+                        components={{
+                            a: (
+                                <Link
+                                    href="/privacy-policy"
+                                    className="transition-colors hover:text-primary font-semibold"
+                                />
+                            ),
+                        }}
+                    />
                 </Checkbox>
             </div>
             <Button type="submit" size="lg" disabled={isLoading}>
-                {isLoading ? <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24"><LoopIcon/></svg>: <>{t('buttons.send')}</>}
+                {isLoading ? (
+                    <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                        <LoopIcon />
+                    </svg>
+                ) : (
+                    <>{t('buttons.send')}</>
+                )}
             </Button>
-            {!isLoading && <FormResponse type={response?.type}> {response && t(response.message)} </FormResponse>}
+            {!isLoading && (
+                <FormResponse type={response?.type}> {response && t(response.message)} </FormResponse>
+            )}
         </form>
-    )   
+    );
 }
-
-

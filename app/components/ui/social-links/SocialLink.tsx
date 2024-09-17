@@ -3,24 +3,21 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import XIcon from '@mui/icons-material/X';
-import Link from "next/link";
+import Link from 'next/link';
 import classNames from 'classnames';
 
-const types: {[key:string]: {Icon: any, color: string}} = {
-    'facebook': {Icon: FacebookIcon, color: 'hover:bg-facebook-logo hover:shadow-facebook-logo/40'},
-    'x': {Icon: XIcon, color: 'hover:bg-twitter-logo hover:shadow-twitter-logo/40'},
-    'instagram': {Icon: InstagramIcon, color: 'hover:bg-instagram-logo hover:shadow-instagram-logo-shadow/40'},
-    'linkedin': {Icon: LinkedInIcon, color: 'hover:bg-linkedin-logo hover:shadow-linkedin-logo/40'},
-    'youtube': {Icon: YouTubeIcon, color: 'hover:bg-youtube-logo hover:shadow-youtube-logo/40'}
-}
-export default function SocialLink({
-    type,
-    margin
-}: {
-    type: string,
-    margin?: string
-}) {
-    const Icon = types[type].Icon
+const types: { [key: string]: { Icon: any; color: string } } = {
+    facebook: { Icon: FacebookIcon, color: 'hover:bg-facebook-logo hover:shadow-facebook-logo/40' },
+    x: { Icon: XIcon, color: 'hover:bg-twitter-logo hover:shadow-twitter-logo/40' },
+    instagram: {
+        Icon: InstagramIcon,
+        color: 'hover:bg-instagram-logo hover:shadow-instagram-logo-shadow/40',
+    },
+    linkedin: { Icon: LinkedInIcon, color: 'hover:bg-linkedin-logo hover:shadow-linkedin-logo/40' },
+    youtube: { Icon: YouTubeIcon, color: 'hover:bg-youtube-logo hover:shadow-youtube-logo/40' },
+};
+export default function SocialLink({ type, margin }: { type: string; margin?: string }) {
+    const Icon = types[type].Icon;
 
     const socialLinkClasses = classNames(
         'flex',
@@ -33,15 +30,15 @@ export default function SocialLink({
         'transition-colors',
         'ease-in',
         'hover:shadow-lg',
-        types[type].color, {
-            [margin as string]: margin
-        })
+        types[type].color,
+        {
+            [margin as string]: margin,
+        },
+    );
 
-    return(
-        <Link 
-            href="#" 
-            className={socialLinkClasses}>
-            <Icon fontSize="small" className="text-white"/>
+    return (
+        <Link href="#" className={socialLinkClasses}>
+            <Icon fontSize="small" className="text-white" />
         </Link>
-    )
+    );
 }

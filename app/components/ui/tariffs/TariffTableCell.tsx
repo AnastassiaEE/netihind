@@ -1,20 +1,20 @@
-import classNames from "classnames";
+import classNames from 'classnames';
 
 const getCellBg = (index: number) => {
-    if(index % 2 == 0) {
+    if (index % 2 == 0) {
         return 'bg-neutral-light';
-    }   
+    }
     return '';
-}
+};
 
 export default function TariffTableCell({
     index = 1,
     className,
-    children
+    children,
 }: {
-    index?: number,
-    className?: string,
-    children: React.ReactNode
+    index?: number;
+    className?: string;
+    children: React.ReactNode;
 }) {
     const cellClasses = classNames(
         'flex',
@@ -22,13 +22,11 @@ export default function TariffTableCell({
         'items-center',
         'break-word',
         'py-5',
-        getCellBg(index),  {
-            [className as string]: className !== undefined
-        })
+        getCellBg(index),
+        {
+            [className as string]: className !== undefined,
+        },
+    );
 
-    return (
-        <div className={cellClasses}>
-            {children}
-        </div>
-    )
+    return <div className={cellClasses}>{children}</div>;
 }

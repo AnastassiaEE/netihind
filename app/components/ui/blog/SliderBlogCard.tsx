@@ -5,31 +5,34 @@ import Link from 'next/link';
 export default function SliderBlogCard({
     href,
     src,
-    alt, 
-    children
+    alt,
+    children,
 }: {
-    href: string,
-    src: StaticImageData,
-    alt: string,
-    children: React.ReactNode
+    href: string;
+    src: StaticImageData;
+    alt: string;
+    children: React.ReactNode;
 }) {
-    const [date, title] = Children.toArray(children)
+    const [date, title] = Children.toArray(children);
 
     return (
         <article className="bg-white rounded-lg shadow-md h-full">
             <div className="relative w-full h-60">
-                <Link href={href} className="block absolute w-full h-60"/>
-                <Image 
-                    src={src} 
-                    alt={alt} 
+                <Link href={href} className="block absolute w-full h-60" />
+                <Image
+                    src={src}
+                    alt={alt}
                     width={0}
                     height={0}
-                    className="rounded-t-lg object-cover w-full h-full"/>
+                    className="rounded-t-lg object-cover w-full h-full"
+                />
             </div>
             <div className="p-6">
                 <div className="text-muted text-sm flex justify-end mb-4">{date}</div>
-                <h3 className="text-lg font-bold text-muted-dark hover:text-primary transition-colors"><Link href={href}>{title}</Link></h3>
+                <h3 className="text-lg font-bold text-muted-dark hover:text-primary transition-colors">
+                    <Link href={href}>{title}</Link>
+                </h3>
             </div>
         </article>
-    )
+    );
 }

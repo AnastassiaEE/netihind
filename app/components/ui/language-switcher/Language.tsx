@@ -1,13 +1,13 @@
-import classNames from "classnames"
+import classNames from 'classnames';
 
 export default function Language({
     lang,
     current,
-    handleClick
+    handleClick,
 }: {
-    lang: string,
-    current: boolean
-    handleClick: React.MouseEventHandler<HTMLSpanElement>
+    lang: string;
+    current: boolean;
+    handleClick: React.MouseEventHandler<HTMLSpanElement>;
 }) {
     const languageClasses = classNames(
         'text-base',
@@ -17,17 +17,16 @@ export default function Language({
         'hover:text-primary',
         'transition-colors',
         'cursor-pointer',
-        'border-b-2', {
+        'border-b-2',
+        {
             'border-primary': current,
-            'border-transparent': !current
-        })
+            'border-transparent': !current,
+        },
+    );
 
     return (
-        <span 
-            data-lang={lang} 
-            onClick={handleClick} 
-            className={languageClasses}>
+        <span data-lang={lang} onClick={handleClick} className={languageClasses}>
             {lang}
         </span>
-    )
+    );
 }
