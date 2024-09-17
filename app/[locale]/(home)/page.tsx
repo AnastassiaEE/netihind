@@ -8,12 +8,12 @@ import TopSection from "@/components/sections/TopSection";
 export default function Home() {
   return (
     <>
-      <TopSection/>
-      <InfoSection/>
-      <StepsSection/>
-      <QuestionsSection/>
-      <SliderBlogSection/>
-      <ContactsSection/>
+      <TopSection />
+      <InfoSection />
+      <StepsSection />
+      <QuestionsSection />
+      <SliderBlogSection />
+      <ContactsSection />
     </>
 
   )
