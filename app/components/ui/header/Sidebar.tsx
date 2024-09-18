@@ -49,21 +49,21 @@ export default function Sidebar({
                 <Navigation type="vertical">
                     <NavigationItem
                         href="/blog"
-                        className={pathname === `${localePrefix}/blog` ? 'text-primary' : ''}
+                        isActive={pathname === `${localePrefix}/blog`}
                         handleClick={handleClose}
                     >
                         {t('blog')}
                     </NavigationItem>
                     <NavigationItem
                         href="/about"
-                        className={pathname === `${localePrefix}/about` ? 'text-primary' : ''}
+                        isActive={pathname === `${localePrefix}/about`}
                         handleClick={handleClose}
                     >
                         {t('about-us')}
                     </NavigationItem>
                     <NavigationItem
                         href="/contacts"
-                        className={pathname === `${localePrefix}/contacts` ? 'text-primary' : ''}
+                        isActive={pathname === `${localePrefix}/contacts`}
                         handleClick={handleClose}
                     >
                         {t('contacts')}
