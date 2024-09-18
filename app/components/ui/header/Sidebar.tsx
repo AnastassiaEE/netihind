@@ -6,6 +6,8 @@ import NavigationItem from '@/components/ui/navigation/NavigationItem';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '@/components/ui/language-switcher/LanguageSwitcher';
 import classNames from 'classnames';
+import i18nConfig from '@/i18nConfig';
+import { usePathname } from 'next/navigation';
 
 export default function Sidebar({
     isOpened,
@@ -14,7 +16,10 @@ export default function Sidebar({
     isOpened: boolean;
     handleClose: React.MouseEventHandler;
 }) {
-    const { t } = useTranslation('navigation');
+    const { t, i18n } = useTranslation('navigation');
+    const locale = i18n.language;
+    const localePrefix = locale === i18nConfig.defaultLocale ? '' : `/${locale}`;
+    const pathname = usePathname();
 
     const sidebarWrapperClasses = classNames(
         'fixed',
@@ -42,13 +47,25 @@ export default function Sidebar({
             </div>
             <div className="p-6">
                 <Navigation type="vertical">
-                    <NavigationItem href="/blog" handleClick={handleClose}>
+                    <NavigationItem
+                        href="/blog"
+                        className={pathname === `${localePrefix}/blog` ? 'text-primary' : ''}
+                        handleClick={handleClose}
+                    >
                         {t('blog')}
                     </NavigationItem>
-                    <NavigationItem href="/about" handleClick={handleClose}>
+                    <NavigationItem
+                        href="/about"
+                        className={pathname === `${localePrefix}/about` ? 'text-primary' : ''}
+                        handleClick={handleClose}
+                    >
                         {t('about-us')}
                     </NavigationItem>
-                    <NavigationItem href="/contacts" handleClick={handleClose}>
+                    <NavigationItem
+                        href="/contacts"
+                        className={pathname === `${localePrefix}/contacts` ? 'text-primary' : ''}
+                        handleClick={handleClose}
+                    >
                         {t('contacts')}
                     </NavigationItem>
                 </Navigation>
