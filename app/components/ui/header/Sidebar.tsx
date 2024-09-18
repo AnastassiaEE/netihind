@@ -42,9 +42,15 @@ export default function Sidebar({
             </div>
             <div className="p-6">
                 <Navigation type="vertical">
-                    <NavigationItem href="/blog">{t('blog')}</NavigationItem>
-                    <NavigationItem href="/about">{t('about-us')}</NavigationItem>
-                    <NavigationItem href="/contacts">{t('contacts')}</NavigationItem>
+                    <NavigationItem href="/blog" handleClick={handleClose}>
+                        {t('blog')}
+                    </NavigationItem>
+                    <NavigationItem href="/about" handleClick={handleClose}>
+                        {t('about-us')}
+                    </NavigationItem>
+                    <NavigationItem href="/contacts" handleClick={handleClose}>
+                        {t('contacts')}
+                    </NavigationItem>
                 </Navigation>
                 <div className="py-8">
                     <LanguageSwitcher />

@@ -5,11 +5,13 @@ export default function NavigationItem({
     href,
     padding,
     className,
+    handleClick,
     children,
 }: {
     href: string;
     padding?: string;
     className?: string;
+    handleClick?: React.MouseEventHandler<HTMLAnchorElement>;
     children: React.ReactNode;
 }) {
     const navigationItemClasses = classNames('hover:text-primary transition-colors', {
@@ -17,7 +19,7 @@ export default function NavigationItem({
         [className as string]: className !== undefined,
     });
     return (
-        <Link href={href} className={navigationItemClasses}>
+        <Link href={href} className={navigationItemClasses} onClick={handleClick}>
             {children}
         </Link>
     );
