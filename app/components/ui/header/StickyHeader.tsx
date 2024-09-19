@@ -39,7 +39,7 @@ export default function StickyHeader({ type = 'desktop' }: { type?: 'desktop' | 
         toolbarVisibility,
     );
 
-    const buttonsWrapperClasses = classNames('flex items-center', {
+    const buttonsWrapperClasses = classNames('flex flex-wrap items-center', {
         'gap-10': type === 'desktop',
         'gap-4': type === 'mobile',
     });
@@ -47,7 +47,7 @@ export default function StickyHeader({ type = 'desktop' }: { type?: 'desktop' | 
     return (
         <div className={stickyHeaderWrapperClasses}>
             <div className="container">
-                <div className="flex justify-between">
+                <div className="flex flex-wrap justify-between">
                     <div className="mr-6">
                         <Logo src={secondaryLogo} sizeClass="w-12" />
                     </div>

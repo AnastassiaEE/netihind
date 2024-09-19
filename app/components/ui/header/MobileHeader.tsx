@@ -19,11 +19,11 @@ export default function MobileHeader() {
     return (
         <>
             <div className="container">
-                <div className="flex justify-between p-4">
+                <div className="flex flex-wrap justify-between p-4">
                     <div className="mr-6">
                         <Logo src={secondaryLogo} sizeClass="w-12" />
                     </div>
-                    <div className="flex items-center gap-4">
+                    <div className="flex flex-wrap items-center gap-4">
                         <ConsultationButton type="mobile" />
                         <HeaderItems>
                             <HeaderItem href="#" Icon={FavoriteIcon} />
