@@ -8,8 +8,7 @@ export default function Copyright({
 }) {
     return (
         <p className={`text-center ${textColorClass}`}>
-            © All rights reserved. Made with{' '}
-            <FavoriteBorderIcon fontSize="small" className="fill-cyan-300" /> by{' '}
+            © All rights reserved. Made with <FavoriteBorderIcon fontSize="small" /> by{' '}
             <span className="font-semibold">
                 <NavigationItem href="/">Netihind.ee</NavigationItem>
             </span>
