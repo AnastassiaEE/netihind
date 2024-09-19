@@ -8,13 +8,14 @@ import Logo from '@/components/ui/Logo';
 import Navigation from '@/components/ui/navigation/Navigation';
 import { useTranslation } from 'react-i18next';
 import Copyright from '@/components/ui/Copyright';
+import SectionLayout from '@/layouts/SectionLayout';
 
 export default function Footer() {
     const { t } = useTranslation('navigation');
 
     return (
         <footer className="bg-gray-900 py-12">
-            <div className="container">
+            <SectionLayout>
                 <div className="flex justify-center mb-2">
                     <Logo src={whitelogo} sizeClass="w-36" />
                 </div>
@@ -39,7 +40,7 @@ export default function Footer() {
                 <div className="pt-12">
                     <Copyright textColorClass="text-white/60" />
                 </div>
-            </div>
+            </SectionLayout>
         </footer>
     );
 }
