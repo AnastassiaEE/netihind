@@ -4,26 +4,31 @@ import SectionLayout from '@/layouts/SectionLayout';
 import AddressForm from '@/components/ui/form/AddressForm';
 import MeshSvg from '@/components/ui/MeshSvg';
 import { Trans, useTranslation } from 'react-i18next';
+import classNames from 'classnames';
 
-const sectionStyle = `max-md:h-[calc(100dvh)]\
- max-md:min-h-[500px]\
- md:h-screen\
- md:min-h-[720px]\
- max-md:pt-[80px]\
- md:pt-[140px]\
- flex\
- flex-col\
- justify-center`;
+const sectionClasses = classNames(
+    'h-[calc(100dvh)]',
+    'min-h-[500px]',
+    'md:h-screen',
+    'md:min-h-[720px]',
+    'pt-[80px]',
+    'md:pt-[140px]',
+    'flex',
+    'flex-col',
+    'justify-center',
+);
 
-const bg = `bg-gradient-to-t\
- from-primary/20 from-0%\
- via-secondary/10 via-40%\
- via-accent/10 to-80%`;
+const bgClasses = classNames(
+    'bg-gradient-to-t',
+    'from-primary/20 from-0%',
+    'via-secondary/10 via-40%',
+    'via-accent/10 to-80%',
+);
 
 export default function TopSection() {
     const { t } = useTranslation();
     return (
-        <SectionLayout className={sectionStyle} bg={bg}>
+        <SectionLayout className={sectionClasses} bg={bgClasses}>
             <div className="absolute right-0 max-md:top-[80px] bottom-[50px] -z-10 w-[230px] md:w-[500px] h-auto">
                 <MeshSvg>
                     <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
