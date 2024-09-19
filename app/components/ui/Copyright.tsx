@@ -1,0 +1,18 @@
+import NavigationItem from './navigation/NavigationItem';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+
+export default function Copyright({
+    textColorClass = 'text-muted-dark',
+}: {
+    textColorClass?: string;
+}) {
+    return (
+        <p className={`text-center ${textColorClass}`}>
+            © All rights reserved. Made with{' '}
+            <FavoriteBorderIcon fontSize="small" className="fill-cyan-300" /> by{' '}
+            <span className="font-semibold">
+                <NavigationItem href="/">Netihind.ee</NavigationItem>
+            </span>
+        </p>
+    );
+}

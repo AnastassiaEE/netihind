@@ -3,14 +3,14 @@ import classNames from 'classnames';
 
 export default function Navigation({
     type = 'horizontal',
-    linkColor = 'muted-dark',
+    itemColorClass = 'text-muted-dark',
     children,
 }: {
     type?: 'horizontal' | 'vertical';
-    linkColor?: string;
+    itemColorClass?: string;
     children: React.ReactNode;
 }) {
-    const navigationListClasses = classNames('text-base', `text-${linkColor}`, 'font-semibold', {
+    const navigationListClasses = classNames('text-base', itemColorClass, 'font-semibold', {
         'flex flex-wrap justify-center': type === 'horizontal',
     });
 

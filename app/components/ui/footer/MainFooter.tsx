@@ -7,18 +7,19 @@ import SocialLink from '@/components/ui/social-links/SocialLink';
 import Logo from '@/components/ui/Logo';
 import Navigation from '@/components/ui/navigation/Navigation';
 import { useTranslation } from 'react-i18next';
+import Copyright from '@/components/ui/Copyright';
 
 export default function Footer() {
     const { t } = useTranslation('navigation');
 
     return (
-        <footer className="bg-gray-900 pt-12 pb-6">
+        <footer className="bg-gray-900 py-12">
             <div className="container">
                 <div className="flex justify-center mb-2">
                     <Logo src={whitelogo} sizeClass="w-36" />
                 </div>
                 <div className="flex justify-center pt-4 pb-6">
-                    <Navigation linkColor="white opacity-80">
+                    <Navigation itemColorClass="text-white/80">
                         <NavigationItem href="/">{t('home')}</NavigationItem>
                         <NavigationItem href="/blog">{t('blog')}</NavigationItem>
                         <NavigationItem href="/about">{t('about-us')}</NavigationItem>
@@ -35,13 +36,8 @@ export default function Footer() {
                         <SocialLink type="youtube" />
                     </SocialLinks>
                 </div>
-                <div className="flex justify-center pt-12 text-sm text-white/60">
-                    <p>
-                        © All rights reserved. Made by{' '}
-                        <span className="text-white/80 font-semibold">
-                            <NavigationItem href="#">Lorem Ipsum</NavigationItem>
-                        </span>
-                    </p>
+                <div className="pt-12">
+                    <Copyright textColorClass="text-white/60" />
                 </div>
             </div>
         </footer>
