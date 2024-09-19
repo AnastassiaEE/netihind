@@ -1,10 +1,11 @@
-import Button from '@/components/ui/form/Button';
+import Button from '@/components/ui/form/buttons/Button';
 import Header from '@/components/ui/header/Header';
 import SectionLayout from '@/layouts/SectionLayout';
 import Link from 'next/link';
 import HomeIcon from '@mui/icons-material/Home';
 import SecondaryFooter from '@/components/ui/footer/SecondaryFooter';
 import classNames from 'classnames';
+import IconButton from '@/components/ui/form/buttons/IconButton';
 
 const contentWrapperClasses = classNames(
     'h-[calc(100dvh)]',
@@ -30,10 +31,9 @@ export default function NotFound() {
                         <p className="text-xl text-muted-dark mb-12">
                             The page you are looking for is not available.
                         </p>
-                        <Button size="lg" className="w-max">
-                            <HomeIcon className="mr-2" />
+                        <IconButton size="lg" className="w-max" Icon={HomeIcon}>
                             <Link href="/">Return home</Link>
-                        </Button>
+                        </IconButton>
                     </div>
                 </SectionLayout>
                 <SecondaryFooter />
