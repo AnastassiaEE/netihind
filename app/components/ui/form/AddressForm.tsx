@@ -60,7 +60,7 @@ export default function AddressForm() {
                 </div>
             )}
             <div className={buttonBlockClasses}>
-                <Button type="submit" size="lg">
+                <Button type="submit" size="lg" className="w-full">
                     {t('address.buttons.find')}
                 </Button>
             </div>
