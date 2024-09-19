@@ -3,7 +3,7 @@
 import useAddressForm from '@/hooks/useAddressForm';
 import CloseIcon from '@mui/icons-material/Close';
 import Searchbar from './Searchbar';
-import Button from './Button';
+import Button from './buttons/Button';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 

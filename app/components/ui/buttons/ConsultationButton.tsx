@@ -1,7 +1,7 @@
 'use client';
 
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
-import Button from '@/components/ui/form/Button';
+import Button from '@/components/ui/form/buttons/Button';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 

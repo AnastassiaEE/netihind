@@ -4,11 +4,11 @@ import useContactForm from '@/hooks/useContactForm';
 import FormResponse from './FormResponse';
 import LoopIcon from '@mui/icons-material/Loop';
 import AddIcon from '@mui/icons-material/Add';
-import IconInput from './IconInput';
+import IconInput from './inputs/IconInput';
 import Checkbox from './Checkbox';
 import Textarea from './Textarea';
-import Button from './Button';
-import Input from './Input';
+import Button from './buttons/Button';
+import Input from './inputs/Input';
 import Link from 'next/link';
 import { Trans, useTranslation } from 'react-i18next';
 

@@ -2,7 +2,7 @@ import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import TariffTableCell from './TariffTableCell';
 import TarriffMeasure from './TariffMeasure';
 import providers from '../../../data/providers';
-import Button from '../form/Button';
+import Button from '../form/buttons/Button';
 import Image from 'next/image';
 
 const columns = ['Provider', 'Speed', 'Channels', 'Mob. communication', 'Price'];

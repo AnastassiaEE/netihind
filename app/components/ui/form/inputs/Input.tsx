@@ -1,5 +1,5 @@
-import FieldError from './FieldError';
-import FieldLabel from './FieldLabel';
+import FieldError from '../FieldError';
+import FieldLabel from '../FieldLabel';
 import classNames from 'classnames';
 
 const baseClasses = classNames(

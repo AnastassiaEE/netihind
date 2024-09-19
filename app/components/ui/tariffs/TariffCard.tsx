@@ -1,7 +1,7 @@
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import providers from '../../../data/providers';
 import TarriffMeasure from './TariffMeasure';
-import Button from '../form/Button';
+import Button from '../form/buttons/Button';
 import Image from 'next/image';
 
 export default function TariffCard({ tariff }: { tariff: { [key: string]: any } }) {

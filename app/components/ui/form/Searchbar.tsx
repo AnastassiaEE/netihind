@@ -1,8 +1,8 @@
 import useSearcharbar from '@/hooks/useSearchbar';
 import { SvgIconComponent } from '@mui/icons-material';
 import DropdownBox from './DropdownBox';
-import IconInput from './IconInput';
-import Input from './Input';
+import IconInput from './inputs/IconInput';
+import Input from './inputs/Input';
 import React from 'react';
 
 export default function Searchbar({
