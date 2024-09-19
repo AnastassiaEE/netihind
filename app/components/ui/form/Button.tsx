@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 
 const baseClasses = classNames(
-  'w-full',
   'font-semibold',
   'text-center',
   'border',

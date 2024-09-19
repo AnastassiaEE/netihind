@@ -97,7 +97,7 @@ export default function ContactForm() {
                     />
                 </Checkbox>
             </div>
-            <Button type="submit" size="lg" disabled={isLoading}>
+            <Button type="submit" size="lg" disabled={isLoading} className="w-full">
                 {isLoading ? (
                     <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
                         <LoopIcon />
