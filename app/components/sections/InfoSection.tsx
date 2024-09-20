@@ -14,7 +14,7 @@ export default function InfoSection() {
                     <h2 className="text-[calc(1.375rem+1.5vw)] md:text-4xl font-extrabold mb-6">
                         {t('info-section.title')}
                     </h2>
-                    <div className="text-muted-dark text-base">
+                    <div className="text-muted-dark">
                         <Trans i18nKey="info-section.content" components={{ p: <p /> }}>
                             {t('info-section.content')}
                         </Trans>

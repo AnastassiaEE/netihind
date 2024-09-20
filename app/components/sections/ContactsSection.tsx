@@ -17,7 +17,7 @@ export default function ContactsSection() {
                         <h2 className="text-[calc(1.375rem+1.5vw)] md:text-4xl font-extrabold mb-6">
                             {t('contacts-section.title')}
                         </h2>
-                        <p className="text-muted-dark text-base">{t('contacts-section.description')}</p>
+                        <p className="text-muted-dark">{t('contacts-section.description')}</p>
                     </div>
                     <div>
                         <h3 className="text-[calc(1.325rem+0.9vw)] md:text-3xl font-extrabold mb-6">
@@ -28,7 +28,7 @@ export default function ContactsSection() {
                                 <Phone className="text-primary" />
                                 <a
                                     href="tel:+37256979125"
-                                    className="text-base font-semibold transition-colors pl-2 hover:text-primary"
+                                    className="font-semibold transition-colors pl-2 hover:text-primary"
                                 >
                                     +372 56 979 125
                                 </a>
@@ -37,7 +37,7 @@ export default function ContactsSection() {
                                 <Mail className="text-primary" />
                                 <a
                                     href="mailto:martsenkoanastassia56@gmail.com"
-                                    className="text-base font-semibold transition-colors pl-2 hover:text-primary"
+                                    className="font-semibold transition-colors pl-2 hover:text-primary"
                                 >
                                     martsenkoanastassia56@gmail.com
                                 </a>
@@ -46,7 +46,7 @@ export default function ContactsSection() {
                                 <LocationOn className="text-primary" />
                                 <a
                                     href="#"
-                                    className="text-base font-semibold transition-colors pl-2 hover:text-primary"
+                                    className="font-semibold transition-colors pl-2 hover:text-primary"
                                 >
                                     Akadeemia tee 14-42
                                 </a>

@@ -44,7 +44,7 @@ export default function AccordionItem({ children }: { children: React.ReactNode 
                 aria-expanded={isOpened ? 'true' : 'false'}
                 aria-controls={id.current}
             >
-                <span className="text-base font-semibold">{question}</span>
+                <span className="font-semibold">{question}</span>
                 {isOpened ? (
                     <CircleArrow direction="up" style={openedArrowClasses} />
                 ) : (

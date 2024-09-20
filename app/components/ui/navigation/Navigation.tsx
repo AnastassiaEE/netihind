@@ -10,7 +10,7 @@ export default function Navigation({
     itemColorClass?: string;
     children: React.ReactNode;
 }) {
-    const navigationListClasses = classNames('text-base', itemColorClass, 'font-semibold', {
+    const navigationListClasses = classNames(itemColorClass, 'font-semibold', {
         'flex flex-wrap justify-center': type === 'horizontal',
     });
 

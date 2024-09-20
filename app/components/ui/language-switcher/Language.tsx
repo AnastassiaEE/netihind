@@ -10,7 +10,6 @@ export default function Language({
     handleClick: React.MouseEventHandler<HTMLSpanElement>;
 }) {
     const languageClasses = classNames(
-        'text-base',
         'font-semibold',
         'text-muted-dark',
         'uppercase',

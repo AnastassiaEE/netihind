@@ -2,7 +2,7 @@ import classNames from 'classnames';
 
 const labelSizes: { [key: string]: string } = {
     sm: 'text-sm mb-1.5',
-    lg: 'text-base mb-2.5',
+    lg: 'mb-2.5',
 };
 
 export default function FieldLabel({

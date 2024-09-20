@@ -18,7 +18,7 @@ const baseClasses = classNames(
 
 const sizes: { [key: string]: string } = {
     sm: 'text-sm px-4 py-2.5',
-    lg: 'text-base px-5 py-3',
+    lg: 'px-5 py-3',
 };
 
 export default function Input({

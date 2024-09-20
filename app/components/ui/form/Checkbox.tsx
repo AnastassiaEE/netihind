@@ -2,7 +2,7 @@ import classNames from 'classnames';
 
 const sizes: { [key: string]: string } = {
     sm: 'text-sm',
-    lg: 'text-base',
+    lg: '',
 };
 
 export default function Checkbox({

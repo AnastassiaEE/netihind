@@ -23,7 +23,7 @@ export default function ConsultationButton({ type = 'desktop' }: { type?: 'deskt
                     <PhoneInTalkIcon fontSize="large" className={iconClasses} />
                     {type == 'desktop' && (
                         <div className="flex flex-col text-left">
-                            <span className="text-base font-bold">+37256979125</span>
+                            <span className="font-bold">+37256979125</span>
                             <span className="text-xs uppercase">{t('buttons.free-consultation')}</span>
                         </div>
                     )}

@@ -39,7 +39,7 @@ export default function Step({
                 <div className="text-[calc(1.275rem+0.3vw)] lg:text-2xl font-extrabold mb-4 md:h-24">
                     {title}
                 </div>
-                <p className="text-muted-dark text-base">{desc}</p>
+                <p className="text-muted-dark">{desc}</p>
             </div>
         </div>
     );

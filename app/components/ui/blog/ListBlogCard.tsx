@@ -33,7 +33,7 @@ export default function ListBlogCard({
                         <h3 className="text-2xl font-bold mb-4 text-muted-dark group-hover:text-primary transition-colors">
                             {title}
                         </h3>
-                        <p className="text-muted-dark text-base">{entryTitle}</p>
+                        <p className="text-muted-dark">{entryTitle}</p>
                     </div>
                 </Link>
             </article>
@@ -52,7 +52,7 @@ export default function ListBlogCard({
                         <h3 className="text-2xl font-bold mb-4 text-muted-dark group-hover:text-primary transition-colors">
                             {title}
                         </h3>
-                        <p className="text-muted-dark text-base">{entryTitle}</p>
+                        <p className="text-muted-dark">{entryTitle}</p>
                     </div>
                 </Link>
             </article>
