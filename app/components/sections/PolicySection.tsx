@@ -1,22 +1,35 @@
-'use client';
-
-import SectionLayout from '@/layouts/SectionLayout';
-import dynamic from 'next/dynamic';
-import { useTranslation } from 'react-i18next';
-import PingLoader from '../loaders/PingLoader';
 import MdxLayout from '@/layouts/MdxLayout';
+import SectionLayout from '@/layouts/SectionLayout';
+import { notFound } from 'next/navigation';
+import { MDXProps } from 'mdx/types';
 
-export default function PolicySection() {
-    const { t } = useTranslation('policy');
+export default async function PolicySection({ locale }: { locale: string }) {
+    let Content: (props: MDXProps) => JSX.Element = () => <></>;
+    let frontmatter: Frontmatter = { title: '' };
 
-    const PolicyMdx = dynamic(() => import('' + '@/markdown/et/policy.mdx'), {
-        loading: () => <PingLoader />,
-    });
+    if (locale === 'et') {
+        await import('@/markdown/et/policy.mdx')
+            .then((module) => {
+                Content = module.default;
+                frontmatter = module.frontmatter;
+            })
+            .catch(() => notFound());
+    } else if (locale === 'ru') {
+        await import('@/markdown/ru/policy.mdx')
+            .then((module) => {
+                Content = module.default;
+                frontmatter = module.frontmatter;
+            })
+            .catch(() => notFound());
+    }
+
     return (
         <SectionLayout>
-            <h1 className="text-[calc(1.375rem+1.5vw)] md:text-4xl font-extrabold mb-10">{t('title')}</h1>
+            <h1 className="text-[calc(1.375rem+1.5vw)] md:text-4xl font-extrabold mb-10">
+                {frontmatter.title}
+            </h1>
             <MdxLayout>
-                <PolicyMdx />
+                <Content />
             </MdxLayout>
         </SectionLayout>
     );

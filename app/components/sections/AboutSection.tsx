@@ -1,25 +1,35 @@
-'use client';
-
 import MdxLayout from '@/layouts/MdxLayout';
 import SectionLayout from '@/layouts/SectionLayout';
-import dynamic from 'next/dynamic';
-import { useTranslation } from 'react-i18next';
-import PingLoader from '../loaders/PingLoader';
+import { notFound } from 'next/navigation';
+import { MDXProps } from 'mdx/types';
 
-export default function AboutSection({ locale }: { locale: string }) {
-    const { t } = useTranslation('about');
-    const AboutMdxEt = dynamic(() => import('' + '@/markdown/et/about.mdx'), {
-        loading: () => <PingLoader />,
-    });
-    const AboutMdxRu = dynamic(() => import('' + '@/markdown/ru/about.mdx'), {
-        loading: () => <PingLoader />,
-    });
+export default async function AboutSection({ locale }: { locale: string }) {
+    let Content: (props: MDXProps) => JSX.Element = () => <></>;
+    let frontmatter: Frontmatter = { title: '' };
+
+    if (locale === 'et') {
+        await import('@/markdown/et/about.mdx')
+            .then((module) => {
+                Content = module.default;
+                frontmatter = module.frontmatter;
+            })
+            .catch(() => notFound());
+    } else if (locale === 'ru') {
+        await import('@/markdown/ru/about.mdx')
+            .then((module) => {
+                Content = module.default;
+                frontmatter = module.frontmatter;
+            })
+            .catch(() => notFound());
+    }
+
     return (
         <SectionLayout>
-            <h1 className="text-[calc(1.375rem+1.5vw)] md:text-4xl font-extrabold mb-10">{t('title')}</h1>
+            <h1 className="text-[calc(1.375rem+1.5vw)] md:text-4xl font-extrabold mb-10">
+                {frontmatter.title}
+            </h1>
             <MdxLayout>
-                {locale === 'et' && <AboutMdxEt />}
-                {locale === 'ru' && <AboutMdxRu />}
+                <Content />
             </MdxLayout>
         </SectionLayout>
     );
