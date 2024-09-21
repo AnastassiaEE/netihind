@@ -5,6 +5,8 @@ import ContactForm from '@/components/ui/form/ContactForm';
 import { useTranslation } from 'react-i18next';
 import ContactLinks from '@/components/ui/contacts/ContactLinks';
 import ContactLink from '@/components/ui/contacts/ContactLink';
+import { email, phone } from '@/data/contacts'
+
 
 export default function ContactsSection() {
     const { t } = useTranslation();
@@ -23,9 +25,8 @@ export default function ContactsSection() {
                             {t('contacts-section.subtitle')}
                         </h3>
                         <ContactLinks>
-                            <ContactLink contactType="phone">+372 56 979 125</ContactLink>
-                            <ContactLink contactType="email">martsenkoanastassia56@gmail.com</ContactLink>
-                            <ContactLink contactType="address">Akadeemia tee 14-42</ContactLink>
+                            <ContactLink contactType="phone">{phone}</ContactLink>
+                            <ContactLink contactType="email">{email}</ContactLink>
                         </ContactLinks>
                     </div>
                 </div>
