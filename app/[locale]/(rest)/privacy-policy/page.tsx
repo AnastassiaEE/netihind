@@ -1,5 +1,5 @@
 import PingLoader from '@/components/loaders/PingLoader';
-import PolicySection from '@/components/sections/PolicySection';
+import PolicySection from '@/components/sections/policy/PolicySection';
 import { Suspense } from 'react';
 
 export default function Policy({ params: { locale } }: { params: { locale: string } }) {

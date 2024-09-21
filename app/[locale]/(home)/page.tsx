@@ -1,9 +1,9 @@
-import QuestionsSection from "@/components/sections/QuestionsSection";
-import ContactsSection from "@/components/sections/ContactsSection";
-import StepsSection from "@/components/sections/StepsSection";
-import SliderBlogSection from "@/components/sections/SliderBlogSection";
-import InfoSection from "@/components/sections/InfoSection";
-import TopSection from "@/components/sections/TopSection";
+import QuestionsSection from "@/components/sections/home/QuestionsSection";
+import ContactsSection from "@/components/sections/home/ContactsSection";
+import StepsSection from "@/components/sections/home/StepsSection";
+import SliderBlogSection from "@/components/sections/home/SliderBlogSection";
+import InfoSection from "@/components/sections/home/InfoSection";
+import TopSection from "@/components/sections/home/TopSection";
 
 export default function Home() {
   return (

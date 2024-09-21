@@ -1,5 +1,5 @@
 import PingLoader from '@/components/loaders/PingLoader';
-import AboutSection from '@/components/sections/AboutSection';
+import AboutSection from '@/components/sections/about/AboutSection';
 import { Suspense } from 'react';
 
 export default function About({ params: { locale } }: { params: { locale: string } }) {
