@@ -1,9 +1,6 @@
 'use client';
 
-import LocationOn from '@mui/icons-material/LocationOnOutlined';
-import Mail from '@mui/icons-material/MailOutlineOutlined';
 import SectionLayout from '@/layouts/SectionLayout';
-import Phone from '@mui/icons-material/PhoneOutlined';
 import ContactForm from '@/components/ui/form/ContactForm';
 import { useTranslation } from 'react-i18next';
 import ContactLinks from '@/components/ui/contacts/ContactLinks';
