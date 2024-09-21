@@ -1,43 +1,44 @@
 {
-    "address": {
-        "placeholders": {
-        "address": "Aadress",
-        "apartment": "Korter"
-        },
-        "buttons": {
-            "find": "Otsi pakkujad"
-        },
-        "errors": {
-            "short-address": "Sisestage vähemalt 2 tähemärki",
-            "invalid-address": "Valige aadress",
-            "invalid-apartment": "Valige korter"
-        }
-    },
-    "labels": {
-        "name": "Nimi",
-        "email": "E-post",
-        "phone": "Telefon",
-        "time": "Suhtlemisaeg",
-        "message": "Sõnum"
-    },
-    "errors": {
-        "empty-name": "Sisestage nimi",
-        "empty-email": "Sisestage e-posti aadress",
-        "invalid-email": "Sisesta õige e-posti aadress",
-        "empty-phone": "Sisestage telefoninumber",
-        "invalid-phone": "Sisestage õige telefoninumber",
-        "empty-time": "Valige suhtlemisaeg",
-        "empty-message": "Sisetage sõnum",
-        "something-went-wrong": "Midagi läks valesti"
-    },
-    "success": {
-        "sent-successfully": "Teie sõnum on edukalt saadetud!"
-    },
-    "checkboxes": {
-        "privacy-policy": "Nõustun <a>privaatsus- ja kasutustingimustega</a>"
+  "address": {
+    "placeholders": {
+      "address": "Aadress",
+      "apartment": "Korter"
     },
     "buttons": {
-        "send": "Saada",
-        "free-consultation": "Tasuta konsultatsioon"
+      "find": "Otsi pakkujad"
+    },
+    "errors": {
+      "short-address": "Sisestage vähemalt 2 tähemärki",
+      "invalid-address": "Valige aadress",
+      "invalid-apartment": "Valige korter"
     }
+  },
+  "labels": {
+    "name": "Nimi",
+    "email": "E-post",
+    "phone": "Telefon",
+    "time": "Suhtlemisaeg",
+    "message": "Sõnum"
+  },
+  "errors": {
+    "empty-name": "Sisestage nimi",
+    "empty-email": "Sisestage e-posti aadress",
+    "invalid-email": "Sisesta õige e-posti aadress",
+    "empty-phone": "Sisestage telefoninumber",
+    "invalid-phone": "Sisestage õige telefoninumber",
+    "empty-time": "Valige suhtlemisaeg",
+    "empty-message": "Sisetage sõnum",
+    "something-went-wrong": "Midagi läks valesti"
+  },
+  "success": {
+    "sent-successfully": "Teie sõnum on edukalt saadetud!"
+  },
+  "checkboxes": {
+    "privacy-policy": "Nõustun <a>privaatsus- ja kasutustingimustega</a>"
+  },
+  "buttons": {
+    "send": "Saada",
+    "free-consultation": "Tasuta konsultatsioon",
+    "contact": "Võtta ühendust"
+  }
 }
