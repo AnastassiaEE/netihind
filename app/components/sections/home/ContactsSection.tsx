@@ -6,6 +6,8 @@ import SectionLayout from '@/layouts/SectionLayout';
 import Phone from '@mui/icons-material/PhoneOutlined';
 import ContactForm from '@/components/ui/form/ContactForm';
 import { useTranslation } from 'react-i18next';
+import ContactLinks from '@/components/ui/contacts/ContactLinks';
+import ContactLink from '@/components/ui/contacts/ContactLink';
 
 export default function ContactsSection() {
     const { t } = useTranslation();
@@ -23,35 +25,11 @@ export default function ContactsSection() {
                         <h3 className="text-[calc(1.325rem+0.9vw)] md:text-3xl font-extrabold mb-6">
                             {t('contacts-section.subtitle')}
                         </h3>
-                        <ul>
-                            <li className="flex items-center mb-5">
-                                <Phone className="text-primary" />
-                                <a
-                                    href="tel:+37256979125"
-                                    className="font-semibold transition-colors pl-2 hover:text-primary"
-                                >
-                                    +372 56 979 125
-                                </a>
-                            </li>
-                            <li className="flex items-center mb-5">
-                                <Mail className="text-primary" />
-                                <a
-                                    href="mailto:martsenkoanastassia56@gmail.com"
-                                    className="font-semibold transition-colors pl-2 hover:text-primary"
-                                >
-                                    martsenkoanastassia56@gmail.com
-                                </a>
-                            </li>
-                            <li className="flex items-center">
-                                <LocationOn className="text-primary" />
-                                <a
-                                    href="#"
-                                    className="font-semibold transition-colors pl-2 hover:text-primary"
-                                >
-                                    Akadeemia tee 14-42
-                                </a>
-                            </li>
-                        </ul>
+                        <ContactLinks>
+                            <ContactLink contactType="phone">+372 56 979 125</ContactLink>
+                            <ContactLink contactType="email">martsenkoanastassia56@gmail.com</ContactLink>
+                            <ContactLink contactType="address">Akadeemia tee 14-42</ContactLink>
+                        </ContactLinks>
                     </div>
                 </div>
                 <div className="md:w-1/3">
