@@ -1,6 +1,6 @@
-import RelatedBlogPostsSection from '@/components/sections/RelatedBlogPostsSection';
-import BlogPostContentSection from '@/components/sections/BlogPostContentSection';
-import BlogPostHeaderSection from '@/components/sections/BlogPostHeaderSection';
+import RelatedBlogPostsSection from '@/components/sections/blog/RelatedBlogPostsSection';
+import BlogPostContentSection from '@/components/sections/blog-post/BlogPostContentSection';
+import BlogPostHeaderSection from '@/components/sections/blog-post/BlogPostHeaderSection';
 import ParallaxBg from '@/components/ui/ParallaxBg';
 import { StaticImageData } from 'next/image';
 import posts from '@/data/posts';
