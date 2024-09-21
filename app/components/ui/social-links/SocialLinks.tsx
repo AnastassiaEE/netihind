@@ -7,7 +7,7 @@ export default function SocialLinks({ children }: { children: React.ReactNode })
                 if (!isValidElement(child)) {
                     return child;
                 } else {
-                    return React.cloneElement(child as React.ReactElement, { margin: 'mx-2' });
+                    return React.cloneElement(child as React.ReactElement, { className: 'mx-2' });
                 }
             })}
         </div>

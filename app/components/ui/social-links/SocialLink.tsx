@@ -3,10 +3,10 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import XIcon from '@mui/icons-material/X';
-import Link from 'next/link';
 import classNames from 'classnames';
+import { SvgIconComponent } from '@mui/icons-material';
 
-const types: { [key: string]: { Icon: any; color: string } } = {
+const types: { [key: string]: { Icon: SvgIconComponent; color: string } } = {
     facebook: { Icon: FacebookIcon, color: 'hover:bg-facebook-logo hover:shadow-facebook-logo/40' },
     x: { Icon: XIcon, color: 'hover:bg-twitter-logo hover:shadow-twitter-logo/40' },
     instagram: {
@@ -16,7 +16,15 @@ const types: { [key: string]: { Icon: any; color: string } } = {
     linkedin: { Icon: LinkedInIcon, color: 'hover:bg-linkedin-logo hover:shadow-linkedin-logo/40' },
     youtube: { Icon: YouTubeIcon, color: 'hover:bg-youtube-logo hover:shadow-youtube-logo/40' },
 };
-export default function SocialLink({ type, margin }: { type: string; margin?: string }) {
+export default function SocialLink({
+    type,
+    href,
+    className,
+}: {
+    type: string;
+    href: string;
+    className?: string;
+}) {
     const Icon = types[type].Icon;
 
     const socialLinkClasses = classNames(
@@ -32,13 +40,13 @@ export default function SocialLink({ type, margin }: { type: string; margin?: st
         'hover:shadow-lg',
         types[type].color,
         {
-            [margin as string]: margin,
+            [className as string]: className,
         },
     );
 
     return (
-        <Link href="#" className={socialLinkClasses}>
+        <a href={href} target="_blank" className={socialLinkClasses}>
             <Icon fontSize="small" className="text-white" />
-        </Link>
+        </a>
     );
 }

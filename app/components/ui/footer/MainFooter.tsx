@@ -9,6 +9,7 @@ import Navigation from '@/components/ui/navigation/Navigation';
 import { useTranslation } from 'react-i18next';
 import Copyright from '@/components/ui/Copyright';
 import SectionLayout from '@/layouts/SectionLayout';
+import socialLinks from '@/data/socialLinks';
 
 export default function Footer() {
     const { t } = useTranslation('navigation');
@@ -30,11 +31,9 @@ export default function Footer() {
                 </div>
                 <div className="flex justify-center pt-6">
                     <SocialLinks>
-                        <SocialLink type="facebook" />
-                        <SocialLink type="instagram" />
-                        <SocialLink type="x" />
-                        <SocialLink type="linkedin" />
-                        <SocialLink type="youtube" />
+                        {Object.keys(socialLinks).map((type) => {
+                            return <SocialLink key={type} type={type} href={socialLinks[type]} />;
+                        })}
                     </SocialLinks>
                 </div>
                 <div className="pt-12">
