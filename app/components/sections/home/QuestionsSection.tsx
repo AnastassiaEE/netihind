@@ -12,15 +12,15 @@ export default function QuestionsSection() {
     return (
         <SectionLayout bg="bg-white" className="py-24">
             <div className="flex flex-col md:flex-row items-center justify-between">
-                <div className="md:w-4/12">
+                <div className="md:w-4/12 max-md:mb-12">
                     <h2 className="text-[calc(1.375rem+1.5vw)] md:text-4xl font-extrabold mb-6">
                         {t('questions-section.title')}
                     </h2>
                     <div className="text-muted-dark text-lg max-md:mb-12 mb-8">
                         <p>{t('questions-section.description')}</p>
                     </div>
-                    <Link href="/contacts" locale={i18n.language} className="inline-block">
-                        <Button size="lg">{t('form:buttons.contact')}</Button>
+                    <Link href="/contacts" locale={i18n.language} className="md:inline-block">
+                        <Button size="lg" className="w-full">{t('form:buttons.contact')}</Button>
                     </Link>
                 </div>
                 <div className="md:w-7/12">
