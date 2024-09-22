@@ -9,7 +9,7 @@ const arrowClasses = classNames('bg-gray-900/25', 'text-white', '!w-11', '!h-11'
 export default function ScrollTopButton() {
     const { y, handleClick } = useScrollTopButton();
 
-    const arrowLinkClasses = classNames(
+    const buttonClasses = classNames(
         'fixed',
         'inline-block',
         'z-50',
@@ -23,7 +23,7 @@ export default function ScrollTopButton() {
     );
 
     return (
-        <button className={arrowLinkClasses} onClick={handleClick}>
+        <button className={buttonClasses} onClick={handleClick}>
             <CircleArrow style={arrowClasses} direction="up" />
         </button>
     );
