@@ -1,6 +1,4 @@
 'use client';
-
-import useContactForm from '@/hooks/useContactForm';
 import FormResponse from './FormResponse';
 import LoopIcon from '@mui/icons-material/Loop';
 import AddIcon from '@mui/icons-material/Add';
@@ -11,9 +9,33 @@ import Button from './buttons/Button';
 import Input from './inputs/Input';
 import Link from 'next/link';
 import { Trans, useTranslation } from 'react-i18next';
+import useForm from '@/hooks/useForm';
 
 export default function ContactForm() {
     const { t } = useTranslation(['form']);
+
+    const fields: { [key: string]: { initialValue: string | boolean; isRequired: boolean } } = {
+        name: {
+            initialValue: '',
+            isRequired: true,
+        },
+        email: {
+            initialValue: '',
+            isRequired: true,
+        },
+        phone: {
+            initialValue: '',
+            isRequired: true,
+        },
+        message: {
+            initialValue: '',
+            isRequired: true,
+        },
+        policy: {
+            initialValue: false,
+            isRequired: true,
+        },
+    };
 
     const {
         errors,
@@ -24,7 +46,7 @@ export default function ContactForm() {
         handleCheck,
         handleBlur,
         handleSubmit,
-    } = useContactForm();
+    } = useForm(fields);
 
     return (
         <form action="" noValidate onSubmit={handleSubmit}>

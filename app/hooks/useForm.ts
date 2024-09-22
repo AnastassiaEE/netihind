@@ -1,26 +1,45 @@
 import { useEffect, useRef, useState } from 'react';
 import { validateField } from '@/utils/fieldsValidator';
 
-export default function useContactForm() {
-  const [errors, setErrors] = useState({ name: '', email: '', phone: '', message: '', policy: '' });
-  const [values, setValues] = useState<{ [key: string]: string | boolean }>({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
-    policy: false,
-  });
+export default function useForm(fields: {
+  [key: string]: { initialValue: string | boolean; isRequired: boolean };
+}) {
+  const initialErrors: { [key: string]: string } = Object.keys(fields).reduce((result, field) => {
+    return {
+      ...result,
+      [field]: '',
+    };
+  }, {});
+
+  const initialValues: { [key: string]: string | boolean } = Object.keys(fields).reduce(
+    (result, field) => {
+      return {
+        ...result,
+        [field]: fields[field].initialValue,
+      };
+    },
+    {},
+  );
+
+  const initialBluredFields: { [key: string]: boolean } = Object.keys(initialErrors).reduce(
+    (result, field) => {
+      return {
+        ...result,
+        [field]: false,
+      };
+    },
+    {},
+  );
+
+  const [errors, setErrors] = useState(initialErrors);
+  const [values, setValues] = useState(initialValues);
+  const bluredFields = useRef(initialBluredFields);
+
   const [isLoading, setIsLoading] = useState(false);
   const [response, setResponse] = useState<{ type: string; message: string } | null>(null);
-  const bluredFields = useRef<{ [key: string]: boolean }>({
-    name: false,
-    email: false,
-    phone: false,
-    message: false,
-  });
 
   const resetValues = () => {
-    setValues({ name: '', email: '', phone: '', message: '', policy: false });
+    setValues(initialValues);
   };
 
   useEffect(() => {
@@ -48,7 +67,7 @@ export default function useContactForm() {
   ) => {
     setValues((prevState) => ({ ...prevState, [field]: e.target.value }));
     if (bluredFields.current[field] === true) {
-      const error = validateField(field, e.target.value);
+      const error = validateField(field, e.target.value, fields[field].isRequired);
       setErrors((prevState) => ({ ...prevState, [field]: error }));
     }
   };
@@ -65,21 +84,19 @@ export default function useContactForm() {
     field: string,
   ) => {
     if (bluredFields.current[field] === false && (values[field] as string).length > 0) {
-      const error = validateField(field, e.target.value);
+      const error = validateField(field, e.target.value, fields[field].isRequired);
       setErrors((prevState) => ({ ...prevState, [field]: error }));
       bluredFields.current[field] = true;
     }
   };
 
   const isFormValid = () => {
-    const { name, email, phone, message, policy } = values;
-    const err = {
-      name: validateField('name', name),
-      email: validateField('email', email),
-      phone: validateField('phone', phone),
-      message: validateField('message', message),
-      policy: validateField('policy', policy),
-    };
+    const err = Object.keys(values).reduce((result, field) => {
+      return {
+        ...result,
+        [field]: validateField(field as string, values[field], fields[field].isRequired),
+      };
+    }, {});
     setErrors(err);
     return !Object.values(err).some(Boolean);
   };
