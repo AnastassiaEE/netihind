@@ -14,7 +14,7 @@ import useForm from '@/hooks/useForm';
 export default function ContactForm() {
     const { t } = useTranslation(['form']);
 
-    const fields: { [key: string]: { initialValue: string | boolean; isRequired: boolean } } = {
+    const fields = {
         name: {
             initialValue: '',
             isRequired: true,
