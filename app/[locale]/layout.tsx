@@ -7,7 +7,7 @@ import initTranslations from '../i18n';
 import TranslationsProvider from '@/components/TranslationProvider';
 
 const inter = Manrope({ subsets: ['latin'] });
-const i18nNamespaces = ['home', 'form', 'navigation'];
+const i18nNamespaces = ['home', 'form', 'navigation', 'contacts'];
 
 export const metadata: Metadata = {
   title: 'Create Next App',
