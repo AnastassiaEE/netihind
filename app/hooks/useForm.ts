@@ -1,5 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { validateField } from '@/utils/fieldsValidator';
+
+const responses = {
+  success: { message: 'success.sent-successfully' },
+  error: { message: 'errors.something-went-wrong' },
+};
 
 export default function useForm(fields: {
   [key: string]: { initialValue: string | boolean; isRequired: boolean };
@@ -35,31 +40,12 @@ export default function useForm(fields: {
   const [values, setValues] = useState(initialValues);
   const bluredFields = useRef(initialBluredFields);
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isSending, setIsSending] = useState(false);
   const [response, setResponse] = useState<{ type: string; message: string } | null>(null);
 
   const resetValues = () => {
     setValues(initialValues);
   };
-
-  useEffect(() => {
-    const messages = [
-      { type: 'success', message: 'success.sent-successfully' },
-      { type: 'error', message: 'errors.something-went-wrong' },
-    ];
-    let timer = null;
-    if (isLoading) {
-      timer = setTimeout(() => {
-        setIsLoading(false);
-        const res = messages[Math.floor(Math.random() * 2)];
-        if (res.type === 'success') resetValues();
-        setResponse(res);
-      }, 2000);
-    }
-    return () => {
-      timer && clearTimeout(timer);
-    };
-  }, [isLoading]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
@@ -101,18 +87,39 @@ export default function useForm(fields: {
     return !Object.values(err).some(Boolean);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setResponse(null);
     if (isFormValid()) {
-      setIsLoading(true);
+      try {
+        setIsSending(true);
+        const response = await fetch('/api/send', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(values),
+        });
+        // handle success
+        if (response.ok) {
+          setResponse({ type: 'success', message: responses.success.message });
+          resetValues();
+        } else {
+          setResponse({ type: 'error', message: responses.error.message });
+        }
+      } catch (error) {
+        console.log('Error sending email:', error);
+        setResponse({ type: 'error', message: responses.error.message });
+      } finally {
+        setIsSending(false);
+      }
     }
   };
 
   return {
     errors,
     values,
-    isLoading,
+    isSending,
     response,
     bluredFields,
     handleChange,

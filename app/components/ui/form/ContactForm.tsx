@@ -40,7 +40,7 @@ export default function ContactForm() {
     const {
         errors,
         values,
-        isLoading,
+        isSending,
         response,
         handleChange,
         handleCheck,
@@ -119,8 +119,8 @@ export default function ContactForm() {
                     />
                 </Checkbox>
             </div>
-            <Button type="submit" size="lg" disabled={isLoading} className="w-full">
-                {isLoading ? (
+            <Button type="submit" size="lg" disabled={isSending} className="w-full">
+                {isSending ? (
                     <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
                         <LoopIcon />
                     </svg>
@@ -128,7 +128,7 @@ export default function ContactForm() {
                     <>{t('buttons.send')}</>
                 )}
             </Button>
-            {!isLoading && (
+            {!isSending && (
                 <FormResponse type={response?.type}> {response && t(response.message)} </FormResponse>
             )}
         </form>
