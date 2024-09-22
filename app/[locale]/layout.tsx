@@ -5,6 +5,7 @@ import i18nConfig from '@/i18nConfig';
 import { dir } from 'i18next';
 import initTranslations from '../i18n';
 import TranslationsProvider from '@/components/TranslationProvider';
+import ScrollTopButton from '@/components/ui/buttons/ScrollTopButton';
 
 const inter = Manrope({ subsets: ['latin'] });
 const i18nNamespaces = ['home', 'form', 'navigation', 'contacts'];
@@ -30,6 +31,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} dir={dir(locale)}>
       <body className={inter.className}>
+        <ScrollTopButton />
         <TranslationsProvider namespaces={i18nNamespaces} locale={locale} resources={resources}>
           {children}
         </TranslationsProvider>
