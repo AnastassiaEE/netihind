@@ -55,7 +55,7 @@ export default function RequestForm() {
     } = useForm(fields);
 
     return (
-        <form action="" noValidate onSubmit={handleSubmit}>
+        <form noValidate onSubmit={handleSubmit}>
             <div className="mb-6">
                 <Input
                     name="name"
@@ -79,7 +79,7 @@ export default function RequestForm() {
                 />
             </div>
             <div className="md:flex">
-                <div className="mb-6">
+                <div className="basis-6/12 mb-6">
                     <IconInput
                         name="phone"
                         type="tel"
@@ -93,7 +93,7 @@ export default function RequestForm() {
                         icon={{ Icon: AddIcon, isVisible: true }}
                     />
                 </div>
-                <div className="mb-6">
+                <div className="grow mb-6">
                     <Select
                         name="time"
                         label={t('labels.time')}

@@ -1,10 +1,10 @@
 'use client';
 
 import SectionLayout from '@/layouts/SectionLayout';
-import AddressForm from '@/components/ui/form/AddressForm';
 import MeshSvg from '@/components/ui/MeshSvg';
-import { Trans, useTranslation } from 'react-i18next';
 import classNames from 'classnames';
+import { Trans, useTranslation } from 'react-i18next';
+import AddressForm from '@/components/ui/form/AddressForm';
 
 const sectionClasses = classNames(
     'h-[calc(100dvh)]',
