@@ -9,9 +9,7 @@ import Logo from '@/components/ui/Logo';
 export default function TopHeader() {
     return (
         <div className="flex items-center justify-between p-4 border-b border-muted-light">
-            <div className="mr-6">
-                <Logo src={mainLogo} sizeClass="w-36" />
-            </div>
+            <Logo src={mainLogo} sizeClass="w-36" />
             <div className="flex items-center gap-10">
                 <ConsultationButton />
                 {/*

@@ -1,12 +1,12 @@
 'use client';
 
 import secondaryLogo from '@/public/images/gradientsecondarylogo.svg';
-import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+//import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
+//import FavoriteIcon from '@mui/icons-material/Favorite';
 import ConsultationButton from '@/components/ui/buttons/ConsultationButton';
 import StickyHeader from './StickyHeader';
-import HeaderItems from './HeaderItems';
-import HeaderItem from './HeaderItem';
+//import HeaderItems from './HeaderItems';
+//import HeaderItem from './HeaderItem';
 import Hamburger from './Hamburger';
 import Sidebar from './Sidebar';
 import Overlay from '@/components/ui/Overlay';
@@ -20,7 +20,7 @@ export default function MobileHeader() {
         <>
             <div className="container">
                 <div className="flex flex-wrap justify-between p-4">
-                    <div className="mr-6">
+                    <div>
                         <Logo src={secondaryLogo} sizeClass="w-12" />
                     </div>
                     <div className="flex flex-wrap items-center gap-6">
