@@ -36,7 +36,7 @@ export default function IconInput({
     handleFocus?: React.FocusEventHandler<HTMLInputElement>;
     handleBlur?: React.FocusEventHandler<HTMLInputElement>;
     value: string;
-    isValid?: boolean;
+    isValid: boolean;
     error?: string;
     icon: { Icon: SvgIconComponent; isVisible: boolean; handleClick?: React.MouseEventHandler };
 }) {
