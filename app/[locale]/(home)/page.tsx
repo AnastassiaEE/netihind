@@ -10,7 +10,7 @@ export default function Home() {
     <>
       {/* <TopSectionPrimary /> */}
       <TopSectionSecondary />
-      <InfoSection />
+      {/* <InfoSection /> */}
       <StepsSection />
       <QuestionsSection />
       <SliderBlogSection />
