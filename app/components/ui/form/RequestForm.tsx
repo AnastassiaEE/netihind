@@ -1,4 +1,5 @@
 'use client';
+
 import FormResponse from './FormResponse';
 import LoopIcon from '@mui/icons-material/Loop';
 import AddIcon from '@mui/icons-material/Add';
@@ -10,8 +11,9 @@ import Input from './fields/Input';
 import Link from 'next/link';
 import { Trans, useTranslation } from 'react-i18next';
 import useForm from '@/hooks/useForm';
+import Select from './fields/Select';
 
-export default function ContactForm() {
+export default function RequestForm() {
     const { t } = useTranslation(['form']);
 
     const fields = {
@@ -19,7 +21,7 @@ export default function ContactForm() {
             initialValue: '',
             isRequired: true,
         },
-        email: {
+        address: {
             initialValue: '',
             isRequired: true,
         },
@@ -27,9 +29,13 @@ export default function ContactForm() {
             initialValue: '',
             isRequired: true,
         },
+        time: {
+            initialValue: '9-11',
+            isRequired: true,
+        },
         message: {
             initialValue: '',
-            isRequired: true,
+            isRequired: false,
         },
         policy: {
             initialValue: false,
@@ -63,30 +69,45 @@ export default function ContactForm() {
             </div>
             <div className="mb-6">
                 <Input
-                    name="email"
-                    type="email"
-                    inputmode="email"
-                    label={t('labels.email')}
-                    handleChange={(e) => handleChange(e, 'email')}
-                    handleBlur={(e) => handleBlur(e, 'email')}
-                    value={values.email as string}
-                    isValid={errors.email === ''}
-                    error={t(errors.email)}
+                    name="address"
+                    label={t('labels.address')}
+                    handleChange={(e) => handleChange(e, 'address')}
+                    handleBlur={(e) => handleBlur(e, 'address')}
+                    value={values.address as string}
+                    isValid={errors.address === ''}
+                    error={t(errors.address)}
                 />
             </div>
-            <div className="mb-6">
-                <IconInput
-                    name="phone"
-                    type="tel"
-                    inputmode="tel"
-                    label={t('labels.phone')}
-                    handleChange={(e) => handleChange(e, 'phone')}
-                    handleBlur={(e) => handleBlur(e, 'phone')}
-                    value={values.phone as string}
-                    isValid={errors.phone === ''}
-                    error={t(errors.phone)}
-                    icon={{ Icon: AddIcon, isVisible: true }}
-                />
+            <div className="md:flex">
+                <div className="mb-6">
+                    <IconInput
+                        name="phone"
+                        type="tel"
+                        inputmode="tel"
+                        label={t('labels.phone')}
+                        handleChange={(e) => handleChange(e, 'phone')}
+                        handleBlur={(e) => handleBlur(e, 'phone')}
+                        value={values.phone as string}
+                        isValid={errors.phone === ''}
+                        error={t(errors.phone)}
+                        icon={{ Icon: AddIcon, isVisible: true }}
+                    />
+                </div>
+                <div className="mb-6">
+                    <Select
+                        name="time"
+                        label={t('labels.time')}
+                        handleChange={(e) => handleChange(e, 'time')}
+                        value={values.time as string}
+                    >
+                        <option value="9-11">09:00 - 11:00</option>
+                        <option value="11-13">11:00 - 13:00</option>
+                        <option value="13-15">13:00 - 15:00</option>
+                        <option value="15-17">15:00 - 17:00</option>
+                        <option value="17-19">17:00 - 19:00</option>
+                        <option value="19-21">19:00 - 21:00</option>
+                    </Select>
+                </div>
             </div>
             <div className="mb-6">
                 <Textarea

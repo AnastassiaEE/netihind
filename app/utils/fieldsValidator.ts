@@ -22,6 +22,11 @@ export const validateField = (field: string, value: string | boolean, isRequired
         error = '';
       }
       break;
+    case 'address':
+      if ((value as string).trim() === '') {
+        error = isRequired ? 'errors.empty-address' : '';
+      }
+      break;
     case 'message':
       error = isRequired && (value as string).trim() === '' ? 'errors.empty-message' : '';
       break;

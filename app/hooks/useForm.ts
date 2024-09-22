@@ -62,7 +62,7 @@ export default function useForm(fields: {
   }, [isLoading]);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
     field: string,
   ) => {
     setValues((prevState) => ({ ...prevState, [field]: e.target.value }));

@@ -1,63 +1,63 @@
 {
-    "top-section": {
-        "title": "Otsige koduseid <span>Interneti-teenuse pakkujaid</span> aadressi järgi",
-        "description": "Kas ei tea, milline teenusepakkuja teie kodus on? Kas soovid valida endale sobiva koduse internetipaketi? Andke meile teada ja vaatame koos üle! Täitke vorm ja saate tasuta konsultatsiooni."
-    },
-    "info-section": {
-        "title": "Rhoncus est pellentesque (et)",
-        "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Faucibus turpis in eu mi bibendum neque egestas. Integer quis auctor elit sed vulputate. Varius vel pharetra vel turpis nunc eget lorem dolor sed. Habitant morbi tristique senectus et. Sed risus pretium quam vulputate dignissim suspendisse.</p><p>Ut faucibus pulvinar elementum integer enim. Euismod lacinia at quis risus sed vulputate.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent semper feugiat nibh sed pulvinar proin gravida.</p>"
-    },
-    "steps-section": {
-        "title": "Kuidas see toimib?",
-        "description": "4 lihtsat sammu, mis aitavad Teil ühendada koduse Interneti.",
-        "steps": {
-            "step1": {
-                "title": "Vormi täitmine",
-                "description": "Täitke vorm oma nime, aadressi, telefoninumbri ja eelistatud kontaktiajaga. Vajadusel jätke sõnum."
-            },
-            "step2": {
-                "title": "Konsultatsioon ja paketi valik",
-                "description": "Võtame Teiega ühendust tasuta konsultatsiooni saamiseks, aitame Teil valida koduse internetipaketi ning seejärel edastame infot valitud paketi teenusepakkujale."
-            },
-            "step3": {
-                "title": "Kõne valitud teenusepakkuja poolt",
-                "description": "Teenusepakkuja võtab Teiega ühendust et leppida kokku, millal tehnik võib paigaldada koduinterneti."
-            },
-            "step4": {
-                "title": "Liitumine",
-                "description": "Tehnik tuleb kohale ja paigaldab koduinterneti, misjärel allkirjastate lepingu."
-            }
-        }
-    },
-    "questions-section": {
-        "title": "Kas Teil on küsimusi? Vaadake meie korduma kippuvaid küsimusi.",
-        "description": "Kas Teil on endiselt vastamata küsimusi ja soovite meiega ühendust võtta?",
-        "questions": {
-            "question1": {
-                "question": "Miks pean oma telefoni numbrit jagama?",
-                "answer": "Telefoninumbrit on vaja selleks, et Netihindi operaator saaks Teiega ühendust võtta ja kodust internetiühendust taotleda, samal ajal saame vastata küsimustele erinevate teenusepakkujate paketide ja jooksvate soodustuste kohta."
-            },
-            "question2": {
-                "question": "Miks pean kirjutama oma aadressi?",
-                "answer": "Igas majas on oma interneti kaablid ja erinevad tehnoloogiad. Aadressi järgi näeme, millised tehnoloogiad on Teie majas saadaval ja selle põhjal valida Teile sobivaima paketi."
-            },
-            "question3": {
-                "question": "Miks ma pean liituma läbi Netihind?",
-                "answer": "<ul><li><bullet/>Säästame Teie aega. Anname Teile teavet kõigi teenusepakkujate pakkumiste kohta. Te ei pea mitut saiti korraga avama.</li><li><bullet/>Sõltumatu arvamus. Meie töötame kõigi teenusepakkujatega ning lähtuvalt teie vajadustest saame valida parima lahenduse.</li></ul>"
-            },
-            "question4": {
-                "question": "Miks Netihind veebilehe kasutamine on tasuta?",
-                "answer": "Teenus on kasutajatele täiesti tasuta. Aitame Teil valida enda jaoks parima lahenduse. Teenusepakkuja maksab meile Teie liitumise eest."
-            }
-        },
-        "contact-button": "Võtke meiega kohe ühendust"
-    },
-    "blog-section": {
-        "title": "Viimased uudised"
-    },
-    "contacts-section": {
-        "title": "Võtke meiega ühendust",
-        "description": "Kui Teil on küsimusi, andke meile teada ja me võtame Teiega esimesel võimalusel ühendust või võtke meiega ise ühendust!",
-        "subtitle": "Kontaktid"
+  "top-section": {
+    "title": "Otsige koduseid <span>Interneti-teenuse pakkujaid</span> aadressi järgi",
+    "description": "Kas te ei tea, milline teenusepakkuja Teie kodus on? Kas soovite valida kiiruse, hinna ja ühendustehnoloogia poolest teile sobiva paketi? Andke meile teada ja vaatame koos üle! Täitke vorm ja teeme tasuta konsultatsiooni."
+  },
+  "info-section": {
+    "title": "Rhoncus est pellentesque (et)",
+    "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Faucibus turpis in eu mi bibendum neque egestas. Integer quis auctor elit sed vulputate. Varius vel pharetra vel turpis nunc eget lorem dolor sed. Habitant morbi tristique senectus et. Sed risus pretium quam vulputate dignissim suspendisse.</p><p>Ut faucibus pulvinar elementum integer enim. Euismod lacinia at quis risus sed vulputate.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent semper feugiat nibh sed pulvinar proin gravida.</p>"
+  },
+  "steps-section": {
+    "title": "Kuidas see toimib?",
+    "description": "4 lihtsat sammu, mis aitavad Teil ühendada koduse Interneti.",
+    "steps": {
+      "step1": {
+        "title": "Vormi täitmine",
+        "description": "Täitke vorm oma nime, aadressi, telefoninumbri ja eelistatud kontaktiajaga. Vajadusel jätke sõnum."
+      },
+      "step2": {
+        "title": "Konsultatsioon ja paketi valik",
+        "description": "Võtame Teiega ühendust tasuta konsultatsiooni saamiseks, aitame Teil valida koduse internetipaketi ning seejärel edastame infot valitud paketi teenusepakkujale."
+      },
+      "step3": {
+        "title": "Kõne valitud teenusepakkuja poolt",
+        "description": "Teenusepakkuja võtab Teiega ühendust et leppida kokku, millal tehnik võib paigaldada koduinterneti."
+      },
+      "step4": {
+        "title": "Liitumine",
+        "description": "Tehnik tuleb kohale ja paigaldab koduinterneti, misjärel allkirjastate lepingu."
+      }
     }
+  },
+  "questions-section": {
+    "title": "Kas Teil on küsimusi? Vaadake meie korduma kippuvaid küsimusi.",
+    "description": "Kas Teil on endiselt vastamata küsimusi ja soovite meiega ühendust võtta?",
+    "questions": {
+      "question1": {
+        "question": "Miks pean oma telefoni numbrit jagama?",
+        "answer": "Telefoninumbrit on vaja selleks, et Netihindi operaator saaks Teiega ühendust võtta ja kodust internetiühendust taotleda, samal ajal saame vastata küsimustele erinevate teenusepakkujate paketide ja jooksvate soodustuste kohta."
+      },
+      "question2": {
+        "question": "Miks pean kirjutama oma aadressi?",
+        "answer": "Igas majas on oma interneti kaablid ja erinevad tehnoloogiad. Aadressi järgi näeme, millised tehnoloogiad on Teie majas saadaval ja selle põhjal valida Teile sobivaima paketi."
+      },
+      "question3": {
+        "question": "Miks ma pean liituma läbi Netihind?",
+        "answer": "<ul><li><bullet/>Säästame Teie aega. Anname Teile teavet kõigi teenusepakkujate pakkumiste kohta. Te ei pea mitut saiti korraga avama.</li><li><bullet/>Sõltumatu arvamus. Meie töötame kõigi teenusepakkujatega ning lähtuvalt teie vajadustest saame valida parima lahenduse.</li></ul>"
+      },
+      "question4": {
+        "question": "Miks Netihind veebilehe kasutamine on tasuta?",
+        "answer": "Teenus on kasutajatele täiesti tasuta. Aitame Teil valida enda jaoks parima lahenduse. Teenusepakkuja maksab meile Teie liitumise eest."
+      }
+    },
+    "contact-button": "Võtke meiega kohe ühendust"
+  },
+  "blog-section": {
+    "title": "Viimased uudised"
+  },
+  "contacts-section": {
+    "title": "Võtke meiega ühendust",
+    "description": "Kui Teil on küsimusi, andke meile teada ja me võtame Teiega esimesel võimalusel ühendust või võtke meiega ise ühendust!",
+    "subtitle": "Kontaktid"
+  }
 }

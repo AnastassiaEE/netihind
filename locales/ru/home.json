@@ -1,63 +1,63 @@
 {
-    "top-section": {
-        "title": "Поиск <span>провайдеров</span> домашнего интернета по адресу",
-        "description": "Не знаете какой провайдер есть в Вашем доме? Хотели бы выбрать подходящий для себя пакет домашнего интернета? Мы сделаем это вместе с Вами! Оставьте заявку и получите бесплатную консультацию."
-    },
-    "info-section": {
-        "title": "Rhoncus est pellentesque (ru)",
-        "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Faucibus turpis in eu mi bibendum neque egestas. Integer quis auctor elit sed vulputate. Varius vel pharetra vel turpis nunc eget lorem dolor sed. Habitant morbi tristique senectus et. Sed risus pretium quam vulputate dignissim suspendisse.</p><p>Ut faucibus pulvinar elementum integer enim. Euismod lacinia at quis risus sed vulputate.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent semper feugiat nibh sed pulvinar proin gravida.</p>"
-    },
-    "steps-section": {
-        "title": "Как это работает?",
-        "description": "4 простых шага, которые помогут Вам подключить домашний интернет.",
-        "steps": {
-            "step1": {
-                "title": "Заполнение формы",
-                "description": "Укажите имя, адрес, номер телефона и предпочтительное время связи. При необходимости оставьте сообщение."
-            },
-            "step2": {
-                "title": "Консультация и выбор пакета",
-                "description": "Мы свяжемся с Вами для бесплатной консультации, поможем выбрать пакет домашнего интернета, после чего передадим заявку на подключение провайдеру выбранного Вами пакета."
-            },
-            "step3": {
-                "title": "Звонок от провайдера",
-                "description": "С Вами свяжется провайдер, чтобы выбрать время для приезда мастера."
-            },
-            "step4": {
-                "title": "Подключение",
-                "description": "Мастер приезжает на место и подключает интернет, после чего Вы подписываете договор."
-            }
-        }
-    },
-    "questions-section": {
-        "title": "Есть вопросы? Ознакомьтесь с часто задаваемыми вопросами.",
-        "description": "Остались вопросы без ответа, и Вам нужно связаться с нами?",
-        "questions": {
-            "question1": {
-                "question": "Зачем оставлять номер телефона?",
-                "answer": "Номер телефона нужен для того, чтобы оператор Netihind смог связаться с Вами и сделать заявку на подключение домашнего интернета, а также проконсультировать Вас по вопросам пакетов разных провайдеров и актуальных скидочных кампаний."
-            },
-            "question2": {
-                "question": "Зачем указывать свой адрес?",
-                "answer": "В каждом доме проведены кабеля разных провайдеров. Используя адрес, мы сможем увидеть, какие технологии доступны в Вашем доме, и на основе этого подобрать наиболее подходящий для Вас пакет."
-            },
-            "question3": {
-                "question": "Почему лучше всего подключиться через Netihind?",
-                "answer": "<ul><li><bullet/>Сэкономим время. Предоставим Вам информацию о предложениях всех провайдеров. Вам не придется открывать сразу несколько сайтов.</li><li><bullet/>Независимое мнение. Мы работаем со всеми провайдерами, и исходя из ваших потребностей сможем подобрать наилучшее решение.</li></ul>"
-            },
-            "question4": {
-                "question": "Почему сервис бесплатный?",
-                "answer": "Сервис абсолютно бесплатный для пользователей. Мы помогаем Вам выбрать лучший для себя вариант. Мы получаем деньги от провайдеров за подключение."
-            }
-        },
-        "contact-button": "Свяжитесь с нами сейчас"
-    },
-    "blog-section": {
-        "title": "Последние новости"
-    },
-    "contacts-section": {
-        "title": "Свяжитесь с нами",
-        "description": "Если у Вас возникли какие-либо вопросы, оставьте заявку, и мы свяжемся с Вами при первой возможности, или свяжитесь с нами сами!",
-        "subtitle": "Контакты"
+  "top-section": {
+    "title": "Поиск <span>провайдеров</span> домашнего интернета по адресу",
+    "description": "Не знаете какой провайдер есть в Вашем доме? Хотели бы выбрать подходящий для себя пакет по скорости, цене и технологии подключения? Мы сделаем это вместе с Вами! Оставьте заявку и получите бесплатную консультацию."
+  },
+  "info-section": {
+    "title": "Rhoncus est pellentesque (ru)",
+    "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Faucibus turpis in eu mi bibendum neque egestas. Integer quis auctor elit sed vulputate. Varius vel pharetra vel turpis nunc eget lorem dolor sed. Habitant morbi tristique senectus et. Sed risus pretium quam vulputate dignissim suspendisse.</p><p>Ut faucibus pulvinar elementum integer enim. Euismod lacinia at quis risus sed vulputate.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent semper feugiat nibh sed pulvinar proin gravida.</p>"
+  },
+  "steps-section": {
+    "title": "Как это работает?",
+    "description": "4 простых шага, которые помогут Вам подключить домашний интернет.",
+    "steps": {
+      "step1": {
+        "title": "Заполнение формы",
+        "description": "Укажите имя, адрес, номер телефона и предпочтительное время связи. При необходимости оставьте сообщение."
+      },
+      "step2": {
+        "title": "Консультация и выбор пакета",
+        "description": "Мы свяжемся с Вами для бесплатной консультации, поможем выбрать пакет домашнего интернета, после чего передадим заявку на подключение провайдеру выбранного Вами пакета."
+      },
+      "step3": {
+        "title": "Звонок от провайдера",
+        "description": "С Вами свяжется провайдер, чтобы выбрать время для приезда мастера."
+      },
+      "step4": {
+        "title": "Подключение",
+        "description": "Мастер приезжает на место и подключает интернет, после чего Вы подписываете договор."
+      }
     }
+  },
+  "questions-section": {
+    "title": "Есть вопросы? Ознакомьтесь с часто задаваемыми вопросами.",
+    "description": "Остались вопросы без ответа, и Вам нужно связаться с нами?",
+    "questions": {
+      "question1": {
+        "question": "Зачем оставлять номер телефона?",
+        "answer": "Номер телефона нужен для того, чтобы оператор Netihind смог связаться с Вами и сделать заявку на подключение домашнего интернета, а также проконсультировать Вас по вопросам пакетов разных провайдеров и актуальных скидочных кампаний."
+      },
+      "question2": {
+        "question": "Зачем указывать свой адрес?",
+        "answer": "В каждом доме проведены кабеля разных провайдеров. Используя адрес, мы сможем увидеть, какие технологии доступны в Вашем доме, и на основе этого подобрать наиболее подходящий для Вас пакет."
+      },
+      "question3": {
+        "question": "Почему лучше всего подключиться через Netihind?",
+        "answer": "<ul><li><bullet/>Сэкономим время. Предоставим Вам информацию о предложениях всех провайдеров. Вам не придется открывать сразу несколько сайтов.</li><li><bullet/>Независимое мнение. Мы работаем со всеми провайдерами, и исходя из ваших потребностей сможем подобрать наилучшее решение.</li></ul>"
+      },
+      "question4": {
+        "question": "Почему сервис бесплатный?",
+        "answer": "Сервис абсолютно бесплатный для пользователей. Мы помогаем Вам выбрать лучший для себя вариант. Мы получаем деньги от провайдеров за подключение."
+      }
+    },
+    "contact-button": "Свяжитесь с нами сейчас"
+  },
+  "blog-section": {
+    "title": "Последние новости"
+  },
+  "contacts-section": {
+    "title": "Свяжитесь с нами",
+    "description": "Если у Вас возникли какие-либо вопросы, оставьте заявку, и мы свяжемся с Вами при первой возможности, или свяжитесь с нами сами!",
+    "subtitle": "Контакты"
+  }
 }

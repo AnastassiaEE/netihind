@@ -55,8 +55,8 @@ export default function Input({
     handleChange?: React.ChangeEventHandler<HTMLInputElement>;
     handleFocus?: React.FocusEventHandler<HTMLInputElement>;
     handleBlur?: React.FocusEventHandler<HTMLInputElement>;
-    value?: string;
-    isValid?: boolean;
+    value: string;
+    isValid: boolean;
     error?: string;
     className?: string;
     children?: React.ReactNode;

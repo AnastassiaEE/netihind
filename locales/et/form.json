@@ -17,6 +17,7 @@
     "name": "Nimi",
     "email": "E-post",
     "phone": "Telefon",
+    "address": "Aadress",
     "time": "Suhtlemisaeg",
     "message": "Sõnum"
   },
@@ -26,7 +27,7 @@
     "invalid-email": "Sisesta õige e-posti aadress",
     "empty-phone": "Sisestage telefoninumber",
     "invalid-phone": "Sisestage õige telefoninumber",
-    "empty-time": "Valige suhtlemisaeg",
+    "empty-address": "Sisestage aadress",
     "empty-message": "Sisetage sõnum",
     "something-went-wrong": "Midagi läks valesti"
   },
