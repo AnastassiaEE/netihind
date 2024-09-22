@@ -23,12 +23,12 @@ export default function MobileHeader() {
                     <div className="mr-6">
                         <Logo src={secondaryLogo} sizeClass="w-12" />
                     </div>
-                    <div className="flex flex-wrap items-center gap-4">
+                    <div className="flex flex-wrap items-center gap-6">
                         <ConsultationButton type="mobile" />
-                        <HeaderItems>
+                        {/* <HeaderItems>
                             <HeaderItem href="#" Icon={FavoriteIcon} />
                             <HeaderItem href="#" Icon={SignalCellularAltIcon} />
-                        </HeaderItems>
+                        </HeaderItems> */}
                         <Hamburger handleClick={() => handleSidebar(true)}></Hamburger>
                     </div>
                 </div>

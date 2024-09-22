@@ -1,9 +1,9 @@
-import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+//import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
+//import FavoriteIcon from '@mui/icons-material/Favorite';
 import mainLogo from '@/public/images/gradientmainlogo.svg';
 import ConsultationButton from '@/components/ui/buttons/ConsultationButton';
-import HeaderItems from './HeaderItems';
-import HeaderItem from './HeaderItem';
+//import HeaderItems from './HeaderItems';
+//import HeaderItem from './HeaderItem';
 import Logo from '@/components/ui/Logo';
 
 export default function TopHeader() {
@@ -14,10 +14,12 @@ export default function TopHeader() {
             </div>
             <div className="flex items-center gap-10">
                 <ConsultationButton />
-                <HeaderItems>
+                {/*
+                 <HeaderItems>
                     <HeaderItem href="#" Icon={FavoriteIcon} />
                     <HeaderItem href="#" Icon={SignalCellularAltIcon} />
                 </HeaderItems>
+                 */}
             </div>
         </div>
     );

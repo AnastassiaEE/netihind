@@ -41,7 +41,7 @@ export default function StickyHeader({ type = 'desktop' }: { type?: 'desktop' | 
 
     const buttonsWrapperClasses = classNames('flex flex-wrap items-center', {
         'gap-10': type === 'desktop',
-        'gap-4': type === 'mobile',
+        'gap-6': type === 'mobile',
     });
 
     return (
@@ -53,10 +53,10 @@ export default function StickyHeader({ type = 'desktop' }: { type?: 'desktop' | 
                     </div>
                     <div className={buttonsWrapperClasses}>
                         <ConsultationButton type={type} />
-                        <HeaderItems>
+                        {/* <HeaderItems>
                             <HeaderItem href="#" Icon={FavoriteIcon} />
                             <HeaderItem href="#" Icon={SignalCellularAltIcon} />
-                        </HeaderItems>
+                        </HeaderItems> */}
                         <Hamburger handleClick={() => handleSidebar(true)}></Hamburger>
                     </div>
                 </div>
