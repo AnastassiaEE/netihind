@@ -18,7 +18,7 @@ export default function ContactsSection() {
                         <h2 className="text-[calc(1.375rem+1.5vw)] md:text-4xl font-extrabold mb-6">
                             {t('contacts-section.title')}
                         </h2>
-                        <p className="text-muted-dark">{t('contacts-section.description')}</p>
+                        <p className="text-muted-dark text-lg">{t('contacts-section.description')}</p>
                     </div>
                     <div>
                         <h3 className="text-[calc(1.325rem+0.9vw)] md:text-3xl font-extrabold mb-6">
