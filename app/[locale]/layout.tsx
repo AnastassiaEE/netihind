@@ -34,6 +34,7 @@ export default async function RootLayout({
       <body className={inter.className}>
         <ScrollTopButton />
         <TranslationsProvider namespaces={i18nNamespaces} locale={locale} resources={resources}>
+          <SpeedInsights />
           {children}
         </TranslationsProvider>
       </body>
