@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "email": "email dev"
   },
   "dependencies": {
     "@emotion/react": "^11.11.3",
@@ -16,6 +17,8 @@
     "@mui/icons-material": "^5.15.7",
     "@next/mdx": "^14.2.5",
     "@prisma/client": "^5.19.1",
+    "@react-email/components": "0.0.25",
+    "@react-email/tailwind": "0.1.0",
     "@types/mdx": "^2.0.13",
     "better-sqlite3": "^11.1.2",
     "classnames": "^2.3.2",
@@ -23,6 +26,7 @@
     "i18next-resources-to-backend": "^1.2.1",
     "next": "^14.2.4",
     "next-i18n-router": "^5.5.1",
+    "next-images": "^1.8.5",
     "next-mdx-remote": "^5.0.0",
     "papaparse": "^5.4.1",
     "react": "^18.3.1",
@@ -43,8 +47,10 @@
     "autoprefixer": "^10",
     "eslint": "^8",
     "eslint-config-next": "^14.2.4",
+    "file-loader": "^6.2.0",
     "postcss": "^8",
     "prisma": "^5.19.1",
+    "react-email": "3.0.1",
     "sass": "^1.68.0",
     "tailwindcss": "^3",
     "typescript": "^5.5.3"

@@ -29,7 +29,7 @@
     "invalid-phone": "Sisestage õige telefoninumber",
     "empty-address": "Sisestage aadress",
     "empty-message": "Sisetage sõnum",
-    "something-went-wrong": "Midagi läks valesti"
+    "something-went-wrong": "Midagi läks valesti. Proovige uuesti."
   },
   "success": {
     "sent-successfully": "Teie sõnum on edukalt saadetud!"

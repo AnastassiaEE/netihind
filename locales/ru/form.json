@@ -29,7 +29,7 @@
     "invalid-phone": "Введите корректный номер",
     "empty-address": "Введите адрес",
     "empty-message": "Введите сообщение",
-    "something-went-wrong": "Что-то пошло не так"
+    "something-went-wrong": "Что-то пошло не так. Повторите попытку."
   },
   "success": {
     "sent-successfully": "Ваше сообщение успешно отправлено!"

@@ -46,7 +46,7 @@ export default function ContactForm() {
         handleCheck,
         handleBlur,
         handleSubmit,
-    } = useForm(fields);
+    } = useForm(fields, 'contact');
 
     return (
         <form action="" noValidate onSubmit={handleSubmit}>

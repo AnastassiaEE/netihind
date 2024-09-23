@@ -6,9 +6,12 @@ const responses = {
   error: { message: 'errors.something-went-wrong' },
 };
 
-export default function useForm(fields: {
-  [key: string]: { initialValue: string | boolean; isRequired: boolean };
-}) {
+export default function useForm(
+  fields: {
+    [key: string]: { initialValue: string | boolean; isRequired: boolean };
+  },
+  type: 'contact' | 'request',
+) {
   const initialErrors: { [key: string]: string } = Object.keys(fields).reduce((result, field) => {
     return {
       ...result,
@@ -98,7 +101,7 @@ export default function useForm(fields: {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(values),
+          body: JSON.stringify({ ...values, type: type }),
         });
         // handle success
         if (response.ok) {
@@ -108,7 +111,6 @@ export default function useForm(fields: {
           setResponse({ type: 'error', message: responses.error.message });
         }
       } catch (error) {
-        console.log('Error sending email:', error);
         setResponse({ type: 'error', message: responses.error.message });
       } finally {
         setIsSending(false);

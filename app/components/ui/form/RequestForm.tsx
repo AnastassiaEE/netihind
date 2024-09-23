@@ -52,7 +52,7 @@ export default function RequestForm() {
         handleCheck,
         handleBlur,
         handleSubmit,
-    } = useForm(fields);
+    } = useForm(fields, 'request');
 
     return (
         <form noValidate onSubmit={handleSubmit}>
