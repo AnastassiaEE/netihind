@@ -6,7 +6,6 @@ import { dir } from 'i18next';
 import initTranslations from '../i18n';
 import TranslationsProvider from '@/components/TranslationProvider';
 import ScrollTopButton from '@/components/ui/buttons/ScrollTopButton';
-import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Manrope({ subsets: ['latin'] });
 const i18nNamespaces = ['home', 'form', 'navigation', 'contacts'];
@@ -34,7 +33,6 @@ export default async function RootLayout({
       <body className={inter.className}>
         <ScrollTopButton />
         <TranslationsProvider namespaces={i18nNamespaces} locale={locale} resources={resources}>
-          <SpeedInsights />
           {children}
         </TranslationsProvider>
       </body>
