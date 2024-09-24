@@ -4,7 +4,7 @@ import SectionLayout from '@/layouts/SectionLayout';
 import posts from '@/data/posts';
 import { useTranslation } from 'react-i18next';
 import dynamic from 'next/dynamic';
-import PingLoader from '@/components/loaders/PingLoader';
+import PingLoader from '@/components/ui/loaders/PingLoader';
 
 export default function BlogSection() {
     const { t } = useTranslation();

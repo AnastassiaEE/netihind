@@ -1,10 +1,10 @@
-import PingLoader from '@/components/loaders/PingLoader';
+import PingLoader from '@/components/ui/loaders/PingLoader';
 import providerLogos from '@/data/providerLogos';
 import SectionLayout from '@/layouts/SectionLayout';
 import dynamic from 'next/dynamic';
 
 export default function ProvidersSection() {
-    const LogoCards = dynamic(() => import('@/components/logo/LogoCards'), {
+    const LogoCards = dynamic(() => import('@/components/ui/logo/LogoCards'), {
         loading: () => <PingLoader />,
     });
     return (

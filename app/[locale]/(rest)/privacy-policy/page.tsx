@@ -1,4 +1,4 @@
-import PingLoader from '@/components/loaders/PingLoader';
+import PingLoader from '@/components/ui/loaders/PingLoader';
 import PolicySection from '@/components/sections/policy/PolicySection';
 import { Suspense } from 'react';
 
