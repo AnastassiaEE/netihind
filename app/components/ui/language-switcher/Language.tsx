@@ -1,13 +1,16 @@
 import classNames from 'classnames';
+import Link from 'next/link';
 
 export default function Language({
     lang,
     current,
+    href,
     handleClick,
 }: {
     lang: string;
     current: boolean;
-    handleClick: React.MouseEventHandler<HTMLSpanElement>;
+    href: string;
+    handleClick?: React.MouseEventHandler<HTMLSpanElement>;
 }) {
     const languageClasses = classNames(
         'font-semibold',
@@ -24,8 +27,8 @@ export default function Language({
     );
 
     return (
-        <span data-lang={lang} onClick={handleClick} className={languageClasses}>
+        <Link href={href} lang={lang} onClick={handleClick} className={languageClasses}>
             {lang}
-        </span>
+        </Link>
     );
 }
