@@ -40,7 +40,7 @@ export default function LogoCards({ logos }: { logos: { [key: string]: any }[] }
                 className="logo-swiper"
             >
                 {logos.map((logo) => (
-                    <SwiperSlide className="py-5">
+                    <SwiperSlide key={logo.alt} className="py-5">
                         <LogoCard image={logo.image} alt={logo.alt} />
                     </SwiperSlide>
                 ))}
