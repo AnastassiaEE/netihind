@@ -1,4 +1,4 @@
-import Button from '@/components/ui/form/buttons/Button';
+'use client'
 import Header from '@/components/ui/header/Header';
 import SectionLayout from '@/layouts/SectionLayout';
 import Link from 'next/link';
@@ -6,6 +6,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import SecondaryFooter from '@/components/ui/footer/SecondaryFooter';
 import classNames from 'classnames';
 import IconButton from '@/components/ui/form/buttons/IconButton';
+import { useTranslation } from 'react-i18next';
 
 const contentWrapperClasses = classNames(
     'h-[calc(100dvh)]',
@@ -20,6 +21,7 @@ const contentWrapperClasses = classNames(
 );
 
 export default function NotFound() {
+    const { t } = useTranslation(['not-found', 'form']);
     return (
         <>
             <Header variant="primary" />
@@ -27,12 +29,12 @@ export default function NotFound() {
                 <SectionLayout className="flex grow">
                     <div className="h-full flex flex-col justify-center items-center">
                         <h1 className="text-9xl text-primary font-extrabold mb-6">404</h1>
-                        <h2 className="text-5xl font-extrabold mb-8">Ooops!</h2>
+                        <h2 className="text-5xl font-extrabold mb-8">{t('title')}</h2>
                         <p className="text-xl text-muted-dark mb-12">
-                            The page you are looking for is not available.
+                            {t('description')}
                         </p>
                         <IconButton size="lg" className="w-max" Icon={HomeIcon}>
-                            <Link href="/">Return home</Link>
+                            <Link href="/">{t('form:buttons.return-home')}</Link>
                         </IconButton>
                     </div>
                 </SectionLayout>

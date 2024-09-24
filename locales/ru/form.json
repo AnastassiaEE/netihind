@@ -40,6 +40,7 @@
   "buttons": {
     "send": "Отправить",
     "free-consultation": "Бесплатная консультация",
-    "contact": "Связаться"
+    "contact": "Связаться",
+    "return-home": "Главная"
   }
 }
