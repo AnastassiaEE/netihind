@@ -1,7 +1,7 @@
 'use client';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import ProviderCard from './ProviderCard';
+import AddressProviderCard from './AddressProviderCard';
 import 'swiper/css/bundle';
 
 export default function ProviderCards({
@@ -13,7 +13,7 @@ export default function ProviderCards({
         <Swiper slidesPerView={'auto'} spaceBetween={20} className="cursor-grabbing">
             {Object.keys(items).map((item) => (
                 <SwiperSlide key={item} className="!w-52 md:!w-64">
-                    <ProviderCard
+                    <AddressProviderCard
                         name={item}
                         phone={items[item].phone}
                         img={items[item].image}
