@@ -3,14 +3,10 @@
 import SectionLayout from '@/layouts/SectionLayout';
 import posts from '@/data/posts';
 import { useTranslation } from 'react-i18next';
-import dynamic from 'next/dynamic';
-import PingLoader from '@/components/ui/loaders/PingLoader';
+import SliderBlogCards from '@/components/ui/blog/SliderBlogCards';
 
 export default function BlogSection() {
     const { t } = useTranslation();
-    const SliderBlogCards = dynamic(() => import('@/components/ui/blog/SliderBlogCards'), {
-        loading: () => <PingLoader />,
-    });
     return (
         <SectionLayout bg="bg-neutral-light" className="py-24">
             <h2 className="text-[calc(1.375rem+1.5vw)] md:text-4xl font-extrabold text-center mb-10">
