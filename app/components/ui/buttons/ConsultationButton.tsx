@@ -19,7 +19,7 @@ export default function ConsultationButton({ type = 'desktop' }: { type?: 'deskt
 
     return (
         <a href={`tel:${phone}`}>
-            <Button size="lg" className={buttonClasses}>
+            <Button name="call" size="lg" className={buttonClasses}>
                 <div className="flex items-center">
                     <PhoneInTalkIcon fontSize="large" className={iconClasses} />
                     {type == 'desktop' && (
