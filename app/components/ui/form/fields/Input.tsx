@@ -1,3 +1,4 @@
+import { forwardRef, LegacyRef } from 'react';
 import FieldError from '../FieldError';
 import FieldLabel from '../FieldLabel';
 import classNames from 'classnames';
@@ -21,7 +22,7 @@ const sizes: { [key: string]: string } = {
     lg: 'px-5 py-3',
 };
 
-export default function Input({
+export default forwardRef(function Input({
     size = 'sm',
     name,
     type = 'text',
@@ -55,12 +56,12 @@ export default function Input({
     handleChange?: React.ChangeEventHandler<HTMLInputElement>;
     handleFocus?: React.FocusEventHandler<HTMLInputElement>;
     handleBlur?: React.FocusEventHandler<HTMLInputElement>;
-    value: string;
+    value?: string;
     isValid: boolean;
     error?: string;
     className?: string;
     children?: React.ReactNode;
-}) {
+}, ref: LegacyRef<HTMLInputElement>) {
     const inputClasses = classNames(baseClasses, sizes[size], {
         'border-valid focus:border-primary/30': isValid,
         'border-invalid': !isValid,
@@ -86,9 +87,10 @@ export default function Input({
                     onFocus={handleFocus}
                     onBlur={handleBlur}
                     value={value}
+                    ref={ref}
                 />
             </div>
             {!isValid && <FieldError size={size}>{error}</FieldError>}
         </>
     );
-}
+})

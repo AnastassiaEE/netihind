@@ -5,6 +5,7 @@ import MeshSvg from '@/components/ui/MeshSvg';
 import classNames from 'classnames';
 import { Trans, useTranslation } from 'react-i18next';
 import AddressForm from '@/components/ui/form/AddressForm';
+import GoogleAddressForm from '@/components/ui/form/GoogleAddressForm';
 
 const sectionClasses = classNames(
     'h-[calc(100dvh)]',
@@ -59,7 +60,7 @@ export default function TopSection() {
                     </linearGradient>
                 </MeshSvg>
             </div>
-            <div className="lg:w-10/12 md:-translate-y-16">
+            <div className="md:-translate-y-16">
                 <h1 className="text-[calc(1.475rem+2.7vw)] md:text-5xl !leading-snug font-extrabold mb-4">
                     <Trans
                         i18nKey="top-section.title"
@@ -71,7 +72,7 @@ export default function TopSection() {
                     />
                 </h1>
                 <p className="text-lg text-muted-dark mb-4">{t('top-section.description')}</p>
-                <AddressForm />
+                <GoogleAddressForm />
             </div>
         </SectionLayout>
     );

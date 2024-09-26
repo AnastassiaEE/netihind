@@ -5,12 +5,13 @@ import SliderBlogSection from '@/components/sections/home/SliderBlogSection';
 import InfoSection from '@/components/sections/home/InfoSection';
 import TopSectionSecondary from '@/components/sections/home/TopSectionSecondary';
 import ProvidersLogoSection from '@/components/sections/home/ProvidersLogoSection';
+import TopSectionPrimary from '@/components/sections/home/TopSectionPrimary';
 
 export default function Home() {
   return (
     <>
-      {/* <TopSectionPrimary /> */}
-      <TopSectionSecondary />
+      <TopSectionPrimary />
+      {/* <TopSectionSecondary /> */}
       {/* <InfoSection /> */}
       <ProvidersLogoSection />
       <StepsSection />
