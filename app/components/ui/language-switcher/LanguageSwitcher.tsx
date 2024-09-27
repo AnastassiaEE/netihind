@@ -17,11 +17,6 @@ export default function LanguageSwitcher() {
   const handleClick = (e: React.MouseEvent<HTMLSpanElement>) => {
     e.preventDefault();
     const newLocale = (e.target as HTMLLinkElement).getAttribute('lang');
-
-    const days = 30;
-    const date = new Date();
-    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-    document.cookie = `NEXT_LOCALE=${newLocale};expires=${date.toUTCString()};path=/`;
     // redirect to the new locale path
     if (currentLocale === i18nConfig.defaultLocale && !i18nConfig.prefixDefault) {
       router.push('/' + newLocale + currentPathname);
