@@ -8,7 +8,7 @@ import TranslationsProvider from '@/components/TranslationProvider';
 import ScrollTopButton from '@/components/ui/buttons/ScrollTopButton';
 
 const inter = Manrope({ subsets: ['latin'] });
-const i18nNamespaces = ['home', 'form', 'navigation', 'contacts', 'not-found', 'personal-address'];
+const i18nNamespaces = ['home', 'form', 'navigation', 'contacts', 'not-found', 'personal-address', 'tariffs'];
 
 export const metadata: Metadata = {
   title: 'Create Next App',
