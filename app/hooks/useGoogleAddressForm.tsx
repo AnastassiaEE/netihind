@@ -1,11 +1,13 @@
 import { Libraries, useLoadScript } from '@react-google-maps/api';
 import { useRouter } from 'next/navigation';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { setCookie } from 'cookies-next';
+import { useTranslation } from 'react-i18next';
 
 const libraries: Libraries = ['places'];
 
 export default function UseGoogleAddressForm() {
+    const { i18n } = useTranslation();
     const router = useRouter();
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY as string,
@@ -98,7 +100,7 @@ export default function UseGoogleAddressForm() {
         e.preventDefault();
         if (validateForm()) {
             setAddressCookie(selected as string);
-            router.push(`/address/${encodeURIComponent(selected as string).replace(/\./g, '')}`)
+            router.push(`${i18n.language}/address/${encodeURIComponent(selected as string).replace(/\./g, '')}`)
         }
     };
 
