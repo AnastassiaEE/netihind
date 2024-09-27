@@ -16,7 +16,7 @@ export default function MeasureCell({
     });
 
     return (
-        <div className="flex flex-col text-center mx-1">
+        <div className="flex flex-col text-center uppercase mx-1">
             <span className={numberClasses}>{number ?? '—'}</span>
             {!empty && <span>{unit}</span>}
         </div>

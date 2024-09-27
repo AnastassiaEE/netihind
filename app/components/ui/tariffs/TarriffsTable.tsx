@@ -4,21 +4,28 @@ import TarriffMeasure from './TariffMeasure';
 import providers from '../../../data/providers';
 import Button from '../form/buttons/Button';
 import Image from 'next/image';
-
-const columns = ['Provider', 'Speed', 'Channels', 'Mob. communication', 'Price'];
+import { useTranslation } from 'react-i18next';
 
 export default function TariffsTable({ items }: { items: { [key: string]: any }[] }) {
+    const { t } = useTranslation(['tariffs']);
+    const columns = [
+        'tariffs.columns.provider',
+        'tariffs.columns.speed',
+        'tariffs.columns.channels',
+        'tariffs.columns.options',
+        'tariffs.columns.price'
+    ];
     return (
         <div className="flex justify-center">
             <div className={`text-center text-muted-dark grid grid-rows-10 grid-cols-tariffs w-full`}>
                 {columns.map((column) => (
                     <TariffTableCell key={column} className="font-extrabold rounded-l-md">
-                        {column}
+                        {t(column)}
                     </TariffTableCell>
                 ))}
                 {items.map((tariff, index) => (
                     <>
-                        <TariffTableCell key={index} index={index} className="rounded-l-md">
+                        <TariffTableCell key={tariff.name} index={index} className="rounded-l-md">
                             <div className="flex flex-col items-center">
                                 <Image
                                     src={providers[tariff.provider].image}
@@ -32,17 +39,17 @@ export default function TariffsTable({ items }: { items: { [key: string]: any }[
                             </div>
                         </TariffTableCell>
                         <TariffTableCell key={index} index={index}>
-                            <TarriffMeasure number={tariff.speed} unit="MBIT/S" />
+                            <TarriffMeasure number={tariff.speed} unit={t('tariffs.measure.speed')} />
                         </TariffTableCell>
                         <TariffTableCell key={index} index={index}>
                             {tariff.chanels ? (
-                                <TarriffMeasure number={tariff.chanels} unit="CHANNELS" />
+                                <TarriffMeasure number={tariff.chanels} unit={t('tariffs.measure.channels')} />
                             ) : (
-                                <TarriffMeasure unit="CHANNELS" />
+                                <TarriffMeasure unit={t('tariffs.measure.channels')} />
                             )}
                         </TariffTableCell>
                         <TariffTableCell key={index} index={index}>
-                            {tariff.mobileCommunication ? (
+                            {/* {tariff.mobileCommunication ? (
                                 <>
                                     {tariff.mobileCommunication.data ? (
                                         <TarriffMeasure number={tariff.mobileCommunication.data} unit="GB" />
@@ -62,22 +69,23 @@ export default function TariffsTable({ items }: { items: { [key: string]: any }[
                                 </>
                             ) : (
                                 <TarriffMeasure empty={true} />
-                            )}
+                            )} */}
+                            <TarriffMeasure empty={true} />
                         </TariffTableCell>
                         <TariffTableCell key={index} index={index} className="rounded-r-md">
                             <div className="flex flex-col">
                                 <div className="mb-4">
                                     <TarriffMeasure
                                         number={tariff.price}
-                                        unit="€ / MONTH"
+                                        unit={`€ / ${t('tariffs.measure.month')}`}
                                         className="!text-2xl bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent py-1"
                                     />
                                 </div>
                                 <div className="flex">
-                                    <Button variant="secondary" className="rounded-l-md">
+                                    <Button variant="secondary" className="!rounded-r-none">
                                         <ContactSupportIcon />
                                     </Button>
-                                    <Button className="rounded-r-md">Сonnect</Button>
+                                    <Button className="!rounded-l-none">{t('tariffs.buttons.connect')}</Button>
                                 </div>
                             </div>
                         </TariffTableCell>

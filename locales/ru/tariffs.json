@@ -1,0 +1,25 @@
+{
+  "title": "Тарифы",
+  "filters": {
+    "all": "Все",
+    "internet-only": "Только интернет",
+    "internet-tv": "Интернет + ТВ"
+  },
+  "tariffs": {
+    "columns": {
+      "provider": "Провайдер",
+      "speed": "Скорость",
+      "channels": "Каналы",
+      "options": "Доп.опции",
+      "price": "Цена"
+    },
+    "measure": {
+      "speed": "мбит/c",
+      "channels": "каналов",
+      "month": "месяц"
+    },
+    "buttons": {
+      "connect": "Подключиться"
+    }
+  }
+}
