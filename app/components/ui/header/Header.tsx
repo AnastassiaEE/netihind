@@ -8,7 +8,7 @@ const variants = {
 };
 
 export default function Header({ variant = 'secondary' }: { variant?: 'primary' | 'secondary' }) {
-    const headerClasses = classNames('bg-white w-full top-0', variants[variant]);
+    const headerClasses = classNames('bg-white w-full top-0 z-50', variants[variant]);
 
     return (
         <header className={headerClasses}>

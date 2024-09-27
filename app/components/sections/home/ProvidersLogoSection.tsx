@@ -1,11 +1,12 @@
-import LogoCards from '@/components/ui/logo/LogoCards';
+
+import SliderLogoCards from '@/components/ui/logo/SLiderLogoCards';
 import providerLogos from '@/data/providerLogos';
 import SectionLayout from '@/layouts/SectionLayout';
 
 export default function ProvidersSection() {
     return (
         <SectionLayout className="pt-24">
-            <LogoCards logos={providerLogos} />
+            <SliderLogoCards logos={providerLogos} />
         </SectionLayout>
     );
 }

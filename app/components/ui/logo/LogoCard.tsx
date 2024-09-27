@@ -1,31 +1,16 @@
 import classNames from 'classnames';
-import Image, { StaticImageData } from 'next/image';
+import { StaticImageData } from 'next/image';
+import Image from 'next/image';
 
 export default function LogoCard({ image, alt }: { image: StaticImageData; alt: string }) {
     const logoWrapperClasses = classNames(
-        'h-28',
-        'p-6',
-        'border',
-        'border-muted-light',
-        'rounded-md',
-        'flex',
-        'justify-center',
-        'hover:shadow-md',
-        'hover:-translate-y-1',
-        'transition-all',
-        'duration-300',
-        'group',
-    );
-
-    const imageClasses = classNames(
-        'object-contain',
-        'grayscale',
-        'opacity-20',
-        'group-hover:grayscale-0',
-        'group-hover:opacity-100',
-        'transition-all',
+        'h-6',
+        'md:h-12',
+        'hover:-translate-y-2',
         'duration-500',
     );
+
+    const imageClasses = classNames('h-full', 'w-auto');
 
     return (
         <div className={logoWrapperClasses}>

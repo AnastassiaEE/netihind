@@ -13,7 +13,7 @@ export default function Home() {
       <TopSectionPrimary />
       {/* <TopSectionSecondary /> */}
       {/* <InfoSection /> */}
-      <ProvidersLogoSection />
+      {/* <ProvidersLogoSection /> */}
       <StepsSection />
       <QuestionsSection />
       <SliderBlogSection />
