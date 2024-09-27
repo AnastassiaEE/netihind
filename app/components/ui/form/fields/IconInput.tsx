@@ -1,7 +1,7 @@
 import { SvgIconComponent } from '@mui/icons-material';
 import Input from './Input';
 import classNames from 'classnames';
-import { ForwardedRef, forwardRef, LegacyRef } from 'react';
+import { ForwardedRef, forwardRef } from 'react';
 
 export default forwardRef(function IconInput({
     size = 'sm',

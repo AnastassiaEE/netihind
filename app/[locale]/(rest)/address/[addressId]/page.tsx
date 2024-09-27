@@ -12,11 +12,11 @@ export default function PersonalAddress({ params }: { params: { addressId: strin
     const addressSlug = decodeURIComponent(params.addressId);
     const addressCookie = getCookie('ADDRESS', { cookies });
 
-    if (addressSlug !== addressCookie) notFound();
+    if (addressSlug !== addressCookie?.replace(/\./g, '')) notFound();
 
     return (
         <Suspense fallback={<PingLoader />}>
-            <AddressProvidersSection address={addressCookie} />
+            <AddressProvidersSection address={addressCookie as string} />
             <AddressTariffsSection />
         </Suspense>
     );

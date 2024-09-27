@@ -12,7 +12,6 @@ export default function UseGoogleAddressForm() {
         libraries,
         language: 'et',
     });
-
     const [selected, setSelected] = useState<string | null>(null);
     const inputRef = useRef<HTMLInputElement>(null);
     const formRef = useRef<HTMLFormElement>(null);
@@ -46,7 +45,7 @@ export default function UseGoogleAddressForm() {
     }, []);
 
     const setAddressCookie = (selectedAddress: string) => {
-        setCookie('ADDRESS', selectedAddress, {});
+        setCookie('ADDRESS', selectedAddress);
     };
 
     const handlePlaceChanged = async (address: google.maps.places.Autocomplete) => {
@@ -99,7 +98,7 @@ export default function UseGoogleAddressForm() {
         e.preventDefault();
         if (validateForm()) {
             setAddressCookie(selected as string);
-            router.push(`/address/${selected}`);
+            router.push(`/address/${encodeURIComponent(selected as string).replace(/\./g, '')}`)
         }
     };
 
