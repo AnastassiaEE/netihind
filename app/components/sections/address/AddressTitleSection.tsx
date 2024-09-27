@@ -1,0 +1,16 @@
+'use client'
+
+import SectionLayout from "@/layouts/SectionLayout"
+import { useTranslation } from "react-i18next";
+
+export default function AddressTitleSection({ address }: { address: string }) {
+    const { t } = useTranslation(['personal-address']);
+    return (
+        <SectionLayout bg="bg-neutral-light" className="py-24">
+            <h1 className="text-[calc(1.375rem+1.5vw)] md:text-4xl font-extrabold">
+                {t('title')} <span className="text-primary">{address}</span>
+            </h1>
+        </SectionLayout>
+
+    );
+}

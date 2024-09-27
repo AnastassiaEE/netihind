@@ -5,6 +5,7 @@ import { getCookie, hasCookie } from 'cookies-next';
 import { Suspense } from 'react';
 import { cookies } from 'next/headers';
 import { notFound } from 'next/navigation';
+import AddressTitleSection from '@/components/sections/address/AddressTitleSection';
 
 export default function PersonalAddress({ params }: { params: { addressId: string } }) {
     if (!hasCookie('ADDRESS', { cookies })) notFound();
@@ -16,7 +17,8 @@ export default function PersonalAddress({ params }: { params: { addressId: strin
 
     return (
         <Suspense fallback={<PingLoader />}>
-            <AddressProvidersSection address={addressCookie as string} />
+            <AddressTitleSection address={addressCookie as string} />
+            <AddressProvidersSection />
             <AddressTariffsSection />
         </Suspense>
     );
