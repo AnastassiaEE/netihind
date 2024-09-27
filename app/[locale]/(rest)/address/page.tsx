@@ -1,13 +1,5 @@
-import { Suspense } from 'react';
-import AddressProvidersSection from '@/components/sections/address/AddressProvidersSection';
-import AddressTariffsSection from '@/components/sections/address/AddressTariffsSection';
-import Loading from './loading';
+import { notFound } from 'next/navigation';
 
-export default function Page() {
-    return (
-        <Suspense fallback={<Loading />}>
-            <AddressProvidersSection />
-            <AddressTariffsSection />
-        </Suspense>
-    );
+export default function Address({ params }: { params: { slug: string } }) {
+    notFound();
 }

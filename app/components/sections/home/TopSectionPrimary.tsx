@@ -4,7 +4,6 @@ import SectionLayout from '@/layouts/SectionLayout';
 import MeshSvg from '@/components/ui/MeshSvg';
 import classNames from 'classnames';
 import { Trans, useTranslation } from 'react-i18next';
-import AddressForm from '@/components/ui/form/AddressForm';
 import GoogleAddressForm from '@/components/ui/form/GoogleAddressForm';
 
 const sectionClasses = classNames(

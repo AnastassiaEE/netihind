@@ -1,4 +1,4 @@
-import { forwardRef, LegacyRef } from 'react';
+import { ForwardedRef } from 'react';
 import FieldError from '../FieldError';
 import FieldLabel from '../FieldLabel';
 import classNames from 'classnames';
@@ -22,7 +22,7 @@ const sizes: { [key: string]: string } = {
     lg: 'px-5 py-3',
 };
 
-export default forwardRef(function Input({
+export default function Input({
     size = 'sm',
     name,
     type = 'text',
@@ -37,6 +37,7 @@ export default forwardRef(function Input({
     error,
     className,
     children,
+    innerRef
 }: {
     size?: 'sm' | 'lg';
     name: string;
@@ -61,7 +62,8 @@ export default forwardRef(function Input({
     error?: string;
     className?: string;
     children?: React.ReactNode;
-}, ref: LegacyRef<HTMLInputElement>) {
+    innerRef?: ForwardedRef<HTMLInputElement>
+}) {
     const inputClasses = classNames(baseClasses, sizes[size], {
         'border-valid focus:border-primary/30': isValid,
         'border-invalid': !isValid,
@@ -87,10 +89,10 @@ export default forwardRef(function Input({
                     onFocus={handleFocus}
                     onBlur={handleBlur}
                     value={value}
-                    ref={ref}
+                    ref={innerRef}
                 />
             </div>
             {!isValid && <FieldError size={size}>{error}</FieldError>}
         </>
     );
-})
+}

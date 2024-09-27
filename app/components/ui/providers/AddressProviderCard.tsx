@@ -38,7 +38,7 @@ export default function ProviderCard({
                 </div>
                 <p className="text-lg text-muted-dark">{name}</p>
             </div>
-            <div className="flex justify-between gap-1">
+            {/* <div className="flex justify-between gap-1">
                 <a href={tariffsPath} className="flex grow">
                     <Button variant="secondary">Тарифы</Button>
                 </a>
@@ -47,7 +47,7 @@ export default function ProviderCard({
                         <PhoneIcon />
                     </Button>
                 </a>
-            </div>
+            </div> */}
         </div>
     );
 }

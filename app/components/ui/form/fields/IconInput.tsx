@@ -1,8 +1,9 @@
 import { SvgIconComponent } from '@mui/icons-material';
 import Input from './Input';
 import classNames from 'classnames';
+import { ForwardedRef, forwardRef, LegacyRef } from 'react';
 
-export default function IconInput({
+export default forwardRef(function IconInput({
     size = 'sm',
     name,
     type = 'text',
@@ -35,11 +36,11 @@ export default function IconInput({
     handleChange?: React.ChangeEventHandler<HTMLInputElement>;
     handleFocus?: React.FocusEventHandler<HTMLInputElement>;
     handleBlur?: React.FocusEventHandler<HTMLInputElement>;
-    value: string;
+    value?: string;
     isValid: boolean;
     error?: string;
     icon: { Icon: SvgIconComponent; isVisible: boolean; handleClick?: React.MouseEventHandler };
-}) {
+}, ref: ForwardedRef<HTMLInputElement>) {
     const inputClasses = classNames({
         'pl-10': icon.isVisible && size === 'sm',
         'pl-12': icon.isVisible && size === 'lg',
@@ -67,6 +68,7 @@ export default function IconInput({
             isValid={isValid}
             error={error}
             className={inputClasses}
+            innerRef={ref}
         >
             <div className={iconWrapperClasses}>
                 {icon.handleClick ? (
@@ -79,4 +81,4 @@ export default function IconInput({
             </div>
         </Input>
     );
-}
+})
