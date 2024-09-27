@@ -4,17 +4,12 @@ import Button from '@/components/ui/form/buttons/Button';
 import classNames from 'classnames';
 
 const cardWrapperClasses = classNames(
-    'w-52',
-    'h-52',
-    'md:w-64',
-    'md:h-64',
     'bg-white',
-    'shadow-lg',
+    'shadow-md',
     'rounded-md',
+    'border',
+    'border-muted-light',
     'p-5',
-    'flex',
-    'flex-col',
-    'justify-between',
 );
 
 export default function ProviderCard({
@@ -32,9 +27,9 @@ export default function ProviderCard({
 }) {
     return (
         <div className={cardWrapperClasses}>
-            <div>
+            <div className="flex flex-col items-center">
                 <div className="h-14 mb-4">
-                    <Image src={img} alt={alt} className="h-full w-auto" />
+                    <Image src={img} alt={alt} className="h-full w-auto object-contain" />
                 </div>
                 <p className="text-lg text-muted-dark">{name}</p>
             </div>

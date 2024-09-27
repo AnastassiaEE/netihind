@@ -3,6 +3,31 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import AddressProviderCard from './AddressProviderCard';
 import 'swiper/css/bundle';
+import { Pagination } from 'swiper/modules';
+
+const breakpoints = {
+    0: {
+        slidesPerView: 2,
+    },
+    640: {
+        slidesPerView: 3,
+        spaceBetween: 20,
+    },
+    1024: {
+        slidesPerView: 4,
+        spaceBetween: 30,
+    },
+};
+
+const modules = [Pagination];
+
+const pagination = {
+    clickable: true,
+    el: '.swiper-pagination',
+    bulletClass:
+        'pagination-bullet bg-muted inline-block rounded-lg cursor-pointer transition-all duration-500 w-1.5 h-1.5 mx-1.5',
+    bulletActiveClass: 'pagination-bullet-active !bg-primary !w-6',
+};
 
 export default function ProviderCards({
     items,
@@ -10,18 +35,26 @@ export default function ProviderCards({
     items: { [key: string]: { [key: string]: any } };
 }) {
     return (
-        <Swiper slidesPerView={'auto'} spaceBetween={20} className="cursor-grabbing">
-            {Object.keys(items).map((item) => (
-                <SwiperSlide key={item} className="!w-52 md:!w-64">
-                    <AddressProviderCard
-                        name={item}
-                        phone={items[item].phone}
-                        img={items[item].image}
-                        alt={items[item].alt}
-                        tariffsPath={items[item].tariffsPath}
-                    />
-                </SwiperSlide>
-            ))}
-        </Swiper>
+        <div className="relative">
+            <Swiper
+                className="cursor-grabbing !py-6"
+                breakpoints={breakpoints}
+                pagination={pagination}
+                modules={modules}
+            >
+                {Object.keys(items).map((item) => (
+                    <SwiperSlide key={item}>
+                        <AddressProviderCard
+                            name={item}
+                            phone={items[item].phone}
+                            img={items[item].image}
+                            alt={items[item].alt}
+                            tariffsPath={items[item].tariffsPath}
+                        />
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+            <div className="swiper-pagination !-bottom-5"></div>
+        </div>
     );
 }
