@@ -1,4 +1,3 @@
-
 import SliderLogoCards from '@/components/ui/logo/SLiderLogoCards';
 import providerLogos from '@/data/providerLogos';
 import SectionLayout from '@/layouts/SectionLayout';
