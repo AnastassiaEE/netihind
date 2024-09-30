@@ -1,0 +1,66 @@
+// schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+model Language {
+  id              Int               @id @default(autoincrement()) @db.SmallInt
+  name            String            @unique @db.Char(2)
+  Page            Page[]
+  PageTranslation PageTranslation[]
+  Post            Post[]
+  PostTranslation PostTranslation[]
+
+  @@map("language")
+}
+
+model Page {
+  id                 Int               @id @default(autoincrement()) @db.SmallInt
+  name               String            @unique @db.VarChar(100)
+  originalContent    String            @map("original_content")
+  originalLanguage   Language          @relation(fields: [originalLanguageId], references: [id])
+  originalLanguageId Int               @map("original_language_id") @db.SmallInt
+  PageTranslation    PageTranslation[]
+
+  @@map("page")
+}
+
+model PageTranslation {
+  id         Int      @id @default(autoincrement()) @db.SmallInt
+  content    String
+  page       Page     @relation(fields: [pageId], references: [id])
+  pageId     Int      @map("page_id") @db.SmallInt
+  language   Language @relation(fields: [languageId], references: [id])
+  languageId Int      @map("language_id") @db.SmallInt
+
+  @@unique([pageId, languageId])
+  @@map("page_translation")
+}
+
+model Post {
+  id                 Int               @id @default(autoincrement()) @db.SmallInt
+  originalContent    String            @map("original_content")
+  originalLanguage   Language          @relation(fields: [originalLanguageId], references: [id])
+  originalLanguageId Int               @map("original_language_id") @db.SmallInt
+  PostTranslation    PostTranslation[]
+
+  @@map("post")
+}
+
+model PostTranslation {
+  id         Int      @id @default(autoincrement()) @db.SmallInt
+  post       Post     @relation(fields: [postId], references: [id])
+  postId     Int      @map("page_id") @db.SmallInt
+  language   Language @relation(fields: [languageId], references: [id])
+  languageId Int      @map("language_id") @db.SmallInt
+
+  @@unique([postId, languageId])
+  @@map("post_translation")
+}
