@@ -1,36 +1,12 @@
-import MdxLayout from '@/layouts/MdxLayout';
 import SectionLayout from '@/layouts/SectionLayout';
-import { notFound } from 'next/navigation';
-import { MDXProps } from 'mdx/types';
+import { MDXRemote, compileMDX } from 'next-mdx-remote/rsc'
+import components from '@/mdx-components';
 
-export default async function AboutSection({ locale }: { locale: string }) {
-    let Content: (props: MDXProps) => JSX.Element = () => <></>;
-    let frontmatter: Frontmatter = { title: '' };
-
-    if (locale === 'et') {
-        await import('@/markdown/et/about.mdx')
-            .then((module) => {
-                Content = module.default;
-                frontmatter = module.frontmatter;
-            })
-            .catch(() => notFound());
-    } else if (locale === 'ru') {
-        await import('@/markdown/ru/about.mdx')
-            .then((module) => {
-                Content = module.default;
-                frontmatter = module.frontmatter;
-            })
-            .catch(() => notFound());
-    }
-
+export default async function AboutSection({ data }: { data: string }) {
     return (
         <SectionLayout>
-            <h1 className="text-[calc(1.375rem+1.5vw)] md:text-4xl font-extrabold mb-10">
-                {frontmatter.title}
-            </h1>
-            <MdxLayout>
-                <Content />
-            </MdxLayout>
+            <MDXRemote source={data} components={components as {}} />
         </SectionLayout>
     );
 }
+
