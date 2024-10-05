@@ -8,6 +8,7 @@ import LanguageSwitcher from '@/components/ui/language-switcher/LanguageSwitcher
 import classNames from 'classnames';
 import i18nConfig from '@/i18nConfig';
 import { usePathname } from 'next/navigation';
+import getLocalePrefix from '@/utils/getLocalePrefix';
 
 export default function Sidebar({
     isOpened,
@@ -17,8 +18,7 @@ export default function Sidebar({
     handleClose: React.MouseEventHandler;
 }) {
     const { t, i18n } = useTranslation('navigation');
-    const locale = i18n.language;
-    const localePrefix = locale === i18nConfig.defaultLocale ? '' : `/${locale}`;
+    const localePrefix = getLocalePrefix(i18n.language, i18nConfig.defaultLocale);
     const pathname = usePathname();
 
     const sidebarWrapperClasses = classNames(
@@ -48,21 +48,21 @@ export default function Sidebar({
             <div className="p-6">
                 <Navigation type="vertical">
                     <NavigationItem
-                        href="/blog"
+                        href={`${localePrefix}/blog`}
                         isActive={pathname === `${localePrefix}/blog`}
                         handleClick={handleClose}
                     >
                         {t('blog')}
                     </NavigationItem>
                     <NavigationItem
-                        href="/about"
+                        href={`${localePrefix}/about`}
                         isActive={pathname === `${localePrefix}/about`}
                         handleClick={handleClose}
                     >
                         {t('about-us')}
                     </NavigationItem>
                     <NavigationItem
-                        href="/contacts"
+                        href={`${localePrefix}/contacts`}
                         isActive={pathname === `${localePrefix}/contacts`}
                         handleClick={handleClose}
                     >
