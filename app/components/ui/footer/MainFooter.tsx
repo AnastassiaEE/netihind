@@ -25,7 +25,7 @@ export default function Footer() {
                 </div>
                 <div className="flex justify-center pt-4 pb-6">
                     <Navigation itemColorClass="text-white/80">
-                        <NavigationItem href="/">{t('home')}</NavigationItem>
+                        <NavigationItem href={`${localePrefix}/`}>{t('home')}</NavigationItem>
                         <NavigationItem href={`${localePrefix}/blog`}>{t('blog')}</NavigationItem>
                         <NavigationItem href={`${localePrefix}/about`}>{t('about-us')}</NavigationItem>
                         <NavigationItem href={`${localePrefix}/privacy-policy`}>{t('privacy-policy')}</NavigationItem>
