@@ -1,5 +1,5 @@
 import SectionLayout from '@/layouts/SectionLayout';
-import { MDXRemote, compileMDX } from 'next-mdx-remote/rsc'
+import { MDXRemote } from 'next-mdx-remote/rsc';
 import components from '@/mdx-components';
 
 export default async function AboutSection({ data }: { data: string }) {
@@ -9,4 +9,3 @@ export default async function AboutSection({ data }: { data: string }) {
         </SectionLayout>
     );
 }
-
