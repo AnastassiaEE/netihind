@@ -9,6 +9,16 @@ const nextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   //output: 'export',
   reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cms.netihind.ee',
+        port: '',
+        //pathname: '/**',
+      },
+    ],
+  },
   /*
     sassOptions: {
         includePaths: [path.join(__dirname, 'styles')],

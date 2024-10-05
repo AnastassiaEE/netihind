@@ -6,8 +6,9 @@ import InfoSection from '@/components/sections/home/InfoSection';
 import TopSectionSecondary from '@/components/sections/home/TopSectionSecondary';
 import ProvidersLogoSection from '@/components/sections/home/ProvidersLogoSection';
 import TopSectionPrimary from '@/components/sections/home/TopSectionPrimary';
+import SliderBlogCardsWrapper from '@/components/ui/blog/SliderBlogCardsWrapper';
 
-export default function Home() {
+export default function Home({ params: { locale } }: { params: { locale: string } }) {
   return (
     <>
       <TopSectionPrimary />
@@ -16,7 +17,9 @@ export default function Home() {
       {/* <ProvidersLogoSection /> */}
       <StepsSection />
       <QuestionsSection />
-      <SliderBlogSection />
+      <SliderBlogSection>
+        <SliderBlogCardsWrapper locale={locale} />
+      </SliderBlogSection>
       <ContactsSection />
     </>
   );

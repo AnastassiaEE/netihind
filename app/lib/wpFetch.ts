@@ -1,6 +1,5 @@
 import { notFound } from 'next/navigation';
 
-//process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 const API_URL = process.env.NEXT_PUBLIC_WORDPRESS_API_ENDPOINT as string;
 
 export async function fetchAPI(query = '', { variables }: Record<string, any> = {}) {

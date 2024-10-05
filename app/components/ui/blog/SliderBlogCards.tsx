@@ -47,7 +47,7 @@ const pagination = {
 
 const modules = [Pagination, Navigation];
 
-export default function SliderBlogCards({ items }: { items: { [key: string]: any }[] }) {
+export default function SliderBlogCards({ posts }: { posts: { [key: string]: any }[] }) {
   return (
     <div className="relative xl:px-20">
       <div className="prev absolute left-0 top-1/2 -translate-y-1/2">
@@ -63,10 +63,16 @@ export default function SliderBlogCards({ items }: { items: { [key: string]: any
         pagination={pagination}
         modules={modules}
       >
-        {items.map((post) => (
+        {posts.map((post) => (
           <SwiperSlide key={post.title} className="pb-4 !h-auto">
-            <SliderBlogCard href={post.href} src={post.image} alt={post.alt}>
-              <>{post.date}</>
+            <SliderBlogCard
+              href={post.slug}
+              src={post.featuredImage.node.sourceUrl}
+              alt={post.featuredImage.node.altText}
+            >
+              <time dateTime={post.date} suppressHydrationWarning>
+                {new Date(post.date).toLocaleDateString()}
+              </time>
               <>{post.title}</>
             </SliderBlogCard>
           </SwiperSlide>

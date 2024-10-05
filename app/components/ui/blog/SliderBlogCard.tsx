@@ -22,9 +22,10 @@ export default function SliderBlogCard({
                 <Image
                     src={src}
                     alt={alt}
-                    width={0}
-                    height={0}
-                    className="rounded-t-lg object-cover w-full h-full"
+                    className="rounded-t-lg"
+                    fill={true}
+                    style={{ objectFit: 'cover' }}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
             </div>
             <div className="p-6">
