@@ -22,9 +22,7 @@ export default function Navigation({
         <nav>
             <ul className={navigationListClasses}>
                 {React.Children.map(children, (child) => {
-                    if (!isValidElement(child)) {
-                        return child;
-                    } else {
+                    if (isValidElement(child)) {
                         return (
                             <li>
                                 {React.cloneElement(child as React.ReactElement, {
@@ -33,6 +31,7 @@ export default function Navigation({
                             </li>
                         );
                     }
+                    return child;
                 })}
             </ul>
         </nav>
