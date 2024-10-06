@@ -12,6 +12,7 @@ export default function BottomHeader() {
     const { t, i18n } = useTranslation('navigation');
     const localePrefix = getLocalePrefix(i18n.language, i18nConfig.defaultLocale);
     const pathname = usePathname();
+    console.log(pathname)
 
     return (
         <div className="p-2 flex justify-between">
