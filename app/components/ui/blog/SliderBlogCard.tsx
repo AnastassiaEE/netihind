@@ -1,5 +1,4 @@
 import Image, { StaticImageData } from 'next/image';
-import { Children } from 'react';
 import Link from 'next/link';
 import getFormattedDate from '@/utils/dateFormatter';
 
