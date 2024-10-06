@@ -19,10 +19,10 @@ export default function LanguageSwitcher() {
     e.preventDefault();
     const newLocale = (e.target as HTMLLinkElement).getAttribute('lang');
 
-    const days = 30;
-    const date = new Date();
-    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-    setCookie('NEXT_LOCALE', newLocale, { expires: date });
+    // const days = 30;
+    // const date = new Date();
+    // date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+    // setCookie('NEXT_LOCALE', newLocale, { expires: date });
     //document.cookie = `NEXT_LOCALE=${newLocale};expires=${expires};path=/`;
 
     // redirect to the new locale path
