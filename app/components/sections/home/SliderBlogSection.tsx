@@ -1,9 +1,7 @@
 'use client';
 
 import SectionLayout from '@/layouts/SectionLayout';
-import posts from '@/data/posts';
 import { useTranslation } from 'react-i18next';
-import SliderBlogCards from '@/components/ui/blog/SliderBlogCards';
 
 export default function SliderBlogSection({ children }: { children: React.ReactNode }) {
     const { t } = useTranslation();
