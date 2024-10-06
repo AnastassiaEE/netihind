@@ -6,15 +6,20 @@ export default function SliderBlogCard({
     href,
     src,
     alt,
-    children,
+    date,
+    title,
 }: {
     href: string;
     src: StaticImageData;
     alt: string;
-    children: React.ReactNode;
+    date: string;
+    title: string;
 }) {
-    const [date, title] = Children.toArray(children);
-
+    const formattedDate = new Date(date).toLocaleDateString('et-ET', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+    });
     return (
         <article className="bg-white rounded-lg shadow-md h-full">
             <div className="relative w-full h-60">
@@ -29,7 +34,9 @@ export default function SliderBlogCard({
                 />
             </div>
             <div className="p-6">
-                <div className="text-muted text-sm flex justify-end mb-4">{date}</div>
+                <time className="text-muted text-sm flex justify-end mb-4" dateTime={date}>
+                    {formattedDate}
+                </time>
                 <h3 className="text-lg font-bold text-muted-dark hover:text-primary transition-colors">
                     <Link href={href}>{title}</Link>
                 </h3>

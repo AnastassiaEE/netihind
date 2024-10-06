@@ -69,12 +69,9 @@ export default function SliderBlogCards({ posts }: { posts: { [key: string]: any
               href={post.slug}
               src={post.featuredImage.node.sourceUrl}
               alt={post.featuredImage.node.altText}
-            >
-              <time dateTime={post.date} suppressHydrationWarning>
-                {new Date(post.date).toLocaleDateString()}
-              </time>
-              <>{post.title}</>
-            </SliderBlogCard>
+              date={post.date}
+              title={post.title}
+            ></SliderBlogCard>
           </SwiperSlide>
         ))}
       </Swiper>
