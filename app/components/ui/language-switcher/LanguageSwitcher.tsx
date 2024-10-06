@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import i18nConfig from '@/i18nConfig';
 import Language from './Language';
+import { setCookie } from 'cookies-next';
 
 export default function LanguageSwitcher({
   handleSidebarClose,
@@ -30,8 +31,9 @@ export default function LanguageSwitcher({
     const days = 30;
     const date = new Date();
     date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-    const expires = date.toUTCString();
-    document.cookie = `NEXT_LOCALE=${newLocale};expires=${expires};path=/`;
+    //const expires = date.toUTCString();
+    setCookie('NEXT_LOCALE', newLocale, { expires: date })
+    //document.cookie = `NEXT_LOCALE=${newLocale};expires=${expires};path=/`;
 
     // redirect to the new locale path
     if (currentLocale === i18nConfig.defaultLocale && !i18nConfig.prefixDefault) {
