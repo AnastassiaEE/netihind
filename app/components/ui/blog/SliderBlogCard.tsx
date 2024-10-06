@@ -1,6 +1,7 @@
 import Image, { StaticImageData } from 'next/image';
 import { Children } from 'react';
 import Link from 'next/link';
+import getFormattedDate from '@/utils/dateFormatter';
 
 export default function SliderBlogCard({
     href,
@@ -15,11 +16,6 @@ export default function SliderBlogCard({
     date: string;
     title: string;
 }) {
-    const formattedDate = new Date(date).toLocaleDateString('et-ET', {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-    });
     return (
         <article className="bg-white rounded-lg shadow-md h-full">
             <div className="relative w-full h-60">
@@ -35,7 +31,7 @@ export default function SliderBlogCard({
             </div>
             <div className="p-6">
                 <time className="text-muted text-sm flex justify-end mb-4" dateTime={date}>
-                    {formattedDate}
+                    {getFormattedDate(date)}
                 </time>
                 <h3 className="text-lg font-bold text-muted-dark hover:text-primary transition-colors">
                     <Link href={href}>{title}</Link>
