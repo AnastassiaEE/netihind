@@ -15,15 +15,15 @@ export default function LanguageSwitcher() {
   const etPath = '/et' + currentPathname.replace(`/${currentLocale}`, '');
   const ruPath = '/ru' + currentPathname.replace(`/${currentLocale}`, '');
 
-  const handleClick = (e: React.MouseEvent<HTMLSpanElement>) => {
+  const handleClick = (e: React.MouseEvent<HTMLLinkElement>) => {
     e.preventDefault();
     const newLocale = (e.target as HTMLLinkElement).getAttribute('lang');
 
     const days = 30;
     const date = new Date();
     date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-    const expires = date.toUTCString();
-    document.cookie = `NEXT_LOCALE=${newLocale};expires=${expires};path=/`;
+    setCookie('NEXT_LOCALE', newLocale, { expires: date });
+    //document.cookie = `NEXT_LOCALE=${newLocale};expires=${expires};path=/`;
 
     // redirect to the new locale path
     if (currentLocale === i18nConfig.defaultLocale && !i18nConfig.prefixDefault) {
