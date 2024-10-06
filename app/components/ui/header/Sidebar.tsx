@@ -70,7 +70,7 @@ export default function Sidebar({
                     </NavigationItem>
                 </Navigation>
                 <div className="py-8">
-                    <LanguageSwitcher />
+                    <LanguageSwitcher handleSidebarClose={handleClose} />
                 </div>
             </div>
         </div>

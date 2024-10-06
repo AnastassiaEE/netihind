@@ -7,7 +7,11 @@ import i18nConfig from '@/i18nConfig';
 import Language from './Language';
 import { setCookie } from 'cookies-next';
 
-export default function LanguageSwitcher() {
+export default function LanguageSwitcher({
+  handleSidebarClose,
+}: {
+  handleSidebarClose?: Function;
+}) {
   const { i18n } = useTranslation();
   const currentLocale = i18n.language;
   const router = useRouter();
@@ -17,6 +21,11 @@ export default function LanguageSwitcher() {
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
+
+    if (handleSidebarClose) {
+      handleSidebarClose();
+    }
+
     const newLocale = (e.target as HTMLAnchorElement).getAttribute('lang');
 
     const days = 30;
