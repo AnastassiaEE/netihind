@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import i18nConfig from '@/i18nConfig';
 import Language from './Language';
-import { setCookie } from 'cookies-next';
 
 export default function LanguageSwitcher({
   handleSidebarClose,
