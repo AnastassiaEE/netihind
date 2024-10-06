@@ -31,9 +31,7 @@ export default function LanguageSwitcher({
     const days = 30;
     const date = new Date();
     date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-    //const expires = date.toUTCString();
     setCookie('NEXT_LOCALE', newLocale, { expires: date })
-    //document.cookie = `NEXT_LOCALE=${newLocale};expires=${expires};path=/`;
 
     // redirect to the new locale path
     if (currentLocale === i18nConfig.defaultLocale && !i18nConfig.prefixDefault) {
