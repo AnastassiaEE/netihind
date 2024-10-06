@@ -15,9 +15,9 @@ export default function LanguageSwitcher() {
   const etPath = '/et' + currentPathname.replace(`/${currentLocale}`, '');
   const ruPath = '/ru' + currentPathname.replace(`/${currentLocale}`, '');
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleClick = (e: React.MouseEvent<HTMLLinkElement>) => {
     e.preventDefault();
-    const newLocale = (e.target as HTMLAnchorElement).getAttribute('lang');
+    const newLocale = (e.target as HTMLLinkElement).getAttribute('lang');
 
     const days = 30;
     const date = new Date();

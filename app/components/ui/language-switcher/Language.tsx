@@ -27,8 +27,8 @@ export default function Language({
     );
 
     return (
-        <a href={href} lang={lang} onClick={handleClick} className={languageClasses}>
+        <Link href={href} lang={lang} onClick={handleClick} className={languageClasses}>
             {lang}
-        </a>
+        </Link>
     );
 }
