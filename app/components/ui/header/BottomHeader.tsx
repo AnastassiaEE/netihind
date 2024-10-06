@@ -12,8 +12,11 @@ export default function BottomHeader() {
     const { t, i18n } = useTranslation('navigation');
     const localePrefix = getLocalePrefix(i18n.language, i18nConfig.defaultLocale);
     const pathname = usePathname();
+<<<<<<< HEAD
     console.log(pathname)
     console.log(localePrefix)
+=======
+>>>>>>> 382aa892cce469e590543f7a2f208943ed5e7fb0
     console.log(pathname === `${localePrefix}/blog`)
 
     return (
