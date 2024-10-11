@@ -1,5 +1,4 @@
 import { getPosts } from '@/app/lib/wpPosts';
-import SliderBlogCards from './SliderBlogCards';
 import { Suspense } from 'react';
 import PingLoader from '../loaders/PingLoader';
 import NothingToPreview from '../NothingToPreview';

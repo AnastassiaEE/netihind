@@ -1,14 +1,15 @@
-'use client';
+import ListBlogSectionHeader from "@/components/sections/blog/ListBlogSectionHeader";
+import BlogCardsWrapper from "@/components/ui/blog/BlogCardsWrapper";
+import ListBlogCards from "@/components/ui/blog/ListBlogCards";
+import SectionLayout from "@/layouts/SectionLayout";
 
-import SectionLayout from '@/layouts/SectionLayout';
-import { useTranslation } from 'react-i18next';
-
-export default function ListBlogSection({ children }: { children: React.ReactNode }) {
-    const { t } = useTranslation('blog');
+export default function ListBlogSection({ locale }: { locale: string }) {
     return (
         <SectionLayout>
-            <h1 className="text-[calc(1.375rem+1.5vw)] md:text-4xl font-extrabold mb-10">{t('title')}</h1>
-            {children}
-        </SectionLayout>
-    );
+            <ListBlogSectionHeader />
+            <BlogCardsWrapper locale={locale}>
+                <ListBlogCards />
+            </BlogCardsWrapper>
+        </SectionLayout >
+    )
 }
