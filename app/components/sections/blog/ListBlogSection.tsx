@@ -1,4 +1,4 @@
-import ListBlogSectionHeader from "@/components/sections/blog/ListBlogSectionHeader";
+import ListBlogSectionTitle from "@/components/sections/blog/ListBlogSectionTitle";
 import BlogCardsWrapper from "@/components/ui/blog/BlogCardsWrapper";
 import ListBlogCards from "@/components/ui/blog/ListBlogCards";
 import SectionLayout from "@/layouts/SectionLayout";
@@ -6,7 +6,7 @@ import SectionLayout from "@/layouts/SectionLayout";
 export default function ListBlogSection({ locale }: { locale: string }) {
     return (
         <SectionLayout>
-            <ListBlogSectionHeader />
+            <ListBlogSectionTitle />
             <BlogCardsWrapper locale={locale}>
                 <ListBlogCards />
             </BlogCardsWrapper>
