@@ -19,7 +19,7 @@ export default function QuestionsSection() {
                     <div className="text-muted-dark text-lg max-md:mb-12 mb-8">
                         <p>{t('questions-section.description')}</p>
                     </div>
-                    <Link href="/contacts" locale={i18n.language} className="md:inline-block">
+                    <Link href="/kontaktid" className="md:inline-block">
                         <Button size="lg" className="w-full">{t('form:buttons.contact')}</Button>
                     </Link>
                 </div>
