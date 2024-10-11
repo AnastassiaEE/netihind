@@ -42,14 +42,13 @@ export default function Steps({ children }: { children: React.ReactNode }) {
     return (
         <div className="flex flex-col md:flex-row">
             {React.Children.map(children, (child) => {
-                if (!isValidElement(child)) {
-                    return child;
-                } else {
+                if (isValidElement(child)) {
                     return React.cloneElement(child as React.ReactElement, {
                         padding: 'max-md:py-6 md:px-4 lg:px-6',
                         lines: drawLine(child.props.index),
                     });
                 }
+                return child;
             })}
         </div>
     );
