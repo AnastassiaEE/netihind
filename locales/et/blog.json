@@ -1,3 +1,6 @@
 {
-  "title": "Blogi"
+  "title": "Blogi",
+  "buttons": {
+    "all-posts": "Kõik postitused  →"
+  }
 }
