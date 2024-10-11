@@ -25,11 +25,11 @@ export default function Footer() {
                 </div>
                 <div className="flex justify-center pt-4 pb-6">
                     <Navigation itemColorClass="text-white/80">
-                        <NavigationItem href={`${localePrefix}/`}>{t('home')}</NavigationItem>
-                        <NavigationItem href={`${localePrefix}/blog`}>{t('blog')}</NavigationItem>
-                        <NavigationItem href={`${localePrefix}/about`}>{t('about-us')}</NavigationItem>
-                        <NavigationItem href={`${localePrefix}/privacy-policy`}>{t('privacy-policy')}</NavigationItem>
-                        <NavigationItem href={`${localePrefix}/contacts`}>{t('contacts')}</NavigationItem>
+                        <NavigationItem href={`/`}>{t('home')}</NavigationItem>
+                        <NavigationItem href={`/blog`}>{t('blog')}</NavigationItem>
+                        <NavigationItem href={`/about`}>{t('about-us')}</NavigationItem>
+                        <NavigationItem href={`/privacy-policy`}>{t('privacy-policy')}</NavigationItem>
+                        <NavigationItem href={`/contacts`}>{t('contacts')}</NavigationItem>
                     </Navigation>
                 </div>
                 <div className="flex justify-center pt-6">
