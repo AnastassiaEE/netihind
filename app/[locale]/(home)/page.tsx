@@ -14,7 +14,7 @@ export default async function Home({ params: { locale } }: { params: { locale: s
     <>
       <TopSectionPrimary t={t} />
       {/* <TopSectionSecondary /> */}
-      {/* <InfoSection /> */}
+      {/* <InfoSection t={t} /> */}
       {/* <ProvidersLogoSection /> */}
       <StepsSection />
       <QuestionsSection />

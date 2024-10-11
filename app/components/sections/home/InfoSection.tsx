@@ -1,21 +1,18 @@
-'use client';
-
 import SectionLayout from '@/layouts/SectionLayout';
 import man from '@/public/images/man.png';
 import BgPhoto from '@/components/ui/BgPhoto';
-import { Trans, useTranslation } from 'react-i18next';
+import { Trans } from 'react-i18next/TransWithoutContext';
+import { TFunction } from 'i18next';
+import { H2 } from '@/components/ui/headings/HomePageHeadings';
 
-export default function InfoSection() {
-    const { t } = useTranslation();
+export default function InfoSection({ t }: { t: Function & TFunction<'translation', undefined> }) {
     return (
         <SectionLayout bg="bg-white" className="pt-24">
             <div className="flex flex-col md:flex-row items-center justify-between">
                 <div className="md:w-6/12">
-                    <h2 className="text-[calc(1.375rem+1.5vw)] md:text-4xl font-extrabold mb-6">
-                        {t('info-section.title')}
-                    </h2>
+                    <H2>{t('info-section.title')}</H2>
                     <div className="text-muted-dark">
-                        <Trans i18nKey="info-section.content" components={{ p: <p /> }}>
+                        <Trans i18nKey="info-section.content" t={t} components={{ p: <p /> }}>
                             {t('info-section.content')}
                         </Trans>
                     </div>
