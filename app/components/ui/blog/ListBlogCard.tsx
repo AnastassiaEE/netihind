@@ -17,7 +17,6 @@ export default function ListBlogCard({
     title: string;
     excerpt: string;
 }) {
-    console.log(excerpt)
     return (
         <article className="bg-white rounded-lg shadow-md group">
             <Link href={href} className="md:flex">
