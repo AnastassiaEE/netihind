@@ -1,26 +1,20 @@
-'use client';
-
 import SectionLayout from '@/layouts/SectionLayout';
 import Accordion from '@/components/ui/accordion/Accordion';
 import questions from '@/data/questions';
-import { useTranslation } from 'react-i18next';
 import Button from '@/components/ui/form/buttons/Button';
 import Link from 'next/link';
+import { H2 } from '@/components/ui/headings/HomePageHeadings';
+import { TFunction } from 'i18next';
 
-export default function QuestionsSection() {
-    const { i18n, t } = useTranslation();
+export default function QuestionsSection({ t }: { t: Function & TFunction<'translation', undefined> }) {
     return (
         <SectionLayout bg="bg-white" className="py-24">
             <div className="flex flex-col md:flex-row items-center justify-between">
                 <div className="md:w-4/12 max-md:mb-12">
-                    <h2 className="text-[calc(1.375rem+1.5vw)] md:text-4xl font-extrabold mb-6">
-                        {t('questions-section.title')}
-                    </h2>
-                    <div className="text-muted-dark text-lg max-md:mb-12 mb-8">
-                        <p>{t('questions-section.description')}</p>
-                    </div>
+                    <H2>{t('questions-section.title')}</H2>
+                    <p className="text-muted-dark text-lg mb-12 md:mb-8">{t('questions-section.description')}</p>
                     <Link href="/kontaktid" className="md:inline-block">
-                        <Button size="lg" className="w-full">{t('form:buttons.contact')}</Button>
+                        <Button size="lg" className="w-full">{t('questions-section.contact-button')}</Button>
                     </Link>
                 </div>
                 <div className="md:w-7/12">

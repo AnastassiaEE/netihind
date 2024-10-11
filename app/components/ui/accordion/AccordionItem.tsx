@@ -29,7 +29,7 @@ const accordionItemClasses = classNames(
 export default function AccordionItem({ children }: { children: React.ReactNode }) {
     const { isOpened, toggle, collapsible, id } = useAccordionItem();
 
-    const [question, answer] = Children.toArray(children);
+    const [header, body] = Children.toArray(children);
 
     const buttonClasses = classNames('flex justify-between items-center text-left w-full p-6', {
         'border-b': isOpened,
@@ -44,7 +44,7 @@ export default function AccordionItem({ children }: { children: React.ReactNode 
                 aria-expanded={isOpened ? 'true' : 'false'}
                 aria-controls={id.current}
             >
-                <span className="font-semibold">{question}</span>
+                <span className="font-semibold">{header}</span>
                 {isOpened ? (
                     <CircleArrow direction="up" style={openedArrowClasses} />
                 ) : (
@@ -57,7 +57,7 @@ export default function AccordionItem({ children }: { children: React.ReactNode 
                 style={isOpened ? { height: `${collapsible.current?.offsetHeight}px` } : { height: 0 }}
             >
                 <div ref={collapsible} className="text-muted-dark text-sm p-6">
-                    {answer}
+                    {body}
                 </div>
             </div>
         </div>
