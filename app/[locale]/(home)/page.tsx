@@ -16,7 +16,7 @@ export default async function Home({ params: { locale } }: { params: { locale: s
       {/* <TopSectionSecondary /> */}
       {/* <InfoSection t={t} /> */}
       {/* <ProvidersLogoSection /> */}
-      <StepsSection />
+      <StepsSection t={t} />
       <QuestionsSection />
       <SliderBlogSection locale={locale} />
       <ContactsSection />
