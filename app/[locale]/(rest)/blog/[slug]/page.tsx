@@ -3,21 +3,17 @@ import BlogPostContentSection from '@/components/sections/blog-post/BlogPostCont
 import BlogPostHeaderSection from '@/components/sections/blog-post/BlogPostHeaderSection';
 import ParallaxBg from '@/components/ui/ParallaxBg';
 import { getPosts, getPostsBySlug } from '@/app/lib/wpPosts';
-import i18nConfig from '@/i18nConfig';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import PingLoader from '@/components/ui/loaders/PingLoader';
-import getFormattedDate from '@/utils/dateFormatter';
+import getFormattedSlug from '@/utils/slugFormatter';
 
 export const revalidate = 3600;
 
 export async function generateStaticParams() {
     const posts = await getPosts();
     const paths = posts.map((post: { [key: string]: any }) => {
-        let slug = post.slug;
-        i18nConfig.locales.forEach((locale) => {
-            slug = slug.replace(new RegExp(`-${locale}$`, 'g'), '');
-        });
+        let slug = getFormattedSlug(post.slug);
         return {
             params: { slug },
         };

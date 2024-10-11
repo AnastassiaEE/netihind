@@ -1,6 +1,7 @@
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import PostDate from '@/components/ui/blog/PostDate';
+import getFormattedSlug from '@/utils/slugFormatter';
 
 export default function ListBlogCard({
     href,
@@ -19,7 +20,7 @@ export default function ListBlogCard({
 }) {
     return (
         <article className="bg-white rounded-lg shadow-md group">
-            <Link href={href} className="md:flex">
+            <Link href={`/blog/${getFormattedSlug(href)}`} className="md:flex">
                 <div className="max-md:h-48 md:w-4/12 relative">
                     <Image
                         src={src}
