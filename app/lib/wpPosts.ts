@@ -18,6 +18,7 @@ export async function getPosts(language?: string) {
       language {
         code
       }
+      excerpt(format: RAW)
     }
   }
 }`,

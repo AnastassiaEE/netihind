@@ -11,7 +11,7 @@ export default function ListBlogCards({ posts }: { posts?: { [key: string]: any 
                         alt={post.featuredImage.node.altText}
                         date={post.date}
                         title={post.title}
-                        preview={'content'}
+                        excerpt={post.excerpt}
                     />
                 </div>
             ))}

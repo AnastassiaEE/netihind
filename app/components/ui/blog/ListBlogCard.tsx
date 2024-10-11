@@ -8,15 +8,16 @@ export default function ListBlogCard({
     alt,
     date,
     title,
-    preview,
+    excerpt,
 }: {
     href: string;
     src: StaticImageData;
     alt: string;
     date: string;
     title: string;
-    preview: string;
+    excerpt: string;
 }) {
+    console.log(excerpt)
     return (
         <article className="bg-white rounded-lg shadow-md group">
             <Link href={href} className="md:flex">
@@ -37,7 +38,7 @@ export default function ListBlogCard({
                     <h3 className="text-[calc(1.275rem+0.3vw)] md:text-2xl font-bold mb-4 text-muted-dark group-hover:text-primary transition-colors">
                         {title}
                     </h3>
-                    <p className="text-muted-dark">{preview}</p>
+                    <p className="text-muted-dark">{excerpt}</p>
                 </div>
             </Link>
         </article>
