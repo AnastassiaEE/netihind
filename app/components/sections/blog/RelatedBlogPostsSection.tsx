@@ -10,7 +10,7 @@ export default function RelatedBlogPostsSection() {
     return (
         <SectionLayout>
             <div className="md:flex md:justify-end">
-                <Link href="/blog" className="md:inline-block">
+                <Link href="/blogi" className="md:inline-block">
                     <Button variant="secondary" size="lg" className="w-full">
                         {t('buttons.all-posts')}
                     </Button>
