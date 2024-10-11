@@ -1,6 +1,6 @@
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
-import getFormattedDate from '@/utils/dateFormatter';
+import PostDate from '@/components/ui/blog/PostDate';
 
 export default function SliderBlogCard({
     href,
@@ -29,9 +29,9 @@ export default function SliderBlogCard({
                 />
             </div>
             <div className="p-6">
-                <time className="text-muted text-sm flex justify-end mb-4" dateTime={date}>
-                    {getFormattedDate(date)}
-                </time>
+                <div className="flex justify-end mb-4">
+                    <PostDate date={date} />
+                </div>
                 <h3 className="text-lg font-bold text-muted-dark hover:text-primary transition-colors">
                     <Link href={href}>{title}</Link>
                 </h3>

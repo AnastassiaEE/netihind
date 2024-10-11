@@ -37,7 +37,7 @@ export default async function Post({
     const post = posts[0];
     return (
         <Suspense fallback={<PingLoader />}>
-            <BlogPostHeaderSection title={post.title} date={getFormattedDate(post.date)} />
+            <BlogPostHeaderSection title={post.title} date={post.date} />
             <ParallaxBg imgSrc={post.featuredImage.node.sourceUrl} />
             <BlogPostContentSection content={post.content} />
             <RelatedBlogPostsSection />

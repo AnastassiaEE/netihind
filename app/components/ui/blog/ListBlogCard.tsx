@@ -1,6 +1,6 @@
-import getFormattedDate from '@/utils/dateFormatter';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
+import PostDate from '@/components/ui/blog/PostDate';
 
 export default function ListBlogCard({
     href,
@@ -31,7 +31,9 @@ export default function ListBlogCard({
                     />
                 </div>
                 <div className="md:w-8/12 p-6">
-                    <p className="text-muted text-sm mb-4">{getFormattedDate(date)}</p>
+                    <div className="mb-4">
+                        <PostDate date={date} />
+                    </div>
                     <h3 className="text-[calc(1.275rem+0.3vw)] md:text-2xl font-bold mb-4 text-muted-dark group-hover:text-primary transition-colors">
                         {title}
                     </h3>
