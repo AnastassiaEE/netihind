@@ -12,7 +12,7 @@ export const revalidate = 3600;
 
 export async function generateStaticParams() {
     const posts = await getPosts();
-    const paths = posts.map((post: { [key: string]: any }) => {
+    let paths = posts.map((post: { [key: string]: any }) => {
         let slug = getFormattedSlug(post.slug);
         return {
             params: { slug },

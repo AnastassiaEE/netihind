@@ -48,22 +48,22 @@ export default function Sidebar({
             <div className="p-6">
                 <Navigation type="vertical">
                     <NavigationItem
-                        href={`/blog`}
-                        isActive={pathname === `${localePrefix}/blog`}
+                        href={`/blogi`}
+                        isActive={pathname === `${localePrefix}/blogi`}
                         handleClick={handleClose}
                     >
                         {t('blog')}
                     </NavigationItem>
                     <NavigationItem
-                        href={`/about`}
-                        isActive={pathname === `${localePrefix}/about`}
+                        href={`/meist`}
+                        isActive={pathname === `${localePrefix}/meist`}
                         handleClick={handleClose}
                     >
                         {t('about-us')}
                     </NavigationItem>
                     <NavigationItem
-                        href={`/contacts`}
-                        isActive={pathname === `${localePrefix}/contacts`}
+                        href={`/kontaktid`}
+                        isActive={pathname === `${localePrefix}/kontaktid`}
                         handleClick={handleClose}
                     >
                         {t('contacts')}

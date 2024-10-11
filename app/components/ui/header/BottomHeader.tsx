@@ -17,20 +17,20 @@ export default function BottomHeader() {
         <div className="p-2 flex justify-between">
             <Navigation>
                 <NavigationItem
-                    href={`/blog`}
-                    isActive={pathname === `${localePrefix}/blog`}
+                    href={`/blogi`}
+                    isActive={pathname === `${localePrefix}/blogi`}
                 >
                     {t('blog')}
                 </NavigationItem>
                 <NavigationItem
-                    href={`/about`}
-                    isActive={pathname === `${localePrefix}/about`}
+                    href={`/meist`}
+                    isActive={pathname === `${localePrefix}/meist`}
                 >
                     {t('about-us')}
                 </NavigationItem>
                 <NavigationItem
-                    href={`/contacts`}
-                    isActive={pathname === `${localePrefix}/contacts`}
+                    href={`/kontaktid`}
+                    isActive={pathname === `${localePrefix}/kontaktid`}
                 >
                     {t('contacts')}
                 </NavigationItem>

@@ -20,7 +20,7 @@ export default function ListBlogCard({
 }) {
     return (
         <article className="bg-white rounded-lg shadow-md group">
-            <Link href={`/blog/${getFormattedSlug(href)}`} className="md:flex">
+            <Link href={`/blogi/${getFormattedSlug(href)}`} className="md:flex">
                 <div className="max-md:h-48 md:w-4/12 relative">
                     <Image
                         src={src}

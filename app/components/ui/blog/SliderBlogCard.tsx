@@ -19,7 +19,7 @@ export default function SliderBlogCard({
     return (
         <article className="bg-white rounded-lg shadow-md h-full">
             <div className="relative w-full h-60">
-                <Link href={`/blog/${getFormattedSlug(href)}`} className="block absolute w-full h-60 z-10" />
+                <Link href={`/blogi/${getFormattedSlug(href)}`} className="block absolute w-full h-60 z-10" />
                 <Image
                     src={src}
                     alt={alt}
@@ -34,7 +34,7 @@ export default function SliderBlogCard({
                     <PostDate date={date} />
                 </div>
                 <h3 className="text-lg font-bold text-muted-dark hover:text-primary transition-colors">
-                    <Link href={`/blog/${getFormattedSlug(href)}`}>{title}</Link>
+                    <Link href={`/blogi/${getFormattedSlug(href)}`}>{title}</Link>
                 </h3>
             </div>
         </article>
