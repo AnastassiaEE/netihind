@@ -1,4 +1,4 @@
-export default function MeshSvg({ children }: { children: React.ReactNode }) {
+export default function MeshSvg({ children }: { children?: React.ReactNode }) {
     return (
         <svg
             version="1.0"

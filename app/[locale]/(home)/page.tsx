@@ -6,11 +6,13 @@ import InfoSection from '@/components/sections/home/InfoSection';
 import TopSectionSecondary from '@/components/sections/home/TopSectionSecondary';
 import ProvidersLogoSection from '@/components/sections/home/ProvidersLogoSection';
 import TopSectionPrimary from '@/components/sections/home/TopSectionPrimary';
+import initTranslations from '@/app/i18n';
 
-export default function Home({ params: { locale } }: { params: { locale: string } }) {
+export default async function Home({ params: { locale } }: { params: { locale: string } }) {
+  const { t } = await initTranslations(locale, ['home']);
   return (
     <>
-      <TopSectionPrimary />
+      <TopSectionPrimary t={t} />
       {/* <TopSectionSecondary /> */}
       {/* <InfoSection /> */}
       {/* <ProvidersLogoSection /> */}
