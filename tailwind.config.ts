@@ -1,5 +1,6 @@
 import type { Config } from 'tailwindcss';
 import colors from 'tailwindcss/colors';
+import plugin from 'tailwindcss/plugin';
 
 const config: Config = {
   content: [
@@ -83,6 +84,11 @@ const config: Config = {
         },
       });
     },
+    plugin(({ addBase, theme }) => {
+      addBase({
+        p: { color: theme('colors.muted-dark') },
+      });
+    }),
   ],
 };
 export default config;
