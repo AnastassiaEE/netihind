@@ -1,29 +1,22 @@
-'use client';
-
 import SectionLayout from '@/layouts/SectionLayout';
 import ContactForm from '@/components/ui/form/ContactForm';
-import { useTranslation } from 'react-i18next';
 import ContactLinks from '@/components/ui/contacts/ContactLinks';
 import ContactLink from '@/components/ui/contacts/ContactLink';
-import { email, phone } from '@/data/contacts'
+import { email, phone } from '@/data/contacts';
+import { H2, H3 } from '@/components/ui/headings/HomePageHeadings';
+import { i18n } from 'i18next';
 
-
-export default function ContactsSection() {
-    const { t } = useTranslation();
+export default function ContactsSection({ i18n }: { i18n: i18n }) {
     return (
-        <SectionLayout bg="bg-white" className="py-24">
+        <SectionLayout className="py-24">
             <div className="md:flex md:justify-between md:items-center">
                 <div className="md:w-1/2 max-md:mb-12">
                     <div className="mb-20">
-                        <h2 className="text-[calc(1.375rem+1.5vw)] md:text-4xl font-extrabold mb-6">
-                            {t('contacts-section.title')}
-                        </h2>
-                        <p className="text-muted-dark text-lg">{t('contacts-section.description')}</p>
+                        <H2>{i18n.t('contacts-section.title')}</H2>
+                        <p className="text-lg">{i18n.t('contacts-section.description')}</p>
                     </div>
                     <div>
-                        <h3 className="text-[calc(1.325rem+0.9vw)] md:text-3xl font-extrabold mb-6">
-                            {t('contacts-section.subtitle')}
-                        </h3>
+                        <H3>{i18n.t('contacts-section.subtitle')}</H3>
                         <ContactLinks>
                             <ContactLink contactType="phone">{phone}</ContactLink>
                             <ContactLink contactType="email">{email}</ContactLink>

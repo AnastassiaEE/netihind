@@ -19,7 +19,7 @@ export default async function Home({ params: { locale } }: { params: { locale: s
       <StepsSection i18n={i18n} />
       <QuestionsSection i18n={i18n} />
       <SliderBlogSection i18n={i18n} />
-      {/* <ContactsSection />  */}
+      <ContactsSection i18n={i18n} />
     </>
   );
 }
