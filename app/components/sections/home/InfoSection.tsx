@@ -2,17 +2,17 @@ import SectionLayout from '@/layouts/SectionLayout';
 import man from '@/public/images/man.png';
 import BgPhoto from '@/components/ui/BgPhoto';
 import { Trans } from 'react-i18next/TransWithoutContext';
-import { TFunction } from 'i18next';
+import { i18n } from 'i18next';
 import { H2 } from '@/components/ui/headings/HomePageHeadings';
 
-export default function InfoSection({ t }: { t: Function & TFunction<'translation', undefined> }) {
+export default function InfoSection({ i18n }: { i18n: i18n }) {
     return (
         <SectionLayout className="pt-24">
             <div className="flex flex-col md:flex-row items-center justify-between">
                 <div className="md:w-6/12">
-                    <H2>{t('info-section.title')}</H2>
-                    <Trans i18nKey="info-section.content" t={t} components={{ p: <p /> }}>
-                        {t('info-section.content')}
+                    <H2>{i18n.t('info-section.title')}</H2>
+                    <Trans i18nKey="info-section.content" t={i18n.t} components={{ p: <p /> }}>
+                        {i18n.t('info-section.content')}
                     </Trans>
                 </div>
                 <div className="md:w-5/12">

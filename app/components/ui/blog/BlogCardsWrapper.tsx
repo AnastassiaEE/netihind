@@ -3,18 +3,19 @@ import { Suspense } from 'react';
 import PingLoader from '../loaders/PingLoader';
 import NothingToPreview from '../NothingToPreview';
 import React from 'react';
+import { i18n } from 'i18next';
 
 export const revalidate = 3600;
 
 export default async function BlogCardsWrapper({
-    locale,
+    i18n,
     children,
 }: {
-    locale: string;
+    i18n: i18n;
     children: React.ReactNode;
 }) {
-    const posts = await getPosts(locale.toUpperCase());
-    const notPosts = posts === undefined || posts?.length === 0;
+    const posts = await getPosts(i18n.language.toUpperCase());
+    const notPosts = true;
     const childrenWithPosts = React.Children.map(children, (child) => {
         if (React.isValidElement(child)) {
             return React.cloneElement(child as React.ReactElement, { posts: posts });
@@ -23,7 +24,7 @@ export default async function BlogCardsWrapper({
     });
     return (
         <Suspense fallback={<PingLoader />}>
-            {notPosts ? <NothingToPreview message="posts-not-found" /> : childrenWithPosts}
+            {notPosts ? <NothingToPreview message={i18n.t("not-found:posts-not-found")} /> : childrenWithPosts}
         </Suspense>
     );
 }
