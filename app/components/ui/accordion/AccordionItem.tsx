@@ -54,8 +54,8 @@ export default function AccordionItem({ header, body }: { header: string; body: 
                 className="transition-all duration-700"
                 style={isOpened ? { height: `${collapsible.current?.offsetHeight}px` } : { height: 0 }}
             >
-                <div ref={collapsible} className="p-6">
-                    <p className="text-sm">{body}</p>
+                <div ref={collapsible} className="p-6 text-muted-dark text-sm">
+                    {body}
                 </div>
             </div>
         </div>
