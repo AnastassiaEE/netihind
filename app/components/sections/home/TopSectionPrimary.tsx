@@ -31,10 +31,10 @@ const bgClasses = classNames(
 export default function TopSection({ t }: { t: Function & TFunction<'translation', undefined> }) {
     return (
         <SectionLayout className={sectionClasses} bg={bgClasses}>
-            <div className="absolute right-0 max-md:top-[80px] bottom-[50px] -z-10 w-[230px] md:w-[500px] h-auto">
+            <div className="absolute right-0 max-md:top-[80px] bottom-[50px] w-[230px] md:w-[500px] h-auto -z-10">
                 <GradientMesh />
             </div>
-            <div className="md:-translate-y-16 relative">
+            <div className="relative md:-translate-y-16">
                 <H1>
                     <Trans
                         i18nKey="top-section.title"
@@ -46,7 +46,7 @@ export default function TopSection({ t }: { t: Function & TFunction<'translation
                         }}
                     />
                 </H1>
-                <p className="text-lg text-muted-dark mb-4">{t('top-section.description')}</p>
+                <p className="text-lg mb-4">{t('top-section.description')}</p>
                 <GoogleAddressForm />
             </div>
             <div className="absolute bottom-0 left-0 py-3 md:p-9 w-full bg-primary/10">
