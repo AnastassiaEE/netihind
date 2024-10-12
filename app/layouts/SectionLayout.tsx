@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
 export default function SectionLayout({
-  bg,
+  bg = 'bg-white',
   className,
   children,
 }: {

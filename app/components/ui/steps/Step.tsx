@@ -1,20 +1,18 @@
-import { Children } from 'react';
 import classNames from 'classnames';
 
 export default function Step({
     index = 1,
+    title,
+    description,
     lines,
     padding,
-    children,
 }: {
     index: number;
+    title: string,
+    description: string,
     lines?: string;
     padding?: string;
-    children: React.ReactNode;
 }) {
-    const title = Children.toArray(children)[0];
-    const desc = Children.toArray(children)[1];
-
     const stepWrapperClasses = classNames(
         'flex',
         'flex-row',
@@ -36,10 +34,10 @@ export default function Step({
                 </span>
             </div>
             <div className="max-md:pl-6 md:text-center">
-                <div className="text-[calc(1.275rem+0.3vw)] lg:text-2xl font-extrabold mb-4 md:h-24">
+                <p className="text-[calc(1.275rem+0.3vw)] lg:text-2xl text-black font-extrabold mb-4 md:h-24">
                     {title}
-                </div>
-                <p className="text-muted-dark">{desc}</p>
+                </p>
+                <p>{description}</p>
             </div>
         </div>
     );
