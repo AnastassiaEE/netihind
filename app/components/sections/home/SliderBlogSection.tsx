@@ -11,7 +11,7 @@ export default function SliderBlogSection({
 }) {
     return (
         <SectionLayout bg="bg-neutral-light" className="py-24">
-            <H2 className="text-center mb-10">{i18n.t('blog-section.title')}</H2>
+            <H2 className="text-center !mb-10">{i18n.t('blog-section.title')}</H2>
             <BlogCardsWrapper i18n={i18n}>
                 <SliderBlogCards />
             </BlogCardsWrapper>

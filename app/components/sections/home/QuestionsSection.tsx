@@ -4,17 +4,17 @@ import questions from '@/data/questions';
 import Button from '@/components/ui/form/buttons/Button';
 import Link from 'next/link';
 import { H2 } from '@/components/ui/headings/HomePageHeadings';
-import { TFunction } from 'i18next';
+import { i18n, TFunction } from 'i18next';
 
-export default function QuestionsSection({ t }: { t: Function & TFunction<'translation', undefined> }) {
+export default function QuestionsSection({ i18n }: { i18n: i18n }) {
     return (
         <SectionLayout className="py-24">
             <div className="flex flex-col md:flex-row items-center justify-between">
                 <div className="md:w-4/12 max-md:mb-12">
-                    <H2>{t('questions-section.title')}</H2>
-                    <p className="text-lg mb-12 md:mb-8">{t('questions-section.description')}</p>
+                    <H2>{i18n.t('questions-section.title')}</H2>
+                    <p className="text-lg mb-12 md:mb-8">{i18n.t('questions-section.description')}</p>
                     <Link href="/kontaktid" className="md:inline-block">
-                        <Button size="lg" className="w-full">{t('questions-section.contact-button')}</Button>
+                        <Button size="lg" className="w-full">{i18n.t('questions-section.contact-button')}</Button>
                     </Link>
                 </div>
                 <div className="md:w-7/12">

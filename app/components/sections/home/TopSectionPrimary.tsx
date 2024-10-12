@@ -5,7 +5,7 @@ import GoogleAddressForm from '@/components/ui/form/GoogleAddressForm';
 import providerLogos from '@/data/providerLogos';
 import LogoCards from '@/components/ui/logo/LogoCards';
 import { H1 } from '@/components/ui/headings/HomePageHeadings';
-import { TFunction } from 'i18next';
+import { i18n } from 'i18next';
 import GradientMesh from '@/components/ui/mesh/GradientMesh';
 
 const sectionClasses = classNames(
@@ -28,7 +28,7 @@ const bgClasses = classNames(
     'via-accent/10 to-80%',
 );
 
-export default function TopSection({ t }: { t: Function & TFunction<'translation', undefined> }) {
+export default function TopSection({ i18n }: { i18n: i18n }) {
     return (
         <SectionLayout className={sectionClasses} bg={bgClasses}>
             <div className="absolute right-0 max-md:top-[80px] bottom-[50px] w-[230px] md:w-[500px] h-auto -z-10">
@@ -38,7 +38,7 @@ export default function TopSection({ t }: { t: Function & TFunction<'translation
                 <H1>
                     <Trans
                         i18nKey="top-section.title"
-                        t={t}
+
                         components={{
                             span: (
                                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent" />
@@ -46,7 +46,7 @@ export default function TopSection({ t }: { t: Function & TFunction<'translation
                         }}
                     />
                 </H1>
-                <p className="text-lg mb-4">{t('top-section.description')}</p>
+                <p className="text-lg mb-4">{i18n.t('top-section.description')}</p>
                 <GoogleAddressForm />
             </div>
             <div className="absolute bottom-0 left-0 py-3 md:p-9 w-full bg-primary/10">

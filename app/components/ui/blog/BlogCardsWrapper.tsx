@@ -15,7 +15,7 @@ export default async function BlogCardsWrapper({
     children: React.ReactNode;
 }) {
     const posts = await getPosts(i18n.language.toUpperCase());
-    const notPosts = true;
+    const notPosts = posts === undefined || posts?.length === 0;
     const childrenWithPosts = React.Children.map(children, (child) => {
         if (React.isValidElement(child)) {
             return React.cloneElement(child as React.ReactElement, { posts: posts });
@@ -24,7 +24,7 @@ export default async function BlogCardsWrapper({
     });
     return (
         <Suspense fallback={<PingLoader />}>
-            {notPosts ? <NothingToPreview message={i18n.t("not-found:posts-not-found")} /> : childrenWithPosts}
+            {notPosts ? <NothingToPreview message={i18n.t("posts-not-found")} /> : childrenWithPosts}
         </Suspense>
     );
 }

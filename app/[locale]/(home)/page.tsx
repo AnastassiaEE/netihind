@@ -12,14 +12,14 @@ export default async function Home({ params: { locale } }: { params: { locale: s
   const { i18n } = await initTranslations(locale, ['home', 'not-found']);
   return (
     <>
-      <TopSectionPrimary t={i18n.t} />
+      <TopSectionPrimary i18n={i18n} />
       {/* <TopSectionSecondary /> */}
       {/* <InfoSection i18n={t} /> */}
       {/* <ProvidersLogoSection /> */}
-      <StepsSection t={i18n.t} />
-      <QuestionsSection t={i18n.t} />
+      <StepsSection i18n={i18n} />
+      <QuestionsSection i18n={i18n} />
       <SliderBlogSection i18n={i18n} />
-      <ContactsSection />
+      {/* <ContactsSection />  */}
     </>
   );
 }
