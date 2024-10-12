@@ -1,6 +1,6 @@
 'use client';
 
-import { Children } from 'react';
+import { ReactElement } from 'react';
 import CircleArrow from '../icons/CircleArrow';
 import useAccordionItem from '@/hooks/useAccordionItem';
 import classNames from 'classnames';
@@ -26,10 +26,8 @@ const accordionItemClasses = classNames(
     'overflow-hidden',
 );
 
-export default function AccordionItem({ children }: { children: React.ReactNode }) {
+export default function AccordionItem({ header, body }: { header: string; body: ReactElement }) {
     const { isOpened, toggle, collapsible, id } = useAccordionItem();
-
-    const [header, body] = Children.toArray(children);
 
     const buttonClasses = classNames('flex justify-between items-center text-left w-full p-6', {
         'border-b': isOpened,
@@ -56,8 +54,8 @@ export default function AccordionItem({ children }: { children: React.ReactNode 
                 className="transition-all duration-700"
                 style={isOpened ? { height: `${collapsible.current?.offsetHeight}px` } : { height: 0 }}
             >
-                <div ref={collapsible} className="text-muted-dark text-sm p-6">
-                    {body}
+                <div ref={collapsible} className="p-6">
+                    <p className="text-sm">{body}</p>
                 </div>
             </div>
         </div>

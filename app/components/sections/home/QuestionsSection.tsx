@@ -8,11 +8,11 @@ import { TFunction } from 'i18next';
 
 export default function QuestionsSection({ t }: { t: Function & TFunction<'translation', undefined> }) {
     return (
-        <SectionLayout bg="bg-white" className="py-24">
+        <SectionLayout className="py-24">
             <div className="flex flex-col md:flex-row items-center justify-between">
                 <div className="md:w-4/12 max-md:mb-12">
                     <H2>{t('questions-section.title')}</H2>
-                    <p className="text-muted-dark text-lg mb-12 md:mb-8">{t('questions-section.description')}</p>
+                    <p className="text-lg mb-12 md:mb-8">{t('questions-section.description')}</p>
                     <Link href="/kontaktid" className="md:inline-block">
                         <Button size="lg" className="w-full">{t('questions-section.contact-button')}</Button>
                     </Link>
