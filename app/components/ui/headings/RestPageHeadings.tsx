@@ -8,3 +8,12 @@ export const H1 = ({ children, className }: { children: React.ReactNode; classNa
         </h1>
     );
 };
+
+export const H2 = ({ children, className }: { children: React.ReactNode; className?: string }) => {
+    const cs = classNames({ [className as string]: className !== undefined });
+    return (
+        <h1 className={`text-calc(1.275rem + 0.3vw) md:text-2xl font-extrabold mb-6 ${cs}`}>
+            {children}
+        </h1>
+    );
+}

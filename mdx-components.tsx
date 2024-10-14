@@ -4,16 +4,17 @@ import Image from 'next/image';
 import React, { Children } from 'react';
 import Pros from '@/components/ui/icons/Pros';
 import Cons from '@/components/ui/icons/Cons';
+import { H1, H2 } from '@/components/ui/headings/RestPageHeadings';
 
 const components = {
   h1: ({ children }: { children: React.ReactNode }) => (
-    <h1 className="text-[calc(1.375rem+1.5vw)] md:text-4xl font-extrabold mb-10">{children}</h1>
+    <H1>{children}</H1>
   ),
   h2: ({ children }: { children: React.ReactNode }) => (
-    <h2 className="text-calc(1.275rem + 0.3vw) md:text-2xl font-extrabold mb-6">{children}</h2>
+    <H2>{children}</H2>
   ),
   p: ({ children }: { children: React.ReactNode }) => (
-    <p className=" text-muted-dark [&:not(:last-child)]:mb-6"> {children} </p>
+    <p className="[&:not(:last-child)]:mb-6"> {children} </p>
   ),
   ul: ({ children }: { children: React.ReactNode }) => (
     <ul className="[&:not(:last-child)]:mb-6">{children}</ul>
@@ -42,7 +43,7 @@ const components = {
       icon = <Cons size="small" />;
     }
     return (
-      <li className="text-muted-dark mb-1.5">
+      <li className="text-muted-dark [&:not(:last-child)]:mb-1.5">
         {icon}
         {childrenCopy}
       </li>
@@ -54,7 +55,7 @@ const components = {
     </table>
   ),
   th: ({ children }: { children: React.ReactNode }) => (
-    <th className="border border-muted-light p-20" style={{ padding: '10px' }}>
+    <th className="border border-muted-light" style={{ padding: '10px' }}>
       {children}
     </th>
   ),
