@@ -2,11 +2,11 @@
   "title": "Võtke meiega ühendust",
   "form-title": "Jätke meile sõnum",
   "cards": {
-    "card1": {
+    "email": {
       "title": "Kirjutage meile",
       "description": "Kirjutage meile. Vastame Teile esimesel võimalusel."
     },
-    "card2": {
+    "phone": {
       "title": "Helistage igal ajal",
       "description": "Kui vajate abi, helistage meile igal ajal."
     }

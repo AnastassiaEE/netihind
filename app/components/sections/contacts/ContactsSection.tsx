@@ -1,14 +1,12 @@
-'use client'
-
 import ContactCard from '@/components/ui/contacts/ContactCard';
 import ContactCards from '@/components/ui/contacts/ContactCards';
 import SectionLayout from '@/layouts/SectionLayout';
 import { email, phone } from '@/data/contacts';
 import ContactForm from '@/components/ui/form/ContactForm';
-import { useTranslation } from 'react-i18next';
+import { i18n } from 'i18next';
+import { H1, H2 } from '@/components/ui/headings/RestPageHeadings';
 
-export default function ContactsSection() {
-    const { t } = useTranslation(['contacts']);
+export default function ContactsSection({ i18n }: { i18n: i18n }) {
     const contacts: {
         contactType: 'email' | 'phone' | 'address';
         data: { title: string; description: string; contact: string };
@@ -16,23 +14,23 @@ export default function ContactsSection() {
             {
                 contactType: 'email',
                 data: {
-                    title: t('cards.card1.title'),
-                    description: t('cards.card1.description'),
+                    title: i18n.t('cards.email.title'),
+                    description: i18n.t('cards.email.description'),
                     contact: email,
                 },
             },
             {
                 contactType: 'phone',
                 data: {
-                    title: t('cards.card2.title'),
-                    description: t('cards.card2.description'),
+                    title: i18n.t('cards.phone.title'),
+                    description: i18n.t('cards.phone.description'),
                     contact: phone,
                 },
             },
         ];
     return (
         <SectionLayout>
-            <h1 className="text-[calc(1.375rem+1.5vw)] md:text-4xl font-extrabold mb-10">{t('title')}</h1>
+            <H1>{i18n.t('title')}</H1>
             <div className="lg:flex justify-between items-center">
                 <div className="lg:w-6/12 max-lg:mb-24">
                     <ContactCards>
@@ -47,10 +45,8 @@ export default function ContactsSection() {
                         })}
                     </ContactCards>
                 </div>
-                <div className="lg:w-5/12 bg-neutral-light px-7 md:px-12 py-9 p rounded-lg">
-                    <h2 className="text-[calc(1.325rem+0.9vw)] md:text-3xl font-extrabold mb-10">
-                        {t('form-title')}
-                    </h2>
+                <div className="lg:w-5/12 bg-neutral-light px-7 md:px-12 py-9 rounded-lg">
+                    <H2>{i18n.t('form-title')}</H2>
                     <ContactForm />
                 </div>
             </div>

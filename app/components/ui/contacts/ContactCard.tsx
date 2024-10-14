@@ -1,7 +1,8 @@
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import CircleContactIcon from '../icons/CircleContactIcon';
+import CircleContactIcon from '@/components/ui/icons/CircleContactIcon';
+import { H2 } from '../headings/RestPageHeadings';
 
 const icons = {
     email: EmailIcon,
@@ -28,10 +29,8 @@ export default function ContactCard({
                 <CircleContactIcon Icon={icons[contactType]} />
             </div>
             <div className="pl-6">
-                <h4 className="text-calc(1.275rem + 0.3vw) md:text-2xl font-extrabold mb-3">
-                    {data.title}
-                </h4>
-                <p className="text-muted-dark mb-3">{data.description}</p>
+                <H2 className="!mb-3">{data.title}</H2>
+                <p className="mb-3">{data.description}</p>
                 <a
                     href={href.replace(/\s/g, '')}
                     className="text-primary hover:text-primary-dark block font-semibold py-3"
