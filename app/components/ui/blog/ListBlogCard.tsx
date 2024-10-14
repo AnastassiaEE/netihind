@@ -2,6 +2,7 @@ import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import PostDate from '@/components/ui/blog/PostDate';
 import getFormattedSlug from '@/utils/slugFormatter';
+import { H2 } from '../headings/RestPageHeadings';
 
 export default function ListBlogCard({
     href,
@@ -35,10 +36,8 @@ export default function ListBlogCard({
                     <div className="mb-4">
                         <PostDate date={date} />
                     </div>
-                    <h3 className="text-[calc(1.275rem+0.3vw)] md:text-2xl font-bold mb-4 text-muted-dark group-hover:text-primary transition-colors">
-                        {title}
-                    </h3>
-                    <p className="text-muted-dark">{excerpt}</p>
+                    <H2 className="text-muted-dark !font-bold group-hover:text-primary transition-colors !mb-4">{title}</H2>
+                    <p>{excerpt}</p>
                 </div>
             </Link>
         </article>
