@@ -1,10 +1,11 @@
 import PostDate from '@/components/ui/blog/PostDate';
 import SectionLayout from '@/layouts/SectionLayout';
+import { H1 } from '@/components/ui/headings/RestPageHeadings';
 
 export default function BlogPostHeaderSection({ title, date }: { title: string; date: string }) {
     return (
         <SectionLayout className="pb-4">
-            <h1 className="text-[calc(1.375rem+1.5vw)] md:text-4xl font-extrabold mb-10">{title}</h1>
+            <H1>{title}</H1>
             <div className="mb-4">
                 <PostDate date={date} />
             </div>
