@@ -38,7 +38,7 @@ export default function TopSection({ i18n }: { i18n: i18n }) {
                 <H1>
                     <Trans
                         i18nKey="top-section.title"
-
+                        t={i18n.t}
                         components={{
                             span: (
                                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent" />
