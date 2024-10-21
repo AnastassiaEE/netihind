@@ -25,6 +25,8 @@
       "@/hooks/*": ["app/hooks/*"],
       "@/utils/*": ["app/utils/*"],
       "@/markdown/*": ["app/markdown/*"],
+      "@/locales/*": ["app/locales/*"],
+      "@/i18n/*": ["app/i18n/*"],
       "@/app/*": ["app/*"],
       "@/*": ["./*"]
     }

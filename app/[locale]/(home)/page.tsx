@@ -6,7 +6,7 @@ import InfoSection from '@/components/sections/home/InfoSection';
 import TopSectionSecondary from '@/components/sections/home/TopSectionSecondary';
 import ProvidersLogoSection from '@/components/sections/home/ProvidersLogoSection';
 import TopSectionPrimary from '@/components/sections/home/TopSectionPrimary';
-import initTranslations from '@/app/i18n';
+import initTranslations from '@/i18n/i18n';
 
 export default async function Home({ params: { locale } }: { params: { locale: string } }) {
   const { i18n } = await initTranslations(locale, ['home', 'not-found']);

@@ -1,4 +1,4 @@
-import initTranslations from '@/app/i18n';
+import initTranslations from '@/i18n/i18n';
 import ListBlogSection from '@/components/sections/blog/ListBlogSection';
 
 export default async function Blog({ params: { locale } }: { params: { locale: string } }) {

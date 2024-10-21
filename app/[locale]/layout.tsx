@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 import { Manrope } from 'next/font/google';
 import i18nConfig from '@/i18nConfig';
 import { dir } from 'i18next';
-import initTranslations from '../i18n';
-import TranslationsProvider from '@/components/TranslationProvider';
+import initTranslations from '@/i18n/i18n';
+import TranslationsProvider from '@/i18n/TranslationProvider';
 import ScrollTopButton from '@/components/ui/buttons/ScrollTopButton';
 
 const inter = Manrope({ subsets: ['latin'] });
