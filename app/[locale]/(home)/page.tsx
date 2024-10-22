@@ -9,7 +9,7 @@ import TopSectionPrimary from '@/components/sections/home/TopSectionPrimary';
 import initTranslations from '@/i18n/i18n';
 import TranslationsProvider from '@/i18n/TranslationProvider';
 
-export const i18nNamespaces = ['home', 'not-found', 'form']
+const i18nNamespaces = ['home', 'not-found', 'form'];
 
 export default async function Home({ params: { locale } }: { params: { locale: string } }) {
   const { i18n, resources } = await initTranslations(locale, i18nNamespaces);
