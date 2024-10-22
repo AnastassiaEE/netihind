@@ -10,6 +10,7 @@ import initTranslations from '@/i18n/i18n';
 
 export default async function Home({ params: { locale } }: { params: { locale: string } }) {
   const { i18n } = await initTranslations(locale, ['home', 'not-found']);
+  //test
   return (
     <>
       <TopSectionPrimary i18n={i18n} />
