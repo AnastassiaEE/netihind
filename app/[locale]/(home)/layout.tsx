@@ -3,7 +3,7 @@ import Header from '@/components/ui/header/Header';
 import initTranslations from '@/i18n/i18n';
 import TranslationProvider from '@/i18n/TranslationProvider';
 
-export const i18nNamespaces = ['navigation'];
+const i18nNamespaces = ['navigation'];
 
 export default async function Layout({
     params: { locale },
