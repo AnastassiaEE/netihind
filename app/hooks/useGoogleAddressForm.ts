@@ -10,7 +10,7 @@ export default function UseGoogleAddressForm() {
   const { i18n } = useTranslation();
   const router = useRouter();
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: process.env.GOOGLE_API_KEY as string,
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY as string,
     libraries,
     language: 'et',
   });
