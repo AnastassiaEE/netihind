@@ -10,13 +10,9 @@ import { useTranslation } from 'react-i18next';
 import Copyright from '@/components/ui/Copyright';
 import SectionLayout from '@/layouts/SectionLayout';
 import socialLinks from '@/data/socialLinks';
-import getLocalePrefix from '@/utils/getLocalePrefix';
-import i18nConfig from '@/i18nConfig';
 
 export default function Footer() {
-    const { t, i18n } = useTranslation('navigation');
-    const localePrefix = getLocalePrefix(i18n.language, i18nConfig.defaultLocale)
-
+    const { t } = useTranslation('navigation');
     return (
         <footer className="bg-gray-900 py-12">
             <SectionLayout>
@@ -25,11 +21,11 @@ export default function Footer() {
                 </div>
                 <div className="flex justify-center pt-4 pb-6">
                     <Navigation itemColorClass="text-white/80">
-                        <NavigationItem href={`/`}>{t('home')}</NavigationItem>
-                        <NavigationItem href={`/blogi`}>{t('blog')}</NavigationItem>
-                        <NavigationItem href={`/meist`}>{t('about-us')}</NavigationItem>
-                        <NavigationItem href={`/kasutustingimused`}>{t('privacy-policy')}</NavigationItem>
-                        <NavigationItem href={`/kontaktid`}>{t('contacts')}</NavigationItem>
+                        <NavigationItem href='/'>{t('home')}</NavigationItem>
+                        <NavigationItem href='/blogi'>{t('blog')}</NavigationItem>
+                        <NavigationItem href='/meist'>{t('about-us')}</NavigationItem>
+                        <NavigationItem href='/kasutustingimused'>{t('privacy-policy')}</NavigationItem>
+                        <NavigationItem href='/kontaktid'>{t('contacts')}</NavigationItem>
                     </Navigation>
                 </div>
                 <div className="flex justify-center pt-6">

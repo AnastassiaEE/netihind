@@ -40,7 +40,7 @@ export default function Sidebar({
     return (
         <div className={sidebarWrapperClasses}>
             <div className="flex justify-between px-6 py-5 border-b border-muted-light">
-                <h5 className="text-xl font-extrabold">{t('menu')}</h5>
+                <h4 className="text-xl font-extrabold">{t('menu')}</h4>
                 <button type="button" className="h-max" onClick={handleClose}>
                     <CloseIcon className="text-muted hover:text-black transition-colors" />
                 </button>
@@ -48,21 +48,21 @@ export default function Sidebar({
             <div className="p-6">
                 <Navigation type="vertical">
                     <NavigationItem
-                        href={`/blogi`}
+                        href='/blogi'
                         isActive={pathname === `${localePrefix}/blogi`}
                         handleClick={handleClose}
                     >
                         {t('blog')}
                     </NavigationItem>
                     <NavigationItem
-                        href={`/meist`}
+                        href='/meist'
                         isActive={pathname === `${localePrefix}/meist`}
                         handleClick={handleClose}
                     >
                         {t('about-us')}
                     </NavigationItem>
                     <NavigationItem
-                        href={`/kontaktid`}
+                        href='/kontaktid'
                         isActive={pathname === `${localePrefix}/kontaktid`}
                         handleClick={handleClose}
                     >

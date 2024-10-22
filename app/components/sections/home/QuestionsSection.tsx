@@ -4,7 +4,7 @@ import questions from '@/data/questions';
 import Button from '@/components/ui/form/buttons/Button';
 import Link from 'next/link';
 import { H2 } from '@/components/ui/headings/HomePageHeadings';
-import { i18n, TFunction } from 'i18next';
+import { i18n } from 'i18next';
 
 export default function QuestionsSection({ i18n }: { i18n: i18n }) {
     return (
@@ -18,7 +18,7 @@ export default function QuestionsSection({ i18n }: { i18n: i18n }) {
                     </Link>
                 </div>
                 <div className="md:w-7/12">
-                    <Accordion items={questions} />
+                    <Accordion items={questions} i18n={i18n} />
                 </div>
             </div>
         </SectionLayout>

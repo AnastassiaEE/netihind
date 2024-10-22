@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import { phone } from '@/data/contacts';
 
 export default function ConsultationButton({ type = 'desktop' }: { type?: 'desktop' | 'mobile' }) {
-    const { t } = useTranslation('form');
+    const { t } = useTranslation('navigation');
 
     const buttonClasses = classNames('!pt-0.5 !pb-1 rounded-md', {
         '!px-2': type === 'mobile',
@@ -25,7 +25,7 @@ export default function ConsultationButton({ type = 'desktop' }: { type?: 'deskt
                     {type == 'desktop' && (
                         <div className="flex flex-col text-left">
                             <span className="font-bold">{phone}</span>
-                            <span className="text-xs uppercase">{t('buttons.free-consultation')}</span>
+                            <span className="text-xs uppercase">{t('buttons.consultation')}</span>
                         </div>
                     )}
                 </div>

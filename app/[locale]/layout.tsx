@@ -3,12 +3,9 @@ import type { Metadata } from 'next';
 import { Manrope } from 'next/font/google';
 import i18nConfig from '@/i18nConfig';
 import { dir } from 'i18next';
-import initTranslations from '@/i18n/i18n';
-import TranslationsProvider from '@/i18n/TranslationProvider';
 import ScrollTopButton from '@/components/ui/buttons/ScrollTopButton';
 
 const inter = Manrope({ subsets: ['latin'] });
-const i18nNamespaces = ['home', 'form', 'navigation', 'contacts', 'not-found', 'personal-address', 'tariffs', 'blog'];
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -26,15 +23,12 @@ export default async function RootLayout({
   params: { locale: string };
   children: React.ReactNode;
 }) {
-  const { resources } = await initTranslations(locale, i18nNamespaces);
 
   return (
     <html lang={locale} dir={dir(locale)}>
       <body className={inter.className}>
         <ScrollTopButton />
-        <TranslationsProvider namespaces={i18nNamespaces} locale={locale} resources={resources}>
-          {children}
-        </TranslationsProvider>
+        {children}
       </body>
     </html>
   );
