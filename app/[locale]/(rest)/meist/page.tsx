@@ -1,19 +1,23 @@
 import PingLoader from '@/components/ui/loaders/PingLoader';
-import AboutSection from '@/components/sections/about/AboutSection';
 import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { getPages } from '@/app/lib/wpPages';
+import components from '@/mdx-components';
+import SectionLayout from '@/layouts/SectionLayout';
+import { MDXRemote } from 'next-mdx-remote/rsc';
 
-export const revalidate = 3600
+export const revalidate = 3600;
 
 export default async function About({ params: { locale } }: { params: { locale: string } }) {
-    const pages = await getPages(locale.toUpperCase(), "about")
+    const pages = await getPages(locale.toUpperCase(), 'about');
     if (pages === undefined || pages?.length === 0) {
-        notFound()
+        notFound();
     }
     return (
         <Suspense fallback={<PingLoader />}>
-            <AboutSection data={pages[0].content} />
+            <SectionLayout>
+                <MDXRemote source={pages[0].content} components={components as {}} />
+            </SectionLayout>
         </Suspense>
     );
 }
