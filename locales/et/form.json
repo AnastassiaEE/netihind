@@ -38,7 +38,6 @@
     "privacy-policy": "Nõustun <a>privaatsus- ja kasutustingimustega</a>"
   },
   "buttons": {
-    "send": "Saada",
-    "return-home": "Avaleht"
+    "send": "Saada"
   }
 }
