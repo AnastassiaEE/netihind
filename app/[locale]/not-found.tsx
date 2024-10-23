@@ -37,7 +37,7 @@ export default async function NotFound() {
                     <div className="h-full flex flex-col justify-center items-center">
                         <h1 className="text-9xl text-primary font-extrabold mb-6">404</h1>
                         <h2 className="text-5xl font-extrabold mb-8">{t('title')}</h2>
-                        <p className="text-xl text-muted-dark mb-12">{t('description')}</p>
+                        <p className="text-xl mb-12">{t('description')}</p>
                         <Link href="/">
                             <IconButton size="lg" Icon={HomeIcon}>
                                 {t('buttons.return-home')}
