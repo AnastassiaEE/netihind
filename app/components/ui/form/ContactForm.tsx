@@ -111,7 +111,7 @@ export default function ContactForm() {
                         components={{
                             a: (
                                 <Link
-                                    href="/privacy-policy"
+                                    href="/kasutustingimused"
                                     className="transition-colors hover:text-primary font-semibold"
                                 />
                             ),
