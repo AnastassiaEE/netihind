@@ -1,4 +1,3 @@
-import ContactCard from '@/components/ui/contacts/ContactCard';
 import ContactCards from '@/components/ui/contacts/ContactCards';
 import SectionLayout from '@/layouts/SectionLayout';
 import { email, phone } from '@/data/contacts';
@@ -8,11 +7,11 @@ import { H1, H2 } from '@/components/ui/headings/RestPageHeadings';
 
 export default function ContactsSection({ i18n }: { i18n: i18n }) {
     const contacts: {
-        contactType: 'email' | 'phone' | 'address';
+        type: 'email' | 'phone' | 'address';
         data: { title: string; description: string; contact: string };
     }[] = [
             {
-                contactType: 'email',
+                type: 'email',
                 data: {
                     title: i18n.t('cards.email.title'),
                     description: i18n.t('cards.email.description'),
@@ -20,7 +19,7 @@ export default function ContactsSection({ i18n }: { i18n: i18n }) {
                 },
             },
             {
-                contactType: 'phone',
+                type: 'phone',
                 data: {
                     title: i18n.t('cards.phone.title'),
                     description: i18n.t('cards.phone.description'),
@@ -33,17 +32,7 @@ export default function ContactsSection({ i18n }: { i18n: i18n }) {
             <H1>{i18n.t('title')}</H1>
             <div className="lg:flex justify-between items-center">
                 <div className="lg:w-6/12 max-lg:mb-24">
-                    <ContactCards>
-                        {contacts.map((contact) => {
-                            return (
-                                <ContactCard
-                                    key={contact.contactType}
-                                    contactType={contact.contactType}
-                                    data={contact.data}
-                                />
-                            );
-                        })}
-                    </ContactCards>
+                    <ContactCards contacts={contacts} i18n={i18n} />
                 </div>
                 <div className="lg:w-5/12 bg-neutral-light px-7 md:px-12 py-9 rounded-lg">
                     <H2>{i18n.t('form-title')}</H2>

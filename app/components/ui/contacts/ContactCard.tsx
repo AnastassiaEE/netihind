@@ -11,31 +11,35 @@ const icons = {
 };
 
 export default function ContactCard({
-    contactType,
-    data,
+    type,
+    title,
+    description,
+    contact,
 }: {
-    contactType: 'email' | 'phone' | 'address';
-    data: { title: string; description: string; contact: string };
+    type: 'email' | 'phone' | 'address';
+    title: string;
+    description: string;
+    contact: string;
 }) {
     let href = 'javascript:void(0)';
-    if (contactType === 'email') {
-        href = `mailto:${data.contact}`;
-    } else if (contactType === 'phone') {
-        href = `tel:${data.contact}`;
+    if (type === 'email') {
+        href = `mailto:${contact}`;
+    } else if (type === 'phone') {
+        href = `tel:${contact}`;
     }
     return (
         <div className="flex p-6 rounded-md border border-muted-light hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
             <div>
-                <CircleContactIcon Icon={icons[contactType]} />
+                <CircleContactIcon Icon={icons[type]} />
             </div>
             <div className="pl-6">
-                <H2 className="!mb-3">{data.title}</H2>
-                <p className="mb-3">{data.description}</p>
+                <H2 className="!mb-3">{title}</H2>
+                <p className="mb-3">{description}</p>
                 <a
                     href={href.replace(/\s/g, '')}
                     className="text-primary hover:text-primary-dark block font-semibold py-3"
                 >
-                    {data.contact}
+                    {contact}
                 </a>
             </div>
         </div>
