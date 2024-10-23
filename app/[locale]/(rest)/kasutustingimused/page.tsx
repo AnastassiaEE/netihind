@@ -1,10 +1,19 @@
 import PingLoader from '@/components/ui/loaders/PingLoader';
-import PolicySection from '@/components/sections/policy/PolicySection';
 import { Suspense } from 'react';
 import { getPages } from '@/app/lib/wpPages';
 import { notFound } from 'next/navigation';
+import remarkGfm from 'remark-gfm';
+import SectionLayout from '@/layouts/SectionLayout';
+import { MDXRemote } from 'next-mdx-remote/rsc';
+import components from '@/mdx-components';
 
 export const revalidate = 3600;
+
+const options = {
+    mdxOptions: {
+        remarkPlugins: [remarkGfm],
+    },
+};
 
 export default async function Policy({ params: { locale } }: { params: { locale: string } }) {
     const pages = await getPages(locale.toUpperCase(), 'policy');
@@ -13,7 +22,9 @@ export default async function Policy({ params: { locale } }: { params: { locale:
     }
     return (
         <Suspense fallback={<PingLoader />}>
-            <PolicySection data={pages[0].content} />
+            <SectionLayout>
+                <MDXRemote source={pages[0].content} components={components as {}} options={options} />
+            </SectionLayout>
         </Suspense>
     );
 }
