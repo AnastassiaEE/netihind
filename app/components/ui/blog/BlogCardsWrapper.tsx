@@ -5,8 +5,6 @@ import NothingToPreview from '../NothingToPreview';
 import React from 'react';
 import { i18n } from 'i18next';
 
-export const revalidate = 3600;
-
 export default async function BlogCardsWrapper({
     i18n,
     children,
