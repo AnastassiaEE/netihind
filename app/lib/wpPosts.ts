@@ -1,5 +1,4 @@
 import { fetchAPI } from './wpFetch';
-import { fetchAPINotAuthorizied } from './wpFetchWithoutAuthorization';
 
 export async function getPosts(language?: string) {
   const data = await fetchAPI(
