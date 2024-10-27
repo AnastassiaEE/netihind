@@ -22,7 +22,7 @@ export default async function BlogCardsWrapper({
     });
     return (
         <Suspense fallback={<PingLoader />}>
-            {notPosts ? <NothingToPreview message={i18n.t("posts-not-found")} /> : childrenWithPosts}
+            {notPosts ? <NothingToPreview message={i18n.t('not-found:posts-not-found')} /> : childrenWithPosts}
         </Suspense>
     );
 }
