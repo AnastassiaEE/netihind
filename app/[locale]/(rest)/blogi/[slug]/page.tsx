@@ -11,26 +11,24 @@ import getFormattedSlug from '@/utils/slugFormatter';
 export const revalidate = 3600;
 
 export async function generateStaticParams() {
-    // const posts = await getPostsWithSlugsOnly();
-    // if (posts === undefined) return [];
-    // let paths = posts.map((post: { [key: string]: any }) => {
-    //     let slug = getFormattedSlug(post.slug);
-    //     return {
-    //         params: { slug },
-    //     };
-    // });
-    // console.log(paths);
-    // return paths;
-    return [
-        { params: { slug: 'millised-internetiuhendused-on-olemas' } },
-        {
-            params: { slug: 'millist-internetikiirust-valida-koduseks-kasutamiseks' }
-        },
-        { params: { slug: 'millised-internetiuhendused-on-olemas' } },
-        {
-            params: { slug: 'millist-internetikiirust-valida-koduseks-kasutamiseks' }
-        }
-    ]
+    const response = await fetch(`${process.env.BASE_URL}/api/posts`, {
+        method: 'POST',
+        body: JSON.stringify({
+            language: 'ALL',
+        }),
+    });
+    const posts = (await response.json()).posts.nodes;
+    //console.log(posts)
+    //const posts = await getPostsWithSlugsOnly();
+    //if (posts === undefined) return [];
+    let paths = posts.map((post: { [key: string]: any }) => {
+        let slug = getFormattedSlug(post.slug);
+        return {
+            params: { slug },
+        };
+    });
+    console.log(paths);
+    return paths;
 }
 
 export default async function Post({
@@ -38,17 +36,18 @@ export default async function Post({
 }: {
     params: { slug: string; locale: string };
 }) {
-    const posts = await getPostsBySlug(`${slug}-${locale}`);
-    if (posts === undefined || posts?.length === 0) {
-        notFound();
-    }
-    const post = posts[0];
+    // const posts = await getPostsBySlug(`${slug}-${locale}`);
+    // if (posts === undefined || posts?.length === 0) {
+    //     notFound();
+    // }
+    // const post = posts[0];
     return (
         <Suspense fallback={<PingLoader />}>
-            <BlogPostHeaderSection title={post.title} date={post.date} />
+            {/* <BlogPostHeaderSection title={post.title} date={post.date} />
             <ParallaxBg imgSrc={post.featuredImage.node.sourceUrl} />
             <BlogPostContentSection content={post.content} />
-            <RelatedBlogPostsSection />
+            <RelatedBlogPostsSection /> */}
+            {locale}
         </Suspense>
     );
 }
