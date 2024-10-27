@@ -11,28 +11,21 @@ import getFormattedSlug from '@/utils/slugFormatter';
 export const revalidate = 3600;
 
 export async function generateStaticParams() {
-    // const response = await fetch(`${process.env.BASE_URL}/api/posts`, {
-    //     method: 'POST',
-    // });
-    // const posts = (await response.json()).data.posts.nodes;
-    // //console.log(posts)
-    // //const posts = await getPostsWithSlugsOnly();
-    // //if (posts === undefined) return [];
-    // let paths = posts.map((post: { [key: string]: any }) => {
-    //     let slug = getFormattedSlug(post.slug);
-    //     return {
-    //         params: { slug },
-    //     };
-    // });
-    // console.log(paths);
-    //return paths;
-    return [{ slug: 'millist-internetikiirust-valida-koduseks-kasutamiseks' }, { slug: 'millised-internetiuhendused-on-olemas' }]
-    return [
-        {
-            params: { slug: 'millist-internetikiirust-valida-koduseks-kasutamiseks' }
-        },
-        { params: { slug: 'millised-internetiuhendused-on-olemas' } },
-    ]
+    const response = await fetch(`${process.env.BASE_URL}/api/posts`, {
+        method: 'POST',
+    });
+    const posts = (await response.json()).data.posts.nodes;
+    //console.log(posts)
+    //const posts = await getPostsWithSlugsOnly();
+    //if (posts === undefined) return [];
+    let paths = posts.map((post: { [key: string]: any }) => {
+        let slug = getFormattedSlug(post.slug);
+        return {
+            slug: slug,
+        };
+    });
+    console.log(paths);
+    return paths;
 }
 
 export default async function Post({

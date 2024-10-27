@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
     });
     const json = await response.json();
     if (json.errors) return NextResponse.json({ error: 'Error' }, { status: 400 });
-    return NextResponse.json(json.data, { status: 200 });
+    return NextResponse.json(json, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error: 'Failed to parse body' }, { status: 400 });
   }
