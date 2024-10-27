@@ -14,7 +14,6 @@ export async function generateStaticParams() {
     const posts = await getPostsWithSlugsOnly();
     if (posts === undefined) return [];
     let paths = posts.map((post: { [key: string]: any }) => {
-        console.log(post.slug)
         let slug = getFormattedSlug(post.slug);
         return {
             slug: slug,
@@ -28,19 +27,17 @@ export default async function Post({
 }: {
     params: { slug: string; locale: string };
 }) {
-    // const posts = await getPostsBySlug(`${slug}-${locale}`);
-    // if (posts === undefined || posts?.length === 0) {
-    //     notFound();
-    // }
-    // const post = posts[0];
+    const posts = await getPostsBySlug(`${slug}-${locale}`);
+    if (posts === undefined || posts?.length === 0) {
+        notFound();
+    }
+    const post = posts[0];
     return (
         <Suspense fallback={<PingLoader />}>
-            {/* <BlogPostHeaderSection title={post.title} date={post.date} />
+            <BlogPostHeaderSection title={post.title} date={post.date} />
             <ParallaxBg imgSrc={post.featuredImage.node.sourceUrl} />
             <BlogPostContentSection content={post.content} />
-            <RelatedBlogPostsSection /> */}
-            {slug}
-            {locale}
+            <RelatedBlogPostsSection />
         </Suspense>
     );
 }
