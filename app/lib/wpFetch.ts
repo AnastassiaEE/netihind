@@ -22,7 +22,6 @@ export async function fetchAPI(query = '', { variables }: Record<string, any> = 
 
   if (json.errors) {
     console.error(json.errors);
-    notFound();
   }
   return json.data;
 }
