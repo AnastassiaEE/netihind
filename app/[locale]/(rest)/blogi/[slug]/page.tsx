@@ -11,15 +11,26 @@ import getFormattedSlug from '@/utils/slugFormatter';
 export const revalidate = 3600;
 
 export async function generateStaticParams() {
-    const posts = await getPostsWithSlugsOnly();
-    if (posts === undefined) return [];
-    let paths = posts.map((post: { [key: string]: any }) => {
-        let slug = getFormattedSlug(post.slug);
-        return {
-            params: { slug },
-        };
-    });
-    return paths;
+    // const posts = await getPostsWithSlugsOnly();
+    // if (posts === undefined) return [];
+    // let paths = posts.map((post: { [key: string]: any }) => {
+    //     let slug = getFormattedSlug(post.slug);
+    //     return {
+    //         params: { slug },
+    //     };
+    // });
+    // console.log(paths);
+    // return paths;
+    return [
+        { params: { slug: 'millised-internetiuhendused-on-olemas' } },
+        {
+            params: { slug: 'millist-internetikiirust-valida-koduseks-kasutamiseks' }
+        },
+        { params: { slug: 'millised-internetiuhendused-on-olemas' } },
+        {
+            params: { slug: 'millist-internetikiirust-valida-koduseks-kasutamiseks' }
+        }
+    ]
 }
 
 export default async function Post({
