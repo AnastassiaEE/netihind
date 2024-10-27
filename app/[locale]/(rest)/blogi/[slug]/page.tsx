@@ -8,8 +8,6 @@ import { Suspense } from 'react';
 import PingLoader from '@/components/ui/loaders/PingLoader';
 import getFormattedSlug from '@/utils/slugFormatter';
 
-export const revalidate = 3600;
-
 export async function generateStaticParams() {
     const posts = await getPosts();
     if (posts === undefined) return [];
