@@ -12,6 +12,7 @@ export const revalidate = 3600;
 
 export async function generateStaticParams() {
     const posts = await getPosts();
+    if (posts === undefined) return [];
     let paths = posts.map((post: { [key: string]: any }) => {
         let slug = getFormattedSlug(post.slug);
         return {
