@@ -31,10 +31,6 @@ export async function generateStaticParams() {
             params: { slug: 'millist-internetikiirust-valida-koduseks-kasutamiseks' }
         },
         { params: { slug: 'millised-internetiuhendused-on-olemas' } },
-        {
-            params: { slug: 'millist-internetikiirust-valida-koduseks-kasutamiseks' }
-        },
-        { params: { slug: 'millised-internetiuhendused-on-olemas' } }
     ]
 }
 
@@ -54,7 +50,7 @@ export default async function Post({
             <ParallaxBg imgSrc={post.featuredImage.node.sourceUrl} />
             <BlogPostContentSection content={post.content} />
             <RelatedBlogPostsSection /> */}
-            {locale}
+            {slug}
         </Suspense>
     );
 }
