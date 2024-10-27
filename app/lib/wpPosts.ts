@@ -64,7 +64,7 @@ export async function getPostsBySlug(slug: string) {
 }
 
 export async function getPostsWithSlugsOnly() {
-  const data = await fetchAPINotAuthorizied(
+  const data = await fetchAPI(
     `query posts {
   posts {
     nodes {
