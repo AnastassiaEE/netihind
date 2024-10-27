@@ -1,4 +1,5 @@
 import { fetchAPI } from './wpFetch';
+import { fetchAPINotAuthorizied } from './wpFetchWithoutAuthorization';
 
 export async function getPosts(language?: string) {
   const data = await fetchAPI(
@@ -57,6 +58,20 @@ export async function getPostsBySlug(slug: string) {
         slug,
       },
     },
+  );
+
+  return data?.posts?.nodes;
+}
+
+export async function getPostsWithSlugsOnly() {
+  const data = await fetchAPINotAuthorizied(
+    `query posts {
+  posts {
+    nodes {
+      slug
+    }
+  }
+}`,
   );
 
   return data?.posts?.nodes;
