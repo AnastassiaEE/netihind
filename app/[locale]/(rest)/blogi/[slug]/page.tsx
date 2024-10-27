@@ -13,9 +13,6 @@ export const revalidate = 3600;
 export async function generateStaticParams() {
     const response = await fetch(`${process.env.BASE_URL}/api/posts`, {
         method: 'POST',
-        body: JSON.stringify({
-            language: 'ALL',
-        }),
     });
     const posts = (await response.json()).posts.nodes;
     //console.log(posts)

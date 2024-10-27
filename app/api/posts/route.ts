@@ -9,7 +9,7 @@ const API_URL = process.env.NEXT_PUBLIC_WORDPRESS_API_ENDPOINT as string;
 
 export async function POST(request: NextRequest) {
   try {
-    const { language } = await request.json();
+    //const { language } = await request.json();
     const body = {
       query: `query posts($language: LanguageCodeFilterEnum = ALL) {
   posts(where: {language: $language, orderby: {field: DATE, order: ASC}}) {
@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
     }
   }
 }`,
-      variables: { language: language },
+      variables: { language: 'ALL' },
     };
     const response = await fetch(API_URL, {
       headers: {
