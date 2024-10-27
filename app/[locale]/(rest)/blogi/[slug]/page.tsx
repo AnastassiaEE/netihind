@@ -8,6 +8,8 @@ import { Suspense } from 'react';
 import PingLoader from '@/components/ui/loaders/PingLoader';
 import getFormattedSlug from '@/utils/slugFormatter';
 
+export const revalidate = 3600;
+
 export async function generateStaticParams() {
     // const response = await fetch(`${process.env.BASE_URL}/api/posts`, {
     //     method: 'POST',
@@ -24,6 +26,7 @@ export async function generateStaticParams() {
     // });
     // console.log(paths);
     //return paths;
+    return [{ slug: 'millist-internetikiirust-valida-koduseks-kasutamiseks' }, { slug: 'millised-internetiuhendused-on-olemas' }]
     return [
         {
             params: { slug: 'millist-internetikiirust-valida-koduseks-kasutamiseks' }
@@ -49,6 +52,7 @@ export default async function Post({
             <BlogPostContentSection content={post.content} />
             <RelatedBlogPostsSection /> */}
             {slug}
+            {locale}
         </Suspense>
     );
 }
