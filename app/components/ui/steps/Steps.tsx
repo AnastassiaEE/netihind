@@ -56,7 +56,7 @@ export default function Steps({
     };
 
     return (
-        <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col md:flex-row relative -z-10">
             {items.map((item, index) => {
                 return (
                     <Step
