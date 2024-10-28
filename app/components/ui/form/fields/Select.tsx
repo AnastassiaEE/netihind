@@ -6,8 +6,6 @@ const baseClasses = classNames(
     'bg-white',
     'border',
     'rounded-md',
-    'transition all',
-    'transition-[padding]',
     'focus:outline-none',
     'focus:shadow-lg',
     'focus:shadow-primary/10',

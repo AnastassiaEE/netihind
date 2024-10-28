@@ -8,8 +8,6 @@ const baseClasses = classNames(
     'border',
     'rounded-md',
     'text-muted-dark',
-    'transition-[padding]',
-    'transition all',
     'focus:outline-none',
     'focus:shadow-lg',
     'focus:shadow-indigo-500/10',
