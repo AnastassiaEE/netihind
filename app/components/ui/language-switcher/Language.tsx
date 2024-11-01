@@ -27,8 +27,6 @@ export default function Language({
     );
 
     return (
-        <Link href={href} locale={locale} onClick={handleClick} className={languageClasses}>
-            {locale.toUpperCase()}
-        </Link>
+        <Link href={href} locale={locale} onClick={handleClick} className={languageClasses}>{locale.toUpperCase()}</Link>
     );
 }

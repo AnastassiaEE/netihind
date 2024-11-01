@@ -3,6 +3,7 @@
 import { usePathname, routing } from '@/i18n/routing';
 import Language from './Language';
 import { useLocale } from 'next-intl';
+import { useParams } from 'next/navigation';
 
 export default function LanguageSwitcher({
   handleSidebarClose,
@@ -11,6 +12,7 @@ export default function LanguageSwitcher({
 }) {
   const pathname = usePathname();
   const currentLocale = useLocale();
+  const params = useParams();
 
   const handleClick = () => {
     if (handleSidebarClose) handleSidebarClose();
@@ -21,7 +23,10 @@ export default function LanguageSwitcher({
       {routing.locales.map((locale) => (
         <Language
           key={locale}
-          href={pathname}
+          href={{
+            pathname: pathname,
+            params: params
+          }}
           locale={locale}
           current={currentLocale === locale}
           handleClick={handleClick}
