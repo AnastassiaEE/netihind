@@ -1,13 +1,11 @@
 import SectionLayout from '@/layouts/SectionLayout';
 import classNames from 'classnames';
-import { Trans } from 'react-i18next/TransWithoutContext';
-import GoogleAddressForm from '@/components/ui/form/GoogleAddressForm';
 import providerLogos from '@/data/providerLogos';
 import LogoCards from '@/components/ui/logo/LogoCards';
 import { H1 } from '@/components/ui/headings/HomePageHeadings';
-import { i18n } from 'i18next';
 import GradientMesh from '@/components/ui/mesh/GradientMesh';
-import MaaAmetAddressForm from '@/components/ui/form/MaaAmetAddressForm';
+// import MaaAmetAddressForm from '@/components/ui/form/MaaAmetAddressForm';
+import { useTranslations } from 'next-intl';
 
 const sectionClasses = classNames(
     'h-[calc(100dvh)]',
@@ -20,6 +18,7 @@ const sectionClasses = classNames(
     'flex-col',
     'justify-center',
     'relative',
+    'z-10',
 );
 
 const bgClasses = classNames(
@@ -29,7 +28,8 @@ const bgClasses = classNames(
     'via-accent/10 to-80%',
 );
 
-export default function TopSection({ i18n }: { i18n: i18n }) {
+export default function TopSection() {
+    const t = useTranslations('HomePage');
     return (
         <SectionLayout className={sectionClasses} bg={bgClasses}>
             <div className="absolute right-0 max-md:top-[80px] bottom-[50px] w-[230px] md:w-[500px] h-auto -z-10">
@@ -37,18 +37,16 @@ export default function TopSection({ i18n }: { i18n: i18n }) {
             </div>
             <div className="relative md:-translate-y-16">
                 <H1>
-                    <Trans
-                        i18nKey="top-section.title"
-                        t={i18n.t}
-                        components={{
-                            span: (
-                                <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent" />
-                            ),
-                        }}
-                    />
+                    {t.rich('topSection.title', {
+                        span: (chunks) => (
+                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent">
+                                {chunks}
+                            </span>
+                        ),
+                    })}
                 </H1>
-                <p className="text-lg mb-4">{i18n.t('top-section.description')}</p>
-                <MaaAmetAddressForm />
+                <p className="text-lg mb-4">{t('topSection.description')}</p>
+                {/* <MaaAmetAddressForm locale={i18n.language} /> */}
             </div>
             <div className="absolute bottom-0 left-0 py-3 md:p-9 w-full bg-primary/10 -z-10">
                 <div className="md:container">

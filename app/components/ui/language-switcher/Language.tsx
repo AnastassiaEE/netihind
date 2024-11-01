@@ -1,16 +1,16 @@
 import classNames from 'classnames';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 
 export default function Language({
-    lang,
-    current,
     href,
+    locale,
+    current,
     handleClick,
 }: {
-    lang: string;
+    href: any;
+    locale: string;
     current: boolean;
-    href: string;
-    handleClick?: React.MouseEventHandler<HTMLSpanElement>;
+    handleClick: React.MouseEventHandler<HTMLAnchorElement>;
 }) {
     const languageClasses = classNames(
         'font-semibold',
@@ -27,8 +27,8 @@ export default function Language({
     );
 
     return (
-        <a href={href} lang={lang} onClick={handleClick} className={languageClasses}>
-            {lang}
-        </a>
+        <Link href={href} locale={locale} onClick={handleClick} className={languageClasses}>
+            {locale.toUpperCase()}
+        </Link>
     );
 }

@@ -1,4 +1,3 @@
-import { i18n } from 'i18next';
 import Step from './Step';
 import classNames from 'classnames';
 
@@ -40,10 +39,10 @@ const topLineStyle = classNames(
 
 export default function Steps({
     items,
-    i18n,
+    t
 }: {
     items: { title: string; description: string }[];
-    i18n: i18n;
+    t: any
 }) {
     const drawLine = (index: number) => {
         if (index === 1) {
@@ -62,8 +61,8 @@ export default function Steps({
                     <Step
                         key={index}
                         index={index + 1}
-                        title={i18n.t(item.title)}
-                        description={i18n.t(item.description)}
+                        title={t(item.title)}
+                        description={t(item.description)}
                         padding="max-md:py-6 md:px-4 lg:px-6"
                         lines={drawLine(index + 1)}
                     ></Step>

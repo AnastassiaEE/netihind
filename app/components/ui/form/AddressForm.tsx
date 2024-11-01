@@ -4,11 +4,11 @@ import useAddressForm from '@/hooks/useAddressForm';
 import CloseIcon from '@mui/icons-material/Close';
 import Searchbar from './Searchbar';
 import Button from './buttons/Button';
-import { useTranslation } from 'react-i18next';
+
 import classNames from 'classnames';
 
 export default function AddressForm() {
-    const { t } = useTranslation(['form']);
+
 
     const {
         addresses,
@@ -35,12 +35,12 @@ export default function AddressForm() {
                     data={addresses}
                     size="lg"
                     name="address"
-                    placeholder={t('address.placeholders.address')}
+                    placeholder={'address.placeholders.address'}
                     handleChange={handleAddressInputChange}
                     handleItemClick={handleAddressClick}
                     value={values.address}
                     isValid={errors.address === ''}
-                    error={t(errors.address)}
+                    error={errors.address}
                     icon={{ Icon: CloseIcon, isVisible: values.address !== '', handleClick: removeAddress }}
                 />
             </div>
@@ -50,18 +50,18 @@ export default function AddressForm() {
                         data={apartments}
                         size="lg"
                         name="apartment"
-                        placeholder={t('address.placeholders.apartment')}
+                        placeholder={'address.placeholders.apartment'}
                         handleChange={handleApartmentInputChange}
                         handleItemClick={handleApartmentClick}
                         value={values.apartment}
                         isValid={errors.apartment === ''}
-                        error={t(errors.apartment)}
+                        error={errors.apartment}
                     />
                 </div>
             )}
             <div className={buttonBlockClasses}>
                 <Button type="submit" size="lg" className="w-full">
-                    {t('address.buttons.find')}
+                    {'address.buttons.find'}
                 </Button>
             </div>
         </form>

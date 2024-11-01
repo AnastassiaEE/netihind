@@ -2,8 +2,8 @@ import { useRef, useState } from 'react';
 import { validateField } from '@/utils/fieldsValidator';
 
 const responses = {
-  success: { message: 'success.sent-successfully' },
-  error: { message: 'errors.something-went-wrong' },
+  success: { message: 'messages.sentSuccessfully' },
+  error: { message: 'messages.somethingWentWrong' },
 };
 
 export default function useForm(

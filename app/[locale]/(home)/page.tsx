@@ -6,23 +6,20 @@ import InfoSection from '@/components/sections/home/InfoSection';
 import TopSectionSecondary from '@/components/sections/home/TopSectionSecondary';
 import ProvidersLogoSection from '@/components/sections/home/ProvidersLogoSection';
 import TopSectionPrimary from '@/components/sections/home/TopSectionPrimary';
-import initTranslations from '@/i18n/i18n';
-import TranslationsProvider from '@/i18n/TranslationProvider';
-
-const i18nNamespaces = ['home', 'not-found', 'form'];
+import { setRequestLocale } from 'next-intl/server';
 
 export default async function Home({ params: { locale } }: { params: { locale: string } }) {
-  const { i18n, resources } = await initTranslations(locale, i18nNamespaces);
+  setRequestLocale(locale);
   return (
-    <TranslationsProvider locale={locale} namespaces={i18nNamespaces} resources={resources}>
-      <TopSectionPrimary i18n={i18n} />
+    <>
+      <TopSectionPrimary />
       {/* <TopSectionSecondary /> */}
       {/* <InfoSection i18n={t} /> */}
       {/* <ProvidersLogoSection /> */}
-      <StepsSection i18n={i18n} />
-      <QuestionsSection i18n={i18n} />
-      <SliderBlogSection i18n={i18n} />
-      <ContactsSection i18n={i18n} />
-    </TranslationsProvider>
+      <StepsSection />
+      <QuestionsSection />
+      <SliderBlogSection />
+      <ContactsSection />
+    </>
   );
 }

@@ -1,9 +1,11 @@
 import '@/app/globals.css';
 import type { Metadata } from 'next';
 import { Manrope } from 'next/font/google';
-import i18nConfig from '@/i18nConfig';
-import { dir } from 'i18next';
 import ScrollTopButton from '@/components/ui/buttons/ScrollTopButton';
+import { routing } from 'i18n/routing';
+import { getMessages, setRequestLocale } from 'next-intl/server';
+import { notFound } from 'next/navigation';
+import { NextIntlClientProvider } from 'next-intl';
 
 const inter = Manrope({ subsets: ['latin'] });
 
@@ -13,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 export function generateStaticParams() {
-  return i18nConfig.locales.map((locale) => ({ locale }));
+  return routing.locales.map((locale) => ({ locale }));
 }
 
 export default async function RootLayout({
@@ -23,12 +25,20 @@ export default async function RootLayout({
   params: { locale: string };
   children: React.ReactNode;
 }) {
+  if (!routing.locales.includes(locale as any)) {
+    notFound();
+  }
+
+  // Enable static rendering
+  setRequestLocale(locale);
+
+  const messages = await getMessages();
 
   return (
-    <html lang={locale} dir={dir(locale)}>
+    <html lang={locale}>
       <body className={inter.className}>
         <ScrollTopButton />
-        {children}
+        <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
       </body>
     </html>
   );

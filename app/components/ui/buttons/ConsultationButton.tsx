@@ -1,18 +1,16 @@
-'use client';
-
+'use client'
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
 import Button from '@/components/ui/form/buttons/Button';
-import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 import { phone } from '@/data/contacts';
+import { useTranslations } from 'next-intl';
 
 export default function ConsultationButton({ type = 'desktop' }: { type?: 'desktop' | 'mobile' }) {
-    const { t } = useTranslation('navigation');
+    const t = useTranslations('Navigation');
 
     const buttonClasses = classNames('!pt-0.5 !pb-1 rounded-md', {
         '!px-2': type === 'mobile',
     });
-
     const iconClasses = classNames({
         'mr-6': type === 'desktop',
     });

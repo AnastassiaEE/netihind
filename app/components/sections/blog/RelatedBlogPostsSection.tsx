@@ -3,16 +3,16 @@
 import SectionLayout from '@/layouts/SectionLayout';
 import Button from '@/components/ui/form/buttons/Button';
 import Link from 'next/link';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 
 export default function RelatedBlogPostsSection() {
-    const { t } = useTranslation('blog');
+    const t = useTranslations('BlogPage');
     return (
         <SectionLayout>
             <div className="md:flex md:justify-end">
-                <Link href="/blogi" className="md:inline-block">
+                <Link href="/blog" className="md:inline-block">
                     <Button variant="secondary" size="lg" className="w-full">
-                        {t('buttons.all-posts')}
+                        {'buttons.allPosts'}
                     </Button>
                 </Link>
             </div>

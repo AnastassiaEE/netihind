@@ -1,16 +1,17 @@
-import BlogCardsWrapper from "@/components/ui/blog/BlogCardsWrapper";
-import ListBlogCards from "@/components/ui/blog/ListBlogCards";
-import SectionLayout from "@/layouts/SectionLayout";
-import { i18n } from "i18next";
-import { H1 } from "@/components/ui/headings/RestPageHeadings";
+import BlogCardsWrapper from '@/components/ui/blog/BlogCardsWrapper';
+import ListBlogCards from '@/components/ui/blog/ListBlogCards';
+import SectionLayout from '@/layouts/SectionLayout';
+import { H1 } from '@/components/ui/headings/RestPageHeadings';
+import { useTranslations } from 'next-intl';
 
-export default function ListBlogSection({ i18n }: { i18n: i18n }) {
+export default function ListBlogSection() {
+    const t = useTranslations('BlogPage');
     return (
         <SectionLayout>
-            <H1>{i18n.t('title')}</H1>
-            <BlogCardsWrapper i18n={i18n}>
+            <H1>{t('title')}</H1>
+            <BlogCardsWrapper>
                 <ListBlogCards />
             </BlogCardsWrapper>
-        </SectionLayout >
-    )
+        </SectionLayout>
+    );
 }

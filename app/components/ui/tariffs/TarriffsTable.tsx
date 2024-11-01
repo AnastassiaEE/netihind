@@ -4,10 +4,8 @@ import TarriffMeasure from './TariffMeasure';
 import providers from '../../../data/providers';
 import Button from '../form/buttons/Button';
 import Image from 'next/image';
-import { useTranslation } from 'react-i18next';
 
 export default function TariffsTable({ items }: { items: { [key: string]: any }[] }) {
-    const { t } = useTranslation(['tariffs']);
     const columns = [
         'tariffs.columns.provider',
         'tariffs.columns.speed',
@@ -20,7 +18,7 @@ export default function TariffsTable({ items }: { items: { [key: string]: any }[
             <div className={`text-center text-muted-dark grid grid-rows-10 grid-cols-tariffs w-full`}>
                 {columns.map((column) => (
                     <TariffTableCell key={column} className="font-extrabold rounded-l-md">
-                        {t(column)}
+                        {column}
                     </TariffTableCell>
                 ))}
                 {items.map((tariff, index) => (
@@ -39,13 +37,13 @@ export default function TariffsTable({ items }: { items: { [key: string]: any }[
                             </div>
                         </TariffTableCell>
                         <TariffTableCell key={index} index={index}>
-                            <TarriffMeasure number={tariff.speed} unit={t('tariffs.measure.speed')} />
+                            <TarriffMeasure number={tariff.speed} unit={'tariffs.measure.speed'} />
                         </TariffTableCell>
                         <TariffTableCell key={index} index={index}>
                             {tariff.chanels ? (
-                                <TarriffMeasure number={tariff.chanels} unit={t('tariffs.measure.channels')} />
+                                <TarriffMeasure number={tariff.chanels} unit={'tariffs.measure.channels'} />
                             ) : (
-                                <TarriffMeasure unit={t('tariffs.measure.channels')} />
+                                <TarriffMeasure unit={'tariffs.measure.channels'} />
                             )}
                         </TariffTableCell>
                         <TariffTableCell key={index} index={index}>
@@ -77,7 +75,7 @@ export default function TariffsTable({ items }: { items: { [key: string]: any }[
                                 <div className="mb-4">
                                     <TarriffMeasure
                                         number={tariff.price}
-                                        unit={`€ / ${t('tariffs.measure.month')}`}
+                                        unit={`€ / ${'tariffs.measure.month'}`}
                                         className="!text-2xl bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent py-1"
                                     />
                                 </div>
@@ -85,7 +83,7 @@ export default function TariffsTable({ items }: { items: { [key: string]: any }[
                                     <Button variant="secondary" className="!rounded-r-none">
                                         <ContactSupportIcon />
                                     </Button>
-                                    <Button className="!rounded-l-none">{t('tariffs.buttons.connect')}</Button>
+                                    <Button className="!rounded-l-none">{'tariffs.buttons.connect'}</Button>
                                 </div>
                             </div>
                         </TariffTableCell>

@@ -7,6 +7,7 @@ import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import PingLoader from '@/components/ui/loaders/PingLoader';
 import getFormattedSlug from '@/utils/slugFormatter';
+import { setRequestLocale } from 'next-intl/server';
 
 export const revalidate = 3600;
 
@@ -27,6 +28,7 @@ export default async function Post({
 }: {
     params: { slug: string; locale: string };
 }) {
+    setRequestLocale(locale);
     const posts = await getPostsBySlug(`${slug}-${locale}`);
     if (posts === undefined || posts?.length === 0) {
         notFound();

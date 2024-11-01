@@ -27,7 +27,7 @@ export default function Textarea({
     handleChange,
     handleBlur,
     value,
-    isValid,
+    isValid = true,
     error,
     className,
 }: {
@@ -52,8 +52,7 @@ export default function Textarea({
         <>
             {label && (
                 <FieldLabel htmlFor={name} size={size}>
-                    {' '}
-                    {label}{' '}
+                    {label}
                 </FieldLabel>
             )}
             <textarea

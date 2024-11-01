@@ -3,10 +3,8 @@ import providers from '../../../data/providers';
 import TarriffMeasure from './TariffMeasure';
 import Button from '../form/buttons/Button';
 import Image from 'next/image';
-import { useTranslation } from 'react-i18next';
 
 export default function TariffCard({ tariff }: { tariff: { [key: string]: any } }) {
-    const { t } = useTranslation(['tariffs']);
     return (
         <div className="bg-white text-muted-dark shadow-md rounded-md border border-muted-light">
             <div className="p-6">
@@ -24,8 +22,8 @@ export default function TariffCard({ tariff }: { tariff: { [key: string]: any } 
                     <span className="text-xs text-muted">{tariff.provider}</span>
                 </div>
                 <div className="flex justify-center gap-16 mb-6">
-                    <TarriffMeasure number={tariff.speed} unit={t('tariffs.measure.speed')} />
-                    {tariff.chanels && <TarriffMeasure number={tariff.chanels} unit={t('tariffs.measure.channels')} />}
+                    <TarriffMeasure number={tariff.speed} unit={'tariffs.measure.speed'} />
+                    {tariff.chanels && <TarriffMeasure number={tariff.chanels} unit={'tariffs.measure.channels'} />}
                 </div>
                 {/* {tariff.mobileCommunication && (
                     <div className="flex justify-center mb-6">
@@ -48,7 +46,7 @@ export default function TariffCard({ tariff }: { tariff: { [key: string]: any } 
                 )} */}
                 <TarriffMeasure
                     number={tariff.price}
-                    unit={`€ / ${t('tariffs.measure.month')}`}
+                    unit={`€ / ${'tariffs.measure.month'}`}
                     className="!text-2xl bg-clip-text text-transparent bg-gradient-to-r from-primary from-30% via-secondary via-40% to-accent to-60% py-1"
                 />
             </div>
@@ -56,7 +54,7 @@ export default function TariffCard({ tariff }: { tariff: { [key: string]: any } 
                 <Button variant="secondary" className="!rounded-tl-none !rounded-r-none grow">
                     <ContactSupportIcon />
                 </Button>
-                <Button className="!rounded-tr-none !rounded-l-none grow">{t('tariffs.buttons.connect')}</Button>
+                <Button className="!rounded-tr-none !rounded-l-none grow">{'tariffs.buttons.connect'}</Button>
             </div>
         </div>
     );

@@ -2,6 +2,7 @@ import createMDX from '@next/mdx';
 import remarkGfm from 'remark-gfm';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
+import createNextIntlPlugin from 'next-intl/plugin';
 
 /** @type {import('next').NextConfig} */
 
@@ -34,5 +35,6 @@ const withMDX = createMDX({
   },
 });
 
-// Merge MDX config with Next.js config
-export default withMDX(nextConfig);
+const withNextIntl = createNextIntlPlugin();
+
+export default withNextIntl(withMDX(nextConfig));

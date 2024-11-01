@@ -1,14 +1,11 @@
 'use client';
-
 import CloseIcon from '@mui/icons-material/Close';
 import Navigation from '@/components/ui/navigation/Navigation';
 import NavigationItem from '@/components/ui/navigation/NavigationItem';
-import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '@/components/ui/language-switcher/LanguageSwitcher';
 import classNames from 'classnames';
-import i18nConfig from '@/i18nConfig';
-import { usePathname } from 'next/navigation';
-import getLocalePrefix from '@/utils/getLocalePrefix';
+import { useTranslations } from 'next-intl';
+import { usePathname } from '@/i18n/routing';
 
 export default function Sidebar({
     isOpened,
@@ -17,8 +14,7 @@ export default function Sidebar({
     isOpened: boolean;
     handleClose: React.MouseEventHandler;
 }) {
-    const { t, i18n } = useTranslation('navigation');
-    const localePrefix = getLocalePrefix(i18n.language, i18nConfig.defaultLocale);
+    const t = useTranslations('Navigation');
     const pathname = usePathname();
 
     const sidebarWrapperClasses = classNames(
@@ -47,23 +43,15 @@ export default function Sidebar({
             </div>
             <div className="p-6">
                 <Navigation type="vertical">
-                    <NavigationItem
-                        href='/blogi'
-                        isActive={pathname === `${localePrefix}/blogi`}
-                        handleClick={handleClose}
-                    >
+                    <NavigationItem href="/blog" isActive={pathname === '/blog'} handleClick={handleClose}>
                         {t('blog')}
                     </NavigationItem>
-                    <NavigationItem
-                        href='/meist'
-                        isActive={pathname === `${localePrefix}/meist`}
-                        handleClick={handleClose}
-                    >
-                        {t('about-us')}
+                    <NavigationItem href="/about" isActive={pathname === '/about'} handleClick={handleClose}>
+                        {t('about')}
                     </NavigationItem>
                     <NavigationItem
-                        href='/kontaktid'
-                        isActive={pathname === `${localePrefix}/kontaktid`}
+                        href="/contacts"
+                        isActive={pathname === '/contacts'}
                         handleClick={handleClose}
                     >
                         {t('contacts')}

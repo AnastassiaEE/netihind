@@ -1,16 +1,8 @@
 import AccordionItem from './AccordionItem';
 import React from 'react';
-import { Trans } from 'react-i18next/TransWithoutContext';
 import Check from '@/components/ui/icons/Check';
-import { i18n } from 'i18next';
 
-export default function Accordion({
-    items,
-    i18n,
-}: {
-    items: { [key: string]: string }[];
-    i18n: i18n;
-}) {
+export default function Accordion({ items, t }: { items: { [key: string]: string }[]; t: any }) {
     return (
         <div>
             {items.map((item, index) => {
@@ -18,18 +10,12 @@ export default function Accordion({
                 return (
                     <AccordionItem
                         key={index}
-                        header={i18n.t(item[header])}
-                        body={
-                            <Trans
-                                i18nKey={i18n.t(item[body])}
-                                t={i18n.t}
-                                components={{
-                                    ul: <ul />,
-                                    li: <li className="mb-2" />,
-                                    bullet: <Check size="small" />,
-                                }}
-                            />
-                        }
+                        header={t(item[header])}
+                        body={t.rich(item[body], {
+                            ul: (chunks: React.ReactNode) => <ul>{chunks}</ul>,
+                            li: (chunks: React.ReactNode) => <li className="mb-2">{chunks}</li>,
+                            i: () => <Check size="small" />,
+                        })}
                     ></AccordionItem>
                 );
             })}

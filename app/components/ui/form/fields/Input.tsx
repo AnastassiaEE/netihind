@@ -32,11 +32,11 @@ export default function Input({
     handleFocus,
     handleBlur,
     value,
-    isValid,
+    isValid = true,
     error,
     className,
     children,
-    innerRef
+    innerRef,
 }: {
     size?: 'sm' | 'lg';
     name: string;
@@ -61,7 +61,7 @@ export default function Input({
     error?: string;
     className?: string;
     children?: React.ReactNode;
-    innerRef?: ForwardedRef<HTMLInputElement>
+    innerRef?: ForwardedRef<HTMLInputElement>;
 }) {
     const inputClasses = classNames(baseClasses, sizes[size], {
         'border-valid focus:border-primary/30': isValid,

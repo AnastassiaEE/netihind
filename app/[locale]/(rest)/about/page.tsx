@@ -5,10 +5,12 @@ import { getPages } from '@/app/lib/wpPages';
 import components from '@/mdx-components';
 import SectionLayout from '@/layouts/SectionLayout';
 import { MDXRemote } from 'next-mdx-remote/rsc';
+import { setRequestLocale } from 'next-intl/server';
 
 export const revalidate = 3600;
 
 export default async function About({ params: { locale } }: { params: { locale: string } }) {
+    setRequestLocale(locale);
     const pages = await getPages(locale.toUpperCase(), 'about');
     if (pages === undefined || pages?.length === 0) {
         notFound();

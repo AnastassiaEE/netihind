@@ -9,12 +9,10 @@ import Textarea from './Textarea';
 import Button from './buttons/Button';
 import Input from './fields/Input';
 import Link from 'next/link';
-import { Trans, useTranslation } from 'react-i18next';
 import useForm from '@/hooks/useForm';
 import Select from './fields/Select';
 
 export default function RequestForm() {
-    const { t } = useTranslation(['form']);
 
     const fields = {
         name: {
@@ -59,23 +57,23 @@ export default function RequestForm() {
             <div className="mb-6">
                 <Input
                     name="name"
-                    label={t('labels.name')}
+                    label={'labels.name'}
                     handleChange={(e) => handleChange(e, 'name')}
                     handleBlur={(e) => handleBlur(e, 'name')}
                     value={values.name as string}
                     isValid={errors.name === ''}
-                    error={t(errors.name)}
+                    error={errors.name}
                 />
             </div>
             <div className="mb-6">
                 <Input
                     name="address"
-                    label={t('labels.address')}
+                    label={'labels.address'}
                     handleChange={(e) => handleChange(e, 'address')}
                     handleBlur={(e) => handleBlur(e, 'address')}
                     value={values.address as string}
                     isValid={errors.address === ''}
-                    error={t(errors.address)}
+                    error={errors.address}
                 />
             </div>
             <div className="md:flex">
@@ -84,19 +82,19 @@ export default function RequestForm() {
                         name="phone"
                         type="tel"
                         inputmode="tel"
-                        label={t('labels.phone')}
+                        label={'labels.phone'}
                         handleChange={(e) => handleChange(e, 'phone')}
                         handleBlur={(e) => handleBlur(e, 'phone')}
                         value={values.phone as string}
                         isValid={errors.phone === ''}
-                        error={t(errors.phone)}
+                        error={errors.phone}
                         icon={{ Icon: AddIcon, isVisible: true }}
                     />
                 </div>
                 <div className="grow mb-6">
                     <Select
                         name="time"
-                        label={t('labels.time')}
+                        label={'labels.time'}
                         handleChange={(e) => handleChange(e, 'time')}
                         value={values.time as string}
                     >
@@ -112,12 +110,12 @@ export default function RequestForm() {
             <div className="mb-6">
                 <Textarea
                     name="message"
-                    label={t('labels.message')}
+                    label={'labels.message'}
                     handleChange={(e) => handleChange(e, 'message')}
                     handleBlur={(e) => handleBlur(e, 'message')}
                     value={values.message as string}
                     isValid={errors.message === ''}
-                    error={t(errors.message)}
+                    error={errors.message}
                 />
             </div>
             <div className="mb-6">
@@ -125,9 +123,9 @@ export default function RequestForm() {
                     name="policy"
                     handleCheck={(e) => handleCheck(e, 'policy')}
                     isChecked={values.policy as boolean}
-                    isValid={errors.policy === ''}
-                >
-                    <Trans
+                    isValid={errors.policy === ''}>
+                    <></>
+                    {/* <Trans
                         i18nKey={t('checkboxes.privacy-policy')}
                         components={{
                             a: (
@@ -137,7 +135,7 @@ export default function RequestForm() {
                                 />
                             ),
                         }}
-                    />
+                    /> */}
                 </Checkbox>
             </div>
             <Button type="submit" size="lg" disabled={isSending} className="w-full">
@@ -146,11 +144,11 @@ export default function RequestForm() {
                         <LoopIcon />
                     </svg>
                 ) : (
-                    <>{t('buttons.send')}</>
+                    <>{'buttons.send'}</>
                 )}
             </Button>
             {!isSending && (
-                <FormResponse type={response?.type}> {response && t(response.message)} </FormResponse>
+                <FormResponse type={response?.type}> {response && response.message} </FormResponse>
             )}
         </form>
     );

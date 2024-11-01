@@ -1,8 +1,8 @@
-const steps: {title: string, description: string}[] = [
-    {title: 'steps-section.steps.step1.title', description: 'steps-section.steps.step1.description'}, 
-    {title: 'steps-section.steps.step2.title', description: 'steps-section.steps.step2.description'}, 
-    {title: 'steps-section.steps.step3.title', description: 'steps-section.steps.step3.description'}, 
-    {title: 'steps-section.steps.step4.title', description: 'steps-section.steps.step4.description'}
-]
+const steps: { title: string; description: string }[] = [
+  { title: 'stepsSection.steps.step1.title', description: 'stepsSection.steps.step1.description' },
+  { title: 'stepsSection.steps.step2.title', description: 'stepsSection.steps.step2.description' },
+  { title: 'stepsSection.steps.step3.title', description: 'stepsSection.steps.step3.description' },
+  { title: 'stepsSection.steps.step4.title', description: 'stepsSection.steps.step4.description' },
+];
 
-export default steps
+export default steps;

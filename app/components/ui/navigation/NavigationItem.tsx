@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import classNames from 'classnames';
 
 export default function NavigationItem({
@@ -9,7 +9,7 @@ export default function NavigationItem({
     handleClick,
     children,
 }: {
-    href: string;
+    href: any;
     padding?: string;
     className?: string;
     isActive?: boolean

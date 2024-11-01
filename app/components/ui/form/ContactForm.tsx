@@ -7,12 +7,11 @@ import Checkbox from './Checkbox';
 import Textarea from './Textarea';
 import Button from './buttons/Button';
 import Input from './fields/Input';
-import Link from 'next/link';
-import { Trans, useTranslation } from 'react-i18next';
 import useForm from '@/hooks/useForm';
+import { useTranslations } from 'next-intl';
 
 export default function ContactForm() {
-    const { t } = useTranslation(['form']);
+    const t = useTranslations('Form');
 
     const fields = {
         name: {
@@ -29,7 +28,7 @@ export default function ContactForm() {
         },
         message: {
             initialValue: '',
-            isRequired: true,
+            isRequired: false,
         },
         policy: {
             initialValue: false,
@@ -58,7 +57,7 @@ export default function ContactForm() {
                     handleBlur={(e) => handleBlur(e, 'name')}
                     value={values.name as string}
                     isValid={errors.name === ''}
-                    error={t(errors.name)}
+                    error={errors.name === '' ? '' : t(errors.name)}
                 />
             </div>
             <div className="mb-6">
@@ -71,7 +70,7 @@ export default function ContactForm() {
                     handleBlur={(e) => handleBlur(e, 'email')}
                     value={values.email as string}
                     isValid={errors.email === ''}
-                    error={t(errors.email)}
+                    error={errors.email === '' ? '' : t(errors.email)}
                 />
             </div>
             <div className="mb-6">
@@ -84,7 +83,7 @@ export default function ContactForm() {
                     handleBlur={(e) => handleBlur(e, 'phone')}
                     value={values.phone as string}
                     isValid={errors.phone === ''}
-                    error={t(errors.phone)}
+                    error={errors.phone === '' ? '' : t(errors.phone)}
                     icon={{ Icon: AddIcon, isVisible: true }}
                 />
             </div>
@@ -95,8 +94,6 @@ export default function ContactForm() {
                     handleChange={(e) => handleChange(e, 'message')}
                     handleBlur={(e) => handleBlur(e, 'message')}
                     value={values.message as string}
-                    isValid={errors.message === ''}
-                    error={t(errors.message)}
                 />
             </div>
             <div className="mb-6">
@@ -106,17 +103,17 @@ export default function ContactForm() {
                     isChecked={values.policy as boolean}
                     isValid={errors.policy === ''}
                 >
-                    <Trans
-                        i18nKey={t('checkboxes.privacy-policy')}
-                        components={{
-                            a: (
-                                <Link
-                                    href="/kasutustingimused"
-                                    className="transition-colors hover:text-primary font-semibold"
-                                />
-                            ),
-                        }}
-                    />
+                    {t.rich('checkboxes.privacyPolicy', {
+                        a: (chunks) => (
+                            <a
+                                href="/policy"
+                                target="_blank"
+                                className="transition-colors hover:text-primary font-semibold"
+                            >
+                                {chunks}
+                            </a>
+                        ),
+                    })}
                 </Checkbox>
             </div>
             <Button type="submit" size="lg" disabled={isSending} className="w-full">

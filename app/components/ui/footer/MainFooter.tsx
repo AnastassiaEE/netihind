@@ -1,18 +1,16 @@
-'use client';
-
 import whitelogo from '@/public/images/whitelogo.svg';
 import NavigationItem from '@/components/ui/navigation/NavigationItem';
 import SocialLinks from '@/components/ui/social-links/SocialLinks';
 import SocialLink from '@/components/ui/social-links/SocialLink';
 import Logo from '@/components/ui/Logo';
 import Navigation from '@/components/ui/navigation/Navigation';
-import { useTranslation } from 'react-i18next';
 import Copyright from '@/components/ui/Copyright';
 import SectionLayout from '@/layouts/SectionLayout';
 import socialLinks from '@/data/socialLinks';
+import { useTranslations } from 'next-intl';
 
 export default function Footer() {
-    const { t } = useTranslation('navigation');
+    const t = useTranslations('Navigation');
     return (
         <footer className="bg-gray-900 py-12">
             <SectionLayout>
@@ -22,10 +20,10 @@ export default function Footer() {
                 <div className="flex justify-center pt-4 pb-6">
                     <Navigation itemColorClass="text-white/80">
                         <NavigationItem href='/'>{t('home')}</NavigationItem>
-                        <NavigationItem href='/blogi'>{t('blog')}</NavigationItem>
-                        <NavigationItem href='/meist'>{t('about-us')}</NavigationItem>
-                        <NavigationItem href='/kasutustingimused'>{t('privacy-policy')}</NavigationItem>
-                        <NavigationItem href='/kontaktid'>{t('contacts')}</NavigationItem>
+                        <NavigationItem href='/blog'>{t('blog')}</NavigationItem>
+                        <NavigationItem href='/about'>{t('about')}</NavigationItem>
+                        <NavigationItem href='/policy'>{t('policy')}</NavigationItem>
+                        <NavigationItem href='/contacts'>{t('contacts')}</NavigationItem>
                     </Navigation>
                 </div>
                 <div className="flex justify-center pt-6">
