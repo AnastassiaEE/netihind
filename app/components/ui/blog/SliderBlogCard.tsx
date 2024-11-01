@@ -16,7 +16,6 @@ export default function SliderBlogCard({
     date: string;
     title: string;
 }) {
-    console.log(getFormattedSlug(href));
     return (
         <article className="bg-white rounded-lg shadow-md h-full">
             <div className="relative w-full h-60">
