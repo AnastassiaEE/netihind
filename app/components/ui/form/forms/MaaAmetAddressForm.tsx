@@ -2,9 +2,9 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Button from '@/components/ui/form/buttons/Button';
-import '../../../styles/addressForm.css';
-import FieldError from './FieldError';
-import PingLoader from '../loaders/PingLoader';
+import '@/styles/addressForm.css';
+import FieldError from '@/components/ui/form/fields/FieldError';
+import PingLoader from '@/components/ui/loaders/PingLoader';
 import { useLocale, useTranslations } from 'next-intl';
 import { setCookie } from 'cookies-next';
 import { useRouter } from '@/i18n/routing';
@@ -129,17 +129,16 @@ export default function MaaAmetAddressForm() {
     return (
         <>
             {!isScriptLoaded && isLoading && <PingLoader sizeClass='w-10 h-10' />}
+            {!isScriptLoaded && !isLoading && <p className="text-lg text-error">{t('errors.formIsNotLoaded')}</p>}
             <form onSubmit={handleSubmit} onKeyDown={handleKeyDown} className={isFormVisible() ? 'visible' : 'invisible'}>
                 <div className="md:flex gap-1 relative">
                     <div className="grow">
                         <div id="in-address"></div>
                         {error !== '' && <FieldError size="lg">{t(error)}</FieldError>}
                     </div>
-
                     <Button type="submit" size="lg" className="max-md:w-full max-md:mt-6">
                         {t('buttons.findProviders')}
                     </Button>
-
                 </div>
             </form>
         </>

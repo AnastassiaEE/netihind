@@ -2,8 +2,8 @@
 
 import useAddressForm from '@/hooks/useAddressForm';
 import CloseIcon from '@mui/icons-material/Close';
-import Searchbar from './Searchbar';
-import Button from './buttons/Button';
+import Searchbar from '@/components/ui/form/Searchbar';
+import Button from '@/components/ui/form/buttons/Button';
 
 import classNames from 'classnames';
 

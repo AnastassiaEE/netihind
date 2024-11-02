@@ -1,5 +1,5 @@
 import ContactCards from '@/components/ui/contacts/ContactCards';
-import ContactForm from '@/components/ui/form/ContactForm';
+import ContactForm from '@/components/ui/form/forms/ContactForm';
 import { H1, H2 } from '@/components/ui/headings/RestPageHeadings';
 import { email, phone } from '@/data/contacts';
 import SectionLayout from '@/layouts/SectionLayout';

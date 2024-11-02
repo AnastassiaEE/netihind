@@ -1,12 +1,12 @@
 'use client';
-import FormResponse from './FormResponse';
+import FormResponse from '@/components/ui/form/FormResponse';
 import LoopIcon from '@mui/icons-material/Loop';
 import AddIcon from '@mui/icons-material/Add';
-import IconInput from './fields/IconInput';
-import Checkbox from './Checkbox';
-import Textarea from './Textarea';
-import Button from './buttons/Button';
-import Input from './fields/Input';
+import IconInput from '@/components/ui/form/fields/IconInput';
+import Checkbox from '@/components/ui/form/fields/Checkbox';
+import Textarea from '@/components/ui/form/fields/Textarea';
+import Button from '@/components/ui/form/buttons/Button';
+import Input from '@/components/ui/form/fields/Input';
 import useForm from '@/hooks/useForm';
 import { useTranslations } from 'next-intl';
 

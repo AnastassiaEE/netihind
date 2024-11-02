@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import FieldLabel from '../FieldLabel';
+import FieldLabel from './FieldLabel';
 
 const baseClasses = classNames(
     'w-full',

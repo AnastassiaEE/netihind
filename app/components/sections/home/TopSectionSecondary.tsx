@@ -3,7 +3,7 @@
 import SectionLayout from '@/layouts/SectionLayout';
 import Mesh from '@/components/ui/mesh/Mesh';
 import classNames from 'classnames';
-import RequestForm from '@/components/ui/form/RequestForm';
+import RequestForm from '@/components/ui/form/forms/RequestForm';
 
 const sectionClasses = classNames(
     'h-full',
