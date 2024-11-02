@@ -97,14 +97,14 @@
     },
     "errors": {
       "shortAddress": "Sisestage vähemalt 2 tähemärki",
-      "invalidAddress": "Valige aadress",
-      "invalidApartment": "Valige korter",
+      "emptyAddress": "Valige aadress",
+      "invalidAddress": "Valige õige aadress",
+      "emptyApartment": "Valige korter",
       "emptyName": "Sisestage nimi",
       "emptyEmail": "Sisestage e-posti aadress",
       "invalidEmail": "Sisesta õige e-posti aadress",
       "emptyPhone": "Sisestage telefoninumber",
-      "invalidPhone": "Sisestage õige telefoninumber",
-      "emptyAddress": "Sisestage aadress"
+      "invalidPhone": "Sisestage õige telefoninumber"
     },
     "messages": {
       "somethingWentWrong": "Midagi läks valesti. Proovige uuesti.",

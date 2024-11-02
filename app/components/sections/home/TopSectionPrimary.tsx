@@ -4,7 +4,7 @@ import providerLogos from '@/data/providerLogos';
 import LogoCards from '@/components/ui/logo/LogoCards';
 import { H1 } from '@/components/ui/headings/HomePageHeadings';
 import GradientMesh from '@/components/ui/mesh/GradientMesh';
-// import MaaAmetAddressForm from '@/components/ui/form/MaaAmetAddressForm';
+import MaaAmetAddressForm from '@/components/ui/form/MaaAmetAddressForm';
 import { useTranslations } from 'next-intl';
 
 const sectionClasses = classNames(
@@ -46,7 +46,7 @@ export default function TopSection() {
                     })}
                 </H1>
                 <p className="text-lg mb-4">{t('topSection.description')}</p>
-                {/* <MaaAmetAddressForm locale={i18n.language} /> */}
+                <MaaAmetAddressForm />
             </div>
             <div className="absolute bottom-0 left-0 py-3 md:p-9 w-full bg-primary/10 -z-10">
                 <div className="md:container">

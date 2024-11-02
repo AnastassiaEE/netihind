@@ -15,6 +15,10 @@ export const routing = defineRouting({
       et: '/aadress',
       ru: '/adres',
     },
+    '/address/[slug]': {
+      et: '/aadress/[slug]',
+      ru: '/adres/[slug]',
+    },
     '/blog': {
       et: '/blogi',
       ru: '/blog',

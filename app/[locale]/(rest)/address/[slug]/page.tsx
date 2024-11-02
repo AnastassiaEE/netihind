@@ -6,18 +6,23 @@ import { Suspense } from 'react';
 import { cookies } from 'next/headers';
 import { notFound } from 'next/navigation';
 import AddressTitleSection from '@/components/sections/address/AddressTitleSection';
+import slugify from 'slugify';
 
-export default function PersonalAddress({ params }: { params: { addressId: string } }) {
+export default function PersonalAddress({ params: { slug } }: { params: { slug: string } }) {
     if (!hasCookie('ADDRESS', { cookies })) notFound();
 
-    const addressSlug = decodeURIComponent(params.addressId);
-    const addressCookie = getCookie('ADDRESS', { cookies });
 
-    if (addressSlug !== addressCookie?.replace(/\./g, '')) notFound();
+    const cookie = getCookie('ADDRESS', { cookies }) as string;
+    const cookieSlug = slugify(cookie, {
+        lower: true,
+        locale: 'et',
+        remove: /[*+~.,()'"!:@]/g
+    })
+    if (slug !== cookieSlug) notFound()
 
     return (
         <Suspense fallback={<PingLoader />}>
-            <AddressTitleSection address={addressCookie as string} />
+            <AddressTitleSection address={cookie as string} />
             <AddressProvidersSection />
             <AddressTariffsSection />
         </Suspense>

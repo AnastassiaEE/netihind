@@ -5,13 +5,20 @@ import Button from '@/components/ui/form/buttons/Button';
 import '../../../styles/addressForm.css';
 import FieldError from './FieldError';
 import PingLoader from '../loaders/PingLoader';
+import { useLocale, useTranslations } from 'next-intl';
+import { setCookie } from 'cookies-next';
+import { useRouter } from '@/i18n/routing';
+import slugify from 'slugify';
 
-export default function MaaAmetAddressForm({ locale }: { locale: string }) {
+export default function MaaAmetAddressForm() {
     const isWidgetAdded = useRef(false);
     const [address, setAddress] = useState({ full: '', streetNr: '', apartment: undefined });
     const [error, setError] = useState('');
     const [isScriptLoaded, setIsScriptLoaded] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
+    const locale = useLocale();
+    const t = useTranslations('Form');
+    const router = useRouter();
 
     const initializeWidget = () => {
         if (isWidgetAdded.current) return;
@@ -52,18 +59,18 @@ export default function MaaAmetAddressForm({ locale }: { locale: string }) {
         const streetInput = document.querySelector('.inads-input');
         const apartmentInput = document.querySelector('.inads-appartment');
         if (address.full === '') {
-            setError('Выберите адрес');
+            setError('errors.emptyAddress');
             streetInput?.classList.add('invalid');
             return false;
         }
         if (address.streetNr === '') {
-            setError('Выберите корректный адрес');
+            setError('errors.invalidAddress');
             streetInput?.classList.add('invalid');
             return false;
         }
         if (!apartmentInput?.classList.contains('hidden') && address.apartment === undefined) {
             apartmentInput?.classList.add('invalid');
-            setError('Выберите квартиру');
+            setError('errors.emptyApartment');
             return false;
         }
         return true;
@@ -75,9 +82,20 @@ export default function MaaAmetAddressForm({ locale }: { locale: string }) {
         }
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log(isFormValid());
+        if (isFormValid()) {
+            const slug = slugify(address.full, {
+                lower: true,
+                locale: 'et',
+                remove: /[*+~.,()'"!:@]/g
+            })
+            setCookie('ADDRESS', address.full);
+            router.push({
+                pathname: '/address/[slug]',
+                params: { slug: slug },
+            });
+        }
     };
 
     useEffect(() => {
@@ -115,11 +133,11 @@ export default function MaaAmetAddressForm({ locale }: { locale: string }) {
                 <div className="md:flex gap-1 relative">
                     <div className="grow">
                         <div id="in-address"></div>
-                        <FieldError size="lg">{error}</FieldError>
+                        {error !== '' && <FieldError size="lg">{t(error)}</FieldError>}
                     </div>
 
                     <Button type="submit" size="lg" className="max-md:w-full max-md:mt-6">
-                        {'address.buttons.find'}
+                        {t('buttons.findProviders')}
                     </Button>
 
                 </div>

@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.inads-input-div {
+  @apply m-0 px-2 !important;
+}
+
+.inads-input,
+.inads-appartment {
+  @apply border 
+  border-valid 
+  focus:border-primary/30
+    rounded-md
+    focus:outline-none
+    focus:shadow-lg
+  focus:shadow-primary/10 
+  placeholder:text-muted  
+  !text-muted-dark 
+    text-base
+    h-full !important;
+}
+
+.inads-input.invalid,
+.inads-appartment.invalid {
+  @apply border-invalid !important;
+}
+
+.inads-copyright {
+  @apply top-12 hidden !important;
+}
+
+.inads-result {
+  @apply top-0 
+  text-sm
+  border-primary/30 
+  rounded-md
+  overflow-hidden !important;
+}
+
+.inads-result li {
+  @apply px-4 py-3
+  text-muted-dark !important;
+}
+
+.inads-result li:hover,
+.inads-result li.active {
+  @apply bg-primary/10 !important;
+}
+
+.inads-input-div i {
+  @apply top-1/2 -translate-y-1/2 !important;
+}
+
+.inads-input-clear {
+  right: 0.8rem !important;
+}
+
+.inads-input-clear.appartment {
+  right: 6.4rem !important;
+}

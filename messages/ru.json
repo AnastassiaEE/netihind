@@ -97,14 +97,14 @@
     },
     "errors": {
       "shortAddress": "Введите минимум 2 символа",
-      "invalidAddress": "Выберите адрес",
-      "invalidApartment": "Выберите квартиру",
+      "emptyAddress": "Выберите адрес",
+      "invalidAddress": "Выберите корректный адрес",
+      "emptyApartment": "Выберите квартиру",
       "emptyName": "Введите имя",
       "emptyEmail": "Введите почтовый адрес",
       "invalidEmail": "Введите корректный почтовый адрес",
       "emptyPhone": "Введите телефон",
-      "invalidPhone": "Введите корректный телефон",
-      "emptyAddress": "Введите адрес"
+      "invalidPhone": "Введите корректный телефон"
     },
     "messages": {
       "somethingWentWrong": "Что-то пошло не так. Повторите попытку.",
