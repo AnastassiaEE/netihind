@@ -81,9 +81,9 @@
   },
   "NotFoundPage": {
     "title": "Ooops!",
-    "description": "Veebileht, mida otsite, pole saadaval.",
+    "description": "Veebileht, mida otsite, pole saadaval.<br></br>Veenduge, et teie järgis õiget linki, või minge avalehele.",
     "buttons": {
-      "returnHome": "Avaleht"
+      "returnHome": "Tagasi avalehele"
     }
   },
   "Form": {
