@@ -1,20 +1,17 @@
 import { fetchAPI } from './wpFetch';
 
-export async function getPages(language: string, title: string) {
+export async function getPage(id: string) {
   const data = await fetchAPI(
-    `query pages($language: LanguageCodeFilterEnum = ALL, $title: String = "") {
-  pages(where: {language: $language, title: $title}) {
-    nodes {
-      content(format: RAW)
-    }
+    `query page($id: ID = "") {
+  page(id: $id, idType: URI) {
+    content(format: RAW)
   }
 }`,
     {
       variables: {
-        language,
-        title,
+        id,
       },
     },
   );
-  return data?.pages?.nodes;
+  return data?.page;
 }
