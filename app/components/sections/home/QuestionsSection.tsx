@@ -2,7 +2,7 @@ import SectionLayout from '@/layouts/SectionLayout';
 import Accordion from '@/components/ui/accordion/Accordion';
 import questions from '@/data/questions';
 import Button from '@/components/ui/form/buttons/Button';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import { H2 } from '@/components/ui/headings/HomePageHeadings';
 import { useTranslations } from 'next-intl';
 
@@ -14,7 +14,7 @@ export default function QuestionsSection() {
                 <div className="md:w-4/12 max-md:mb-12">
                     <H2>{t('questionsSection.title')}</H2>
                     <p className="text-lg mb-12 md:mb-8">{t('questionsSection.description')}</p>
-                    <Link href="/kontaktid" className="md:inline-block">
+                    <Link href="/contacts" className="md:inline-block">
                         <Button size="lg" className="w-full">
                             {t('questionsSection.contactButton')}
                         </Button>
