@@ -104,7 +104,8 @@
       "emptyEmail": "Sisestage e-posti aadress",
       "invalidEmail": "Sisesta õige e-posti aadress",
       "emptyPhone": "Sisestage telefoninumber",
-      "invalidPhone": "Sisestage õige telefoninumber"
+      "invalidPhone": "Sisestage õige telefoninumber",
+      "formIsNotLoaded": "Vormi laadimisel tekkis viga. Jätke meile sõnum."
     },
     "messages": {
       "somethingWentWrong": "Midagi läks valesti. Proovige uuesti.",

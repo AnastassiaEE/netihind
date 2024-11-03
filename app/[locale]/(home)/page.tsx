@@ -8,6 +8,8 @@ import ProvidersLogoSection from '@/components/sections/home/ProvidersLogoSectio
 import TopSectionPrimary from '@/components/sections/home/TopSectionPrimary';
 import { setRequestLocale } from 'next-intl/server';
 
+export const revalidate = 3600;
+
 export default async function Home({ params: { locale } }: { params: { locale: string } }) {
   setRequestLocale(locale);
   return (
