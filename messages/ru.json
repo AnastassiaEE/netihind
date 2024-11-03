@@ -79,6 +79,13 @@
       }
     }
   },
+  "NotFoundPage": {
+    "title": "Упс!",
+    "description": "Страница, которую вы ищете, недоступна.",
+    "buttons": {
+      "returnHome": "Главная"
+    }
+  },
   "Form": {
     "labels": {
       "name": "Имя",

@@ -1,11 +1,11 @@
 import Header from '@/components/ui/header/Header';
 import SectionLayout from '@/layouts/SectionLayout';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import HomeIcon from '@mui/icons-material/Home';
 import SecondaryFooter from '@/components/ui/footer/SecondaryFooter';
 import classNames from 'classnames';
 import IconButton from '@/components/ui/form/buttons/IconButton';
-import { headers } from 'next/headers';
+import { useTranslations } from 'next-intl';
 
 const contentWrapperClasses = classNames(
     'h-[calc(100dvh)]',
@@ -19,24 +19,20 @@ const contentWrapperClasses = classNames(
     'flex-col',
 );
 
-const i18Namespaces = ['not-found', 'navigation'];
-
-export default async function NotFound() {
-
+export default function NotFound() {
+    const t = useTranslations('NotFoundPage')
     return (
         <>
-
             <Header variant="primary" />
-
             <div className={contentWrapperClasses}>
                 <SectionLayout className="flex grow">
                     <div className="h-full flex flex-col justify-center items-center">
                         <h1 className="text-9xl text-primary font-extrabold mb-6">404</h1>
-                        <h2 className="text-5xl font-extrabold mb-8">{('title')}</h2>
-                        <p className="text-xl mb-12">{('description')}</p>
+                        <h2 className="text-5xl font-extrabold mb-8">{t('title')}</h2>
+                        <p className="text-xl mb-12">{t('description')}</p>
                         <Link href="/">
                             <IconButton size="lg" Icon={HomeIcon}>
-                                {('buttons.return-home')}
+                                {t('buttons.returnHome')}
                             </IconButton>
                         </Link>
                     </div>
