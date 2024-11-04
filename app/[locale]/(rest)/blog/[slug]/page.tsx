@@ -2,7 +2,7 @@ import RelatedBlogPostsSection from '@/components/sections/blog/RelatedBlogPosts
 import BlogPostContentSection from '@/components/sections/blog-post/BlogPostContentSection';
 import BlogPostHeaderSection from '@/components/sections/blog-post/BlogPostHeaderSection';
 import ParallaxBg from '@/components/ui/ParallaxBg';
-import { getPostsBySlug, getPostsWithSlugsOnly } from '@/app/lib/wpPosts';
+import { getPostBySlug, getPostsWithSlugsOnly } from '@/app/lib/wpPosts';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import PingLoader from '@/components/ui/loaders/PingLoader';
@@ -29,11 +29,10 @@ export default async function Post({
     params: { slug: string; locale: string };
 }) {
     setRequestLocale(locale);
-    const posts = await getPostsBySlug(`${slug}-${locale}`);
-    if (posts === undefined || posts?.length === 0) {
+    const post = await getPostBySlug(`${slug}-${locale}`);
+    if (post === undefined || post === null) {
         notFound();
     }
-    const post = posts[0];
     return (
         <Suspense fallback={<PingLoader />}>
             <BlogPostHeaderSection title={post.title} date={post.date} />

@@ -32,34 +32,30 @@ export async function getPosts(language?: string) {
   return data?.posts?.nodes;
 }
 
-export async function getPostsBySlug(slug: string) {
+export async function getPostBySlug(id: string) {
   const data = await fetchAPI(
-    `query posts($slug: String = "") {
-  posts(
-    where: {name: $slug}
-  ) {
-    nodes {
-      content(format: RAW)
-      slug
-      date
-      title
-      featuredImage {
-        node {
-          altText
-          sourceUrl(size: LARGE)
-        }
+    `query post($id: ID = "") {
+  post(id: $id, idType: SLUG) {
+    content(format: RAW)
+    slug
+    date
+    title
+    featuredImage {
+      node {
+        altText
+        sourceUrl(size: LARGE)
       }
     }
   }
 }`,
     {
       variables: {
-        slug,
+        id,
       },
     },
   );
 
-  return data?.posts?.nodes;
+  return data?.post;
 }
 
 export async function getPostsWithSlugsOnly() {
