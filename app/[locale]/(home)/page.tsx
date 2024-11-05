@@ -37,6 +37,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 }
 
 export default function Home({ params: { locale } }: { params: { locale: string } }) {
+  setRequestLocale(locale);
   const t = useTranslations('SEO');
 
   const jsonLd = {
@@ -74,8 +75,6 @@ export default function Home({ params: { locale } }: { params: { locale: string 
       },
     ],
   };
-
-  setRequestLocale(locale);
   return (
     <>
       <script

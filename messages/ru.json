@@ -136,23 +136,23 @@
   },
   "SEO": {
     "website": {
-      "id": "https://netihind.ee/ru#website",
+      "id": "https://netihind.ee/ru/#website",
       "name": "Netihind.ee - независимый портал сравнения интернет-пакетов.",
       "description": "Независимый портал сравнения интернет-пакетов. Сравните все интернет-пакеты и подберите для себя лучшее решение.",
       "url": "https://netihind.ee/ru"
     },
     "breadcrumbs": {
       "home": {
-        "id": "https://netihind.ee/ru#breadcrumbs",
+        "id": "https://netihind.ee/ru/#breadcrumbs",
         "name": "Главная",
-        "item": "https://netihind.ee/ru"
+        "item": "https://netihind.ee/ru/"
       }
     },
     "homePage": {
-      "id": "https://netihind.ee/ru",
+      "id": "https://netihind.ee/ru/",
       "name": "Netihind.ee - независимый портал сравнения интернет-пакетов.",
       "description": "Netihind.ee - независимый портал сравнения интернет-пакетов. Не знаете какой провайдер есть в Вашем доме? Хотели бы выбрать подходящий для себя пакет по скорости, цене и технологии подключения? Мы сделаем это вместе с Вами!",
-      "url": "https://netihind.ee/ru"
+      "url": "https://netihind.ee/ru/"
     }
   }
 }

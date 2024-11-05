@@ -10,6 +10,7 @@ const nextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   //output: 'export',
   reactStrictMode: true,
+  trailingSlash: true,
   images: {
     remotePatterns: [
       {
