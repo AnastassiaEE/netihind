@@ -8,6 +8,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import gradientMainLogo from '@/public/images/gradientmainlogo.png';
 import { formatISO } from 'date-fns';
+import { openGraphLogo, readAction, website } from '@/app/shared-metadata';
 
 export const revalidate = 3600;
 
@@ -21,14 +22,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
             url: t('aboutPage.url'),
             site_name: t('website.name'),
             locale: locale,
-            images: [
-                {
-                    url: gradientMainLogo.src,
-                    width: 1200,
-                    height: 630,
-                    alt: 'Netihind logo',
-                },
-            ],
+            images: [openGraphLogo],
         },
     };
 }
@@ -46,21 +40,8 @@ export default async function About({ params: { locale } }: { params: { locale: 
                 url: t('aboutPage.url'),
                 inLanguage: locale,
                 datePublished: formatISO(new Date('04-11-2024')),
-                isPartOf: {
-                    '@type': 'WebSite',
-                    '@id': t('website.id'),
-                    name: t('website.name'),
-                    description: t('website.description'),
-                    url: t('website.url'),
-                    inLanguage: locale,
-                },
-                potentialAction: {
-                    '@type': 'ReadAction',
-                    target: {
-                        '@type': 'EntryPoint',
-                        urlTemplate: t('aboutPage.url'),
-                    },
-                },
+                isPartOf: website(t, locale),
+                potentialAction: [readAction(t('aboutPage.url'))],
             },
             {
                 '@type': 'BreadcrumbList',

@@ -10,6 +10,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 import gradientMainLogo from '@/public/images/gradientmainlogo.png';
 import { formatISO } from 'date-fns';
+import { openGraphLogo, website, readAction } from '@/app/shared-metadata';
 
 export const revalidate = 3600;
 
@@ -25,14 +26,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
       url: t('homePage.url'),
       site_name: t('website.name'),
       locale: locale,
-      images: [
-        {
-          url: gradientMainLogo.src,
-          width: 1200,
-          height: 630,
-          alt: 'Netihind logo',
-        },
-      ],
+      images: [openGraphLogo],
     },
   };
 }
@@ -52,21 +46,8 @@ export default function Home({ params: { locale } }: { params: { locale: string 
         url: t('homePage.url'),
         inLanguage: locale,
         datePublished: formatISO(new Date('04-11-2024')),
-        isPartOf: {
-          '@type': 'WebSite',
-          '@id': t('website.id'),
-          name: t('website.name'),
-          description: t('website.description'),
-          url: t('website.url'),
-          inLanguage: locale,
-        },
-        potentialAction: {
-          '@type': 'ReadAction',
-          target: {
-            '@type': 'EntryPoint',
-            urlTemplate: t('homePage.url'),
-          },
-        },
+        isPartOf: website(t, locale),
+        potentialAction: [readAction(t('homePage.url'))],
       },
       {
         '@type': 'BreadcrumbList',
