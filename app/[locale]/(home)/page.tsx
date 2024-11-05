@@ -6,23 +6,23 @@ import InfoSection from '@/components/sections/home/InfoSection';
 import TopSectionSecondary from '@/components/sections/home/TopSectionSecondary';
 import ProvidersLogoSection from '@/components/sections/home/ProvidersLogoSection';
 import TopSectionPrimary from '@/components/sections/home/TopSectionPrimary';
-import { setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 import gradientMainLogo from '@/public/images/gradientmainlogo.png';
 
 export const revalidate = 3600;
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
-  const messages = (await import(`../../../messages/${locale}.json`)).default;
+  const t = await getTranslations({ locale, namespace: 'SEO' });
   return {
-    title: messages.SEO.homePage.name,
-    description: messages.SEO.homePage.description,
+    title: t('homePage.name'),
+    description: t('homePage.description'),
     openGraph: {
-      title: messages.SEO.homePage.name,
-      description: messages.SEO.homePage.description,
+      title: t('homePage.name'),
+      description: t('homePage.description'),
       type: 'website',
-      url: messages.SEO.homePage.url,
-      site_name: messages.SEO.website.name,
+      url: t('homePage.url'),
+      site_name: t('website.name'),
       locale: locale,
       images: [
         {
