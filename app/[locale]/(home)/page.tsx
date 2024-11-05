@@ -15,14 +15,14 @@ export const revalidate = 3600;
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
   const messages = (await import(`../../../messages/${locale}.json`)).default;
   return {
-    title: messages.SEO.homePage.title,
+    title: messages.SEO.homePage.name,
     description: messages.SEO.homePage.description,
     openGraph: {
-      title: messages.SEO.homePage.title,
+      title: messages.SEO.homePage.name,
       description: messages.SEO.homePage.description,
       type: 'website',
       url: messages.SEO.homePage.url,
-      site_name: messages.SEO.homePage.title,
+      site_name: messages.SEO.homePage.name,
       locale: locale,
       images: [
         {
@@ -44,7 +44,8 @@ export default function Home({ params: { locale } }: { params: { locale: string 
     '@graph': [
       {
         '@type': 'WebPage',
-        name: t('homePage.title'),
+        '@id': t('homePage.id'),
+        name: t('homePage.name'),
         description: t('homePage.description'),
         url: t('homePage.url'),
         inLanguage: locale,
@@ -52,7 +53,8 @@ export default function Home({ params: { locale } }: { params: { locale: string 
         dateModified: '04-11-2024',
         isPartOf: {
           '@type': 'WebSite',
-          name: t('website.title'),
+          '@id': t('website.id'),
+          name: t('website.name'),
           description: t('website.description'),
           url: t('website.url'),
           inLanguage: locale,
@@ -60,6 +62,7 @@ export default function Home({ params: { locale } }: { params: { locale: string 
       },
       {
         '@type': 'BreadcrumbList',
+        '@id': t('breadcrumbs.home.id'),
         itemListElement: [
           {
             '@type': 'ListItem',
