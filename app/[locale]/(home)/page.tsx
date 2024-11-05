@@ -8,7 +8,7 @@ import ProvidersLogoSection from '@/components/sections/home/ProvidersLogoSectio
 import TopSectionPrimary from '@/components/sections/home/TopSectionPrimary';
 import { setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
-import gradientMainLogo from '@/public/images/gradientmainlogo.svg';
+import gradientMainLogo from '@/public/images/gradientmainlogo.png';
 
 export const revalidate = 3600;
 
