@@ -7,13 +7,78 @@ import TopSectionSecondary from '@/components/sections/home/TopSectionSecondary'
 import ProvidersLogoSection from '@/components/sections/home/ProvidersLogoSection';
 import TopSectionPrimary from '@/components/sections/home/TopSectionPrimary';
 import { setRequestLocale } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
+import gradientMainLogo from '@/public/images/gradientmainlogo.svg';
 
 export const revalidate = 3600;
 
-export default async function Home({ params: { locale } }: { params: { locale: string } }) {
+export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
+  const messages = (await import(`../../../messages/${locale}.json`)).default;
+  return {
+    title: messages.SEO.homePage.title,
+    description: messages.SEO.homePage.description,
+    openGraph: {
+      title: messages.SEO.homePage.title,
+      description: messages.SEO.homePage.description,
+      type: 'website',
+      url: messages.SEO.homePage.url,
+      site_name: messages.SEO.homePage.title,
+      locale: locale,
+      images: [
+        {
+          url: gradientMainLogo.src,
+          width: 1200,
+          height: 630,
+          alt: 'Netihind logo',
+        },
+      ],
+    },
+  };
+}
+
+export default function Home({ params: { locale } }: { params: { locale: string } }) {
+  const t = useTranslations('SEO');
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebPage',
+        name: t('homePage.title'),
+        description: t('homePage.description'),
+        url: t('homePage.url'),
+        inLanguage: locale,
+        datePublished: '04-11-2024',
+        dateModified: '04-11-2024',
+        partOf: {
+          '@type': 'WebSite',
+          name: t('website.title'),
+          description: t('website.description'),
+          url: t('website.url'),
+          inLanguage: locale,
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: t('breadcrumbs.home.name'),
+            item: t('breadcrumbs.home.item'),
+          },
+        ],
+      },
+    ],
+  };
+
   setRequestLocale(locale);
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <TopSectionPrimary />
       {/* <TopSectionSecondary /> */}
       {/* <InfoSection i18n={t} /> */}
