@@ -50,7 +50,7 @@ export default function Home({ params: { locale } }: { params: { locale: string 
         inLanguage: locale,
         datePublished: '04-11-2024',
         dateModified: '04-11-2024',
-        partOf: {
+        isPartOf: {
           '@type': 'WebSite',
           name: t('website.title'),
           description: t('website.description'),
