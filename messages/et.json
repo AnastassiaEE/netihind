@@ -146,6 +146,11 @@
         "id": "https://netihind.ee/#breadcrumbs",
         "name": "Avaleht",
         "item": "https://netihind.ee/"
+      },
+      "about": {
+        "id": "https://netihind.ee/meist/#breadcrumbs",
+        "name": "Meist",
+        "item": "https://netihind.ee/meist/"
       }
     },
     "homePage": {
@@ -153,6 +158,11 @@
       "name": "Netihind.ee - sõltumatu internetipaketide võrdlusportaal.",
       "description": "Kas te ei tea, milline teenusepakkuja Teie kodus on? Kas soovite valida kiiruse, hinna ja ühendustehnoloogia poolest teile sobiva paketi? Andke meile teada ja vaatame koos üle!",
       "url": "https://netihind.ee/"
+    },
+    "aboutPage": {
+      "id": "https://netihind.ee/meist/",
+      "name": "Meist - Netihind.ee - sõltumatu internetipaketide võrdlusportaal.",
+      "url": "https://netihind.ee/meist/"
     }
   }
 }

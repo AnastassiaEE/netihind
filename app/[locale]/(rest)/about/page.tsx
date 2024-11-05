@@ -5,21 +5,99 @@ import { getPage } from '@/app/lib/wpPages';
 import components from '@/mdx-components';
 import SectionLayout from '@/layouts/SectionLayout';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import { setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import gradientMainLogo from '@/public/images/gradientmainlogo.png';
+import { formatISO } from 'date-fns';
 
 export const revalidate = 3600;
 
+export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
+    const t = await getTranslations({ locale, namespace: 'SEO' });
+    return {
+        title: t('aboutPage.name'),
+        openGraph: {
+            title: t('aboutPage.name'),
+            type: 'website',
+            url: t('aboutPage.url'),
+            site_name: t('website.name'),
+            locale: locale,
+            images: [
+                {
+                    url: gradientMainLogo.src,
+                    width: 1200,
+                    height: 630,
+                    alt: 'Netihind logo',
+                },
+            ],
+        },
+    };
+}
+
 export default async function About({ params: { locale } }: { params: { locale: string } }) {
     setRequestLocale(locale);
+    const t = await getTranslations({ locale, namespace: 'SEO' });
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@graph': [
+            {
+                '@type': 'WebPage',
+                '@id': t('aboutPage.id'),
+                name: t('aboutPage.name'),
+                url: t('aboutPage.url'),
+                inLanguage: locale,
+                datePublished: formatISO(new Date('04-11-2024')),
+                isPartOf: {
+                    '@type': 'WebSite',
+                    '@id': t('website.id'),
+                    name: t('website.name'),
+                    description: t('website.description'),
+                    url: t('website.url'),
+                    inLanguage: locale,
+                },
+                potentialAction: {
+                    '@type': 'ReadAction',
+                    target: {
+                        '@type': 'EntryPoint',
+                        urlTemplate: t('aboutPage.url'),
+                    },
+                },
+            },
+            {
+                '@type': 'BreadcrumbList',
+                '@id': t('breadcrumbs.about.id'),
+                itemListElement: [
+                    {
+                        '@type': 'ListItem',
+                        position: 1,
+                        name: t('breadcrumbs.home.name'),
+                        item: t('breadcrumbs.home.item'),
+                    },
+                    {
+                        '@type': 'ListItem',
+                        position: 2,
+                        name: t('breadcrumbs.about.name'),
+                        item: t('breadcrumbs.about.item'),
+                    },
+                ],
+            },
+        ],
+    };
+
     const page = await getPage(`about-${locale}`);
     if (page === undefined || page === null) {
         notFound();
     }
     return (
-        <Suspense fallback={<PingLoader />}>
-            <SectionLayout>
-                <MDXRemote source={page.content} components={components as {}} />
-            </SectionLayout>
-        </Suspense>
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+            <Suspense fallback={<PingLoader />}>
+                <SectionLayout>
+                    <MDXRemote source={page.content} components={components as {}} />
+                </SectionLayout>
+            </Suspense>
+        </>
     );
 }
