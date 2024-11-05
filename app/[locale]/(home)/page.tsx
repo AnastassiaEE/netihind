@@ -26,7 +26,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
       locale: locale,
       images: [
         {
-          url: gradientMainLogo.src,
+          url: 'https://rxysmdetqttpdqfmrpym.supabase.co/storage/v1/object/public/website-logos/gradientmainlogo.png',
           width: 1200,
           height: 630,
           alt: 'Netihind logo',
