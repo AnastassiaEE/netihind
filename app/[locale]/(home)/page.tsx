@@ -22,7 +22,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
       description: messages.SEO.homePage.description,
       type: 'website',
       url: messages.SEO.homePage.url,
-      site_name: messages.SEO.homePage.name,
+      site_name: messages.SEO.website.name,
       locale: locale,
       images: [
         {
@@ -51,7 +51,6 @@ export default function Home({ params: { locale } }: { params: { locale: string 
         url: t('homePage.url'),
         inLanguage: locale,
         datePublished: '04-11-2024',
-        dateModified: '04-11-2024',
         isPartOf: {
           '@type': 'WebSite',
           '@id': t('website.id'),
