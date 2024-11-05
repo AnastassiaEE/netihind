@@ -60,6 +60,13 @@ export default function Home({ params: { locale } }: { params: { locale: string 
           url: t('website.url'),
           inLanguage: locale,
         },
+        potentialAction: {
+          '@type': 'ReadAction',
+          target: {
+            '@type': 'EntryPoint',
+            urlTemplate: t('homePage.url'),
+          },
+        },
       },
       {
         '@type': 'BreadcrumbList',
