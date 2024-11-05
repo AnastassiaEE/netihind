@@ -9,6 +9,7 @@ import TopSectionPrimary from '@/components/sections/home/TopSectionPrimary';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 import gradientMainLogo from '@/public/images/gradientmainlogo.png';
+import { formatISO } from 'date-fns';
 
 export const revalidate = 3600;
 
@@ -50,7 +51,7 @@ export default function Home({ params: { locale } }: { params: { locale: string 
         description: t('homePage.description'),
         url: t('homePage.url'),
         inLanguage: locale,
-        datePublished: '04-11-2024',
+        datePublished: formatISO(new Date('04-11-2024')),
         isPartOf: {
           '@type': 'WebSite',
           '@id': t('website.id'),
