@@ -12,7 +12,7 @@ export const website = (t: any, locale: string) => {
   const websiteUrl = new URL(t('website.url'), metadataBaseUrl).toString();
   return {
     '@type': 'WebSite',
-    '@id': `${websiteUrl}/#website`,
+    '@id': `${websiteUrl}#website`,
     name: t('website.name'),
     description: t('website.description'),
     url: websiteUrl,

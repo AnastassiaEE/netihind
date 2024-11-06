@@ -53,7 +53,7 @@ export default function Home({ params: { locale } }: { params: { locale: string 
       },
       {
         '@type': 'BreadcrumbList',
-        '@id': `${homePageUrl}/#breadcrumbs`,
+        '@id': `${homePageUrl}#breadcrumbs`,
         itemListElement: [
           {
             '@type': 'ListItem',

@@ -48,7 +48,7 @@ export default async function About({ params: { locale } }: { params: { locale: 
             },
             {
                 '@type': 'BreadcrumbList',
-                '@id': `${aboutPageUrl}/#breadcrumbs`,
+                '@id': `${aboutPageUrl}#breadcrumbs`,
                 itemListElement: [
                     {
                         '@type': 'ListItem',

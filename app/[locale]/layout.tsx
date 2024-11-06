@@ -9,7 +9,7 @@ import { NextIntlClientProvider } from 'next-intl';
 
 const inter = Manrope({ subsets: ['latin'] });
 
-export const metadataBaseUrl = new URL("https://netihind.ee/");
+export const metadataBaseUrl = new URL("https://netihind.ee");
 
 export const metadata = {
   metadataBase: metadataBaseUrl,
