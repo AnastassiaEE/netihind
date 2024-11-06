@@ -9,6 +9,10 @@ import { NextIntlClientProvider } from 'next-intl';
 
 const inter = Manrope({ subsets: ['latin'] });
 
+export const metadata = {
+  metadataBase: new URL("https://netihind.ee"),
+};
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }

@@ -136,31 +136,31 @@
   },
   "SEO": {
     "website": {
-      "id": "https://netihind.ee/#website",
+      "id": "/#website",
       "name": "Netihind.ee - sõltumatu internetipaketide võrdlusportaal.",
       "description": "Sõltumatu internetipaketide võrdlusportaal. Võrdle kõiki internetipakette ja vali enda jaoks parim lahendus.",
-      "url": "https://netihind.ee/"
+      "url": "/"
     },
     "breadcrumbs": {
       "home": {
-        "id": "https://netihind.ee/#breadcrumbs",
+        "id": "/#breadcrumbs",
         "name": "Avaleht",
-        "item": "https://netihind.ee/"
+        "item": "/"
       },
       "about": {
-        "id": "https://netihind.ee/meist/#breadcrumbs",
+        "id": "/meist/#breadcrumbs",
         "name": "Meist",
-        "item": "https://netihind.ee/meist/"
+        "item": "/meist/"
       }
     },
     "homePage": {
       "name": "Netihind.ee - sõltumatu internetipaketide võrdlusportaal.",
       "description": "Kas te ei tea, milline teenusepakkuja Teie kodus on? Kas soovite valida kiiruse, hinna ja ühendustehnoloogia poolest teile sobiva paketi? Andke meile teada ja vaatame koos üle!",
-      "url": "https://netihind.ee/"
+      "url": "/"
     },
     "aboutPage": {
       "name": "Meist - Netihind.ee - sõltumatu internetipaketide võrdlusportaal.",
-      "url": "https://netihind.ee/meist/"
+      "url": "/meist/"
     }
   }
 }
