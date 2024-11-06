@@ -136,21 +136,16 @@
   },
   "SEO": {
     "website": {
-      "id": "/ru/#website",
       "name": "Netihind.ee - независимый портал сравнения интернет-пакетов.",
       "description": "Независимый портал сравнения интернет-пакетов. Сравните все интернет-пакеты и подберите для себя лучшее решение.",
       "url": "/ru/"
     },
     "breadcrumbs": {
       "home": {
-        "id": "/ru/#breadcrumbs",
-        "name": "Главная",
-        "item": "/ru/"
+        "name": "Главная"
       },
       "about": {
-        "id": "/ru/o-nas/#breadcrumbs",
-        "name": "О нас",
-        "item": "/ru/o-nas/"
+        "name": "О нас"
       }
     },
     "homePage": {

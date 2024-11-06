@@ -136,21 +136,16 @@
   },
   "SEO": {
     "website": {
-      "id": "/#website",
       "name": "Netihind.ee - sõltumatu internetipaketide võrdlusportaal.",
       "description": "Sõltumatu internetipaketide võrdlusportaal. Võrdle kõiki internetipakette ja vali enda jaoks parim lahendus.",
       "url": "/"
     },
     "breadcrumbs": {
       "home": {
-        "id": "/#breadcrumbs",
-        "name": "Avaleht",
-        "item": "/"
+        "name": "Avaleht"
       },
       "about": {
-        "id": "/meist/#breadcrumbs",
-        "name": "Meist",
-        "item": "/meist/"
+        "name": "Meist"
       }
     },
     "homePage": {

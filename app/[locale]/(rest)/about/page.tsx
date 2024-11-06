@@ -8,6 +8,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { formatISO } from 'date-fns';
 import { openGraphLogo, readAction, website } from '@/app/shared-metadata';
+import { metadataBaseUrl } from '../../layout';
 
 export const revalidate = 3600;
 
@@ -30,34 +31,36 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 export default async function About({ params: { locale } }: { params: { locale: string } }) {
     setRequestLocale(locale);
     const t = await getTranslations({ locale, namespace: 'SEO' });
+
+    const aboutPageUrl = new URL(t('aboutPage.url'), metadataBaseUrl).toString();
     const jsonLd = {
         '@context': 'https://schema.org',
         '@graph': [
             {
                 '@type': 'WebPage',
-                '@id': t('aboutPage.url'),
+                '@id': aboutPageUrl,
                 name: t('aboutPage.name'),
-                url: t('aboutPage.url'),
+                url: aboutPageUrl,
                 inLanguage: locale,
                 datePublished: formatISO(new Date('04-11-2024')),
                 isPartOf: website(t, locale),
-                potentialAction: [readAction(t('aboutPage.url'))],
+                potentialAction: [readAction(aboutPageUrl)],
             },
             {
                 '@type': 'BreadcrumbList',
-                '@id': t('breadcrumbs.about.id'),
+                '@id': `${aboutPageUrl}/#breadcrumbs`,
                 itemListElement: [
                     {
                         '@type': 'ListItem',
                         position: 1,
                         name: t('breadcrumbs.home.name'),
-                        item: t('breadcrumbs.home.item'),
+                        item: new URL(t('homePage.url'), metadataBaseUrl).toString()
                     },
                     {
                         '@type': 'ListItem',
                         position: 2,
                         name: t('breadcrumbs.about.name'),
-                        item: t('breadcrumbs.about.item'),
+                        item: aboutPageUrl,
                     },
                 ],
             },

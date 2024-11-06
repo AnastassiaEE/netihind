@@ -1,4 +1,5 @@
 import gradientMainLogo from '@/public/images/gradientmainlogo.png';
+import { metadataBaseUrl } from '@/app/[locale]/layout';
 
 export const openGraphLogo = {
   url: gradientMainLogo.src,
@@ -8,12 +9,13 @@ export const openGraphLogo = {
 };
 
 export const website = (t: any, locale: string) => {
+  const websiteUrl = new URL(t('website.url'), metadataBaseUrl).toString();
   return {
     '@type': 'WebSite',
-    '@id': t('website.id'),
+    '@id': `${websiteUrl}/#website`,
     name: t('website.name'),
     description: t('website.description'),
-    url: t('website.url'),
+    url: websiteUrl,
     inLanguage: locale,
   };
 };

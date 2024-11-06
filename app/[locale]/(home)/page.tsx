@@ -10,6 +10,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 import { formatISO } from 'date-fns';
 import { openGraphLogo, website, readAction } from '@/app/shared-metadata';
+import { metadataBaseUrl } from '@/app/[locale]/layout';
 
 export const revalidate = 3600;
 
@@ -18,7 +19,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   return {
     title: t('homePage.name'),
     description: t('homePage.description'),
-    canonical: t('homePage.url'),
+    canonical: '/',
     openGraph: {
       title: t('homePage.name'),
       description: t('homePage.description'),
@@ -35,29 +36,30 @@ export default function Home({ params: { locale } }: { params: { locale: string 
   setRequestLocale(locale);
   const t = useTranslations('SEO');
 
+  const homePageUrl = new URL(t('homePage.url'), metadataBaseUrl).toString();
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
       {
         '@type': 'WebPage',
-        '@id': t('homePage.url'),
+        '@id': homePageUrl,
         name: t('homePage.name'),
         description: t('homePage.description'),
-        url: t('homePage.url'),
+        url: homePageUrl,
         inLanguage: locale,
         datePublished: formatISO(new Date('04-11-2024')),
         isPartOf: website(t, locale),
-        potentialAction: [readAction(t('homePage.url'))],
+        potentialAction: [readAction(homePageUrl)],
       },
       {
         '@type': 'BreadcrumbList',
-        '@id': t('breadcrumbs.home.id'),
+        '@id': `${homePageUrl}/#breadcrumbs`,
         itemListElement: [
           {
             '@type': 'ListItem',
             position: 1,
             name: t('breadcrumbs.home.name'),
-            item: t('breadcrumbs.home.item'),
+            item: homePageUrl,
           },
         ],
       },
