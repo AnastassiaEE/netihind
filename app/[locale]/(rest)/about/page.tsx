@@ -6,7 +6,6 @@ import components from '@/mdx-components';
 import SectionLayout from '@/layouts/SectionLayout';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import gradientMainLogo from '@/public/images/gradientmainlogo.png';
 import { formatISO } from 'date-fns';
 import { openGraphLogo, readAction, website } from '@/app/shared-metadata';
 
@@ -16,6 +15,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
     const t = await getTranslations({ locale, namespace: 'SEO' });
     return {
         title: t('aboutPage.name'),
+        canonical: t('aboutPage.url'),
         openGraph: {
             title: t('aboutPage.name'),
             type: 'website',
@@ -35,7 +35,7 @@ export default async function About({ params: { locale } }: { params: { locale: 
         '@graph': [
             {
                 '@type': 'WebPage',
-                '@id': t('aboutPage.id'),
+                '@id': t('aboutPage.url'),
                 name: t('aboutPage.name'),
                 url: t('aboutPage.url'),
                 inLanguage: locale,

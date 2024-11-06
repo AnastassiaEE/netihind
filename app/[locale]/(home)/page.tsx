@@ -8,7 +8,6 @@ import ProvidersLogoSection from '@/components/sections/home/ProvidersLogoSectio
 import TopSectionPrimary from '@/components/sections/home/TopSectionPrimary';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
-import gradientMainLogo from '@/public/images/gradientmainlogo.png';
 import { formatISO } from 'date-fns';
 import { openGraphLogo, website, readAction } from '@/app/shared-metadata';
 
@@ -19,6 +18,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   return {
     title: t('homePage.name'),
     description: t('homePage.description'),
+    canonical: t('homePage.url'),
     openGraph: {
       title: t('homePage.name'),
       description: t('homePage.description'),
@@ -40,7 +40,7 @@ export default function Home({ params: { locale } }: { params: { locale: string 
     '@graph': [
       {
         '@type': 'WebPage',
-        '@id': t('homePage.id'),
+        '@id': t('homePage.url'),
         name: t('homePage.name'),
         description: t('homePage.description'),
         url: t('homePage.url'),

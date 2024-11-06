@@ -154,13 +154,11 @@
       }
     },
     "homePage": {
-      "id": "https://netihind.ee/ru/",
       "name": "Netihind.ee - независимый портал сравнения интернет-пакетов.",
       "description": "Не знаете какой провайдер есть в Вашем доме? Хотели бы выбрать подходящий для себя пакет по скорости, цене и технологии подключения? Мы сделаем это вместе с Вами!",
       "url": "https://netihind.ee/ru/"
     },
     "aboutPage": {
-      "id": "https://netihind.ee/ru/o-nas/",
       "name": "О нас - Netihind.ee - независимый портал сравнения интернет-пакетов.",
       "url": "https://netihind.ee/meist/ru/o-nas/"
     }
