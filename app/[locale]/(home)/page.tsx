@@ -19,7 +19,9 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   return {
     title: t('homePage.name'),
     description: t('homePage.description'),
-    canonical: '/',
+    alternates: {
+      canonical: t('homePage.url'),
+    },
     openGraph: {
       title: t('homePage.name'),
       description: t('homePage.description'),

@@ -16,7 +16,9 @@ export async function generateMetadata({ params: { locale } }: { params: { local
     const t = await getTranslations({ locale, namespace: 'SEO' });
     return {
         title: t('aboutPage.name'),
-        canonical: t('aboutPage.url'),
+        alternates: {
+            canonical: t('aboutPage.url'),
+        },
         openGraph: {
             title: t('aboutPage.name'),
             type: 'website',
