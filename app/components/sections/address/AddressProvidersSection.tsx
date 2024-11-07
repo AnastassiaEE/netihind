@@ -3,7 +3,7 @@ import SectionLayout from '@/layouts/SectionLayout';
 
 export default function AddressProvidersSection({ providers }: { providers: { [key: string]: string }[] }) {
     return (
-        <SectionLayout className="pt-24">
+        <SectionLayout className="py-16" bg="bg-neutral-light">
             <AddressProviderCards providers={providers} />
         </SectionLayout>
     );
