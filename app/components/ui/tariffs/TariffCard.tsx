@@ -1,5 +1,4 @@
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
-import providers from '../../../data/providers';
 import TarriffMeasure from './TariffMeasure';
 import Button from '../form/buttons/Button';
 import Image from 'next/image';
@@ -10,8 +9,8 @@ export default function TariffCard({ tariff }: { tariff: { [key: string]: any } 
             <div className="p-6">
                 <div className="flex justify-end">
                     <Image
-                        src={providers[tariff.provider].image}
-                        alt={providers[tariff.provider].alt}
+                        src={'providers[tariff.provider].image'}
+                        alt={'providers[tariff.provider].alt'}
                         width={0}
                         height={0}
                         className="w-10 h-auto mb-2"
