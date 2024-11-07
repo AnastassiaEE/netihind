@@ -42,7 +42,7 @@ export default async function PersonalAddress({
         <Suspense fallback={<PingLoader />}>
             <AddressTitleSection address={cookie as string} />
             <AddressProvidersSection providers={getProviders(data)} />
-            <AddressTariffsSection tariffs={data1} />
+            {/* <AddressTariffsSection tariffs={data1} /> */}
         </Suspense>
     );
 }
