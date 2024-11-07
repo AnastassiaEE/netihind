@@ -25,7 +25,7 @@ export default function TariffsTable({ items }: { items: { [key: string]: any }[
                         <TariffTableCell index={index} className="rounded-l-md">
                             <div className="flex flex-col items-center">
                                 <Image
-                                    src={"providers[tariff.provider].image"}
+                                    src={"/"}
                                     alt={"providers[tariff.provider].alt"}
                                     width={0}
                                     height={0}
