@@ -1,7 +1,6 @@
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import TariffTableCell from './TariffTableCell';
 import TarriffMeasure from './TariffMeasure';
-import providers from '../../../data/providers';
 import Button from '../form/buttons/Button';
 import Image from 'next/image';
 
@@ -23,11 +22,11 @@ export default function TariffsTable({ items }: { items: { [key: string]: any }[
                 ))}
                 {items.map((tariff, index) => (
                     <>
-                        <TariffTableCell key={tariff.name} index={index} className="rounded-l-md">
+                        <TariffTableCell index={index} className="rounded-l-md">
                             <div className="flex flex-col items-center">
                                 <Image
-                                    src={providers[tariff.provider].image}
-                                    alt={providers[tariff.provider].alt}
+                                    src={"providers[tariff.provider].image"}
+                                    alt={"providers[tariff.provider].alt"}
                                     width={0}
                                     height={0}
                                     className="w-10 h-auto mb-2"
@@ -36,17 +35,17 @@ export default function TariffsTable({ items }: { items: { [key: string]: any }[
                                 <span className="text-xs text-muted">{tariff.provider}</span>
                             </div>
                         </TariffTableCell>
-                        <TariffTableCell key={index} index={index}>
+                        <TariffTableCell index={index}>
                             <TarriffMeasure number={tariff.speed} unit={'tariffs.measure.speed'} />
                         </TariffTableCell>
-                        <TariffTableCell key={index} index={index}>
+                        <TariffTableCell index={index}>
                             {tariff.chanels ? (
                                 <TarriffMeasure number={tariff.chanels} unit={'tariffs.measure.channels'} />
                             ) : (
                                 <TarriffMeasure unit={'tariffs.measure.channels'} />
                             )}
                         </TariffTableCell>
-                        <TariffTableCell key={index} index={index}>
+                        <TariffTableCell index={index}>
                             {/* {tariff.mobileCommunication ? (
                                 <>
                                     {tariff.mobileCommunication.data ? (
@@ -70,7 +69,7 @@ export default function TariffsTable({ items }: { items: { [key: string]: any }[
                             )} */}
                             <TarriffMeasure empty={true} />
                         </TariffTableCell>
-                        <TariffTableCell key={index} index={index} className="rounded-r-md">
+                        <TariffTableCell index={index} className="rounded-r-md">
                             <div className="flex flex-col">
                                 <div className="mb-4">
                                     <TarriffMeasure
