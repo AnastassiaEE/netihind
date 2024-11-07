@@ -9,13 +9,19 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   //output: 'export',
-  reactStrictMode: true,
+  reactStrictMode: false,
   trailingSlash: true,
   images: {
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'cms.netihind.ee',
+        port: '',
+        //pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'rxysmdetqttpdqfmrpym.supabase.co',
         port: '',
         //pathname: '/**',
       },

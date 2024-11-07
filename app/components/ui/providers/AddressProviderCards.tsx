@@ -29,10 +29,10 @@ const pagination = {
     bulletActiveClass: 'pagination-bullet-active !bg-primary !w-6',
 };
 
-export default function ProviderCards({
-    items,
+export default function AddressProviderCards({
+    providers,
 }: {
-    items: { [key: string]: { [key: string]: any } };
+    providers: { [key: string]: string }[];
 }) {
     return (
         <div className="relative">
@@ -42,14 +42,12 @@ export default function ProviderCards({
                 pagination={pagination}
                 modules={modules}
             >
-                {Object.keys(items).map((item) => (
-                    <SwiperSlide key={item}>
+                {providers.map((provider) => (
+                    <SwiperSlide key={provider.name}>
                         <AddressProviderCard
-                            name={item}
-                            phone={items[item].phone}
-                            img={items[item].image}
-                            alt={items[item].alt}
-                            tariffsPath={items[item].tariffsPath}
+                            name={provider.name}
+                            img={provider.img}
+                            alt={`${provider.name} logo`}
                         />
                     </SwiperSlide>
                 ))}
