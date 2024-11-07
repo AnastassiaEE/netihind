@@ -1,20 +1,19 @@
 import classNames from 'classnames';
-import { StaticImageData } from 'next/image';
 import Image from 'next/image';
 
-export default function LogoCard({ image, alt }: { image: StaticImageData; alt: string }) {
+export default function LogoCard({ image, alt }: { image: string; alt: string }) {
     const logoWrapperClasses = classNames(
         'h-6',
         'md:h-12',
         'hover:-translate-y-2',
         'duration-500',
+        'relative',
+        'grow',
     );
-
-    const imageClasses = classNames('h-full', 'w-auto');
 
     return (
         <div className={logoWrapperClasses}>
-            <Image src={image} alt={alt} className={imageClasses} />
+            <Image src={image} alt={alt} fill className="object-contain" />
         </div>
     );
 }

@@ -1,6 +1,6 @@
 import LogoCard from '@/components/ui/logo/LogoCard';
 
-export default function LogoCards({ logos }: { logos: { [key: string]: any }[] }) {
+export default function LogoCards({ logos }: { logos: { [key: string]: string }[] }) {
     return (
         <div className="flex flex-wrap justify-around">
             {logos.map((logo) => (

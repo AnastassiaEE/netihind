@@ -1,13 +1,28 @@
-import telia from '@/public/images/Telia_logo.png';
-import elisa from '@/public/images/Elisa_logo.png';
-import tele2 from '@/public/images/Tele2_logo.png';
-import stv from '@/public/images/Stv_logo.png';
-
-const providerLogos: { [key: string]: any }[] = [
-    { name: 'Telia Eesti AS', image: telia, alt: 'Telia logo' },
-    { name: 'Elisa Eesti AS', image: elisa, alt: 'Elisa logo' },
-    { name: 'Tele2 Eesti AS', image: tele2, alt: 'Tele2 logo' },
-    { name: 'STV AS', image: stv, alt: 'Stv logo' },
+const providerLogos: { [key: string]: string }[] = [
+  {
+    name: 'Telia Eesti AS',
+    image:
+      'https://rxysmdetqttpdqfmrpym.supabase.co/storage/v1/object/public/providers-logos/Telia.png',
+    alt: 'Telia logo',
+  },
+  {
+    name: 'Elisa Eesti AS',
+    image:
+      'https://rxysmdetqttpdqfmrpym.supabase.co/storage/v1/object/public/providers-logos/Elisa.png',
+    alt: 'Elisa logo',
+  },
+  {
+    name: 'Tele2 Eesti AS',
+    image:
+      'https://rxysmdetqttpdqfmrpym.supabase.co/storage/v1/object/public/providers-logos/Tele2.png',
+    alt: 'Tele2 logo',
+  },
+  {
+    name: 'STV AS',
+    image:
+      'https://rxysmdetqttpdqfmrpym.supabase.co/storage/v1/object/public/providers-logos/Stv.png',
+    alt: 'Stv logo',
+  },
 ];
 
 export default providerLogos;
