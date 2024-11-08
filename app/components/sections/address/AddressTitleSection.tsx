@@ -1,14 +1,12 @@
-'use client'
-
-import SectionLayout from "@/layouts/SectionLayout"
+import { H1 } from '@/components/ui/headings/RestPageHeadings';
+import SectionLayout from '@/layouts/SectionLayout';
 
 export default function AddressTitleSection({ address }: { address: string }) {
     return (
-        <SectionLayout className="pb-24">
-            <h1 className="text-[calc(1.375rem+1.5vw)] md:text-4xl font-extrabold">
+        <SectionLayout>
+            <H1>
                 {'title'} <span className="text-primary">{address}</span>
-            </h1>
+            </H1>
         </SectionLayout>
-
     );
 }
