@@ -3,20 +3,20 @@
 import useButtonsFilter from '@/hooks/useButtonsFilter';
 import Button from '@/components/ui/form/buttons/Button';
 
-export default function ButtonsFilter({ buttons }: { buttons: { [key: string]: boolean } }) {
-    const { usedFilters, handleFilterClick } = useButtonsFilter(buttons);
+export default function ButtonsFilter({ filters }: { filters: { [key: string]: boolean } }) {
+    const { usedFilters, handleFilterClick } = useButtonsFilter(filters);
     return (
         <div className="flex flex-wrap gap-2">
-            {Object.keys(buttons).map((button) => (
+            {Object.keys(usedFilters).map((filter) => (
                 <Button
-                    key={button}
+                    key={filter}
                     handleClick={handleFilterClick}
-                    variant={usedFilters[button] ? 'primary' : 'secondary'}
-                    size="lg"
+                    variant={usedFilters[filter] ? 'primary' : 'secondary'}
+                    size="sm"
                     className="!w-max rounded-md uppercase"
-                    name={button}
+                    name={filter}
                 >
-                    {button}
+                    {filter}
                 </Button>
             ))}
         </div>

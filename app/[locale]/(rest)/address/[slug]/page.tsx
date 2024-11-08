@@ -1,5 +1,5 @@
 import AddressProvidersSection from '@/components/sections/address/AddressProvidersSection';
-import AddressTariffsSection from '@/components/sections/address/AddressTariffsSection';
+import AddressPackagesSection from '@/components/sections/address/AddressPackagesSection';
 import PingLoader from '@/components/ui/loaders/PingLoader';
 import { getCookie, hasCookie } from 'cookies-next';
 import { Suspense } from 'react';
@@ -7,14 +7,15 @@ import { cookies } from 'next/headers';
 import { notFound } from 'next/navigation';
 import AddressTitleSection from '@/components/sections/address/AddressTitleSection';
 import slugify from 'slugify';
-import addressTariffs from '@/data/addressTariffs';
 import { supabase } from '@/app/lib/supabase';
 import { getProviders } from '@/utils/packagesHelper';
 
 export default async function PersonalAddress({
     params: { slug },
+    searchParams,
 }: {
     params: { slug: string };
+    searchParams: { [key: string]: string };
 }) {
     if (!hasCookie('ADDRESS', { cookies })) notFound();
 
@@ -26,23 +27,29 @@ export default async function PersonalAddress({
     });
     if (slug !== cookieSlug) notFound();
 
-    const data1 = addressTariffs;
+    const filters: { [key: string]: boolean } = { all: false, internet: false, 'internet-tv': false };
+    const activeFilter = !Object.keys(filters).includes(searchParams.filter)
+        ? 'all'
+        : searchParams.filter;
+    filters[activeFilter] = true;
 
-    let { data, error } = await supabase
-        .rpc('get_internet_packages_by_address', {
-            p_city: 'Maardu linn',
-            p_maakond: 'Harju Maakond',
-            p_street: 'Ringi tn 25'
-        })
+    let { data, error } = await supabase.rpc('get_internet_packages_by_address', {
+        p_filter: activeFilter,
+        p_city: 'Maardu linn',
+        p_maakond: 'Harju Maakond',
+        p_street: 'Ringi tn 25',
+    });
 
-    if (error) console.error(error)
-    else console.log(data)
+    if (error) console.error(error);
+    console.log(data);
 
     return (
-        <Suspense fallback={<PingLoader />}>
+        <>
             <AddressTitleSection address={cookie as string} />
-            <AddressProvidersSection providers={getProviders(data)} />
-            {/* <AddressTariffsSection tariffs={data1} /> */}
-        </Suspense>
+            <Suspense fallback={<PingLoader />}>
+                <AddressProvidersSection providers={getProviders(data)} />
+            </Suspense>
+            <AddressPackagesSection packages={data} searchParams={{ filters: filters }} />
+        </>
     );
 }
