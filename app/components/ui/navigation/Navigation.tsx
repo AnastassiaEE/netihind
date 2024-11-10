@@ -11,7 +11,7 @@ export default function Navigation({
     children: React.ReactNode;
 }) {
     const navigationListClasses = classNames(itemColorClass, 'font-semibold', {
-        'flex flex-wrap justify-center': type === 'horizontal',
+        'flex flex-wrap': type === 'horizontal',
     });
 
     const navigationItemClasses = classNames('py-2 block', {
