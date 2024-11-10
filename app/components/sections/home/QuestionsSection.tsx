@@ -10,7 +10,7 @@ export default function QuestionsSection() {
     const t = useTranslations('HomePage');
     return (
         <SectionLayout className="py-24">
-            <div className="flex flex-col md:flex-row items-center justify-between">
+            <div className="md:flex items-center justify-between">
                 <div className="md:w-4/12 max-md:mb-12">
                     <H2>{t('questionsSection.title')}</H2>
                     <p className="text-lg mb-12 md:mb-8">{t('questionsSection.description')}</p>

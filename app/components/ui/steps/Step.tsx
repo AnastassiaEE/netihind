@@ -15,7 +15,6 @@ export default function Step({
 }) {
     const stepWrapperClasses = classNames(
         'flex',
-        'flex-row',
         'md:flex-col',
         'basis-0',
         'grow',
