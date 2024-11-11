@@ -79,6 +79,34 @@
       }
     }
   },
+  "AddressPage": {
+    "providersSection": {
+      "title": "Teenusepakkujad aadressi järgi:"
+    },
+    "packagesSection": {
+      "title": "Paketid"
+    },
+    "filters": {
+      "all": "Kõik",
+      "internet": "Ainult internet",
+      "internet-tv": "Internet + TV"
+    },
+    "columns": {
+      "package": "Pakett",
+      "technology": "Tehnoloogia",
+      "speed": "Kiirus",
+      "channels": "Kanalid",
+      "price": "Hind"
+    },
+    "measurementUnits": {
+      "speed": "mbit/s",
+      "channels": "kanalit",
+      "month": "kuus"
+    },
+    "buttons": {
+      "connect": "Ühendada"
+    }
+  },
   "NotFoundPage": {
     "title": "Ooops!",
     "description": "Veebileht, mida otsite, pole saadaval.<br></br>Veenduge, et teie järgis õiget linki, või minge avalehele.",

@@ -79,6 +79,34 @@
       }
     }
   },
+  "AddressPage": {
+    "providersSection": {
+      "title": "Провайдеры по адресу:"
+    },
+    "packagesSection": {
+      "title": "Пакеты"
+    },
+    "filters": {
+      "all": "Все",
+      "internet": "Только интернет",
+      "internet-tv": "Интернет + ТВ"
+    },
+    "columns": {
+      "package": "Пакет",
+      "technology": "Технология",
+      "speed": "Скорость",
+      "channels": "Каналы",
+      "price": "Цена"
+    },
+    "measurementUnits": {
+      "speed": "мбит/c",
+      "channels": "каналов",
+      "month": "месяц"
+    },
+    "buttons": {
+      "connect": "Подключиться"
+    }
+  },
   "NotFoundPage": {
     "title": "Упс!",
     "description": "Страница, которую вы ищете, недоступна.<br></br>Убедитесь, что вы перешли по правильной ссылке, или перейдите на домашнюю страницу.",
