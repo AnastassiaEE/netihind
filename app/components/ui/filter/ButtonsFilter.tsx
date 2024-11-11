@@ -17,7 +17,7 @@ export default function ButtonsFilter({ filters }: { filters: { [key: string]: b
                     handleClick={handleFilterClick}
                     variant={usedFilters[filter] ? 'primary' : 'secondary'}
                     size={isSmallScreen ? 'sm' : 'lg'}
-                    className="!w-max rounded-md uppercase"
+                    className="rounded-md uppercase"
                     name={filter}
                 >
                     {t(`filters.${filter}`)}

@@ -2,13 +2,9 @@ import classNames from 'classnames';
 
 const baseClasses = classNames(
   'font-semibold',
-  'text-center',
   'border',
   'rounded-md',
-  'transition all',
-  'flex',
-  'items-center',
-  'justify-center',
+  'transition-all',
 );
 
 const variants: { [key: string]: string } = {
