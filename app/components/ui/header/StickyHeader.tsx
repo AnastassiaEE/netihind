@@ -1,15 +1,11 @@
 'use client';
 
 import secondaryLogo from '@/public/images/gradientsecondarylogo.svg';
-//import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
-//import FavoriteIcon from '@mui/icons-material/Favorite';
 import useScrollPosition from '@/hooks/useScrollPosition';
 import useSidebar from '@/hooks/useSidebar';
 import ConsultationButton from '@/components/ui/buttons/ConsultationButton';
 import Hamburger from './Hamburger';
 import Logo from '@/components/ui/Logo';
-//import HeaderItems from './HeaderItems';
-//import HeaderItem from './HeaderItem';
 import Sidebar from './Sidebar';
 import Overlay from '@/components/ui/Overlay';
 import classNames from 'classnames';
@@ -39,7 +35,7 @@ export default function StickyHeader({ type = 'desktop' }: { type?: 'desktop' | 
         toolbarVisibility,
     );
 
-    const buttonsWrapperClasses = classNames('flex flex-wrap items-center', {
+    const buttonsWrapperClasses = classNames('flex flex-wrap', {
         'gap-10': type === 'desktop',
         'gap-6': type === 'mobile',
     });
@@ -51,10 +47,6 @@ export default function StickyHeader({ type = 'desktop' }: { type?: 'desktop' | 
                     <Logo src={secondaryLogo} sizeClass="w-12" />
                     <div className={buttonsWrapperClasses}>
                         <ConsultationButton type={type} />
-                        {/* <HeaderItems>
-                            <HeaderItem href="#" Icon={FavoriteIcon} />
-                            <HeaderItem href="#" Icon={SignalCellularAltIcon} />
-                        </HeaderItems> */}
                         <Hamburger handleClick={() => handleSidebar(true)}></Hamburger>
                     </div>
                 </div>

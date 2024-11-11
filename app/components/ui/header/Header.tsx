@@ -12,12 +12,8 @@ export default function Header({ variant = 'secondary' }: { variant?: 'primary' 
 
     return (
         <header className={headerClasses}>
-            <div className="max-md:hidden">
-                <DesktopHeader />
-            </div>
-            <div className="md:hidden">
-                <MobileHeader />
-            </div>
+            <DesktopHeader />
+            <MobileHeader />
         </header>
     );
 }
