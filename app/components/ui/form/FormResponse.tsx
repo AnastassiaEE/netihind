@@ -1,5 +1,4 @@
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import ErrorIcon from '@mui/icons-material/Error';
+import { CheckCircle, Error } from '@mui/icons-material';
 import { ReactNode } from 'react';
 import classNames from 'classnames';
 
@@ -17,8 +16,8 @@ export default function FormResponse({
 
     return (
         <div className={responseClasses}>
-            {type === 'success' && <CheckCircleIcon className="mr-2" />}
-            {type === 'error' && <ErrorIcon className="mr-2" />}
+            {type === 'success' && <CheckCircle className="mr-2" />}
+            {type === 'error' && <Error className="mr-2" />}
             {children}
         </div>
     );

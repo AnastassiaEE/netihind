@@ -1,13 +1,11 @@
-import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
-import EmailIcon from '@mui/icons-material/Email';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import CircleContactIcon from '@/components/ui/icons/CircleContactIcon';
-import { H2 } from '../headings/RestPageHeadings';
+import { LocalPhone, Email, LocationOn } from '@mui/icons-material';
+import ContactCircle from '@/components/ui/icons/ContactCircle';
+import { H2 } from '@/components/ui/headings/RestPageHeadings';
 
 const icons = {
-    email: EmailIcon,
-    phone: LocalPhoneIcon,
-    address: LocationOnIcon,
+    email: Email,
+    phone: LocalPhone,
+    address: LocationOn,
 };
 
 export default function ContactCard({
@@ -30,7 +28,7 @@ export default function ContactCard({
     return (
         <div className="flex p-6 rounded-md border border-muted-light hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
             <div>
-                <CircleContactIcon Icon={icons[type]} />
+                <ContactCircle Icon={icons[type]} />
             </div>
             <div className="pl-6">
                 <H2 className="!mb-3">{title}</H2>

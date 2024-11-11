@@ -1,11 +1,9 @@
-import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
-import EmailIcon from '@mui/icons-material/Email';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { Email, LocalPhone, LocationOn } from '@mui/icons-material';
 
 const icons = {
-    email: EmailIcon,
-    phone: LocalPhoneIcon,
-    address: LocationOnIcon,
+    email: Email,
+    phone: LocalPhone,
+    address: LocationOn,
 };
 
 export default function ContactLink({

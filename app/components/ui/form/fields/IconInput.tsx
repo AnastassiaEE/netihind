@@ -1,5 +1,5 @@
 import { SvgIconComponent } from '@mui/icons-material';
-import Input from './Input';
+import Input from '@/components/ui/form/fields/Input';
 import classNames from 'classnames';
 import { ForwardedRef, forwardRef } from 'react';
 

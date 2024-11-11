@@ -1,8 +1,7 @@
 'use client';
 
 import FormResponse from '@/components/ui/form/FormResponse';
-import LoopIcon from '@mui/icons-material/Loop';
-import AddIcon from '@mui/icons-material/Add';
+import { Loop, Add } from '@mui/icons-material';
 import IconInput from '@/components/ui/form//fields/IconInput';
 import Checkbox from '@/components/ui/form//fields/Checkbox';
 import Textarea from '@/components/ui/form/fields/Textarea';
@@ -88,7 +87,7 @@ export default function RequestForm() {
                         value={values.phone as string}
                         isValid={errors.phone === ''}
                         error={errors.phone}
-                        icon={{ Icon: AddIcon, isVisible: true }}
+                        icon={{ Icon: Add, isVisible: true }}
                     />
                 </div>
                 <div className="grow mb-6">
@@ -141,7 +140,7 @@ export default function RequestForm() {
             <Button type="submit" size="lg" disabled={isSending} className="w-full">
                 {isSending ? (
                     <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-                        <LoopIcon />
+                        <Loop />
                     </svg>
                 ) : (
                     <>{'buttons.send'}</>

@@ -1,5 +1,5 @@
 import { SvgIconComponent } from '@mui/icons-material';
-import Button from './Button';
+import Button from '@/components/ui/form/buttons/Button';
 import classNames from 'classnames';
 
 export default function IconButton({
