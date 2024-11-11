@@ -1,4 +1,4 @@
-import PackageCard from './PackageCard';
+import PackageCard from '@/components/ui/packages/PackageCard';
 
 export default function PackagesList({
     packages,

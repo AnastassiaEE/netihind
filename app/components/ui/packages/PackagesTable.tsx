@@ -1,13 +1,17 @@
-import ContactSupportIcon from '@mui/icons-material/ContactSupport';
+import {
+    AllInclusive,
+    ArrowCircleDown,
+    ArrowCircleUp,
+    ContactSupport,
+    InfoOutlined,
+} from '@mui/icons-material';
 import PackageTableCell from '@/components/ui/packages/PackageTableCell';
 import PackageFeature from '@/components/ui/packages/PackageFeature';
+import PackageFeatureValue from '@/components/ui/packages/PackageFeatureValue';
 import Button from '@/components/ui/form/buttons/Button';
-import Image from 'next/image';
 import Popover from '@/components/ui/Popover';
-import InfoOutlined from '@mui/icons-material/InfoOutlined';
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import PackageFeatureValue from './PackageFeatureValue';
-import { AllInclusive, ArrowCircleDown, ArrowCircleUp } from '@mui/icons-material';
 import React from 'react';
 import classNames from 'classnames';
 
@@ -99,7 +103,7 @@ export default function PackagesTable({
                             </PackageFeature>
                             <div className="flex mt-3">
                                 <Button variant="secondary" className="!rounded-r-none">
-                                    <ContactSupportIcon />
+                                    <ContactSupport />
                                 </Button>
                                 <Button className="!rounded-l-none">{t('buttons.connect')}</Button>
                             </div>

@@ -1,5 +1,4 @@
-import classNames from 'classnames';
-import PackageFeatureUnit from './PackageFeatureUnit';
+import PackageFeatureUnit from '@/components/ui/packages/PackageFeatureUnit';
 
 export default function PackageFeature({
     children,

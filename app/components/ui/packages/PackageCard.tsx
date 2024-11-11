@@ -1,13 +1,18 @@
-import ContactSupportIcon from '@mui/icons-material/ContactSupport';
-import Button from '../form/buttons/Button';
-import Image from 'next/image';
-import PackageFeature from './PackageFeature';
-import PackageFeatureValue from './PackageFeatureValue';
-import Popover from '../Popover';
-import { AllInclusive, ArrowCircleDown, ArrowCircleUp, InfoOutlined } from '@mui/icons-material';
+import {
+    AllInclusive,
+    ArrowCircleDown,
+    ArrowCircleUp,
+    InfoOutlined,
+    ContactSupport,
+} from '@mui/icons-material';
+import PackageFeature from '@/components/ui/packages/PackageFeature';
+import PackageFeatureValue from '@/components/ui/packages/PackageFeatureValue';
+import PackageCardRow from '@/components/ui/packages/PackageCardRow';
+import Button from '@/components/ui/form/buttons/Button';
+import Popover from '@/components/ui/Popover';
 import { useTranslations } from 'next-intl';
 import classNames from 'classnames';
-import PackageCardRow from './PackageCardRow';
+import Image from 'next/image';
 
 export default function PackageCard({
     pack,
@@ -89,11 +94,9 @@ export default function PackageCard({
             </div>
             <div className="flex">
                 <Button variant="secondary" className="!rounded-tl-none !rounded-r-none grow">
-                    <ContactSupportIcon />
+                    <ContactSupport />
                 </Button>
-                <Button className="!rounded-tr-none !rounded-l-none grow">
-                    {t('buttons.connect')}
-                </Button>
+                <Button className="!rounded-tr-none !rounded-l-none grow">{t('buttons.connect')}</Button>
             </div>
         </div>
     );
