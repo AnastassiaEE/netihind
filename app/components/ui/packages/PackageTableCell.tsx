@@ -7,7 +7,7 @@ const getCellBg = (index: number) => {
     return '';
 };
 
-export default function TariffTableCell({
+export default function PackageTableCell({
     index = 1,
     className,
     children,
@@ -20,7 +20,6 @@ export default function TariffTableCell({
         'flex',
         'justify-center',
         'items-center',
-        'break-word',
         'py-5',
         getCellBg(index),
         {
