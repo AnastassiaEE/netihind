@@ -3,10 +3,18 @@ import { useLocale } from 'next-intl';
 import { useRouter } from '@/i18n/routing';
 import { useEffect, useRef, useState } from 'react';
 import slugify from 'slugify';
+import { getAddressSlug } from '@/utils/addressSlugifier';
 
 export default function useMaaAmetAddressForm() {
   const isWidgetAdded = useRef(false);
-  const [address, setAddress] = useState({ full: '', streetNr: '', apartment: undefined });
+  const [address, setAddress] = useState({
+    full: '',
+    county: '',
+    city: '',
+    street: '',
+    streetNr: '',
+    apartment: undefined,
+  });
   const [error, setError] = useState('');
   const [isScriptLoaded, setIsScriptLoaded] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -28,11 +36,25 @@ export default function useMaaAmetAddressForm() {
   };
   const getAddress = (e: Event) => {
     var info = (e as CustomEvent).detail[0];
-    setAddress({ full: info.aadress, streetNr: info.aadress_nr, apartment: info.kort_nr });
+    setAddress({
+      full: info.aadress,
+      county: info.maakond,
+      city: info.omavalitsus,
+      street: info.liikluspind,
+      streetNr: info.aadress_nr,
+      apartment: info.kort_nr,
+    });
   };
 
   const removeAddress = () => {
-    setAddress({ full: '', streetNr: '', apartment: undefined });
+    setAddress({
+      full: '',
+      county: '',
+      city: '',
+      street: '',
+      streetNr: '',
+      apartment: undefined,
+    });
   };
 
   const removeErrors = () => {
@@ -77,12 +99,8 @@ export default function useMaaAmetAddressForm() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isFormValid()) {
-      const slug = slugify(address.full, {
-        lower: true,
-        locale: 'et',
-        remove: /[*+~.,()'"!:@]/g,
-      });
-      setCookie('ADDRESS', address.full);
+      const slug = getAddressSlug(address.full);
+      setCookie('ADDRESS', JSON.stringify(address));
       router.push({
         pathname: '/address/[slug]',
         params: { slug: slug },

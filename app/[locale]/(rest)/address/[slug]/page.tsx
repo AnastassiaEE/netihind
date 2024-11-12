@@ -4,7 +4,8 @@ import { getCookie, hasCookie } from 'cookies-next';
 import { cookies } from 'next/headers';
 import { notFound } from 'next/navigation';
 import AddressTitleSection from '@/components/sections/address/AddressTitleSection';
-import slugify from 'slugify';
+import { getAddressCookieValues } from '@/utils/addressCookieHelper';
+import { getAddressSlug } from '@/utils/addressSlugifier';
 
 export default async function PersonalAddress({
     params: { slug },
@@ -14,24 +15,20 @@ export default async function PersonalAddress({
     searchParams: { [key: string]: string };
 }) {
     if (!hasCookie('ADDRESS', { cookies })) notFound();
-
-    const cookie = getCookie('ADDRESS', { cookies }) as string;
-    const cookieSlug = slugify(cookie, {
-        lower: true,
-        locale: 'et',
-        remove: /[*+~.,()'"!:@]/g,
-    });
-    if (slug !== cookieSlug) notFound();
+    const cookieString = getCookie('ADDRESS', { cookies }) as string;
+    const { fullAddress } = getAddressCookieValues(cookieString)
+    const addressSlug = getAddressSlug(fullAddress);
+    if (slug !== addressSlug) notFound();
 
     const filters: { [key: string]: boolean } = { all: false, internet: false, 'internet-tv': false };
-    const activeFilter = !Object.keys(filters).includes(searchParams.filter)
-        ? 'all'
-        : searchParams.filter;
+    const activeFilter = Object.keys(filters).includes(searchParams.filter)
+        ? searchParams.filter
+        : 'all';
     filters[activeFilter] = true;
 
     return (
         <>
-            <AddressTitleSection address={cookie as string} />
+            <AddressTitleSection address={fullAddress} />
             <AddressProvidersSection />
             <AddressPackagesSection searchParams={{ filters: filters }} />
         </>
