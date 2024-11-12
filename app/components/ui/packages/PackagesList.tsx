@@ -1,12 +1,6 @@
 import PackageCard from '@/components/ui/packages/PackageCard';
 
-export default function PackagesList({
-    packages,
-    filter,
-}: {
-    packages: { [key: string]: any }[];
-    filter: string;
-}) {
+export default function PackagesList({ packages }: { packages: { [key: string]: any }[] }) {
     return (
         <div className="md:hidden">
             {packages.map((pack) => (

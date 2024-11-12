@@ -162,6 +162,10 @@
       "consultation": "Tasuta konsultatsioon"
     }
   },
+  "Errors": {
+    "somethingWentWrong": "Midagi läks valesti. Proovige uuesti.",
+    "noPackages": "Teie aadressilt ei leitud midagi."
+  },
   "SEO": {
     "website": {
       "name": "Netihind.ee - sõltumatu internetipaketide võrdlusportaal.",

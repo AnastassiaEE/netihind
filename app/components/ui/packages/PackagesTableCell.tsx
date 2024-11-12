@@ -7,7 +7,7 @@ const getCellBg = (index: number) => {
     return '';
 };
 
-export default function PackageTableCell({
+export default function PackagesTableCell({
     index = 1,
     className,
     children,

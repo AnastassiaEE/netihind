@@ -5,7 +5,7 @@ import {
     ContactSupport,
     InfoOutlined,
 } from '@mui/icons-material';
-import PackageTableCell from '@/components/ui/packages/PackageTableCell';
+import PackagesTableCell from '@/components/ui/packages/PackagesTableCell';
 import PackageFeature from '@/components/ui/packages/PackageFeature';
 import PackageFeatureValue from '@/components/ui/packages/PackageFeatureValue';
 import Button from '@/components/ui/form/buttons/Button';
@@ -35,13 +35,13 @@ export default function PackagesTable({
     return (
         <div className={tableClasses}>
             {columns.map((column) => (
-                <PackageTableCell key={column} className="font-extrabold rounded-l-md">
+                <PackagesTableCell key={column} className="font-extrabold rounded-l-md">
                     {t(`columns.${column}`)}
-                </PackageTableCell>
+                </PackagesTableCell>
             ))}
             {packages.map((pack, index) => (
                 <React.Fragment key={pack['package_id']}>
-                    <PackageTableCell index={index} className="rounded-l-md">
+                    <PackagesTableCell index={index} className="rounded-l-md">
                         <PackageFeature>
                             <div className="relative h-10 w-14 self-center">
                                 <Image
@@ -54,8 +54,8 @@ export default function PackagesTable({
                             <span className="font-medium">{pack['internet_package_name']}</span>
                             <span className="text-xs text-muted">{pack['provider_name']}</span>
                         </PackageFeature>
-                    </PackageTableCell>
-                    <PackageTableCell index={index}>
+                    </PackagesTableCell>
+                    <PackagesTableCell index={index}>
                         <PackageFeature>
                             <div>
                                 <PackageFeatureValue className="mr-2">
@@ -64,8 +64,8 @@ export default function PackagesTable({
                                 <Popover IconToInteract={InfoOutlined} content={pack['technology_description']} />
                             </div>
                         </PackageFeature>
-                    </PackageTableCell>
-                    <PackageTableCell index={index}>
+                    </PackagesTableCell>
+                    <PackagesTableCell index={index}>
                         <PackageFeature unit={t('measurementUnits.speed')}>
                             <div>
                                 <PackageFeatureValue className="mr-2">
@@ -86,15 +86,15 @@ export default function PackagesTable({
                                 </PackageFeatureValue>
                             </div>
                         </PackageFeature>
-                    </PackageTableCell>
+                    </PackagesTableCell>
                     {columns.includes('channels') && (
-                        <PackageTableCell index={index}>
+                        <PackagesTableCell index={index}>
                             <PackageFeature unit={t('measurementUnits.channels')}>
                                 <PackageFeatureValue>{pack['channels_amount']}</PackageFeatureValue>
                             </PackageFeature>
-                        </PackageTableCell>
+                        </PackagesTableCell>
                     )}
-                    <PackageTableCell index={index} className="rounded-r-md">
+                    <PackagesTableCell index={index} className="rounded-r-md">
                         <div className="flex flex-col items-center">
                             <PackageFeature unit={`€ / ${t('measurementUnits.month')}`}>
                                 <PackageFeatureValue className="!text-2xl bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent">
@@ -108,7 +108,7 @@ export default function PackagesTable({
                                 <Button className="!rounded-l-none">{t('buttons.connect')}</Button>
                             </div>
                         </div>
-                    </PackageTableCell>
+                    </PackagesTableCell>
                 </React.Fragment>
             ))}
         </div>
