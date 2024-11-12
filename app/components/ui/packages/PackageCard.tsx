@@ -73,7 +73,7 @@ export default function PackageCard({
                                 {pack['upload_speed'].trim().toLowerCase() === 'piiramatu' ? (
                                     <AllInclusive />
                                 ) : (
-                                    pack['download_speed']
+                                    pack['upload_speed']
                                 )}
                             </PackageFeatureValue>
                         </div>
