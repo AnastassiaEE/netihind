@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname, routing } from '@/i18n/routing';
-import Language from './Language';
+import Language from '@/components/ui/language-switcher/Language';
 import { useLocale } from 'next-intl';
 import { useParams } from 'next/navigation';
 

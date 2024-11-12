@@ -1,6 +1,6 @@
-import BottomHeader from './BottomHeader';
-import StickyHeader from './StickyHeader';
-import TopHeader from './TopHeader';
+import BottomHeader from '@/components/ui/header/BottomHeader';
+import StickyHeader from '@/components/ui/header/StickyHeader';
+import TopHeader from '@/components/ui/header/TopHeader';
 
 export default function DesktopHeader() {
     return (

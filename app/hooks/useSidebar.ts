@@ -1,4 +1,4 @@
-import useBoolean from './useBoolean';
+import useBoolean from '@/hooks/useBoolean';
 
 export default function useSidebar() {
   const {

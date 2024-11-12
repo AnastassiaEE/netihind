@@ -1,4 +1,4 @@
-import NavigationItem from './navigation/NavigationItem';
+import NavigationItem from '@/components/ui/navigation/NavigationItem';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 export default function Copyright({

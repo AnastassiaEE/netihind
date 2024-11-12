@@ -1,4 +1,4 @@
-import useScrollPosition from './useScrollPosition';
+import useScrollPosition from '@/hooks/useScrollPosition';
 
 export default function useScrollTopButton() {
   const y = useScrollPosition();

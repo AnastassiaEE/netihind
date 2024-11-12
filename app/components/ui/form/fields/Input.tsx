@@ -1,6 +1,6 @@
 import { ForwardedRef } from 'react';
-import FieldError from './FieldError';
-import FieldLabel from './FieldLabel';
+import FieldError from '@/components/ui/form/fields/FieldError';
+import FieldLabel from '@/components/ui/form/fields/FieldLabel';
 import classNames from 'classnames';
 
 const baseClasses = classNames(

@@ -1,4 +1,4 @@
-import { fetchAPI } from './wpFetch';
+import { fetchAPI } from '@/lib/wpFetch';
 
 export async function getPosts(language?: string) {
   const data = await fetchAPI(

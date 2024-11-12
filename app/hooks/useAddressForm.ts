@@ -3,9 +3,9 @@ import {
   getApartment,
   removeExtraChars,
   removeExtraSpaces,
-} from '../utils/addressFormatter';
+} from '@/utils/addressFormatter';
 import { useEffect, useRef, useState } from 'react';
-import useCsvParser from './useCsvParser';
+import useCsvParser from '@/hooks/useCsvParser';
 import { useRouter } from 'next/navigation';
 
 export default function useAddressForm() {

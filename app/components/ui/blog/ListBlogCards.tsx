@@ -1,4 +1,4 @@
-import ListBlogCard from './ListBlogCard';
+import ListBlogCard from '@/components/ui/blog/ListBlogCard';
 
 export default function ListBlogCards({ posts }: { posts?: { [key: string]: any }[] }) {
     return (

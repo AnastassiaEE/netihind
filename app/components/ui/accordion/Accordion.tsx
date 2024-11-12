@@ -1,4 +1,4 @@
-import AccordionItem from './AccordionItem';
+import AccordionItem from '@/components/ui/accordion/AccordionItem';
 import React from 'react';
 import Check from '@/components/ui/icons/Check';
 

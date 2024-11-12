@@ -2,7 +2,7 @@ import Image, { StaticImageData } from 'next/image';
 import { Link } from '@/i18n/routing';
 import PostDate from '@/components/ui/blog/PostDate';
 import getFormattedSlug from '@/utils/slugFormatter';
-import { H2 } from '../headings/RestPageHeadings';
+import { H2 } from '@/components/ui/headings/RestPageHeadings';
 
 export default function ListBlogCard({
     href,

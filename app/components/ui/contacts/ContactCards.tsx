@@ -1,5 +1,5 @@
 import React from 'react';
-import ContactCard from './ContactCard';
+import ContactCard from '@/components/ui/contacts/ContactCard';
 
 export default function ContactCards({
     contacts,

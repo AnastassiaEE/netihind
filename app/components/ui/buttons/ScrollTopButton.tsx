@@ -1,7 +1,7 @@
 'use client';
 
 import classNames from 'classnames';
-import CircleArrow from '../icons/CircleArrow';
+import CircleArrow from '@/components/ui/icons/CircleArrow';
 import useScrollTopButton from '@/hooks/useScrollTopButton';
 
 const arrowClasses = classNames('bg-gray-900/25', 'text-white', '!w-11', '!h-11');

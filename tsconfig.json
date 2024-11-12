@@ -26,6 +26,7 @@
       "@/utils/*": ["app/utils/*"],
       "@/markdown/*": ["app/markdown/*"],
       "@/locales/*": ["app/locales/*"],
+      "@/lib/*": ["app/lib/*"],
       "@/i18n/*": ["./i18n/*"],
       "@/styles/*": ["app/styles/*"],
       "@/app/*": ["app/*"],

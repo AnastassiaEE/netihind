@@ -1,4 +1,4 @@
-import Arrow from './Arrow';
+import Arrow from '@/components/ui/icons/Arrow';
 import classNames from 'classnames';
 
 export default function CircleArrow({ direction, style }: { direction: string; style?: string }) {

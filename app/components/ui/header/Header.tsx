@@ -1,5 +1,5 @@
-import DesktopHeader from './DesktopHeader';
-import MobileHeader from './MobileHeader';
+import DesktopHeader from '@/components/ui/header/DesktopHeader';
+import MobileHeader from '@/components/ui/header/MobileHeader';
 import classNames from 'classnames';
 
 const variants = {

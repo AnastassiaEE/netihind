@@ -2,9 +2,9 @@
 
 import secondaryLogo from '@/public/images/gradientsecondarylogo.svg';
 import ConsultationButton from '@/components/ui/buttons/ConsultationButton';
-import StickyHeader from './StickyHeader';
-import Hamburger from './Hamburger';
-import Sidebar from './Sidebar';
+import StickyHeader from '@/components/ui/header/StickyHeader';
+import Hamburger from '@/components/ui/header/Hamburger';
+import Sidebar from '@/components/ui/header/Sidebar';
 import Overlay from '@/components/ui/Overlay';
 import useSidebar from '@/hooks/useSidebar';
 import Logo from '@/components/ui/Logo';

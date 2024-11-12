@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import useBoolean from './useBoolean';
+import useBoolean from '@/hooks/useBoolean';
 
 export default function useSearcharbar() {
   const { value: isFocused, setTrue: setFocused, setFalse: setNotFocused } = useBoolean(false);

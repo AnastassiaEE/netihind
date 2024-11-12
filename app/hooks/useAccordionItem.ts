@@ -1,5 +1,5 @@
 import { useId, useRef } from 'react';
-import useBoolean from './useBoolean';
+import useBoolean from '@/hooks/useBoolean';
 
 export default function useAccordionItem() {
   const { value: isOpened, toggle } = useBoolean(false);

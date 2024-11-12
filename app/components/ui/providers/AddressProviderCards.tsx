@@ -1,7 +1,7 @@
 'use client';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import AddressProviderCard from './AddressProviderCard';
+import AddressProviderCard from '@/components/ui/providers/AddressProviderCard';
 import 'swiper/css/bundle';
 import { Pagination } from 'swiper/modules';
 

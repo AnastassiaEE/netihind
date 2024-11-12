@@ -1,7 +1,7 @@
 import { getPosts } from '@/app/lib/wpPosts';
 import { Suspense } from 'react';
-import PingLoader from '../loaders/PingLoader';
-import NothingToPreview from '../NothingToPreview';
+import PingLoader from '@/components/ui/loaders/PingLoader';
+import NothingToPreview from '@/components/ui/NothingToPreview';
 import React from 'react';
 import { useTranslations } from 'next-intl';
 import { getLocale } from 'next-intl/server';

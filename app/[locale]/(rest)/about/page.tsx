@@ -8,7 +8,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { formatISO } from 'date-fns';
 import { openGraphLogo, readAction, website } from '@/app/shared-metadata';
-import { metadataBaseUrl } from '../../layout';
+import { metadataBaseUrl } from '@/app/[locale]/layout';
 
 export const revalidate = 3600;
 

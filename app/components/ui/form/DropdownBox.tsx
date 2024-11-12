@@ -1,5 +1,5 @@
 import useDropdownBox from '@/hooks/useDropdownBox';
-import DropdownBoxItem from './DropdownBoxItem';
+import DropdownBoxItem from '@/components/ui/form/DropdownBoxItem';
 
 export default function DropdownBox({
     searchbar,

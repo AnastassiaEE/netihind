@@ -1,4 +1,4 @@
-import Step from './Step';
+import Step from '@/components/ui/steps/Step';
 import classNames from 'classnames';
 
 const rightLineStyle = classNames(

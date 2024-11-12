@@ -4,9 +4,9 @@ import secondaryLogo from '@/public/images/gradientsecondarylogo.svg';
 import useScrollPosition from '@/hooks/useScrollPosition';
 import useSidebar from '@/hooks/useSidebar';
 import ConsultationButton from '@/components/ui/buttons/ConsultationButton';
-import Hamburger from './Hamburger';
+import Hamburger from '@/components/ui/header/Hamburger';
 import Logo from '@/components/ui/Logo';
-import Sidebar from './Sidebar';
+import Sidebar from '@/components/ui/header/Sidebar';
 import Overlay from '@/components/ui/Overlay';
 import classNames from 'classnames';
 
