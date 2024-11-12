@@ -1,4 +1,3 @@
-import PingLoader from '@/components/ui/loaders/PingLoader';
 import { Suspense } from 'react';
 import { getPage } from '@/app/lib/wpPages';
 import { notFound } from 'next/navigation';
@@ -7,6 +6,7 @@ import SectionLayout from '@/layouts/SectionLayout';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import components from '@/mdx-components';
 import { setRequestLocale } from 'next-intl/server';
+import PageLoader from '@/components/ui/loaders/PageLoader';
 
 export const revalidate = 3600;
 
@@ -23,10 +23,10 @@ export default async function Policy({ params: { locale } }: { params: { locale:
         notFound();
     }
     return (
-        <Suspense fallback={<PingLoader />}>
-            <SectionLayout>
+        <SectionLayout>
+            <Suspense fallback={<PageLoader />}>
                 <MDXRemote source={page.content} components={components as {}} options={options} />
-            </SectionLayout>
-        </Suspense>
+            </Suspense>
+        </SectionLayout>
     );
 }
