@@ -1,4 +1,3 @@
-import PingLoader from '@/components/ui/loaders/PingLoader';
 import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { getPage } from '@/app/lib/wpPages';
@@ -9,6 +8,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { formatISO } from 'date-fns';
 import { openGraphLogo, readAction, website } from '@/app/shared-metadata';
 import { metadataBaseUrl } from '@/app/[locale]/layout';
+import PageLoader from '@/components/ui/loaders/PageLoader';
 
 export const revalidate = 3600;
 
@@ -56,7 +56,7 @@ export default async function About({ params: { locale } }: { params: { locale: 
                         '@type': 'ListItem',
                         position: 1,
                         name: t('breadcrumbs.home.name'),
-                        item: new URL(t('homePage.url'), metadataBaseUrl).toString()
+                        item: new URL(t('homePage.url'), metadataBaseUrl).toString(),
                     },
                     {
                         '@type': 'ListItem',
@@ -79,11 +79,11 @@ export default async function About({ params: { locale } }: { params: { locale: 
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
-            <Suspense fallback={<PingLoader />}>
-                <SectionLayout>
+            <SectionLayout>
+                <Suspense fallback={<PageLoader />}>
                     <MDXRemote source={page.content} components={components as {}} />
-                </SectionLayout>
-            </Suspense>
+                </Suspense>
+            </SectionLayout>
         </>
     );
 }
