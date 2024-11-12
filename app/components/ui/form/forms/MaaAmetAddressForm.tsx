@@ -3,9 +3,9 @@
 import Button from '@/components/ui/form/buttons/Button';
 import '@/styles/addressForm.css';
 import FieldError from '@/components/ui/form/fields/FieldError';
-import PingLoader from '@/components/ui/loaders/PingLoader';
 import { useTranslations } from 'next-intl';
 import useMaaAmetAddressForm from '@/hooks/UseMaaAmetAddressForm';
+import AddressFormLoader from '@/components/ui/loaders/AddressFormLoader';
 
 export default function MaaAmetAddressForm() {
     const t = useTranslations('Form');
@@ -14,7 +14,7 @@ export default function MaaAmetAddressForm() {
 
     return (
         <>
-            {!isScriptLoaded && isLoading && <PingLoader sizeClass="w-10 h-10" />}
+            {!isScriptLoaded && isLoading && <AddressFormLoader />}
             {!isScriptLoaded && !isLoading && (
                 <p className="text-lg text-error">{t('errors.formIsNotLoaded')}</p>
             )}
