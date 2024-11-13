@@ -10,18 +10,20 @@ import PackageFeatureValue from '@/components/ui/packages/PackageFeatureValue';
 import PackageCardRow from '@/components/ui/packages/PackageCardRow';
 import Button from '@/components/ui/form/buttons/Button';
 import Popover from '@/components/ui/Popover';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import classNames from 'classnames';
 import Image from 'next/image';
 
 export default function PackageCard({
     pack,
     className,
+
 }: {
     pack: { [key: string]: any };
     className?: string;
 }) {
     const t = useTranslations('AddressPage');
+    const locale = useLocale();
     const cardClasses = classNames(
         'bg-white',
         'text-muted-dark',
@@ -50,12 +52,11 @@ export default function PackageCard({
                         <span className="text-xs text-muted">{pack['provider_name']}</span>
                     </PackageFeature>
                 </PackageCardRow>
-
                 <PackageCardRow>
                     <PackageFeature>
                         <div>
                             <PackageFeatureValue className="mr-2">{pack['technology_abbr']}</PackageFeatureValue>
-                            <Popover IconToInteract={InfoOutlined} content={pack['technology_description']} />
+                            <Popover IconToInteract={InfoOutlined} content={pack['technology_description'][locale]} />
                         </div>
                     </PackageFeature>
                     <PackageFeature unit={t('measurementUnits.speed')}>

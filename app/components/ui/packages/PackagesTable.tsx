@@ -11,7 +11,7 @@ import PackageFeatureValue from '@/components/ui/packages/PackageFeatureValue';
 import Button from '@/components/ui/form/buttons/Button';
 import Popover from '@/components/ui/Popover';
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import React from 'react';
 import classNames from 'classnames';
 
@@ -23,7 +23,7 @@ export default function PackagesTable({
     filter: string;
 }) {
     const t = useTranslations('AddressPage');
-
+    const locale = useLocale();
     const tableClasses = classNames('text-muted-dark', 'grid', 'w-full', 'max-md:hidden', {
         'grid-cols-packages-4': filter === 'internet',
         'grid-cols-packages-5': filter !== 'internet',
@@ -61,7 +61,7 @@ export default function PackagesTable({
                                 <PackageFeatureValue className="mr-2">
                                     {pack['technology_abbr']}
                                 </PackageFeatureValue>
-                                <Popover IconToInteract={InfoOutlined} content={pack['technology_description']} />
+                                <Popover IconToInteract={InfoOutlined} content={pack['technology_description'][locale]} />
                             </div>
                         </PackageFeature>
                     </PackagesTableCell>
