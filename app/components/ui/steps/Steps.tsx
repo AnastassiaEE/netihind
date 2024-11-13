@@ -39,10 +39,10 @@ const topLineStyle = classNames(
 
 export default function Steps({
     items,
-    t
+    t,
 }: {
     items: { title: string; description: string }[];
-    t: any
+    t: any;
 }) {
     const drawLine = (index: number) => {
         if (index === 1) {
@@ -63,7 +63,7 @@ export default function Steps({
                         index={index + 1}
                         title={t(item.title)}
                         description={t(item.description)}
-                        padding="max-md:py-6 md:px-4 lg:px-6"
+                        className="max-md:py-6 md:px-4 lg:px-6"
                         lines={drawLine(index + 1)}
                     ></Step>
                 );

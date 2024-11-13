@@ -5,25 +5,18 @@ export default function Step({
     title,
     description,
     lines,
-    padding,
+    className,
 }: {
     index: number;
-    title: string,
-    description: string,
+    title: string;
+    description: string;
     lines?: string;
-    padding?: string;
+    className?: string;
 }) {
-    const stepWrapperClasses = classNames(
-        'flex',
-        'md:flex-col',
-        'basis-0',
-        'grow',
-        'relative',
-        {
-            [padding as string]: padding,
-            [lines as string]: lines,
-        },
-    );
+    const stepWrapperClasses = classNames('flex', 'md:flex-col', 'basis-0', 'grow', 'relative', {
+        [className as string]: className,
+        [lines as string]: lines,
+    });
 
     return (
         <div className={stepWrapperClasses}>
