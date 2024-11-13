@@ -16,7 +16,7 @@ export default function SocialLink({
     href,
     className,
 }: {
-    type: string;
+    type: 'facebook' | 'x' | 'instagram' | 'linkedin' | 'youtube';
     href: string;
     className?: string;
 }) {
