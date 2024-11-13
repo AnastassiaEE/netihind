@@ -3,6 +3,7 @@ import { Link } from '@/i18n/routing';
 import PostDate from '@/components/ui/blog/PostDate';
 import getFormattedSlug from '@/utils/slugFormatter';
 import { H2 } from '@/components/ui/headings/RestPageHeadings';
+import classNames from 'classnames';
 
 export default function ListBlogCard({
     href,
@@ -11,6 +12,7 @@ export default function ListBlogCard({
     date,
     title,
     excerpt,
+    className,
 }: {
     href: string;
     src: StaticImageData;
@@ -18,9 +20,13 @@ export default function ListBlogCard({
     date: string;
     title: string;
     excerpt: string;
+    className?: string;
 }) {
+    const articleClasses = classNames('bg-white rounded-lg shadow-md group', {
+        [className as string]: className !== undefined,
+    });
     return (
-        <article className="bg-white rounded-lg shadow-md group">
+        <article className={articleClasses}>
             <Link
                 href={{
                     pathname: '/blog/[slug]',
