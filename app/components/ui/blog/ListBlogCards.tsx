@@ -5,6 +5,7 @@ export default function ListBlogCards({ posts }: { posts?: { [key: string]: any 
         <>
             {posts?.map((post) => (
                 <ListBlogCard
+                    key={post.title}
                     href={post.slug}
                     src={post.featuredImage.node.sourceUrl}
                     alt={post.featuredImage.node.altText}
