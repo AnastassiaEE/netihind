@@ -60,7 +60,6 @@
   },
   "BlogPage": {
     "title": "Blogi",
-    "postsNotFound": "Postitusi pole",
     "buttons": {
       "allPosts": "Kõik postitused"
     }
@@ -164,7 +163,8 @@
   },
   "Errors": {
     "somethingWentWrong": "Midagi läks valesti. Proovige uuesti.",
-    "noPackages": "Teie aadressilt ei leitud midagi."
+    "noPackages": "Teie aadressilt ei leitud midagi.",
+    "noPosts": "Postitusi pole."
   },
   "SEO": {
     "website": {
