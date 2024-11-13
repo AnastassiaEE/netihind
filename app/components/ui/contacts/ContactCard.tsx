@@ -1,6 +1,7 @@
 import { LocalPhone, Email, LocationOn } from '@mui/icons-material';
 import ContactCircle from '@/components/ui/icons/ContactCircle';
 import { H2 } from '@/components/ui/headings/RestPageHeadings';
+import classNames from 'classnames';
 
 const icons = {
     email: Email,
@@ -13,12 +14,20 @@ export default function ContactCard({
     title,
     description,
     contact,
+    className,
 }: {
     type: 'email' | 'phone' | 'address';
     title: string;
     description: string;
     contact: string;
+    className?: string;
 }) {
+    const cardClasses = classNames(
+        'flex p-6 rounded-md border border-muted-light hover:shadow-lg hover:-translate-y-1 transition-all duration-300',
+        {
+            [className as string]: className !== undefined,
+        },
+    );
     let href = 'javascript:void(0)';
     if (type === 'email') {
         href = `mailto:${contact}`;
@@ -26,7 +35,7 @@ export default function ContactCard({
         href = `tel:${contact}`;
     }
     return (
-        <div className="flex p-6 rounded-md border border-muted-light hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+        <div className={cardClasses}>
             <div>
                 <ContactCircle Icon={icons[type]} />
             </div>

@@ -13,14 +13,14 @@ export default function ContactCards({
         <>
             {contacts.map((contact) => {
                 return (
-                    <div key={contact.type} className="[&:not(:last-child)]:mb-3">
-                        <ContactCard
-                            type={contact.type}
-                            title={contact.data.title}
-                            description={contact.data.description}
-                            contact={contact.data.contact}
-                        />
-                    </div>
+                    <ContactCard
+                        key={contact.type}
+                        type={contact.type}
+                        title={contact.data.title}
+                        description={contact.data.description}
+                        contact={contact.data.contact}
+                        className="[&:not(:last-child)]:mb-3"
+                    />
                 );
             })}
         </>
