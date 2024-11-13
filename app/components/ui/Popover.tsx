@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
 import { SvgIconComponent } from '@mui/icons-material';
+import usePopover from '@/hooks/usePopover';
 
 export default function Popover({
     IconToInteract,
@@ -10,15 +10,7 @@ export default function Popover({
     IconToInteract: SvgIconComponent;
     content: string;
 }) {
-    const [isVisible, setIsVisible] = useState(false);
-
-    const handleMouseEnter = () => {
-        setIsVisible(true);
-    };
-
-    const handleMouseLeave = () => {
-        setIsVisible(false);
-    };
+    const { isVisible, handleMouseEnter, handleMouseLeave } = usePopover();
 
     return (
         <span className="relative align-text-bottom">
@@ -29,7 +21,7 @@ export default function Popover({
                 fontSize="small"
             />
             {isVisible && (
-                <span className="bg-white text-sm rounded-lg shadow-md absolute bottom-full left-6 w-64 p-3">
+                <span className="bg-white text-sm rounded-lg shadow-md absolute bottom-full left-6 w-60 p-3">
                     {content}
                 </span>
             )}
