@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 
-export default function SliderLogoCard({ image, alt }: { image: StaticImageData; alt: string }) {
+export default function SliderLogoCard({ image, alt }: { image: string; alt: string }) {
     const logoWrapperClasses = classNames(
         'h-28',
         'p-6',

@@ -1,4 +1,4 @@
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import PostDate from '@/components/ui/blog/PostDate';
 import getFormattedSlug from '@/utils/slugFormatter';
@@ -15,7 +15,7 @@ export default function ListBlogCard({
     className,
 }: {
     href: string;
-    src: StaticImageData;
+    src: string;
     alt: string;
     date: string;
     title: string;
