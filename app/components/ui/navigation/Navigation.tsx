@@ -26,7 +26,7 @@ export default function Navigation({
                         return (
                             <li>
                                 {React.cloneElement(child as React.ReactElement, {
-                                    padding: navigationItemClasses,
+                                    className: navigationItemClasses,
                                 })}
                             </li>
                         );
