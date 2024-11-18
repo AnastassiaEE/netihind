@@ -70,7 +70,7 @@ export default function PackagesTable({
                             <div>
                                 <PackageFeatureValue className="mr-2">
                                     <ArrowCircleDown fontSize="small" className="align-sub mr-1 text-success-dark" />
-                                    {pack['download_speed'].trim().toLowerCase() === 'piiramatu' ? (
+                                    {pack['download_speed'] === null ? (
                                         <AllInclusive />
                                     ) : (
                                         pack['download_speed']
@@ -78,7 +78,7 @@ export default function PackagesTable({
                                 </PackageFeatureValue>
                                 <PackageFeatureValue>
                                     <ArrowCircleUp fontSize="small" className="align-sub mr-1 text-error" />
-                                    {pack['upload_speed'].trim().toLowerCase() === 'piiramatu' ? (
+                                    {pack['upload_speed'] === null ? (
                                         <AllInclusive />
                                     ) : (
                                         pack['upload_speed']
