@@ -8,7 +8,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { formatISO } from 'date-fns';
 import { openGraphLogo, readAction, website } from '@/app/shared-metadata';
 import { metadataBaseUrl } from '@/app/[locale]/layout';
-import PageLoader from '@/components/ui/loaders/PageLoader';
+import PageSkeletonLoader from '@/components/ui/loaders/PageSkeletonLoader';
 
 export const revalidate = 3600;
 
@@ -80,7 +80,7 @@ export default async function About({ params: { locale } }: { params: { locale: 
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
             <SectionLayout>
-                <Suspense fallback={<PageLoader />}>
+                <Suspense fallback={<PageSkeletonLoader />}>
                     <MDXRemote source={page.content} components={components as {}} />
                 </Suspense>
             </SectionLayout>

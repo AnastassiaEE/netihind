@@ -6,7 +6,7 @@ import SectionLayout from '@/layouts/SectionLayout';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import components from '@/mdx-components';
 import { setRequestLocale } from 'next-intl/server';
-import PageLoader from '@/components/ui/loaders/PageLoader';
+import PageSkeletonLoader from '@/components/ui/loaders/PageSkeletonLoader';
 
 export const revalidate = 3600;
 
@@ -24,7 +24,7 @@ export default async function Policy({ params: { locale } }: { params: { locale:
     }
     return (
         <SectionLayout>
-            <Suspense fallback={<PageLoader />}>
+            <Suspense fallback={<PageSkeletonLoader />}>
                 <MDXRemote source={page.content} components={components as {}} options={options} />
             </Suspense>
         </SectionLayout>

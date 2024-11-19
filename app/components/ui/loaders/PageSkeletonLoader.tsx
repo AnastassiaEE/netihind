@@ -1,4 +1,4 @@
-export default function PageLoader() {
+export default function PageSkeletonLoader() {
     return (
         <>
             <div className="animate-pulse rounded-md w-1/2 h-9 md:h-14 bg-gray-200 mb-10"></div>
