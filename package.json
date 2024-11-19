@@ -31,7 +31,6 @@
     "next-images": "^1.8.5",
     "next-intl": "^3.23.5",
     "next-mdx-remote": "^5.0.0",
-    "papaparse": "^5.4.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scroll-parallax": "^3.4.5",
@@ -40,12 +39,12 @@
     "remark-mdx-frontmatter": "^5.0.0",
     "resend": "^4.0.0",
     "slugify": "^1.6.6",
-    "swiper": "^11.0.5"
+    "swiper": "^11.0.5",
+    "swr": "^2.2.5"
   },
   "devDependencies": {
     "@types/cookies": "^0.9.0",
     "@types/node": "^20",
-    "@types/papaparse": "^5.3.11",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10",
