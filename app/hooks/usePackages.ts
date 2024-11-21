@@ -1,4 +1,4 @@
-import { fetchPackages } from '@/lib/addressDataFetch';
+import { getPackages } from '@/lib/addressDataFetch';
 import useSWR from 'swr';
 
 export default function usePackages(
@@ -13,7 +13,7 @@ export default function usePackages(
     data: packages,
     error,
     isLoading,
-  } = useSWR([filter], () => fetchPackages(filter, city, county, street, streetNr), {
+  } = useSWR([filter], () => getPackages(filter, city, county, street, streetNr), {
     fallbackData: initialPackages,
     revalidateOnFocus: false,
     revalidateOnMount: false,

@@ -1,6 +1,6 @@
 import { supabase } from '@/lib/supabase';
 
-export const fetchProviders = async (
+export const getProviders = async (
   city: string,
   county: string,
   street: string,
@@ -18,7 +18,7 @@ export const fetchProviders = async (
   return providers;
 };
 
-export const fetchPackages = async (
+export const getPackages = async (
   filter: string,
   city: string,
   county: string,

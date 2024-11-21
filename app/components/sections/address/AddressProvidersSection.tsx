@@ -1,7 +1,7 @@
 import { H2 } from '@/components/ui/headings/RestPageHeadings';
 import AddressProviderCards from '@/components/ui/address/providers/AddressProviderCards';
 import SectionLayout from '@/layouts/SectionLayout';
-import { fetchProviders } from '@/lib/addressDataFetch';
+import { getProviders } from '@/lib/addressDataFetch';
 import { getAddressCookieValues } from '@/utils/addressCookieHelper';
 import { getCookie } from 'cookies-next';
 import { getTranslations } from 'next-intl/server';
@@ -12,7 +12,7 @@ export default async function AddressProvidersSection() {
     const t = await getTranslations('AddressPage');
     const cookieString = getCookie('ADDRESS', { cookies }) as string;
     const { city, county, street, streetNr } = getAddressCookieValues(cookieString);
-    let providers = await fetchProviders(city, county, street, streetNr).catch((error) => {
+    let providers = await getProviders(city, county, street, streetNr).catch((error) => {
         return [];
     });
     if (providers.length === 0) return null;

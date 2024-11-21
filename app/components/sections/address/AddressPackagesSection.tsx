@@ -7,7 +7,7 @@ import { getTranslations } from 'next-intl/server';
 import { getCookie } from 'cookies-next';
 import { cookies } from 'next/headers';
 import { getAddressCookieValues } from '@/utils/addressCookieHelper';
-import { fetchPackages } from '@/lib/addressDataFetch';
+import { getPackages } from '@/lib/addressDataFetch';
 import PackagesError from '@/components/ui/errors/PackagesError';
 
 export default async function AddressPackagesSection({
@@ -32,7 +32,7 @@ export default async function AddressPackagesSection({
     const { city, county, street, streetNr } = getAddressCookieValues(cookieString);
 
     let err = 'noPackages';
-    const packages = await fetchPackages(activeFilter, city, county, street, streetNr).catch(
+    const packages = await getPackages(activeFilter, city, county, street, streetNr).catch(
         (error) => {
             err = error.message;
             return undefined;
