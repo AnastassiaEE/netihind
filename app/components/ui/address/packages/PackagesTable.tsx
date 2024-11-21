@@ -5,9 +5,9 @@ import {
     ContactSupport,
     InfoOutlined,
 } from '@mui/icons-material';
-import PackagesTableCell from '@/components/ui/packages/PackagesTableCell';
-import PackageFeature from '@/components/ui/packages/PackageFeature';
-import PackageFeatureValue from '@/components/ui/packages/PackageFeatureValue';
+import PackagesTableCell from '@/components/ui/address/packages/PackagesTableCell';
+import PackageFeature from '@/components/ui/address/packages/PackageFeature';
+import PackageFeatureValue from '@/components/ui/address/packages/PackageFeatureValue';
 import Button from '@/components/ui/form/buttons/Button';
 import Popover from '@/components/ui/Popover';
 import Image from 'next/image';
@@ -19,7 +19,7 @@ export default function PackagesTable({
     packages,
     filter,
 }: {
-    packages: { [key: string]: any }[];
+    packages?: { [key: string]: any }[];
     filter: string;
 }) {
     const t = useTranslations('AddressPage');
@@ -39,7 +39,7 @@ export default function PackagesTable({
                     {t(`columns.${column}`)}
                 </PackagesTableCell>
             ))}
-            {packages.map((pack, index) => (
+            {packages?.map((pack, index) => (
                 <React.Fragment key={pack['package_id']}>
                     <PackagesTableCell index={index} className="rounded-l-md">
                         <PackageFeature>

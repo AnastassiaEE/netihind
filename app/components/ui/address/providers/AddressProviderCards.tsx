@@ -1,7 +1,7 @@
 'use client';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import AddressProviderCard from '@/components/ui/providers/AddressProviderCard';
+import AddressProviderCard from '@/components/ui/address/providers/AddressProviderCard';
 import 'swiper/css/bundle';
 import { Pagination } from 'swiper/modules';
 
@@ -9,13 +9,17 @@ const breakpoints = {
     0: {
         slidesPerView: 2,
     },
-    640: {
+    768: {
         slidesPerView: 3,
         spaceBetween: 20,
     },
-    1024: {
+    992: {
         slidesPerView: 4,
-        spaceBetween: 30,
+        spaceBetween: 20,
+    },
+    1200: {
+        slidesPerView: 5,
+        spaceBetween: 20,
     },
 };
 
@@ -37,7 +41,7 @@ export default function AddressProviderCards({
     return (
         <div className="relative">
             <Swiper
-                className="cursor-grabbing !py-6"
+                className="cursor-grabbing !pb-6"
                 breakpoints={breakpoints}
                 pagination={pagination}
                 modules={modules}

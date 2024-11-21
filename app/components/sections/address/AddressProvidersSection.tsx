@@ -1,17 +1,26 @@
-import AddressProvidersLoader from '@/components/ui/loaders/AddressProvidersLoader';
-import AddressProviderCards from '@/components/ui/providers/AddressProviderCards';
-import AddressProviderCardsWrapper from '@/components/ui/providers/AddressProviderCardsWrapper';
+import { H2 } from '@/components/ui/headings/RestPageHeadings';
+import AddressProviderCards from '@/components/ui/address/providers/AddressProviderCards';
 import SectionLayout from '@/layouts/SectionLayout';
-import React, { Suspense } from 'react';
+import { fetchProviders } from '@/lib/addressDataFetch';
+import { getAddressCookieValues } from '@/utils/addressCookieHelper';
+import { getCookie } from 'cookies-next';
+import { getTranslations } from 'next-intl/server';
+import { cookies } from 'next/headers';
+import React from 'react';
 
-export default function AddressProvidersSection() {
+export default async function AddressProvidersSection() {
+    const t = await getTranslations('AddressPage');
+    const cookieString = getCookie('ADDRESS', { cookies }) as string;
+    const { city, county, street, streetNr } = getAddressCookieValues(cookieString);
+    let providers = await fetchProviders(city, county, street, streetNr).catch((error) => {
+        return [];
+    });
+    if (providers.length === 0) return null;
+
     return (
-        <SectionLayout className="py-16" bg="bg-neutral-light">
-            <Suspense fallback={<AddressProvidersLoader />}>
-                <AddressProviderCardsWrapper>
-                    <AddressProviderCards />
-                </AddressProviderCardsWrapper>
-            </Suspense>
+        <SectionLayout className="py-8" bg="bg-neutral-light">
+            <H2>{t('providersSection.title')}</H2>
+            <AddressProviderCards providers={providers} />
         </SectionLayout>
     );
 }

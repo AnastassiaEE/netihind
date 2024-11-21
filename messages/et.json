@@ -79,11 +79,12 @@
     }
   },
   "AddressPage": {
+    "title": "Teenusepakkujad ja internet-paketid",
     "providersSection": {
-      "title": "Teenusepakkujad aadressi järgi:"
+      "title": "Teenusepakkujad Teie majas"
     },
     "packagesSection": {
-      "title": "Paketid"
+      "title": "Paketid Teie majas"
     },
     "filters": {
       "all": "Kõik",
@@ -162,7 +163,7 @@
     }
   },
   "Errors": {
-    "somethingWentWrong": "Midagi läks valesti. Proovige uuesti.",
+    "somethingWentWrong": "Midagi läks valesti. Proovige hiljem uuesti.",
     "noPackages": "Teie aadressilt ei leitud midagi.",
     "noPosts": "Postitusi pole."
   },

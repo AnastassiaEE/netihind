@@ -79,11 +79,12 @@
     }
   },
   "AddressPage": {
+    "title": "Провайдеры и интернет-пакеты",
     "providersSection": {
-      "title": "Провайдеры по адресу:"
+      "title": "Провайдеры в Вашем доме"
     },
     "packagesSection": {
-      "title": "Пакеты"
+      "title": "Пакеты в вашем доме"
     },
     "filters": {
       "all": "Все",

@@ -5,9 +5,9 @@ import {
     InfoOutlined,
     ContactSupport,
 } from '@mui/icons-material';
-import PackageFeature from '@/components/ui/packages/PackageFeature';
-import PackageFeatureValue from '@/components/ui/packages/PackageFeatureValue';
-import PackageCardRow from '@/components/ui/packages/PackageCardRow';
+import PackageFeature from '@/components/ui/address/packages/PackageFeature';
+import PackageFeatureValue from '@/components/ui/address/packages/PackageFeatureValue';
+import PackageCardRow from '@/components/ui/address/packages/PackageCardRow';
 import Button from '@/components/ui/form/buttons/Button';
 import Popover from '@/components/ui/Popover';
 import { useLocale, useTranslations } from 'next-intl';

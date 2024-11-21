@@ -21,7 +21,7 @@ export default function AddressProviderCard({
 }) {
     return (
         <div className={cardWrapperClasses}>
-            <div className="h-16 w-full mb-4 relative">
+            <div className="h-14 w-full mb-4 relative">
                 <Image src={img} alt={alt} fill className="object-contain" />
             </div>
             <p className="text-lg text-center">{name}</p>

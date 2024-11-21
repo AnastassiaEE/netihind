@@ -1,35 +1,59 @@
 import SectionLayout from '@/layouts/SectionLayout';
-import Packages from '@/components/ui/packages/Packages';
-//import Select from '@/components/ui/form/fields/Select';
+import Packages from '@/components/ui/address/packages/Packages';
 import ButtonsFilter from '@/components/ui/filter/ButtonsFilter';
 import { H2 } from '@/components/ui/headings/RestPageHeadings';
-import { useTranslations } from 'next-intl';
-import { Suspense } from 'react';
-import PackagesLoader from '@/components/ui/loaders/PackagesLoader';
+// import SelectSort from '@/components/ui/filter/SelectSort';
+import { getTranslations } from 'next-intl/server';
+import { getCookie } from 'cookies-next';
+import { cookies } from 'next/headers';
+import { getAddressCookieValues } from '@/utils/addressCookieHelper';
+import { fetchPackages } from '@/lib/addressDataFetch';
+import PackagesError from '@/components/ui/errors/PackagesError';
 
-
-export default function AddressProvidersSection({
+export default async function AddressPackagesSection({
     searchParams,
 }: {
-    searchParams: { [key: string]: {} };
+    searchParams: { [key: string]: string };
 }) {
+    const t = await getTranslations(['AddressPage', 'Errors']);
 
-    const t = useTranslations('AddressPage');
-    const activeFilter =
-        Object.entries(searchParams.filters).find(([filter, state]) => state === true)?.[0] ?? 'all';
+    const filters: { [key: string]: boolean } = { all: false, internet: false, 'internet-tv': false };
+    const activeFilter = Object.keys(filters).includes(searchParams.filter)
+        ? searchParams.filter
+        : 'all';
+    filters[activeFilter] = true;
+
+    const sortOptions = ['default', 'price_asc', 'price_desc'];
+    const selectedSortOption = sortOptions.includes(searchParams.sort)
+        ? searchParams.sort
+        : 'default';
+
+    const cookieString = getCookie('ADDRESS', { cookies }) as string;
+    const { city, county, street, streetNr } = getAddressCookieValues(cookieString);
+
+    let err = 'noPackages';
+    const packages = await fetchPackages(activeFilter, city, county, street, streetNr).catch(
+        (error) => {
+            err = error.message;
+            return undefined;
+        },
+    );
+
+    if (!packages || packages.length === 0)
+        return (
+            <div className="container">
+                <PackagesError>{t(`Errors.${err}`)}</PackagesError>
+            </div>
+        );
 
     return (
         <SectionLayout className="pt-24">
-            <H2>{t('packagesSection.title')}</H2>
+            <H2>{t('AddressPage.packagesSection.title')}</H2>
             <div className="mb-12">
-                <ButtonsFilter filters={searchParams.filters} />
-                {/* <Select name={''} value={''}>
-                    hello
-                </Select> */}
+                <ButtonsFilter filters={filters} />
+                {/* <SelectSort options={sortOptions} selectedOption={selectedSortOption} /> */}
             </div>
-            <Suspense fallback={<PackagesLoader />} key={`${activeFilter}`}>
-                <Packages filter={activeFilter} />
-            </Suspense>
+            <Packages filter={activeFilter} initialPackages={packages} />
         </SectionLayout>
     );
 }

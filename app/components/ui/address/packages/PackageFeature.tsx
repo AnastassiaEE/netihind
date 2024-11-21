@@ -1,4 +1,4 @@
-import PackageFeatureUnit from '@/components/ui/packages/PackageFeatureUnit';
+import PackageFeatureUnit from '@/components/ui/address/packages/PackageFeatureUnit';
 
 export default function PackageFeature({
     children,
