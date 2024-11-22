@@ -1,7 +1,6 @@
 import whitelogo from '@/public/images/whitelogo.svg';
 import NavigationItem from '@/components/ui/navigation/NavigationItem';
 import SocialLinks from '@/components/ui/social-links/SocialLinks';
-import SocialLink from '@/components/ui/social-links/SocialLink';
 import Logo from '@/components/ui/Logo';
 import Navigation from '@/components/ui/navigation/Navigation';
 import Copyright from '@/components/ui/Copyright';
@@ -27,11 +26,7 @@ export default function Footer() {
                     </Navigation>
                 </div>
                 <div className="flex justify-center pt-6">
-                    <SocialLinks>
-                        {Object.keys(socialLinks).map((type) => {
-                            return <SocialLink key={type} type={type} href={socialLinks[type]} />;
-                        })}
-                    </SocialLinks>
+                    <SocialLinks data={socialLinks} />
                 </div>
                 <div className="pt-12">
                     <Copyright textColorClass="text-white/60" />

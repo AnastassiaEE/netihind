@@ -1,14 +1,17 @@
-import React, { isValidElement } from 'react';
+import { SvgIconComponent } from '@mui/icons-material';
+import React from 'react';
+import SocialLink from '@/components/ui/social-links/SocialLink';
 
-export default function SocialLinks({ children }: { children: React.ReactNode }) {
+export default function SocialLinks({
+    data,
+}: {
+    data: { Icon: SvgIconComponent; href: string; color: string }[];
+}) {
     return (
-        <div className="flex flex-wrap">
-            {React.Children.map(children, (child) => {
-                if (isValidElement(child)) {
-                    return React.cloneElement(child as React.ReactElement, { className: 'mx-2' });
-                }
-                return child;
-            })}
+        <div className="flex flex-wrap gap-2">
+            {data.map(({ Icon, href, color }, index) => (
+                <SocialLink key={index} Icon={Icon} href={href} color={color} />
+            ))}
         </div>
     );
 }

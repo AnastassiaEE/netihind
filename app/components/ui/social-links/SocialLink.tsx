@@ -1,27 +1,17 @@
-import { Instagram, Facebook, LinkedIn, YouTube, X, SvgIconComponent } from '@mui/icons-material';
+import { SvgIconComponent } from '@mui/icons-material';
 import classNames from 'classnames';
 
-const types: { [key: string]: { Icon: SvgIconComponent; color: string } } = {
-    facebook: { Icon: Facebook, color: 'hover:bg-facebook-logo hover:shadow-facebook-logo/40' },
-    x: { Icon: X, color: 'hover:bg-twitter-logo hover:shadow-twitter-logo/40' },
-    instagram: {
-        Icon: Instagram,
-        color: 'hover:bg-instagram-logo hover:shadow-instagram-logo-shadow/40',
-    },
-    linkedin: { Icon: LinkedIn, color: 'hover:bg-linkedin-logo hover:shadow-linkedin-logo/40' },
-    youtube: { Icon: YouTube, color: 'hover:bg-youtube-logo hover:shadow-youtube-logo/40' },
-};
 export default function SocialLink({
-    type,
+    Icon,
     href,
+    color,
     className,
 }: {
-    type: string;
+    Icon: SvgIconComponent;
     href: string;
+    color: string;
     className?: string;
 }) {
-    const Icon = types[type].Icon;
-
     const socialLinkClasses = classNames(
         'flex',
         'justify-center',
@@ -33,7 +23,7 @@ export default function SocialLink({
         'transition-colors',
         'ease-in',
         'hover:shadow-lg',
-        types[type].color,
+        color,
         {
             [className as string]: className,
         },
