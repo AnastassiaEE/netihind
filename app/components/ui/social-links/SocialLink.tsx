@@ -24,9 +24,7 @@ export default function SocialLink({
         'ease-in',
         'hover:shadow-lg',
         color,
-        {
-            [className as string]: className,
-        },
+        className
     );
 
     return (
