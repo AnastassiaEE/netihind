@@ -14,8 +14,7 @@ export default function NavigationItem({
     handleClick?: React.MouseEventHandler<HTMLAnchorElement>;
     children: React.ReactNode;
 }) {
-    const navigationItemClasses = classNames('hover:text-primary transition-colors', {
-        [className as string]: className !== undefined,
+    const navigationItemClasses = classNames('hover:text-primary transition-colors', className, {
         'text-primary font-extrabold': isActive,
     });
     return (

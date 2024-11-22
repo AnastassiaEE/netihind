@@ -21,18 +21,11 @@ export default function Navigation({
     return (
         <nav>
             <ul className={navigationListClasses}>
-                {React.Children.map(children, (child) => {
-                    if (isValidElement(child)) {
-                        return (
-                            <li>
-                                {React.cloneElement(child as React.ReactElement, {
-                                    className: navigationItemClasses,
-                                })}
-                            </li>
-                        );
-                    }
-                    return child;
-                })}
+                {React.Children.map(children, (child) =>
+                    isValidElement(child)
+                        ? React.cloneElement(child as React.ReactElement, { className: navigationItemClasses })
+                        : child,
+                )}
             </ul>
         </nav>
     );
