@@ -5,7 +5,7 @@ import SocialLink from '@/components/ui/social-links/SocialLink';
 export default function SocialLinks({
     data,
 }: {
-    data: { Icon: SvgIconComponent; href: string; color: string }[];
+    data: { [key: string]: any }[];
 }) {
     return (
         <div className="flex flex-wrap gap-2">
