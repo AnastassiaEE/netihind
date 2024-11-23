@@ -1,7 +1,7 @@
 import Arrow from '@/components/ui/icons/Arrow';
 import classNames from 'classnames';
 
-export default function CircleArrow({ direction, style }: { direction: string; style?: string }) {
+export default function CircleArrow({ direction, className }: { direction: string; className?: string }) {
     const arrowWrapperClasses = classNames(
         'font-semibold',
         'rounded-full',
@@ -13,7 +13,7 @@ export default function CircleArrow({ direction, style }: { direction: string; s
         'h-9',
         'transition-colors',
         'cursor-pointer',
-        { [style as string]: style !== undefined },
+        className,
     );
 
     return (

@@ -3,7 +3,7 @@ import useBoolean from '@/hooks/useBoolean';
 
 export default function useAccordionItem() {
   const { value: isOpened, toggle } = useBoolean(false);
-  const collapsible = useRef<HTMLDivElement | null>(null);
+  const collapsible = useRef<HTMLDivElement>(null);
   const id = useRef(useId());
 
   return {

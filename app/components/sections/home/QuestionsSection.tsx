@@ -5,9 +5,23 @@ import Button from '@/components/ui/form/buttons/Button';
 import { Link } from '@/i18n/routing';
 import { H2 } from '@/components/ui/headings/HomePageHeadings';
 import { useTranslations } from 'next-intl';
+import { useMemo } from 'react';
+import Check from '@/components/ui/icons/Check';
 
 export default function QuestionsSection() {
     const t = useTranslations('HomePage');
+    const translatedQuestions = useMemo(() => {
+        return (
+            questions?.map(({ header, body }: { header: string; body: string }) => ({
+                header: t(header),
+                body: t.rich(body, {
+                    ul: (chunks: React.ReactNode) => <ul>{chunks}</ul>,
+                    li: (chunks: React.ReactNode) => <li className="mb-2">{chunks}</li>,
+                    i: () => <Check size="small" />,
+                }),
+            })) ?? []
+        );
+    }, [t]);
     return (
         <SectionLayout className="py-24">
             <div className="md:flex items-center justify-between">
@@ -21,7 +35,7 @@ export default function QuestionsSection() {
                     </Link>
                 </div>
                 <div className="md:w-7/12">
-                    <Accordion items={questions} t={t} />
+                    <Accordion data={translatedQuestions} />
                 </div>
             </div>
         </SectionLayout>
