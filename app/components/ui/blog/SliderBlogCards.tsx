@@ -51,10 +51,10 @@ export default function SliderBlogCards({ posts }: { posts?: { [key: string]: an
   return (
     <div className="relative xl:px-20">
       <div className="prev absolute left-0 top-1/2 -translate-y-1/2">
-        <CircleArrow direction="left" style={arrowClasses} />
+        <CircleArrow direction="left" className={arrowClasses} />
       </div>
       <div className="next absolute right-0 top-1/2 -translate-y-1/2">
-        <CircleArrow direction="right" style={arrowClasses} />
+        <CircleArrow direction="right" className={arrowClasses} />
       </div>
       <div className="swiper-pagination !-bottom-10"></div>
       <Swiper

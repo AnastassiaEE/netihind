@@ -24,7 +24,7 @@ export default function ScrollTopButton() {
 
     return (
         <button name="scroll-top" className={buttonClasses} onClick={handleClick}>
-            <CircleArrow style={arrowClasses} direction="up" />
+            <CircleArrow className={arrowClasses} direction="up" />
         </button>
     );
 }
