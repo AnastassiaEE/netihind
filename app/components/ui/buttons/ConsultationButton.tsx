@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
 import Button from '@/components/ui/form/buttons/Button';
 import classNames from 'classnames';
@@ -11,16 +11,12 @@ export default function ConsultationButton({ type = 'desktop' }: { type?: 'deskt
     const buttonClasses = classNames('!pt-0.5 !pb-1 rounded-md', {
         '!px-2': type === 'mobile',
     });
-    const iconClasses = classNames({
-        'mr-6': type === 'desktop',
-    });
-
     return (
         <a href={`tel:${phone}`}>
             <Button name="call" size="lg" className={buttonClasses}>
                 <div className="flex items-center">
-                    <PhoneInTalkIcon fontSize="large" className={iconClasses} />
-                    {type == 'desktop' && (
+                    <PhoneInTalkIcon fontSize="large" className={type === 'desktop' ? 'mr-6' : ''} />
+                    {type === 'desktop' && (
                         <div className="flex flex-col text-left">
                             <span className="font-bold">{phone}</span>
                             <span className="text-xs uppercase">{t('buttons.consultation')}</span>
