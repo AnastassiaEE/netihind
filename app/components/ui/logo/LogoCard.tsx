@@ -10,7 +10,6 @@ export default function LogoCard({ image, alt }: { image: string; alt: string })
         'relative',
         'grow',
     );
-
     return (
         <div className={logoWrapperClasses}>
             <Image src={image} alt={alt} fill className="object-contain" />
