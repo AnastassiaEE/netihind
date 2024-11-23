@@ -4,7 +4,7 @@ export default function PackagesList({ packages }: { packages?: { [key: string]:
     return (
         <div className="md:hidden">
             {packages?.map((pack) => (
-                <PackageCard key={pack['package_id']} pack={pack} className="[&:not(:last-child)]:mb-6" />
+                <PackageCard key={pack.package_id} pack={pack} className="[&:not(:last-child)]:mb-6" />
             ))}
         </div>
     );

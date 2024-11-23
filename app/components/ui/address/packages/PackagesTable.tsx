@@ -39,78 +39,88 @@ export default function PackagesTable({
                     {t(`columns.${column}`)}
                 </PackagesTableCell>
             ))}
-            {packages?.map((pack, index) => (
-                <React.Fragment key={pack['package_id']}>
-                    <PackagesTableCell index={index} className="rounded-l-md">
-                        <PackageFeature>
-                            <div className="relative h-10 w-14 self-center">
-                                <Image
-                                    src={pack['provider_img']}
-                                    alt={`${pack['provider_name']} paketi logo`}
-                                    fill
-                                    className="object-contain mb-2"
-                                />
-                            </div>
-                            <span className="font-medium">{pack['internet_package_name']}</span>
-                            <span className="text-xs text-muted">{pack['provider_name']}</span>
-                        </PackageFeature>
-                    </PackagesTableCell>
-                    <PackagesTableCell index={index}>
-                        <PackageFeature>
-                            <div>
-                                <PackageFeatureValue className="mr-2">
-                                    {pack['technology_abbr']}
-                                </PackageFeatureValue>
-                                <Popover IconToInteract={InfoOutlined} content={pack['technology_description'][locale]} />
-                            </div>
-                        </PackageFeature>
-                    </PackagesTableCell>
-                    <PackagesTableCell index={index}>
-                        <PackageFeature unit={t('measurementUnits.speed')}>
-                            <div>
-                                <PackageFeatureValue className="mr-2">
-                                    <ArrowCircleDown fontSize="small" className="align-sub mr-1 text-success-dark" />
-                                    {pack['download_speed'] === null ? (
-                                        <AllInclusive />
-                                    ) : (
-                                        pack['download_speed']
-                                    )}
-                                </PackageFeatureValue>
-                                <PackageFeatureValue>
-                                    <ArrowCircleUp fontSize="small" className="align-sub mr-1 text-error" />
-                                    {pack['upload_speed'] === null ? (
-                                        <AllInclusive />
-                                    ) : (
-                                        pack['upload_speed']
-                                    )}
-                                </PackageFeatureValue>
-                            </div>
-                        </PackageFeature>
-                    </PackagesTableCell>
-                    {columns.includes('channels') && (
-                        <PackagesTableCell index={index}>
-                            <PackageFeature unit={t('measurementUnits.channels')}>
-                                <PackageFeatureValue>{pack['channels_amount']}</PackageFeatureValue>
+            {packages?.map(
+                (
+                    {
+                        package_id,
+                        provider_img,
+                        provider_name,
+                        internet_package_name,
+                        technology_abbr,
+                        technology_description,
+                        download_speed,
+                        upload_speed,
+                        tv_package_id,
+                        channels_amount,
+                        package_price,
+                    },
+                    index,
+                ) => (
+                    <React.Fragment key={package_id}>
+                        <PackagesTableCell index={index} className="rounded-l-md">
+                            <PackageFeature>
+                                <div className="relative h-10 w-14 self-center">
+                                    <Image
+                                        src={provider_img}
+                                        alt={`${provider_name} paketi logo`}
+                                        fill
+                                        className="object-contain mb-2"
+                                    />
+                                </div>
+                                <span className="font-medium">{internet_package_name}</span>
+                                <span className="text-xs text-muted">{provider_name}</span>
                             </PackageFeature>
                         </PackagesTableCell>
-                    )}
-                    <PackagesTableCell index={index} className="rounded-r-md">
-                        <div className="flex flex-col items-center">
-                            <PackageFeature unit={`€ / ${t('measurementUnits.month')}`}>
-                                <PackageFeatureValue className="!text-2xl bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent">
-                                    {pack['package_price']}
-                                </PackageFeatureValue>
+                        <PackagesTableCell index={index}>
+                            <PackageFeature>
+                                <div>
+                                    <PackageFeatureValue className="mr-2">{technology_abbr}</PackageFeatureValue>
+                                    <Popover IconToInteract={InfoOutlined} content={technology_description[locale]} />
+                                </div>
                             </PackageFeature>
-                            <div className="flex mt-3">
-                                <Button variant="secondary" className="!rounded-r-none">
-                                    <ContactSupport />
-                                </Button>
-                                <Button className="!rounded-l-none">{t('buttons.connect')}</Button>
+                        </PackagesTableCell>
+                        <PackagesTableCell index={index}>
+                            <PackageFeature unit={t('measurementUnits.speed')}>
+                                <div>
+                                    <PackageFeatureValue className="mr-2">
+                                        <ArrowCircleDown
+                                            fontSize="small"
+                                            className="align-sub mr-1 text-success-dark"
+                                        />
+                                        {download_speed === null ? <AllInclusive /> : download_speed}
+                                    </PackageFeatureValue>
+                                    <PackageFeatureValue>
+                                        <ArrowCircleUp fontSize="small" className="align-sub mr-1 text-error" />
+                                        {upload_speed === null ? <AllInclusive /> : upload_speed}
+                                    </PackageFeatureValue>
+                                </div>
+                            </PackageFeature>
+                        </PackagesTableCell>
+                        {columns.includes('channels') && (
+                            <PackagesTableCell index={index}>
+                                <PackageFeature unit={t('measurementUnits.channels')}>
+                                    <PackageFeatureValue>{channels_amount}</PackageFeatureValue>
+                                </PackageFeature>
+                            </PackagesTableCell>
+                        )}
+                        <PackagesTableCell index={index} className="rounded-r-md">
+                            <div className="flex flex-col items-center">
+                                <PackageFeature unit={`€ / ${t('measurementUnits.month')}`}>
+                                    <PackageFeatureValue className="!text-2xl bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent">
+                                        {package_price}
+                                    </PackageFeatureValue>
+                                </PackageFeature>
+                                <div className="flex mt-3">
+                                    <Button variant="secondary" className="!rounded-r-none">
+                                        <ContactSupport />
+                                    </Button>
+                                    <Button className="!rounded-l-none">{t('buttons.connect')}</Button>
+                                </div>
                             </div>
-                        </div>
-                    </PackagesTableCell>
-                </React.Fragment>
-            ))}
+                        </PackagesTableCell>
+                    </React.Fragment>
+                ),
+            )}
         </div>
     );
 }

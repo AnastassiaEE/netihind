@@ -19,7 +19,6 @@ export default function Packages({
     const t = useTranslations('Errors');
     const cookieString = getCookie('ADDRESS') as string;
     const { city, county, street, streetNr } = getAddressCookieValues(cookieString);
-
     const { packages, error, isLoading } = usePackages(
         initialPackages,
         filter,
@@ -29,8 +28,10 @@ export default function Packages({
         streetNr,
     );
     if (isLoading) return <PackagesLoader />;
-    if (error) return <PackagesError>{t(error.message)}</PackagesError>;
-    if (packages.length === 0) return <PackagesError>{t('noPackages')}</PackagesError>;
+    if (error || packages.length === 0) {
+        const errorMessage = error ? t(error.message) : t('noPackages');
+        return <PackagesError>{errorMessage}</PackagesError>;
+    }
 
     return (
         <>
