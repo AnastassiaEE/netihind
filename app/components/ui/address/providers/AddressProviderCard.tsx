@@ -1,14 +1,4 @@
 import Image from 'next/image';
-import classNames from 'classnames';
-
-const cardWrapperClasses = classNames(
-    'bg-white',
-    'shadow-md',
-    'rounded-md',
-    'border',
-    'border-muted-light',
-    'p-5',
-);
 
 export default function AddressProviderCard({
     name,
@@ -20,7 +10,7 @@ export default function AddressProviderCard({
     alt: string;
 }) {
     return (
-        <div className={cardWrapperClasses}>
+        <div className="bg-white shadow-md rounded-md border border-muted-light p-5">
             <div className="h-14 w-full mb-4 relative">
                 <Image src={img} alt={alt} fill className="object-contain" />
             </div>
