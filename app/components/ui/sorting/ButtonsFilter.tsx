@@ -8,19 +8,20 @@ import { useTranslations } from 'next-intl';
 export default function ButtonsFilter({ filters }: { filters: { [key: string]: boolean } }) {
     const { usedFilters, handleFilterClick } = useButtonsFilter(filters);
     const isSmallScreen = useMediaQuery('(max-width:540px)');
-    const t = useTranslations('AddressPage');
+    const t = useTranslations('Filters');
+    console.log(usedFilters);
     return (
         <div className="flex flex-wrap gap-2">
-            {Object.keys(usedFilters).map((filter) => (
+            {Object.entries(usedFilters).map(([filter, isActive]) => (
                 <Button
                     key={filter}
                     handleClick={handleFilterClick}
-                    variant={usedFilters[filter] ? 'primary' : 'secondary'}
+                    variant={isActive ? 'primary' : 'secondary'}
                     size={isSmallScreen ? 'sm' : 'lg'}
                     className="rounded-md uppercase"
                     name={filter}
                 >
-                    {t(`filters.${filter}`)}
+                    {t(filter)}
                 </Button>
             ))}
         </div>
