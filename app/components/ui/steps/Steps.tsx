@@ -8,7 +8,7 @@ const lineStyles = {
     top: 'before:bg-neutral before:absolute before:left-10 before:top-0 before:w-px before:h-2/4',
 };
 
-export default function Steps({ data }: { data: { title: string; description: string }[] }) {
+export default function Steps({ data }: { data: { [key: string]: string }[] }) {
     const drawLine = (index: number) => {
         let lineClasses = [];
         if (index === 1) {
