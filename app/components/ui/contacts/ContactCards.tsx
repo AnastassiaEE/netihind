@@ -5,24 +5,24 @@ export default function ContactCards({
     contacts,
 }: {
     contacts: {
-        type: 'email' | 'phone' | 'address';
-        data: { title: string; description: string; contact: string };
+        contactType: 'email' | 'phone' | 'address';
+        title: string;
+        description: string;
+        contact: string;
     }[];
 }) {
     return (
         <>
-            {contacts.map((contact) => {
-                return (
-                    <ContactCard
-                        key={contact.type}
-                        type={contact.type}
-                        title={contact.data.title}
-                        description={contact.data.description}
-                        contact={contact.data.contact}
-                        className="[&:not(:last-child)]:mb-3"
-                    />
-                );
-            })}
+            {contacts.map(({ contactType, title, description, contact }) => (
+                <ContactCard
+                    key={contactType}
+                    contactType={contactType}
+                    title={title}
+                    description={description}
+                    contact={contact}
+                    className="[&:not(:last-child)]:mb-3"
+                />
+            ))}
         </>
     );
 }

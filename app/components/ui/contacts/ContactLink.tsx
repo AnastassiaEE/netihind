@@ -1,33 +1,31 @@
 import { Email, LocalPhone, LocationOn } from '@mui/icons-material';
 
-const icons = {
+const iconMap = {
     email: Email,
     phone: LocalPhone,
     address: LocationOn,
 };
 
+const hrefMap = {
+    email: (contact: string) => `mailto:${contact}`,
+    phone: (contact: string) => `tel:${contact}`,
+    address: (contact: string) => `#`,
+};
+
 export default function ContactLink({
     contactType,
-    children,
+    contact,
 }: {
     contactType: 'email' | 'phone' | 'address';
-    children: React.ReactNode;
+    contact: string;
 }) {
-    let href = 'javascript:void(0)';
-    if (contactType === 'email') {
-        href = `mailto:${children}`;
-    } else if (contactType === 'phone') {
-        href = `tel:${children}`;
-    }
-    const Icon = icons[contactType];
+    const Icon = iconMap[contactType];
+    const href = hrefMap[contactType](contact);
     return (
         <>
             <Icon className="text-primary mr-2" />
-            <a
-                href={href.replace(/\s/g, '')}
-                className="font-semibold transition-colors hover:text-primary"
-            >
-                {children}
+            <a href={href} className="font-semibold transition-colors hover:text-primary">
+                {contact}
             </a>
         </>
     );

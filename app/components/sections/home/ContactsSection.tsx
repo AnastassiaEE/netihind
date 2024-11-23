@@ -2,12 +2,13 @@ import SectionLayout from '@/layouts/SectionLayout';
 import ContactForm from '@/components/ui/form/forms/ContactForm';
 import ContactLinks from '@/components/ui/contacts/ContactLinks';
 import ContactLink from '@/components/ui/contacts/ContactLink';
-import { email, phone } from '@/data/contacts';
+import { contacts } from '@/data/contacts';
 import { H2, H3 } from '@/components/ui/headings/HomePageHeadings';
 import { useTranslations } from 'next-intl';
 
 export default function ContactsSection() {
-    const t = useTranslations('HomePage')
+    const t = useTranslations('HomePage');
+    const { phone, email } = contacts;
     return (
         <SectionLayout className="py-24">
             <div className="md:flex md:justify-between md:items-center">
@@ -19,8 +20,8 @@ export default function ContactsSection() {
                     <div>
                         <H3>{t('contactsSection.subtitle')}</H3>
                         <ContactLinks>
-                            <ContactLink contactType="phone">{phone}</ContactLink>
-                            <ContactLink contactType="email">{email}</ContactLink>
+                            <ContactLink contactType="phone" contact={phone} />
+                            <ContactLink contactType="email" contact={email} />
                         </ContactLinks>
                     </div>
                 </div>

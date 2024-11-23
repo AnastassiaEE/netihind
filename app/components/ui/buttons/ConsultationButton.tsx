@@ -2,15 +2,15 @@
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
 import Button from '@/components/ui/form/buttons/Button';
 import classNames from 'classnames';
-import { phone } from '@/data/contacts';
+import { contacts } from '@/data/contacts';
 import { useTranslations } from 'next-intl';
 
 export default function ConsultationButton({ type = 'desktop' }: { type?: 'desktop' | 'mobile' }) {
     const t = useTranslations('Navigation');
-
     const buttonClasses = classNames('!pt-0.5 !pb-1 rounded-md', {
         '!px-2': type === 'mobile',
     });
+    const { phone } = contacts;
     return (
         <a href={`tel:${phone}`}>
             <Button name="call" size="lg" className={buttonClasses}>
