@@ -1,25 +1,16 @@
-import { ForwardedRef } from 'react';
 import FieldError from '@/components/ui/form/fields/FieldError';
 import FieldLabel from '@/components/ui/form/fields/FieldLabel';
 import classNames from 'classnames';
 
-const baseClasses = classNames(
-    'w-full',
-    'bg-white',
-    'border',
-    'rounded-md',
-    'transition-[padding]',
-    'focus:outline-none',
-    'focus:shadow-lg',
-    'focus:shadow-primary/10',
-    'placeholder:text-muted',
-    'text-muted-dark',
-);
+const baseClasses =
+    'w-full bg-white border rounded-md transition-[padding] focus:outline-none focus:shadow-lg focus:shadow-primary/10 placeholder:text-muted text-muted-dark';
 
-const sizes: { [key: string]: string } = {
+const sizes: { sm: string; lg: string } = {
     sm: 'text-sm px-4 py-2.5',
     lg: 'px-5 py-3',
 };
+
+export type InputSize = keyof typeof sizes;
 
 export default function Input({
     size = 'sm',
@@ -36,9 +27,8 @@ export default function Input({
     error,
     className,
     children,
-    innerRef,
 }: {
-    size?: 'sm' | 'lg';
+    size?: InputSize;
     name: string;
     type?: string;
     inputmode?:
@@ -57,16 +47,14 @@ export default function Input({
     handleFocus?: React.FocusEventHandler<HTMLInputElement>;
     handleBlur?: React.FocusEventHandler<HTMLInputElement>;
     value?: string;
-    isValid: boolean;
+    isValid?: boolean;
     error?: string;
     className?: string;
     children?: React.ReactNode;
-    innerRef?: ForwardedRef<HTMLInputElement>;
 }) {
-    const inputClasses = classNames(baseClasses, sizes[size], {
+    const inputClasses = classNames(baseClasses, sizes[size], className, {
         'border-valid focus:border-primary/30': isValid,
         'border-invalid': !isValid,
-        [className as string]: className !== undefined,
     });
 
     return (
@@ -88,7 +76,6 @@ export default function Input({
                     onFocus={handleFocus}
                     onBlur={handleBlur}
                     value={value}
-                    ref={innerRef}
                 />
             </div>
             {!isValid && <FieldError size={size}>{error}</FieldError>}

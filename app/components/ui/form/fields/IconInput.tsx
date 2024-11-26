@@ -1,9 +1,8 @@
 import { SvgIconComponent } from '@mui/icons-material';
-import Input from '@/components/ui/form/fields/Input';
+import Input, { InputSize } from '@/components/ui/form/fields/Input';
 import classNames from 'classnames';
-import { ForwardedRef, forwardRef } from 'react';
 
-export default forwardRef(function IconInput({
+export default function IconInput({
     size = 'sm',
     name,
     type = 'text',
@@ -16,9 +15,9 @@ export default forwardRef(function IconInput({
     value,
     isValid,
     error,
-    icon,
+    icon: { Icon, isVisible, handleClick },
 }: {
-    size?: 'sm' | 'lg';
+    size?: InputSize;
     name: string;
     type?: string;
     inputmode?:
@@ -40,18 +39,16 @@ export default forwardRef(function IconInput({
     isValid: boolean;
     error?: string;
     icon: { Icon: SvgIconComponent; isVisible: boolean; handleClick?: React.MouseEventHandler };
-}, ref: ForwardedRef<HTMLInputElement>) {
+}) {
     const inputClasses = classNames({
-        'pl-10': icon.isVisible && size === 'sm',
-        'pl-12': icon.isVisible && size === 'lg',
+        'pl-10': isVisible && size === 'sm',
+        'pl-12': isVisible && size === 'lg',
     });
 
     const iconWrapperClasses = classNames('absolute h-full flex items-center px-3', {
-        block: icon.isVisible,
-        hidden: !icon.isVisible,
+        block: isVisible,
+        hidden: !isVisible,
     });
-
-    const Icon = <icon.Icon fontSize={size === 'lg' ? 'medium' : 'small'} className="text-muted" />;
 
     return (
         <Input
@@ -68,17 +65,16 @@ export default forwardRef(function IconInput({
             isValid={isValid}
             error={error}
             className={inputClasses}
-            innerRef={ref}
         >
             <div className={iconWrapperClasses}>
-                {icon.handleClick ? (
-                    <button type="button" onClick={icon.handleClick}>
-                        {Icon}
+                {handleClick ? (
+                    <button type="button" onClick={handleClick}>
+                        <Icon fontSize={size === 'lg' ? 'medium' : 'small'} className="text-muted" />
                     </button>
                 ) : (
-                    <>{Icon}</>
+                    <Icon fontSize={size === 'lg' ? 'medium' : 'small'} className="text-muted" />
                 )}
             </div>
         </Input>
     );
-})
+}
