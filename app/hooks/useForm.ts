@@ -12,31 +12,12 @@ export default function useForm(
   },
   type: 'contact' | 'request',
 ) {
-  const initialErrors: { [key: string]: string } = Object.keys(fields).reduce((result, field) => {
-    return {
-      ...result,
-      [field]: '',
-    };
-  }, {});
-
-  const initialValues: { [key: string]: string | boolean } = Object.keys(fields).reduce(
-    (result, field) => {
-      return {
-        ...result,
-        [field]: fields[field].initialValue,
-      };
-    },
-    {},
+  const initialValues = Object.fromEntries(
+    Object.entries(fields).map(([field, { initialValue }]) => [field, initialValue]),
   );
-
-  const initialBluredFields: { [key: string]: boolean } = Object.keys(initialErrors).reduce(
-    (result, field) => {
-      return {
-        ...result,
-        [field]: false,
-      };
-    },
-    {},
+  const initialErrors = Object.fromEntries(Object.keys(fields).map((field) => [field, '']));
+  const initialBluredFields = Object.fromEntries(
+    Object.keys(fields).map((field) => [field, false]),
   );
 
   const [errors, setErrors] = useState(initialErrors);
@@ -54,18 +35,14 @@ export default function useForm(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
     field: string,
   ) => {
-    setValues((prevState) => ({ ...prevState, [field]: e.target.value }));
-    if (bluredFields.current[field] === true) {
-      const error = validateField(field, e.target.value, fields[field].isRequired);
-      setErrors((prevState) => ({ ...prevState, [field]: error }));
-    }
-  };
+    const value =
+      e.target.type === 'checkbox' ? (e.target as HTMLInputElement).checked : e.target.value;
+    setValues((prev) => ({ ...prev, [field]: value }));
 
-  const handleCheck = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    field: string,
-  ) => {
-    setValues((prevState) => ({ ...prevState, [field]: !prevState[field] }));
+    if (bluredFields.current[field]) {
+      const error = validateField(field, value, fields[field].isRequired);
+      setErrors((prev) => ({ ...prev, [field]: error }));
+    }
   };
 
   const handleBlur = (
@@ -80,12 +57,12 @@ export default function useForm(
   };
 
   const isFormValid = () => {
-    const err = Object.keys(values).reduce((result, field) => {
-      return {
-        ...result,
-        [field]: validateField(field as string, values[field], fields[field].isRequired),
-      };
-    }, {});
+    const err = Object.fromEntries(
+      Object.entries(values).map(([field, value]) => [
+        field,
+        validateField(field, value, fields[field].isRequired),
+      ]),
+    );
     setErrors(err);
     return !Object.values(err).some(Boolean);
   };
@@ -125,7 +102,6 @@ export default function useForm(
     response,
     bluredFields,
     handleChange,
-    handleCheck,
     handleBlur,
     handleSubmit,
   };

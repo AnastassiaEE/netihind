@@ -7,9 +7,8 @@ import Checkbox from '@/components/ui/form//fields/Checkbox';
 import Textarea from '@/components/ui/form/fields/Textarea';
 import Button from '@/components/ui/form//buttons/Button';
 import Input from '@/components/ui/form//fields/Input';
-import Link from 'next/link';
 import useForm from '@/hooks/useForm';
-import Select from '@/components/ui/form/fields/Select';
+// import Select from '@/components/ui/form/fields/Select';
 
 export default function RequestForm() {
 
@@ -46,7 +45,6 @@ export default function RequestForm() {
         isSending,
         response,
         handleChange,
-        handleCheck,
         handleBlur,
         handleSubmit,
     } = useForm(fields, 'request');
@@ -91,7 +89,7 @@ export default function RequestForm() {
                     />
                 </div>
                 <div className="grow mb-6">
-                    <Select
+                    {/* <Select
                         name="time"
                         label={'labels.time'}
                         handleChange={(e) => handleChange(e, 'time')}
@@ -103,7 +101,7 @@ export default function RequestForm() {
                         <option value="15-17">15:00 - 17:00</option>
                         <option value="17-19">17:00 - 19:00</option>
                         <option value="19-21">19:00 - 21:00</option>
-                    </Select>
+                    </Select> */}
                 </div>
             </div>
             <div className="mb-6">
@@ -120,7 +118,7 @@ export default function RequestForm() {
             <div className="mb-6">
                 <Checkbox
                     name="policy"
-                    handleCheck={(e) => handleCheck(e, 'policy')}
+                    handleCheck={(e) => handleChange(e, 'policy')}
                     isChecked={values.policy as boolean}
                     isValid={errors.policy === ''}>
                     <></>

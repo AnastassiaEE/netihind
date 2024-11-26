@@ -35,16 +35,10 @@ export default function ContactForm() {
         },
     };
 
-    const {
-        errors,
-        values,
-        isSending,
-        response,
-        handleChange,
-        handleCheck,
-        handleBlur,
-        handleSubmit,
-    } = useForm(fields, 'contact');
+    const { errors, values, isSending, response, handleChange, handleBlur, handleSubmit } = useForm(
+        fields,
+        'contact',
+    );
 
     return (
         <form action="" noValidate onSubmit={handleSubmit}>
@@ -98,7 +92,7 @@ export default function ContactForm() {
             <div className="mb-6">
                 <Checkbox
                     name="policy"
-                    handleCheck={(e) => handleCheck(e, 'policy')}
+                    handleCheck={(e) => handleChange(e, 'policy')}
                     isChecked={values.policy as boolean}
                     isValid={errors.policy === ''}
                 >
@@ -124,8 +118,8 @@ export default function ContactForm() {
                     <>{t('buttons.send')}</>
                 )}
             </Button>
-            {!isSending && (
-                <FormResponse type={response?.type}> {response && t(response.message)} </FormResponse>
+            {!isSending && response && (
+                <FormResponse type={response.type}>{t(response.message)}</FormResponse>
             )}
         </form>
     );
