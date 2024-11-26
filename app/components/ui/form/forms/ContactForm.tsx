@@ -110,13 +110,7 @@ export default function ContactForm() {
                 </Checkbox>
             </div>
             <Button type="submit" size="lg" disabled={isSending} className="w-full">
-                {isSending ? (
-                    <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-                        <Loop />
-                    </svg>
-                ) : (
-                    <>{t('buttons.send')}</>
-                )}
+                {isSending ? <Loop className="animate-spin" /> : <>{t('buttons.send')}</>}
             </Button>
             {!isSending && response && (
                 <FormResponse type={response.type}>{t(response.message)}</FormResponse>
