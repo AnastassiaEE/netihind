@@ -2,19 +2,9 @@ import FieldError from '@/components/ui/form/fields/FieldError';
 import FieldLabel from '@/components/ui/form/fields/FieldLabel';
 import classNames from 'classnames';
 
-const baseClasses = classNames(
-    'w-full',
-    'bg-white',
-    'border',
-    'rounded-md',
-    'text-muted-dark',
-    'focus:outline-none',
-    'focus:shadow-lg',
-    'focus:shadow-indigo-500/10',
-    'placeholder: text-grey-300',
-);
+const baseClasses = 'w-full bg-white border rounded-md text-muted-dark focus:outline-none focus:shadow-lg focus:shadow-indigo-500/10 placeholder:text-grey-300';
 
-const sizes: { [key: string]: string } = {
+const sizes: { sm: string; lg: string } = {
     sm: 'text-sm px-4 py-2.5',
     lg: 'px-5 py-3',
 };
@@ -31,7 +21,7 @@ export default function Textarea({
     error,
     className,
 }: {
-    size?: 'sm' | 'lg';
+    size?: keyof typeof sizes;
     name: string;
     label?: string;
     placeholder?: string;
@@ -42,10 +32,9 @@ export default function Textarea({
     error?: string;
     className?: string;
 }) {
-    const textAreaClasses = classNames(baseClasses, sizes[size], {
+    const textAreaClasses = classNames(baseClasses, sizes[size], className, {
         'border-valid focus:border-primary/30': isValid,
         'border-invalid': !isValid,
-        [className as string]: className !== undefined,
     });
 
     return (
