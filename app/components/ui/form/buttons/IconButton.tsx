@@ -14,7 +14,7 @@ export default function IconButton({
     children,
 }: {
     type?: 'button' | 'submit' | 'reset';
-    variant?: 'primary' | 'secondary' | 'success';
+    variant?: 'primary' | 'secondary';
     size?: 'sm' | 'lg';
     disabled?: boolean;
     name?: string;
@@ -27,8 +27,6 @@ export default function IconButton({
         'text-primary': variant === 'secondary',
     });
 
-    const Ic = <Icon fontSize={size === 'lg' ? 'medium' : 'small'} className={iconClasses} />;
-
     return (
         <Button
             type={type}
@@ -39,7 +37,7 @@ export default function IconButton({
             className={className}
             handleClick={handleClick}
         >
-            {Ic}
+            <Icon fontSize={size === 'lg' ? 'medium' : 'small'} className={iconClasses} />
             {children}
         </Button>
     );

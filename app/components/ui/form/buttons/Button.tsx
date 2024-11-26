@@ -1,40 +1,12 @@
 import classNames from 'classnames';
 
-const baseClasses = classNames(
-  'font-semibold',
-  'border',
-  'rounded-md',
-  'transition-all',
-);
-
-const variants: { [key: string]: string } = {
-  primary: classNames(
-    'bg-primary',
-    'text-white',
-    'border-primary',
-    'shadow-lg',
-    'shadow-primary/50',
-    'hover:bg-primary-dark',
-    'hover:shadow-none',
-  ),
-  secondary: classNames(
-    'bg-white',
-    'text-primary',
-    'border-primary',
-    'hover:bg-primary',
-    'hover:text-white',
-  ),
-  success: classNames(
-    'bg-success',
-    'text-white',
-    'border-success',
-    'hover:bg-success-dark',
-    'hover:border-success-dark',
-    'hover:text-white',
-  ),
+const baseClasses = 'font-semibold border rounded-md transition-all';
+const variants: { primary: string; secondary: string } = {
+  primary:
+    'bg-primary text-white border-primary shadow-lg shadow-primary/50 hover:bg-primary-dark hover:shadow-none',
+  secondary: 'bg-white text-primary border-primary hover:bg-primary hover:text-white',
 };
-
-const sizes: { [key: string]: string } = {
+const sizes: { sm: string; lg: string } = {
   sm: 'text-sm px-3 py-2',
   lg: 'px-5 py-3',
 };
@@ -50,7 +22,7 @@ export default function Button({
   children,
 }: {
   type?: 'button' | 'submit' | 'reset';
-  variant?: 'primary' | 'secondary' | 'success';
+  variant?: 'primary' | 'secondary';
   size?: 'sm' | 'lg';
   disabled?: boolean;
   name?: string;
@@ -58,9 +30,8 @@ export default function Button({
   handleClick?: React.MouseEventHandler<HTMLButtonElement>;
   children: React.ReactNode;
 }) {
-  const buttonClasses = classNames(baseClasses, variants[variant], sizes[size], {
+  const buttonClasses = classNames(baseClasses, variants[variant], sizes[size], className, {
     'hover:cursor-not-allowed': disabled,
-    [className as string]: className !== undefined,
   });
   return (
     <button
