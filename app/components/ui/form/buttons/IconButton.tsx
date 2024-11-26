@@ -1,5 +1,5 @@
 import { SvgIconComponent } from '@mui/icons-material';
-import Button from '@/components/ui/form/buttons/Button';
+import Button, { ButtonVariant, ButtonSize } from '@/components/ui/form/buttons/Button';
 import classNames from 'classnames';
 
 export default function IconButton({
@@ -14,8 +14,8 @@ export default function IconButton({
     children,
 }: {
     type?: 'button' | 'submit' | 'reset';
-    variant?: 'primary' | 'secondary';
-    size?: 'sm' | 'lg';
+    variant?: ButtonVariant;
+    size?: ButtonSize;
     disabled?: boolean;
     name?: string;
     className?: string;

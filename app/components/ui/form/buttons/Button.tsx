@@ -11,6 +11,9 @@ const sizes: { sm: string; lg: string } = {
   lg: 'px-5 py-3',
 };
 
+export type ButtonVariant = keyof typeof variants;
+export type ButtonSize = keyof typeof sizes;
+
 export default function Button({
   type = 'button',
   variant = 'primary',
@@ -22,8 +25,8 @@ export default function Button({
   children,
 }: {
   type?: 'button' | 'submit' | 'reset';
-  variant?: 'primary' | 'secondary';
-  size?: 'sm' | 'lg';
+  variant?: ButtonVariant;
+  size?: ButtonSize;
   disabled?: boolean;
   name?: string;
   className?: string;
