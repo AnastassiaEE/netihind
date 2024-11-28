@@ -6,11 +6,11 @@ import StickyHeader from '@/components/ui/header/StickyHeader';
 import Hamburger from '@/components/ui/header/Hamburger';
 import Sidebar from '@/components/ui/header/Sidebar';
 import Overlay from '@/components/ui/Overlay';
-import useSidebar from '@/hooks/useSidebar';
+import useSlidePanel from '@/hooks/useSlidePanel';
 import Logo from '@/components/ui/Logo';
 
 export default function MobileHeader() {
-    const { isSidebarOpened, handleSidebar } = useSidebar();
+    const { isSlidePanelOpened: isSidebarOpened, handleSlidePanel: handleSidebar } = useSlidePanel();
     return (
         <div className="container md:hidden">
             <div className="flex flex-wrap justify-between p-4">

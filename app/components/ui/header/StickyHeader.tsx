@@ -2,7 +2,7 @@
 
 import secondaryLogo from '@/public/images/gradientsecondarylogo.svg';
 import useScrollPosition from '@/hooks/useScrollPosition';
-import useSidebar from '@/hooks/useSidebar';
+import useSlidePanel from '@/hooks/useSlidePanel';
 import ConsultationButton from '@/components/ui/buttons/ConsultationButton';
 import Hamburger from '@/components/ui/header/Hamburger';
 import Logo from '@/components/ui/Logo';
@@ -15,7 +15,7 @@ const TOOLBAR_SHOW_POSITION = 400;
 export default function StickyHeader({ type = 'desktop' }: { type?: 'desktop' | 'mobile' }) {
     const y = useScrollPosition();
 
-    const { isSidebarOpened, handleSidebar } = useSidebar();
+    const { isSlidePanelOpened: isSidebarOpened, handleSlidePanel: handleSidebar } = useSlidePanel();
 
     let toolbarVisibility = `hidden`;
     if (y > TOOLBAR_SHOW_POSITION) {
