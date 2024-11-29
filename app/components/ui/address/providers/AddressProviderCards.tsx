@@ -36,7 +36,7 @@ const pagination = {
 export default function AddressProviderCards({
     providers,
 }: {
-    providers?: { name: string; img: string }[];
+    providers: { name: string; img: string }[];
 }) {
     return (
         <div className="relative">
@@ -46,7 +46,7 @@ export default function AddressProviderCards({
                 pagination={pagination}
                 modules={modules}
             >
-                {providers?.map(({ name, img }) => (
+                {providers.map(({ name, img }) => (
                     <SwiperSlide key={name}>
                         <AddressProviderCard name={name} img={img} alt={`${name} logo`} />
                     </SwiperSlide>

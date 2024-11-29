@@ -17,7 +17,7 @@ export default function Packages({
     filter: string;
 }) {
     const t = useTranslations('Errors');
-    const cookieString = getCookie('ADDRESS') as string;
+    const cookieString = getCookie('ADDRESS')!;
     const { city, county, street, streetNr } = getAddressCookieValues(cookieString);
     const { packages, error, isLoading } = usePackages(
         initialPackages,

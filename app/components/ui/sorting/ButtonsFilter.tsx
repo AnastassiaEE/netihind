@@ -4,18 +4,19 @@ import useButtonsFilter from '@/hooks/useButtonsFilter';
 import Button from '@/components/ui/form/buttons/Button';
 import { useMediaQuery } from '@mui/material';
 import { useTranslations } from 'next-intl';
+import React from 'react';
 
-export default function ButtonsFilter({ filters }: { filters: { [key: string]: boolean } }) {
+export default React.memo(function ButtonsFilter({ filters }: { filters: { [key: string]: boolean } }) {
     const { usedFilters, handleFilterClick } = useButtonsFilter(filters);
     const isSmallScreen = useMediaQuery('(max-width:540px)');
     const t = useTranslations('Filters');
-    console.log(usedFilters);
+
     return (
         <div className="flex flex-wrap gap-2">
             {Object.entries(usedFilters).map(([filter, isActive]) => (
                 <Button
                     key={filter}
-                    handleClick={handleFilterClick}
+                    handleClick={() => handleFilterClick(filter)}
                     variant={isActive ? 'primary' : 'secondary'}
                     size={isSmallScreen ? 'sm' : 'lg'}
                     className="rounded-md uppercase"
@@ -26,4 +27,4 @@ export default function ButtonsFilter({ filters }: { filters: { [key: string]: b
             ))}
         </div>
     );
-}
+})

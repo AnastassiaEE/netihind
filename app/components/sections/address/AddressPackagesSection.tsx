@@ -1,60 +1,48 @@
+'use client';
+
 import SectionLayout from '@/layouts/SectionLayout';
 import Packages from '@/components/ui/address/packages/Packages';
 import ButtonsFilter from '@/components/ui/sorting/ButtonsFilter';
 import { H2 } from '@/components/ui/headings/RestPageHeadings';
 // import SelectSort from '@/components/ui/sorting/SelectSort';
-import { getTranslations } from 'next-intl/server';
-import { getCookie } from 'cookies-next';
-import { cookies } from 'next/headers';
-import { getAddressCookieValues } from '@/utils/addressCookieHelper';
-import { getPackages } from '@/lib/addressDataFetch';
-import PackagesError from '@/components/ui/errors/PackagesError';
+import { useSearchParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import {
+    FILTERS,
+    SORT_OPTIONS,
+    getActiveFilter,
+    getSelectedSortOption,
+} from '@/utils/packagesHelper';
+import { useMemo } from 'react';
+import React from 'react';
 
-const DEFAULT_FILTER = 'all';
-const DEFAULT_SORT = 'default';
-const FILTER_OPTIONS = ['all', 'internet', 'internet-tv'];
-const SORT_OPTIONS = ['default', 'price_asc', 'price_desc', 'speed_desc'];
-
-export default async function AddressPackagesSection({
-    searchParams,
+export default function AddressPackagesSection({
+    packages,
 }: {
-    searchParams: { [key: string]: string };
+    packages: { [key: string]: string }[];
 }) {
-    const t = await getTranslations(['AddressPage', 'Errors']);
+    const t = useTranslations('AddressPage');
+    const searchParams = useSearchParams();
 
-    const activeFilter = FILTER_OPTIONS.includes(searchParams.filter)
-        ? searchParams.filter
-        : DEFAULT_FILTER;
-    const selectedSortOption = SORT_OPTIONS.includes(searchParams.sort)
-        ? searchParams.sort
-        : DEFAULT_SORT;
-
-    const cookieString = getCookie('ADDRESS', { cookies }) as string;
-    const { city, county, street, streetNr } = getAddressCookieValues(cookieString);
-
-    let err = 'noPackages';
-    const packages = await getPackages(activeFilter, city, county, street, streetNr).catch(
-        (error) => {
-            err = error.message;
-            return [];
-        },
+    const activeFilter = getActiveFilter(searchParams.get('filter'));
+    const selectedSortOption = getSelectedSortOption(searchParams.get('sort'));
+    const filtersWithState = useMemo(
+        () =>
+            FILTERS.reduce(
+                (acc, filter) => ({
+                    ...acc,
+                    [filter]: filter === activeFilter,
+                }),
+                {},
+            ),
+        [activeFilter],
     );
-
-    if (packages.length === 0)
-        return (
-            <div className="container">
-                <PackagesError>{t(`Errors.${err}`)}</PackagesError>
-            </div>
-        );
 
     return (
         <SectionLayout className="pt-24">
-            <H2>{t('AddressPage.packagesSection.title')}</H2>
+            <H2>{t('packagesSection.title')}</H2>
             <div className="mb-12">
-                <ButtonsFilter filters={FILTER_OPTIONS.reduce((acc, filter) => ({
-                    ...acc,
-                    [filter]: filter === activeFilter,
-                }), {})} />
+                <ButtonsFilter filters={filtersWithState} />
                 {/* <SelectSort options={SORT_OPTIONS} selectedOption={selectedSortOption} /> */}
             </div>
             <Packages filter={activeFilter} initialPackages={packages} />

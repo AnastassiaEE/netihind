@@ -19,7 +19,7 @@ export default function PackagesTable({
     packages,
     filter,
 }: {
-    packages?: { [key: string]: any }[];
+    packages: { [key: string]: any }[];
     filter: string;
 }) {
     const t = useTranslations('AddressPage');
@@ -39,7 +39,7 @@ export default function PackagesTable({
                     {t(`columns.${column}`)}
                 </PackagesTableCell>
             ))}
-            {packages?.map(
+            {packages.map(
                 (
                     {
                         package_id,
