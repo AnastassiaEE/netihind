@@ -15,7 +15,7 @@ export default function Step({
 }) {
     return (
         <div className={classNames('flex md:flex-col basis-0 grow relative', className, lines)}>
-            <div className="bg-neutral-light rounded-full flex justify-center items-center shrink-0 relative z-10 w-20 h-20 md:mx-auto md:mb-6">
+            <div className="bg-primary-light rounded-full flex justify-center items-center shrink-0 relative z-10 w-20 h-20 md:mx-auto md:mb-6">
                 <span className="bg-white text-2xl font-extrabold rounded-full flex justify-center items-center shadow-md w-14 h-14">
                     {index}
                 </span>

@@ -13,7 +13,7 @@ export default function AccordionItem({ header, body }: { header: string; body: 
 
     const arrowClasses = classNames(
         'transition-transform duration-300',
-        isOpened ? 'bg-primary shadow-md shadow-primary/50 text-white' : 'bg-neutral-light',
+        isOpened ? 'bg-primary shadow-md shadow-primary/50 text-white' : 'bg-primary-light',
     );
 
     const collapsibleStyle = isOpened

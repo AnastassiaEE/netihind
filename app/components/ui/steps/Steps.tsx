@@ -2,10 +2,10 @@ import Step from '@/components/ui/steps/Step';
 
 const lineStyles = {
     right:
-        'md:after:bg-neutral md:after:absolute md:after:left-2/4 md:after:top-10 md:after:w-2/4 md:after:h-px',
-    left: 'md:before:bg-neutral md:before:absolute md:before:left-0 md:before:top-10 md:before:w-2/4 md:before:h-px',
-    bottom: 'after:bg-neutral after:absolute after:left-10 after:top-2/4 after:w-px after:h-2/4',
-    top: 'before:bg-neutral before:absolute before:left-10 before:top-0 before:w-px before:h-2/4',
+        'md:after:bg-primary-light md:after:absolute md:after:left-2/4 md:after:top-10 md:after:w-2/4 md:after:h-px',
+    left: 'md:before:bg-primary-light md:before:absolute md:before:left-0 md:before:top-10 md:before:w-2/4 md:before:h-px',
+    bottom: 'after:bg-primary-light after:absolute after:left-10 after:top-2/4 after:w-px after:h-2/4',
+    top: 'before:bg-primary-light before:absolute before:left-10 before:top-0 before:w-px before:h-2/4',
 };
 
 export default function Steps({ data }: { data: { [key: string]: string }[] }) {

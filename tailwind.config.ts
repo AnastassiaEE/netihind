@@ -22,16 +22,13 @@ const config: Config = {
       colors: {
         primary: colors.indigo['500'],
         'primary-dark': colors.indigo['600'],
+        'primary-light': colors.indigo['50'],
         secondary: colors.violet['500'],
         accent: colors.fuchsia['500'],
 
-        neutral: colors.indigo['100'],
-        'neutral-dark': colors.gray['900'],
-        'neutral-light': colors.indigo['50'],
-
         muted: colors.gray['400'], // small text, icons, placeholders, bullets
         'muted-dark': colors.slate['600'], // base text, inputs, links
-        'muted-light': colors.slate['200'], // items borders
+        'muted-light': colors.gray['300'], // items borders
 
         valid: colors.gray['300'],
         invalid: colors.red['500'],

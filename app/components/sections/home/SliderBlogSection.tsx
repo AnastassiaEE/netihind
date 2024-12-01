@@ -9,7 +9,7 @@ import PingLoader from '@/components/ui/loaders/PingLoader';
 export default function SliderBlogSection() {
     const t = useTranslations('HomePage');
     return (
-        <SectionLayout bg="bg-neutral-light" className="py-24">
+        <SectionLayout bg="bg-primary-light" className="py-24">
             <H2 className="text-center !mb-10">{t('blogSection.title')}</H2>
             <Suspense fallback={<PingLoader />}>
                 <BlogCardsWrapper>
