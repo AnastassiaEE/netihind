@@ -1,7 +1,5 @@
 'use client';
 
-import PackagesTable from '@/components/ui/address/packages/PackagesTable';
-import PackagesList from '@/components/ui/address/packages/PackagesList';
 import PackagesLoader from '@/components/ui/loaders/PackagesLoader';
 import { getCookie } from 'cookies-next';
 import { getAddressCookieValues } from '@/utils/addressCookieHelper';
@@ -35,8 +33,7 @@ export default function Packages({
 
     return (
         <>
-            <PackagesList packages={packages} />
-            <PackagesTable packages={packages} filter={filter} />
+
         </>
     );
 }

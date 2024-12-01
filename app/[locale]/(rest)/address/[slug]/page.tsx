@@ -27,9 +27,6 @@ export default async function PersonalAddress({
 
     return (
         <Suspense fallback={<PageLoader />}>
-            <div className="container">
-                <H1> {t('title')} </H1>
-            </div>
             <AddressDataWrapper searchParams={searchParams} />
         </Suspense>
     );

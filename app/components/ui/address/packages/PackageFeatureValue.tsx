@@ -1,15 +1,3 @@
-import classNames from 'classnames';
-
-export default function PackageFeatureValue({
-    className,
-    children,
-}: {
-    className?: string;
-    children: React.ReactNode;
-}) {
-    return (
-        <span className={classNames('font-extrabold text-lg uppercase', className)}>
-            {children ?? '—'}
-        </span>
-    );
+export default function PackageFeatureValue({ children }: { children: React.ReactNode }) {
+    return <p className="text-muted-dark text-base font-medium uppercase">{children}</p>
 }

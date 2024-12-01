@@ -1,16 +1,25 @@
-import PackageFeatureUnit from '@/components/ui/address/packages/PackageFeatureUnit';
+import { Language, Tv } from '@mui/icons-material';
+import React from 'react';
 
 export default function PackageFeature({
+    type,
     children,
-    unit,
 }: {
+    type: 'internet' | 'tv';
     children: React.ReactNode;
-    unit?: string;
 }) {
+    const iconStroke = {
+        stroke: 'white',
+        strokeWidth: 1,
+    };
+
     return (
-        <div className="flex flex-col justify-center text-center w-max">
-            {children}
-            {unit && <PackageFeatureUnit>{unit}</PackageFeatureUnit>}
+        <div className="flex items-center gap-2">
+            {type === 'internet' && <Language fontSize="large" sx={iconStroke} />}
+            {type === 'tv' && <Tv fontSize="large" sx={iconStroke} />}
+            <div>
+                {children}
+            </div>
         </div>
     );
 }

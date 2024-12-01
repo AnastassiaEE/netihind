@@ -1,30 +1,30 @@
 'use client';
 
-import { SvgIconComponent } from '@mui/icons-material';
 import usePopover from '@/hooks/usePopover';
+import React from 'react';
+
+const popoverClasses =
+    'bg-white text-sm lowercase text-center rounded-lg shadow-md absolute bottom-full left-1/2 -translate-x-1/2 w-max max-w-xs p-3';
 
 export default function Popover({
-    IconToInteract,
+    elementToInteract,
     content,
 }: {
-    IconToInteract: SvgIconComponent;
+    elementToInteract: React.ReactElement;
     content: string;
 }) {
-    const { isVisible, handleMouseEnter, handleMouseLeave } = usePopover();
+    const { isVisible, show, hide } = usePopover();
 
     return (
         <span className="relative align-text-bottom">
-            <IconToInteract
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-                className="text-primary cursor-pointer"
-                fontSize="small"
-            />
-            {isVisible && (
-                <span className="bg-white text-sm rounded-lg shadow-md absolute bottom-full left-6 w-60 p-3">
-                    {content}
-                </span>
-            )}
+            {React.cloneElement(elementToInteract, {
+                onMouseEnter: show,
+                onMouseLeave: hide,
+                onFocus: show,
+                onBlur: hide,
+                className: `${elementToInteract.props.className || ''} cursor-pointer text-xs`,
+            })}
+            {isVisible && <span className={popoverClasses}>{content}</span>}
         </span>
     );
 }

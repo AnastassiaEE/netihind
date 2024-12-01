@@ -20,29 +20,29 @@ export default async function AddressDataWrapper({
     const activeFilter = getActiveFilter(searchParams.filter);
     const selectedSortOption = getSelectedSortOption(searchParams.sort);
 
-    let providers = await getProviders(city, county, street, streetNr).catch((error) => {
-        return [];
-    });
+    // let providers = await getProviders(city, county, street, streetNr).catch((error) => {
+    //     return [];
+    // });
 
-    let err = 'noPackages';
-    const packages = await getPackages(activeFilter, city, county, street, streetNr).catch(
-        (error) => {
-            err = error.message;
-            return [];
-        },
-    );
+    // let err = 'noPackages';
+    // const packages = await getPackages(activeFilter, city, county, street, streetNr).catch(
+    //     (error) => {
+    //         err = error.message;
+    //         return [];
+    //     },
+    // );
 
-    if (packages.length === 0)
-        return (
-            <div className="container">
-                <PackagesError>{t(err)}</PackagesError>
-            </div>
-        );
+    // if (packages.length === 0)
+    //     return (
+    //         <div className="container">
+    //             <PackagesError>{t(err)}</PackagesError>
+    //         </div>
+    //     );
 
     return (
         <>
-            {providers.length > 0 && <AddressProvidersSection providers={providers} />}
-            <AddressPackagesSection packages={packages} />
+            {/* {providers.length > 0 && <AddressProvidersSection providers={providers} />} */}
+            <AddressPackagesSection />
         </>
     );
 }

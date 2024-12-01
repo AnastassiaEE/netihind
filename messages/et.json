@@ -86,11 +86,6 @@
     "packagesSection": {
       "title": "Paketid Teie majas"
     },
-    "filters": {
-      "all": "Kõik",
-      "internet": "Ainult internet",
-      "internet-tv": "Internet + TV"
-    },
     "columns": {
       "package": "Pakett",
       "technology": "Tehnoloogia",
@@ -107,6 +102,18 @@
       "connect": "Ühendada"
     }
   },
+  "Filters": {
+    "all": "Kõik",
+    "internet": "Ainult internet",
+    "internet-tv": "Internet + TV"
+  },
+  "Sort": {
+    "default": "Vaikimisi",
+    "price_asc": "Soodsamad enne",
+    "price_desc": "Kallimad enne",
+    "speed_desc": "Kiiremad enne"
+  },
+
   "NotFoundPage": {
     "title": "Ooops!",
     "description": "Veebileht, mida otsite, pole saadaval.<br></br>Veenduge, et teie järgis õiget linki, või minge avalehele.",
