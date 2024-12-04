@@ -2,12 +2,20 @@ import type { Config } from 'tailwindcss';
 import colors from 'tailwindcss/colors';
 import plugin from 'tailwindcss/plugin';
 
+const breakpointValues = {
+  sm: '540px',
+  md: '720px',
+  lg: '960px',
+  xl: '1140px',
+  '2xl': '1320px',
+};
+
 export const breakpoints = {
-  sm: '(max-width: 540px)',
-  md: '(max-width: 720px)',
-  lg: '(max-width: 960px)',
-  xl: '(max-width: 1140px)',
-  '2xl': '(max-width: 1320px)',
+  sm: `(max-width: ${breakpointValues.sm})`,
+  md: `(max-width: ${breakpointValues.md})`,
+  lg: `(max-width: ${breakpointValues.lg})`,
+  xl: `(max-width: ${breakpointValues.xl})`,
+  '2xl': `(max-width: ${breakpointValues['2xl']})`,
 };
 
 const config: Config = {
@@ -73,19 +81,19 @@ const config: Config = {
           marginRight: 'auto',
           maxWidth: '95%',
           '@screen sm': {
-            maxWidth: breakpoints.sm,
+            maxWidth: breakpointValues.sm,
           },
           '@screen md': {
-            maxWidth: breakpoints.md,
+            maxWidth: breakpointValues.md,
           },
           '@screen lg': {
-            maxWidth: breakpoints.lg,
+            maxWidth: breakpointValues.lg,
           },
           '@screen xl': {
-            maxWidth: breakpoints.xl,
+            maxWidth: breakpointValues.xl,
           },
           '@screen 2xl': {
-            maxWidth: breakpoints['2xl'],
+            maxWidth: breakpointValues['2xl'],
           },
         },
       });
