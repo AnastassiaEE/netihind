@@ -8,9 +8,11 @@ import PackagePrice from '@/components/ui/address/packages/PackagePrice';
 import PackageHeader from '@/components/ui/address/packages/PackageHeader';
 import PackageActions from '@/components/ui/address/packages/PackageActions';
 import classNames from 'classnames';
+import { useTranslations } from 'next-intl';
 
 export default function PackageCard({ className }: { className: string }) {
     const isSmallScreen = useMediaQuery(breakpoints.md);
+    const t = useTranslations('Packages');
     return (
         <article className={`bg-white border border-muted-light rounded-md md:flex shadow-md hover:shadow-lg transition-shadow duration-300 ${classNames(className)}`}>
             <div className="md:w-3/5 p-5 border-r border-muted-light cursor-pointer">
@@ -23,11 +25,11 @@ export default function PackageCard({ className }: { className: string }) {
                     <PackageFeatureValue>
                         <span>
                             <Download className="text-green-700" />
-                            100 mbit/s
+                            100 {t('units.speed')}
                         </span>
                         <span>
                             <Upload className="text-red-700" />
-                            50 mbit/s
+                            50 {t('units.speed')}
                         </span>
                         <Popover
                             elementToInteract={
@@ -40,7 +42,7 @@ export default function PackageCard({ className }: { className: string }) {
                     </PackageFeatureValue>
                 </PackageFeature>
                 <PackageFeature type="tv">
-                    <PackageFeatureValue>200 channels</PackageFeatureValue>
+                    <PackageFeatureValue>200 {t('units.channels')}</PackageFeatureValue>
                 </PackageFeature>
             </div>
             <div className="md:w-2/5 md:p-5 flex flex-col justify-end items-center gap-4">

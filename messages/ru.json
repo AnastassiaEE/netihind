@@ -86,20 +86,19 @@
     "packagesSection": {
       "title": "Пакеты в вашем доме"
     },
-    "columns": {
-      "package": "Пакет",
-      "technology": "Технология",
-      "speed": "Скорость",
-      "channels": "Каналы",
-      "price": "Цена"
-    },
-    "measurementUnits": {
+    "buttons": {
+      "showMore": "Показать еще"
+    }
+  },
+  "Packages": {
+    "units": {
       "speed": "мбит/c",
       "channels": "каналов",
       "month": "месяц"
     },
     "buttons": {
-      "connect": "Подключиться"
+      "connect": "Подключиться",
+      "consultation": "Консультация"
     }
   },
   "Filters": {

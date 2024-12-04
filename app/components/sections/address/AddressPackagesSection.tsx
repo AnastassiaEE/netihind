@@ -53,7 +53,7 @@ export default function AddressPackagesSection({
                     <PackageCard className="mb-4" />
                     <div className="text-center">
                         <Button variant="flat" size="lg">
-                            Показать еще
+                            {t('buttons.showMore')}
                         </Button>
                     </div>
                 </div>

@@ -86,20 +86,19 @@
     "packagesSection": {
       "title": "Paketid Teie majas"
     },
-    "columns": {
-      "package": "Pakett",
-      "technology": "Tehnoloogia",
-      "speed": "Kiirus",
-      "channels": "Kanalid",
-      "price": "Hind"
-    },
-    "measurementUnits": {
+    "buttons": {
+      "showMore": "Näita veel"
+    }
+  },
+  "Packages": {
+    "units": {
       "speed": "mbit/s",
       "channels": "kanalit",
       "month": "kuus"
     },
     "buttons": {
-      "connect": "Ühendada"
+      "connect": "Ühendada",
+      "consultation": "Konsultatsioon"
     }
   },
   "Filters": {
