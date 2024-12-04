@@ -38,8 +38,8 @@ export default function AddressPackagesSection({
     return (
         <SectionLayout>
             <h1 className="text-[calc(1.275rem+0.3vw)] md:text-2xl font-extrabold mb-6">{t('packagesSection.title')}</h1>
-            <div className="flex gap-5">
-                <div className="grow">
+            <div className="md:flex gap-5">
+                <div className="md:w-4/5">
                     <div className="mb-6">
                         <ButtonsFilter filters={filtersWithState} />
                     </div>
@@ -49,7 +49,7 @@ export default function AddressPackagesSection({
                     {/* <Packages filter={activeFilter} initialPackages={packages} /> */}
                     <PackageCard />
                 </div>
-                <div className="w-1/5">
+                <div className="hidden md:block md:w-1/5">
                     filters
                 </div>
             </div>

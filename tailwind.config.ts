@@ -2,6 +2,14 @@ import type { Config } from 'tailwindcss';
 import colors from 'tailwindcss/colors';
 import plugin from 'tailwindcss/plugin';
 
+export const breakpoints = {
+  sm: '(max-width: 540px)',
+  md: '(max-width: 720px)',
+  lg: '(max-width: 960px)',
+  xl: '(max-width: 1140px)',
+  '2xl': '(max-width: 1320px)',
+};
+
 const config: Config = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -65,19 +73,19 @@ const config: Config = {
           marginRight: 'auto',
           maxWidth: '95%',
           '@screen sm': {
-            maxWidth: '540px',
+            maxWidth: breakpoints.sm,
           },
           '@screen md': {
-            maxWidth: '720px',
+            maxWidth: breakpoints.md,
           },
           '@screen lg': {
-            maxWidth: '960px',
+            maxWidth: breakpoints.lg,
           },
           '@screen xl': {
-            maxWidth: '1140px',
+            maxWidth: breakpoints.xl,
           },
           '@screen 2xl': {
-            maxWidth: '1320px',
+            maxWidth: breakpoints['2xl'],
           },
         },
       });

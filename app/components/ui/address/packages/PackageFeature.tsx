@@ -17,9 +17,7 @@ export default function PackageFeature({
         <div className="flex items-center gap-2">
             {type === 'internet' && <Language fontSize="large" sx={iconStroke} />}
             {type === 'tv' && <Tv fontSize="large" sx={iconStroke} />}
-            <div>
-                {children}
-            </div>
+            {children}
         </div>
     );
 }
