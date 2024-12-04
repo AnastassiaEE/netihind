@@ -7,11 +7,12 @@ import { breakpoints } from '@/tailwind.config';
 import PackagePrice from '@/components/ui/address/packages/PackagePrice';
 import PackageHeader from '@/components/ui/address/packages/PackageHeader';
 import PackageActions from '@/components/ui/address/packages/PackageActions';
+import classNames from 'classnames';
 
-export default function PackageCard() {
+export default function PackageCard({ className }: { className: string }) {
     const isSmallScreen = useMediaQuery(breakpoints.md);
     return (
-        <article className="bg-white border border-muted-light rounded-md md:flex shadow-md hover:shadow-lg transition-shadow duration-300">
+        <article className={`bg-white border border-muted-light rounded-md md:flex shadow-md hover:shadow-lg transition-shadow duration-300 ${classNames(className)}`}>
             <div className="md:w-3/5 p-5 border-r border-muted-light cursor-pointer">
                 <PackageHeader
                     logo="https://rxysmdetqttpdqfmrpym.supabase.co/storage/v1/object/public/providers-logos/Elisa.png"

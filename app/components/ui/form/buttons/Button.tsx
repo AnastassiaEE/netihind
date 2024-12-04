@@ -1,11 +1,14 @@
 import classNames from 'classnames';
 
-const baseClasses = 'font-semibold border rounded-md transition-all';
-const variants: { primary: string; secondary: string, neutral: string } = {
+const baseClasses = 'font-semibold transition-all';
+const variants: { primary: string; secondary: string; neutral: string; flat: string } = {
   primary:
-    'bg-primary text-white border-primary shadow-lg shadow-primary/50 hover:bg-primary-dark hover:shadow-none',
-  secondary: 'bg-white text-primary border-primary hover:bg-primary hover:text-white',
-  neutral: 'bg-primary-light border-primary-light text-muted-dark hover:bg-primary hover:text-white'
+    'bg-primary text-white border border-primary rounded-md shadow-lg shadow-primary/50 hover:bg-primary-dark hover:shadow-none',
+  secondary:
+    'bg-white text-primary border border-primary rounded-md hover:bg-primary hover:text-white',
+  neutral:
+    'bg-primary-light border border-primary-light rounded-md text-muted-dark hover:bg-primary hover:text-white',
+  flat: 'text-primary hover:text-primary-dark',
 };
 const sizes: { sm: string; lg: string } = {
   sm: 'text-sm px-4 py-2.5',

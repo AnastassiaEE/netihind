@@ -15,6 +15,7 @@ import {
 } from '@/utils/packagesHelper';
 import React from 'react';
 import PackageCard from '@/components/ui/address/packages/PackageCard';
+import Button from '@/components/ui/form/buttons/Button';
 
 export default function AddressPackagesSection({
     packages,
@@ -37,7 +38,9 @@ export default function AddressPackagesSection({
 
     return (
         <SectionLayout>
-            <h1 className="text-[calc(1.275rem+0.3vw)] md:text-2xl font-extrabold mb-6">{t('packagesSection.title')}</h1>
+            <h1 className="text-[calc(1.275rem+0.3vw)] md:text-2xl font-extrabold mb-6">
+                {t('packagesSection.title')}
+            </h1>
             <div className="md:flex gap-5">
                 <div className="md:w-4/5">
                     <div className="mb-6">
@@ -47,11 +50,14 @@ export default function AddressPackagesSection({
                         {/* <SelectSort options={SORT_OPTIONS} selectedOption={selectedSortOption} /> */}
                     </div>
                     {/* <Packages filter={activeFilter} initialPackages={packages} /> */}
-                    <PackageCard />
+                    <PackageCard className="mb-4" />
+                    <div className="text-center">
+                        <Button variant="flat" size="lg">
+                            Показать еще
+                        </Button>
+                    </div>
                 </div>
-                <div className="hidden md:block md:w-1/5">
-                    filters
-                </div>
+                <div className="hidden md:block md:w-1/5">filters</div>
             </div>
         </SectionLayout>
     );
