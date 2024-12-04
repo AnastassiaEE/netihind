@@ -1,11 +1,10 @@
-import { useState } from 'react';
+import useBoolean from '@/hooks/useBoolean';
 
 export default function usePopover(initialVisible = false) {
-  const [isVisible, setIsVisible] = useState(initialVisible);
+  const { value: isVisible, setTrue, setFalse, toggle } = useBoolean(initialVisible);
 
-  const show = () => setIsVisible(true);
-  const hide = () => setIsVisible(false);
-  const toggle = () => setIsVisible((prev) => !prev);
+  const show = () => setTrue();
+  const hide = () => setFalse();
 
   return {
     isVisible,
