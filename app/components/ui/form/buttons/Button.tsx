@@ -3,7 +3,7 @@ import classNames from 'classnames';
 const baseClasses = 'font-semibold transition-all';
 const variants: { primary: string; secondary: string; neutral: string; flat: string } = {
   primary:
-    'bg-primary text-white border border-primary rounded-md shadow-lg shadow-primary/50 hover:bg-primary-dark hover:shadow-none',
+    'bg-primary text-white border border-primary rounded-md shadow-md shadow-primary/50 hover:bg-primary-dark hover:shadow-none',
   secondary:
     'bg-white text-primary border border-primary rounded-md hover:bg-primary hover:text-white',
   neutral:

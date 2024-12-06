@@ -3,7 +3,7 @@ import FieldLabel from '@/components/ui/form/fields/FieldLabel';
 import classNames from 'classnames';
 
 const baseClasses =
-    'w-full bg-white border rounded-md transition-[padding] focus:outline-none focus:shadow-lg focus:shadow-primary/10 placeholder:text-muted text-muted-dark';
+    'w-full bg-white border rounded-md transition-[padding] focus:outline-none focus:shadow-md focus:shadow-primary/10 placeholder:text-muted text-muted-dark';
 
 const sizes: { sm: string; lg: string } = {
     sm: 'text-sm px-4 py-2.5',
