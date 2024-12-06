@@ -10,7 +10,7 @@ export default function PackageHeader({
 }) {
     return (
         <div className="mb-5">
-            <div className="relative w-24 h-8 mb-1">
+            <div className="relative w-14 h-8 mb-1">
                 <Image src={logo} alt={`${provider} logo`} fill className="object-contain" />
             </div>
             <span className="text-xs text-muted mb-1">{provider}</span>

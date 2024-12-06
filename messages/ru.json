@@ -94,7 +94,7 @@
     "units": {
       "speed": "мбит/c",
       "channels": "каналов",
-      "month": "месяц"
+      "month": "мес"
     },
     "buttons": {
       "connect": "Подключиться",

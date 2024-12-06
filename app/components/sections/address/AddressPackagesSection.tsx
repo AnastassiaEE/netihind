@@ -35,7 +35,6 @@ export default function AddressPackagesSection({
         }),
         {},
     );
-
     return (
         <SectionLayout>
             <h1 className="text-[calc(1.275rem+0.3vw)] md:text-2xl font-extrabold mb-6">
@@ -50,7 +49,8 @@ export default function AddressPackagesSection({
                         {/* <SelectSort options={SORT_OPTIONS} selectedOption={selectedSortOption} /> */}
                     </div>
                     {/* <Packages filter={activeFilter} initialPackages={packages} /> */}
-                    <PackageCard className="mb-4" />
+                    <PackageCard originalPrice={25.99} promoPrice={null} className="mb-4" />
+                    <PackageCard originalPrice={50.99} promoPrice={40.99} className="mb-4" />
                     <div className="text-center">
                         <Button variant="flat" size="lg">
                             {t('buttons.showMore')}
