@@ -5,18 +5,10 @@ import Language from '@/components/ui/language-switcher/Language';
 import { useLocale } from 'next-intl';
 import { useParams } from 'next/navigation';
 
-export default function LanguageSwitcher({
-  handleSidebarClose,
-}: {
-  handleSidebarClose?: Function;
-}) {
+export default function LanguageSwitcher() {
   const pathname = usePathname();
   const currentLocale = useLocale();
   const params = useParams();
-
-  const handleClick = () => {
-    if (handleSidebarClose) handleSidebarClose();
-  };
 
   return (
     <div className="flex items-center gap-4">
@@ -25,11 +17,10 @@ export default function LanguageSwitcher({
           key={locale}
           href={{
             pathname: pathname,
-            params: params
+            params: params,
           }}
           locale={locale}
           current={currentLocale === locale}
-          handleClick={handleClick}
         />
       ))}
     </div>

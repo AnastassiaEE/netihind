@@ -5,12 +5,10 @@ export default function Language({
     href,
     locale,
     current,
-    handleClick,
 }: {
     href: any;
     locale: string;
     current: boolean;
-    handleClick: React.MouseEventHandler<HTMLAnchorElement>;
 }) {
     const languageClasses = classNames(
         'font-semibold',
@@ -27,6 +25,8 @@ export default function Language({
     );
 
     return (
-        <Link href={href} locale={locale} onClick={handleClick} className={languageClasses}>{locale.toUpperCase()}</Link>
+        <Link href={href} locale={locale} className={languageClasses}>
+            {locale.toUpperCase()}
+        </Link>
     );
 }

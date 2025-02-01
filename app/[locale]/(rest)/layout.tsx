@@ -13,7 +13,9 @@ export default function Layout({
     return (
         <>
             <Header />
-            <main className="py-24">{children}</main>
+            <main className="py-24">
+                {children}
+            </main>
             <MainFooter />
         </>
     );

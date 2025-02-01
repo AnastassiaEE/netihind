@@ -2,36 +2,33 @@
 
 import secondaryLogo from '@/public/images/gradientsecondarylogo.svg';
 import useScrollPosition from '@/hooks/useScrollPosition';
-import useSlidePanel from '@/hooks/useSlidePanel';
 import ConsultationButton from '@/components/ui/buttons/ConsultationButton';
 import Hamburger from '@/components/ui/header/Hamburger';
 import Logo from '@/components/ui/Logo';
-import Sidebar from '@/components/ui/header/Sidebar';
-import Overlay from '@/components/ui/Overlay';
 import classNames from 'classnames';
+import { useSidebarMenuContext } from '@/app/contexts/SidebarMenuContext';
 
 const TOOLBAR_SHOW_POSITION = 400;
 
 export default function StickyHeader({ type = 'desktop' }: { type?: 'desktop' | 'mobile' }) {
     const y = useScrollPosition();
+    const { openModal: openSidebar } = useSidebarMenuContext();
 
-    const { isSlidePanelOpened: isSidebarOpened, handleSlidePanel: handleSidebar } = useSlidePanel();
-
-    let toolbarVisibility = `hidden`;
+    let toolbarVisibility = 'hidden';
     if (y > TOOLBAR_SHOW_POSITION) {
-        toolbarVisibility = `animate-show`;
+        toolbarVisibility = 'animate-show';
     }
 
     const stickyHeaderWrapperClasses = classNames(
         'sticky-header',
         'bg-white',
         'shadow-lg',
-        'z-20',
         'w-full',
         'fixed',
         'top-0',
         'left-0',
         'p-4',
+        'z-30',
         toolbarVisibility,
     );
 
@@ -47,12 +44,10 @@ export default function StickyHeader({ type = 'desktop' }: { type?: 'desktop' | 
                     <Logo src={secondaryLogo} sizeClass="w-12" />
                     <div className={buttonsWrapperClasses}>
                         <ConsultationButton type={type} />
-                        <Hamburger handleClick={() => handleSidebar(true)}></Hamburger>
+                        <Hamburger handleClick={openSidebar}></Hamburger>
                     </div>
                 </div>
             </div>
-            <Sidebar handleClose={() => handleSidebar(false)} isOpened={isSidebarOpened} />
-            <Overlay isVisible={isSidebarOpened} handleClick={() => handleSidebar(false)} />
         </div>
     );
 }
