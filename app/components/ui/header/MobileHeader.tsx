@@ -1,7 +1,6 @@
 'use client';
 
 import secondaryLogo from '@/public/images/gradientsecondarylogo.svg';
-import ConsultationButton from '@/components/ui/buttons/ConsultationButton';
 import StickyHeader from '@/components/ui/header/StickyHeader';
 import Hamburger from '@/components/ui/header/Hamburger';
 import Logo from '@/components/ui/Logo';
@@ -16,7 +15,6 @@ export default function MobileHeader() {
                     <Logo src={secondaryLogo} sizeClass="w-12" />
                 </div>
                 <div className="flex flex-wrap items-center gap-6">
-                    <ConsultationButton type="mobile" />
                     <Hamburger handleClick={openSidebar}></Hamburger>
                 </div>
             </div>

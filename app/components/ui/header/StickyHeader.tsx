@@ -2,7 +2,6 @@
 
 import secondaryLogo from '@/public/images/gradientsecondarylogo.svg';
 import useScrollPosition from '@/hooks/useScrollPosition';
-import ConsultationButton from '@/components/ui/buttons/ConsultationButton';
 import Hamburger from '@/components/ui/header/Hamburger';
 import Logo from '@/components/ui/Logo';
 import classNames from 'classnames';
@@ -43,7 +42,6 @@ export default function StickyHeader({ type = 'desktop' }: { type?: 'desktop' | 
                 <div className="flex flex-wrap justify-between">
                     <Logo src={secondaryLogo} sizeClass="w-12" />
                     <div className={buttonsWrapperClasses}>
-                        <ConsultationButton type={type} />
                         <Hamburger handleClick={openSidebar}></Hamburger>
                     </div>
                 </div>
