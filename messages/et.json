@@ -150,7 +150,8 @@
     },
     "messages": {
       "somethingWentWrong": "Midagi läks valesti. Proovige uuesti.",
-      "sentSuccessfully": "Teie sõnum on edukalt saadetud!"
+      "sentSuccessfully": "Teie sõnum on edukalt saadetud!",
+      "addressExample": "Nt Akadeemia tee 14"
     },
     "buttons": {
       "findProviders": "Otsi pakkujad",

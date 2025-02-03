@@ -149,7 +149,8 @@
     },
     "messages": {
       "somethingWentWrong": "Что-то пошло не так. Повторите попытку.",
-      "sentSuccessfully": "Ваше сообщение успешно отправлено!"
+      "sentSuccessfully": "Ваше сообщение успешно отправлено!",
+      "addressExample": "Например, Akadeemia tee 14"
     },
     "buttons": {
       "findProviders": "Найти провайдеров",

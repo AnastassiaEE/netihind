@@ -26,7 +26,7 @@ export default function MaaAmetAddressForm() {
                 <div className="md:flex gap-1 relative">
                     <div className="grow">
                         <div id="in-address"></div>
-                        {error !== '' && <FieldError size="lg">{t(error)}</FieldError>}
+                        {error == '' ? <span className="font-medium text-sm text-muted-dark absolute">{t('messages.addressExample')}</span> : <FieldError size="lg">{t(error)}</FieldError>}
                     </div>
                     <Button type="submit" size="lg" className="max-md:w-full max-md:mt-6">
                         {t('buttons.findProviders')}
