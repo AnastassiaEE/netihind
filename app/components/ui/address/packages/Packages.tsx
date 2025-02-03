@@ -16,20 +16,20 @@ export default function Packages({
 }) {
     const t = useTranslations('Errors');
     const cookieString = getCookie('ADDRESS')!;
-    const { city, county, street, streetNr } = getAddressCookieValues(cookieString);
-    const { packages, error, isLoading } = usePackages(
-        initialPackages,
-        filter,
-        city,
-        county,
-        street,
-        streetNr,
-    );
-    if (isLoading) return <PackagesLoader />;
-    if (error || packages.length === 0) {
-        const errorMessage = error ? t(error.message) : t('noPackages');
-        return <PackagesError>{errorMessage}</PackagesError>;
-    }
+    // const { city, county, street, streetNr } = getAddressCookieValues(cookieString);
+    // const { packages, error, isLoading } = usePackages(
+    //     initialPackages,
+    //     filter,
+    //     city,
+    //     county,
+    //     street,
+    //     streetNr,
+    // );
+    // if (isLoading) return <PackagesLoader />;
+    // if (error || packages.length === 0) {
+    //     const errorMessage = error ? t(error.message) : t('noPackages');
+    //     return <PackagesError>{errorMessage}</PackagesError>;
+    // }
 
     return (
         <>
