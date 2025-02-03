@@ -15,7 +15,7 @@ export default async function AddressDataWrapper({
 }) {
     const t = await getTranslations('Errors');
     const cookieString = getCookie('ADDRESS', { cookies })!;
-    const { city, county, street, streetNr } = getAddressCookieValues(cookieString);
+    const { fullAddress, oid, apartment } = getAddressCookieValues(cookieString);
 
     const activeFilter = getActiveFilter(searchParams.filter);
     const selectedSortOption = getSelectedSortOption(searchParams.sort);

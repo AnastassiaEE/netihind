@@ -2,17 +2,13 @@ import { setCookie } from 'cookies-next';
 import { useLocale } from 'next-intl';
 import { useRouter } from '@/i18n/routing';
 import { useEffect, useRef, useState } from 'react';
-import slugify from 'slugify';
 import { getAddressSlug } from '@/utils/addressSlugifier';
 
 export default function useMaaAmetAddressForm() {
   const isWidgetAdded = useRef(false);
   const [address, setAddress] = useState({
     full: '',
-    county: '',
-    city: '',
-    street: '',
-    streetNr: '',
+    oid: '',
     apartment: undefined,
   });
   const [error, setError] = useState('');
@@ -21,40 +17,16 @@ export default function useMaaAmetAddressForm() {
   const locale = useLocale();
   const router = useRouter();
 
-  const initializeWidget = () => {
-    if (isWidgetAdded.current) return;
-    if (typeof window !== 'undefined' && typeof window.InAadress === 'function') {
-      const widget = new window.InAadress({
-        container: 'in-address',
-        mode: 3,
-        ihist: '0',
-        appartment: 1,
-        lang: locale,
-      });
-      isWidgetAdded.current = true;
-    }
-  };
   const getAddress = (e: Event) => {
     var info = (e as CustomEvent).detail[0];
-    setAddress({
-      full: info.aadress,
-      county: info.maakond,
-      city: info.omavalitsus,
-      street: info.liikluspind,
-      streetNr: info.aadress_nr,
-      apartment: info.kort_nr,
-    });
+    setAddress((prevAddress) => ({ ...prevAddress, full: info.aadress, apartment: info.kort_nr }));
+    info.hoone_ads_oid
+      ? setAddress((prevAddress) => ({ ...prevAddress, oid: info.hoone_ads_oid }))
+      : setAddress((prevAddress) => ({ ...prevAddress, oid: info.ads_oid }));
   };
 
   const removeAddress = () => {
-    setAddress({
-      full: '',
-      county: '',
-      city: '',
-      street: '',
-      streetNr: '',
-      apartment: undefined,
-    });
+    setAddress({ full: '', oid: '', apartment: undefined });
   };
 
   const removeErrors = () => {
@@ -74,11 +46,6 @@ export default function useMaaAmetAddressForm() {
     const apartmentInput = document.querySelector('.inads-appartment');
     if (address.full === '') {
       setError('errors.emptyAddress');
-      streetInput?.classList.add('invalid');
-      return false;
-    }
-    if (address.streetNr === '') {
-      setError('errors.invalidAddress');
       streetInput?.classList.add('invalid');
       return false;
     }
@@ -109,6 +76,20 @@ export default function useMaaAmetAddressForm() {
   };
 
   useEffect(() => {
+    const initializeWidget = () => {
+      if (isWidgetAdded.current) return;
+      if (typeof window !== 'undefined' && typeof window.InAadress === 'function') {
+        const widget = new window.InAadress({
+          container: 'in-address',
+          mode: 3,
+          ihist: '0',
+          appartment: 1,
+          lang: locale,
+        });
+        isWidgetAdded.current = true;
+      }
+    };
+
     const script = document.createElement('script');
     script.src = 'https://inaadress.maaamet.ee/inaadress/js/inaadress.min.js?d=20220510';
     script.onload = () => {
@@ -134,7 +115,7 @@ export default function useMaaAmetAddressForm() {
       document.querySelector('.inads-input-clear')?.removeEventListener('click', removeAddress);
       document.querySelector('.inads-input-clear')?.removeEventListener('click', removeErrors);
     };
-  }, []);
+  }, [locale]);
 
   return {
     isScriptLoaded,

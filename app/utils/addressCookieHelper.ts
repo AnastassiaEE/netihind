@@ -6,17 +6,11 @@ export const getAddressCookieValues = (cookieString: string) => {
     cookie = {};
   }
   const fullAddress = cookie.full ?? '';
-  const county = cookie.county ?? '';
-  const city = cookie.city ?? '';
-  const street = cookie.street ?? '';
-  const streetNr = cookie.streetNr ?? '';
+  const oid = cookie.oid ?? '';
   const apartment = cookie.apartment ?? '';
   return {
     fullAddress,
-    county,
-    city,
-    street,
-    streetNr,
+    oid,
     apartment,
   };
 };
