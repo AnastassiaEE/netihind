@@ -10,9 +10,9 @@ export default function RelatedBlogPostsSection() {
     return (
         <SectionLayout>
             <div className="md:flex md:justify-end">
-                <Link href="/blog" className="md:inline-block">
-                    <Button variant="secondary" size="lg" className="w-full">
-                        {'buttons.allPosts'}
+                <Link href="/blog" passHref>
+                    <Button variant="secondary" size="lg" className="md:w-auto w-full">
+                        {t('buttons.allPosts')}
                     </Button>
                 </Link>
             </div>
