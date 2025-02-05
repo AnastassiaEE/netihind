@@ -15,9 +15,7 @@ import * as React from 'react';
 import colors from 'tailwindcss/colors';
 import gradientmainlogo from '@/public/images/gradientmainlogo.png';
 
-const baseUrl = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : 'https://netihind.ee';
+const baseUrl = 'https://netihind.ee';
 
 export default function EmailTemplate(type: 'contact' | 'request', values: { [key: string]: any }) {
     return (
