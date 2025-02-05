@@ -9,8 +9,8 @@ export async function POST(req: NextRequest) {
   const { type, ...values } = body;
   try {
     const { data, error } = await resend.emails.send({
-      from: 'Acme <onboarding@resend.dev>',
-      to: ['delivered@resend.dev'],
+      from: 'Netihind <noreply@netihind.ee>',
+      to: ['info@netihind.ee'],
       subject: `Netihind. ${type.toUpperCase()}`,
       react: EmailTemplate(type, values),
     });
