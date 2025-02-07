@@ -16,6 +16,9 @@ import {
 import React from 'react';
 import PackageCard from '@/components/ui/address/packages/PackageCard';
 import Button from '@/components/ui/form/buttons/Button';
+import Modal from '@/components/ui/modal/Modal';
+import Sort from '@/components/ui/sorting/Sort';
+import SortingToolbar from '@/components/ui/sorting/SortingToolbar';
 
 export default function AddressPackagesSection({
     packages,
@@ -25,16 +28,18 @@ export default function AddressPackagesSection({
     const t = useTranslations('AddressPage');
     const searchParams = useSearchParams();
 
-    const activeFilter = getActiveFilter(searchParams.get('filter'));
+    // const activeFilter = getActiveFilter(searchParams.get('filter'));
+
+    // const filtersWithState = FILTERS.reduce(
+    //     (acc, filter) => ({
+    //         ...acc,
+    //         [filter]: filter === activeFilter,
+    //     }),
+    //     {},
+    // );
+
     const selectedSortOption = getSelectedSortOption(searchParams.get('sort'));
 
-    const filtersWithState = FILTERS.reduce(
-        (acc, filter) => ({
-            ...acc,
-            [filter]: filter === activeFilter,
-        }),
-        {},
-    );
     return (
         <SectionLayout>
             <h1 className="text-[calc(1.275rem+0.3vw)] md:text-2xl font-extrabold mb-6">
@@ -42,23 +47,30 @@ export default function AddressPackagesSection({
             </h1>
             <div className="md:flex gap-5">
                 <div className="md:w-4/5">
-                    <div className="mb-6">
+                    {/* <div className="mb-6">
                         <ButtonsFilter filters={filtersWithState} />
-                    </div>
-                    <div>
-                        {/* <SelectSort options={SORT_OPTIONS} selectedOption={selectedSortOption} /> */}
+                    </div> */}
+                    <div className="max-md:hidden my-4">
+                        <Sort options={SORT_OPTIONS} selectedOption={selectedSortOption} type="arrow" />
                     </div>
                     {/* <Packages filter={activeFilter} initialPackages={packages} /> */}
-                    <PackageCard originalPrice={25.99} promoPrice={null} className="mb-4" />
+
                     <PackageCard originalPrice={50.99} promoPrice={40.99} className="mb-4" />
-                    <div className="text-center">
+                    <PackageCard originalPrice={25.99} promoPrice={null} className="mb-4" />
+                    <PackageCard originalPrice={25.99} promoPrice={null} className="mb-4" />
+                    <PackageCard originalPrice={25.99} promoPrice={null} className="mb-4" />
+                    {/* <div className="text-center">
                         <Button variant="flat" size="lg">
                             {t('buttons.showMore')}
                         </Button>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="hidden md:block md:w-1/5">filters</div>
             </div>
+            <SortingToolbar className="md:hidden">
+                <Button>Filter</Button>
+                <Sort options={SORT_OPTIONS} selectedOption={selectedSortOption} type="button" openDirection="top" />
+            </SortingToolbar>
         </SectionLayout>
     );
 }

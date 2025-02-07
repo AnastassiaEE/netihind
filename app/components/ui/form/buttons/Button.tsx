@@ -26,6 +26,7 @@ export default function Button({
   name,
   className,
   handleClick,
+  buttonRef,
   children,
 }: {
   type?: 'button' | 'submit' | 'reset';
@@ -35,6 +36,7 @@ export default function Button({
   name?: string;
   className?: string;
   handleClick?: React.MouseEventHandler<HTMLButtonElement>;
+  buttonRef?: React.RefObject<HTMLButtonElement>;
   children: React.ReactNode;
 }) {
   const buttonClasses = classNames(baseClasses, variants[variant], sizes[size], className, {
@@ -47,6 +49,7 @@ export default function Button({
       onClick={handleClick}
       className={buttonClasses}
       disabled={disabled}
+      ref={buttonRef}
     >
       {children}
     </button>

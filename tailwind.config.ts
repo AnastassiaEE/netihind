@@ -68,6 +68,9 @@ const config: Config = {
         'packages-4': 'repeat(4, minmax(max-content, 100%))',
         'packages-5': 'repeat(5, minmax(max-content, 100%))',
       },
+      boxShadow: {
+        top: '0 -4px 8px rgba(0, 0, 0, .08), 0 -1px 1px rgba(0, 0, 0, .08);',
+      },
     },
   },
   corePlugins: {
