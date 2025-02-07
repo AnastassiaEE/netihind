@@ -4,13 +4,12 @@ import SectionLayout from '@/layouts/SectionLayout';
 import Packages from '@/components/ui/address/packages/Packages';
 import ButtonsFilter from '@/components/ui/sorting/ButtonsFilter';
 import { H1 } from '@/components/ui/headings/RestPageHeadings';
-// import SelectSort from '@/components/ui/sorting/SelectSort';
 import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import {
-    FILTERS,
+    SERVICES,
     SORT_OPTIONS,
-    getActiveFilter,
+    getActiveService,
     getSelectedSortOption,
 } from '@/utils/packagesHelper';
 import React from 'react';
@@ -19,6 +18,7 @@ import Button from '@/components/ui/form/buttons/Button';
 // import Modal from '@/components/ui/modal/Modal';
 import Sort from '@/components/ui/sorting/Sort';
 import SortingToolbar from '@/components/ui/sorting/SortingToolbar';
+// import CheckboxFilter from '@/components/ui/sorting/CheckboxFilter';
 
 export default function AddressPackagesSection({
     packages,
@@ -28,12 +28,12 @@ export default function AddressPackagesSection({
     const t = useTranslations('AddressPage');
     const searchParams = useSearchParams();
 
-    // const activeFilter = getActiveFilter(searchParams.get('filter'));
+    // const activeService = getActiveService(searchParams.get('filter'));
 
-    // const filtersWithState = FILTERS.reduce(
-    //     (acc, filter) => ({
+    // const servicesWithState = SERVICES.reduce(
+    //     (acc, service) => ({
     //         ...acc,
-    //         [filter]: filter === activeFilter,
+    //         [service]: service === activeService,
     //     }),
     //     {},
     // );
@@ -48,7 +48,7 @@ export default function AddressPackagesSection({
             <div className="md:flex gap-5">
                 <div className="md:w-4/5">
                     {/* <div className="mb-6">
-                        <ButtonsFilter filters={filtersWithState} />
+                        <ButtonsFilter options={servicesWithState} />
                     </div> */}
                     <div className="max-md:hidden my-4 flex justify-end">
                         <Sort options={SORT_OPTIONS} selectedOption={selectedSortOption} variant="flat" />
@@ -65,7 +65,12 @@ export default function AddressPackagesSection({
                         </Button>
                     </div> */}
                 </div>
-                <div className="hidden md:block md:w-1/5">filters</div>
+                <div className="hidden md:block md:w-1/5">
+
+                    {/* <CheckboxFilter name="providers" /> */}
+
+
+                </div>
             </div>
             <SortingToolbar className="md:hidden">
                 <Button>Filter</Button>

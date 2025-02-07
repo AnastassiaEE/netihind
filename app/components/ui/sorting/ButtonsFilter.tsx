@@ -5,22 +5,22 @@ import Button from '@/components/ui/form/buttons/Button';
 import { useTranslations } from 'next-intl';
 import React from 'react';
 
-export default React.memo(function ButtonsFilter({ filters }: { filters: { [key: string]: boolean } }) {
-    const { usedFilters, handleFilterClick } = useButtonsFilter(filters);
+export default function ButtonsFilter({ options }: { options: { [key: string]: boolean } }) {
+    const { usedOptions, handleOptionClick } = useButtonsFilter(options);
     const t = useTranslations('Filters');
     return (
         <div className="flex flex-wrap gap-2">
-            {Object.entries(usedFilters).map(([filter, isActive]) => (
+            {Object.entries(usedOptions).map(([option, isSelected]) => (
                 <Button
-                    key={filter}
-                    handleClick={() => handleFilterClick(filter)}
-                    variant={isActive ? 'primary' : 'neutral'}
+                    key={option}
+                    handleClick={() => handleOptionClick(option)}
+                    variant={isSelected ? 'primary' : 'neutral'}
                     className="rounded-md uppercase"
-                    name={filter}
+                    name={option}
                 >
-                    {t(filter)}
+                    {t(option)}
                 </Button>
             ))}
         </div>
     );
-})
+}

@@ -1,32 +1,32 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { useRouter, usePathname } from '@/i18n/routing';
 import { useParams } from 'next/navigation';
 
-export default function useButtonsFilter(filters: { [key: string]: boolean }) {
-  const [usedFilters, setUsedFilters] = useState(filters);
+export default function useButtonsFilter(options: { [key: string]: boolean }) {
+  const [usedOptions, setUsedOptions] = useState(options);
   const router = useRouter();
   const pathname = usePathname();
   const params = useParams();
 
-  const activateFilterButton = (filter: string) => {
-    setUsedFilters((prevFilters) =>
+  const activateButton = (option: string) => {
+    setUsedOptions((prevOptions) =>
       Object.fromEntries(
-        Object.keys(prevFilters).map((prevFilter) => [prevFilter, prevFilter === filter]),
+        Object.keys(prevOptions).map((prevOption) => [prevOption, prevOption === option]),
       ),
     );
   };
 
-  const handleFilterClick = (filter: string) => {
+  const handleOptionClick = (option: string) => {
     router.replace(
       // @ts-expect-error
-      { pathname, params, query: { filter: filter } },
+      { pathname, params, query: { filter: option } },
       { scroll: false },
     );
-    activateFilterButton(filter);
+    activateButton(option);
   };
 
   return {
-    usedFilters,
-    handleFilterClick,
+    usedOptions,
+    handleOptionClick,
   };
 }
