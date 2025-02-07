@@ -16,7 +16,7 @@ import {
 import React from 'react';
 import PackageCard from '@/components/ui/address/packages/PackageCard';
 import Button from '@/components/ui/form/buttons/Button';
-import Modal from '@/components/ui/modal/Modal';
+// import Modal from '@/components/ui/modal/Modal';
 import Sort from '@/components/ui/sorting/Sort';
 import SortingToolbar from '@/components/ui/sorting/SortingToolbar';
 
