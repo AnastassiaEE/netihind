@@ -2,15 +2,13 @@
 
 import SectionLayout from '@/layouts/SectionLayout';
 import Packages from '@/components/ui/address/packages/Packages';
-import ButtonsFilter from '@/components/ui/sorting/ButtonsFilter';
 import { H1 } from '@/components/ui/headings/RestPageHeadings';
 import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import {
     SERVICES,
-    SORT_OPTIONS,
-    getActiveService,
-    getSelectedSortOption,
+    getProviderOptions,
+    getSortOptions,
 } from '@/utils/packagesHelper';
 import React from 'react';
 import PackageCard from '@/components/ui/address/packages/PackageCard';
@@ -18,27 +16,25 @@ import Button from '@/components/ui/form/buttons/Button';
 // import Modal from '@/components/ui/modal/Modal';
 import Sort from '@/components/ui/sorting/Sort';
 import SortingToolbar from '@/components/ui/sorting/SortingToolbar';
-// import CheckboxFilter from '@/components/ui/sorting/CheckboxFilter';
+import CheckboxFilter from '@/components/ui/sorting/CheckboxFilter';
+import { getProviders } from '@/lib/addressDataFetch';
+import { getCookie } from 'cookies-next';
+import { getAddressCookieValues } from '@/utils/addressCookieHelper';
 
-export default function AddressPackagesSection({
-    packages,
-}: {
-    packages?: { [key: string]: string }[];
-}) {
+export default function AddressPackagesSection() {
     const t = useTranslations('AddressPage');
     const searchParams = useSearchParams();
+    const cookieString = getCookie('ADDRESS')!;
+    const { fullAddress, oid } = getAddressCookieValues(cookieString);
 
-    // const activeService = getActiveService(searchParams.get('filter'));
+    const sortOptions = getSortOptions(searchParams.get('sort'));
 
-    // const servicesWithState = SERVICES.reduce(
-    //     (acc, service) => ({
-    //         ...acc,
-    //         [service]: service === activeService,
-    //     }),
-    //     {},
-    // );
-
-    const selectedSortOption = getSelectedSortOption(searchParams.get('sort'));
+    // const providers = await getProviders(oid).catch((error) => {
+    //     return [];
+    // });
+    // const providerOptions = getProviderOptions(providers);
+    // //const selectedProviderOptions = getSelectedProviderOptions()
+    // console.log(providerOptions)
 
     return (
         <SectionLayout>
@@ -47,11 +43,8 @@ export default function AddressPackagesSection({
             </h1>
             <div className="md:flex gap-5">
                 <div className="md:w-4/5">
-                    {/* <div className="mb-6">
-                        <ButtonsFilter options={servicesWithState} />
-                    </div> */}
                     <div className="max-md:hidden my-4 flex justify-end">
-                        <Sort options={SORT_OPTIONS} selectedOption={selectedSortOption} variant="flat" />
+                        <Sort options={sortOptions} variant="flat" />
                     </div>
                     {/* <Packages filter={activeFilter} initialPackages={packages} /> */}
 
@@ -67,14 +60,14 @@ export default function AddressPackagesSection({
                 </div>
                 <div className="hidden md:block md:w-1/5">
 
-                    {/* <CheckboxFilter name="providers" /> */}
+                    {/* <CheckboxFilter name="providers" options={ } /> */}
 
 
                 </div>
             </div>
             <SortingToolbar className="md:hidden">
                 <Button>Filter</Button>
-                <Sort options={SORT_OPTIONS} selectedOption={selectedSortOption} variant="secondary" openDirection="top" />
+                <Sort options={sortOptions} variant="secondary" openDirection="top" />
             </SortingToolbar>
         </SectionLayout>
     );

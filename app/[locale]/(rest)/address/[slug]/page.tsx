@@ -7,7 +7,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { H1 } from '@/components/ui/headings/RestPageHeadings';
 import { Suspense } from 'react';
 import PageLoader from '@/components/ui/loaders/PageLoader';
-import AddressDataWrapper from '@/components/sections/address/AddressDataWrapper';
+import AddressPackagesSection from '@/components/sections/address/AddressPackagesSection';
 
 export default async function PersonalAddress({
     params: { slug, locale },
@@ -27,7 +27,7 @@ export default async function PersonalAddress({
 
     return (
         <Suspense fallback={<PageLoader />}>
-            <AddressDataWrapper searchParams={searchParams} />
+            <AddressPackagesSection />
         </Suspense>
     );
 }

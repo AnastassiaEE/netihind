@@ -1,19 +1,28 @@
 const DEFAULT_SERVICE = 'all';
-const DEFAULT_SORT_OPTION = 'default';
 
 export const SERVICES = ['all', 'internet', 'internet-tv'];
-export const SORT_OPTIONS = ['default', 'price_asc', 'price_desc', 'speed_desc'];
-
-const getValidOption = (value: string | null, validOptions: string[], defaultValue: string) =>
-  validOptions.includes(value ?? '') ? value! : defaultValue;
-
-export const getActiveService = (activeService: string | null) =>
-  getValidOption(activeService, SERVICES, DEFAULT_SERVICE);
-
-export const getSelectedSortOption = (option: string | null) =>
-  getValidOption(option, SORT_OPTIONS, DEFAULT_SORT_OPTION);
-
-export const getProviderOptions = (providers: string | null) => {
-  if (!providers) return [];
-  return providers.split(',');
+export const SORT_OPTIONS: { [key: string]: boolean } = {
+  default: true,
+  price_asc: false,
+  price_desc: false,
+  speed_desc: false,
 };
+
+export const getSortOptions = (selectedOption: string | null) => {
+  const isValidOption = selectedOption && selectedOption in SORT_OPTIONS;
+  return {
+    ...Object.fromEntries(Object.keys(SORT_OPTIONS).map((key) => [key, key === selectedOption])),
+    default: !isValidOption,
+  };
+};
+
+export const getProviderOptions = (providers: { [key: string]: any }[]) => {
+  return providers.map((provider) => {
+    return {
+      label: provider.name,
+      value: provider.id,
+    };
+  });
+};
+
+// export const getSelectedProviderOptions = ((providers: { [key: string]: any }[]))

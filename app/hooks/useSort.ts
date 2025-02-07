@@ -1,20 +1,21 @@
 import { usePathname, useRouter } from '@/i18n/routing';
+import { getSortOptions } from '@/utils/packagesHelper';
 import { useParams, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-export default function useSort(selectedOption: string) {
+export default function useSort(options: { [key: string]: boolean }) {
   const router = useRouter();
   const pathname = usePathname();
   const params = useParams();
   const searchParams = new URLSearchParams(useSearchParams().toString());
-  const [selected, setSelected] = useState(selectedOption);
+  const [usedOptions, setUsedOptions] = useState(options);
 
   useEffect(() => {
-    setSelected(selectedOption);
-  }, [selectedOption]);
+    setUsedOptions(options);
+  }, [options]);
 
   const handleOptionClick = (option: string) => {
-    setSelected(option);
+    setUsedOptions(getSortOptions(option));
     searchParams.set('sort', option);
     const searchParamsObject = Object.fromEntries(searchParams.entries());
     router.replace(
@@ -25,7 +26,7 @@ export default function useSort(selectedOption: string) {
   };
 
   return {
-    selected,
+    usedOptions,
     handleOptionClick,
   };
 }
