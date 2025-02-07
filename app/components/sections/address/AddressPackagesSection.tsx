@@ -50,8 +50,8 @@ export default function AddressPackagesSection({
                     {/* <div className="mb-6">
                         <ButtonsFilter filters={filtersWithState} />
                     </div> */}
-                    <div className="max-md:hidden my-4">
-                        <Sort options={SORT_OPTIONS} selectedOption={selectedSortOption} type="arrow" />
+                    <div className="max-md:hidden my-4 flex justify-end">
+                        <Sort options={SORT_OPTIONS} selectedOption={selectedSortOption} variant="flat" />
                     </div>
                     {/* <Packages filter={activeFilter} initialPackages={packages} /> */}
 
@@ -69,7 +69,7 @@ export default function AddressPackagesSection({
             </div>
             <SortingToolbar className="md:hidden">
                 <Button>Filter</Button>
-                <Sort options={SORT_OPTIONS} selectedOption={selectedSortOption} type="button" openDirection="top" />
+                <Sort options={SORT_OPTIONS} selectedOption={selectedSortOption} variant="secondary" openDirection="top" />
             </SortingToolbar>
         </SectionLayout>
     );

@@ -7,11 +7,12 @@ import Select from '@/components/ui/form/fields/select/Select';
 export default function Sort({
     options,
     selectedOption,
-    type = 'arrow',
+    variant = 'primary',
     openDirection = 'bottom',
 }: {
     options: string[];
     selectedOption: string;
+    variant?: 'primary' | 'secondary' | 'neutral' | 'flat';
     type?: 'arrow' | 'button';
     openDirection?: 'top' | 'bottom';
 }) {
@@ -22,9 +23,8 @@ export default function Sort({
         <Select
             name={t('sort')}
             selected={t(selected)}
-            type={type}
-            variant={type === 'arrow' ? 'primary' : undefined}
-            Icon={type === 'arrow' ? SortIcon : undefined}
+            variant={variant}
+            Icon={SortIcon}
             openDirection={openDirection}
             className="min-w-[150px] max-w-max"
         >
@@ -35,7 +35,6 @@ export default function Sort({
                     text={t(option)}
                     handleClick={() => handleOptionClick(option)}
                     isSelected={option === selected}
-
                 />
             ))}
         </Select>
