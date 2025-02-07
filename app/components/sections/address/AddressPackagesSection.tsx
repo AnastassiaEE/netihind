@@ -16,7 +16,7 @@ import Button from '@/components/ui/form/buttons/Button';
 // import Modal from '@/components/ui/modal/Modal';
 import Sort from '@/components/ui/sorting/Sort';
 import SortingToolbar from '@/components/ui/sorting/SortingToolbar';
-import CheckboxFilter from '@/components/ui/sorting/CheckboxFilter';
+// import CheckboxFilter from '@/components/ui/sorting/CheckboxFilter';
 import { getProviders } from '@/lib/addressDataFetch';
 import { getCookie } from 'cookies-next';
 import { getAddressCookieValues } from '@/utils/addressCookieHelper';
