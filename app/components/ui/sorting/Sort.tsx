@@ -6,33 +6,35 @@ import Select from '@/components/ui/form/fields/select/Select';
 
 export default function Sort({
     options,
+    selected,
     variant = 'primary',
     openDirection = 'bottom',
 }: {
-    options: { [key: string]: boolean };
+    options: string[];
+    selected: string;
     variant?: 'primary' | 'secondary' | 'neutral' | 'flat';
     type?: 'arrow' | 'button';
     openDirection?: 'top' | 'bottom';
 }) {
     const t = useTranslations('Sort');
-    const { usedOptions, handleOptionClick } = useSort(options);
+    const { selectedOption, handleChange } = useSort(selected);
 
     return (
         <Select
             name={t('sort')}
-            selected={t(Object.entries(usedOptions).find(([key, value]) => value)?.[0] || 'default')}
+            selected={t(selectedOption)}
             variant={variant}
             Icon={SortIcon}
             openDirection={openDirection}
             className="min-w-[150px] max-w-max"
         >
-            {Object.entries(usedOptions).map(([option, isSelected]) => (
+            {options.map((option) => (
                 <Option
                     key={option}
                     value={option}
                     text={t(option)}
-                    handleClick={() => handleOptionClick(option)}
-                    isSelected={isSelected}
+                    handleClick={() => handleChange(option)}
+                    isSelected={option === selectedOption}
                 />
             ))}
         </Select>
