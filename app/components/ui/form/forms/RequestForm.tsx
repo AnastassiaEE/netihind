@@ -118,7 +118,7 @@ export default function RequestForm() {
             <div className="mb-6">
                 <Checkbox
                     name="policy"
-                    handleCheck={(e) => handleChange(e, 'policy')}
+                    handleChange={(e) => handleChange(e, 'policy')}
                     isChecked={values.policy as boolean}
                     isValid={errors.policy === ''}>
                     <></>
