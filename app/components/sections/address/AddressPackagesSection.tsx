@@ -12,10 +12,11 @@ import Button from '@/components/ui/form/buttons/Button';
 // import Modal from '@/components/ui/modal/Modal';
 import Sort from '@/components/ui/sorting/Sort';
 import SortingToolbar from '@/components/ui/sorting/SortingToolbar';
-// import CheckboxFilter from '@/components/ui/sorting/CheckboxFilter';
-import { getProviders } from '@/lib/addressDataFetch';
+import { getProviders } from '@/lib/packagesDataFetch';
 import { getCookie } from 'cookies-next';
 import { getAddressCookieValues } from '@/utils/addressCookieHelper';
+import PackagesFilter from '@/components/ui/address/sorting/PackagesFilter';
+import usePackagesFilter from '@/hooks/usePackagesFilter';
 
 export default function AddressPackagesSection() {
     const t = useTranslations('AddressPage');
@@ -23,14 +24,14 @@ export default function AddressPackagesSection() {
     const cookieString = getCookie('ADDRESS')!;
     const { fullAddress, oid } = getAddressCookieValues(cookieString);
 
+    // Sort options
     const selectedSortOption = getSortParams(searchParams.get('sort'));
 
-    // const providers = await getProviders(oid).catch((error) => {
-    //     return [];
-    // });
-    // const providerOptions = getProviderOptions(providers);
-    // //const selectedProviderOptions = getSelectedProviderOptions()
-    // console.log(providerOptions)
+    // Provider options
+    const selectedProviderParams = searchParams.get('providers')?.split(',') || []
+    const { providerOptions, selectedProviderOptions } = usePackagesFilter(oid, selectedProviderParams)
+
+    // Technology options
 
     return (
         <SectionLayout>
@@ -50,7 +51,10 @@ export default function AddressPackagesSection() {
                     <PackageCard originalPrice={25.99} promoPrice={null} className="mb-4" />
                 </div>
                 <div className="hidden md:block md:w-1/5">
-                    {/* <CheckboxFilter name="providers" options={ } /> */}
+                    <PackagesFilter
+                        providerOptions={providerOptions}
+                        selectedProviderOptions={selectedProviderOptions}
+                    />
                 </div>
             </div>
             <SortingToolbar className="md:hidden">

@@ -26,8 +26,6 @@ export default async function PersonalAddress({
     if (slug !== addressSlug) notFound();
 
     return (
-        <Suspense fallback={<PageLoader />}>
-            <AddressPackagesSection />
-        </Suspense>
+        <AddressPackagesSection />
     );
 }

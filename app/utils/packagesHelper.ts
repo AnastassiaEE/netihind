@@ -8,13 +8,5 @@ export const getSortParams = (selectedOption: string | null) => {
   return SORT_OPTIONS.includes(validOption) ? validOption : 'default';
 };
 
-export const getProviderOptions = (providers: { [key: string]: any }[]) => {
-  return providers.map((provider) => {
-    return {
-      label: provider.name,
-      value: provider.id,
-    };
-  });
-};
-
-// export const getSelectedProviderOptions = ((providers: { [key: string]: any }[]))
+export const getProviderOptions = (providers: { [key: string]: string }[]) =>
+  providers.map(({ name: label, id: value }) => ({ value, label }));

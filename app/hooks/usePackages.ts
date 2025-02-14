@@ -1,4 +1,4 @@
-import { getPackages } from '@/lib/addressDataFetch';
+import { getPackages } from '@/lib/packagesDataFetch';
 import useSWR from 'swr';
 
 export default function usePackages(

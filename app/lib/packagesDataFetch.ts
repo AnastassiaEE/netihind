@@ -1,19 +1,9 @@
 import { supabase } from '@/lib/supabase';
 
-export const getProviders = async (
-  city: string,
-  county: string,
-  street: string,
-  streetNr: string,
-) => {
-  let { data: providers, error: providersError } = await supabase.rpc(
-    'get_internet_packages_providers_by_address',
-    {
-      p_city: city,
-      p_maakond: county,
-      p_street: `${street} ${streetNr}`,
-    },
-  );
+export const getProviders = async (oid: string) => {
+  let { data: providers, error: providersError } = await supabase.rpc('get_providers_by_address', {
+    p_oid: oid,
+  });
   if (providersError) throw new Error('somethingWentWrong');
   return providers;
 };

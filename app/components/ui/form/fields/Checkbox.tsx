@@ -7,17 +7,19 @@ const sizes: { sm: string, lg: string } = {
 
 export default function Checkbox({
     name,
+    value,
     size = 'sm',
     isChecked = false,
     isValid = true,
-    handleCheck,
+    handleChange,
     children,
 }: {
     name: string;
+    value?: string;
     size?: keyof typeof sizes;
     isChecked: boolean;
     isValid?: boolean;
-    handleCheck: React.ChangeEventHandler<HTMLInputElement>;
+    handleChange: React.ChangeEventHandler<HTMLInputElement>;
     children: React.ReactNode;
 }) {
     const checkboxClasses = classNames(
@@ -30,14 +32,15 @@ export default function Checkbox({
     );
 
     return (
-        <label htmlFor={name} className="flex items-center">
+        <label htmlFor={name + value} className="flex items-center">
             <input
-                id={name}
+                id={name + value}
                 name={name}
+                value={value}
                 type="checkbox"
-                className={checkboxClasses}
                 checked={isChecked}
-                onChange={handleCheck}
+                onChange={handleChange}
+                className={checkboxClasses}
             />
             <span className={sizes[size]}>
                 {children}
