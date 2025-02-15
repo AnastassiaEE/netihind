@@ -4,6 +4,7 @@ import Navigation from '@/components/ui/navigation/Navigation';
 import NavigationItem from '@/components/ui/navigation/NavigationItem';
 import { useTranslations } from 'next-intl';
 import { usePathname } from '@/i18n/routing';
+import { Suspense } from 'react';
 
 export default function BottomHeader() {
     const t = useTranslations('Navigation');
@@ -22,7 +23,9 @@ export default function BottomHeader() {
                     {t('contacts')}
                 </NavigationItem>
             </Navigation>
-            <LanguageSwitcher />
+            <Suspense>
+                <LanguageSwitcher />
+            </Suspense>
         </div>
     );
 }

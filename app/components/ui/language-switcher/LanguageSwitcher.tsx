@@ -3,7 +3,7 @@
 import { usePathname, routing } from '@/i18n/routing';
 import Language from '@/components/ui/language-switcher/Language';
 import { useLocale } from 'next-intl';
-import { useParams, useRouter, useSearchParams } from 'next/navigation';
+import { useParams, useSearchParams } from 'next/navigation';
 
 export default function LanguageSwitcher() {
   const pathname = usePathname();

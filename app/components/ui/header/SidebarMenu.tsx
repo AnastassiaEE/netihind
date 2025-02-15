@@ -7,6 +7,7 @@ import { useTranslations } from 'next-intl';
 import { usePathname } from '@/i18n/routing';
 import Sidebar from '@/components/ui/modal/Sidebar';
 import { useSidebarMenuContext } from '@/app/contexts/SidebarMenuContext';
+import { Suspense } from 'react';
 
 export default function SidebarMenu() {
     const t = useTranslations('Navigation');
@@ -45,7 +46,9 @@ export default function SidebarMenu() {
                     </NavigationItem>
                 </Navigation>
                 <div className="py-8">
-                    <LanguageSwitcher />
+                    <Suspense>
+                        <LanguageSwitcher />
+                    </Suspense>
                 </div>
             </div>
         </Sidebar>
