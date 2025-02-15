@@ -3,12 +3,14 @@
 import { usePathname, routing } from '@/i18n/routing';
 import Language from '@/components/ui/language-switcher/Language';
 import { useLocale } from 'next-intl';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter, useSearchParams } from 'next/navigation';
 
 export default function LanguageSwitcher() {
   const pathname = usePathname();
   const currentLocale = useLocale();
   const params = useParams();
+  const searchParams = useSearchParams();
+  const searchParamsObject = Object.fromEntries(searchParams.entries())
 
   return (
     <div className="flex items-center gap-4">
@@ -16,8 +18,9 @@ export default function LanguageSwitcher() {
         <Language
           key={locale}
           href={{
-            pathname: pathname,
-            params: params,
+            pathname,
+            params,
+            query: searchParamsObject,
           }}
           locale={locale}
           current={currentLocale === locale}
