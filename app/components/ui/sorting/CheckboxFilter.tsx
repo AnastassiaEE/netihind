@@ -1,3 +1,5 @@
+'use client'
+
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import Checkbox from '@/components/ui/form/fields/Checkbox';
 import { useParams, useSearchParams } from 'next/navigation';

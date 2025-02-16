@@ -1,3 +1,5 @@
+'use client'
+
 import { useTranslations } from 'next-intl';
 import SortIcon from '@mui/icons-material/Sort';
 import Option from '@/components/ui/form/fields/select/Option';

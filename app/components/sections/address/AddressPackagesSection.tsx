@@ -1,10 +1,7 @@
-'use client';
-
 import SectionLayout from '@/layouts/SectionLayout';
 import Packages from '@/components/ui/address/packages/Packages';
 import { H1 } from '@/components/ui/headings/RestPageHeadings';
-import { useSearchParams } from 'next/navigation';
-import { useTranslations } from 'next-intl';
+
 import { SORT_OPTIONS, getProviderOptions, getSelectedProviderOptions, getSelectedSortOption } from '@/utils/packagesHelper';
 import React from 'react';
 import PackageCard from '@/components/ui/address/packages/PackageCard';
@@ -15,22 +12,25 @@ import SortingToolbar from '@/components/ui/sorting/SortingToolbar';
 import { getCookie } from 'cookies-next';
 import { getAddressCookieValues } from '@/utils/addressCookieHelper';
 import PackagesFilter from '@/components/ui/address/sorting/PackagesFilter';
+import { cookies } from 'next/headers';
+import { getProviders } from '@/lib/packagesDataFetch';
+import { getTranslations } from 'next-intl/server';
 
-export default function AddressPackagesSection({
-    providers,
+export default async function AddressPackagesSection({
+    searchParams
 }: {
-    providers: { [key: string]: string }[];
+    searchParams: { [key: string]: string }
 }) {
-    const t = useTranslations('AddressPage');
-    const searchParams = useSearchParams();
-    const cookieString = getCookie('ADDRESS');
+    const t = await getTranslations('AddressPage');
+    const cookieString = getCookie('ADDRESS', { cookies });
     const { fullAddress, oid } = getAddressCookieValues(cookieString);
+    const providers = await getProviders(oid);
 
     // Sort options
-    const selectedSortOption = getSelectedSortOption(searchParams.get('sort'));
+    const selectedSortOption = getSelectedSortOption(searchParams['sort']);
 
     // Provider options
-    const providerParams = searchParams.get('providers')?.split(',') || [];
+    const providerParams = searchParams['providers']?.split(',') || [];
     const providerOptions = getProviderOptions(providers);
     const selectedProviderOptions = getSelectedProviderOptions(providerOptions, providerParams);
 

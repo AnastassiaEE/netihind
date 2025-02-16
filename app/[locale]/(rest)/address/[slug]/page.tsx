@@ -3,11 +3,11 @@ import { cookies } from 'next/headers';
 import { notFound } from 'next/navigation';
 import { getAddressCookieValues } from '@/utils/addressCookieHelper';
 import { getAddressSlug } from '@/utils/addressSlugifier';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import { H1 } from '@/components/ui/headings/RestPageHeadings';
 import { Suspense } from 'react';
 import PageLoader from '@/components/ui/loaders/PageLoader';
-import AddressPackagesDataProvider from '@/components/sections/address/AddressPackagesDataProvider';
+import AddressPackagesSection from '@/components/sections/address/AddressPackagesSection';
 
 export default async function PersonalAddress({
     params: { slug, locale },
@@ -17,7 +17,6 @@ export default async function PersonalAddress({
     searchParams: { [key: string]: string };
 }) {
     setRequestLocale(locale);
-    const t = await getTranslations('AddressPage');
 
     if (!hasCookie('ADDRESS', { cookies })) notFound();
     const cookieString = getCookie('ADDRESS', { cookies })!;
@@ -25,6 +24,8 @@ export default async function PersonalAddress({
     const addressSlug = getAddressSlug(fullAddress);
     if (slug !== addressSlug) notFound();
     return (
-        <AddressPackagesDataProvider />
+        <Suspense fallback={<PageLoader />}>
+            <AddressPackagesSection searchParams={searchParams} />
+        </Suspense>
     );
 }
