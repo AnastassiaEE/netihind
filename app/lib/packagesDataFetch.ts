@@ -8,6 +8,17 @@ export const getProviders = async (oid: string) => {
   return providers || [];
 };
 
+export const getTechnologies = async (oid: string) => {
+  let { data: technologies, error: technologiesError } = await supabase.rpc(
+    'get_technologies_by_address',
+    {
+      p_oid: oid,
+    },
+  );
+  if (technologiesError) return [];
+  return technologies || [];
+};
+
 export const getPackages = async (
   filter: string,
   city: string,

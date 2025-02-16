@@ -1,8 +1,13 @@
 import SectionLayout from '@/layouts/SectionLayout';
 import Packages from '@/components/ui/address/packages/Packages';
 import { H1 } from '@/components/ui/headings/RestPageHeadings';
-
-import { SORT_OPTIONS, getProviderOptions, getSelectedProviderOptions, getSelectedSortOption } from '@/utils/packagesHelper';
+import {
+    SORT_OPTIONS,
+    getFilterSelectedOptions,
+    getProviderOptions,
+    getSortSelectedOption,
+    getTechnologyOptions,
+} from '@/utils/packagesHelper';
 import React from 'react';
 import PackageCard from '@/components/ui/address/packages/PackageCard';
 import Button from '@/components/ui/form/buttons/Button';
@@ -13,28 +18,37 @@ import { getCookie } from 'cookies-next';
 import { getAddressCookieValues } from '@/utils/addressCookieHelper';
 import PackagesFilter from '@/components/ui/address/sorting/PackagesFilter';
 import { cookies } from 'next/headers';
-import { getProviders } from '@/lib/packagesDataFetch';
+import { getProviders, getTechnologies } from '@/lib/packagesDataFetch';
 import { getTranslations } from 'next-intl/server';
 
 export default async function AddressPackagesSection({
-    searchParams
+    searchParams,
 }: {
-    searchParams: { [key: string]: string }
+    searchParams: { [key: string]: string };
 }) {
     const t = await getTranslations('AddressPage');
     const cookieString = getCookie('ADDRESS', { cookies });
     const { fullAddress, oid } = getAddressCookieValues(cookieString);
     const providers = await getProviders(oid);
+    const technologies = await getTechnologies(oid);
 
     // Sort options
-    const selectedSortOption = getSelectedSortOption(searchParams['sort']);
+    const selectedSortOption = getSortSelectedOption(searchParams['sort'] || '');
 
     // Provider options
     const providerParams = searchParams['providers']?.split(',') || [];
     const providerOptions = getProviderOptions(providers);
-    const selectedProviderOptions = getSelectedProviderOptions(providerOptions, providerParams);
+    const providerSelectedOptions = getFilterSelectedOptions(providerOptions, providerParams);
 
     // Technology options
+    const technologyParams = searchParams['technologies']?.split(',') || [];
+    const tecnologyOptions = getTechnologyOptions(technologies);
+    const tecnhologySelectedOptions = getFilterSelectedOptions(tecnologyOptions, technologyParams);
+
+    const filters = {
+        providers: { options: providerOptions, selectedOptions: providerSelectedOptions },
+        technologies: { options: tecnologyOptions, selectedOptions: tecnhologySelectedOptions },
+    };
 
     return (
         <SectionLayout>
@@ -54,10 +68,7 @@ export default async function AddressPackagesSection({
                     <PackageCard originalPrice={25.99} promoPrice={null} className="mb-4" />
                 </div>
                 <div className="hidden md:block md:w-1/5">
-                    <PackagesFilter
-                        providerOptions={providerOptions}
-                        selectedProviderOptions={selectedProviderOptions}
-                    />
+                    <PackagesFilter filters={filters} />
                 </div>
             </div>
             <SortingToolbar className="md:hidden">
