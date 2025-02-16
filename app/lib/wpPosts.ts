@@ -29,7 +29,7 @@ export async function getPosts(language?: string) {
     },
   );
 
-  return data?.posts?.nodes;
+  return data?.posts?.nodes ?? [];
 }
 
 export async function getPostBySlug(id: string) {
@@ -55,7 +55,7 @@ export async function getPostBySlug(id: string) {
     },
   );
 
-  return data?.post;
+  return data?.post ?? null;
 }
 
 export async function getPostsWithSlugsOnly() {
@@ -69,5 +69,5 @@ export async function getPostsWithSlugsOnly() {
 }`,
   );
 
-  return data?.posts?.nodes;
+  return data?.posts?.nodes ?? [];
 }

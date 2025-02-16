@@ -13,7 +13,6 @@ export const revalidate = 3600;
 
 export async function generateStaticParams() {
     const posts = await getPostsWithSlugsOnly();
-    if (posts === undefined) return [];
     let paths = posts.map((post: { [key: string]: any }) => {
         let slug = getFormattedSlug(post.slug);
         return {
@@ -30,9 +29,7 @@ export default async function Post({
 }) {
     setRequestLocale(locale);
     const post = await getPostBySlug(`${slug}-${locale}`);
-    if (post === undefined || post === null) {
-        notFound();
-    }
+    if (!post) notFound();
     return (
         <Suspense fallback={<PingLoader />}>
             <BlogPostHeaderSection title={post.title} date={post.date} />
