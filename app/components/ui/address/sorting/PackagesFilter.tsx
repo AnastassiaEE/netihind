@@ -1,21 +1,35 @@
 import CheckboxFilter from '@/components/ui/sorting/CheckboxFilter';
+import React from 'react';
 
 export default function PackagesFilter({
-    providerOptions,
-    selectedProviderOptions,
+    filters,
 }: {
-    providerOptions: { value: string, label: string }[]
-    selectedProviderOptions: { value: string, label: string }[];
+    filters: {
+        [key: string]: {
+            options: {
+                value: string;
+                label: string;
+            }[];
+            selectedOptions: {
+                value: string;
+                label: string;
+            }[];
+        };
+    };
 }) {
     return (
         <>
-            <p> Фильтры </p>
-            <p> Провайдеры </p>
-            <CheckboxFilter
-                name="providers"
-                options={providerOptions}
-                selected={selectedProviderOptions}
-            />
+            <p>Фильтры</p>
+            {Object.entries(filters).map(([filterKey, filterValue]) => (
+                <React.Fragment key={filterKey}>
+                    <p>{filterKey}</p>
+                    <CheckboxFilter
+                        name={filterKey}
+                        options={filterValue.options}
+                        selected={filterValue.selectedOptions}
+                    />
+                </React.Fragment>
+            ))}
         </>
     );
 }
