@@ -1,5 +1,5 @@
 import { getProviders } from "@/lib/packagesDataFetch";
-import AddressPackagesSection from "./AddressPackagesSection";
+import AddressPackagesSection from "@/components/sections/address/AddressPackagesSection"
 import { getCookie } from "cookies-next";
 import { cookies } from "next/headers";
 import { getAddressCookieValues } from "@/utils/addressCookieHelper";
