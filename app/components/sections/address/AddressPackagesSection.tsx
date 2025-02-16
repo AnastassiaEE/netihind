@@ -5,31 +5,34 @@ import Packages from '@/components/ui/address/packages/Packages';
 import { H1 } from '@/components/ui/headings/RestPageHeadings';
 import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { SORT_OPTIONS, getSortParams } from '@/utils/packagesHelper';
+import { SORT_OPTIONS, getProviderOptions, getSelectedProviderOptions, getSelectedSortOption } from '@/utils/packagesHelper';
 import React from 'react';
 import PackageCard from '@/components/ui/address/packages/PackageCard';
 import Button from '@/components/ui/form/buttons/Button';
 // import Modal from '@/components/ui/modal/Modal';
 import Sort from '@/components/ui/sorting/Sort';
 import SortingToolbar from '@/components/ui/sorting/SortingToolbar';
-import { getProviders } from '@/lib/packagesDataFetch';
 import { getCookie } from 'cookies-next';
 import { getAddressCookieValues } from '@/utils/addressCookieHelper';
 import PackagesFilter from '@/components/ui/address/sorting/PackagesFilter';
-import usePackagesFilter from '@/hooks/usePackagesFilter';
 
-export default function AddressPackagesSection() {
+export default function AddressPackagesSection({
+    providers,
+}: {
+    providers: { [key: string]: string }[];
+}) {
     const t = useTranslations('AddressPage');
     const searchParams = useSearchParams();
-    const cookieString = getCookie('ADDRESS')!;
+    const cookieString = getCookie('ADDRESS');
     const { fullAddress, oid } = getAddressCookieValues(cookieString);
 
     // Sort options
-    const selectedSortOption = getSortParams(searchParams.get('sort'));
+    const selectedSortOption = getSelectedSortOption(searchParams.get('sort'));
 
     // Provider options
-    const selectedProviderParams = searchParams.get('providers')?.split(',') || []
-    const { providerOptions, selectedProviderOptions } = usePackagesFilter(oid, selectedProviderParams)
+    const providerParams = searchParams.get('providers')?.split(',') || [];
+    const providerOptions = getProviderOptions(providers);
+    const selectedProviderOptions = getSelectedProviderOptions(providerOptions, providerParams);
 
     // Technology options
 

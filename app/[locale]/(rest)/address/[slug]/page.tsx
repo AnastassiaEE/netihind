@@ -7,7 +7,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { H1 } from '@/components/ui/headings/RestPageHeadings';
 import { Suspense } from 'react';
 import PageLoader from '@/components/ui/loaders/PageLoader';
-import AddressPackagesSection from '@/components/sections/address/AddressPackagesSection';
+import AddressPackagesDataProvider from '@/components/sections/address/AddressPackagesDataProvider';
 
 export default async function PersonalAddress({
     params: { slug, locale },
@@ -24,8 +24,7 @@ export default async function PersonalAddress({
     const { fullAddress } = getAddressCookieValues(cookieString);
     const addressSlug = getAddressSlug(fullAddress);
     if (slug !== addressSlug) notFound();
-
     return (
-        <AddressPackagesSection />
+        <AddressPackagesDataProvider />
     );
 }

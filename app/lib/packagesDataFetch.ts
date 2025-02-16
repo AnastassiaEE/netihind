@@ -4,8 +4,8 @@ export const getProviders = async (oid: string) => {
   let { data: providers, error: providersError } = await supabase.rpc('get_providers_by_address', {
     p_oid: oid,
   });
-  if (providersError) throw new Error('somethingWentWrong');
-  return providers;
+  if (providersError) return [];
+  return providers || [];
 };
 
 export const getPackages = async (

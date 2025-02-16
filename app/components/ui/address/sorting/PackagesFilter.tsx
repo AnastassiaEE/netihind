@@ -7,7 +7,6 @@ export default function PackagesFilter({
     providerOptions: { value: string, label: string }[]
     selectedProviderOptions: { value: string, label: string }[];
 }) {
-
     return (
         <>
             <p> Фильтры </p>
