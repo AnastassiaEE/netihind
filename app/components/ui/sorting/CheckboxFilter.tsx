@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import Checkbox from '@/components/ui/form/fields/Checkbox';
@@ -39,7 +39,7 @@ export default function CheckboxFilter({
                 { pathname, params, query: searchParamsObject },
                 { scroll: false },
             );
-        }
+        };
         updateUrlParams(selectedOptions);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedOptions]);
@@ -62,17 +62,18 @@ export default function CheckboxFilter({
     return (
         <>
             {options.map((option) => (
-                <Checkbox
-                    key={option.value}
-                    name={name}
-                    isChecked={selectedOptions.some(
-                        (opt) => opt.value.toString() === option.value.toString(),
-                    )}
-                    handleChange={handleChange}
-                    value={option.value}
-                >
-                    {option.label}
-                </Checkbox>
+                <div key={option.value} className="py-0.5">
+                    <Checkbox
+                        name={name}
+                        isChecked={selectedOptions.some(
+                            (opt) => opt.value.toString() === option.value.toString(),
+                        )}
+                        handleChange={handleChange}
+                        value={option.value}
+                    >
+                        {option.label}
+                    </Checkbox>
+                </div>
             ))}
         </>
     );

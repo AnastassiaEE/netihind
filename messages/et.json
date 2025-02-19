@@ -105,7 +105,10 @@
     "filter": "Filtreeri",
     "all": "Kõik",
     "internet": "Ainult internet",
-    "internet-tv": "Internet + TV"
+    "internet-tv": "Internet + TV",
+    "filters": "Filtrid",
+    "providers": "Teenusepakkujad",
+    "technologies": "Tehnoloogiad"
   },
   "Sort": {
     "sort": "Järjesta",
