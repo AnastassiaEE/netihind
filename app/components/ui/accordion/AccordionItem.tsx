@@ -43,7 +43,7 @@ export default function AccordionItem({
     });
 
     const arrowClasses = classNames(
-        'transition-transform transition-colors duration-300',
+        'transition-colors',
         isOpened ? 'bg-primary shadow-md shadow-primary/50 text-white' : 'bg-primary-light',
     );
 

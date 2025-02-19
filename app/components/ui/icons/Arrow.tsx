@@ -10,7 +10,7 @@ export default function Arrow({
     direction?: ArrowDirection;
     className?: string;
 }) {
-    const arrowClasses = classNames('transition-transform', className, {
+    const arrowClasses = classNames('transition-transform duration-300', className, {
         'rotate-180': direction === 'right',
         'rotate-90': direction === 'up',
         '-rotate-90': direction === 'down',
