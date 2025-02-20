@@ -32,7 +32,7 @@ export default function Checkbox({
     );
 
     return (
-        <label htmlFor={name + value} className="flex items-center">
+        <label className="flex items-center cursor-pointer">
             <input
                 id={name + value}
                 name={name}
