@@ -11,7 +11,7 @@ const TOOLBAR_SHOW_POSITION = 400;
 
 export default function StickyHeader() {
     const y = useScrollPosition();
-    const { openModal: openSidebar } = useSidebarMenuContext();
+    const { openModal: openSidebarMenu } = useSidebarMenuContext();
 
     let toolbarVisibility = 'hidden';
     if (y > TOOLBAR_SHOW_POSITION) {
@@ -37,7 +37,7 @@ export default function StickyHeader() {
                 <div className="flex flex-wrap justify-between">
                     <Logo src={secondaryLogo} sizeClass="w-12" />
                     <div className="flex items-center">
-                        <Hamburger handleClick={openSidebar}></Hamburger>
+                        <Hamburger handleClick={openSidebarMenu}></Hamburger>
                     </div>
                 </div>
             </div>

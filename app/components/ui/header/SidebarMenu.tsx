@@ -13,23 +13,23 @@ export default function SidebarMenu() {
     const t = useTranslations('Navigation');
     const pathname = usePathname();
     const {
-        isModalVisible: isSidebarVisible,
-        closeModal: closeSidebar,
-        modalRef: sidebarRef,
+        isModalVisible: isSidebarMenuOpened,
+        closeModal: closeSidebarMenu,
+        modalRef: sidebarMenuRef,
     } = useSidebarMenuContext();
 
     const handleLinkClick = (e: React.MouseEvent) => {
         const target = e.target as HTMLLinkElement;
         if (target.tagName === 'A') {
-            closeSidebar();
+            closeSidebarMenu();
         }
     };
 
     return (
-        <Sidebar isVisible={isSidebarVisible} sidebarRef={sidebarRef}>
+        <Sidebar isOpened={isSidebarMenuOpened} sidebarRef={sidebarMenuRef}>
             <div className="flex justify-between px-6 py-5 border-b border-muted-light">
                 <p className="text-xl font-extrabold text-black">{t('menu')}</p>
-                <button type="button" className="h-max" onClick={closeSidebar}>
+                <button type="button" className="h-max" onClick={closeSidebarMenu}>
                     <CloseIcon className="text-muted hover:text-black transition-colors" />
                 </button>
             </div>

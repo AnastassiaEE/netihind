@@ -3,11 +3,11 @@ import React from 'react';
 import Overlay from '@/components/ui/modal/Overlay';
 
 export default function Sidebar({
-    isVisible,
+    isOpened,
     sidebarRef,
     children,
 }: {
-    isVisible: boolean;
+    isOpened: boolean;
     sidebarRef: React.RefObject<HTMLDivElement>;
     children: React.ReactNode;
 }) {
@@ -22,14 +22,14 @@ export default function Sidebar({
         'bg-white',
         'shadow-md',
         'transition-transform duration-300',
-        isVisible ? 'translate-x-0' : 'translate-x-full',
+        isOpened ? 'translate-x-0' : 'translate-x-full',
     );
     return (
         <>
             <div className={sidebarWrapperClasses} ref={sidebarRef}>
                 {children}
             </div>
-            <Overlay isVisible={isVisible} />
+            <Overlay isVisible={isOpened} />
         </>
     );
 }
