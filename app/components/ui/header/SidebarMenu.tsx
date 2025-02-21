@@ -26,7 +26,7 @@ export default function SidebarMenu() {
     };
 
     return (
-        <Sidebar isOpened={isSidebarMenuOpened} sidebarRef={sidebarMenuRef}>
+        <Sidebar isOpened={isSidebarMenuOpened} ref={sidebarMenuRef}>
             <div className="flex justify-between px-6 py-5 border-b border-muted-light">
                 <p className="text-xl font-extrabold text-black">{t('menu')}</p>
                 <button type="button" className="h-max" onClick={closeSidebarMenu}>
