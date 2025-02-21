@@ -1,7 +1,6 @@
 'use client';
 
 import secondaryLogo from '@/public/images/gradientsecondarylogo.svg';
-import StickyHeader from '@/components/ui/header/StickyHeader';
 import Hamburger from '@/components/ui/header/Hamburger';
 import Logo from '@/components/ui/Logo';
 import { useSidebarMenuContext } from '@/app/contexts/SidebarMenuContext';
@@ -18,7 +17,6 @@ export default function MobileHeader() {
                     <Hamburger handleClick={openSidebar}></Hamburger>
                 </div>
             </div>
-            <StickyHeader type="mobile" />
         </div>
     );
 }

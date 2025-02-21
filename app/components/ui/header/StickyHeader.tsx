@@ -9,7 +9,7 @@ import { useSidebarMenuContext } from '@/app/contexts/SidebarMenuContext';
 
 const TOOLBAR_SHOW_POSITION = 400;
 
-export default function StickyHeader({ type = 'desktop' }: { type?: 'desktop' | 'mobile' }) {
+export default function StickyHeader() {
     const y = useScrollPosition();
     const { openModal: openSidebar } = useSidebarMenuContext();
 
@@ -26,22 +26,17 @@ export default function StickyHeader({ type = 'desktop' }: { type?: 'desktop' | 
         'fixed',
         'top-0',
         'left-0',
+        'z-10',
         'p-4',
-        'z-30',
         toolbarVisibility,
     );
-
-    const buttonsWrapperClasses = classNames('flex flex-wrap', {
-        'gap-10': type === 'desktop',
-        'gap-6': type === 'mobile',
-    });
 
     return (
         <div className={stickyHeaderWrapperClasses}>
             <div className="container">
                 <div className="flex flex-wrap justify-between">
                     <Logo src={secondaryLogo} sizeClass="w-12" />
-                    <div className={buttonsWrapperClasses}>
+                    <div className="flex items-center">
                         <Hamburger handleClick={openSidebar}></Hamburger>
                     </div>
                 </div>

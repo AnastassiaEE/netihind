@@ -10,7 +10,7 @@ export default function ScrollTopButton() {
         <button
             name="scroll-top"
             className={classNames(
-                'fixed inline-block z-20 right-5 transition-all duration-500',
+                'fixed z-10 inline-block right-5 transition-all duration-500',
                 y >= 600 ? 'bottom-5' : '-bottom-16',
             )}
             onClick={handleClick}

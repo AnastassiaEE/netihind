@@ -17,8 +17,7 @@ const sectionClasses = classNames(
     'flex',
     'flex-col',
     'justify-center',
-    'relative',
-    'z-10',
+    'relative'
 );
 
 const bgClasses = classNames(

@@ -8,7 +8,7 @@ export default function Overlay({ isVisible = false }: { isVisible?: boolean }) 
         'w-screen',
         'h-screen',
         'bg-black/70',
-        'z-40',
+        'z-20',
         'cursor-pointer',
         {
             hidden: !isVisible,
