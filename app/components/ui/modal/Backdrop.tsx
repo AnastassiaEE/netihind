@@ -1,0 +1,14 @@
+export default function Backdrop({
+    isVisible,
+    children,
+}: {
+    isVisible: boolean;
+    children: React.ReactNode;
+}) {
+    return (
+        <>
+            {children}
+            {isVisible && <div className="fixed inset-0 bg-black/70 z-20 cursor-pointer"></div>}
+        </>
+    );
+}

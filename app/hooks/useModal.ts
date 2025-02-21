@@ -16,6 +16,11 @@ export default function useModal() {
     return () => document.removeEventListener('click', handleClickOutside);
   }, [closeModal]);
 
+  useEffect(() => {
+    document.body.classList.toggle('overflow-hidden', isModalVisible);
+    return () => document.body.classList.remove('overflow-hidden');
+  }, [isModalVisible]);
+
   return {
     modalRef,
     isModalVisible,

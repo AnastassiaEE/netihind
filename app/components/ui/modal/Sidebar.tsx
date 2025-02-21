@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React, { forwardRef } from 'react';
-import Overlay from '@/components/ui/modal/Overlay';
+import Backdrop from '@/components/ui/modal/Backdrop';
 
 const Sidebar = forwardRef<HTMLDivElement, { isOpened: boolean; children: React.ReactNode }>(
     ({ isOpened, children }, ref) => {
@@ -19,12 +19,11 @@ const Sidebar = forwardRef<HTMLDivElement, { isOpened: boolean; children: React.
         );
 
         return (
-            <>
+            <Backdrop isVisible={isOpened}>
                 <div className={sidebarWrapperClasses} ref={ref}>
                     {children}
                 </div>
-                <Overlay isVisible={isOpened} />
-            </>
+            </Backdrop>
         );
     },
 );
