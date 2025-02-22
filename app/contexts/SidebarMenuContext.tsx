@@ -13,15 +13,20 @@ type SidebarMenuContextType = {
 const SidebarMenuContext = createContext<SidebarMenuContextType | undefined>(undefined);
 
 export const SidebarMenuProvider = ({ children }: { children: ReactNode }) => {
-    const { overlayRef, isOverlayVisible, openOverlay, closeOverlay } = useOverlay();
+    const {
+        overlayRef: sidebarMenuRef,
+        isOverlayVisible: isSidebarMenuOpened,
+        openOverlay: openSidebarMenu,
+        closeOverlay: closeSidebarMenu,
+    } = useOverlay();
 
     return (
         <SidebarMenuContext.Provider
             value={{
-                sidebarMenuRef: overlayRef,
-                isSidebarMenuOpened: isOverlayVisible,
-                openSidebarMenu: openOverlay,
-                closeSidebarMenu: closeOverlay,
+                sidebarMenuRef,
+                isSidebarMenuOpened,
+                openSidebarMenu,
+                closeSidebarMenu,
             }}
         >
             {children}
