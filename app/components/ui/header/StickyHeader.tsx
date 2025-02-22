@@ -18,21 +18,20 @@ export default function StickyHeader() {
         toolbarVisibility = 'animate-show';
     }
 
-    const stickyHeaderWrapperClasses = classNames(
+    const wrapperClasses = classNames(
         'sticky-header',
         'bg-white',
         'shadow-lg',
-        'w-full',
         'fixed',
         'top-0',
-        'left-0',
+        'inset-x-0',
         'z-10',
         'p-4',
         toolbarVisibility,
     );
 
     return (
-        <div className={stickyHeaderWrapperClasses}>
+        <div className={wrapperClasses}>
             <div className="container">
                 <div className="flex flex-wrap justify-between">
                     <Logo src={secondaryLogo} sizeClass="w-12" />
