@@ -6,12 +6,11 @@ const Sidebar = forwardRef<HTMLDivElement, { isOpened: boolean; children: React.
     ({ isOpened, children }, ref) => {
         const sidebarWrapperClasses = classNames(
             'fixed',
-            'top-0',
+            'z-50',
+            'inset-y-0',
             'right-0',
             'w-80',
             'max-w-full',
-            'h-full',
-            'z-50',
             'bg-white',
             'shadow-md',
             'transition-transform duration-300',
