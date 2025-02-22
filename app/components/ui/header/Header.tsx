@@ -6,12 +6,12 @@ import SidebarMenu from '@/components/ui/header/SidebarMenu';
 import StickyHeader from '@/components/ui/header/StickyHeader';
 
 const variants = {
-    primary: 'absolute top-0 left-0 z-10',
+    primary: 'absolute top-0 inset-x-0 z-10',
     secondary: 'shadow-lg',
 };
 
 export default function Header({ variant = 'secondary' }: { variant?: 'primary' | 'secondary' }) {
-    const headerClasses = classNames('bg-white w-full', variants[variant]);
+    const headerClasses = classNames('bg-white', variants[variant]);
 
     return (
         <SidebarMenuProvider>
