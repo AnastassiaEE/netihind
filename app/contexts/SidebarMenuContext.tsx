@@ -1,15 +1,29 @@
 'use client';
 
 import React, { createContext, useContext, ReactNode } from 'react';
-import useModal from '@/hooks/useModal';
+import useOverlay from '@/hooks/useOverlay';
 
-type SidebarMenuContextType = ReturnType<typeof useModal>;
+type SidebarMenuContextType = {
+    sidebarMenuRef: React.RefObject<HTMLDivElement>;
+    isSidebarMenuOpened: boolean;
+    openSidebarMenu: () => void;
+    closeSidebarMenu: () => void;
+};
+
 const SidebarMenuContext = createContext<SidebarMenuContextType | undefined>(undefined);
 
 export const SidebarMenuProvider = ({ children }: { children: ReactNode }) => {
-    const { modalRef, isModalVisible, openModal, closeModal } = useModal();
+    const { overlayRef, isOverlayVisible, openOverlay, closeOverlay } = useOverlay();
+
     return (
-        <SidebarMenuContext.Provider value={{ modalRef, isModalVisible, openModal, closeModal }}>
+        <SidebarMenuContext.Provider
+            value={{
+                sidebarMenuRef: overlayRef,
+                isSidebarMenuOpened: isOverlayVisible,
+                openSidebarMenu: openOverlay,
+                closeSidebarMenu: closeOverlay,
+            }}
+        >
             {children}
         </SidebarMenuContext.Provider>
     );

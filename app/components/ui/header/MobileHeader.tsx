@@ -6,7 +6,7 @@ import Logo from '@/components/ui/Logo';
 import { useSidebarMenuContext } from '@/app/contexts/SidebarMenuContext';
 
 export default function MobileHeader() {
-    const { openModal: openSidebarMenu } = useSidebarMenuContext();
+    const { openSidebarMenu } = useSidebarMenuContext();
     return (
         <div className="container md:hidden">
             <div className="flex flex-wrap justify-between p-4">
