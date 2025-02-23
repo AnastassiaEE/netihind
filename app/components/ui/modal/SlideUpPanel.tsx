@@ -29,7 +29,6 @@ export default function SlideUpPanel({
     return (
         <Backdrop isVisible={isOpened}>
             <div className={panelClasses} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
-                <span className="rounded-full bg-muted absolute w-1/3 h-1 right-1/2 top-1.5 translate-x-1/2"></span>
                 <div className="px-6 pt-7 pb-5 border-b border-muted-light relative">
                     <p className="text-xl text-center font-extrabold text-black">{title}</p>
                     <button
