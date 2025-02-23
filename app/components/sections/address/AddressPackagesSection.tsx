@@ -16,7 +16,7 @@ import Sort from '@/components/ui/sorting/Sort';
 import SortingToolbar from '@/components/ui/sorting/SortingToolbar';
 import { getCookie } from 'cookies-next';
 import { getAddressCookieValues } from '@/utils/addressCookieHelper';
-import PackagesFilter from '@/components/ui/address/sorting/PackagesFilter';
+import CheckboxFiltersGroup from '@/components/ui/sorting/CheckboxFiltersGroup';
 import { cookies } from 'next/headers';
 import { getProviders, getTechnologies } from '@/lib/packagesDataFetch';
 import { getTranslations } from 'next-intl/server';
@@ -46,8 +46,8 @@ export default async function AddressPackagesSection({
     const tecnhologySelectedOptions = getFilterSelectedOptions(tecnologyOptions, technologyParams);
 
     const filters = {
-        providers: { options: providerOptions, selectedOptions: providerSelectedOptions },
-        technologies: { options: tecnologyOptions, selectedOptions: tecnhologySelectedOptions },
+        providers: { options: providerOptions, selected: providerSelectedOptions },
+        technologies: { options: tecnologyOptions, selected: tecnhologySelectedOptions },
     };
 
     return (
@@ -68,18 +68,14 @@ export default async function AddressPackagesSection({
                     <PackageCard originalPrice={25.99} promoPrice={null} className="mb-4" />
                 </div>
                 <div className="hidden md:block md:w-1/5">
-                    <PackagesFilter filters={filters} />
+                    <CheckboxFiltersGroup filters={filters} />
                 </div>
             </div>
-            <SortingToolbar className="md:hidden">
-                <Button>Filter</Button>
-                <Sort
-                    options={SORT_OPTIONS}
-                    selected={selectedSortOption}
-                    variant="secondary"
-                    openDirection="top"
-                />
-            </SortingToolbar>
+            <SortingToolbar
+                className="md:hidden"
+                sortOptions={{ options: SORT_OPTIONS, selected: selectedSortOption }}
+                filters={filters}
+            />
         </SectionLayout>
     );
 }
