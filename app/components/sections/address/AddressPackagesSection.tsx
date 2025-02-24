@@ -16,10 +16,10 @@ import Sort from '@/components/ui/sorting/Sort';
 import SortingToolbar from '@/components/ui/sorting/SortingToolbar';
 import { getCookie } from 'cookies-next';
 import { getAddressCookieValues } from '@/utils/addressCookieHelper';
-import CheckboxFiltersGroup from '@/components/ui/sorting/CheckboxFiltersGroup';
 import { cookies } from 'next/headers';
 import { getProviders, getTechnologies } from '@/lib/packagesDataFetch';
 import { getTranslations } from 'next-intl/server';
+import CheckboxFilters from '@/components/ui/sorting/CheckboxFilters';
 
 export default async function AddressPackagesSection({
     searchParams,
@@ -68,7 +68,7 @@ export default async function AddressPackagesSection({
                     <PackageCard originalPrice={25.99} promoPrice={null} className="mb-4" />
                 </div>
                 <div className="hidden md:block md:w-1/5">
-                    <CheckboxFiltersGroup filters={filters} />
+                    <CheckboxFilters filters={filters} />
                 </div>
             </div>
             <SortingToolbar

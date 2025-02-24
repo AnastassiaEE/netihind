@@ -1,6 +1,6 @@
-import Checkbox from '@/components/ui/form/fields/Checkbox';
+import Checkbox from '@/components/ui/form/fields/checkbox/Checkbox';
 
-export default function CheckboxFilter({
+export default function CheckboxGroup({
     name,
     options,
     selected,

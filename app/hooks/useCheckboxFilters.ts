@@ -1,9 +1,9 @@
 import { useParams, useSearchParams } from 'next/navigation';
 import { usePathname, useRouter } from '@/i18n/routing';
 import { useEffect, useState } from 'react';
-import { Filters } from '@/components/ui/sorting/CheckboxFiltersGroup';
+import { Filters } from '@/components/ui/sorting/CheckboxFilters';
 
-export default function useCheckboxFilterGroup(filters: Filters) {
+export default function useCheckboxFilters(filters: Filters) {
   const router = useRouter();
   const pathname = usePathname();
   const params = useParams();

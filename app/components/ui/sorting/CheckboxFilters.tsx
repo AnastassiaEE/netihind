@@ -1,11 +1,11 @@
 'use client';
 
 import Accordion from '@/components/ui/accordion/Accordion';
-import CheckboxFilter from '@/components/ui/sorting/CheckboxFilter';
 import { useTranslations } from 'next-intl';
 import React, { forwardRef, useImperativeHandle } from 'react';
 import Button from '@/components/ui/form/buttons/Button';
-import useCheckboxFilterGroup from '@/hooks/useCheckboxFiltersGroup';
+import CheckboxGroup from '@/components/ui/form/fields/checkbox/CheckboxGroup';
+import useCheckboxFilters from '@/hooks/useCheckboxFilters';
 
 type FilterOption = {
     value: string;
@@ -19,15 +19,15 @@ export type Filters = {
     };
 };
 
-type CheckboxFiltersGroupProps = {
+type CheckboxFiltersProps = {
     filters: Filters;
     type?: 'desktop' | 'mobile';
 };
 
-const CheckboxFiltersGroup = forwardRef(
-    ({ filters, type = 'desktop' }: CheckboxFiltersGroupProps, ref) => {
+const CheckboxFilters = forwardRef(
+    ({ filters, type = 'desktop' }: CheckboxFiltersProps, ref) => {
         const t = useTranslations('Filters');
-        const { selectedFilters, handleChange, handleClear } = useCheckboxFilterGroup(filters);
+        const { selectedFilters, handleChange, handleClear } = useCheckboxFilters(filters);
 
         useImperativeHandle(ref, () => ({ handleClear }));
 
@@ -45,7 +45,7 @@ const CheckboxFiltersGroup = forwardRef(
                     data={Object.entries(selectedFilters).map(([filterKey, filterValue]) => ({
                         header: t(filterKey),
                         body: (
-                            <CheckboxFilter
+                            <CheckboxGroup
                                 name={filterKey}
                                 options={filterValue.options}
                                 selected={filterValue.selected}
@@ -62,5 +62,5 @@ const CheckboxFiltersGroup = forwardRef(
     },
 );
 
-CheckboxFiltersGroup.displayName = 'CheckboxFiltersGroup';
-export default CheckboxFiltersGroup;
+CheckboxFilters.displayName = 'CheckboxFiltersGroup';
+export default CheckboxFilters;

@@ -3,7 +3,7 @@
 import FormResponse from '@/components/ui/form/FormResponse';
 import { Loop, Add } from '@mui/icons-material';
 import IconInput from '@/components/ui/form//fields/IconInput';
-import Checkbox from '@/components/ui/form//fields/Checkbox';
+import Checkbox from '@/components/ui/form/fields/checkbox/Checkbox';
 import Textarea from '@/components/ui/form/fields/Textarea';
 import Button from '@/components/ui/form//buttons/Button';
 import Input from '@/components/ui/form//fields/Input';

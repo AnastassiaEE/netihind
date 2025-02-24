@@ -1,7 +1,7 @@
 'use client';
 
 import classNames from 'classnames';
-import CheckboxFiltersGroup from './CheckboxFiltersGroup';
+import CheckboxFilters from '@/components/ui/sorting/CheckboxFilters';
 import Button from '@/components/ui/form/buttons/Button';
 import Sort from '@/components/ui/sorting/Sort';
 import { useTranslations } from 'next-intl';
@@ -79,7 +79,7 @@ export default function SortingToolbar({ className, sortOptions, filters }: Sort
                     handleClose={closePanel}
                     actions={panelActions}
                 >
-                    <CheckboxFiltersGroup ref={checkboxFiltersGroupRef} filters={filters} type="mobile" />
+                    <CheckboxFilters ref={checkboxFiltersGroupRef} filters={filters} type="mobile" />
                 </SlideUpPanel>
             )}
         </>
