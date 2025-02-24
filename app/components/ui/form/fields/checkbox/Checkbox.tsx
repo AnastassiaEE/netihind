@@ -2,7 +2,7 @@ import classNames from 'classnames';
 
 const sizes: { sm: string, lg: string } = {
     sm: 'text-sm',
-    lg: '',
+    lg: 'text-md',
 };
 
 export default function Checkbox({
@@ -28,6 +28,8 @@ export default function Checkbox({
         {
             'border-valid': isValid,
             'border-invalid': !isValid,
+            'w-4 h-4': size === 'sm',
+            'w-5 h-5': size === 'lg'
         }
     );
 
