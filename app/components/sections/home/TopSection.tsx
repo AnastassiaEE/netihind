@@ -8,7 +8,7 @@ import MaaAmetAddressForm from '@/components/ui/form/forms/MaaAmetAddressForm';
 import { useTranslations } from 'next-intl';
 
 const sectionClasses = classNames(
-    'h-[calc(100dvh)]',
+    'h-screen',
     'min-h-[500px]',
     'md:h-screen',
     'md:min-h-[720px]',
