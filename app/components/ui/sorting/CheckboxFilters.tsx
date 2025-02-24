@@ -35,7 +35,7 @@ const CheckboxFilters = forwardRef(
             <>
                 {type === 'desktop' && (
                     <div className="flex justify-between mb-2">
-                        <p className="text-lg font-extrabold text-black">{t('filters')}</p>
+                        <p className="text-xl font-extrabold text-black">{t('filters')}</p>
                         <Button variant="flat" className="!p-0" handleClick={handleClear}>
                             {t('clear')}
                         </Button>
@@ -55,7 +55,7 @@ const CheckboxFilters = forwardRef(
                     }))}
                     variant="solid"
                     isCollapsed={false}
-                    fontStyles={{ header: 'text-sm text-muted-dark' }}
+                    fontStyles={{ header: 'text-md text-muted-dark' }}
                 />
             </>
         );
