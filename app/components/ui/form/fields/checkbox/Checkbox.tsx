@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 
-const sizes: { sm: string, lg: string } = {
-    sm: 'text-sm',
-    lg: 'text-md',
+const sizes = {
+    sm: { fontSize: 'text-sm', checkboxSize: 'w-4 h-4' },
+    lg: { fontSize: 'text-md', checkboxSize: 'w-5 h-5' },
 };
 
 export default function Checkbox({
@@ -25,12 +25,11 @@ export default function Checkbox({
     const checkboxClasses = classNames(
         'appearance-none cursor-pointer w-4 h-4 border rounded-[.185em] mr-2 shrink-0',
         'checked:bg-primary checked:border-primary checked:bg-[url("/images/tick.svg")] checked:bg-contain',
+        [sizes[size].checkboxSize],
         {
             'border-valid': isValid,
             'border-invalid': !isValid,
-            'w-4 h-4': size === 'sm',
-            'w-5 h-5': size === 'lg'
-        }
+        },
     );
 
     return (
@@ -44,9 +43,7 @@ export default function Checkbox({
                 onChange={handleChange}
                 className={checkboxClasses}
             />
-            <span className={sizes[size]}>
-                {children}
-            </span>
+            <span className={sizes[size].fontSize}>{children}</span>
         </label>
     );
 }
