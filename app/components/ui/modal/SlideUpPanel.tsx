@@ -22,13 +22,18 @@ export default function SlideUpPanel({
     const { handleTouchStart, handleTouchEnd } = useSlideUpPanel(handleClose);
 
     const panelClasses = classNames(
-        'fixed z-50 inset-0 bg-white rounded-t-2xl transition-transform overflow-hidden',
+        'fixed z-50 inset-0 bg-white rounded-t-2xl transition-transform',
         isOpened ? 'translate-y-0' : 'translate-y-full',
+    );
+
+    const containerClasses = classNames(
+        'overflow-hidden', // Это блокирует прокрутку, когда панель скрыта
+        isOpened ? 'overflow-visible' : 'overflow-hidden'
     );
 
     return (
         <Backdrop isVisible={isOpened}>
-            <div className={isOpened ? 'overflow-visible' : 'overflow-hidden'}>
+            <div className={containerClasses}>
                 <div className={panelClasses} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
                     <div className="px-6 pt-7 pb-5 border-b border-muted-light relative">
                         <p className="text-xl text-center font-extrabold text-black">{title}</p>
