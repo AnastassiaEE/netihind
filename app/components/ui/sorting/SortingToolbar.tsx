@@ -43,7 +43,6 @@ export default function SortingToolbar({ className, sortOptions, filters }: Sort
 
     const toolbarClasses = classNames(
         'sticky bottom-0 flex justify-around bg-white shadow-top px-2 py-4 w-[105%] -mx-[2.5%] mt-7',
-        isPanelOpened && 'overflow-hidden',
         className,
     );
 
