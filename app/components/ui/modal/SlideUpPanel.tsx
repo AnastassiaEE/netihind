@@ -21,6 +21,11 @@ export default function SlideUpPanel({
 }) {
     const { handleTouchStart, handleTouchEnd } = useSlideUpPanel(handleClose);
 
+    const panelWrapperClasses = classNames(
+        'overflow-hidden',
+        isOpened ? 'overflow-visible' : 'overflow-hidden',
+    );
+
     const panelClasses = classNames(
         'fixed z-50 inset-0 bg-white rounded-t-2xl transition-transform',
         isOpened ? 'translate-y-0' : 'translate-y-full',
@@ -28,24 +33,26 @@ export default function SlideUpPanel({
 
     return (
         <Backdrop isVisible={isOpened}>
-            <div className={panelClasses} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
-                <div className="px-6 pt-7 pb-5 border-b border-muted-light relative">
-                    <p className="text-xl text-center font-extrabold text-black">{title}</p>
-                    <button
-                        type="button"
-                        className="absolute top-1/2 right-6 -translate-y-1/2"
-                        onClick={handleClose}
+            <div className={panelWrapperClasses}>
+                <div className={panelClasses} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+                    <div className="px-6 pt-7 pb-5 border-b border-muted-light relative">
+                        <p className="text-xl text-center font-extrabold text-black">{title}</p>
+                        <button
+                            type="button"
+                            className="absolute top-1/2 right-6 -translate-y-1/2"
+                            onClick={handleClose}
+                        >
+                            <CloseIcon className="text-muted hover:text-black transition-colors" />
+                        </button>
+                    </div>
+                    <div
+                        className="p-6 overflow-y-auto"
+                        style={{ maxHeight: actions ? 'calc(100vh - 160px)' : 'auto' }}
                     >
-                        <CloseIcon className="text-muted hover:text-black transition-colors" />
-                    </button>
+                        {children}
+                    </div>
+                    {actions && <PanelActions>{actions}</PanelActions>}
                 </div>
-                <div
-                    className="p-6 overflow-y-auto"
-                    style={{ maxHeight: actions ? 'calc(100vh - 160px)' : 'auto' }}
-                >
-                    {children}
-                </div>
-                {actions && <PanelActions>{actions}</PanelActions>}
             </div>
         </Backdrop>
     );
