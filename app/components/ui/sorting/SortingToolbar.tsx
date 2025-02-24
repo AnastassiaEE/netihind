@@ -33,10 +33,6 @@ interface SortingToolbarProps {
 }
 
 export default function SortingToolbar({ className, sortOptions, filters }: SortingToolbarProps) {
-    const toolbarClasses = classNames(
-        'sticky bottom-0 flex justify-around bg-white shadow-top px-2 py-4 w-[105%] -mx-[2.5%] mt-7',
-        className,
-    );
     const t = useTranslations('Filters');
 
     const {
@@ -44,6 +40,12 @@ export default function SortingToolbar({ className, sortOptions, filters }: Sort
         openOverlay: openPanel,
         closeOverlay: closePanel,
     } = useOverlay();
+
+    const toolbarClasses = classNames(
+        'sticky bottom-0 flex justify-around bg-white shadow-top px-2 py-4 w-[105%] -mx-[2.5%] mt-7',
+        isPanelOpened && 'overflow-hidden',
+        className,
+    );
 
     const checkboxFiltersGroupRef = useRef<{ handleClear: () => void } | null>(null);
 
