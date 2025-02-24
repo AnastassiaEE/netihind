@@ -9,7 +9,7 @@ import { useTranslations } from 'next-intl';
 
 const sectionClasses = classNames(
     'h-screen',
-    'min-h-[500px]',
+    'min-h-[600px]',
     'md:h-screen',
     'md:min-h-[720px]',
     'pt-[80px]',
