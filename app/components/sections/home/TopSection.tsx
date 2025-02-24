@@ -44,7 +44,7 @@ export default function TopSection() {
                         ),
                     })}
                 </H1>
-                <p className="text-lg mb-4">{t('topSection.description')}</p>
+                <p className="text-md md:text-lg mb-4">{t('topSection.description')}</p>
                 <MaaAmetAddressForm />
             </div>
             <div className="absolute inset-x-0 bottom-0 py-3 md:p-9 bg-primary/10 -z-10">
