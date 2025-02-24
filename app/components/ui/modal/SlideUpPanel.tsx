@@ -22,7 +22,7 @@ export default function SlideUpPanel({
     const { handleTouchStart, handleTouchEnd } = useSlideUpPanel(handleClose);
 
     const panelClasses = classNames(
-        'fixed w-screen h-screen top-0 left-0 z-50 bg-white rounded-t-2xl transition-transform',
+        'fixed z-50 w-full h-full top-0 bg-white rounded-t-2xl transition-transform',
         isOpened ? 'translate-y-0' : 'translate-y-full',
     );
 
