@@ -46,7 +46,7 @@ export default function SlideUpPanel({
                         </button>
                     </div>
                     <div
-                        className="p-6 overflow-y-auto"
+                        className="p-6"
                         style={{ maxHeight: actions ? 'calc(100vh - 160px)' : 'auto' }}
                     >
                         {children}
