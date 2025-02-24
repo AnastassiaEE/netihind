@@ -26,15 +26,15 @@ export default function SlideUpPanel({
         isOpened ? 'translate-y-0' : 'translate-y-full',
     );
 
-    const containerClasses = classNames(
-        'overflow-hidden', // Это блокирует прокрутку, когда панель скрыта
-        isOpened ? 'overflow-visible' : 'overflow-hidden'
-    );
+    // const containerClasses = classNames(
+    //     'overflow-hidden', // Это блокирует прокрутку, когда панель скрыта
+    //     isOpened ? 'overflow-visible' : 'overflow-hidden'
+    // );
 
     return (
         <Backdrop isVisible={isOpened}>
-            <div className={containerClasses}>
-                <div className={panelClasses} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+            <div>
+                <div className={panelClasses} >
                     <div className="px-6 pt-7 pb-5 border-b border-muted-light relative">
                         <p className="text-xl text-center font-extrabold text-black">{title}</p>
                         <button
