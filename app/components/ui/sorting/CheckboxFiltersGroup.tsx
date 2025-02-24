@@ -3,7 +3,7 @@
 import Accordion from '@/components/ui/accordion/Accordion';
 import CheckboxFilter from '@/components/ui/sorting/CheckboxFilter';
 import { useTranslations } from 'next-intl';
-import React, { forwardRef, useImperativeHandle, useMemo } from 'react';
+import React, { forwardRef, useImperativeHandle } from 'react';
 import Button from '@/components/ui/form/buttons/Button';
 import useCheckboxFilterGroup from '@/hooks/useCheckboxFiltersGroup';
 
@@ -12,7 +12,7 @@ type FilterOption = {
     label: string;
 };
 
-type Filters = {
+export type Filters = {
     [key: string]: {
         options: FilterOption[];
         selected: FilterOption[];
@@ -27,30 +27,9 @@ type CheckboxFiltersGroupProps = {
 const CheckboxFiltersGroup = forwardRef(
     ({ filters, type = 'desktop' }: CheckboxFiltersGroupProps, ref) => {
         const t = useTranslations('Filters');
-        const { handleClear } = useCheckboxFilterGroup(filters);
+        const { selectedFilters, handleChange, handleClear } = useCheckboxFilterGroup(filters);
 
         useImperativeHandle(ref, () => ({ handleClear }));
-
-        const AccordionComponent = useMemo(
-            () => (
-                <Accordion
-                    data={Object.entries(filters).map(([filterKey, filterValue]) => ({
-                        header: t(filterKey),
-                        body: (
-                            <CheckboxFilter
-                                name={filterKey}
-                                options={filterValue.options}
-                                selected={filterValue.selected}
-                            />
-                        ),
-                    }))}
-                    variant="solid"
-                    isCollapsed={false}
-                    fontStyles={{ header: 'text-sm text-muted-dark' }}
-                />
-            ),
-            [filters, t],
-        );
 
         return (
             <>
@@ -62,7 +41,22 @@ const CheckboxFiltersGroup = forwardRef(
                         </Button>
                     </div>
                 )}
-                {AccordionComponent}
+                <Accordion
+                    data={Object.entries(selectedFilters).map(([filterKey, filterValue]) => ({
+                        header: t(filterKey),
+                        body: (
+                            <CheckboxFilter
+                                name={filterKey}
+                                options={filterValue.options}
+                                selected={filterValue.selected}
+                                handleChange={handleChange}
+                            />
+                        ),
+                    }))}
+                    variant="solid"
+                    isCollapsed={false}
+                    fontStyles={{ header: 'text-sm text-muted-dark' }}
+                />
             </>
         );
     },
