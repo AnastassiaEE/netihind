@@ -7,7 +7,7 @@ import { H2 } from '@/components/ui/headings/HomePageHeadings';
 export default function InfoSection() {
     return (
         <SectionLayout className="pt-24">
-            <div className="flex flex-col md:flex-row items-center justify-between">
+            <div className="flex flex-col items-center justify-between md:flex-row">
                 <div className="md:w-6/12">
                     <H2>{('info-section.title')}</H2>
                     {/* <Trans i18nKey="info-section.content" t={i18n.t} components={{ p: <p /> }}>
