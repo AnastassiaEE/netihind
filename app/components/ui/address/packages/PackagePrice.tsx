@@ -6,7 +6,7 @@ export default function PackagePrice({
     promoPrice,
 }: {
     originalPrice: number;
-    promoPrice: number | null;
+    promoPrice?: number;
 }) {
     const t = useTranslations('Packages');
     const priceClasses = classNames(

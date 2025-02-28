@@ -79,7 +79,6 @@
     }
   },
   "AddressPage": {
-    "title": "Teenusepakkujad ja internet-paketid",
     "providersSection": {
       "title": "Teenusepakkujad Teie majas"
     },
@@ -177,7 +176,7 @@
   },
   "Errors": {
     "somethingWentWrong": "Midagi läks valesti. Proovige hiljem uuesti.",
-    "noPackages": "Teie aadressilt ei leitud midagi.",
+    "noPackages": "Teie aadressilt ei leitud midagi. Personaalse pakkumise saamiseks kirjutage meile e-kiri.",
     "noPosts": "Postitusi pole."
   },
   "SEO": {

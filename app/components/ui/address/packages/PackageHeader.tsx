@@ -1,17 +1,18 @@
 import Image from 'next/image';
+
 export default function PackageHeader({
-    logo,
+    logo_url,
     provider,
     name,
 }: {
-    logo: string;
+    logo_url: string;
     provider: string;
     name: string;
 }) {
     return (
         <div className="mb-5">
-            <div className="relative w-14 h-8 mb-1">
-                <Image src={logo} alt={`${provider} logo`} fill className="object-contain" />
+            <div className="mb-1">
+                <Image src={logo_url} alt={`Logo of ${provider} internet package`} width={56} height={32} />
             </div>
             <span className="text-xs text-muted mb-1">{provider}</span>
             <p className="text-sm font-medium">{name}</p>

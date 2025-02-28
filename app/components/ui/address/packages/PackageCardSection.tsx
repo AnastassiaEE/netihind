@@ -13,8 +13,8 @@ export default function PackageCardSection({
 }) {
     const sectionClasses = classNames(
         'border-muted-light relative py-5',
-        className,
         Icon ? 'px-8' : 'px-1',
+        className,
     );
     return (
         <div className={sectionClasses}>

@@ -1,3 +1,18 @@
-export default function PackageFeature({ children }: { children: React.ReactNode }) {
-    return <div className="text-muted-dark text-base font-medium uppercase">{children}</div>;
+import classNames from 'classnames';
+
+export default function PackageFeature({
+    direction = 'row',
+    children,
+}: {
+    direction?: 'row' | 'col';
+    children: React.ReactNode;
+}) {
+    const featureClasses = classNames(
+        'text-muted-dark text-lg font-medium uppercase flex items-center',
+        {
+            'flex-row gap-2': direction === 'row',
+            'flex-col': direction === 'col',
+        },
+    );
+    return <div className={featureClasses}>{children}</div>;
 }

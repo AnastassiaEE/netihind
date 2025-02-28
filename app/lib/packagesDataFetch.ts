@@ -19,22 +19,11 @@ export const getTechnologies = async (oid: string) => {
   return technologies || [];
 };
 
-export const getPackages = async (
-  filter: string,
-  city: string,
-  county: string,
-  street: string,
-  streetNr: string,
-) => {
-  const { data: packages, error: packagesError } = await supabase.rpc(
-    'get_internet_packages_by_address',
-    {
-      p_filter: filter,
-      p_city: city,
-      p_maakond: county,
-      p_street: `${street} ${streetNr}`,
-    },
-  );
-  if (packagesError) throw new Error('somethingWentWrong');
+export const getPackages = async (oid: string) => {
+  const { data: packages, error: packagesError } = await supabase.rpc('get_packages_by_address', {
+    p_oid: oid,
+  });
+  if (packagesError) throw new Error('Errors.somethingWentWrong');
+  if (!packages || packages.length === 0) throw new Error('Errors.noPackages');
   return packages;
 };

@@ -1,39 +1,32 @@
 'use client';
 
 import PackagesLoader from '@/components/ui/loaders/PackagesLoader';
-import { getCookie } from 'cookies-next';
-import { getAddressCookieValues } from '@/utils/addressCookieHelper';
-import PackagesError from '@/components/ui/errors/PackagesError';
 import usePackages from '@/hooks/usePackages';
 import { useTranslations } from 'next-intl';
+import PackageCard from '@/components/ui/address/packages/PackageCard';
 
 export default function Packages({
+    oid,
     initialPackages,
-    filter,
 }: {
+    oid: string,
     initialPackages: { [key: string]: any }[];
-    filter: string;
 }) {
     const t = useTranslations('Errors');
-    const cookieString = getCookie('ADDRESS')!;
-    // const { city, county, street, streetNr } = getAddressCookieValues(cookieString);
-    // const { packages, error, isLoading } = usePackages(
-    //     initialPackages,
-    //     filter,
-    //     city,
-    //     county,
-    //     street,
-    //     streetNr,
-    // );
-    // if (isLoading) return <PackagesLoader />;
-    // if (error || packages.length === 0) {
-    //     const errorMessage = error ? t(error.message) : t('noPackages');
-    //     return <PackagesError>{errorMessage}</PackagesError>;
-    // }
+
+    const { packages, error, isLoading } = usePackages(
+        oid,
+        initialPackages
+    );
+
+    if (isLoading) return <PackagesLoader />;
+    console.log(packages)
 
     return (
         <>
-
+            {packages.map((data: { [key: string]: any }) => (
+                <PackageCard key={data.internet_package_id} data={data} className="mb-5" />
+            ))}
         </>
     );
 }

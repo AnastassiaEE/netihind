@@ -9,24 +9,23 @@ import {
     getTechnologyOptions,
 } from '@/utils/packagesHelper';
 import React from 'react';
-import PackageCard from '@/components/ui/address/packages/PackageCard';
-import Button from '@/components/ui/form/buttons/Button';
 // import Modal from '@/components/ui/modal/Modal';
 import Sort from '@/components/ui/sorting/Sort';
 import SortingToolbar from '@/components/ui/sorting/SortingToolbar';
 import { getCookie } from 'cookies-next';
 import { getAddressCookieValues } from '@/utils/addressCookieHelper';
 import { cookies } from 'next/headers';
-import { getProviders, getTechnologies } from '@/lib/packagesDataFetch';
+import { getPackages, getProviders, getTechnologies } from '@/lib/packagesDataFetch';
 import { getTranslations } from 'next-intl/server';
 import CheckboxFilters from '@/components/ui/sorting/CheckboxFilters';
+import PackagesError from '@/components/ui/errors/PackagesError';
 
 export default async function AddressPackagesSection({
     searchParams,
 }: {
     searchParams: { [key: string]: string };
 }) {
-    const t = await getTranslations('AddressPage');
+    const t = await getTranslations(['AddressPage', 'Errors']);
     const cookieString = getCookie('ADDRESS', { cookies });
     const { fullAddress, oid } = getAddressCookieValues(cookieString);
     const providers = await getProviders(oid);
@@ -50,32 +49,39 @@ export default async function AddressPackagesSection({
         technologies: { options: tecnologyOptions, selected: tecnhologySelectedOptions },
     };
 
+    // Packages
+    let error = null;
+    const packages: { [key: string]: any }[] = await getPackages(oid).catch(
+        (e) => (error = (e as Error)?.message ?? String(e)),
+    );
+
     return (
         <SectionLayout>
             <h1 className="text-[calc(1.275rem+0.3vw)] md:text-2xl font-extrabold mb-6">
-                {t('packagesSection.title')}
+                {t('AddressPage.packagesSection.title')}
             </h1>
-            <div className="md:flex gap-5">
-                <div className="md:w-4/5">
-                    <div className="max-md:hidden my-4 flex justify-end">
-                        <Sort options={SORT_OPTIONS} selected={selectedSortOption} variant="flat" />
+            {error ? (
+                <PackagesError>{t(error)}</PackagesError>
+            ) : (
+                <>
+                    <div className="md:flex gap-5">
+                        <div className="md:w-4/5">
+                            <div className="max-md:hidden my-4 flex justify-end">
+                                <Sort options={SORT_OPTIONS} selected={selectedSortOption} variant="flat" />
+                            </div>
+                            <Packages oid={oid} initialPackages={packages} />
+                        </div>
+                        <div className="hidden md:block md:w-1/5">
+                            <CheckboxFilters filters={filters} />
+                        </div>
                     </div>
-                    {/* <Packages filter={activeFilter} initialPackages={packages} /> */}
-
-                    <PackageCard originalPrice={50.99} promoPrice={40.99} className="mb-4" />
-                    <PackageCard originalPrice={25.99} promoPrice={null} className="mb-4" />
-                    <PackageCard originalPrice={25.99} promoPrice={null} className="mb-4" />
-                    <PackageCard originalPrice={25.99} promoPrice={null} className="mb-4" />
-                </div>
-                <div className="hidden md:block md:w-1/5">
-                    <CheckboxFilters filters={filters} />
-                </div>
-            </div>
-            <SortingToolbar
-                className="md:hidden"
-                sortOptions={{ options: SORT_OPTIONS, selected: selectedSortOption }}
-                filters={filters}
-            />
+                    <SortingToolbar
+                        className="md:hidden"
+                        sortOptions={{ options: SORT_OPTIONS, selected: selectedSortOption }}
+                        filters={filters}
+                    />
+                </>
+            )}
         </SectionLayout>
     );
 }
