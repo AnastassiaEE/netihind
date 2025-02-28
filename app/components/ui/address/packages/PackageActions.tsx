@@ -5,10 +5,10 @@ export default function PackageActions() {
     const t = useTranslations('Packages');
     return (
         <div className="flex">
-            <Button className="rounded-t-none rounded-br-none w-full">
+            <Button className="w-full rounded-t-none rounded-br-none">
                 {t('buttons.connect')}
             </Button>
-            <Button variant="secondary" className="rounded-t-none rounded-bl-none w-full">
+            <Button variant="secondary" className="w-full rounded-t-none rounded-bl-none">
                 {t('buttons.consultation')}
             </Button>
         </div>
