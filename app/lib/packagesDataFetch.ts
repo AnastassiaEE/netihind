@@ -19,9 +19,10 @@ export const getTechnologies = async (oid: string) => {
   return technologies || [];
 };
 
-export const getPackages = async (oid: string) => {
+export const getPackages = async (oid: string, sort: string) => {
   const { data: packages, error: packagesError } = await supabase.rpc('get_packages_by_address', {
     p_oid: oid,
+    p_sort: sort,
   });
   if (packagesError) throw new Error('Errors.somethingWentWrong');
   if (!packages || packages.length === 0) throw new Error('Errors.noPackages');

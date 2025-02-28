@@ -1,6 +1,5 @@
 import SectionLayout from '@/layouts/SectionLayout';
 import Packages from '@/components/ui/address/packages/Packages';
-import { H1 } from '@/components/ui/headings/RestPageHeadings';
 import {
     SORT_OPTIONS,
     getFilterSelectedOptions,
@@ -51,7 +50,7 @@ export default async function AddressPackagesSection({
 
     // Packages
     let error = null;
-    const packages: { [key: string]: any }[] = await getPackages(oid).catch(
+    const packages: { [key: string]: any }[] = await getPackages(oid, selectedSortOption).catch(
         (e) => (error = (e as Error)?.message ?? String(e)),
     );
 
@@ -69,7 +68,7 @@ export default async function AddressPackagesSection({
                             <div className="max-md:hidden my-4 flex justify-end">
                                 <Sort options={SORT_OPTIONS} selected={selectedSortOption} variant="flat" />
                             </div>
-                            <Packages oid={oid} initialPackages={packages} />
+                            <Packages oid={oid} initialPackages={packages} sortOption={selectedSortOption} />
                         </div>
                         <div className="hidden md:block md:w-1/5">
                             <CheckboxFilters filters={filters} />

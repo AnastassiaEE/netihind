@@ -8,19 +8,18 @@ import PackageCard from '@/components/ui/address/packages/PackageCard';
 export default function Packages({
     oid,
     initialPackages,
+    sortOption,
 }: {
-    oid: string,
+    oid: string;
     initialPackages: { [key: string]: any }[];
+    sortOption: string;
 }) {
     const t = useTranslations('Errors');
 
-    const { packages, error, isLoading } = usePackages(
-        oid,
-        initialPackages
-    );
+    const { packages, error, isLoading } = usePackages(oid, initialPackages, sortOption);
 
     if (isLoading) return <PackagesLoader />;
-    console.log(packages)
+    // if (error) return <div className="bg-red-600">error</div>
 
     return (
         <>

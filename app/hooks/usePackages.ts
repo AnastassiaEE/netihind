@@ -1,12 +1,17 @@
 import { getPackages } from '@/lib/packagesDataFetch';
 import useSWR from 'swr';
 
-export default function usePackages(oid: string, initialPackages: { [key: string]: any }[]) {
+export default function usePackages(
+  oid: string,
+  initialPackages: { [key: string]: any }[],
+  sortOption: string,
+) {
+  console.log(sortOption);
   const {
     data: packages,
     error,
     isLoading,
-  } = useSWR([oid], () => getPackages(oid), {
+  } = useSWR([oid, sortOption], () => getPackages(oid, sortOption), {
     fallbackData: initialPackages,
     revalidateOnFocus: false,
     revalidateOnMount: false,
