@@ -10,7 +10,7 @@ export default function Accordion({
     variant = 'outlined',
     isCollapsed = true,
     fontStyles = {
-        body: 'text-muted-dark text-sm',
+        body: 'text-sm text-muted-dark',
     },
 }: {
     data: {
