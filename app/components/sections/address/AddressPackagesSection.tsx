@@ -53,41 +53,41 @@ export default async function AddressPackagesSection({
         selectedSortOption,
         providerSelectedIds,
         technologySelectedIds,
-    ).catch((e) => (error = (e as Error)?.message ?? String(e)));
+    ).catch((e) => {
+        error = (e as Error)?.message ?? String(e);
+    });
 
     return (
         <SectionLayout>
             <h1 className="text-[calc(1.275rem+0.3vw)] md:text-2xl font-extrabold mb-6">
                 {t('AddressPage.packagesSection.title')}
             </h1>
-            {error ? (
-                <PackagesError>{t(error)}</PackagesError>
-            ) : (
-                <>
-                    <div className="md:flex gap-5">
-                        <div className="md:w-4/5">
-                            <div className="max-md:hidden my-4 flex justify-end">
-                                <Sort options={SORT_OPTIONS} selected={selectedSortOption} variant="flat" />
-                            </div>
-                            <Packages
-                                oid={oid}
-                                initialPackages={packages}
-                                sortOption={selectedSortOption}
-                                providers={providerSelectedIds}
-                                technologies={technologySelectedIds}
-                            />
-                        </div>
-                        <div className="hidden md:block md:w-1/5">
-                            <CheckboxFilters filters={filters} />
-                        </div>
+            <div className="md:flex md:justify-between">
+                <div className="md:w-8/12">
+                    <div className="max-md:hidden my-4 flex justify-end">
+                        <Sort options={SORT_OPTIONS} selected={selectedSortOption} variant="flat" />
                     </div>
-                    <SortingToolbar
-                        className="md:hidden"
-                        sortOptions={{ options: SORT_OPTIONS, selected: selectedSortOption }}
-                        filters={filters}
+                    <Packages
+                        oid={oid}
+                        initialPackages={packages}
+                        initialError={error}
+                        sortOption={selectedSortOption}
+                        providers={providerSelectedIds}
+                        technologies={technologySelectedIds}
                     />
-                </>
-            )}
+                </div>
+                <div className="hidden md:block md:w-3/12">
+                    <CheckboxFilters
+                        filters={filters}
+                        className="md:bg-primary-light/40 md:p-8 md:rounded-lg"
+                    />
+                </div>
+            </div>
+            <SortingToolbar
+                className="md:hidden"
+                sortOptions={{ options: SORT_OPTIONS, selected: selectedSortOption }}
+                filters={filters}
+            />
         </SectionLayout>
     );
 }

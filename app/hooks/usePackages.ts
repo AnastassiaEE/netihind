@@ -20,7 +20,7 @@ export default function usePackages(
       revalidateOnFocus: false,
       revalidateOnMount: false,
       revalidateIfStale: true,
-      errorRetryCount: 3,
+      errorRetryCount: 0,
       errorRetryInterval: 2000,
     },
   );
