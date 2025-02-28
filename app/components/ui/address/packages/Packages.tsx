@@ -30,7 +30,6 @@ export default function Packages({
         providers,
         technologies,
     )
-
     if (isLoading) return <PackagesLoader />;
     if (initialError) return <PackagesError>{t(initialError)}</PackagesError>;
     if (error) return <PackagesError>{t(error)}</PackagesError>;
