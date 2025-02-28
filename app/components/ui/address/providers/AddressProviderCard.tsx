@@ -10,11 +10,11 @@ export default function AddressProviderCard({
     alt: string;
 }) {
     return (
-        <div className="bg-white shadow-md rounded-md border border-muted-light p-5">
-            <div className="h-14 w-full mb-4 relative">
+        <div className="rounded-md border border-muted-light bg-white p-5 shadow-md">
+            <div className="relative mb-4 h-14 w-full">
                 <Image src={img} alt={alt} fill className="object-contain" />
             </div>
-            <p className="text-lg text-center">{name}</p>
+            <p className="text-center text-lg">{name}</p>
         </div>
     );
 }
