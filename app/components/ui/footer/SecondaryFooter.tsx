@@ -3,7 +3,7 @@ import SectionLayout from '@/layouts/SectionLayout';
 
 export default function SecondaryFooter() {
     return (
-        <footer className="py-12 border border-b-muted-light">
+        <footer className="border border-b-muted-light py-12">
             <SectionLayout>
                 <Copyright />
             </SectionLayout>

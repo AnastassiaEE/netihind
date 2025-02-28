@@ -13,10 +13,10 @@ export default function Footer() {
     return (
         <footer className="bg-gray-900 py-12">
             <SectionLayout>
-                <div className="flex justify-center mb-2">
+                <div className="mb-2 flex justify-center">
                     <Logo src={whitelogo} sizeClass="w-36" />
                 </div>
-                <div className="flex justify-center pt-4 pb-6">
+                <div className="flex justify-center pb-6 pt-4">
                     <Navigation itemColorClass="text-white/80">
                         <NavigationItem href='/'>{t('home')}</NavigationItem>
                         <NavigationItem href='/blog'>{t('blog')}</NavigationItem>
