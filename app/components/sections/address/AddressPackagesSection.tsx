@@ -11,7 +11,6 @@ import { cookies } from 'next/headers';
 import { getPackages, getProviders, getTechnologies } from '@/lib/packagesDataFetch';
 import { getTranslations } from 'next-intl/server';
 import CheckboxFilters from '@/components/ui/sorting/CheckboxFilters';
-import PackagesError from '@/components/ui/errors/PackagesError';
 
 export default async function AddressPackagesSection({
     searchParams,
