@@ -4,7 +4,7 @@ import PackageHeader from '@/components/ui/address/packages/PackageHeader';
 import PackageActions from '@/components/ui/address/packages/PackageActions';
 import classNames from 'classnames';
 import { useTranslations } from 'next-intl';
-import { Wifi, Tv } from '@mui/icons-material';
+import { Wifi } from '@mui/icons-material';
 import PackageCardSection from '@/components/ui/address/packages/PackageCardSection';
 import dynamic from 'next/dynamic';
 import InternetSpeedFeature from '@/components/ui/address/packages/InternetSpeedFeature';
@@ -31,14 +31,14 @@ export default function PackageCard({
     const t = useTranslations('Packages');
 
     const cardClasses = classNames(
-        'bg-white border border-muted-light rounded-md shadow-md',
+        'rounded-md border border-muted-light bg-white shadow-md',
         className,
     );
 
     return (
         <article data-id={internet_package_id} className={cardClasses}>
             <div className="flex flex-wrap">
-                <PackageCardSection Icon={Wifi} className="w-full lg:w-3/5 border-r border-b">
+                <PackageCardSection Icon={Wifi} className="w-full border-b border-r lg:w-3/5">
                     <PackageHeader
                         logo_url={provider_img_url}
                         provider={provider_name}
@@ -49,7 +49,7 @@ export default function PackageCard({
                         <InternetSpeedFeature type="upload" speed={internet_upload_speed} units={t('units.speed')} />
                         <Popover
                             elementToInteract={
-                                <span className="border border-primary rounded-md text-primary font-semibold ml-2 px-1 py-0.5 block">
+                                <span className="ml-2 block rounded-md border border-primary px-1 py-0.5 font-semibold text-primary">
                                     {internet_technology_abbr}
                                 </span>
                             }
@@ -57,7 +57,7 @@ export default function PackageCard({
                         />
                     </PackageFeature>
                 </PackageCardSection>
-                <PackageCardSection className="w-full lg:w-2/5 flex justify-center items-center">
+                <PackageCardSection className="flex w-full items-center justify-center lg:w-2/5">
                     <PackagePrice originalPrice={internet_package_price} />
                 </PackageCardSection>
             </div>
