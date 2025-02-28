@@ -8,7 +8,7 @@ export default function PackageFeature({
     children: React.ReactNode;
 }) {
     const featureClasses = classNames(
-        'text-muted-dark text-lg font-medium uppercase flex flex-wrap items-center',
+        'text-muted-dark font-medium uppercase flex flex-wrap items-center',
         {
             'flex-row gap-2': direction === 'row',
             'flex-col': direction === 'col',

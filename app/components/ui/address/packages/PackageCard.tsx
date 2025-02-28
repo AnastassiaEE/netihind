@@ -1,5 +1,4 @@
 import PackageFeature from '@/components/ui/address/packages/PackageFeature';
-import { Download, Upload, AllInclusive } from '@mui/icons-material';
 import PackagePrice from '@/components/ui/address/packages/PackagePrice';
 import PackageHeader from '@/components/ui/address/packages/PackageHeader';
 import PackageActions from '@/components/ui/address/packages/PackageActions';
@@ -8,6 +7,7 @@ import { useTranslations } from 'next-intl';
 import { Wifi, Tv } from '@mui/icons-material';
 import PackageCardSection from '@/components/ui/address/packages/PackageCardSection';
 import dynamic from 'next/dynamic';
+import InternetSpeedFeature from '@/components/ui/address/packages/InternetSpeedFeature';
 
 const Popover = dynamic(() => import('@/components/ui/Popover'));
 
@@ -45,14 +45,8 @@ export default function PackageCard({
                         name={internet_package_name}
                     />
                     <PackageFeature>
-                        <span>
-                            <Download className="text-green-700" />
-                            {internet_download_speed ?? <AllInclusive />} {t('units.speed')}
-                        </span>
-                        <span>
-                            <Upload className="text-red-700" />
-                            {internet_upload_speed ?? <AllInclusive />} {t('units.speed')}
-                        </span>
+                        <InternetSpeedFeature type="download" speed={internet_download_speed} units={t('units.speed')} />
+                        <InternetSpeedFeature type="upload" speed={internet_upload_speed} units={t('units.speed')} />
                         <Popover
                             elementToInteract={
                                 <span className="border border-primary rounded-md text-primary font-semibold ml-2 px-1 py-0.5 block">
