@@ -23,7 +23,7 @@ export default function ContactLink({
     const href = hrefMap[contactType](contact);
     return (
         <>
-            <Icon className="text-primary mr-2" />
+            <Icon className="mr-2 text-primary" />
             <a href={href} className="font-semibold transition-colors hover:text-primary">
                 {contact}
             </a>
