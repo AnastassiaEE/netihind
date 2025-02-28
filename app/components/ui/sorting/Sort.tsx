@@ -11,12 +11,14 @@ export default function Sort({
     selected,
     variant = 'primary',
     openDirection = 'bottom',
+    className
 }: {
     options: string[];
     selected: string;
     variant?: 'primary' | 'secondary' | 'neutral' | 'flat';
     type?: 'arrow' | 'button';
     openDirection?: 'top' | 'bottom';
+    className?: string
 }) {
     const t = useTranslations('Sort');
     const { selectedOption, handleChange } = useSort(selected);
@@ -28,7 +30,7 @@ export default function Sort({
             variant={variant}
             Icon={SortIcon}
             openDirection={openDirection}
-            className="min-w-[150px] max-w-max"
+            className={className}
         >
             {options.map((option) => (
                 <Option

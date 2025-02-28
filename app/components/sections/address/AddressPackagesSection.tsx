@@ -78,7 +78,7 @@ export default async function AddressPackagesSection({
                 <div className="hidden md:block md:w-3/12">
                     <CheckboxFilters
                         filters={filters}
-                        className="md:bg-primary-light/40 md:p-8 md:rounded-lg"
+                        className="bg-primary-light/40 p-8 rounded-lg"
                     />
                 </div>
             </div>

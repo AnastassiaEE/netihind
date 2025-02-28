@@ -42,7 +42,7 @@ export default function SortingToolbar({ className, sortOptions, filters }: Sort
     } = useOverlay();
 
     const toolbarClasses = classNames(
-        'sticky bottom-0 flex justify-around bg-white shadow-top px-2 py-4 w-[105%] -mx-[2.5%] mt-7',
+        'sticky bottom-0 flex flex-wrap justify-around bg-white shadow-top px-2 py-4 w-[105%] -mx-[2.5%] mt-7',
         className,
     );
 
@@ -55,7 +55,7 @@ export default function SortingToolbar({ className, sortOptions, filters }: Sort
     };
 
     const panelActions = (
-        <Button variant="secondary" handleClick={handleFiltersClear} className="w-full">
+        <Button handleClick={handleFiltersClear} className="w-full">
             {t('clear').toUpperCase()}
         </Button>
     );
@@ -63,13 +63,18 @@ export default function SortingToolbar({ className, sortOptions, filters }: Sort
     return (
         <>
             <div className={toolbarClasses}>
-                {filters && <Button handleClick={openPanel}>{t('filter').toUpperCase()}</Button>}
+                {filters && (
+                    <Button handleClick={openPanel} variant="secondary" className="min-w-[150px]">
+                        {t('filter').toUpperCase()}
+                    </Button>
+                )}
                 {sortOptions && (
                     <Sort
                         options={sortOptions.options}
                         selected={sortOptions.selected}
                         variant="secondary"
                         openDirection="top"
+                        className="min-w-[150px]"
                     />
                 )}
             </div>
