@@ -5,13 +5,13 @@ export default function usePackages(
   oid: string,
   initialPackages: { [key: string]: any }[],
   sortOption: string,
+  providers: string[],
 ) {
-  console.log(sortOption);
   const {
     data: packages,
     error,
     isLoading,
-  } = useSWR([oid, sortOption], () => getPackages(oid, sortOption), {
+  } = useSWR([oid, sortOption, providers], () => getPackages(oid, sortOption, providers), {
     fallbackData: initialPackages,
     revalidateOnFocus: false,
     revalidateOnMount: false,

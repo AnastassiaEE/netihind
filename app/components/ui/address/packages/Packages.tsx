@@ -9,14 +9,16 @@ export default function Packages({
     oid,
     initialPackages,
     sortOption,
+    providers
 }: {
     oid: string;
     initialPackages: { [key: string]: any }[];
     sortOption: string;
+    providers: string[]
 }) {
     const t = useTranslations('Errors');
 
-    const { packages, error, isLoading } = usePackages(oid, initialPackages, sortOption);
+    const { packages, error, isLoading } = usePackages(oid, initialPackages, sortOption, providers);
 
     if (isLoading) return <PackagesLoader />;
     // if (error) return <div className="bg-red-600">error</div>

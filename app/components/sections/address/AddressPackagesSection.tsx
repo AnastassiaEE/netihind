@@ -37,6 +37,7 @@ export default async function AddressPackagesSection({
     const providerParams = searchParams['providers']?.split(',') || [];
     const providerOptions = getProviderOptions(providers);
     const providerSelectedOptions = getFilterSelectedOptions(providerOptions, providerParams);
+    const providerSelectedIds = providerSelectedOptions.map(option => option.value);
 
     // Technology options
     const technologyParams = searchParams['technologies']?.split(',') || [];
@@ -50,7 +51,7 @@ export default async function AddressPackagesSection({
 
     // Packages
     let error = null;
-    const packages: { [key: string]: any }[] = await getPackages(oid, selectedSortOption).catch(
+    const packages: { [key: string]: any }[] = await getPackages(oid, selectedSortOption, providerSelectedIds).catch(
         (e) => (error = (e as Error)?.message ?? String(e)),
     );
 
@@ -68,7 +69,7 @@ export default async function AddressPackagesSection({
                             <div className="max-md:hidden my-4 flex justify-end">
                                 <Sort options={SORT_OPTIONS} selected={selectedSortOption} variant="flat" />
                             </div>
-                            <Packages oid={oid} initialPackages={packages} sortOption={selectedSortOption} />
+                            <Packages oid={oid} initialPackages={packages} sortOption={selectedSortOption} providers={providerSelectedIds} />
                         </div>
                         <div className="hidden md:block md:w-1/5">
                             <CheckboxFilters filters={filters} />
