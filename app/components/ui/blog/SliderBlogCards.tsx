@@ -41,8 +41,8 @@ const pagination = {
   clickable: true,
   el: '.swiper-pagination',
   bulletClass:
-    'pagination-bullet bg-muted inline-block rounded-lg cursor-pointer transition-all duration-500 w-1.5 h-1.5 mx-1.5',
-  bulletActiveClass: 'pagination-bullet-active !bg-primary !w-6',
+    'pagination-bullet mx-1.5 inline-block size-1.5 cursor-pointer rounded-lg bg-muted transition-all duration-500',
+  bulletActiveClass: 'pagination-bullet-active !w-6 !bg-primary',
 };
 
 const modules = [Pagination, Navigation];
@@ -64,7 +64,7 @@ export default function SliderBlogCards({ posts }: { posts?: { [key: string]: an
         modules={modules}
       >
         {posts?.map((post) => (
-          <SwiperSlide key={post.title} className="pb-4 !h-auto">
+          <SwiperSlide key={post.title} className="!h-auto pb-4">
             <SliderBlogCard
               href={post.slug}
               src={post.featuredImage.node.sourceUrl}
