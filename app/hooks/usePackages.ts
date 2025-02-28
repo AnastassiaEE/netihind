@@ -13,7 +13,7 @@ export default function usePackages(
     error,
     isLoading,
   } = useSWR(
-    [oid, sortOption, providers],
+    [oid, sortOption, providers, technologies],
     () => getPackages(oid, sortOption, providers, technologies),
     {
       fallbackData: initialPackages,
