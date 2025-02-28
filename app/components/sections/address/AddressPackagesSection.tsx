@@ -1,12 +1,6 @@
 import SectionLayout from '@/layouts/SectionLayout';
 import Packages from '@/components/ui/address/packages/Packages';
-import {
-    SORT_OPTIONS,
-    getFilterSelectedOptions,
-    getProviderOptions,
-    getSortSelectedOption,
-    getTechnologyOptions,
-} from '@/utils/packagesHelper';
+import { SORT_OPTIONS, getFilterData, getSortSelectedOption } from '@/utils/packagesHelper';
 import React from 'react';
 // import Modal from '@/components/ui/modal/Modal';
 import Sort from '@/components/ui/sorting/Sort';
@@ -34,20 +28,22 @@ export default async function AddressPackagesSection({
     const selectedSortOption = getSortSelectedOption(searchParams['sort'] || '');
 
     // Provider options
-    const providerParams = searchParams['providers']?.split(',') || [];
-    const providerOptions = getProviderOptions(providers);
-    const providerSelectedOptions = getFilterSelectedOptions(providerOptions, providerParams);
-    const providerSelectedIds = providerSelectedOptions.map((option) => option.value);
+    const providerFilterData = getFilterData(searchParams, 'providers', 'id', 'name', providers);
+    const providerSelectedIds = providerFilterData.selected.map((option) => option.value);
 
     // Technology options
-    const technologyParams = searchParams['technologies']?.split(',') || [];
-    const tecnologyOptions = getTechnologyOptions(technologies);
-    const tecnhologySelectedOptions = getFilterSelectedOptions(tecnologyOptions, technologyParams);
-    const technologySelectedIds = tecnhologySelectedOptions.map((option) => option.value);
+    const technologyFilterData = getFilterData(
+        searchParams,
+        'technologies',
+        'id',
+        'abbr',
+        technologies,
+    );
+    const technologySelectedIds = technologyFilterData.selected.map((option) => option.value);
 
     const filters = {
-        providers: { options: providerOptions, selected: providerSelectedOptions },
-        technologies: { options: tecnologyOptions, selected: tecnhologySelectedOptions },
+        providers: providerFilterData,
+        technologies: technologyFilterData,
     };
 
     // Packages

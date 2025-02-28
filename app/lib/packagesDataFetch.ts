@@ -4,8 +4,7 @@ export const getProviders = async (oid: string) => {
   let { data: providers, error: providersError } = await supabase.rpc('get_providers_by_address', {
     p_oid: oid,
   });
-  if (providersError) return [];
-  return providers || [];
+  return providers ?? [];
 };
 
 export const getTechnologies = async (oid: string) => {
@@ -15,8 +14,7 @@ export const getTechnologies = async (oid: string) => {
       p_oid: oid,
     },
   );
-  if (technologiesError) return [];
-  return technologies || [];
+  return technologies ?? [];
 };
 
 export const getPackages = async (

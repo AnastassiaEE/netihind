@@ -24,25 +24,28 @@ type CheckboxFiltersProps = {
     type?: 'desktop' | 'mobile';
 };
 
-const CheckboxFilters = forwardRef(
-    ({ filters, type = 'desktop' }: CheckboxFiltersProps, ref) => {
-        const t = useTranslations('Filters');
-        const { selectedFilters, handleChange, handleClear } = useCheckboxFilters(filters);
+const CheckboxFilters = forwardRef(({ filters, type = 'desktop' }: CheckboxFiltersProps, ref) => {
+    const t = useTranslations('Filters');
+    const { selectedFilters, handleChange, handleClear } = useCheckboxFilters(filters);
 
-        useImperativeHandle(ref, () => ({ handleClear }));
+    useImperativeHandle(ref, () => ({ handleClear }));
 
-        return (
-            <>
-                {type === 'desktop' && (
-                    <div className="flex justify-between mb-2">
-                        <p className="text-xl font-extrabold text-black">{t('filters')}</p>
-                        <Button variant="flat" className="!p-0" handleClick={handleClear}>
-                            {t('clear')}
-                        </Button>
-                    </div>
-                )}
-                <Accordion
-                    data={Object.entries(selectedFilters).map(([filterKey, filterValue]) => ({
+    return (
+        <>
+            {type === 'desktop' && (
+                <div className="flex justify-between mb-2">
+                    <p className="text-xl font-extrabold text-black">{t('filters')}</p>
+                    <Button variant="flat" className="!p-0" handleClick={handleClear}>
+                        {t('clear')}
+                    </Button>
+                </div>
+            )}
+            <Accordion
+                data={Object.entries(selectedFilters)
+                    .filter(
+                        ([filterKey, filterValue]) => filterValue.options && filterValue.options.length > 0,
+                    )
+                    .map(([filterKey, filterValue]) => ({
                         header: t(filterKey),
                         body: (
                             <CheckboxGroup
@@ -53,14 +56,13 @@ const CheckboxFilters = forwardRef(
                             />
                         ),
                     }))}
-                    variant="solid"
-                    isCollapsed={false}
-                    fontStyles={{ header: 'text-md text-muted-dark' }}
-                />
-            </>
-        );
-    },
-);
+                variant="solid"
+                isCollapsed={false}
+                fontStyles={{ header: 'text-md text-muted-dark' }}
+            />
+        </>
+    );
+});
 
 CheckboxFilters.displayName = 'CheckboxFiltersGroup';
 export default CheckboxFilters;

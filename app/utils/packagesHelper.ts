@@ -7,21 +7,11 @@ export const getSortSelectedOption = (sortParam: string) => {
   return SORT_OPTIONS.includes(sortParam) ? sortParam : 'default';
 };
 
-const mapOptions = <T, K extends keyof T, V extends keyof T>(
-  items: T[],
-  labelKey: K,
-  valueKey: V,
-) =>
+const getFilterOptions = (items: { [key: string]: string }[], labelKey: string, valueKey: string) =>
   items.map((item) => ({
     value: item[valueKey],
     label: item[labelKey],
   }));
-
-export const getProviderOptions = (providers: { id: string; name: string }[]) =>
-  mapOptions(providers, 'name', 'id');
-
-export const getTechnologyOptions = (technologies: { id: string; abbr: string }[]) =>
-  mapOptions(technologies, 'abbr', 'id');
 
 export const getFilterSelectedOptions = (
   options: {
@@ -33,3 +23,16 @@ export const getFilterSelectedOptions = (
   options.filter(({ label }) =>
     params.some((param) => param.toLowerCase() === label.toLowerCase()),
   );
+
+export const getFilterData = (
+  searchParams: { [key: string]: string },
+  paramKey: string,
+  valueKey: string,
+  labelKey: string,
+  items: { [key: string]: string }[],
+) => {
+  const params = searchParams[paramKey]?.split(',') || [];
+  const options = getFilterOptions(items, labelKey, valueKey);
+  const selectedOptions = getFilterSelectedOptions(options, params);
+  return { options, selected: selectedOptions };
+};
