@@ -24,10 +24,10 @@ export default function QuestionsSection() {
     }, [t]);
     return (
         <SectionLayout className="py-24">
-            <div className="md:flex items-center justify-between">
-                <div className="md:w-4/12 max-md:mb-12">
+            <div className="md:flex md:items-center md:justify-between">
+                <div className="max-md:mb-12 md:w-4/12">
                     <H2>{t('questionsSection.title')}</H2>
-                    <p className="text-lg mb-12 md:mb-8">{t('questionsSection.description')}</p>
+                    <p className="mb-12 text-lg md:mb-8">{t('questionsSection.description')}</p>
                     <Link href="/contacts" className="md:inline-block">
                         <Button size="lg" className="w-full">
                             {t('questionsSection.contactButton')}
