@@ -9,10 +9,7 @@ export default function SectionLayout({
   className?: string;
   children: React.ReactNode;
 }) {
-  const sectionClasses = classNames({
-    [bg as string]: bg !== undefined,
-    [className as string]: className !== undefined,
-  });
+  const sectionClasses = classNames(bg, className);
 
   return (
     <section className={sectionClasses}>
