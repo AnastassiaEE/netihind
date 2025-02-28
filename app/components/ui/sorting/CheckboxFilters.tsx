@@ -22,47 +22,50 @@ export type Filters = {
 type CheckboxFiltersProps = {
     filters: Filters;
     type?: 'desktop' | 'mobile';
+    className?: string;
 };
 
-const CheckboxFilters = forwardRef(({ filters, type = 'desktop' }: CheckboxFiltersProps, ref) => {
-    const t = useTranslations('Filters');
-    const { selectedFilters, handleChange, handleClear } = useCheckboxFilters(filters);
+const CheckboxFilters = forwardRef(
+    ({ filters, type = 'desktop', className }: CheckboxFiltersProps, ref) => {
+        const t = useTranslations('Filters');
+        const { selectedFilters, handleChange, handleClear } = useCheckboxFilters(filters);
 
-    useImperativeHandle(ref, () => ({ handleClear }));
+        useImperativeHandle(ref, () => ({ handleClear }));
 
-    return (
-        <>
-            {type === 'desktop' && (
-                <div className="flex justify-between mb-2">
-                    <p className="text-xl font-extrabold text-black">{t('filters')}</p>
-                    <Button variant="flat" className="!p-0" handleClick={handleClear}>
-                        {t('clear')}
-                    </Button>
-                </div>
-            )}
-            <Accordion
-                data={Object.entries(selectedFilters)
-                    .filter(
-                        ([filterKey, filterValue]) => filterValue.options && filterValue.options.length > 0,
-                    )
-                    .map(([filterKey, filterValue]) => ({
-                        header: t(filterKey),
-                        body: (
-                            <CheckboxGroup
-                                name={filterKey}
-                                options={filterValue.options}
-                                selected={filterValue.selected}
-                                handleChange={handleChange}
-                            />
-                        ),
-                    }))}
-                variant="solid"
-                isCollapsed={false}
-                fontStyles={{ header: 'text-md text-muted-dark' }}
-            />
-        </>
-    );
-});
+        return (
+            <aside className={className}>
+                {type === 'desktop' && (
+                    <div className="flex flex-wrap justify-between mb-2">
+                        <p className="text-xl font-extrabold text-black">{t('filters')}</p>
+                        <Button variant="flat" className="!p-0" handleClick={handleClear}>
+                            {t('clear')}
+                        </Button>
+                    </div>
+                )}
+                <Accordion
+                    data={Object.entries(selectedFilters)
+                        .filter(
+                            ([filterKey, filterValue]) => filterValue.options && filterValue.options.length > 0,
+                        )
+                        .map(([filterKey, filterValue]) => ({
+                            header: t(filterKey),
+                            body: (
+                                <CheckboxGroup
+                                    name={filterKey}
+                                    options={filterValue.options}
+                                    selected={filterValue.selected}
+                                    handleChange={handleChange}
+                                />
+                            ),
+                        }))}
+                    variant="solid"
+                    isCollapsed={false}
+                    fontStyles={{ header: 'text-md text-muted-dark' }}
+                />
+            </aside>
+        );
+    },
+);
 
 CheckboxFilters.displayName = 'CheckboxFiltersGroup';
 export default CheckboxFilters;
