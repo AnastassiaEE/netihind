@@ -14,7 +14,7 @@ export default function PackageHeader({
             <div className="mb-1">
                 <Image src={logo_url} alt={`Logo of ${provider} internet package`} width={56} height={32} />
             </div>
-            <span className="text-xs text-muted mb-1">{provider}</span>
+            <span className="mb-1 text-xs text-muted">{provider}</span>
             <p className="text-sm font-medium">{name}</p>
         </div>
     );
