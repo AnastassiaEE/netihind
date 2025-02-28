@@ -17,14 +17,14 @@ export default function SliderBlogCard({
     title: string;
 }) {
     return (
-        <article className="bg-white rounded-lg shadow-md h-full">
-            <div className="relative w-full h-60">
+        <article className="h-full rounded-lg bg-white shadow-md">
+            <div className="relative h-60 w-full">
                 <Link
                     href={{
                         pathname: '/blog/[slug]',
                         params: { slug: getFormattedSlug(href) },
                     }}
-                    className="block absolute w-full h-60 z-10"
+                    className="absolute z-10 block h-60 w-full"
                 >
                     <Image
                         src={src}
@@ -37,10 +37,10 @@ export default function SliderBlogCard({
                 </Link>
             </div>
             <div className="p-6">
-                <div className="flex justify-end mb-4">
+                <div className="mb-4 flex justify-end">
                     <PostDate date={date} />
                 </div>
-                <h3 className="text-lg font-bold text-muted-dark hover:text-primary transition-colors">
+                <h3 className="text-lg font-bold text-muted-dark transition-colors hover:text-primary">
                     <Link
                         href={{
                             pathname: '/blog/[slug]',
