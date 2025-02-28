@@ -54,13 +54,14 @@ const CheckboxFilters = forwardRef(
                                     name={filterKey}
                                     options={filterValue.options}
                                     selected={filterValue.selected}
+                                    checkboxSize="lg"
                                     handleChange={handleChange}
                                 />
                             ),
                         }))}
                     variant="solid"
                     isCollapsed={false}
-                    fontStyles={{ header: 'text-md text-muted-dark' }}
+                    fontStyles={{ header: 'text-sm text-muted-dark' }}
                 />
             </aside>
         );

@@ -2,7 +2,7 @@ import classNames from 'classnames';
 
 const sizes = {
     sm: { fontSize: 'text-sm', checkboxSize: 'w-4 h-4' },
-    lg: { fontSize: 'text-md', checkboxSize: 'w-5 h-5' },
+    lg: { fontSize: 'text-base', checkboxSize: 'w-5 h-5' },
 };
 
 export default function Checkbox({

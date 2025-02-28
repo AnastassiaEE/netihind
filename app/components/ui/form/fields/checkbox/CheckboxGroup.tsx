@@ -4,11 +4,13 @@ export default function CheckboxGroup({
     name,
     options,
     selected,
+    checkboxSize = 'sm',
     handleChange,
 }: {
     name: string;
     options: { value: string; label: string }[];
     selected: { value: string; label: string }[];
+    checkboxSize?: 'sm' | 'lg';
     handleChange: (name: string, value: string, checked: boolean) => void;
 }) {
     return (
@@ -20,6 +22,7 @@ export default function CheckboxGroup({
                         isChecked={selected.some((opt) => opt.value.toString() === option.value.toString())}
                         handleChange={(e) => handleChange(name, option.value, e.target.checked)}
                         value={option.value}
+                        size={checkboxSize}
                     >
                         {option.label}
                     </Checkbox>
