@@ -45,6 +45,7 @@ export default async function AddressPackagesSection({
         technologies: technologyFilterData,
     };
 
+
     // Packages
     let error = null;
     const packages: { [key: string]: any }[] = await getPackages(
