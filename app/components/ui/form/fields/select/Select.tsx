@@ -32,7 +32,8 @@ export default function Select({
 }) {
     const { isBoxOpened, selectRef, handleSelectClick } = useSelect();
     const selectClasses = classNames(sizes[size], className, {
-        uppercase: variant !== 'flat',
+        'uppercase': variant !== 'flat',
+        'border border-muted-light rounded-md': variant === 'flat'
     });
 
     return (
