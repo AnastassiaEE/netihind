@@ -17,7 +17,7 @@ export default async function AddressPackagesSection({
 }: {
     searchParams: { [key: string]: string };
 }) {
-    const t = await getTranslations(['AddressPage', 'Errors']);
+    const t = await getTranslations('AddressPage');
     const cookieString = getCookie('ADDRESS', { cookies });
     const { fullAddress, oid } = getAddressCookieValues(cookieString);
     const providers = await getProviders(oid);
@@ -59,7 +59,7 @@ export default async function AddressPackagesSection({
     return (
         <SectionLayout>
             <h1 className="text-[calc(1.275rem+0.3vw)] md:text-2xl font-extrabold mb-6">
-                {t('AddressPage.packagesSection.title')}
+                {t('packagesSection.title')}
             </h1>
             <div className="md:flex md:justify-between">
                 <div className="md:w-8/12">
