@@ -25,11 +25,11 @@ export default function AccordionItem({
     const isSolid = variant === 'solid';
 
     const wrapperClasses = classNames('overflow-hidden', {
-        'border-x border-b border-muted-light first:border-t first:rounded-t-lg last:border-b last:rounded-b-lg':
+        'border-x border-b border-muted-light first:rounded-t-lg first:border-t last:rounded-b-lg last:border-b':
             variant === 'outlined',
     });
 
-    const buttonClasses = classNames('flex justify-between items-center text-left w-full', {
+    const buttonClasses = classNames('flex w-full items-center justify-between text-left', {
         'p-6': isOutlined,
         'py-2': isSolid,
         'border-b': isOpened && isOutlined,
@@ -43,8 +43,8 @@ export default function AccordionItem({
     });
 
     const arrowClasses = classNames(
+        isOpened ? 'bg-primary text-white shadow-md shadow-primary/50' : 'bg-primary-light',
         'transition-colors',
-        isOpened ? 'bg-primary shadow-md shadow-primary/50 text-white' : 'bg-primary-light',
     );
 
     return (
