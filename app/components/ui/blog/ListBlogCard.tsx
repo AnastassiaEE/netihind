@@ -22,9 +22,7 @@ export default function ListBlogCard({
     excerpt: string;
     className?: string;
 }) {
-    const articleClasses = classNames('bg-white rounded-lg shadow-md group', {
-        [className as string]: className !== undefined,
-    });
+    const articleClasses = classNames('group rounded-lg bg-white shadow-md', className);
     return (
         <article className={articleClasses}>
             <Link
@@ -34,7 +32,7 @@ export default function ListBlogCard({
                 }}
                 className="md:flex"
             >
-                <div className="max-md:h-48 md:w-4/12 relative">
+                <div className="relative max-md:h-48 md:w-4/12">
                     <Image
                         src={src}
                         alt={alt}
@@ -44,11 +42,11 @@ export default function ListBlogCard({
                         className="max-md:rounded-t-lg md:rounded-l-lg"
                     />
                 </div>
-                <div className="md:w-8/12 p-6">
+                <div className="p-6 md:w-8/12">
                     <div className="mb-4">
                         <PostDate date={date} />
                     </div>
-                    <H2 className="text-muted-dark !font-bold group-hover:text-primary transition-colors !mb-4">
+                    <H2 className="!mb-4 !font-bold text-muted-dark transition-colors group-hover:text-primary">
                         {title}
                     </H2>
                     <p>{excerpt}</p>
