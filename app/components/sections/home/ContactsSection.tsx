@@ -11,8 +11,8 @@ export default function ContactsSection() {
     const { phone, email } = contacts;
     return (
         <SectionLayout className="py-24">
-            <div className="md:flex md:justify-between md:items-center">
-                <div className="md:w-1/2 max-md:mb-12">
+            <div className="md:flex md:items-center md:justify-between">
+                <div className="max-md:mb-12 md:w-1/2">
                     <div className="mb-20">
                         <H2>{t('contactsSection.title')}</H2>
                         <p className="text-lg">{t('contactsSection.description')}</p>
@@ -26,7 +26,7 @@ export default function ContactsSection() {
                     </div>
                 </div>
                 <div className="md:w-1/3">
-                    <div className="shadow-md rounded-lg p-6">
+                    <div className="rounded-lg p-6 shadow-md">
                         <ContactForm />
                     </div>
                 </div>
