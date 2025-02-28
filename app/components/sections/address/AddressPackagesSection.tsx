@@ -59,12 +59,12 @@ export default async function AddressPackagesSection({
 
     return (
         <SectionLayout>
-            <h1 className="text-[calc(1.275rem+0.3vw)] md:text-2xl font-extrabold mb-6">
+            <h1 className="mb-6 text-[calc(1.275rem+0.3vw)] font-extrabold md:text-2xl">
                 {t('packagesSection.title')}
             </h1>
             <div className="md:flex md:justify-between">
                 <div className="md:w-8/12">
-                    <div className="max-md:hidden my-4 flex justify-end">
+                    <div className="my-4 flex justify-end max-md:hidden">
                         <Sort options={SORT_OPTIONS} selected={selectedSortOption} variant="flat" />
                     </div>
                     <Packages
@@ -79,7 +79,7 @@ export default async function AddressPackagesSection({
                 <div className="hidden md:block md:w-3/12">
                     <CheckboxFilters
                         filters={filters}
-                        className="bg-primary-light/40 p-8 rounded-lg"
+                        className="rounded-lg bg-primary-light/40 p-8"
                     />
                 </div>
             </div>
