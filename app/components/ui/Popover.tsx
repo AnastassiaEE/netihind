@@ -13,7 +13,7 @@ export default function Popover({
     const { isVisible, show, hide } = usePopover();
 
     return (
-        <span className="relative">
+        <div className="relative">
             {React.cloneElement(elementToInteract, {
                 onMouseEnter: show,
                 onMouseLeave: hide,
@@ -26,6 +26,6 @@ export default function Popover({
                     {content}
                 </span>
             )}
-        </span>
+        </div>
     );
 }
