@@ -12,7 +12,7 @@ export default function PackageCardSection({
     children: React.ReactNode;
 }) {
     const sectionClasses = classNames(
-        'border-muted-light relative py-5',
+        'relative border-muted-light py-5',
         Icon ? 'px-8' : 'px-1',
         className,
     );
