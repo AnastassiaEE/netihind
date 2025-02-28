@@ -13,7 +13,7 @@ export default function StepsSection() {
     return (
         <SectionLayout className="pt-24">
             <H2 className="text-center">{t('stepsSection.title')}</H2>
-            <p className="text-lg text-center mb-12">{t('stepsSection.description')}</p>
+            <p className="mb-12 text-center text-lg">{t('stepsSection.description')}</p>
             <Steps data={translatedSteps} />
         </SectionLayout>
     );
