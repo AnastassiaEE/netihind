@@ -10,7 +10,7 @@ export default function SliderBlogSection() {
     const t = useTranslations('HomePage');
     return (
         <SectionLayout bg="bg-primary-light" className="py-24">
-            <H2 className="text-center !mb-10">{t('blogSection.title')}</H2>
+            <H2 className="!mb-10 text-center">{t('blogSection.title')}</H2>
             <Suspense fallback={<PingLoader />}>
                 <BlogCardsWrapper>
                     <SliderBlogCards />
