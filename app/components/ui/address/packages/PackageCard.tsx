@@ -55,7 +55,7 @@ export default function PackageCard({
                         </span>
                         <Popover
                             elementToInteract={
-                                <span className="border border-primary rounded-md text-primary font-semibold ml-2 px-1">
+                                <span className="border border-primary rounded-md text-primary font-semibold ml-2 px-1 py-0.5">
                                     {internet_technology_abbr}
                                 </span>
                             }
