@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
 const sizes: { sm: string; lg: string } = {
-    sm: 'text-sm mb-1.5',
+    sm: 'mb-1.5 text-sm',
     lg: 'mb-2.5',
 };
 
@@ -14,7 +14,7 @@ export default function FieldLabel({
     size?: keyof typeof sizes;
     children: React.ReactNode;
 }) {
-    const labelClasses = classNames(sizes[size], 'font-semibold block');
+    const labelClasses = classNames(sizes[size], 'block font-semibold');
 
     return (
         <label htmlFor={htmlFor} className={labelClasses}>

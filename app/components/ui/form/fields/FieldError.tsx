@@ -7,7 +7,7 @@ export default function FieldError({
     size?: 'sm' | 'lg';
     children: React.ReactNode;
 }) {
-    const errorClasses = classNames('text-error font-medium absolute', {
+    const errorClasses = classNames('absolute font-medium text-error', {
         'text-xs': size === 'sm',
         'text-sm': size === 'lg',
     });

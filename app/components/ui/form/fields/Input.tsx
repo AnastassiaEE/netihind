@@ -2,11 +2,8 @@ import FieldError from '@/components/ui/form/fields/FieldError';
 import FieldLabel from '@/components/ui/form/fields/FieldLabel';
 import classNames from 'classnames';
 
-const baseClasses =
-    'w-full bg-white border rounded-md transition-[padding] focus:outline-none focus:shadow-md focus:shadow-primary/10 placeholder:text-muted text-muted-dark';
-
 const sizes: { sm: string; lg: string } = {
-    sm: 'text-sm px-4 py-2.5',
+    sm: 'px-4 py-2.5 text-sm',
     lg: 'px-5 py-3',
 };
 
@@ -52,10 +49,12 @@ export default function Input({
     className?: string;
     children?: React.ReactNode;
 }) {
-    const inputClasses = classNames(baseClasses, sizes[size], className, {
-        'border-valid focus:border-primary/30': isValid,
-        'border-invalid': !isValid,
-    });
+    const inputClasses = classNames(
+        'w-full rounded-md border bg-white text-muted-dark transition-[padding] placeholder:text-muted focus:shadow-md focus:shadow-primary/10 focus:outline-none',
+        sizes[size],
+        isValid ? 'border-valid focus:border-primary/30' : 'border-invalid',
+        className,
+    );
 
     return (
         <>

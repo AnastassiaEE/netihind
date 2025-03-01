@@ -45,10 +45,7 @@ export default function IconInput({
         'pl-12': isVisible && size === 'lg',
     });
 
-    const iconWrapperClasses = classNames('absolute h-full flex items-center px-3', {
-        block: isVisible,
-        hidden: !isVisible,
-    });
+    const iconWrapperClasses = classNames('absolute flex h-full items-center px-3', isVisible ? 'block' : 'hidden');
 
     return (
         <Input
