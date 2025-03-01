@@ -20,11 +20,11 @@ export default function Contacts({ params: { locale } }: { params: { locale: str
     return (
         <SectionLayout>
             <H1>{t('title')}</H1>
-            <div className="lg:flex justify-between items-center">
-                <div className="lg:w-6/12 max-lg:mb-24">
+            <div className="items-center justify-between lg:flex">
+                <div className="max-lg:mb-24 lg:w-6/12">
                     <ContactCards contacts={contactsList} />
                 </div>
-                <div className="lg:w-5/12 bg-primary-light px-7 md:px-12 py-9 rounded-lg">
+                <div className="rounded-lg bg-primary-light px-7 py-9 md:px-12 lg:w-5/12">
                     <H2>{t('formTitle')}</H2>
                     <ContactForm />
                 </div>
