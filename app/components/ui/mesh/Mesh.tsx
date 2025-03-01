@@ -7,7 +7,7 @@ export default function Mesh({ children }: { children?: React.ReactNode }) {
             height="839.000000pt"
             viewBox="0 0 820.000000 839.000000"
             preserveAspectRatio="xMidYMid meet"
-            className="w-full h-auto"
+            className="h-auto w-full"
         >
             {children}
             <g
