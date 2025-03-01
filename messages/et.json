@@ -87,6 +87,10 @@
     },
     "buttons": {
       "showMore": "Näita veel"
+    },
+    "errors": {
+      "somethingWentWrong": "Midagi läks valesti. Proovige hiljem uuesti.",
+      "noPackages": "Teie aadressilt ei leitud midagi. Personaalse pakkumise saamiseks kirjutage meile e-kiri."
     }
   },
   "Packages": {
@@ -175,8 +179,6 @@
     }
   },
   "Errors": {
-    "somethingWentWrong": "Midagi läks valesti. Proovige hiljem uuesti.",
-    "noPackages": "Teie aadressilt ei leitud midagi. Personaalse pakkumise saamiseks kirjutage meile e-kiri.",
     "noPosts": "Postitusi pole."
   },
   "SEO": {

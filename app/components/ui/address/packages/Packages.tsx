@@ -21,7 +21,7 @@ export default function Packages({
     providers: string[];
     technologies: string[];
 }) {
-    const t = useTranslations('Errors');
+    const t = useTranslations('AddressPage');
 
     const { packages, error, isLoading } = usePackages(
         oid,

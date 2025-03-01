@@ -29,7 +29,7 @@ export const getPackages = async (
     p_provider_ids: providers,
     p_technology_ids: technologies,
   });
-  if (packagesError) throw new Error('somethingWentWrong');
-  if (!packages || packages.length === 0) throw new Error('noPackages');
+  if (packagesError) throw new Error('errors.somethingWentWrong');
+  if (!packages || packages.length === 0) throw new Error('errors.noPackages');
   return packages;
 };
