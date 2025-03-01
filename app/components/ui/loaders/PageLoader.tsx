@@ -1,10 +1,10 @@
 export default function PageLoader() {
     return (
-        <div className="fixed inset-0 bg-white flex justify-center items-center">
+        <div className="fixed inset-0 flex items-center justify-center bg-white">
             <div className="relative inline-flex">
-                <div className="w-9 h-9 bg-primary rounded-full"></div>
-                <div className="w-9 h-9 bg-primary rounded-full absolute animate-ping"></div>
-                <div className="w-9 h-9 bg-primary rounded-full absolute animate-pulse"></div>
+                <div className="size-9 rounded-full bg-primary"></div>
+                <div className="absolute size-9 animate-ping rounded-full bg-primary"></div>
+                <div className="absolute size-9 animate-pulse rounded-full bg-primary"></div>
             </div>
         </div>
     );
