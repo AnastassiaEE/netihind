@@ -22,7 +22,7 @@ export default function SlideUpPanel({
     const { handleTouchStart, handleTouchEnd } = useSlideUpPanel(handleClose);
 
     const panelClasses = classNames(
-        'fixed z-50 bottom-0 left-0 right-0 h-[100dvh] bg-white rounded-t-2xl transition-transform',
+        'fixed inset-x-0 bottom-0 z-50 h-dvh rounded-t-2xl bg-white transition-transform',
         isOpened ? 'translate-y-0' : 'translate-y-full'
     );
 
@@ -30,18 +30,18 @@ export default function SlideUpPanel({
         <Backdrop isVisible={isOpened}>
             <div>
                 <div className={panelClasses} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
-                    <div className="px-6 pt-7 pb-5 border-b border-muted-light relative">
-                        <p className="text-xl text-center font-extrabold text-black">{title}</p>
+                    <div className="relative border-b border-muted-light px-6 pb-5 pt-7">
+                        <p className="text-center text-xl font-extrabold text-black">{title}</p>
                         <button
                             type="button"
-                            className="absolute top-1/2 right-6 -translate-y-1/2"
+                            className="absolute right-6 top-1/2 -translate-y-1/2"
                             onClick={handleClose}
                         >
-                            <CloseIcon className="text-muted hover:text-black transition-colors" />
+                            <CloseIcon className="text-muted transition-colors hover:text-black" />
                         </button>
                     </div>
                     <div
-                        className="p-6 overflow-y-auto"
+                        className="overflow-y-auto p-6"
                         style={{ maxHeight: actions ? 'calc(100vh - 160px)' : 'auto' }}
                     >
                         {children}

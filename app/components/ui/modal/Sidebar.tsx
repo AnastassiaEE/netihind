@@ -5,15 +5,7 @@ import Backdrop from '@/components/ui/modal/Backdrop';
 const Sidebar = forwardRef<HTMLDivElement, { isOpened: boolean; children: React.ReactNode }>(
     ({ isOpened, children }, ref) => {
         const sidebarWrapperClasses = classNames(
-            'fixed',
-            'z-50',
-            'inset-y-0',
-            'right-0',
-            'w-80',
-            'max-w-full',
-            'bg-white',
-            'shadow-md',
-            'transition-transform duration-300',
+            'fixed inset-y-0 right-0 z-50 w-80 max-w-full bg-white shadow-md transition-transform duration-300',
             isOpened ? 'translate-x-0' : 'translate-x-full',
         );
 
