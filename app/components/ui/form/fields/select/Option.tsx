@@ -1,9 +1,5 @@
 import classNames from 'classnames';
-
-const sizes: { sm: string; lg: string } = {
-    sm: 'text-sm px-4 py-2.5',
-    lg: 'px-5 py-3',
-};
+import { FormElementSizes as sizes } from '@/styles/styles';
 
 export default function Option({
     value,

@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { FormElementSizes as sizes } from '@/styles/styles';
 
 const baseClasses = 'font-semibold transition-all';
 const variants: { primary: string; secondary: string; neutral: string; flat: string } = {
@@ -9,10 +10,6 @@ const variants: { primary: string; secondary: string; neutral: string; flat: str
   neutral:
     'rounded-md border border-primary-light bg-primary-light text-muted-dark hover:bg-primary hover:text-white',
   flat: 'text-primary hover:text-primary-dark',
-};
-const sizes: { sm: string; lg: string } = {
-  sm: 'px-4 py-2.5 text-sm',
-  lg: 'px-5 py-3',
 };
 
 export type ButtonVariant = keyof typeof variants;

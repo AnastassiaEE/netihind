@@ -5,11 +5,7 @@ import SelectBox from '@/components/ui/form/fields/select/SelectBox';
 import Arrow from '@/components/ui/icons/Arrow';
 import Button from '@/components/ui/form/buttons/Button';
 import { SvgIconComponent } from '@mui/icons-material';
-
-const sizes: { sm: string; lg: string } = {
-    sm: 'px-4 py-2.5 text-sm',
-    lg: 'px-5 py-3',
-};
+import { FormElementSizes as sizes } from '@/styles/styles';
 
 export default function Select({
     size = 'sm',

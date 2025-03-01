@@ -1,11 +1,7 @@
 import FieldError from '@/components/ui/form/fields/FieldError';
 import FieldLabel from '@/components/ui/form/fields/FieldLabel';
 import classNames from 'classnames';
-
-const sizes: { sm: string; lg: string } = {
-    sm: 'px-4 py-2.5 text-sm',
-    lg: 'px-5 py-3',
-};
+import { FormElementSizes as sizes } from '@/styles/styles';
 
 export default function Textarea({
     size = 'sm',
