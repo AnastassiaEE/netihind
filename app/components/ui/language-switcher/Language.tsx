@@ -11,17 +11,8 @@ export default function Language({
     current: boolean;
 }) {
     const languageClasses = classNames(
-        'font-semibold',
-        'text-muted-dark',
-        'uppercase',
-        'hover:text-primary',
-        'transition-colors',
-        'cursor-pointer',
-        'border-b-2',
-        {
-            'border-primary': current,
-            'border-transparent': !current,
-        },
+        'cursor-pointer border-b-2 font-semibold uppercase text-muted-dark transition-colors hover:text-primary',
+        current ? 'border-primary' : 'border-transparent',
     );
 
     return (
