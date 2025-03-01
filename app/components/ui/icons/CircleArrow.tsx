@@ -1,4 +1,5 @@
 import Arrow, { ArrowDirection } from '@/components/ui/icons/Arrow';
+import classNames from 'classnames';
 
 export default function CircleArrow({
     direction = 'left',
@@ -8,7 +9,12 @@ export default function CircleArrow({
     className?: string;
 }) {
     return (
-        <span className={`font-semibold, flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-full ${className}`}>
+        <span
+            className={classNames(
+                'font-semibold flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-full',
+                className,
+            )}
+        >
             <Arrow direction={direction} />
         </span>
     );
