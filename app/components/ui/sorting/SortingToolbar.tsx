@@ -41,11 +41,6 @@ export default function SortingToolbar({ className, sortOptions, filters }: Sort
         closeOverlay: closePanel,
     } = useOverlay();
 
-    const toolbarClasses = classNames(
-        'sticky bottom-0 flex flex-wrap justify-around bg-white shadow-top px-2 py-4 w-[105%] -mx-[2.5%] mt-7',
-        className,
-    );
-
     const checkboxFiltersGroupRef = useRef<{ handleClear: () => void } | null>(null);
 
     const handleFiltersClear = () => {
@@ -62,7 +57,12 @@ export default function SortingToolbar({ className, sortOptions, filters }: Sort
 
     return (
         <>
-            <div className={toolbarClasses}>
+            <div
+                className={classNames(
+                    'sticky bottom-0 flex flex-wrap justify-around bg-white shadow-top px-2 py-4 w-[105%] -mx-[2.5%] mt-7',
+                    className,
+                )}
+            >
                 {filters && (
                     <Button handleClick={openPanel} variant="secondary" className="min-w-[150px]">
                         {t('filter').toUpperCase()}
