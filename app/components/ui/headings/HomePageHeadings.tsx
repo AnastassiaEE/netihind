@@ -4,7 +4,7 @@ export const H1 = ({ children, className }: { children: React.ReactNode; classNa
     const cs = classNames({ [className as string]: className !== undefined });
     return (
         <h1
-            className={`text-[calc(1.475rem+2.7vw)] md:text-5xl !leading-snug font-extrabold mb-6 ${cs}`}
+            className={`mb-6 text-[calc(1.475rem+2.7vw)] font-extrabold !leading-snug md:text-5xl ${cs}`}
         >
             {children}
         </h1>
@@ -14,7 +14,7 @@ export const H1 = ({ children, className }: { children: React.ReactNode; classNa
 export const H2 = ({ children, className }: { children: React.ReactNode; className?: string }) => {
     const cs = classNames({ [className as string]: className !== undefined });
     return (
-        <h2 className={`text-[calc(1.375rem+1.5vw)] md:text-4xl font-extrabold mb-6 ${cs}`}>
+        <h2 className={`mb-6 text-[calc(1.375rem+1.5vw)] font-extrabold md:text-4xl ${cs}`}>
             {children}
         </h2>
     );
@@ -23,7 +23,7 @@ export const H2 = ({ children, className }: { children: React.ReactNode; classNa
 export const H3 = ({ children, className }: { children: React.ReactNode; className?: string }) => {
     const cs = classNames({ [className as string]: className !== undefined });
     return (
-        <h3 className={`text-[calc(1.325rem+0.9vw)] md:text-3xl font-extrabold mb-6 ${cs}`}>
+        <h3 className={`mb-6 text-[calc(1.325rem+0.9vw)] font-extrabold md:text-3xl ${cs}`}>
             {children}
         </h3>
     );
