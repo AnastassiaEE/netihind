@@ -21,9 +21,9 @@ export default function Option({
     className?: string;
 }) {
     const optionClasses = classNames(
-        'text-muted-dark cursor-pointer hover:bg-primary/10',
+        'cursor-pointer text-muted-dark hover:bg-primary/10',
         {
-            'text-primary font-semibold': isSelected,
+            'font-semibold text-primary': isSelected,
         },
         sizes[size],
         className,

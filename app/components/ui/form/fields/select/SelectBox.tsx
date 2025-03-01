@@ -9,7 +9,7 @@ export default function SelectBox({
     children: React.ReactNode;
 }) {
     const selectBoxClasses = classNames(
-        'bg-white border-grey-300 rounded-md absolute right-0 z-10 drop-shadow-md w-max',
+        'border-grey-300 absolute right-0 z-10 w-full min-w-max rounded-md bg-white drop-shadow-md',
         { 'bottom-14': openDirection === 'top' },
     );
 

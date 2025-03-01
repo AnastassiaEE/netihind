@@ -7,7 +7,7 @@ import Button from '@/components/ui/form/buttons/Button';
 import { SvgIconComponent } from '@mui/icons-material';
 
 const sizes: { sm: string; lg: string } = {
-    sm: 'text-sm px-4 py-2.5',
+    sm: 'px-4 py-2.5 text-sm',
     lg: 'px-5 py-3',
 };
 
@@ -32,8 +32,8 @@ export default function Select({
 }) {
     const { isBoxOpened, selectRef, handleSelectClick } = useSelect();
     const selectClasses = classNames(sizes[size], className, {
-        'uppercase': variant !== 'flat',
-        'border border-muted-light rounded-md': variant === 'flat'
+        uppercase: variant !== 'flat',
+        'rounded-md border border-muted-light': variant === 'flat',
     });
 
     return (
