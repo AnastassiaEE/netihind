@@ -22,7 +22,7 @@ export default function Popover({
                 className: `${elementToInteract.props.className || ''} cursor-pointer text-xs`,
             })}
             {isVisible && (
-                <span className="bg-white text-sm lowercase text-center rounded-lg shadow-md absolute bottom-full -left-full w-max max-w-xs p-3">
+                <span className="absolute -left-full bottom-full w-max max-w-xs rounded-lg bg-white p-3 text-center text-sm lowercase shadow-md">
                     {content}
                 </span>
             )}
