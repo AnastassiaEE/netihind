@@ -4,7 +4,6 @@ import secondaryLogo from '@/public/images/gradientsecondarylogo.svg';
 import useScrollPosition from '@/hooks/useScrollPosition';
 import Hamburger from '@/components/ui/header/Hamburger';
 import Logo from '@/components/ui/Logo';
-import classNames from 'classnames';
 import { useSidebarMenuContext } from '@/app/contexts/SidebarMenuContext';
 
 const TOOLBAR_SHOW_POSITION = 400;
@@ -18,20 +17,8 @@ export default function StickyHeader() {
         toolbarVisibility = 'animate-show';
     }
 
-    const wrapperClasses = classNames(
-        'sticky-header',
-        'bg-white',
-        'shadow-lg',
-        'fixed',
-        'top-0',
-        'inset-x-0',
-        'z-10',
-        'p-4',
-        toolbarVisibility,
-    );
-
     return (
-        <div className={wrapperClasses}>
+        <div className={`sticky-header fixed inset-x-0 top-0 z-10 bg-white p-4 shadow-lg ${toolbarVisibility}`}>
             <div className="container">
                 <div className="flex flex-wrap justify-between">
                     <Logo src={secondaryLogo} sizeClass="w-12" />
