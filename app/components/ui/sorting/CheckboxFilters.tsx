@@ -35,7 +35,7 @@ const CheckboxFilters = forwardRef(
         return (
             <aside className={className}>
                 {type === 'desktop' && (
-                    <div className="flex flex-wrap justify-between mb-2">
+                    <div className="mb-2 flex flex-wrap justify-between">
                         <p className="text-xl font-extrabold text-black">{t('filters')}</p>
                         <Button variant="flat" className="!p-0" handleClick={handleClear}>
                             {t('clear')}
