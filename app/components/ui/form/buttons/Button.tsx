@@ -3,15 +3,15 @@ import classNames from 'classnames';
 const baseClasses = 'font-semibold transition-all';
 const variants: { primary: string; secondary: string; neutral: string; flat: string } = {
   primary:
-    'bg-primary text-white border border-primary rounded-md shadow-md shadow-primary/50 hover:bg-primary-dark hover:shadow-none',
+    'rounded-md border border-primary bg-primary text-white shadow-md shadow-primary/50 hover:bg-primary-dark hover:shadow-none',
   secondary:
-    'bg-white text-primary border border-primary rounded-md hover:bg-primary hover:text-white',
+    'rounded-md border border-primary bg-white text-primary hover:bg-primary hover:text-white',
   neutral:
-    'bg-primary-light border border-primary-light rounded-md text-muted-dark hover:bg-primary hover:text-white',
+    'rounded-md border border-primary-light bg-primary-light text-muted-dark hover:bg-primary hover:text-white',
   flat: 'text-primary hover:text-primary-dark',
 };
 const sizes: { sm: string; lg: string } = {
-  sm: 'text-sm px-4 py-2.5',
+  sm: 'px-4 py-2.5 text-sm',
   lg: 'px-5 py-3',
 };
 
