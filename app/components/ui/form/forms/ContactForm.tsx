@@ -1,5 +1,5 @@
 'use client';
-import FormResponse from '@/components/ui/form/FormResponse';
+import FormResponse from '@/components/ui/form/forms/FormResponse';
 import { Loop, Add } from '@mui/icons-material';
 import IconInput from '@/components/ui/form/fields/IconInput';
 import Checkbox from '@/components/ui/form/fields/checkbox/Checkbox';
@@ -49,8 +49,8 @@ export default function ContactForm() {
                     handleChange={(e) => handleChange(e, 'name')}
                     handleBlur={(e) => handleBlur(e, 'name')}
                     value={values.name as string}
-                    isValid={errors.name === ''}
-                    error={errors.name === '' ? '' : t(errors.name)}
+                    isValid={!errors.name}
+                    error={errors.name ? t(errors.name) : ''}
                 />
             </div>
             <div className="mb-6">
@@ -62,8 +62,8 @@ export default function ContactForm() {
                     handleChange={(e) => handleChange(e, 'email')}
                     handleBlur={(e) => handleBlur(e, 'email')}
                     value={values.email as string}
-                    isValid={errors.email === ''}
-                    error={errors.email === '' ? '' : t(errors.email)}
+                    isValid={!errors.email}
+                    error={errors.email ? t(errors.email) : ''}
                 />
             </div>
             <div className="mb-6">
@@ -75,8 +75,8 @@ export default function ContactForm() {
                     handleChange={(e) => handleChange(e, 'phone')}
                     handleBlur={(e) => handleBlur(e, 'phone')}
                     value={values.phone as string}
-                    isValid={errors.phone === ''}
-                    error={errors.phone === '' ? '' : t(errors.phone)}
+                    isValid={!errors.phone}
+                    error={errors.phone ? t(errors.phone) : ''}
                     icon={{ Icon: Add, isVisible: true }}
                 />
             </div>
@@ -94,14 +94,14 @@ export default function ContactForm() {
                     name="policy"
                     handleChange={(e) => handleChange(e, 'policy')}
                     isChecked={values.policy as boolean}
-                    isValid={errors.policy === ''}
+                    isValid={!errors.policy}
                 >
                     {t.rich('checkboxes.privacyPolicy', {
                         a: (chunks) => (
                             <a
                                 href="/policy"
                                 target="_blank"
-                                className="transition-colors hover:text-primary font-semibold"
+                                className="font-semibold transition-colors hover:text-primary"
                             >
                                 {chunks}
                             </a>

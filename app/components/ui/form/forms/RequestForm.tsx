@@ -1,6 +1,6 @@
 'use client';
 
-import FormResponse from '@/components/ui/form/FormResponse';
+import FormResponse from '@/components/ui/form/forms/FormResponse';
 import { Loop, Add } from '@mui/icons-material';
 import IconInput from '@/components/ui/form//fields/IconInput';
 import Checkbox from '@/components/ui/form/fields/checkbox/Checkbox';
@@ -8,10 +8,8 @@ import Textarea from '@/components/ui/form/fields/Textarea';
 import Button from '@/components/ui/form//buttons/Button';
 import Input from '@/components/ui/form//fields/Input';
 import useForm from '@/hooks/useForm';
-// import Select from '@/components/ui/form/fields/Select';
 
 export default function RequestForm() {
-
     const fields = {
         name: {
             initialValue: '',
@@ -39,15 +37,10 @@ export default function RequestForm() {
         },
     };
 
-    const {
-        errors,
-        values,
-        isSending,
-        response,
-        handleChange,
-        handleBlur,
-        handleSubmit,
-    } = useForm(fields, 'request');
+    const { errors, values, isSending, response, handleChange, handleBlur, handleSubmit } = useForm(
+        fields,
+        'request',
+    );
 
     return (
         <form noValidate onSubmit={handleSubmit}>
@@ -58,7 +51,7 @@ export default function RequestForm() {
                     handleChange={(e) => handleChange(e, 'name')}
                     handleBlur={(e) => handleBlur(e, 'name')}
                     value={values.name as string}
-                    isValid={errors.name === ''}
+                    isValid={!errors.name}
                     error={errors.name}
                 />
             </div>
@@ -69,12 +62,12 @@ export default function RequestForm() {
                     handleChange={(e) => handleChange(e, 'address')}
                     handleBlur={(e) => handleBlur(e, 'address')}
                     value={values.address as string}
-                    isValid={errors.address === ''}
+                    isValid={!errors.address}
                     error={errors.address}
                 />
             </div>
             <div className="md:flex">
-                <div className="basis-6/12 mb-6">
+                <div className="mb-6 basis-6/12">
                     <IconInput
                         name="phone"
                         type="tel"
@@ -83,12 +76,12 @@ export default function RequestForm() {
                         handleChange={(e) => handleChange(e, 'phone')}
                         handleBlur={(e) => handleBlur(e, 'phone')}
                         value={values.phone as string}
-                        isValid={errors.phone === ''}
+                        isValid={!errors.phone}
                         error={errors.phone}
                         icon={{ Icon: Add, isVisible: true }}
                     />
                 </div>
-                <div className="grow mb-6">
+                <div className="mb-6 grow">
                     {/* <Select
                         name="time"
                         label={'labels.time'}
@@ -111,7 +104,7 @@ export default function RequestForm() {
                     handleChange={(e) => handleChange(e, 'message')}
                     handleBlur={(e) => handleBlur(e, 'message')}
                     value={values.message as string}
-                    isValid={errors.message === ''}
+                    isValid={!errors.message}
                     error={errors.message}
                 />
             </div>
@@ -120,7 +113,8 @@ export default function RequestForm() {
                     name="policy"
                     handleChange={(e) => handleChange(e, 'policy')}
                     isChecked={values.policy as boolean}
-                    isValid={errors.policy === ''}>
+                    isValid={!errors.policy}
+                >
                     <></>
                     {/* <Trans
                         i18nKey={t('checkboxes.privacy-policy')}
@@ -137,7 +131,7 @@ export default function RequestForm() {
             </div>
             <Button type="submit" size="lg" disabled={isSending} className="w-full">
                 {isSending ? (
-                    <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                    <svg className="size-5 animate-spin" viewBox="0 0 24 24">
                         <Loop />
                     </svg>
                 ) : (
