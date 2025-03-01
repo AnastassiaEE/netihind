@@ -4,7 +4,7 @@ import Button from '@/components/ui/form/buttons/Button';
 import '@/styles/addressForm.css';
 import FieldError from '@/components/ui/form/fields/FieldError';
 import { useTranslations } from 'next-intl';
-import useMaaAmetAddressForm from '@/hooks/UseMaaAmetAddressForm';
+import useMaaAmetAddressForm from '@/hooks/useMaaAmetAddressForm';
 import AddressFormLoader from '@/components/ui/loaders/AddressFormLoader';
 
 export default function MaaAmetAddressForm() {
@@ -23,12 +23,12 @@ export default function MaaAmetAddressForm() {
                 onKeyDown={handleKeyDown}
                 className={isFormVisible() ? 'visible' : 'invisible'}
             >
-                <div className="md:flex gap-1 relative">
+                <div className="relative gap-1 md:flex">
                     <div className="grow">
                         <div id="in-address"></div>
-                        {error == '' ? <span className="font-medium text-sm text-muted-dark absolute">{t('messages.addressExample')}</span> : <FieldError size="lg">{t(error)}</FieldError>}
+                        {error == '' ? <span className="absolute text-sm font-medium text-muted-dark">{t('messages.addressExample')}</span> : <FieldError size="lg">{t(error)}</FieldError>}
                     </div>
-                    <Button type="submit" size="lg" className="max-md:w-full max-md:mt-6">
+                    <Button type="submit" size="lg" className="max-md:mt-6 max-md:w-full">
                         {t('buttons.findProviders')}
                     </Button>
                 </div>
