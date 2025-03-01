@@ -11,7 +11,7 @@ export default function BottomHeader() {
     const pathname = usePathname();
 
     return (
-        <div className="p-2 flex justify-between">
+        <div className="flex justify-between p-2">
             <Navigation>
                 <NavigationItem href="/blog" isActive={pathname === '/blog'}>
                     {t('blog')}

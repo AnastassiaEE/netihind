@@ -23,10 +23,10 @@ export default function SidebarMenu() {
 
     return (
         <Sidebar isOpened={isSidebarMenuOpened} ref={sidebarMenuRef}>
-            <div className="flex justify-between px-6 py-5 border-b border-muted-light">
+            <div className="flex justify-between border-b border-muted-light px-6 py-5">
                 <p className="text-xl font-extrabold text-black">{t('menu')}</p>
                 <button type="button" className="h-max" onClick={closeSidebarMenu}>
-                    <CloseIcon className="text-muted hover:text-black transition-colors" />
+                    <CloseIcon className="text-muted transition-colors hover:text-black" />
                 </button>
             </div>
             <div className="p-6" onClick={handleLinkClick}>
