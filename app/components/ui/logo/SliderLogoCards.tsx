@@ -24,8 +24,8 @@ const pagination = {
     clickable: true,
     el: '.logo-swiper-pagination',
     bulletClass:
-        'logo-pagination-bullet bg-muted inline-block rounded-lg cursor-pointer transition-all duration-500 w-1.5 h-1.5 mx-1.5',
-    bulletActiveClass: 'logo-pagination-bullet-active !bg-primary !w-6',
+        'logo-pagination-bullet mx-1.5 inline-block size-1.5 cursor-pointer rounded-lg bg-muted transition-all duration-500',
+    bulletActiveClass: 'logo-pagination-bullet-active !w-6 !bg-primary',
 };
 
 const modules = [Pagination];
@@ -40,12 +40,12 @@ export default function SliderLogoCards({ logos }: { logos: { [key: string]: any
                 className="logo-swiper"
             >
                 {logos.map((logo) => (
-                    <SwiperSlide key={logo.alt} className="py-5 shrink">
+                    <SwiperSlide key={logo.alt} className="shrink py-5">
                         <SliderLogoCard image={logo.image} alt={logo.alt} />
                     </SwiperSlide>
                 ))}
             </Swiper>
-            <div className="logo-swiper-pagination pt-5 flex justify-center"></div>
+            <div className="logo-swiper-pagination flex justify-center pt-5"></div>
         </>
     );
 }

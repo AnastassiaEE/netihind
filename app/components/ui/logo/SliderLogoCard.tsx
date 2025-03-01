@@ -1,35 +1,9 @@
-import classNames from 'classnames';
 import Image from 'next/image';
 
 export default function SliderLogoCard({ image, alt }: { image: string; alt: string }) {
-    const logoWrapperClasses = classNames(
-        'h-28',
-        'p-6',
-        'border',
-        'border-muted-light',
-        'rounded-md',
-        'flex',
-        'justify-center',
-        'hover:shadow-md',
-        'hover:-translate-y-1',
-        'transition-all',
-        'duration-300',
-        'group',
-    );
-
-    const imageClasses = classNames(
-        'object-contain',
-        'grayscale',
-        'opacity-20',
-        'group-hover:grayscale-0',
-        'group-hover:opacity-100',
-        'transition-all',
-        'duration-500',
-    );
-
     return (
-        <div className={logoWrapperClasses}>
-            <Image src={image} alt={alt} className={imageClasses} />
+        <div className="group flex h-28 justify-center rounded-md border border-muted-light p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+            <Image src={image} alt={alt} className="object-contain opacity-20 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0" />
         </div>
     );
 }
