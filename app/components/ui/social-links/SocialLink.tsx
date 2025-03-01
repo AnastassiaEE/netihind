@@ -1,5 +1,4 @@
 import { SvgIconComponent } from '@mui/icons-material';
-import classNames from 'classnames';
 
 export default function SocialLink({
     Icon,
@@ -12,23 +11,12 @@ export default function SocialLink({
     color: string;
     className?: string;
 }) {
-    const socialLinkClasses = classNames(
-        'flex',
-        'justify-center',
-        'items-center',
-        'w-11',
-        'h-11',
-        'bg-white/5',
-        'rounded-md',
-        'transition-colors',
-        'ease-in',
-        'hover:shadow-lg',
-        color,
-        className
-    );
-
     return (
-        <a href={href} target="_blank" className={socialLinkClasses}>
+        <a
+            href={href}
+            target="_blank"
+            className={`flex size-11 items-center justify-center rounded-md bg-white/5 transition-colors ease-in hover:shadow-lg ${color} ${className}`}
+        >
             <Icon fontSize="small" className="text-white" />
         </a>
     );
