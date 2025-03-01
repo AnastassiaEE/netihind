@@ -14,7 +14,7 @@ export default function Navigation({
         'flex flex-wrap': type === 'horizontal',
     });
 
-    const navigationItemClasses = classNames('py-2 block', {
+    const navigationItemClasses = classNames('block py-2', {
         'px-4': type === 'horizontal',
     });
 
