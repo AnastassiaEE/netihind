@@ -23,17 +23,15 @@ export default function Checkbox({
     children: React.ReactNode;
 }) {
     const checkboxClasses = classNames(
-        'appearance-none cursor-pointer w-4 h-4 border rounded-[.185em] mr-2 shrink-0',
-        'checked:bg-primary checked:border-primary checked:bg-[url("/images/tick.svg")] checked:bg-contain',
+        'mr-2 size-4 shrink-0 cursor-pointer appearance-none rounded-[.185em] border checked:border-primary checked:bg-primary checked:bg-[url("/images/tick.svg")] checked:bg-contain',
         [sizes[size].checkboxSize],
         {
             'border-valid': isValid,
             'border-invalid': !isValid,
         },
     );
-
     return (
-        <label className="flex items-center cursor-pointer">
+        <label className="flex cursor-pointer items-center">
             <input
                 id={name + value}
                 name={name}
