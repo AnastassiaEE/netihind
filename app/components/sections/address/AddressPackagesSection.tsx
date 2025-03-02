@@ -91,7 +91,7 @@ export default async function AddressPackagesSection({
                             />
                         </div>
                         <div className="hidden md:block md:w-3/12">
-                            <CheckboxFilters filters={filters} className="rounded-lg bg-primary-light/40 p-8" />
+                            <CheckboxFilters filters={filters} className="rounded-lg bg-primary-light/40 p-8 shadow-md" />
                         </div>
                     </div>
                     <SortingToolbar
