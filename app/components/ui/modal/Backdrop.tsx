@@ -8,7 +8,7 @@ export default function Backdrop({
     return (
         <>
             {children}
-            {isVisible && <div className="fixed inset-0 z-20 cursor-pointer bg-black/70"></div>}
+            {isVisible && <div className="fixed inset-0 z-20 cursor-pointer bg-black/50"></div>}
         </>
     );
 }
