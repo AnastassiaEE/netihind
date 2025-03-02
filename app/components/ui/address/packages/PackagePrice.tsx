@@ -25,7 +25,7 @@ export default function PackagePrice({
     return (
         <div className="max-lg:flex max-lg:items-center max-lg:gap-2">
             <p className={priceClasses}>
-                <span className="font-extrabold text-black">{price} €</span> / {t('units.month')}
+                <span className="font-bold text-black">{price} €</span> / {t('units.month')}
             </p>
             {promoPrice && (
                 <div className="mt-1">
