@@ -1,5 +1,5 @@
 import { SvgIconComponent } from '@mui/icons-material';
-import Input, { InputSize } from '@/components/ui/form/fields/Input';
+import Input, { InputSize } from '@/components/ui/form/fields/input/Input';
 import classNames from 'classnames';
 
 export default function IconInput({
