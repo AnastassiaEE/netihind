@@ -9,7 +9,7 @@ export default function Input({
     size = 'sm',
     name,
     type = 'text',
-    inputmode,
+    inputmode = 'text',
     label,
     placeholder,
     handleChange,
@@ -23,17 +23,8 @@ export default function Input({
 }: {
     size?: InputSize;
     name: string;
-    type?: string;
-    inputmode?:
-    | 'email'
-    | 'search'
-    | 'text'
-    | 'tel'
-    | 'url'
-    | 'none'
-    | 'numeric'
-    | 'decimal'
-    | undefined;
+    type?: 'text' | 'password' | 'email' | 'tel' | 'url' | 'search' | 'number' | 'range' | 'hidden';
+    inputmode?: 'text' | 'tel' | 'email' | 'url' | 'numeric' | 'decimal' | 'search' | 'none';
     label?: string;
     placeholder?: string;
     handleChange?: React.ChangeEventHandler<HTMLInputElement>;
@@ -63,6 +54,7 @@ export default function Input({
                 {children}
                 <input
                     id={name}
+                    name={name}
                     type={type}
                     inputMode={inputmode}
                     className={inputClasses}
@@ -71,6 +63,7 @@ export default function Input({
                     onFocus={handleFocus}
                     onBlur={handleBlur}
                     value={value}
+                    autoComplete={name}
                 />
             </div>
             {!isValid && <FieldError size={size}>{error}</FieldError>}

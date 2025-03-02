@@ -41,7 +41,7 @@ export default function ContactForm() {
     );
 
     return (
-        <form action="" noValidate onSubmit={handleSubmit}>
+        <form action="" onSubmit={handleSubmit}>
             <div className="mb-6">
                 <Input
                     name="name"
