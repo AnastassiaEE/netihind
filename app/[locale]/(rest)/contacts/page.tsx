@@ -24,7 +24,7 @@ export default function Contacts({ params: { locale } }: { params: { locale: str
                 <div className="max-lg:mb-24 lg:w-6/12">
                     <ContactCards contacts={contactsList} />
                 </div>
-                <div className="rounded-lg bg-primary-light px-7 py-9 md:px-12 lg:w-5/12">
+                <div className="rounded-lg bg-primary-light px-7 py-9 shadow-md md:px-12 lg:w-5/12">
                     <H2>{t('formTitle')}</H2>
                     <ContactForm />
                 </div>
