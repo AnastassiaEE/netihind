@@ -20,13 +20,12 @@ const Modal = forwardRef<
                     transform: isOpened
                         ? 'translate(-50%, -50%) scale(1)'
                         : 'translate(-50%, -50%) scale(0.7)',
-                    transition: 'transform 0.2s ease-out, opacity 0.3s ease-out',
+                    transition: 'transform 0.2s ease-out, opacity 0.2s ease-out',
                 }}
             >
-                <div className="flex justify-between">
-                    <p className="mb-6 text-[calc(1.275rem+0.3vw)] font-extrabold md:text-2xl text-black">{title}</p>
-                    <CloseButton handleClick={handleClose} className='bg-white' />
-                </div>
+                <CloseButton handleClick={handleClose} className='bg-white absolute top-4 right-4' />
+                <p className="mb-6 text-[calc(1.275rem+0.3vw)] font-extrabold md:text-2xl text-black">{title}</p>
+
                 {children}
             </div>
         </Backdrop>
