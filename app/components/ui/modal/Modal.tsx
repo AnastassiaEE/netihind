@@ -8,7 +8,7 @@ const Modal = forwardRef<
     { title: string, isOpened: boolean; handleClose: () => void; children: React.ReactNode }
 >(({ title, isOpened, handleClose, children }, ref) => {
     const modalClasses = classNames(
-        'fixed left-1/2 top-1/2 z-50 h-screen w-screen max-w-[100vw] overflow-auto rounded-lg bg-primary-light p-10 shadow-lg lg:h-[700px] lg:max-h-[calc(100vh-30px)] lg:w-[950px]',
+        'fixed left-1/2 top-1/2 z-50 h-dvh w-screen max-w-[100vw] overflow-auto rounded-lg bg-primary-light p-10 shadow-lg lg:h-[700px] lg:max-h-[calc(100vh-30px)] lg:w-[950px]',
         isOpened ? 'opacity-100' : 'opacity-0 pointer-events-none',
     );
     return (
