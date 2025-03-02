@@ -29,7 +29,7 @@ export default function ContactCard({
     className?: string;
 }) {
     const cardClasses = classNames(
-        'flex rounded-md border border-muted-light p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg',
+        'flex rounded-lg border border-muted-light p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg',
         className,
     );
 
