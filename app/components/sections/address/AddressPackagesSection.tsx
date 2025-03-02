@@ -12,6 +12,7 @@ import { getPackages, getProviders, getTechnologies } from '@/lib/packagesDataFe
 import { getTranslations } from 'next-intl/server';
 import CheckboxFilters from '@/components/ui/sorting/CheckboxFilters';
 import PackagesError from '@/components/ui/errors/PackagesError';
+import { Link } from '@/i18n/routing';
 
 export default async function AddressPackagesSection({
     searchParams,
@@ -62,8 +63,17 @@ export default async function AddressPackagesSection({
             <h1 className="mb-6 text-[calc(1.275rem+0.3vw)] font-extrabold md:text-2xl">
                 {t('packagesSection.title')}
             </h1>
+            <p className="mb-6">{fullAddress}</p>
             {providers.length === 0 && technologies.length === 0 && error ? (
-                <PackagesError>{t(error)}</PackagesError>
+                <PackagesError>
+                    {t.rich(error, {
+                        a: (chunks) => (
+                            <Link href="/contacts" className="font-extrabold underline">
+                                {chunks}
+                            </Link>
+                        ),
+                    })}
+                </PackagesError>
             ) : (
                 <>
                     <div className="md:flex md:justify-between">

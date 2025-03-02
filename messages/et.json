@@ -90,7 +90,7 @@
     },
     "errors": {
       "somethingWentWrong": "Midagi läks valesti. Proovige hiljem uuesti.",
-      "noPackages": "Teie aadressilt ei leitud midagi. Personaalse pakkumise saamiseks kirjutage meile e-kiri."
+      "noPackages": "Teie aadressilt ei leitud midagi. Personaalse pakkumise saamiseks kirjutage meile <a>e-kiri</a>."
     }
   },
   "Packages": {
