@@ -1,5 +1,4 @@
 'use client';
-import CloseIcon from '@mui/icons-material/Close';
 import Navigation from '@/components/ui/navigation/Navigation';
 import NavigationItem from '@/components/ui/navigation/NavigationItem';
 import LanguageSwitcher from '@/components/ui/language-switcher/LanguageSwitcher';
@@ -22,13 +21,7 @@ export default function SidebarMenu() {
     };
 
     return (
-        <Sidebar isOpened={isSidebarMenuOpened} ref={sidebarMenuRef}>
-            <div className="flex justify-between border-b border-muted-light px-6 py-5">
-                <p className="text-xl font-extrabold text-black">{t('menu')}</p>
-                <button type="button" className="h-max" onClick={closeSidebarMenu}>
-                    <CloseIcon className="text-muted transition-colors hover:text-black" />
-                </button>
-            </div>
+        <Sidebar isOpened={isSidebarMenuOpened} ref={sidebarMenuRef} title={t('menu')} handleClose={closeSidebarMenu}>
             <div className="p-6" onClick={handleLinkClick}>
                 <Navigation type="vertical">
                     <NavigationItem href="/blog" isActive={pathname === '/blog'}>
@@ -47,6 +40,6 @@ export default function SidebarMenu() {
                     </Suspense>
                 </div>
             </div>
-        </Sidebar>
+        </Sidebar >
     );
 }
