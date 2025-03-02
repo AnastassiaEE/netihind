@@ -6,7 +6,7 @@ export default function IconInput({
     size = 'sm',
     name,
     type = 'text',
-    inputmode,
+    inputmode = 'text',
     label,
     placeholder,
     handleChange,
@@ -19,17 +19,8 @@ export default function IconInput({
 }: {
     size?: InputSize;
     name: string;
-    type?: string;
-    inputmode?:
-    | 'email'
-    | 'search'
-    | 'text'
-    | 'tel'
-    | 'url'
-    | 'none'
-    | 'numeric'
-    | 'decimal'
-    | undefined;
+    type?: 'text' | 'password' | 'email' | 'tel' | 'url' | 'search' | 'number' | 'range' | 'hidden';
+    inputmode?: 'text' | 'tel' | 'email' | 'url' | 'numeric' | 'decimal' | 'search' | 'none';
     label?: string;
     placeholder?: string;
     handleChange?: React.ChangeEventHandler<HTMLInputElement>;
