@@ -23,7 +23,7 @@ export default function SlideUpPanel({
 
     const panelClasses = classNames(
         'fixed inset-x-0 bottom-0 z-50 h-dvh rounded-t-2xl bg-white transition-transform',
-        isOpened ? 'translate-y-0' : 'translate-y-full'
+        isOpened ? 'translate-y-0' : 'translate-y-full pointer-events-none'
     );
 
     return (
