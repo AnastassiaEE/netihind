@@ -33,7 +33,7 @@ export default function PackageCard({
     const t = useTranslations('Packages');
 
     const cardClasses = classNames(
-        'rounded-md border border-muted-light bg-white shadow-md',
+        'rounded-lg border border-muted-light bg-white shadow-md',
         className,
     );
 
