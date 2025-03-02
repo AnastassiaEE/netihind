@@ -6,6 +6,8 @@ import { useTranslations } from 'next-intl';
 import PackageCard from '@/components/ui/address/packages/PackageCard';
 import PackagesError from '@/components/ui/errors/PackagesError';
 import { Link } from '@/i18n/routing';
+import Modal from '@/components/ui/modal/Modal';
+import useOverlay from '@/hooks/useOverlay';
 
 export default function Packages({
     oid,
@@ -31,6 +33,18 @@ export default function Packages({
         providers,
         technologies,
     );
+
+    const {
+        isOverlayVisible: isModalOpened,
+        openOverlay: openModal,
+        closeOverlay: closeModal,
+        overlayRef: modalRef
+    } = useOverlay();
+
+    const handlePackageButtonClick = () => {
+        openModal();
+    }
+
     const errorContent = (error: string) => (
         <PackagesError>
             {t.rich(error, {
@@ -48,9 +62,60 @@ export default function Packages({
 
     return (
         <>
-            {packages.map((data: { [key: string]: any }) => (
-                <PackageCard key={data.internet_package_id} data={data} className="mb-5" />
-            ))}
+            <div>
+                {packages.map((data: { [key: string]: any }) => (
+                    <PackageCard key={data.internet_package_id} data={data} className="mb-5" handleButtonClick={handlePackageButtonClick} />
+                ))}
+            </div>
+            <Modal isOpened={isModalOpened} handleClose={closeModal} ref={modalRef}>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+                <p> это модально окно</p>
+            </Modal>
         </>
     );
 }

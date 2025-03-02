@@ -23,9 +23,11 @@ export default function PackageCard({
         internet_upload_speed,
         internet_package_price,
     },
+    handleButtonClick,
     className,
 }: {
     data: { [key: string]: any };
+    handleButtonClick: () => void;
     className: string;
 }) {
     const t = useTranslations('Packages');
@@ -45,8 +47,16 @@ export default function PackageCard({
                         name={internet_package_name}
                     />
                     <PackageFeature>
-                        <InternetSpeedFeature type="download" speed={internet_download_speed} units={t('units.speed')} />
-                        <InternetSpeedFeature type="upload" speed={internet_upload_speed} units={t('units.speed')} />
+                        <InternetSpeedFeature
+                            type="download"
+                            speed={internet_download_speed}
+                            units={t('units.speed')}
+                        />
+                        <InternetSpeedFeature
+                            type="upload"
+                            speed={internet_upload_speed}
+                            units={t('units.speed')}
+                        />
                         <Popover
                             elementToInteract={
                                 <span className="ml-2 block rounded-md border border-primary px-1 py-0.5 font-semibold text-primary">
@@ -61,7 +71,7 @@ export default function PackageCard({
                     <PackagePrice originalPrice={internet_package_price} />
                 </PackageCardSection>
             </div>
-            <PackageActions />
+            <PackageActions handleButtonClick={handleButtonClick} />
         </article>
     );
 }
