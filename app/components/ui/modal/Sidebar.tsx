@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React, { forwardRef } from 'react';
 import Backdrop from '@/components/ui/modal/Backdrop';
-import CloseIcon from '@mui/icons-material/Close';
+import CloseButton from '@/components/ui/buttons/CloseButton';
 
 const Sidebar = forwardRef<
     HTMLDivElement,
@@ -17,9 +17,7 @@ const Sidebar = forwardRef<
             <div className={sidebarWrapperClasses} ref={ref}>
                 <div className="flex justify-between border-b border-muted-light px-6 py-5">
                     <p className="text-xl font-extrabold text-black">{title}</p>
-                    <button type="button" className="h-max" onClick={handleClose}>
-                        <CloseIcon className="text-muted transition-colors hover:text-black" />
-                    </button>
+                    <CloseButton handleClick={handleClose} />
                 </div>
                 {children}
             </div>
