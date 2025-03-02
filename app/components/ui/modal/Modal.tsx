@@ -1,11 +1,12 @@
 import React, { forwardRef } from 'react';
 import Backdrop from '@/components/ui/modal/Backdrop';
 import classNames from 'classnames';
+import CloseButton from '../buttons/CloseButton';
 
 const Modal = forwardRef<
     HTMLDivElement,
-    { isOpened: boolean; handleClose: () => void; children: React.ReactNode }
->(({ isOpened, handleClose, children }, ref) => {
+    { title: string, isOpened: boolean; handleClose: () => void; children: React.ReactNode }
+>(({ title, isOpened, handleClose, children }, ref) => {
     const modalClasses = classNames(
         'fixed left-1/2 top-1/2 z-50 h-screen w-screen max-w-[100vw] overflow-auto rounded-lg bg-primary-light p-10 shadow-lg lg:h-[700px] lg:max-h-[calc(100vh-30px)] lg:w-[950px]',
         isOpened ? 'opacity-100' : 'opacity-0 pointer-events-none',
@@ -22,6 +23,10 @@ const Modal = forwardRef<
                     transition: 'transform 0.2s ease-out, opacity 0.3s ease-out',
                 }}
             >
+                <div className="flex justify-between">
+                    <p className="mb-6 text-[calc(1.275rem+0.3vw)] font-extrabold md:text-2xl text-black">{title}</p>
+                    <CloseButton handleClick={handleClose} className='bg-white' />
+                </div>
                 {children}
             </div>
         </Backdrop>
