@@ -14,9 +14,11 @@ export default function NavigationItem({
     isActive?: boolean;
     children: React.ReactNode;
 }) {
-    const navigationItemClasses = classNames('transition-colors hover:text-primary', className, {
-        'font-extrabold text-primary': isActive,
-    });
+    const navigationItemClasses = classNames(
+        'transition-colors hover:text-primary',
+        className,
+        isActive && 'font-extrabold text-primary',
+    );
     return (
         <Link href={href} className={navigationItemClasses}>
             {children}

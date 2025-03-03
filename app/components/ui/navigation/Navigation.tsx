@@ -10,13 +10,13 @@ export default function Navigation({
     itemColorClass?: string;
     children: React.ReactNode;
 }) {
-    const navigationListClasses = classNames(itemColorClass, 'font-semibold', {
-        'flex flex-wrap': type === 'horizontal',
-    });
+    const navigationListClasses = classNames(
+        itemColorClass,
+        'font-semibold',
+        type === 'horizontal' && 'flex flex-wrap',
+    );
 
-    const navigationItemClasses = classNames('block py-2', {
-        'px-4': type === 'horizontal',
-    });
+    const navigationItemClasses = classNames('block py-2', type === 'horizontal' && 'px-4');
 
     return (
         <nav>
