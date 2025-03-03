@@ -10,7 +10,8 @@ export default function useForm(
   fields: {
     [key: string]: { initialValue: string | boolean; isRequired: boolean };
   },
-  type: 'contact' | 'request',
+  type: 'contact' | 'connection' | 'consultation',
+  additionalData?: { [key: string]: any },
 ) {
   const initialValues = Object.fromEntries(
     Object.entries(fields).map(([field, { initialValue }]) => [field, initialValue]),
@@ -82,7 +83,7 @@ export default function useForm(
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ ...values, type: type }),
+          body: JSON.stringify({ ...values, ...additionalData, type: type }),
         });
         // handle success
         if (response.ok) {

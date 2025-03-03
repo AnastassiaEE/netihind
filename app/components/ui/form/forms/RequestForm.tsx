@@ -12,8 +12,25 @@ import useForm from '@/hooks/useForm';
 import { useTranslations } from 'next-intl';
 import { Loop, Add } from '@mui/icons-material';
 
-export default function RequestForm() {
+export default function RequestForm({
+    type = 'connection',
+    address,
+    packageData,
+}: {
+    type?: 'connection' | 'consultation';
+    address: string;
+    packageData: { [key: string]: string } | null;
+}) {
     const t = useTranslations('Form');
+    const timeOptions = ['hour', '9-11', '11-13', '13-15', '15-17', '17-20'];
+
+    const filteredPackageData = packageData
+        ? Object.fromEntries(
+            Object.entries(packageData).filter(
+                ([key]) => !['internet_technology_description', 'provider_img_url'].includes(key),
+            ),
+        )
+        : null;
 
     const fields = {
         name: {
@@ -42,10 +59,16 @@ export default function RequestForm() {
         },
     };
 
-    const { errors, values, isSending, response, handleChange, handleSelectChange, handleBlur, handleSubmit } = useForm(
-        fields,
-        'request',
-    );
+    const {
+        errors,
+        values,
+        isSending,
+        response,
+        handleChange,
+        handleSelectChange,
+        handleBlur,
+        handleSubmit,
+    } = useForm(fields, type, { address: address, ...filteredPackageData });
 
     return (
         <form onSubmit={handleSubmit} autoComplete="on" noValidate>
@@ -97,25 +120,19 @@ export default function RequestForm() {
                 />
             </div>
             <div className="mb-6">
-                <Select name="time" selected={t('selectOptions.' + values.time as string)} variant="flat" openDirection="top" handleChange={handleSelectChange} className="!p-0">
-                    <Option value="hour" isSelected={values.time === 'hour'}>
-                        {t('selectOptions.hour')}
-                    </Option>
-                    <Option value="9-11" isSelected={values.time === '9-11'}>
-                        {t('selectOptions.9-11')}
-                    </Option>
-                    <Option value="11-13" isSelected={values.time === '11-13'}>
-                        {t('selectOptions.11-13')}
-                    </Option>
-                    <Option value="13-15" isSelected={values.time === '13-15'}>
-                        {t('selectOptions.13-15')}
-                    </Option>
-                    <Option value="15-17" isSelected={values.time === '15-17'}>
-                        {t('selectOptions.15-17')}
-                    </Option>
-                    <Option value="17-20" isSelected={values.time === '17-20'}>
-                        {t('selectOptions.17-20')}
-                    </Option>
+                <Select
+                    name="time"
+                    selected={t(('selectOptions.' + values.time) as string)}
+                    variant="flat"
+                    openDirection="top"
+                    handleChange={handleSelectChange}
+                    className="!p-0"
+                >
+                    {timeOptions.map((option) => (
+                        <Option key={option} value={option} isSelected={values.time === option}>
+                            {t(`selectOptions.${option}`)}
+                        </Option>
+                    ))}
                 </Select>
             </div>
             <div className="mb-6">
@@ -139,16 +156,10 @@ export default function RequestForm() {
                 </Checkbox>
             </div>
             <Button type="submit" size="lg" disabled={isSending} className="w-full">
-                {isSending ? (
-                    <svg className="size-5 animate-spin" viewBox="0 0 24 24">
-                        <Loop />
-                    </svg>
-                ) : (
-                    <>{t('buttons.send')}</>
-                )}
+                {isSending ? <Loop className="animate-spin" /> : <>{t('buttons.send')}</>}
             </Button>
-            {!isSending && (
-                <FormResponse type={response?.type}> {response && response.message} </FormResponse>
+            {!isSending && response && (
+                <FormResponse type={response.type}>{t(response.message)}</FormResponse>
             )}
         </form>
     );

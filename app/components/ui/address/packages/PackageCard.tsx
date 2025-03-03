@@ -27,7 +27,7 @@ export default function PackageCard({
     className,
 }: {
     data: { [key: string]: any };
-    handleButtonClick: (action: 'connect' | 'consultation') => void;
+    handleButtonClick: (action: 'connection' | 'consultation') => void;
     className: string;
 }) {
     const t = useTranslations('Packages');

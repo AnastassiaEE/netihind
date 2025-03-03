@@ -26,15 +26,15 @@ export default function usePackages(
     },
   );
   const [selectedPackage, setSelectedPackage] = useState<{ [key: string]: any } | null>(null);
-  const [request, setRequest] = useState<'connect' | 'consultation'>('connect');
+  const [requestType, setRequestType] = useState<'connection' | 'consultation'>('connection');
 
   const handlePackageButtonClick = (
     packageData: { [key: string]: any },
-    action: 'connect' | 'consultation',
+    action: 'connection' | 'consultation',
     handleModal: () => void,
   ) => {
     setSelectedPackage(packageData);
-    setRequest(action);
+    setRequestType(action);
     handleModal();
   };
 
@@ -43,7 +43,7 @@ export default function usePackages(
     error,
     isLoading,
     selectedPackage,
-    request,
+    requestType,
     handlePackageButtonClick,
   };
 }
