@@ -1,19 +1,24 @@
 import Image from 'next/image';
 import PackageRequestSection from '@/components/ui/address/packages/PackageRequestSection';
+import HomeIcon from '@mui/icons-material/Home';
+import RequestForm from '@/components/ui/form/forms/RequestForm';
 
 export default function PackageRequestContent({
     type,
     packageData,
+    address,
 }: {
     type: 'connect' | 'consultation';
     packageData: { [key: string]: any } | null;
+    address: string
 }) {
     if (type === 'connect')
         return (
             <div className="grid md:grid-rows-2 md:grid-cols-2 gap-5">
                 <div className="md:row-span-2 max-md:order-3">
                     <PackageRequestSection title="Проверьте адрес и заполните форму">
-                        form
+                        <p><HomeIcon className="mr-1 inline align-sub text-primary" />{address}</p>
+                        <RequestForm />
                     </PackageRequestSection>
                 </div>
                 <div>

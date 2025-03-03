@@ -25,15 +25,12 @@ export default function Checkbox({
     const checkboxClasses = classNames(
         'mr-2 size-4 shrink-0 cursor-pointer appearance-none rounded-[.185em] border checked:border-primary checked:bg-primary checked:bg-[url("/images/tick.svg")] checked:bg-contain',
         [sizes[size].checkboxSize],
-        {
-            'border-valid': isValid,
-            'border-invalid': !isValid,
-        },
+        isValid ? 'border-valid' : 'border-invalid',
     );
     return (
         <label className="flex cursor-pointer items-center">
             <input
-                id={name + value}
+                id={name + (value ? `${value}` : '')}
                 name={name}
                 value={value}
                 type="checkbox"

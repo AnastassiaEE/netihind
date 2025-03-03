@@ -2,7 +2,6 @@ import SectionLayout from '@/layouts/SectionLayout';
 import Packages from '@/components/ui/address/packages/Packages';
 import { SORT_OPTIONS, getFilterData, getSortSelectedOption } from '@/utils/packagesHelper';
 import React from 'react';
-// import Modal from '@/components/ui/modal/Modal';
 import Sort from '@/components/ui/sorting/Sort';
 import SortingToolbar from '@/components/ui/sorting/SortingToolbar';
 import { getCookie } from 'cookies-next';
@@ -13,6 +12,7 @@ import { getTranslations } from 'next-intl/server';
 import CheckboxFilters from '@/components/ui/sorting/CheckboxFilters';
 import PackagesError from '@/components/ui/errors/PackagesError';
 import { Link } from '@/i18n/routing';
+import HomeIcon from '@mui/icons-material/Home';
 
 export default async function AddressPackagesSection({
     searchParams,
@@ -21,7 +21,7 @@ export default async function AddressPackagesSection({
 }) {
     const t = await getTranslations('AddressPage');
     const cookieString = getCookie('ADDRESS', { cookies });
-    const { fullAddress, oid } = getAddressCookieValues(cookieString);
+    const { fullAddress: address, oid } = getAddressCookieValues(cookieString);
     const providers = await getProviders(oid);
     const technologies = await getTechnologies(oid);
 
@@ -63,7 +63,7 @@ export default async function AddressPackagesSection({
             <h1 className="mb-6 text-[calc(1.275rem+0.3vw)] font-extrabold md:text-2xl">
                 {t('packagesSection.title')}
             </h1>
-            <p className="mb-6">{fullAddress}</p>
+            <p className="font-medium mb-6"><HomeIcon className="mr-1 inline align-sub text-primary" />{address}</p>
             {providers.length === 0 && technologies.length === 0 && error ? (
                 <PackagesError>
                     {t.rich(error, {
@@ -79,10 +79,11 @@ export default async function AddressPackagesSection({
                     <div className="md:flex md:justify-between">
                         <div className="md:w-8/12">
                             <div className="my-4 flex justify-end max-md:hidden">
-                                <Sort options={SORT_OPTIONS} selected={selectedSortOption} variant="flat" />
+                                <Sort options={SORT_OPTIONS} selected={selectedSortOption} variant="flat" className="rounded-md border border-muted-light" />
                             </div>
                             <Packages
                                 oid={oid}
+                                address={address}
                                 initialPackages={packages}
                                 initialError={error}
                                 sortOption={selectedSortOption}
@@ -91,7 +92,10 @@ export default async function AddressPackagesSection({
                             />
                         </div>
                         <div className="hidden md:block md:w-3/12">
-                            <CheckboxFilters filters={filters} className="rounded-lg bg-primary-light/40 p-8 shadow-md" />
+                            <CheckboxFilters
+                                filters={filters}
+                                className="rounded-lg bg-primary-light/40 p-8 shadow-md"
+                            />
                         </div>
                     </div>
                     <SortingToolbar

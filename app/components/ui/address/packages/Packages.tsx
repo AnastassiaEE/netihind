@@ -8,10 +8,11 @@ import PackagesError from '@/components/ui/errors/PackagesError';
 import { Link } from '@/i18n/routing';
 import Modal from '@/components/ui/modal/Modal';
 import useOverlay from '@/hooks/useOverlay';
-import PackageRequestContent from './PackageRequestContent';
+import PackageRequestContent from '@/components/ui/address/packages/PackageRequestContent';
 
 export default function Packages({
     oid,
+    address,
     initialPackages,
     initialError,
     sortOption,
@@ -19,6 +20,7 @@ export default function Packages({
     technologies,
 }: {
     oid: string;
+    address: string;
     initialPackages: { [key: string]: any }[];
     initialError: string | null;
     sortOption: string;
@@ -34,7 +36,6 @@ export default function Packages({
         isOverlayVisible: isModalOpened,
         openOverlay: openModal,
         closeOverlay: closeModal,
-        overlayRef: modalRef,
     } = useOverlay();
 
     const errorContent = (error: string) => (
@@ -64,8 +65,8 @@ export default function Packages({
                     />
                 ))}
             </div>
-            <Modal title={request} isOpened={isModalOpened} handleClose={closeModal} ref={modalRef}>
-                <PackageRequestContent type={request} packageData={selectedPackage} />
+            <Modal title={request} isOpened={isModalOpened} handleClose={closeModal}>
+                <PackageRequestContent type={request} packageData={selectedPackage} address={address} />
             </Modal>
         </>
     );
