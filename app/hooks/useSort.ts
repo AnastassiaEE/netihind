@@ -13,7 +13,7 @@ export default function useSort(selected: string) {
     setSelectedOption(selected);
   }, [selected]);
 
-  const handleChange = (option: string) => {
+  const handleChange = (name: string, option: string) => {
     setSelectedOption(option);
     const newSearchParams = new URLSearchParams(searchParams);
     newSearchParams.set('sort', option);

@@ -32,7 +32,7 @@ export default function useForm(
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     field: string,
   ) => {
     const value =
@@ -43,6 +43,10 @@ export default function useForm(
       const error = validateField(field, value, fields[field].isRequired);
       setErrors((prev) => ({ ...prev, [field]: error }));
     }
+  };
+
+  const handleSelectChange = (name: string, value: string) => {
+    setValues((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleBlur = (
@@ -102,6 +106,7 @@ export default function useForm(
     response,
     bluredFields,
     handleChange,
+    handleSelectChange,
     handleBlur,
     handleSubmit,
   };

@@ -141,6 +141,14 @@
     "checkboxes": {
       "privacyPolicy": "Nõustun <a>privaatsus- ja kasutustingimustega</a>"
     },
+    "selectOptions": {
+      "hour": "Helistame tunni jooksul",
+      "9-11": "9:00 - 11:00",
+      "11-13": "11:00 - 13:00",
+      "13-15": "13:00 - 15:00",
+      "15-17": "15:00 - 17:00",
+      "17-20": "17:00 - 20:00"
+    },
     "placeholders": {
       "street": "Aadress",
       "apartment": "Korter"

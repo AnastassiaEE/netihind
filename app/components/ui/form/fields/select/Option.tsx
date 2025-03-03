@@ -18,12 +18,11 @@ export default function Option({
 }) {
     const optionClasses = classNames(
         'cursor-pointer text-muted-dark hover:bg-primary/10',
-        {
-            'font-semibold text-primary': isSelected,
-        },
+        isSelected && 'font-semibold text-primary',
         sizes[size],
-        className,
+        className
     );
+
     return (
         <li
             data-value={value}

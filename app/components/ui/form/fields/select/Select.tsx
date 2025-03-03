@@ -24,7 +24,7 @@ export default function Select({
     variant?: 'primary' | 'secondary' | 'neutral' | 'flat';
     Icon?: SvgIconComponent;
     openDirection?: 'top' | 'bottom';
-    handleChange: (value: string) => void;
+    handleChange: (name: string, value: string) => void;
     className?: string;
     children: React.ReactNode;
 }) {
@@ -34,6 +34,7 @@ export default function Select({
     return (
         <div className="relative">
             <Button
+                name={name}
                 variant={variant}
                 handleClick={handleSelectClick}
                 className={selectClasses}
@@ -52,7 +53,10 @@ export default function Select({
                 )}
             </Button>
             {isBoxOpened && (
-                <SelectBox openDirection={openDirection} handleChange={handleChange}>
+                <SelectBox
+                    openDirection={openDirection}
+                    handleChange={(value) => handleChange(name, value)}
+                >
                     {children}
                 </SelectBox>
             )}

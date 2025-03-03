@@ -42,7 +42,7 @@ export default function RequestForm() {
         },
     };
 
-    const { errors, values, isSending, response, handleChange, handleBlur, handleSubmit } = useForm(
+    const { errors, values, isSending, response, handleChange, handleSelectChange, handleBlur, handleSubmit } = useForm(
         fields,
         'request',
     );
@@ -87,7 +87,7 @@ export default function RequestForm() {
                     icon={{ Icon: Add, isVisible: true }}
                 />
             </div>
-            <div className="mb-6">
+            <div className="mb-3">
                 <Textarea
                     name="message"
                     label={t('labels.message')}
@@ -97,24 +97,24 @@ export default function RequestForm() {
                 />
             </div>
             <div className="mb-6">
-                <Select name="time" selected={'hour'} variant="flat" openDirection="top" className="!p-0">
-                    <Option value="hour" isSelected={true} handleClick={() => null}>
-                        Перезвоним в течение часа
+                <Select name="time" selected={t('selectOptions.' + values.time as string)} variant="flat" openDirection="top" handleChange={handleSelectChange} className="!p-0">
+                    <Option value="hour" isSelected={values.time === 'hour'}>
+                        {t('selectOptions.hour')}
                     </Option>
-                    <Option value="9-11" isSelected={false} handleClick={() => null}>
-                        09:00 - 11:00
+                    <Option value="9-11" isSelected={values.time === '9-11'}>
+                        {t('selectOptions.9-11')}
                     </Option>
-                    <Option value="11-13" isSelected={false} handleClick={() => null}>
-                        11:00 - 13:00
+                    <Option value="11-13" isSelected={values.time === '11-13'}>
+                        {t('selectOptions.11-13')}
                     </Option>
-                    <Option value="13-15" isSelected={false} handleClick={() => null}>
-                        13:00 - 15:00
+                    <Option value="13-15" isSelected={values.time === '13-15'}>
+                        {t('selectOptions.13-15')}
                     </Option>
-                    <Option value="15-17" isSelected={false} handleClick={() => null}>
-                        15:00 - 17:00
+                    <Option value="15-17" isSelected={values.time === '15-17'}>
+                        {t('selectOptions.15-17')}
                     </Option>
-                    <Option value="17-20" isSelected={false} handleClick={() => null}>
-                        17:00 - 20:00
+                    <Option value="17-20" isSelected={values.time === '17-20'}>
+                        {t('selectOptions.17-20')}
                     </Option>
                 </Select>
             </div>
