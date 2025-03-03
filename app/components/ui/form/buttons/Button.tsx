@@ -36,9 +36,13 @@ export default function Button({
   buttonRef?: React.RefObject<HTMLButtonElement>;
   children: React.ReactNode;
 }) {
-  const buttonClasses = classNames(baseClasses, variants[variant], sizes[size], className, {
-    'hover:cursor-not-allowed': disabled,
-  });
+  const buttonClasses = classNames(
+    baseClasses,
+    variants[variant],
+    sizes[size],
+    className,
+    disabled && 'hover:cursor-not-allowed',
+  );
   return (
     <button
       type={type}

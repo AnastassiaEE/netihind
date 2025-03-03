@@ -23,9 +23,10 @@ export default function IconButton({
     handleClick?: React.MouseEventHandler<HTMLButtonElement>;
     children: React.ReactNode;
 }) {
-    const iconClasses = classNames('mr-2 align-text-bottom', {
-        'text-primary': variant === 'secondary',
-    });
+    const iconClasses = classNames(
+        'mr-2 align-text-bottom',
+        variant === 'secondary' && 'text-primary',
+    );
 
     return (
         <Button
