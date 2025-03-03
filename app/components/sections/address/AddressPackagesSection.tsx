@@ -19,7 +19,7 @@ export default async function AddressPackagesSection({
 }: {
     searchParams: { [key: string]: string };
 }) {
-    const t = await getTranslations('AddressPage');
+    const t = await getTranslations(['AddressPage', 'Packages']);
     const cookieString = getCookie('ADDRESS', { cookies });
     const { fullAddress: address, oid } = getAddressCookieValues(cookieString);
     const providers = await getProviders(oid);
@@ -61,12 +61,15 @@ export default async function AddressPackagesSection({
     return (
         <SectionLayout>
             <h1 className="mb-6 text-[calc(1.275rem+0.3vw)] font-extrabold md:text-2xl">
-                {t('packagesSection.title')}
+                {t('AddressPage.packagesSection.title')}
             </h1>
-            <p className="font-medium mb-6"><HomeIcon className="mr-1 inline align-sub text-primary" />{address}</p>
+            <p className="font-medium mb-6">
+                <HomeIcon className="mr-1 inline align-sub text-primary" />
+                {address}
+            </p>
             {providers.length === 0 && technologies.length === 0 && error ? (
                 <PackagesError>
-                    {t.rich(error, {
+                    {t.rich('Packages.' + error, {
                         a: (chunks) => (
                             <Link href="/contacts" className="font-extrabold underline">
                                 {chunks}
@@ -79,7 +82,12 @@ export default async function AddressPackagesSection({
                     <div className="md:flex md:justify-between">
                         <div className="md:w-8/12">
                             <div className="my-4 flex justify-end max-md:hidden">
-                                <Sort options={SORT_OPTIONS} selected={selectedSortOption} variant="flat" className="rounded-md border border-muted-light" />
+                                <Sort
+                                    options={SORT_OPTIONS}
+                                    selected={selectedSortOption}
+                                    variant="flat"
+                                    className="rounded-md border border-muted-light"
+                                />
                             </div>
                             <Packages
                                 oid={oid}

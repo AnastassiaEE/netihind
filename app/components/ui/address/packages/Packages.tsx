@@ -27,7 +27,7 @@ export default function Packages({
     providers: string[];
     technologies: string[];
 }) {
-    const t = useTranslations('AddressPage');
+    const t = useTranslations('Packages');
 
     const { packages, error, isLoading, selectedPackage, requestType, handlePackageButtonClick } =
         usePackages(oid, initialPackages, sortOption, providers, technologies);
@@ -65,7 +65,11 @@ export default function Packages({
                     />
                 ))}
             </div>
-            <Modal title={requestType} isOpened={isModalOpened} handleClose={closeModal}>
+            <Modal
+                title={t(`request.${requestType}.title`)}
+                isOpened={isModalOpened}
+                handleClose={closeModal}
+            >
                 <PackageRequestContent requestType={requestType} data={selectedPackage} address={address} />
             </Modal>
         </>

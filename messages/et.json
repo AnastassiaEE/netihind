@@ -87,10 +87,6 @@
     },
     "buttons": {
       "showMore": "Näita veel"
-    },
-    "errors": {
-      "somethingWentWrong": "Midagi läks valesti. Proovige hiljem uuesti.",
-      "noPackages": "Teie aadressilt ei leitud midagi. Personaalse pakkumise saamiseks kirjutage meile <a>e-kiri</a>."
     }
   },
   "Packages": {
@@ -102,6 +98,27 @@
     "buttons": {
       "connect": "Ühendada",
       "consultation": "Konsultatsioon"
+    },
+    "request": {
+      "connection": {
+        "title": "Ühenduse taotlus",
+        "sections": {
+          "fillForm": "Kontrollige aadress ja täitke vorm",
+          "selectedPackage": "Valitud pakett",
+          "total": "Kokku"
+        },
+        "details": {
+          "packagePrice": "Kuu hind"
+        }
+      },
+      "consultation": {
+        "title": "Saada konsultatsioon",
+        "description": "Räägime paketist või valime Teie soove arvestades parema"
+      }
+    },
+    "errors": {
+      "somethingWentWrong": "Midagi läks valesti. Proovige hiljem uuesti.",
+      "noPackages": "Teie aadressilt ei leitud midagi. Personaalse pakkumise saamiseks kirjutage meile <a>e-kiri</a>."
     }
   },
   "Filters": {
