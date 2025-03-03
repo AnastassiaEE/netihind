@@ -26,9 +26,9 @@ export default function RequestForm({
 
     const filteredPackageData = packageData
         ? Object.fromEntries(
-            Object.entries(packageData).filter(
-                ([key]) => !['internet_technology_description', 'provider_img_url'].includes(key),
-            ),
+            Object.entries(packageData)
+                .filter(([key]) => !['internet_technology_description', 'provider_img_url'].includes(key))
+                .map(([key, value]) => [key, value === null ? 'piiramatu' : value]),
         )
         : null;
 
