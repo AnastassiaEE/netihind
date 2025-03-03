@@ -27,7 +27,7 @@ export default function SlideUpPanel({
     );
 
     return (
-        <Backdrop isVisible={isOpened}>
+        <Backdrop isVisible={isOpened} handleClose={handleClose}>
             <div>
                 <div className={panelClasses} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
                     <div className="relative border-b border-muted-light px-6 pb-5 pt-7">
