@@ -3,18 +3,18 @@ import { FormElementSizes as sizes } from '@/styles/styles';
 
 export default function Option({
     value,
-    text,
     handleClick,
     isSelected,
     size = 'sm',
     className,
+    children,
 }: {
     value: string;
-    text: string;
     handleClick: React.MouseEventHandler<HTMLLIElement>;
     isSelected: boolean;
     size?: keyof typeof sizes;
     className?: string;
+    children: React.ReactNode;
 }) {
     const optionClasses = classNames(
         'cursor-pointer text-muted-dark hover:bg-primary/10',
@@ -31,7 +31,7 @@ export default function Option({
             onClick={handleClick}
             className={optionClasses}
         >
-            {text}
+            {children}
         </li>
     );
 }

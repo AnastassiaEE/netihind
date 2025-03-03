@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { useTranslations } from 'next-intl';
 import SortIcon from '@mui/icons-material/Sort';
@@ -11,14 +11,14 @@ export default function Sort({
     selected,
     variant = 'primary',
     openDirection = 'bottom',
-    className
+    className,
 }: {
     options: string[];
     selected: string;
     variant?: 'primary' | 'secondary' | 'neutral' | 'flat';
     type?: 'arrow' | 'button';
     openDirection?: 'top' | 'bottom';
-    className?: string
+    className?: string;
 }) {
     const t = useTranslations('Sort');
     const { selectedOption, handleChange } = useSort(selected);
@@ -36,10 +36,11 @@ export default function Sort({
                 <Option
                     key={option}
                     value={option}
-                    text={t(option)}
                     handleClick={() => handleChange(option)}
                     isSelected={option === selectedOption}
-                />
+                >
+                    {t(option)}
+                </Option>
             ))}
         </Select>
     );
