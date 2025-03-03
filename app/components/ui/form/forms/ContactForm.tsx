@@ -41,7 +41,7 @@ export default function ContactForm() {
     );
 
     return (
-        <form action="" onSubmit={handleSubmit} autoComplete='on'>
+        <form onSubmit={handleSubmit} autoComplete='on'>
             <div className="mb-6">
                 <Input
                     name="name"
