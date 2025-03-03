@@ -21,11 +21,8 @@ export default function SelectBox({
                 {React.Children.map(children, (child) => {
                     if (
                         React.isValidElement<{ value: string; handleChange?: (value: string) => void }>(child)
-                    ) {
-                        return React.cloneElement(child, {
-                            handleChange: (value: string) => handleChange(value),
-                        });
-                    }
+                    )
+                        return React.cloneElement(child, { handleChange });
                     return child;
                 })}
             </ul>
