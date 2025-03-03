@@ -3,9 +3,11 @@ import React from 'react';
 
 export default function SelectBox({
     openDirection = 'bottom',
+    handleChange,
     children,
 }: {
     openDirection?: 'top' | 'bottom';
+    handleChange: (value: string) => void;
     children: React.ReactNode;
 }) {
     const selectBoxClasses = classNames(
@@ -15,7 +17,18 @@ export default function SelectBox({
 
     return (
         <div className={selectBoxClasses}>
-            <ul>{children}</ul>
+            <ul>
+                {React.Children.map(children, (child) => {
+                    if (
+                        React.isValidElement<{ value: string; handleChange?: (value: string) => void }>(child)
+                    ) {
+                        return React.cloneElement(child, {
+                            handleChange: (value: string) => handleChange(value),
+                        });
+                    }
+                    return child;
+                })}
+            </ul>
         </div>
     );
 }

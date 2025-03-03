@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 export default function useSelect() {
   const [isBoxOpened, setIsBoxOpened] = useState(false);
-  const selectRef = useRef<HTMLButtonElement | HTMLDivElement>(null);
+  const selectRef = useRef<HTMLButtonElement>(null);
 
   const handleSelectClick = () => {
     setIsBoxOpened((prev) => !prev);

@@ -1,11 +1,11 @@
-import React, { RefObject } from 'react';
+import React from 'react';
 import classNames from 'classnames';
-import useSelect from '@/hooks/useSelect';
 import SelectBox from '@/components/ui/form/fields/select/SelectBox';
 import Arrow from '@/components/ui/icons/Arrow';
 import Button from '@/components/ui/form/buttons/Button';
 import { SvgIconComponent } from '@mui/icons-material';
 import { FormElementSizes as sizes } from '@/styles/styles';
+import useSelect from '@/hooks/useSelect';
 
 export default function Select({
     size = 'sm',
@@ -14,6 +14,7 @@ export default function Select({
     variant = 'primary',
     Icon,
     openDirection = 'bottom',
+    handleChange,
     className,
     children,
 }: {
@@ -23,6 +24,7 @@ export default function Select({
     variant?: 'primary' | 'secondary' | 'neutral' | 'flat';
     Icon?: SvgIconComponent;
     openDirection?: 'top' | 'bottom';
+    handleChange: (value: string) => void;
     className?: string;
     children: React.ReactNode;
 }) {
@@ -34,8 +36,8 @@ export default function Select({
             <Button
                 variant={variant}
                 handleClick={handleSelectClick}
-                buttonRef={selectRef as RefObject<HTMLButtonElement>}
                 className={selectClasses}
+                buttonRef={selectRef}
             >
                 {variant === 'flat' ? (
                     <>
@@ -49,7 +51,11 @@ export default function Select({
                     <>{name}</>
                 )}
             </Button>
-            {isBoxOpened && <SelectBox openDirection={openDirection}>{children}</SelectBox>}
+            {isBoxOpened && (
+                <SelectBox openDirection={openDirection} handleChange={handleChange}>
+                    {children}
+                </SelectBox>
+            )}
         </div>
     );
 }

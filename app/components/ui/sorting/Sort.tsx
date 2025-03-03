@@ -30,15 +30,11 @@ export default function Sort({
             variant={variant}
             Icon={SortIcon}
             openDirection={openDirection}
+            handleChange={handleChange}
             className={className}
         >
             {options.map((option) => (
-                <Option
-                    key={option}
-                    value={option}
-                    handleClick={() => handleChange(option)}
-                    isSelected={option === selectedOption}
-                >
+                <Option key={option} value={option} isSelected={option === selectedOption}>
                     {t(option)}
                 </Option>
             ))}

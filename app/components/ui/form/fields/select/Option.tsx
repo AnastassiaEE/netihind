@@ -3,14 +3,14 @@ import { FormElementSizes as sizes } from '@/styles/styles';
 
 export default function Option({
     value,
-    handleClick,
+    handleChange,
     isSelected,
     size = 'sm',
     className,
     children,
 }: {
     value: string;
-    handleClick: React.MouseEventHandler<HTMLLIElement>;
+    handleChange?: (value: string) => void;
     isSelected: boolean;
     size?: keyof typeof sizes;
     className?: string;
@@ -28,7 +28,7 @@ export default function Option({
         <li
             data-value={value}
             data-selected={isSelected}
-            onClick={handleClick}
+            onClick={() => handleChange?.(value)}
             className={optionClasses}
         >
             {children}
