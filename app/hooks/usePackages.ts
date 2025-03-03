@@ -1,4 +1,5 @@
 import { getPackages } from '@/lib/packagesDataFetch';
+import { useState } from 'react';
 import useSWR from 'swr';
 
 export default function usePackages(
@@ -24,9 +25,25 @@ export default function usePackages(
       errorRetryInterval: 2000,
     },
   );
+  const [selectedPackage, setSelectedPackage] = useState<{ [key: string]: any } | null>(null);
+  const [request, setRequest] = useState<'connect' | 'consultation'>('connect');
+
+  const handlePackageButtonClick = (
+    packageData: { [key: string]: any },
+    action: 'connect' | 'consultation',
+    handleModal: () => void,
+  ) => {
+    setSelectedPackage(packageData);
+    setRequest(action);
+    handleModal();
+  };
+
   return {
     packages,
     error,
     isLoading,
+    selectedPackage,
+    request,
+    handlePackageButtonClick,
   };
 }
