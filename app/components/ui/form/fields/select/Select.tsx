@@ -27,10 +27,7 @@ export default function Select({
     children: React.ReactNode;
 }) {
     const { isBoxOpened, selectRef, handleSelectClick } = useSelect();
-    const selectClasses = classNames(sizes[size], className, {
-        uppercase: variant !== 'flat',
-        'rounded-md border border-muted-light': variant === 'flat',
-    });
+    const selectClasses = classNames(sizes[size], className, variant !== 'flat' && 'uppercase');
 
     return (
         <div className="relative">
