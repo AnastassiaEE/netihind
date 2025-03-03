@@ -27,7 +27,7 @@ export default function PackageRequestContent({
                 <div>
                     <PackageRequestSection title="Выбранный пакет:">
                         <Image
-                            src={data?.provider_img_url || '/images/placeholder.png'}
+                            src={data?.provider_img_url || '/default.png'}
                             alt={`Selected package provider logo - ${data?.provider_name}`}
                             width={50}
                             height={32}
