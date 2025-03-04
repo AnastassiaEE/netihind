@@ -36,20 +36,20 @@ const config: Config = {
         },
       },
       colors: {
-        primary: colors.indigo['500'],
-        'primary-dark': colors.indigo['600'],
-        'primary-light': colors.indigo['50'],
+        primary: '#6366f1',
+        'primary-dark': '#4044ee',
+        'primary-light': '#eff2fc',
         secondary: colors.violet['500'],
         accent: colors.fuchsia['500'],
 
-        muted: colors.gray['400'], // small text, icons, placeholders, bullets
-        'muted-dark': colors.slate['600'], // base text, inputs, links
-        'muted-light': colors.gray['300'], // items borders
+        muted: '#9397ad', // small text, icons, placeholders, bullets
+        'muted-dark': '#585c7b', // base text, inputs, links
+        'muted-light': '#e2e5f1', // items borders
 
-        valid: colors.gray['300'],
-        invalid: colors.red['500'],
+        valid: '#d4d7e5',
+        invalid: '#cc0000',
 
-        error: colors.red['800'],
+        error: '#990000',
         success: colors.green['500'],
         'success-dark': colors.green['600'],
 
