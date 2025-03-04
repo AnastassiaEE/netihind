@@ -18,18 +18,18 @@ export default function PackageRequestContent({
 
     if (requestType === 'connection')
         return (
-            <div className="grid md:grid-rows-2 md:grid-cols-2 gap-5">
-                <div className="md:row-span-2 max-md:order-3">
+            <div className="flex flex-col gap-5 md:flex-row">
+                <div className="md:w-7/12 max-md:order-2">
                     <PackageRequestSection title={getSectionTitle('fillForm')}>
-                        <p>
+                        <p className="mb-4">
                             <HomeIcon className="mr-1 inline align-sub text-primary" />
                             {address}
                         </p>
                         <RequestForm type={requestType} address={address} packageData={data} />
                     </PackageRequestSection>
                 </div>
-                <div>
-                    <PackageRequestSection title={getSectionTitle('selectedPackage') + ':'}>
+                <div className="md:w-5/12">
+                    <PackageRequestSection title={getSectionTitle('selectedPackage') + ':'} className="mb-5">
                         <Image
                             src={
                                 data?.provider_img_url ||
@@ -42,8 +42,6 @@ export default function PackageRequestContent({
                         />
                         <p className="inline align-middle">{data?.internet_package_name}</p>
                     </PackageRequestSection>
-                </div>
-                <div>
                     <PackageRequestSection title={getSectionTitle('total') + ':'}>
                         <p className="flex justify-between items-center">
                             <span className="font-medium">
@@ -52,6 +50,7 @@ export default function PackageRequestContent({
                             <span className="text-2xl font-bold">{data?.internet_package_price} €</span>
                         </p>
                     </PackageRequestSection>
+
                 </div>
             </div>
         );
