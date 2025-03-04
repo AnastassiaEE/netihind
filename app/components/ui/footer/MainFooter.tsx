@@ -16,7 +16,7 @@ export default function Footer() {
                 <div className="mb-2 flex justify-center">
                     <Logo src={whitelogo} sizeClass="w-36" />
                 </div>
-                <div className="flex justify-center pb-6 pt-4">
+                <div className="pb-6 pt-4 text-center">
                     <Navigation itemColorClass="text-white/80">
                         <NavigationItem href='/'>{t('home')}</NavigationItem>
                         <NavigationItem href='/blog'>{t('blog')}</NavigationItem>
@@ -25,7 +25,7 @@ export default function Footer() {
                         <NavigationItem href='/contacts'>{t('contacts')}</NavigationItem>
                     </Navigation>
                 </div>
-                <div className="flex justify-center pt-6">
+                <div className="pt-6 flex justify-center">
                     <SocialLinks data={socialLinks} />
                 </div>
                 <div className="pt-12">
