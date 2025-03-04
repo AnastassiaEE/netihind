@@ -102,6 +102,7 @@
     "request": {
       "connection": {
         "title": "Ühenduse taotlus",
+        "description": "",
         "sections": {
           "fillForm": "Kontrollige aadress ja täitke vorm",
           "selectedPackage": "Valitud pakett",
@@ -113,7 +114,11 @@
       },
       "consultation": {
         "title": "Saada konsultatsioon",
-        "description": "Räägime paketist või valime Teie soove arvestades parema"
+        "description": "Räägime paketist või valime Teie soove arvestades parema",
+        "sections": {
+          "fillForm": "Kontrollige aadress ja täitke vorm",
+          "selectedPackage": "Valitud pakett"
+        }
       }
     },
     "errors": {

@@ -67,6 +67,7 @@ export default function Packages({
             </div>
             <Modal
                 title={t(`request.${requestType}.title`)}
+                description={t(`request.${requestType}.description`)}
                 isOpened={isModalOpened}
                 handleClose={closeModal}
             >

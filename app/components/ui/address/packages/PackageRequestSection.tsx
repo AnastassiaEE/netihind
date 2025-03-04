@@ -11,7 +11,7 @@ export default function PackageRequestSection({
 }) {
     return (
         <div className={`bg-white rounded-lg shadow-md p-6 ${classNames(className)}`}>
-            <p className="text-black text-lg font-bold mb-4">{title}</p>
+            <p className="text-black text-lg font-extrabold mb-4">{title}</p>
             {children}
         </div>
     );

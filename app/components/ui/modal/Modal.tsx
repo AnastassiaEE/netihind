@@ -5,12 +5,14 @@ import CloseButton from '@/components/ui/buttons/CloseButton';
 
 export default function Modal({
     title,
+    description,
     isOpened,
     handleClose,
     className,
     children,
 }: {
     title: string;
+    description?: string;
     isOpened: boolean;
     handleClose: () => void;
     className?: string;
@@ -20,6 +22,10 @@ export default function Modal({
         'fixed left-1/2 top-1/2 z-50 h-dvh w-max max-w-[100vw] overflow-auto rounded-lg bg-primary-light p-6 shadow-lg md:p-14 lg:max-w-[calc(100vw-50px)] lg:h-[calc(100vh-50px)]',
         isOpened ? 'opacity-100' : 'opacity-0 pointer-events-none',
         className,
+    );
+    const titleClasses = classNames(
+        'text-[calc(1.275rem+0.3vw)] font-extrabold md:text-2xl text-black',
+        description ? 'mb-3' : 'mb-6',
     );
     return (
         <Backdrop isVisible={isOpened} handleClose={handleClose}>
@@ -33,10 +39,8 @@ export default function Modal({
                 }}
             >
                 <CloseButton handleClick={handleClose} className="bg-white absolute top-4 right-4" />
-                <p className="mb-6 text-[calc(1.275rem+0.3vw)] font-extrabold md:text-2xl text-black">
-                    {title}
-                </p>
-
+                <p className={titleClasses}>{title}</p>
+                {description && <p className="mb-6 font-medium text-lg">{description}</p>}
                 {children}
             </div>
         </Backdrop>

@@ -16,32 +16,38 @@ export default function PackageRequestContent({
     const t = useTranslations('Packages');
     const getSectionTitle = (section: string) => t(`request.${requestType}.sections.${section}`);
 
+    const formSection = (
+        <PackageRequestSection title={getSectionTitle('fillForm')}>
+            <p className="mb-4">
+                <HomeIcon className="mr-1 inline align-sub text-primary" />
+                {address}
+            </p>
+            <RequestForm type={requestType} address={address} packageData={data} />
+        </PackageRequestSection>
+    );
+
+    const packadeDetailsSection = (
+        <PackageRequestSection title={getSectionTitle('selectedPackage') + ':'} className="mb-6">
+            <Image
+                src={
+                    data?.provider_img_url ||
+                    'https://rxysmdetqttpdqfmrpym.supabase.co/storage/v1/object/public/website-logos//gradientmainlogo.png'
+                }
+                alt={`Selected package provider logo - ${data?.provider_name}`}
+                width={50}
+                height={32}
+                className="inline mr-3"
+            />
+            <p className="inline align-middle">{data?.internet_package_name}</p>
+        </PackageRequestSection>
+    );
+
     if (requestType === 'connection')
         return (
-            <div className="flex flex-col gap-8 md:flex-row">
-                <div className="md:w-7/12 max-md:order-2">
-                    <PackageRequestSection title={getSectionTitle('fillForm')}>
-                        <p className="mb-4">
-                            <HomeIcon className="mr-1 inline align-sub text-primary" />
-                            {address}
-                        </p>
-                        <RequestForm type={requestType} address={address} packageData={data} />
-                    </PackageRequestSection>
-                </div>
+            <div className="flex flex-col gap-6 md:flex-row">
+                <div className="md:w-7/12 max-md:order-2">{formSection}</div>
                 <div className="md:w-5/12">
-                    <PackageRequestSection title={getSectionTitle('selectedPackage') + ':'} className="mb-8">
-                        <Image
-                            src={
-                                data?.provider_img_url ||
-                                'https://rxysmdetqttpdqfmrpym.supabase.co/storage/v1/object/public/website-logos//gradientmainlogo.png'
-                            }
-                            alt={`Selected package provider logo - ${data?.provider_name}`}
-                            width={50}
-                            height={32}
-                            className="inline mr-3"
-                        />
-                        <p className="inline align-middle">{data?.internet_package_name}</p>
-                    </PackageRequestSection>
+                    {packadeDetailsSection}
                     <PackageRequestSection title={getSectionTitle('total') + ':'}>
                         <p className="flex justify-between items-center">
                             <span className="font-medium">
@@ -54,6 +60,11 @@ export default function PackageRequestContent({
             </div>
         );
     if (requestType === 'consultation') {
-        return <div>form</div>;
+        return (
+            <>
+                {packadeDetailsSection}
+                {formSection}
+            </>
+        );
     }
 }
