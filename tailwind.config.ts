@@ -41,6 +41,7 @@ const config: Config = {
         'primary-light': '#eff2fc',
         secondary: colors.violet['500'],
         accent: colors.fuchsia['500'],
+        dark: '#131022',
 
         muted: '#9397ad', // small text, icons, placeholders, bullets
         'muted-dark': '#585c7b', // base text, inputs, links

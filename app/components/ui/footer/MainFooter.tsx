@@ -11,7 +11,7 @@ import { useTranslations } from 'next-intl';
 export default function Footer() {
     const t = useTranslations('Navigation');
     return (
-        <footer className="bg-gray-900 py-12">
+        <footer className="bg-dark py-12">
             <SectionLayout>
                 <div className="mb-2 flex justify-center">
                     <Logo src={whitelogo} sizeClass="w-36" />
