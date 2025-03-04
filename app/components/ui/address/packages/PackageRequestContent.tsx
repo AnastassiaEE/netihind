@@ -18,7 +18,7 @@ export default function PackageRequestContent({
 
     if (requestType === 'connection')
         return (
-            <div className="flex flex-col gap-5 md:flex-row">
+            <div className="flex flex-col gap-8 md:flex-row">
                 <div className="md:w-7/12 max-md:order-2">
                     <PackageRequestSection title={getSectionTitle('fillForm')}>
                         <p className="mb-4">
@@ -29,7 +29,7 @@ export default function PackageRequestContent({
                     </PackageRequestSection>
                 </div>
                 <div className="md:w-5/12">
-                    <PackageRequestSection title={getSectionTitle('selectedPackage') + ':'} className="mb-5">
+                    <PackageRequestSection title={getSectionTitle('selectedPackage') + ':'} className="mb-8">
                         <Image
                             src={
                                 data?.provider_img_url ||
@@ -50,7 +50,6 @@ export default function PackageRequestContent({
                             <span className="text-2xl font-bold">{data?.internet_package_price} €</span>
                         </p>
                     </PackageRequestSection>
-
                 </div>
             </div>
         );
