@@ -21,7 +21,7 @@ export default function Step({
                 </span>
             </div>
             <div className="max-md:pl-6 md:text-center">
-                <h3 className="mb-4 text-[calc(1.275rem+0.3vw)] font-extrabold text-black md:h-24 lg:text-2xl">
+                <h3 className="mb-4 text-[calc(1.275rem+0.3vw)] font-extrabold text-black md:h-16 lg:text-2xl">
                     {title}
                 </h3>
                 <p>{description}</p>

@@ -2,27 +2,27 @@
   "HomePage": {
     "topSection": {
       "title": "Otsige koduseid <span>Interneti-teenuse pakkujaid</span> aadressi järgi",
-      "description": "Kas te ei tea, milline teenusepakkuja Teie kodus on? Kas soovite valida kiiruse, hinna ja ühendustehnoloogia poolest teile sobiva paketi? Andke meile teada ja vaatame koos üle! Täitke vorm ja teeme tasuta konsultatsiooni."
+      "description": "Kas te ei tea, milline teenusepakkuja Teie kodus on? Kas soovite valida kiiruse, hinna ja ühendustehnoloogia poolest teile sobiva paketi? Andke meile teada ja vaatame koos üle!"
     },
     "stepsSection": {
       "title": "Kuidas see toimib?",
       "description": "4 lihtsat sammu, mis aitavad Teil ühendada koduse Interneti.",
       "steps": {
         "step1": {
-          "title": "Vormi täitmine",
-          "description": "Täitke vorm oma nime, aadressi, telefoninumbri ja eelistatud kontaktiajaga. Vajadusel jätke sõnum."
+          "title": "Aadressi täitmine",
+          "description": "Sisestage oma aadress, et näha kõiki internetipakette, mis on Teie majas saadaval."
         },
         "step2": {
-          "title": "Konsultatsioon ja paketi valik",
-          "description": "Võtame Teiega ühendust tasuta konsultatsiooni saamiseks, aitame Teil valida koduse internetipaketi ning seejärel edastame infot valitud paketi teenusepakkujale."
+          "title": "Paketi võrdlus",
+          "description": "Valige endale sobivaim internetipakett, võrreldes erinevaid valikuid hinna, kiiruse ja tehnoloogia järgi."
         },
         "step3": {
-          "title": "Kõne valitud teenusepakkuja poolt",
-          "description": "Teenusepakkuja võtab Teiega ühendust et leppida kokku, millal tehnik võib paigaldada koduinterneti."
+          "title": "Ankeedi täitmine",
+          "description": "Täitke ankeet ja esitage päring liitumiseks või tasuta konsultatsiooni saamiseks."
         },
         "step4": {
-          "title": "Liitumine",
-          "description": "Tehnik tuleb kohale ja paigaldab koduinterneti, misjärel allkirjastate lepingu."
+          "title": "Tagasi helistamine",
+          "description": "Teenusepakkuja võtab teiega ühendust, et leppida kokku sobiv aeg tehniku külastamiseks või pakkuda konsultatsiooni."
         }
       }
     },
@@ -143,7 +143,6 @@
     "price_desc": "Kallimad enne",
     "speed_desc": "Kiiremad enne"
   },
-
   "NotFoundPage": {
     "title": "Ooops!",
     "description": "Veebileht, mida otsite, pole saadaval.<br></br>Veenduge, et teie järgis õiget linki, või minge avalehele.",
@@ -234,5 +233,8 @@
       "name": "Meist - Netihind.ee - sõltumatu internetipaketide võrdlusportaal.",
       "url": "/meist/"
     }
+  },
+  "Cookies": {
+    "message": ""
   }
 }
