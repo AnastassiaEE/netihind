@@ -11,7 +11,7 @@ import { Suspense } from 'react';
 export default function SidebarMenu() {
     const t = useTranslations('Navigation');
     const pathname = usePathname();
-    const { isSidebarMenuOpened, closeSidebarMenu } = useSidebarMenuContext();
+    const { isSidebarMenuOpened, closeSidebarMenu, sidebarMenuRef } = useSidebarMenuContext();
 
     const handleLinkClick = (e: React.MouseEvent) => {
         const target = e.target as HTMLLinkElement;
@@ -21,7 +21,7 @@ export default function SidebarMenu() {
     };
 
     return (
-        <Sidebar isOpened={isSidebarMenuOpened} title={t('menu')} handleClose={closeSidebarMenu}>
+        <Sidebar isOpened={isSidebarMenuOpened} title={t('menu')} handleClose={closeSidebarMenu} sidebarRef={sidebarMenuRef} purpose="menu">
             <div className="p-6" onClick={handleLinkClick}>
                 <Navigation type="vertical">
                     <NavigationItem href="/blog" isActive={pathname === '/blog'}>

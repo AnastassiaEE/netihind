@@ -7,11 +7,15 @@ export default function Sidebar({
     title,
     isOpened,
     handleClose,
+    sidebarRef,
+    purpose,
     children,
 }: {
     title: string;
     isOpened: boolean;
     handleClose: () => void;
+    sidebarRef?: React.RefObject<HTMLDivElement>;
+    purpose: string;
     children: React.ReactNode;
 }) {
     const sidebarWrapperClasses = classNames(
@@ -21,10 +25,18 @@ export default function Sidebar({
 
     return (
         <Backdrop isVisible={isOpened} handleClose={handleClose}>
-            <div className={sidebarWrapperClasses}>
+            <div
+                role="dialog"
+                aria-modal={isOpened ? 'true' : 'false'}
+                aria-labelledby={`sidebar-${purpose}-title`}
+                ref={sidebarRef}
+                className={sidebarWrapperClasses}
+            >
                 <div className="flex justify-between border-b border-muted-light px-6 py-5">
-                    <p className="text-xl font-extrabold text-black">{title}</p>
-                    <CloseButton handleClick={handleClose} />
+                    <p id={`sidebar-${purpose}-title`} className="text-xl font-extrabold text-black">
+                        {title}
+                    </p>
+                    <CloseButton ariaLabel={`Close sidebar ${purpose}`} handleClick={handleClose} />
                 </div>
                 {children}
             </div>

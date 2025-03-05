@@ -7,6 +7,7 @@ type SidebarMenuContextType = {
     isSidebarMenuOpened: boolean;
     openSidebarMenu: () => void;
     closeSidebarMenu: () => void;
+    sidebarMenuRef: React.RefObject<HTMLDivElement>;
 };
 
 const SidebarMenuContext = createContext<SidebarMenuContextType | undefined>(undefined);
@@ -16,6 +17,7 @@ export const SidebarMenuProvider = ({ children }: { children: ReactNode }) => {
         isOverlayVisible: isSidebarMenuOpened,
         openOverlay: openSidebarMenu,
         closeOverlay: closeSidebarMenu,
+        overlayRef: sidebarMenuRef
     } = useOverlay();
 
     return (
@@ -24,6 +26,7 @@ export const SidebarMenuProvider = ({ children }: { children: ReactNode }) => {
                 isSidebarMenuOpened,
                 openSidebarMenu,
                 closeSidebarMenu,
+                sidebarMenuRef
             }}
         >
             {children}
