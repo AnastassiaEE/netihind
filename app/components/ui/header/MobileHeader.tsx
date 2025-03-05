@@ -14,7 +14,7 @@ export default function MobileHeader() {
                     <Logo src={secondaryLogo} sizeClass="w-12" />
                 </div>
                 <div className="flex flex-wrap items-center gap-6">
-                    <Hamburger handleClick={openSidebarMenu}></Hamburger>
+                    <Hamburger handleClick={openSidebarMenu} ariaLabel="Open sidebar menu"></Hamburger>
                 </div>
             </div>
         </div>

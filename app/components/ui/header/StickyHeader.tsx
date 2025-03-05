@@ -18,12 +18,14 @@ export default function StickyHeader() {
     }
 
     return (
-        <div className={`sticky-header fixed inset-x-0 top-0 z-10 bg-white p-4 shadow-lg ${toolbarVisibility}`}>
+        <div
+            className={`sticky-header fixed inset-x-0 top-0 z-10 bg-white p-4 shadow-lg ${toolbarVisibility}`}
+        >
             <div className="container">
                 <div className="flex flex-wrap justify-between">
                     <Logo src={secondaryLogo} sizeClass="w-12" />
                     <div className="flex items-center">
-                        <Hamburger handleClick={openSidebarMenu}></Hamburger>
+                        <Hamburger ariaLabel="Open sidebar menu" handleClick={openSidebarMenu}></Hamburger>
                     </div>
                 </div>
             </div>
