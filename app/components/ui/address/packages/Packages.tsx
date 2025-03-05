@@ -72,6 +72,7 @@ export default function Packages({
                 isOpened={isModalOpened}
                 handleClose={closeModal}
                 modalRef={modalRef}
+                purpose={requestType}
             >
                 <PackageRequestContent requestType={requestType} data={selectedPackage} address={address} />
             </Modal>
