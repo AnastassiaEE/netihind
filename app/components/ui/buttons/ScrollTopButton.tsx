@@ -9,6 +9,7 @@ export default function ScrollTopButton() {
     return (
         <button
             name="scroll-top"
+            aria-label="Scroll to top"
             className={classNames(
                 'fixed right-5 z-10 inline-block transition-all duration-500',
                 y >= 600 ? 'bottom-5' : '-bottom-16',
