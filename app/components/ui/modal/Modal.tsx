@@ -8,6 +8,7 @@ export default function Modal({
     description,
     isOpened,
     handleClose,
+    modalRef,
     className,
     children,
 }: {
@@ -15,6 +16,7 @@ export default function Modal({
     description?: string;
     isOpened: boolean;
     handleClose: () => void;
+    modalRef?: React.RefObject<HTMLDivElement>
     className?: string;
     children: React.ReactNode;
 }) {
@@ -30,6 +32,11 @@ export default function Modal({
     return (
         <Backdrop isVisible={isOpened} handleClose={handleClose}>
             <div
+                role="dialog"
+                aria-modal={isOpened ? "true" : "false"}
+                aria-labelledby="modal-title"
+                aria-describedby="modal-description"
+                ref={modalRef}
                 className={modalClasses}
                 style={{
                     transform: isOpened
@@ -38,9 +45,9 @@ export default function Modal({
                     transition: 'transform 0.2s ease-out, opacity 0.2s ease-out',
                 }}
             >
-                <CloseButton handleClick={handleClose} className="bg-white absolute top-4 right-4" />
-                <p className={titleClasses}>{title}</p>
-                {description && <p className="mb-6 font-medium text-lg">{description}</p>}
+                <CloseButton ariaLabel='Close modal' handleClick={handleClose} className="bg-white absolute top-4 right-4" />
+                <p id="modal-title" className={titleClasses}>{title}</p>
+                {description && <p id="modal-description" className="mb-6 font-medium text-lg">{description}</p>}
                 {children}
             </div>
         </Backdrop>

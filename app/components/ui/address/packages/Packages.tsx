@@ -36,6 +36,7 @@ export default function Packages({
         isOverlayVisible: isModalOpened,
         openOverlay: openModal,
         closeOverlay: closeModal,
+        overlayRef: modalRef,
     } = useOverlay();
 
     const errorContent = (error: string) => (
@@ -70,6 +71,7 @@ export default function Packages({
                 description={t(`request.${requestType}.description`)}
                 isOpened={isModalOpened}
                 handleClose={closeModal}
+                modalRef={modalRef}
             >
                 <PackageRequestContent requestType={requestType} data={selectedPackage} address={address} />
             </Modal>
