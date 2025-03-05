@@ -1,3 +1,6 @@
+'use client';
+import { useEffect } from 'react';
+
 export default function Backdrop({
     isVisible,
     handleClose,
@@ -7,6 +10,10 @@ export default function Backdrop({
     handleClose: () => void;
     children: React.ReactNode;
 }) {
+    useEffect(() => {
+        document.body.classList.toggle('overflow-hidden', isVisible);
+        return () => document.body.classList.remove('overflow-hidden');
+    }, [isVisible]);
     return (
         <>
             {children}

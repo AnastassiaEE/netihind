@@ -8,11 +8,6 @@ export default function useOverlay() {
     setFalse: closeOverlay,
   } = useBoolean(false);
 
-  useEffect(() => {
-    document.body.classList.toggle('overflow-hidden', isOverlayVisible);
-    return () => document.body.classList.remove('overflow-hidden');
-  }, [isOverlayVisible]);
-
   return {
     isOverlayVisible,
     openOverlay,
