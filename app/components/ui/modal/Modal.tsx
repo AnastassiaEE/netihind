@@ -35,7 +35,8 @@ export default function Modal({
         <Backdrop isVisible={isOpened} handleClose={handleClose}>
             <div
                 role="dialog"
-                aria-modal={isOpened ? 'true' : 'false'}
+                aria-modal={isOpened}
+                aria-hidden={!isOpened}
                 aria-labelledby={`${purpose}-modal-title`}
                 aria-describedby={description ? `${purpose}-modal-description` : undefined}
                 ref={modalRef}

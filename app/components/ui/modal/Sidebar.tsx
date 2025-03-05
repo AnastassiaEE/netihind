@@ -27,7 +27,8 @@ export default function Sidebar({
         <Backdrop isVisible={isOpened} handleClose={handleClose}>
             <div
                 role="dialog"
-                aria-modal={isOpened ? 'true' : 'false'}
+                aria-modal={isOpened}
+                aria-hidden={!isOpened}
                 aria-labelledby={`sidebar-${purpose}-title`}
                 ref={sidebarRef}
                 className={sidebarWrapperClasses}

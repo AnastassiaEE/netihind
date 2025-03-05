@@ -33,7 +33,8 @@ export default function SlideUpPanel({
     return (
         <Backdrop isVisible={isOpened} handleClose={handleClose}>
             <div role="dialog"
-                aria-modal={isOpened ? 'true' : 'false'}
+                aria-modal={isOpened}
+                aria-hidden={!isOpened}
                 aria-labelledby={`${purpose}-panel-title`}
                 ref={panelRef}
                 className={panelClasses} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
