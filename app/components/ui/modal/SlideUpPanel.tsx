@@ -11,12 +11,16 @@ export default function SlideUpPanel({
     actions,
     isOpened,
     handleClose,
+    panelRef,
+    purpose,
     children,
 }: {
     title: string;
     actions?: React.ReactNode;
     isOpened: boolean;
     handleClose: () => void;
+    panelRef?: React.RefObject<HTMLDivElement>;
+    purpose: string;
     children: React.ReactNode;
 }) {
     const { handleTouchStart, handleTouchEnd } = useSlideUpPanel(handleClose);
@@ -28,23 +32,26 @@ export default function SlideUpPanel({
 
     return (
         <Backdrop isVisible={isOpened} handleClose={handleClose}>
-            <div>
-                <div className={panelClasses} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
-                    <div className="relative border-b border-muted-light px-6 pb-5 pt-7">
-                        <p className="text-center text-xl font-extrabold text-black">{title}</p>
-                        <CloseButton
-                            handleClick={handleClose}
-                            className="absolute right-6 top-1/2 -translate-y-1/2"
-                        />
-                    </div>
-                    <div
-                        className="overflow-y-auto p-6"
-                        style={{ maxHeight: actions ? 'calc(100vh - 160px)' : 'auto' }}
-                    >
-                        {children}
-                    </div>
-                    {actions && <PanelActions>{actions}</PanelActions>}
+            <div role="dialog"
+                aria-modal={isOpened ? 'true' : 'false'}
+                aria-labelledby={`${purpose}-panel-title`}
+                ref={panelRef}
+                className={panelClasses} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+                <div className="relative border-b border-muted-light px-6 pb-5 pt-7">
+                    <p id={`${purpose}-panel-title`} className="text-center text-xl font-extrabold text-black">{title}</p>
+                    <CloseButton
+                        ariaLabel={`Close ${purpose} panel`}
+                        handleClick={handleClose}
+                        className="absolute right-6 top-1/2 -translate-y-1/2"
+                    />
                 </div>
+                <div
+                    className="overflow-y-auto p-6"
+                    style={{ maxHeight: actions ? 'calc(100vh - 160px)' : 'auto' }}
+                >
+                    {children}
+                </div>
+                {actions && <PanelActions>{actions}</PanelActions>}
             </div>
         </Backdrop>
     );

@@ -39,6 +39,7 @@ export default function SortingToolbar({ className, sortOptions, filters }: Sort
         isOverlayVisible: isPanelOpened,
         openOverlay: openPanel,
         closeOverlay: closePanel,
+        overlayRef: panelRef,
     } = useOverlay();
 
     const checkboxFiltersGroupRef = useRef<{ handleClear: () => void } | null>(null);
@@ -84,6 +85,8 @@ export default function SortingToolbar({ className, sortOptions, filters }: Sort
                     isOpened={isPanelOpened}
                     handleClose={closePanel}
                     actions={panelActions}
+                    panelRef={panelRef}
+                    purpose="filters"
                 >
                     <CheckboxFilters ref={checkboxFiltersGroupRef} filters={filters} type="mobile" />
                 </SlideUpPanel>
