@@ -2,28 +2,61 @@ import { useEffect, useRef, useState } from 'react';
 
 export default function useSelect() {
   const [isBoxOpened, setIsBoxOpened] = useState(false);
-  const selectRef = useRef<HTMLButtonElement>(null);
+  const selectButtonRef = useRef<HTMLButtonElement>(null);
+  const selectBoxRef = useRef<HTMLDivElement>(null);
 
-  const handleSelectClick = () => {
+  const toggleSelect = () => {
     setIsBoxOpened((prev) => !prev);
   };
 
-  const handleClickOutsideSelect = (e: MouseEvent) => {
-    if (selectRef.current && !selectRef.current.contains(e.target as Node)) {
-      setIsBoxOpened(false);
+  const closeSelect = () => {
+    setIsBoxOpened(false);
+  };
+
+  const handleOptionSelect = (
+    name: string,
+    value: string,
+    handleChange: (name: string, value: string) => void,
+  ) => {
+    handleChange(name, value);
+    closeSelect();
+  };
+
+  // Обработчик клавиши Escape
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeSelect(); // Закрытие при Escape
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  const handleClickOutside = (e: MouseEvent) => {
+    if (
+      selectButtonRef.current &&
+      !selectButtonRef.current.contains(e.target as Node) &&
+      selectBoxRef.current &&
+      !selectBoxRef.current.contains(e.target as Node)
+    ) {
+      closeSelect();
     }
   };
 
   useEffect(() => {
-    document.addEventListener('click', handleClickOutsideSelect);
+    document.addEventListener('click', handleClickOutside);
     return () => {
-      document.removeEventListener('click', handleClickOutsideSelect);
+      document.removeEventListener('click', handleClickOutside);
     };
   }, []);
 
   return {
     isBoxOpened,
-    selectRef,
-    handleSelectClick,
+    selectButtonRef,
+    selectBoxRef,
+    toggleSelect,
+    handleOptionSelect,
   };
 }

@@ -28,21 +28,30 @@ export default function Select({
     className?: string;
     children: React.ReactNode;
 }) {
-    const { isBoxOpened, selectRef, handleSelectClick } = useSelect();
+    const { isBoxOpened, selectButtonRef, selectBoxRef, toggleSelect, handleOptionSelect } = useSelect();
     const selectClasses = classNames(sizes[size], className, variant !== 'flat' && 'uppercase');
+    const selectBoxId = `${name}-select-box`;
 
     return (
         <div className="relative">
             <Button
                 name={name}
                 variant={variant}
-                handleClick={handleSelectClick}
+                handleClick={toggleSelect}
                 className={selectClasses}
-                buttonRef={selectRef}
+                buttonRef={selectButtonRef}
+                aria-label={`Select ${name}, currently selected: ${selected}`}
+                aria-expanded={isBoxOpened}
+                aria-haspopup="listbox"
+                aria-controls={selectBoxId}
             >
                 {variant === 'flat' ? (
                     <>
-                        <span className="mr-2">{Icon && <Icon />}</span>
+                        {Icon && (
+                            <span className="mr-2">
+                                <Icon />
+                            </span>
+                        )}
                         <span className="align-middle">{selected}</span>
                         <span className="float-right">
                             <Arrow direction={isBoxOpened ? 'up' : 'down'} />
@@ -54,8 +63,10 @@ export default function Select({
             </Button>
             {isBoxOpened && (
                 <SelectBox
+                    id={selectBoxId}
                     openDirection={openDirection}
-                    handleChange={(value) => handleChange(name, value)}
+                    handleChange={(value) => handleOptionSelect(name, value, handleChange)}
+                    selectBoxRef={selectBoxRef}
                 >
                     {children}
                 </SelectBox>

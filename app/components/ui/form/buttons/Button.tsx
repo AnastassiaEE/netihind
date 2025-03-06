@@ -25,6 +25,7 @@ export default function Button({
   handleClick,
   buttonRef,
   children,
+  ...props
 }: {
   type?: 'button' | 'submit' | 'reset';
   variant?: ButtonVariant;
@@ -35,13 +36,14 @@ export default function Button({
   handleClick?: React.MouseEventHandler<HTMLButtonElement>;
   buttonRef?: React.RefObject<HTMLButtonElement>;
   children: React.ReactNode;
+  [key: string]: any;
 }) {
   const buttonClasses = classNames(
     baseClasses,
     variants[variant],
     sizes[size],
-    className,
     disabled && 'hover:cursor-not-allowed',
+    className
   );
   return (
     <button
@@ -51,6 +53,7 @@ export default function Button({
       className={buttonClasses}
       disabled={disabled}
       ref={buttonRef}
+      {...props}
     >
       {children}
     </button>

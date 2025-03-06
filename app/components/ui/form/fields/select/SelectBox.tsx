@@ -1,13 +1,17 @@
 import classNames from 'classnames';
-import React from 'react';
+import React, { forwardRef } from 'react';
 
-export default function SelectBox({
+const SelectBox = function SelectBox({
+    id,
     openDirection = 'bottom',
     handleChange,
+    selectBoxRef,
     children,
 }: {
+    id: string;
     openDirection?: 'top' | 'bottom';
     handleChange: (value: string) => void;
+    selectBoxRef: React.RefObject<HTMLDivElement>;
     children: React.ReactNode;
 }) {
     const selectBoxClasses = classNames(
@@ -16,16 +20,19 @@ export default function SelectBox({
     );
 
     return (
-        <div className={selectBoxClasses}>
+        <div id={id} role="listbox" ref={selectBoxRef} className={selectBoxClasses}>
             <ul>
                 {React.Children.map(children, (child) => {
                     if (
                         React.isValidElement<{ value: string; handleChange?: (value: string) => void }>(child)
-                    )
+                    ) {
                         return React.cloneElement(child, { handleChange });
+                    }
                     return child;
                 })}
             </ul>
         </div>
     );
-}
+};
+
+export default SelectBox;
