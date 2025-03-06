@@ -73,6 +73,7 @@ export default function SortingToolbar({ className, sortOptions, filters }: Sort
                     <Sort
                         options={sortOptions.options}
                         selected={sortOptions.selected}
+                        name='sort-packages'
                         variant="secondary"
                         openDirection="top"
                         className="min-w-[150px]"

@@ -9,12 +9,14 @@ import Select from '@/components/ui/form/fields/select/Select';
 export default function Sort({
     options,
     selected,
+    name,
     variant = 'primary',
     openDirection = 'bottom',
     className,
 }: {
     options: string[];
     selected: string;
+    name: string,
     variant?: 'primary' | 'secondary' | 'neutral' | 'flat';
     type?: 'arrow' | 'button';
     openDirection?: 'top' | 'bottom';
@@ -25,7 +27,7 @@ export default function Sort({
 
     return (
         <Select
-            name='sort-packages'
+            name={name}
             selected={t(selectedOption)}
             variant={variant}
             Icon={SortIcon}
