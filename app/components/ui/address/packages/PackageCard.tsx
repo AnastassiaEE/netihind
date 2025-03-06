@@ -9,7 +9,7 @@ import PackageCardSection from '@/components/ui/address/packages/PackageCardSect
 import dynamic from 'next/dynamic';
 import InternetSpeedFeature from '@/components/ui/address/packages/InternetSpeedFeature';
 
-const Popover = dynamic(() => import('@/components/ui/Popover'));
+const Tooltip = dynamic(() => import('@/components/ui/Tooltip'));
 
 export default function PackageCard({
     data: {
@@ -57,7 +57,7 @@ export default function PackageCard({
                             speed={internet_upload_speed}
                             units={t('units.speed')}
                         />
-                        <Popover
+                        <Tooltip
                             elementToInteract={
                                 <span className="ml-2 block rounded-md border border-primary px-1 py-0.5 font-semibold text-primary">
                                     {internet_technology_abbr}
