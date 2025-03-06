@@ -249,6 +249,10 @@
     "menu": {
       "open": "Ava külgmenüü",
       "close": "Sulge külgmenüü"
+    },
+    "filters": {
+      "open": "Ava filtrite paneel",
+      "close": "Sulge filtrite paneel"
     }
   },
   "Cookies": {
