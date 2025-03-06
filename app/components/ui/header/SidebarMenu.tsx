@@ -21,7 +21,7 @@ export default function SidebarMenu() {
     };
 
     return (
-        <Sidebar isOpened={isSidebarMenuOpened} title={t('menu')} handleClose={closeSidebarMenu} sidebarRef={sidebarMenuRef} purpose="menu">
+        <Sidebar name="menu" title={t('menu')} isOpened={isSidebarMenuOpened} handleClose={closeSidebarMenu} sidebarRef={sidebarMenuRef}>
             <div className="p-6" onClick={handleLinkClick}>
                 <Navigation type="vertical">
                     <NavigationItem href="/blog" isActive={pathname === '/blog'}>

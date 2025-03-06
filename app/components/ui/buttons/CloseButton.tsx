@@ -2,16 +2,21 @@ import CloseIcon from '@mui/icons-material/Close';
 import classNames from 'classnames';
 
 export default function CloseButton({
-    ariaLabel,
+    label,
     handleClick,
     className,
 }: {
-    ariaLabel: string
+    label: string;
     handleClick: () => void;
     className?: string;
 }) {
     return (
-        <button type="button" aria-label={ariaLabel} className={classNames('rounded-full p-[3px] w-max h-max', className)} onClick={handleClick}>
+        <button
+            type="button"
+            aria-label={label}
+            className={classNames('rounded-full p-[3px] w-max h-max', className)}
+            onClick={handleClick}
+        >
             <CloseIcon className="text-muted transition-colors hover:text-black" />
         </button>
     );

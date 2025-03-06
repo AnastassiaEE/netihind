@@ -40,7 +40,6 @@ export default function Select({
     return (
         <div className="relative">
             <Button
-                name={name}
                 variant={variant}
                 handleClick={toggleSelect}
                 className={selectClasses}

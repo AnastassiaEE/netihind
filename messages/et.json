@@ -239,12 +239,16 @@
       "url": "/meist/"
     }
   },
-  "Modal": {
+  "Overlay": {
     "connection": {
       "close": "Sulge ühenduse modaalaken"
     },
     "consultation": {
       "close": "Sulge konsultatsiooni modaalaken"
+    },
+    "menu": {
+      "open": "Ava külgmenüü",
+      "close": "Sulge külgmenüü"
     }
   },
   "Cookies": {

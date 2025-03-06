@@ -5,12 +5,14 @@ import useScrollPosition from '@/hooks/useScrollPosition';
 import Hamburger from '@/components/ui/header/Hamburger';
 import Logo from '@/components/ui/Logo';
 import { useSidebarMenuContext } from '@/app/contexts/SidebarMenuContext';
+import { useTranslations } from 'next-intl';
 
 const TOOLBAR_SHOW_POSITION = 400;
 
 export default function StickyHeader() {
     const y = useScrollPosition();
     const { openSidebarMenu } = useSidebarMenuContext();
+    const t = useTranslations('Overlay')
 
     let toolbarVisibility = 'hidden';
     if (y > TOOLBAR_SHOW_POSITION) {
@@ -25,7 +27,7 @@ export default function StickyHeader() {
                 <div className="flex flex-wrap justify-between">
                     <Logo src={secondaryLogo} sizeClass="w-12" />
                     <div className="flex items-center">
-                        <Hamburger ariaLabel="Open sidebar menu" handleClick={openSidebarMenu}></Hamburger>
+                        <Hamburger label={t('menu.open')} handleClick={openSidebarMenu}></Hamburger>
                     </div>
                 </div>
             </div>

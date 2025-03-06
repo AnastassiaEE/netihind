@@ -67,12 +67,12 @@ export default function Packages({
                 ))}
             </div>
             <Modal
+                name={requestType}
                 title={t(`request.${requestType}.title`)}
                 description={t(`request.${requestType}.description`)}
                 isOpened={isModalOpened}
                 handleClose={closeModal}
                 modalRef={modalRef}
-                purpose={requestType}
             >
                 <PackageRequestContent requestType={requestType} data={selectedPackage} address={address} />
             </Modal>
