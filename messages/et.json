@@ -137,7 +137,7 @@
     "technologies": "Tehnoloogiad"
   },
   "Sort": {
-    "sort": "Järjesta",
+    "sort-packages": "Järjesta",
     "default": "Vaikimisi",
     "price_asc": "Soodsamad enne",
     "price_desc": "Kallimad enne",

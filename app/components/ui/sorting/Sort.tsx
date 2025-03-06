@@ -16,7 +16,7 @@ export default function Sort({
 }: {
     options: string[];
     selected: string;
-    name: string,
+    name: string;
     variant?: 'primary' | 'secondary' | 'neutral' | 'flat';
     type?: 'arrow' | 'button';
     openDirection?: 'top' | 'bottom';
@@ -28,6 +28,7 @@ export default function Sort({
     return (
         <Select
             name={name}
+            translatedName={t(name)}
             selected={t(selectedOption)}
             variant={variant}
             Icon={SortIcon}

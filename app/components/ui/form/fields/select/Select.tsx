@@ -10,6 +10,7 @@ import useSelect from '@/hooks/useSelect';
 export default function Select({
     size = 'sm',
     name,
+    translatedName,
     selected,
     variant = 'primary',
     Icon,
@@ -20,6 +21,7 @@ export default function Select({
 }: {
     size?: keyof typeof sizes;
     name: string;
+    translatedName?: string;
     selected: string;
     variant?: 'primary' | 'secondary' | 'neutral' | 'flat';
     Icon?: SvgIconComponent;
@@ -28,7 +30,8 @@ export default function Select({
     className?: string;
     children: React.ReactNode;
 }) {
-    const { isBoxOpened, selectButtonRef, selectBoxRef, toggleSelect, handleOptionSelect } = useSelect();
+    const { isBoxOpened, selectButtonRef, selectBoxRef, toggleSelect, handleOptionSelect } =
+        useSelect();
     const selectClasses = classNames(sizes[size], className, variant !== 'flat' && 'uppercase');
     const selectBoxId = `${name}-select-box`;
 
@@ -58,7 +61,7 @@ export default function Select({
                         </span>
                     </>
                 ) : (
-                    <>{name}</>
+                    <>{translatedName ?? name}</>
                 )}
             </Button>
             {isBoxOpened && (
