@@ -10,7 +10,6 @@ export default function Sort({
     options,
     selected,
     name,
-    label,
     variant = 'primary',
     openDirection = 'bottom',
     className,
@@ -18,7 +17,6 @@ export default function Sort({
     options: string[];
     selected: string;
     name: string;
-    label: string;
     variant?: 'primary' | 'secondary' | 'neutral' | 'flat';
     type?: 'arrow' | 'button';
     openDirection?: 'top' | 'bottom';
@@ -29,10 +27,10 @@ export default function Sort({
 
     return (
         <Select
-            name={name}
-            translatedName={t(`buttons.${name}`)}
-            label={t(`labels.${name}`, { selected: t(`options.${selectedOption}`) })}
-            selected={t(`options.${selectedOption}`)}
+            name={`sort-${name}`}
+            translatedName={t(`${name}.button`)}
+            label={t(`${name}.label`, { selected: t(`${name}.options.${selectedOption}`) })}
+            selected={t(`${name}.options.${selectedOption}`)}
             variant={variant}
             Icon={SortIcon}
             openDirection={openDirection}
@@ -41,7 +39,7 @@ export default function Sort({
         >
             {options.map((option) => (
                 <Option key={option} value={option} isSelected={option === selectedOption}>
-                    {t(`options.${option}`)}
+                    {t(`${name}.options.${option}`)}
                 </Option>
             ))}
         </Select>

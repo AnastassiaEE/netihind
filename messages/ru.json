@@ -137,17 +137,15 @@
     "technologies": "Технологии"
   },
   "Sort": {
-    "buttons": {
-      "sort-packages": "Сортировать"
-    },
-    "labels": {
-      "sort-packages": "Сортировка интернет-пакетов. Текущий выбор: {selected}"
-    },
-    "options": {
-      "default": "По умолчанию",
-      "price_asc": "Сначала дешевле",
-      "price_desc": "Сначала дороже",
-      "speed_desc": "Сначала быстрее"
+    "packages": {
+      "button": "Сортировать",
+      "label": "Сортировка интернет-пакетов. Текущий выбор: {selected}",
+      "options": {
+        "default": "По умолчанию",
+        "price_asc": "Сначала дешевле",
+        "price_desc": "Сначала дороже",
+        "speed_desc": "Сначала быстрее"
+      }
     }
   },
   "NotFoundPage": {
@@ -239,6 +237,14 @@
     "aboutPage": {
       "name": "О нас - Netihind.ee - независимый портал сравнения интернет-пакетов.",
       "url": "/ru/o-nas/"
+    }
+  },
+  "Modal": {
+    "connection": {
+      "close-modal": "Закрыть модальное окно для подключения"
+    },
+    "consultation": {
+      "close-modal": "Закрыть модальное окно для консультации"
     }
   },
   "Cookies": {

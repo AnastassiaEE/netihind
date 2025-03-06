@@ -85,7 +85,7 @@ export default async function AddressPackagesSection({
                                 <Sort
                                     options={SORT_OPTIONS}
                                     selected={selectedSortOption}
-                                    name="sort-packages"
+                                    name="packages"
                                     variant="flat"
                                     className="rounded-md border border-muted-light"
                                 />
