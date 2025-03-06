@@ -49,7 +49,7 @@ export default function RequestForm({
             initialValue: '',
             isRequired: false,
         },
-        time: {
+        'call-time': {
             initialValue: 'hour',
             isRequired: false,
         },
@@ -121,15 +121,16 @@ export default function RequestForm({
             </div>
             <div className="mb-6">
                 <Select
-                    name="time"
-                    selected={t(('selectOptions.' + values.time) as string)}
+                    name="call-time"
+                    label={t('labels.time', { selected: t(`selectOptions.${values['call-time'] as string}`) })}
+                    selected={t(`selectOptions.${values['call-time'] as string}`)}
                     variant="flat"
                     openDirection="top"
                     handleChange={handleSelectChange}
                     className="!p-0"
                 >
                     {timeOptions.map((option) => (
-                        <Option key={option} value={option} isSelected={values.time === option}>
+                        <Option key={option} value={option} isSelected={values['call-time'] === option}>
                             {t(`selectOptions.${option}`)}
                         </Option>
                     ))}

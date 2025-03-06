@@ -161,7 +161,7 @@
       "email": "E-post",
       "phone": "Telefon",
       "address": "Aadress",
-      "time": "Suhtlemisaeg",
+      "time": "Helistamise aeg. Praegune valik: {selected}",
       "message": "Sõnum"
     },
     "checkboxes": {
