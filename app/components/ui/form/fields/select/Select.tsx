@@ -11,6 +11,7 @@ export default function Select({
     size = 'sm',
     name,
     translatedName,
+    label,
     selected,
     variant = 'primary',
     Icon,
@@ -22,6 +23,7 @@ export default function Select({
     size?: keyof typeof sizes;
     name: string;
     translatedName?: string;
+    label: string;
     selected: string;
     variant?: 'primary' | 'secondary' | 'neutral' | 'flat';
     Icon?: SvgIconComponent;
@@ -43,7 +45,7 @@ export default function Select({
                 handleClick={toggleSelect}
                 className={selectClasses}
                 buttonRef={selectButtonRef}
-                aria-label={`Select ${name}, currently selected: ${selected}`}
+                aria-label={label}
                 aria-expanded={isBoxOpened}
                 aria-haspopup="listbox"
                 aria-controls={selectBoxId}

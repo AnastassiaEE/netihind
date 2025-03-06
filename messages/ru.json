@@ -137,11 +137,18 @@
     "technologies": "Технологии"
   },
   "Sort": {
-    "sort-packages": "Сортировать",
-    "default": "По умолчанию",
-    "price_asc": "Сначала дешевле",
-    "price_desc": "Сначала дороже",
-    "speed_desc": "Сначала быстрее"
+    "buttons": {
+      "sort-packages": "Сортировать"
+    },
+    "labels": {
+      "sort-packages": "Сортировка интернет-пакетов. Текущий выбор: {selected}"
+    },
+    "options": {
+      "default": "По умолчанию",
+      "price_asc": "Сначала дешевле",
+      "price_desc": "Сначала дороже",
+      "speed_desc": "Сначала быстрее"
+    }
   },
   "NotFoundPage": {
     "title": "Упс!",

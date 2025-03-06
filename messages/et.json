@@ -137,11 +137,18 @@
     "technologies": "Tehnoloogiad"
   },
   "Sort": {
-    "sort-packages": "Järjesta",
-    "default": "Vaikimisi",
-    "price_asc": "Soodsamad enne",
-    "price_desc": "Kallimad enne",
-    "speed_desc": "Kiiremad enne"
+    "buttons": {
+      "sort-packages": "Järjesta"
+    },
+    "labels": {
+      "sort-packages": "Internetipakettide järjestus. Praegune valik: {selected}"
+    },
+    "options": {
+      "default": "Vaikimisi",
+      "price_asc": "Soodsamad enne",
+      "price_desc": "Kallimad enne",
+      "speed_desc": "Kiiremad enne"
+    }
   },
   "NotFoundPage": {
     "title": "Ooops!",
