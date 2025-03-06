@@ -7,19 +7,18 @@ import useSort from '@/hooks/useSort';
 import Select from '@/components/ui/form/fields/select/Select';
 
 export default function Sort({
-    options,
-    selected,
     name,
     variant = 'primary',
     openDirection = 'bottom',
+    options,
+    selected,
     className,
 }: {
-    options: string[];
-    selected: string;
     name: string;
     variant?: 'primary' | 'secondary' | 'neutral' | 'flat';
-    type?: 'arrow' | 'button';
     openDirection?: 'top' | 'bottom';
+    options: string[];
+    selected: string;
     className?: string;
 }) {
     const t = useTranslations('Sort');

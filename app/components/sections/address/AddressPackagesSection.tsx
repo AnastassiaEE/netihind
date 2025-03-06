@@ -83,10 +83,10 @@ export default async function AddressPackagesSection({
                         <div className="md:w-8/12">
                             <div className="my-4 flex justify-end max-md:hidden">
                                 <Sort
-                                    options={SORT_OPTIONS}
-                                    selected={selectedSortOption}
                                     name="packages"
                                     variant="flat"
+                                    options={SORT_OPTIONS}
+                                    selected={selectedSortOption}
                                     className="rounded-md border border-muted-light"
                                 />
                             </div>

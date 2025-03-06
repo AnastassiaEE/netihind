@@ -71,23 +71,23 @@ export default function SortingToolbar({ className, sortOptions, filters }: Sort
                 )}
                 {sortOptions && (
                     <Sort
-                        options={sortOptions.options}
-                        selected={sortOptions.selected}
                         name="packages"
                         variant="secondary"
                         openDirection="top"
+                        options={sortOptions.options}
+                        selected={sortOptions.selected}
                         className="min-w-[150px]"
                     />
                 )}
             </div>
             {filters && (
                 <SlideUpPanel
+                    name="filters"
                     title={t('filters')}
                     isOpened={isPanelOpened}
                     handleClose={closePanel}
                     actions={panelActions}
                     panelRef={panelRef}
-                    purpose="filters"
                 >
                     <CheckboxFilters ref={checkboxFiltersGroupRef} filters={filters} type="mobile" />
                 </SlideUpPanel>
