@@ -25,7 +25,7 @@ export default function Sort({
 
     return (
         <Select
-            name='sort'
+            name='sort-packages'
             selected={t(selectedOption)}
             variant={variant}
             Icon={SortIcon}
