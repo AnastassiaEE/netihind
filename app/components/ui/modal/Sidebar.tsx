@@ -21,7 +21,7 @@ export default function Sidebar({
     sidebarRef?: React.RefObject<HTMLDivElement>;
     children: React.ReactNode;
 }) {
-    const t = useTranslations('Overlay');
+    const t = useTranslations('Buttons');
 
     const sidebarWrapperClasses = classNames(
         'fixed inset-y-0 right-0 z-50 w-80 max-w-full bg-white shadow-md transition-transform duration-200',

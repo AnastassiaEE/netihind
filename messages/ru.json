@@ -239,7 +239,7 @@
       "url": "/ru/o-nas/"
     }
   },
-  "Overlay": {
+  "Buttons": {
     "connection": {
       "close": "Закрыть модальное окно для подключения"
     },

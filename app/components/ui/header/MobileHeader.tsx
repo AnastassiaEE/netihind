@@ -8,7 +8,7 @@ import { useTranslations } from 'next-intl';
 
 export default function MobileHeader() {
     const { openSidebarMenu } = useSidebarMenuContext();
-    const t = useTranslations('Overlay')
+    const t = useTranslations('Buttons')
     return (
         <div className="container md:hidden">
             <div className="flex flex-wrap justify-between p-4">

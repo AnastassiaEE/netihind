@@ -25,7 +25,7 @@ export default function Modal({
     className?: string;
     children: React.ReactNode;
 }) {
-    const t = useTranslations('Overlay');
+    const t = useTranslations('Buttons');
 
     const modalClasses = classNames(
         'fixed left-1/2 top-1/2 z-50 h-dvh w-max max-w-[100vw] overflow-auto rounded-lg bg-primary-light p-6 shadow-lg md:p-14 lg:max-w-[calc(100vw-50px)] lg:h-[calc(100vh-50px)]',

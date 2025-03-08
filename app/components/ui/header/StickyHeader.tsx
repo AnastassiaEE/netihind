@@ -12,7 +12,7 @@ const TOOLBAR_SHOW_POSITION = 400;
 export default function StickyHeader() {
     const y = useScrollPosition();
     const { openSidebarMenu } = useSidebarMenuContext();
-    const t = useTranslations('Overlay')
+    const t = useTranslations('Buttons')
 
     let toolbarVisibility = 'hidden';
     if (y > TOOLBAR_SHOW_POSITION) {

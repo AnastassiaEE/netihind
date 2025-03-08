@@ -27,7 +27,7 @@ export default function SlideUpPanel({
     children: React.ReactNode;
 }) {
     const { handleTouchStart, handleTouchEnd } = useSlideUpPanel(handleClose);
-    const t = useTranslations('Overlay');
+    const t = useTranslations('Buttons');
 
     const panelClasses = classNames(
         'fixed inset-x-0 bottom-0 z-50 h-dvh rounded-t-2xl bg-white transition-transform duration-200',
