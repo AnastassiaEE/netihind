@@ -6,7 +6,7 @@ import { routing } from 'i18n/routing';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
-import CookieConsent from '@/components/ui/cookies/CookieConsent';
+//import CookieConsent from '@/components/ui/cookies/CookieConsent';
 
 const inter = Manrope({ subsets: ['latin'] });
 
@@ -40,7 +40,7 @@ export default async function RootLayout({
       <body className={`${inter.className} relative`}>
         <NextIntlClientProvider messages={messages}>
           <ScrollTopButton />
-          <CookieConsent />
+          {/* <CookieConsent /> */}
           {children}
         </NextIntlClientProvider>
       </body>
