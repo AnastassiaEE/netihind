@@ -8,26 +8,28 @@ export default function Modal({
     name,
     title,
     description,
-    isOpened,
+    isTransitioning,
     handleClose,
     modalRef,
+    handleTransitionEnd,
     className,
     children,
 }: {
-    name: string,
+    name: string;
     title: string;
     description?: string;
-    isOpened: boolean;
+    isTransitioning: boolean;
     handleClose: () => void;
     modalRef?: React.RefObject<HTMLDivElement>;
+    handleTransitionEnd: () => void;
     className?: string;
     children: React.ReactNode;
 }) {
-    const t = useTranslations('Overlay')
+    const t = useTranslations('Overlay');
 
     const modalClasses = classNames(
         'fixed left-1/2 top-1/2 z-50 h-dvh w-max max-w-[100vw] overflow-auto rounded-lg bg-primary-light p-6 shadow-lg md:p-14 lg:max-w-[calc(100vw-50px)] lg:h-[calc(100vh-50px)]',
-        isOpened ? 'opacity-100' : 'opacity-0 pointer-events-none',
+        isTransitioning ? 'opacity-100' : 'opacity-0',
         className,
     );
     const titleClasses = classNames(
@@ -36,21 +38,21 @@ export default function Modal({
     );
 
     return (
-        <Backdrop isVisible={isOpened} handleClose={handleClose}>
+        <Backdrop isVisible={isTransitioning} handleClose={handleClose}>
             <div
                 role="dialog"
-                aria-modal={isOpened}
-                aria-hidden={!isOpened}
+                aria-modal="true"
                 aria-labelledby={`${name}-modal-title`}
                 aria-describedby={description ? `${name}-modal-description` : undefined}
                 ref={modalRef}
                 className={modalClasses}
                 style={{
-                    transform: isOpened
+                    transform: isTransitioning
                         ? 'translate(-50%, -50%) scale(1)'
                         : 'translate(-50%, -50%) scale(0.7)',
-                    transition: 'transform 0.2s ease-out, opacity 0.2s ease-out',
+                    transition: 'transform 0.15s ease-out, opacity 0.15s ease-out',
                 }}
+                onTransitionEnd={handleTransitionEnd}
             >
                 <CloseButton
                     label={t(`${name}.close`)}

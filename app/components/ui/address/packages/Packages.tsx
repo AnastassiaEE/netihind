@@ -33,10 +33,12 @@ export default function Packages({
         usePackages(oid, initialPackages, sortOption, providers, technologies);
 
     const {
-        isOverlayVisible: isModalOpened,
-        openOverlay: openModal,
-        closeOverlay: closeModal,
+        isMounted: isModalMounted,
+        isTransitioning: isModalTransitioning,
+        open: openModal,
+        close: closeModal,
         overlayRef: modalRef,
+        handleTransitionEnd: handleModalTransitionEnd,
     } = useOverlay();
 
     const errorContent = (error: string) => (
@@ -66,16 +68,23 @@ export default function Packages({
                     />
                 ))}
             </div>
-            <Modal
-                name={requestType}
-                title={t(`request.${requestType}.title`)}
-                description={t(`request.${requestType}.description`)}
-                isOpened={isModalOpened}
-                handleClose={closeModal}
-                modalRef={modalRef}
-            >
-                <PackageRequestContent requestType={requestType} data={selectedPackage} address={address} />
-            </Modal>
+            {isModalMounted && (
+                <Modal
+                    name={requestType}
+                    title={t(`request.${requestType}.title`)}
+                    description={t(`request.${requestType}.description`)}
+                    isTransitioning={isModalTransitioning}
+                    handleClose={closeModal}
+                    modalRef={modalRef}
+                    handleTransitionEnd={handleModalTransitionEnd}
+                >
+                    <PackageRequestContent
+                        requestType={requestType}
+                        data={selectedPackage}
+                        address={address}
+                    />
+                </Modal>
+            )}
         </>
     );
 }

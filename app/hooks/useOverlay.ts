@@ -1,17 +1,28 @@
 import useBoolean from '@/hooks/useBoolean';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function useOverlay() {
-  const {
-    value: isOverlayVisible,
-    setTrue: openOverlay,
-    setFalse: closeOverlay,
-  } = useBoolean(false);
+  const { value: isOpened, setTrue: open, setFalse: close } = useBoolean(false);
 
   const overlayRef = useRef<HTMLDivElement | null>(null);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    if (isOverlayVisible && overlayRef.current) {
+    if (isOpened) {
+      setIsMounted(true);
+      setTimeout(() => setIsTransitioning(true), 10);
+    } else {
+      setIsTransitioning(false);
+    }
+  }, [isOpened]);
+
+  const handleTransitionEnd = () => {
+    if (!isTransitioning) setIsMounted(false);
+  };
+
+  useEffect(() => {
+    if (isMounted && overlayRef.current) {
       const focusableElements = overlayRef.current.querySelectorAll(
         'button, a, input, textarea, select, [tabindex]:not([tabindex="-1"])',
       ) as NodeListOf<HTMLElement>;
@@ -38,17 +49,32 @@ export default function useOverlay() {
       };
 
       document.addEventListener('keydown', trapFocus);
-
       return () => {
         document.removeEventListener('keydown', trapFocus);
       };
     }
-  }, [isOverlayVisible]);
+  }, [isMounted]);
+
+  useEffect(() => {
+    const handleEscKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isMounted) {
+        close();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscKey);
+    return () => {
+      document.removeEventListener('keydown', handleEscKey);
+    };
+  }, [isMounted, close]);
 
   return {
-    isOverlayVisible,
-    openOverlay,
-    closeOverlay,
+    isOpened,
+    isMounted,
+    isTransitioning,
+    open,
+    close,
     overlayRef,
+    handleTransitionEnd,
   };
 }
