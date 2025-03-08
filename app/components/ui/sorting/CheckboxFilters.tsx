@@ -28,16 +28,16 @@ type CheckboxFiltersProps = {
 const CheckboxFilters = forwardRef(
     ({ filters, type = 'desktop', className }: CheckboxFiltersProps, ref) => {
         const t = useTranslations('Filters');
-        const { selectedFilters, handleChange, handleClear } = useCheckboxFilters(filters);
+        const { selectedFilters, handleChange, clearFilters } = useCheckboxFilters(filters);
 
-        useImperativeHandle(ref, () => ({ handleClear }));
+        useImperativeHandle(ref, () => ({ clearFilters }));
 
         return (
             <aside className={className}>
                 {type === 'desktop' && (
                     <div className="mb-2 flex flex-wrap justify-between">
                         <p className="text-xl font-extrabold text-black">{t('filters')}</p>
-                        <Button variant="flat" className="!p-0" handleClick={handleClear}>
+                        <Button variant="flat" className="!p-0" handleClick={clearFilters}>
                             {t('clear')}
                         </Button>
                     </div>

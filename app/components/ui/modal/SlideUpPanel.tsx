@@ -11,16 +11,18 @@ export default function SlideUpPanel({
     name,
     title,
     actions,
-    isOpened,
+    isTransitioning,
     handleClose,
+    handleTransitionEnd,
     panelRef,
     children,
 }: {
     name: string;
     title: string;
     actions?: React.ReactNode;
-    isOpened: boolean;
+    isTransitioning: boolean;
     handleClose: () => void;
+    handleTransitionEnd: () => void;
     panelRef?: React.RefObject<HTMLDivElement>;
     children: React.ReactNode;
 }) {
@@ -28,21 +30,21 @@ export default function SlideUpPanel({
     const t = useTranslations('Overlay');
 
     const panelClasses = classNames(
-        'fixed inset-x-0 bottom-0 z-50 h-dvh rounded-t-2xl bg-white transition-transform',
-        isOpened ? 'translate-y-0' : 'translate-y-full pointer-events-none',
+        'fixed inset-x-0 bottom-0 z-50 h-dvh rounded-t-2xl bg-white transition-transform duration-200',
+        isTransitioning ? 'translate-y-0' : 'translate-y-full',
     );
 
     return (
-        <Backdrop isVisible={isOpened} handleClose={handleClose}>
+        <Backdrop isVisible={isTransitioning} handleClose={handleClose}>
             <div
                 role="dialog"
-                aria-modal={isOpened}
-                aria-hidden={!isOpened}
+                aria-modal="true"
                 aria-labelledby={`${name}-panel-title`}
                 ref={panelRef}
                 className={panelClasses}
                 onTouchStart={handleTouchStart}
                 onTouchEnd={handleTouchEnd}
+                onTransitionEnd={handleTransitionEnd}
             >
                 <div className="relative border-b border-muted-light px-6 pb-5 pt-7">
                     <p id={`${name}-panel-title`} className="text-center text-xl font-extrabold text-black">

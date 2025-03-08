@@ -26,32 +26,36 @@ type SortOptions = {
     selected: string;
 };
 
-interface SortingToolbarProps {
+export default function SortingToolbar({
+    className,
+    sortOptions,
+    filters,
+}: {
     className?: string;
     sortOptions?: SortOptions;
     filters?: Filters;
-}
-
-export default function SortingToolbar({ className, sortOptions, filters }: SortingToolbarProps) {
+}) {
     const t = useTranslations('Filters');
 
     const {
-        isOverlayVisible: isPanelOpened,
-        openOverlay: openPanel,
-        closeOverlay: closePanel,
+        isMounted: isPanelMounted,
+        isTransitioning: isPanelTransitioning,
+        open: openPanel,
+        close: closePanel,
+        handleTransitionEnd: handlePanelTransitionEnd,
         overlayRef: panelRef,
     } = useOverlay();
 
-    const checkboxFiltersGroupRef = useRef<{ handleClear: () => void } | null>(null);
+    const checkboxFiltersGroupRef = useRef<{ clearFilters: () => void } | null>(null);
 
-    const handleFiltersClear = () => {
+    const clearFilters = () => {
         if (checkboxFiltersGroupRef.current) {
-            checkboxFiltersGroupRef.current.handleClear();
+            checkboxFiltersGroupRef.current.clearFilters();
         }
     };
 
     const panelActions = (
-        <Button handleClick={handleFiltersClear} className="w-full">
+        <Button handleClick={clearFilters} className="w-full">
             {t('clear').toUpperCase()}
         </Button>
     );
@@ -80,12 +84,13 @@ export default function SortingToolbar({ className, sortOptions, filters }: Sort
                     />
                 )}
             </div>
-            {filters && (
+            {filters && isPanelMounted && (
                 <SlideUpPanel
                     name="filters"
                     title={t('filters')}
-                    isOpened={isPanelOpened}
+                    isTransitioning={isPanelTransitioning}
                     handleClose={closePanel}
+                    handleTransitionEnd={handlePanelTransitionEnd}
                     actions={panelActions}
                     panelRef={panelRef}
                 >

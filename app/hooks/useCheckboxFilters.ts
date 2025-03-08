@@ -54,7 +54,7 @@ export default function useCheckboxFilters(filters: Filters) {
     });
   };
 
-  const handleClear = () => {
+  const clearFilters = () => {
     const clearedFilters = Object.keys(selectedFilters).reduce(
       (acc: typeof selectedFilters, filterKey) => {
         acc[filterKey] = { ...selectedFilters[filterKey], selected: [] };
@@ -68,6 +68,6 @@ export default function useCheckboxFilters(filters: Filters) {
   return {
     selectedFilters,
     handleChange,
-    handleClear,
+    clearFilters,
   };
 }
