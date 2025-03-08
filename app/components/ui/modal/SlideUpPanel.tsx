@@ -41,10 +41,10 @@ export default function SlideUpPanel({
                 aria-modal="true"
                 aria-labelledby={`${name}-panel-title`}
                 ref={panelRef}
-                className={panelClasses}
                 onTouchStart={handleTouchStart}
                 onTouchEnd={handleTouchEnd}
                 onTransitionEnd={handleTransitionEnd}
+                className={panelClasses}
             >
                 <div className="relative border-b border-muted-light px-6 pb-5 pt-7">
                     <p id={`${name}-panel-title`} className="text-center text-xl font-extrabold text-black">

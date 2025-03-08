@@ -45,6 +45,7 @@ export default function Modal({
                 aria-labelledby={`${name}-modal-title`}
                 aria-describedby={description ? `${name}-modal-description` : undefined}
                 ref={modalRef}
+                onTransitionEnd={handleTransitionEnd}
                 className={modalClasses}
                 style={{
                     transform: isTransitioning
@@ -52,7 +53,6 @@ export default function Modal({
                         : 'translate(-50%, -50%) scale(0.7)',
                     transition: 'transform 0.15s ease-out, opacity 0.15s ease-out',
                 }}
-                onTransitionEnd={handleTransitionEnd}
             >
                 <CloseButton
                     label={t(`${name}.close`)}
