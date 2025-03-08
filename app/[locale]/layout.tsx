@@ -6,10 +6,11 @@ import { routing } from 'i18n/routing';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
+import CookieConsent from '@/components/ui/cookies/CookieConsent';
 
 const inter = Manrope({ subsets: ['latin'] });
 
-export const metadataBaseUrl = new URL("https://netihind.ee");
+export const metadataBaseUrl = new URL('https://netihind.ee');
 
 export const metadata = {
   metadataBase: metadataBaseUrl,
@@ -30,7 +31,6 @@ export default async function RootLayout({
     notFound();
   }
 
-  // Enable static rendering
   setRequestLocale(locale);
 
   const messages = await getMessages();
@@ -38,8 +38,11 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body className={`${inter.className} relative`}>
-        <ScrollTopButton />
-        <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider messages={messages}>
+          <ScrollTopButton />
+          <CookieConsent />
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );

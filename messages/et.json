@@ -253,7 +253,8 @@
     "filters": {
       "open": "Ava filtrite paneel",
       "close": "Sulge filtrite paneel"
-    }
+    },
+    "scroll-top": "Naaske lehe ülaossa"
   },
   "Cookies": {
     "message": ""
