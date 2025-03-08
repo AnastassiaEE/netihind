@@ -7,33 +7,35 @@ import { useTranslations } from 'next-intl';
 export default function Sidebar({
     name,
     title,
-    isOpened,
+    isTransitioning,
     handleClose,
+    handleTransitionEnd,
     sidebarRef,
     children,
 }: {
-    name: string,
+    name: string;
     title: string;
-    isOpened: boolean;
+    isTransitioning: boolean;
     handleClose: () => void;
+    handleTransitionEnd: () => void;
     sidebarRef?: React.RefObject<HTMLDivElement>;
     children: React.ReactNode;
 }) {
-    const t = useTranslations('Overlay')
+    const t = useTranslations('Overlay');
 
     const sidebarWrapperClasses = classNames(
-        'fixed inset-y-0 right-0 z-50 w-80 max-w-full bg-white shadow-md transition-transform duration-300',
-        isOpened ? 'translate-x-0' : 'translate-x-full pointer-events-none',
+        'fixed inset-y-0 right-0 z-50 w-80 max-w-full bg-white shadow-md transition-transform duration-200',
+        isTransitioning ? 'translate-x-0' : 'translate-x-full',
     );
 
     return (
-        <Backdrop isVisible={isOpened} handleClose={handleClose}>
+        <Backdrop isVisible={isTransitioning} handleClose={handleClose}>
             <div
                 role="dialog"
-                aria-modal={isOpened}
-                aria-hidden={!isOpened}
+                aria-modal="true"
                 aria-labelledby={`sidebar-${name}-title`}
                 ref={sidebarRef}
+                onTransitionEnd={handleTransitionEnd}
                 className={sidebarWrapperClasses}
             >
                 <div className="flex justify-between border-b border-muted-light px-6 py-5">

@@ -4,9 +4,11 @@ import React, { createContext, useContext, ReactNode } from 'react';
 import useOverlay from '@/hooks/useOverlay';
 
 type SidebarMenuContextType = {
-    isSidebarMenuOpened: boolean;
+    isSidebarMenuMounted: boolean;
+    isSidebarMenuTransitioning: boolean;
     openSidebarMenu: () => void;
     closeSidebarMenu: () => void;
+    handleSidebarMenuTransitionEnd: () => void;
     sidebarMenuRef: React.RefObject<HTMLDivElement>;
 };
 
@@ -14,19 +16,23 @@ const SidebarMenuContext = createContext<SidebarMenuContextType | undefined>(und
 
 export const SidebarMenuProvider = ({ children }: { children: ReactNode }) => {
     const {
-        isOverlayVisible: isSidebarMenuOpened,
-        openOverlay: openSidebarMenu,
-        closeOverlay: closeSidebarMenu,
-        overlayRef: sidebarMenuRef
+        isMounted: isSidebarMenuMounted,
+        isTransitioning: isSidebarMenuTransitioning,
+        open: openSidebarMenu,
+        close: closeSidebarMenu,
+        handleTransitionEnd: handleSidebarMenuTransitionEnd,
+        overlayRef: sidebarMenuRef,
     } = useOverlay();
 
     return (
         <SidebarMenuContext.Provider
             value={{
-                isSidebarMenuOpened,
+                isSidebarMenuMounted,
+                isSidebarMenuTransitioning,
                 openSidebarMenu,
                 closeSidebarMenu,
-                sidebarMenuRef
+                handleSidebarMenuTransitionEnd,
+                sidebarMenuRef,
             }}
         >
             {children}

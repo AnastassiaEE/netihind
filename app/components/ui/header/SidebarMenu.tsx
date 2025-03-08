@@ -11,7 +11,13 @@ import { Suspense } from 'react';
 export default function SidebarMenu() {
     const t = useTranslations('Navigation');
     const pathname = usePathname();
-    const { isSidebarMenuOpened, closeSidebarMenu, sidebarMenuRef } = useSidebarMenuContext();
+    const {
+        isSidebarMenuMounted,
+        isSidebarMenuTransitioning,
+        closeSidebarMenu,
+        handleSidebarMenuTransitionEnd,
+        sidebarMenuRef,
+    } = useSidebarMenuContext();
 
     const handleLinkClick = (e: React.MouseEvent) => {
         const target = e.target as HTMLLinkElement;
@@ -20,26 +26,34 @@ export default function SidebarMenu() {
         }
     };
 
-    return (
-        <Sidebar name="menu" title={t('menu')} isOpened={isSidebarMenuOpened} handleClose={closeSidebarMenu} sidebarRef={sidebarMenuRef}>
-            <div className="p-6" onClick={handleLinkClick}>
-                <Navigation type="vertical">
-                    <NavigationItem href="/blog" isActive={pathname === '/blog'}>
-                        {t('blog')}
-                    </NavigationItem>
-                    <NavigationItem href="/about" isActive={pathname === '/about'}>
-                        {t('about')}
-                    </NavigationItem>
-                    <NavigationItem href="/contacts" isActive={pathname === '/contacts'}>
-                        {t('contacts')}
-                    </NavigationItem>
-                </Navigation>
-                <div className="py-8">
-                    <Suspense>
-                        <LanguageSwitcher />
-                    </Suspense>
+    if (isSidebarMenuMounted)
+        return (
+            <Sidebar
+                name="menu"
+                title={t('menu')}
+                isTransitioning={isSidebarMenuTransitioning}
+                sidebarRef={sidebarMenuRef}
+                handleClose={closeSidebarMenu}
+                handleTransitionEnd={handleSidebarMenuTransitionEnd}
+            >
+                <div className="p-6" onClick={handleLinkClick}>
+                    <Navigation type="vertical">
+                        <NavigationItem href="/blog" isActive={pathname === '/blog'}>
+                            {t('blog')}
+                        </NavigationItem>
+                        <NavigationItem href="/about" isActive={pathname === '/about'}>
+                            {t('about')}
+                        </NavigationItem>
+                        <NavigationItem href="/contacts" isActive={pathname === '/contacts'}>
+                            {t('contacts')}
+                        </NavigationItem>
+                    </Navigation>
+                    <div className="py-8">
+                        <Suspense>
+                            <LanguageSwitcher />
+                        </Suspense>
+                    </div>
                 </div>
-            </div>
-        </Sidebar >
-    );
+            </Sidebar>
+        );
 }
