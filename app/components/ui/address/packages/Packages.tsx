@@ -29,7 +29,7 @@ export default function Packages({
 }) {
     const t = useTranslations('Packages');
 
-    const { packages, error, isLoading, selectedPackage, requestType, handlePackageButtonClick } =
+    const { packages, error, isLoading, selectedPackage, requestType, handleActionClick } =
         usePackages(oid, initialPackages, sortOption, providers, technologies);
 
     const {
@@ -64,7 +64,7 @@ export default function Packages({
                         key={data.internet_package_id}
                         data={data}
                         className="mb-5"
-                        handleButtonClick={(action) => handlePackageButtonClick(data, action, openModal)}
+                        handleActionClick={(action) => handleActionClick(data, action, openModal)}
                     />
                 ))}
             </div>

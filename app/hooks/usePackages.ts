@@ -28,7 +28,7 @@ export default function usePackages(
   const [selectedPackage, setSelectedPackage] = useState<{ [key: string]: any } | null>(null);
   const [requestType, setRequestType] = useState<'connection' | 'consultation'>('connection');
 
-  const handlePackageButtonClick = (
+  const handleActionClick = (
     packageData: { [key: string]: any },
     action: 'connection' | 'consultation',
     handleModal: () => void,
@@ -44,6 +44,6 @@ export default function usePackages(
     isLoading,
     selectedPackage,
     requestType,
-    handlePackageButtonClick,
+    handleActionClick,
   };
 }

@@ -23,11 +23,11 @@ export default function PackageCard({
         internet_upload_speed,
         internet_package_price,
     },
-    handleButtonClick,
+    handleActionClick,
     className,
 }: {
     data: { [key: string]: any };
-    handleButtonClick: (action: 'connection' | 'consultation') => void;
+    handleActionClick: (action: 'connection' | 'consultation') => void;
     className: string;
 }) {
     const t = useTranslations('Packages');
@@ -71,7 +71,7 @@ export default function PackageCard({
                     <PackagePrice originalPrice={internet_package_price} />
                 </PackageCardSection>
             </div>
-            <PackageActions handleButtonClick={handleButtonClick} />
+            <PackageActions handleActionClick={handleActionClick} />
         </article>
     );
 }
