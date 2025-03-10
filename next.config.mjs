@@ -9,7 +9,7 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   //output: 'export',
-  reactStrictMode: false,
+  reactStrictMode: true,
   trailingSlash: true,
   images: {
     remotePatterns: [
