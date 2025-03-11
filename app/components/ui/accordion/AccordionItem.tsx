@@ -65,7 +65,7 @@ export default function AccordionItem({
             </button>
             <div
                 id={id.current}
-                className="transition-all duration-700"
+                className="transition-all duration-500"
                 style={{ height: collapsibleHeight + 'px' }}
             >
                 <div ref={collapsible} className={bodyClasses}>
