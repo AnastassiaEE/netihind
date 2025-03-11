@@ -40,7 +40,7 @@ export default function usePackages(
 
   return {
     packages,
-    error,
+    error: error?.message,
     isLoading,
     selectedPackage,
     requestType,

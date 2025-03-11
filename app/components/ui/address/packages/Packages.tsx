@@ -75,11 +75,7 @@ export default function Packages({
                 handleClose={closeModal}
                 modalRef={modalRef}
             >
-                <PackageRequestContent
-                    requestType={requestType}
-                    data={selectedPackage}
-                    address={address}
-                />
+                <PackageRequestContent requestType={requestType} data={selectedPackage} address={address} />
             </Modal>
         </>
     );

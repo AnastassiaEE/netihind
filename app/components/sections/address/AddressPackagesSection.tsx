@@ -54,8 +54,8 @@ export default async function AddressPackagesSection({
         selectedSortOption,
         providerSelectedIds,
         technologySelectedIds,
-    ).catch((e) => {
-        error = (e as Error)?.message ?? String(e);
+    ).catch((e: Error) => {
+        error = e?.message;
     });
 
     return (
