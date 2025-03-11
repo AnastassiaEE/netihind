@@ -27,7 +27,7 @@ export default function Modal({
 
     const modalClasses = classNames(
         'fixed left-1/2 top-1/2 z-50 h-dvh w-max max-w-[100vw] overflow-auto rounded-lg bg-primary-light p-6 shadow-lg md:p-14 lg:max-w-[calc(100vw-50px)] lg:h-[calc(100vh-50px)]',
-        isOpened ? 'modal-open' : 'modal-close pointer-events-none',
+        isOpened ? 'modal-open' : 'modal-close',
         className,
     );
     const titleClasses = classNames(

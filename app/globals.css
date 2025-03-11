@@ -28,5 +28,19 @@
   transform: translate(-50%, -50%) scale(0.7);
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   transition: transform 0.2s ease-out, opacity 0.2s ease-out, visibility 0s linear 0.2s;
+}
+
+.sidebar-open {
+  transform: translateX(100%);
+  visibility: visible;
+  transition: visibility 0s linear, transform 0.2s ease-out;
+}
+
+.sidebar-close {
+  transform: translateX(0);
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.2s ease-out, visibility 0s linear 0.2s;
 }
