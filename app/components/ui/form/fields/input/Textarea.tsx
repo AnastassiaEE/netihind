@@ -47,6 +47,7 @@ export default function Textarea({
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={value}
+                aria-invalid={!isValid}
             ></textarea>
             {!isValid && <FieldError size={size}>{error}</FieldError>}
         </>

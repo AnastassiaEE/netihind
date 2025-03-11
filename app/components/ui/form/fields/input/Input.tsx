@@ -64,6 +64,7 @@ export default function Input({
                     onBlur={handleBlur}
                     value={value}
                     autoComplete={name}
+                    aria-invalid={!isValid}
                 />
             </div>
             {!isValid && <FieldError size={size}>{error}</FieldError>}
