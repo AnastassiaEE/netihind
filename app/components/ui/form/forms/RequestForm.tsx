@@ -125,7 +125,7 @@ export default function RequestForm({
                     name="call-time"
                     label={t('labels.time', { selected: t(`selectOptions.${values['call-time'] as string}`) })}
                     selected={t(`selectOptions.${values['call-time'] as string}`)}
-                    variant="flat"
+                    variant="text"
                     openDirection="top"
                     handleChange={handleSelectChange}
                     className="!p-0"
