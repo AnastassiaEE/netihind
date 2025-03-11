@@ -5,22 +5,19 @@ import classNames from 'classnames';
 
 export default function NavigationItem({
     href,
-    className,
     isActive = false,
     children,
 }: {
     href: any;
-    className?: string;
     isActive?: boolean;
     children: React.ReactNode;
 }) {
-    const navigationItemClasses = classNames(
+    const linkClasses = classNames(
         'transition-colors hover:text-primary',
-        className,
         isActive && 'font-extrabold text-primary',
     );
     return (
-        <Link href={href} className={navigationItemClasses}>
+        <Link href={href} className={linkClasses}>
             {children}
         </Link>
     );

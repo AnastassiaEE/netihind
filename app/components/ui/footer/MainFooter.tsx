@@ -17,7 +17,7 @@ export default function Footer() {
                     <Logo src={whitelogo} sizeClass="w-36" />
                 </div>
                 <div className="pb-6 pt-4 text-center">
-                    <Navigation itemColorClass="text-white/80">
+                    <Navigation className="text-white/80">
                         <NavigationItem href='/'>{t('home')}</NavigationItem>
                         <NavigationItem href='/blog'>{t('blog')}</NavigationItem>
                         <NavigationItem href='/about'>{t('about')}</NavigationItem>

@@ -3,27 +3,24 @@ import classNames from 'classnames';
 
 export default function Navigation({
     type = 'horizontal',
-    itemColorClass = 'text-muted-dark',
+    className = 'text-muted-dark',
     children,
 }: {
     type?: 'horizontal' | 'vertical';
-    itemColorClass?: string;
+    className?: string;
     children: React.ReactNode;
 }) {
-    const navigationListClasses = classNames(itemColorClass, 'font-semibold');
-
-    const navigationItemClasses = classNames(
-        'py-2',
-        type === 'horizontal' ? 'inline-block px-4' : 'block',
-    );
-
+    const listClasses = classNames('font-semibold', className);
+    const itemClasses = classNames('py-2', type === 'horizontal' && 'inline-block px-4');
     return (
         <nav>
-            <ul className={navigationListClasses}>
+            <ul className={listClasses}>
                 {React.Children.map(children, (child) =>
-                    isValidElement(child)
-                        ? React.cloneElement(child as React.ReactElement, { className: navigationItemClasses })
-                        : child,
+                    isValidElement(child) ? (
+                        <li className={itemClasses}>{React.cloneElement(child)}</li>
+                    ) : (
+                        <li className={itemClasses}>{child}</li>
+                    ),
                 )}
             </ul>
         </nav>
