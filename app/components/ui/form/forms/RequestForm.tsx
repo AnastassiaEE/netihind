@@ -82,6 +82,7 @@ export default function RequestForm({
                     value={values.name as string}
                     isValid={!errors.name}
                     error={errors.name ? t(errors.name) : ''}
+                    required={fields["name"].isRequired}
                 />
             </div>
             <div className="mb-6">
@@ -95,6 +96,7 @@ export default function RequestForm({
                     value={values.email as string}
                     isValid={!errors.email}
                     error={errors.email ? t(errors.email) : ''}
+                    required={fields["email"].isRequired}
                 />
             </div>
             <div className="mb-6">
@@ -109,6 +111,7 @@ export default function RequestForm({
                     isValid={!errors.phone}
                     error={errors.phone ? t(errors.phone) : ''}
                     icon={{ Icon: Add, isVisible: true }}
+                    required={fields["phone"].isRequired}
                 />
             </div>
             <div className="mb-3">
@@ -118,6 +121,7 @@ export default function RequestForm({
                     handleChange={(e) => handleChange(e, 'message')}
                     handleBlur={(e) => handleBlur(e, 'message')}
                     value={values.message as string}
+                    required={fields["message"].isRequired}
                 />
             </div>
             <div className="mb-6">
@@ -143,6 +147,7 @@ export default function RequestForm({
                     handleChange={(e) => handleChange(e, 'policy')}
                     isChecked={values.policy as boolean}
                     isValid={!errors.policy}
+                    required={fields["policy"].isRequired}
                 >
                     {t.rich('checkboxes.privacyPolicy', {
                         a: (chunks) => (

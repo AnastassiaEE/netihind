@@ -18,6 +18,7 @@ export default function Input({
     value,
     isValid = true,
     error,
+    required,
     className,
     children,
 }: {
@@ -33,6 +34,7 @@ export default function Input({
     value?: string;
     isValid?: boolean;
     error?: string;
+    required: boolean;
     className?: string;
     children?: React.ReactNode;
 }) {
@@ -65,6 +67,7 @@ export default function Input({
                     value={value}
                     autoComplete={name}
                     aria-invalid={!isValid}
+                    aria-required={required}
                 />
             </div>
             {!isValid && <FieldError size={size}>{error}</FieldError>}

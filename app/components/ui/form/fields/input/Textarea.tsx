@@ -13,6 +13,7 @@ export default function Textarea({
     value,
     isValid = true,
     error,
+    required,
     className,
 }: {
     size?: keyof typeof sizes;
@@ -24,6 +25,7 @@ export default function Textarea({
     value?: string;
     isValid?: boolean;
     error?: string;
+    required: boolean;
     className?: string;
 }) {
     const textAreaClasses = classNames(
@@ -48,6 +50,7 @@ export default function Textarea({
                 onBlur={handleBlur}
                 value={value}
                 aria-invalid={!isValid}
+                aria-required={required}
             ></textarea>
             {!isValid && <FieldError size={size}>{error}</FieldError>}
         </>

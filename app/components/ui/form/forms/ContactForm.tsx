@@ -51,6 +51,7 @@ export default function ContactForm() {
                     value={values.name as string}
                     isValid={!errors.name}
                     error={errors.name ? t(errors.name) : ''}
+                    required={fields["name"].isRequired}
                 />
             </div>
             <div className="mb-6">
@@ -64,6 +65,7 @@ export default function ContactForm() {
                     value={values.email as string}
                     isValid={!errors.email}
                     error={errors.email ? t(errors.email) : ''}
+                    required={fields["email"].isRequired}
                 />
             </div>
             <div className="mb-6">
@@ -77,6 +79,7 @@ export default function ContactForm() {
                     value={values.phone as string}
                     isValid={!errors.phone}
                     error={errors.phone ? t(errors.phone) : ''}
+                    required={fields["phone"].isRequired}
                     icon={{ Icon: Add, isVisible: true }}
                 />
             </div>
@@ -87,6 +90,7 @@ export default function ContactForm() {
                     handleChange={(e) => handleChange(e, 'message')}
                     handleBlur={(e) => handleBlur(e, 'message')}
                     value={values.message as string}
+                    required={fields["message"].isRequired}
                 />
             </div>
             <div className="mb-6">
@@ -95,6 +99,7 @@ export default function ContactForm() {
                     handleChange={(e) => handleChange(e, 'policy')}
                     isChecked={values.policy as boolean}
                     isValid={!errors.policy}
+                    required={fields["policy"].isRequired}
                 >
                     {t.rich('checkboxes.privacyPolicy', {
                         a: (chunks) => (

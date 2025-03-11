@@ -15,6 +15,7 @@ export default function IconInput({
     value,
     isValid,
     error,
+    required,
     icon: { Icon, isVisible, handleClick },
 }: {
     size?: InputSize;
@@ -29,6 +30,7 @@ export default function IconInput({
     value?: string;
     isValid: boolean;
     error?: string;
+    required: boolean;
     icon: { Icon: SvgIconComponent; isVisible: boolean; handleClick?: React.MouseEventHandler };
 }) {
     const inputClasses = classNames({
@@ -52,6 +54,7 @@ export default function IconInput({
             value={value}
             isValid={isValid}
             error={error}
+            required={required}
             className={inputClasses}
         >
             <div className={iconWrapperClasses}>
