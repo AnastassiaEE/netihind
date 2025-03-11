@@ -38,20 +38,16 @@ export default function SortingToolbar({
     const t = useTranslations('Filters');
 
     const {
-        isMounted: isPanelMounted,
-        isTransitioning: isPanelTransitioning,
+        isOpened: isPanelOpened,
         open: openPanel,
         close: closePanel,
-        handleTransitionEnd: handlePanelTransitionEnd,
         overlayRef: panelRef,
     } = useOverlay();
 
     const checkboxFiltersGroupRef = useRef<{ clearFilters: () => void } | null>(null);
 
     const clearFilters = () => {
-        if (checkboxFiltersGroupRef.current) {
-            checkboxFiltersGroupRef.current.clearFilters();
-        }
+        checkboxFiltersGroupRef.current?.clearFilters();
     };
 
     const panelActions = (
@@ -84,14 +80,13 @@ export default function SortingToolbar({
                     />
                 )}
             </div>
-            {filters && isPanelMounted && (
+            {filters && (
                 <SlideUpPanel
                     name="filters"
                     title={t('filters')}
-                    isTransitioning={isPanelTransitioning}
-                    handleClose={closePanel}
-                    handleTransitionEnd={handlePanelTransitionEnd}
                     actions={panelActions}
+                    isOpened={isPanelOpened}
+                    handleClose={closePanel}
                     panelRef={panelRef}
                 >
                     <CheckboxFilters ref={checkboxFiltersGroupRef} filters={filters} type="mobile" />

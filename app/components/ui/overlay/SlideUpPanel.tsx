@@ -11,18 +11,16 @@ export default function SlideUpPanel({
     name,
     title,
     actions,
-    isTransitioning,
+    isOpened,
     handleClose,
-    handleTransitionEnd,
     panelRef,
     children,
 }: {
     name: string;
     title: string;
     actions?: React.ReactNode;
-    isTransitioning: boolean;
+    isOpened: boolean;
     handleClose: () => void;
-    handleTransitionEnd: () => void;
     panelRef?: React.RefObject<HTMLDivElement>;
     children: React.ReactNode;
 }) {
@@ -30,20 +28,21 @@ export default function SlideUpPanel({
     const t = useTranslations('Buttons');
 
     const panelClasses = classNames(
-        'fixed inset-x-0 bottom-0 z-50 h-dvh rounded-t-2xl bg-white transition-transform duration-200',
-        isTransitioning ? 'translate-y-0' : 'translate-y-full',
+        'fixed inset-x-0 bottom-0 z-50 h-dvh rounded-t-2xl bg-white',
+        isOpened ? 'slideUpPanel-open' : 'slideUpPanel-close',
     );
 
     return (
-        <Backdrop isVisible={isTransitioning} handleClose={handleClose}>
+        <Backdrop isVisible={isOpened} handleClose={handleClose}>
             <div
                 role="dialog"
                 aria-modal="true"
+                aria-hidden={!isOpened}
                 aria-labelledby={`${name}-panel-title`}
                 ref={panelRef}
+                tabIndex={isOpened ? 0 : -1}
                 onTouchStart={handleTouchStart}
                 onTouchEnd={handleTouchEnd}
-                onTransitionEnd={handleTransitionEnd}
                 className={panelClasses}
             >
                 <div className="relative border-b border-muted-light px-6 pb-5 pt-7">
