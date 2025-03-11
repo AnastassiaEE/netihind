@@ -30,10 +30,10 @@ export default function Checkbox({
     return (
         <label className="flex cursor-pointer items-center">
             <input
-                id={name + (value ? `${value}` : '')}
                 name={name}
                 value={value}
                 type="checkbox"
+                aria-invalid={!isValid}
                 checked={isChecked}
                 onChange={handleChange}
                 className={checkboxClasses}
