@@ -8,20 +8,18 @@ export default function Modal({
     name,
     title,
     description,
-    isTransitioning,
+    isOpened,
     handleClose,
     modalRef,
-    handleTransitionEnd,
     className,
     children,
 }: {
     name: string;
     title: string;
     description?: string;
-    isTransitioning: boolean;
+    isOpened: boolean
     handleClose: () => void;
     modalRef?: React.RefObject<HTMLDivElement>;
-    handleTransitionEnd: () => void;
     className?: string;
     children: React.ReactNode;
 }) {
@@ -29,7 +27,7 @@ export default function Modal({
 
     const modalClasses = classNames(
         'fixed left-1/2 top-1/2 z-50 h-dvh w-max max-w-[100vw] overflow-auto rounded-lg bg-primary-light p-6 shadow-lg md:p-14 lg:max-w-[calc(100vw-50px)] lg:h-[calc(100vh-50px)]',
-        isTransitioning ? 'opacity-100' : 'opacity-0',
+        isOpened ? 'opacity-100 visible' : 'opacity-0 pointer-events-none invisible',
         className,
     );
     const titleClasses = classNames(
@@ -38,32 +36,35 @@ export default function Modal({
     );
 
     return (
-        <Backdrop isVisible={isTransitioning} handleClose={handleClose}>
+        <Backdrop isVisible={isOpened} handleClose={handleClose}>
             <div
                 role="dialog"
                 aria-modal="true"
+                aria-hidden={!isOpened}
                 aria-labelledby={`${name}-modal-title`}
                 aria-describedby={description ? `${name}-modal-description` : undefined}
                 ref={modalRef}
-                onTransitionEnd={handleTransitionEnd}
+                tabIndex={isOpened ? 0 : -1}
                 className={modalClasses}
                 style={{
-                    transform: isTransitioning
+                    transform: isOpened
                         ? 'translate(-50%, -50%) scale(1)'
                         : 'translate(-50%, -50%) scale(0.7)',
-                    transition: 'transform 0.15s ease-out, opacity 0.15s ease-out',
+                    transition: isOpened
+                        ? 'visibility 0s linear, transform 0.15s ease-out, opacity 0.15s ease-out'
+                        : 'transform 0.15s ease-out, opacity 0.15s ease-out, visibility 0s linear 0.15s'
                 }}
             >
                 <CloseButton
                     label={t(`${name}.close`)}
                     handleClick={handleClose}
-                    className="bg-white absolute top-4 right-4"
+                    className="absolute right-4 top-4 bg-white"
                 />
                 <p id={`${name}-modal-title`} className={titleClasses}>
                     {title}
                 </p>
                 {description && (
-                    <p id={`${name}-modal-description`} className="mb-6 font-medium text-lg">
+                    <p id={`${name}-modal-description`} className="mb-6 text-lg font-medium">
                         {description}
                     </p>
                 )}

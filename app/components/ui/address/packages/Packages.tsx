@@ -33,12 +33,10 @@ export default function Packages({
         usePackages(oid, initialPackages, sortOption, providers, technologies);
 
     const {
-        isMounted: isModalMounted,
-        isTransitioning: isModalTransitioning,
+        isOpened: isModalOpened,
         open: openModal,
         close: closeModal,
         overlayRef: modalRef,
-        handleTransitionEnd: handleModalTransitionEnd,
     } = useOverlay();
 
     const errorContent = (error: string) => (
@@ -52,6 +50,7 @@ export default function Packages({
             })}
         </PackagesError>
     );
+
     if (isLoading) return <PackagesLoader />;
     if (initialError) return errorContent(initialError);
     if (error) return errorContent(error);
@@ -68,23 +67,20 @@ export default function Packages({
                     />
                 ))}
             </div>
-            {isModalMounted && (
-                <Modal
-                    name={requestType}
-                    title={t(`request.${requestType}.title`)}
-                    description={t(`request.${requestType}.description`)}
-                    isTransitioning={isModalTransitioning}
-                    handleClose={closeModal}
-                    modalRef={modalRef}
-                    handleTransitionEnd={handleModalTransitionEnd}
-                >
-                    <PackageRequestContent
-                        requestType={requestType}
-                        data={selectedPackage}
-                        address={address}
-                    />
-                </Modal>
-            )}
+            <Modal
+                name={requestType}
+                title={t(`request.${requestType}.title`)}
+                description={t(`request.${requestType}.description`)}
+                isOpened={isModalOpened}
+                handleClose={closeModal}
+                modalRef={modalRef}
+            >
+                <PackageRequestContent
+                    requestType={requestType}
+                    data={selectedPackage}
+                    address={address}
+                />
+            </Modal>
         </>
     );
 }
