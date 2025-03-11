@@ -24,10 +24,11 @@ export default function AccordionItem({
     const isOutlined = variant === 'outlined';
     const isSolid = variant === 'solid';
 
-    const wrapperClasses = classNames('overflow-hidden', {
-        'border-x border-b border-muted-light first:rounded-t-lg first:border-t last:rounded-b-lg last:border-b':
-            variant === 'outlined',
-    });
+    const wrapperClasses = classNames(
+        'overflow-hidden',
+        variant === 'outlined' &&
+        'border-x border-b border-muted-light first:rounded-t-lg first:border-t last:rounded-b-lg last:border-b',
+    );
 
     const buttonClasses = classNames('flex w-full items-center justify-between text-left', {
         'p-6': isOutlined,
@@ -43,8 +44,8 @@ export default function AccordionItem({
     });
 
     const arrowClasses = classNames(
-        isOpened ? 'bg-primary text-white shadow-md shadow-primary/50' : 'bg-primary-light',
         'transition-colors',
+        isOpened ? 'bg-primary text-white shadow-md shadow-primary/50' : 'bg-primary-light',
     );
 
     return (
