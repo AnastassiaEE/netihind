@@ -36,7 +36,7 @@ export default function PackageRequestContent({
                 alt={`Selected package provider logo - ${data?.provider_name}`}
                 width={50}
                 height={32}
-                className="inline mr-3"
+                className="mr-3 inline"
             />
             <p className="inline align-middle">{data?.internet_package_name}</p>
         </PackageRequestSection>
@@ -45,11 +45,11 @@ export default function PackageRequestContent({
     if (requestType === 'connection')
         return (
             <div className="flex flex-col gap-6 md:flex-row">
-                <div className="md:w-7/12 max-md:order-2">{formSection}</div>
+                <div className="max-md:order-2 md:w-7/12">{formSection}</div>
                 <div className="md:w-5/12">
                     {packadeDetailsSection}
                     <PackageRequestSection title={getSectionTitle('total') + ':'}>
-                        <p className="flex justify-between items-center">
+                        <p className="flex items-center justify-between">
                             <span className="font-medium">
                                 {t(`request.${requestType}.details.packagePrice`)}:
                             </span>
