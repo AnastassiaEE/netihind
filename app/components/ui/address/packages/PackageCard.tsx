@@ -9,7 +9,7 @@ import PackageCardSection from '@/components/ui/address/packages/PackageCardSect
 import dynamic from 'next/dynamic';
 import InternetSpeedFeature from '@/components/ui/address/packages/InternetSpeedFeature';
 
-const Tooltip = dynamic(() => import('@/components/ui/Tooltip'));
+const Tooltip = dynamic(() => import('@/components/ui/overlay/Tooltip'));
 
 export default function PackageCard({
     data: {
