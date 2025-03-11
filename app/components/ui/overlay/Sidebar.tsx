@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
-import Backdrop from '@/components/ui/modal/Backdrop';
+import Backdrop from '@/components/ui/overlay/Backdrop';
 import CloseButton from '@/components/ui/buttons/CloseButton';
 import { useTranslations } from 'next-intl';
 

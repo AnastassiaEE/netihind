@@ -6,7 +6,7 @@ import Button from '@/components/ui/form/buttons/Button';
 import Sort from '@/components/ui/sorting/Sort';
 import { useTranslations } from 'next-intl';
 import { useRef } from 'react';
-import SlideUpPanel from '@/components/ui/modal/SlideUpPanel';
+import SlideUpPanel from '@/components/ui/overlay/SlideUpPanel';
 import useOverlay from '@/hooks/useOverlay';
 
 type FilterOption = {

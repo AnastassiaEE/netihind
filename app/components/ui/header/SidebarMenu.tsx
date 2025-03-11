@@ -4,7 +4,7 @@ import NavigationItem from '@/components/ui/navigation/NavigationItem';
 import LanguageSwitcher from '@/components/ui/language-switcher/LanguageSwitcher';
 import { useTranslations } from 'next-intl';
 import { usePathname } from '@/i18n/routing';
-import Sidebar from '@/components/ui/modal/Sidebar';
+import Sidebar from '@/components/ui/overlay/Sidebar';
 import { useSidebarMenuContext } from '@/app/contexts/SidebarMenuContext';
 import { Suspense } from 'react';
 

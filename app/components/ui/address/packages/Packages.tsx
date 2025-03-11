@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl';
 import PackageCard from '@/components/ui/address/packages/PackageCard';
 import PackagesError from '@/components/ui/errors/PackagesError';
 import { Link } from '@/i18n/routing';
-import Modal from '@/components/ui/modal/Modal';
+import Modal from '@/components/ui/overlay/Modal';
 import useOverlay from '@/hooks/useOverlay';
 import PackageRequestContent from '@/components/ui/address/packages/PackageRequestContent';
 
