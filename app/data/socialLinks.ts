@@ -4,6 +4,7 @@ const socialLinks = [
   {
     Icon: Facebook,
     href: 'https://www.facebook.com/share/PUr4KWMKkveH8VBZ/?mibextid=LQQJ4d',
+    label: 'Facebook',
     color: 'hover:bg-facebook-logo hover:shadow-facebook-logo/40',
   },
 ];
