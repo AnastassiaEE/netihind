@@ -11,7 +11,7 @@ export default function Checkbox({
     size = 'sm',
     isChecked = false,
     isValid = true,
-    required,
+    required = false,
     handleChange,
     children,
 }: {
@@ -20,7 +20,7 @@ export default function Checkbox({
     size?: keyof typeof sizes;
     isChecked: boolean;
     isValid?: boolean;
-    required: boolean;
+    required?: boolean;
     handleChange: React.ChangeEventHandler<HTMLInputElement>;
     children: React.ReactNode;
 }) {
