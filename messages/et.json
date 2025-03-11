@@ -254,7 +254,11 @@
       "open": "Ava filtrite paneel",
       "close": "Sulge filtrite paneel"
     },
-    "scroll-top": "Naaske lehe ülaossa"
+    "scroll-top": "Naaske lehe ülaossa",
+    "language": {
+      "ru": "Muuda keel vene keeleks",
+      "et": "Muuda keel eesti keeleks"
+    }
   },
   "Cookies": {
     "message": ""
