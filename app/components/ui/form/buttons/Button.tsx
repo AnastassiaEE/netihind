@@ -1,10 +1,9 @@
+import React from 'react';
 import classNames from 'classnames';
 import { FormElementSizes as sizes } from '@/styles/styles';
 
-const baseClasses = 'font-semibold transition-all';
-const variants: { primary: string; secondary: string; neutral: string; flat: string } = {
-  primary:
-    'rounded-md border border-primary bg-primary text-white shadow-md shadow-primary/50 hover:bg-primary-dark hover:shadow-none',
+const variants = {
+  primary: 'rounded-md border border-primary bg-primary text-white shadow-md hover:bg-primary-dark',
   secondary:
     'rounded-md border border-primary bg-white text-primary hover:bg-primary hover:text-white',
   neutral:
@@ -15,47 +14,57 @@ const variants: { primary: string; secondary: string; neutral: string; flat: str
 export type ButtonVariant = keyof typeof variants;
 export type ButtonSize = keyof typeof sizes;
 
-export default function Button({
-  type = 'button',
-  variant = 'primary',
-  size = 'sm',
-  disabled = false,
-  name,
-  className,
-  handleClick,
-  buttonRef,
-  children,
-  ...props
-}: {
+interface ButtonProps {
   type?: 'button' | 'submit' | 'reset';
   variant?: ButtonVariant;
   size?: ButtonSize;
   disabled?: boolean;
   name?: string;
-  className?: string;
   handleClick?: React.MouseEventHandler<HTMLButtonElement>;
-  buttonRef?: React.RefObject<HTMLButtonElement>;
+  className?: string;
   children: React.ReactNode;
   [key: string]: any;
-}) {
-  const buttonClasses = classNames(
-    baseClasses,
-    variants[variant],
-    sizes[size],
-    disabled && 'hover:cursor-not-allowed',
-    className
-  );
-  return (
-    <button
-      type={type}
-      name={name}
-      onClick={handleClick}
-      className={buttonClasses}
-      disabled={disabled}
-      ref={buttonRef}
-      {...props}
-    >
-      {children}
-    </button>
-  );
 }
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      type = 'button',
+      variant = 'primary',
+      size = 'sm',
+      disabled = false,
+      name,
+      handleClick,
+      className,
+      children,
+      ...props
+    },
+    ref,
+  ) => {
+    const buttonClasses = classNames(
+      'font-semibold transition-all',
+      variants[variant],
+      sizes[size],
+      disabled && 'hover:cursor-not-allowed',
+      className,
+    );
+
+    return (
+      <button
+        ref={ref}
+        type={type}
+        name={name}
+        onClick={handleClick}
+        className={buttonClasses}
+        disabled={disabled}
+        {...props}
+      >
+        {children}
+      </button>
+    );
+  },
+);
+
+Button.displayName = 'Button';
+
+export default Button;

@@ -63,7 +63,7 @@ export default async function AddressPackagesSection({
             <h1 className="mb-6 text-[calc(1.275rem+0.3vw)] font-extrabold md:text-2xl">
                 {t('AddressPage.packagesSection.title')}
             </h1>
-            <p className="font-medium mb-6">
+            <p className="mb-6 font-medium">
                 <HomeIcon className="mr-1 inline align-sub text-primary" />
                 {address}
             </p>
@@ -84,7 +84,7 @@ export default async function AddressPackagesSection({
                             <div className="my-4 flex justify-end max-md:hidden">
                                 <Sort
                                     name="packages"
-                                    variant="flat"
+                                    variant="desktop"
                                     options={SORT_OPTIONS}
                                     selected={selectedSortOption}
                                     className="rounded-md border border-muted-light"

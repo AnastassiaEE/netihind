@@ -2,20 +2,20 @@
 
 import { useTranslations } from 'next-intl';
 import SortIcon from '@mui/icons-material/Sort';
-import Option from '@/components/ui/form/fields/select/Option';
 import useSort from '@/hooks/useSort';
 import Select from '@/components/ui/form/fields/select/Select';
+import SelectOption from '@/components/ui/form/fields/select/SelectOption';
 
 export default function Sort({
     name,
-    variant = 'primary',
+    variant = 'desktop',
     openDirection = 'bottom',
     options,
     selected,
     className,
 }: {
     name: string;
-    variant?: 'primary' | 'secondary' | 'neutral' | 'flat';
+    variant?: 'desktop' | 'mobile';
     openDirection?: 'top' | 'bottom';
     options: string[];
     selected: string;
@@ -30,16 +30,18 @@ export default function Sort({
             translatedName={t(`${name}.button`)}
             label={t(`${name}.label`, { selected: t(`${name}.options.${selectedOption}`) })}
             selected={t(`${name}.options.${selectedOption}`)}
-            variant={variant}
-            Icon={SortIcon}
+            variant={variant === 'desktop' ? 'flat' : 'secondary'}
+            Icon={variant === 'desktop' ? SortIcon : undefined}
+            hasArrow={variant === 'desktop'}
+            displaySelected={variant === 'desktop'}
             openDirection={openDirection}
             handleChange={handleChange}
             className={className}
         >
             {options.map((option) => (
-                <Option key={option} value={option} isSelected={option === selectedOption}>
+                <SelectOption key={option} value={option} isSelected={option === selectedOption}>
                     {t(`${name}.options.${option}`)}
-                </Option>
+                </SelectOption>
             ))}
         </Select>
     );

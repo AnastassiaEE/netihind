@@ -1,45 +1,56 @@
-import { SvgIconComponent } from '@mui/icons-material';
-import Button, { ButtonVariant, ButtonSize } from '@/components/ui/form/buttons/Button';
-import classNames from 'classnames';
+import React from "react";
+import { SvgIconComponent } from "@mui/icons-material";
+import Button, { ButtonVariant, ButtonSize } from "@/components/ui/form/buttons/Button";
+import classNames from "classnames";
 
-export default function IconButton({
-    type = 'button',
-    variant = 'primary',
-    size = 'sm',
-    disabled = false,
-    name,
-    className,
-    Icon,
-    handleClick,
-    children,
-}: {
-    type?: 'button' | 'submit' | 'reset';
+interface IconButtonProps {
+    type?: "button" | "submit" | "reset";
     variant?: ButtonVariant;
     size?: ButtonSize;
     disabled?: boolean;
     name?: string;
-    className?: string;
     Icon: SvgIconComponent;
     handleClick?: React.MouseEventHandler<HTMLButtonElement>;
+    className?: string;
     children: React.ReactNode;
-}) {
-    const iconClasses = classNames(
-        'mr-2 align-text-bottom',
-        variant === 'secondary' && 'text-primary',
-    );
-
-    return (
-        <Button
-            type={type}
-            variant={variant}
-            size={size}
-            disabled={disabled}
-            name={name}
-            className={className}
-            handleClick={handleClick}
-        >
-            <Icon fontSize={size === 'lg' ? 'medium' : 'small'} className={iconClasses} />
-            {children}
-        </Button>
-    );
+    [key: string]: any;
 }
+
+const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
+    (
+        {
+            type = "button",
+            variant = "primary",
+            size = "sm",
+            disabled = false,
+            name,
+            Icon,
+            handleClick,
+            className,
+            children,
+            ...props
+        },
+        ref
+    ) => {
+        return (
+            <Button
+                ref={ref}
+                type={type}
+                variant={variant}
+                size={size}
+                disabled={disabled}
+                name={name}
+                className={classNames("flex items-center gap-2", className)}
+                handleClick={handleClick}
+                {...props}
+            >
+                <Icon fontSize={size === "lg" ? "medium" : "small"} />
+                {children}
+            </Button>
+        );
+    }
+);
+
+IconButton.displayName = "IconButton";
+
+export default IconButton;

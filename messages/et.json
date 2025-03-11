@@ -139,7 +139,7 @@
   "Sort": {
     "packages": {
       "button": "Järjesta",
-      "label": "Internetipakettide järjestus. Praegune valik: {selected}",
+      "label": "Internetipakettide järjestus",
       "options": {
         "default": "Vaikimisi",
         "price_asc": "Soodsamad enne",
@@ -161,7 +161,7 @@
       "email": "E-post",
       "phone": "Telefon",
       "address": "Aadress",
-      "time": "Helistamise aeg. Praegune valik: {selected}",
+      "time": "Helistamise aeg",
       "message": "Sõnum"
     },
     "checkboxes": {
