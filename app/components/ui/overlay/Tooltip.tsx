@@ -22,7 +22,6 @@ export default function Popover({
                 onBlur: hide,
                 className: classNames(elementToInteract.props.className, 'cursor-pointer text-xs'),
                 'aria-describedby': isVisible ? 'tooltip-content' : undefined,
-                'aria-hidden': isVisible ? 'false' : 'true',
                 'tabIndex': 0
             })}
             {isVisible && (
