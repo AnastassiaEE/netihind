@@ -11,7 +11,7 @@ export default function RelatedBlogPostsSection() {
         <SectionLayout>
             <div className="md:flex md:justify-end">
                 <Link href="/blog" passHref>
-                    <Button variant="secondary" size="lg" className="w-full md:w-auto">
+                    <Button variant="outlined" size="lg" className="w-full md:w-auto">
                         {t('buttons.allPosts')}
                     </Button>
                 </Link>

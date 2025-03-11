@@ -69,7 +69,7 @@ export default function SortingToolbar({
                 )}
             >
                 {filters && (
-                    <Button handleClick={openPanel} variant="secondary" className="min-w-[150px]">
+                    <Button handleClick={openPanel} variant="outlined" className="min-w-[150px]">
                         {t('filter').toUpperCase()}
                     </Button>
                 )}

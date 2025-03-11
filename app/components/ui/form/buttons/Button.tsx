@@ -3,12 +3,12 @@ import classNames from 'classnames';
 import { FormElementSizes as sizes } from '@/styles/styles';
 
 const variants = {
-  primary: 'rounded-md border border-primary bg-primary text-white shadow-md hover:bg-primary-dark',
-  secondary:
+  contained: 'rounded-md border border-primary bg-primary text-white shadow-md hover:bg-primary-dark',
+  outlined:
     'rounded-md border border-primary bg-white text-primary hover:bg-primary hover:text-white',
   neutral:
     'rounded-md border border-primary-light bg-primary-light text-muted-dark hover:bg-primary hover:text-white',
-  flat: 'text-primary hover:text-primary-dark',
+  text: 'text-primary hover:text-primary-dark',
 };
 
 export type ButtonVariant = keyof typeof variants;
@@ -30,7 +30,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       type = 'button',
-      variant = 'primary',
+      variant = 'contained',
       size = 'sm',
       disabled = false,
       name,

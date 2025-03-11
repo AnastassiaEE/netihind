@@ -30,7 +30,7 @@ export default function Sort({
             translatedName={t(`${name}.button`)}
             label={t(`${name}.label`, { selected: t(`${name}.options.${selectedOption}`) })}
             selected={t(`${name}.options.${selectedOption}`)}
-            variant={variant === 'desktop' ? 'flat' : 'secondary'}
+            variant={variant === 'desktop' ? 'text' : 'outlined'}
             Icon={variant === 'desktop' ? SortIcon : undefined}
             hasArrow={variant === 'desktop'}
             displaySelected={variant === 'desktop'}

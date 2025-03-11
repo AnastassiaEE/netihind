@@ -16,7 +16,7 @@ export default function PackageActions({
                 {t('buttons.connect')}
             </Button>
             <Button
-                variant="secondary"
+                variant="outlined"
                 className="w-full rounded-t-none rounded-bl-none"
                 handleClick={() => handleActionClick('consultation')}
             >

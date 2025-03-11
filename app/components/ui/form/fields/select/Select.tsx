@@ -13,7 +13,7 @@ export default function Select({
     translatedName,
     label,
     selected,
-    variant = 'primary',
+    variant = 'contained',
     Icon,
     hasArrow = true,
     displaySelected = true,
@@ -27,7 +27,7 @@ export default function Select({
     translatedName?: string;
     label: string;
     selected: string;
-    variant?: 'primary' | 'secondary' | 'neutral' | 'flat';
+    variant?: 'contained' | 'outlined' | 'neutral' | 'text';
     Icon?: SvgIconComponent;
     hasArrow?: boolean;
     displaySelected?: boolean;
@@ -38,7 +38,7 @@ export default function Select({
 }) {
     const { isExpanded, comboBoxRef, listBoxRef, toggleSelect, handleOptionSelect } = useSelect();
 
-    const comboBoxClasses = classNames(sizes[size], className, variant !== 'flat' && 'uppercase');
+    const comboBoxClasses = classNames(sizes[size], className, !displaySelected && 'uppercase');
     const listBoxClasses = classNames(
         'border-grey-300 absolute right-0 z-[1] w-full min-w-max rounded-md bg-white drop-shadow-md',
         openDirection === 'top' && 'bottom-full',

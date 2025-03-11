@@ -14,7 +14,7 @@ export default function ButtonsFilter({ options }: { options: { [key: string]: b
                 <Button
                     key={option}
                     handleClick={() => handleOptionClick(option)}
-                    variant={isSelected ? 'primary' : 'neutral'}
+                    variant={isSelected ? 'contained' : 'neutral'}
                     className="rounded-md uppercase"
                     name={option}
                 >
