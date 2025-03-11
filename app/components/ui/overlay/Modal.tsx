@@ -44,7 +44,7 @@ export default function Modal({
                 aria-labelledby={`${name}-modal-title`}
                 aria-describedby={description ? `${name}-modal-description` : undefined}
                 ref={modalRef}
-                tabIndex={isOpened ? 0 : -1}
+                tabIndex={isOpened ? 0 : undefined}
                 className={modalClasses}
             >
                 <CloseButton

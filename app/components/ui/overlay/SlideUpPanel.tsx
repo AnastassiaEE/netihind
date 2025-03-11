@@ -40,7 +40,7 @@ export default function SlideUpPanel({
                 aria-hidden={!isOpened}
                 aria-labelledby={`${name}-panel-title`}
                 ref={panelRef}
-                tabIndex={isOpened ? 0 : -1}
+                tabIndex={isOpened ? 0 : undefined}
                 onTouchStart={handleTouchStart}
                 onTouchEnd={handleTouchEnd}
                 className={panelClasses}

@@ -68,7 +68,7 @@ export default function AccordionItem({
                 className="transition-all duration-500"
                 style={{ height: collapsibleHeight + 'px' }}
             >
-                <div ref={collapsible} className={bodyClasses}>
+                <div ref={collapsible} className={bodyClasses} tabIndex={isOpened ? 0 : undefined}>
                     {body}
                 </div>
             </div>

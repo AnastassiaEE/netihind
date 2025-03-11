@@ -34,7 +34,7 @@ export default function Sidebar({
                 aria-hidden={!isOpened}
                 aria-labelledby={`sidebar-${name}-title`}
                 ref={sidebarRef}
-                tabIndex={isOpened ? 0 : -1}
+                tabIndex={isOpened ? 0 : undefined}
                 className={sidebarClasses}
             >
                 <div className="flex justify-between border-b border-muted-light px-6 py-5">
