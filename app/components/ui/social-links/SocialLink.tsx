@@ -16,6 +16,7 @@ export default function SocialLink({
         <a
             href={href}
             target="_blank"
+            rel="noopener noreferrer"
             aria-label={label}
             className={classNames(
                 'flex size-11 items-center justify-center rounded-md bg-white/5 transition-colors ease-in hover:shadow-lg',
