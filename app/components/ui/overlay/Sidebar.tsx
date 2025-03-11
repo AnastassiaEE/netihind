@@ -7,36 +7,35 @@ import { useTranslations } from 'next-intl';
 export default function Sidebar({
     name,
     title,
-    isTransitioning,
+    isOpened,
     handleClose,
-    handleTransitionEnd,
     sidebarRef,
     children,
 }: {
     name: string;
     title: string;
-    isTransitioning: boolean;
+    isOpened: boolean;
     handleClose: () => void;
-    handleTransitionEnd: () => void;
     sidebarRef?: React.RefObject<HTMLDivElement>;
     children: React.ReactNode;
 }) {
     const t = useTranslations('Buttons');
 
-    const sidebarWrapperClasses = classNames(
-        'fixed inset-y-0 right-0 z-50 w-80 max-w-full bg-white shadow-md transition-transform duration-200',
-        isTransitioning ? 'translate-x-0' : 'translate-x-full',
+    const sidebarClasses = classNames(
+        'fixed inset-y-0 right-0 z-50 w-80 max-w-full bg-white shadow-md',
+        isOpened ? 'sidebar-open' : 'sidebar-close',
     );
 
     return (
-        <Backdrop isVisible={isTransitioning} handleClose={handleClose}>
+        <Backdrop isVisible={isOpened} handleClose={handleClose}>
             <div
                 role="dialog"
                 aria-modal="true"
+                aria-hidden={!isOpened}
                 aria-labelledby={`sidebar-${name}-title`}
                 ref={sidebarRef}
-                onTransitionEnd={handleTransitionEnd}
-                className={sidebarWrapperClasses}
+                tabIndex={isOpened ? 0 : -1}
+                className={sidebarClasses}
             >
                 <div className="flex justify-between border-b border-muted-light px-6 py-5">
                     <p id={`sidebar-${name}-title`} className="text-xl font-extrabold text-black">

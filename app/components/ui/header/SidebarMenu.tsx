@@ -11,13 +11,7 @@ import { Suspense } from 'react';
 export default function SidebarMenu() {
     const t = useTranslations('Navigation');
     const pathname = usePathname();
-    const {
-        isSidebarMenuMounted,
-        isSidebarMenuTransitioning,
-        closeSidebarMenu,
-        handleSidebarMenuTransitionEnd,
-        sidebarMenuRef,
-    } = useSidebarMenuContext();
+    const { isSidebarMenuOpened, closeSidebarMenu, sidebarMenuRef } = useSidebarMenuContext();
 
     const handleLinkClick = (e: React.MouseEvent) => {
         const target = e.target as HTMLLinkElement;
@@ -26,34 +20,32 @@ export default function SidebarMenu() {
         }
     };
 
-    if (isSidebarMenuMounted)
-        return (
-            <Sidebar
-                name="menu"
-                title={t('menu')}
-                isTransitioning={isSidebarMenuTransitioning}
-                sidebarRef={sidebarMenuRef}
-                handleClose={closeSidebarMenu}
-                handleTransitionEnd={handleSidebarMenuTransitionEnd}
-            >
-                <div className="p-6" onClick={handleLinkClick}>
-                    <Navigation type="vertical">
-                        <NavigationItem href="/blog" isActive={pathname === '/blog'}>
-                            {t('blog')}
-                        </NavigationItem>
-                        <NavigationItem href="/about" isActive={pathname === '/about'}>
-                            {t('about')}
-                        </NavigationItem>
-                        <NavigationItem href="/contacts" isActive={pathname === '/contacts'}>
-                            {t('contacts')}
-                        </NavigationItem>
-                    </Navigation>
-                    <div className="py-8">
-                        <Suspense>
-                            <LanguageSwitcher />
-                        </Suspense>
-                    </div>
+    return (
+        <Sidebar
+            name="menu"
+            title={t('menu')}
+            isOpened={isSidebarMenuOpened}
+            sidebarRef={sidebarMenuRef}
+            handleClose={closeSidebarMenu}
+        >
+            <div className="p-6" onClick={handleLinkClick}>
+                <Navigation type="vertical">
+                    <NavigationItem href="/blog" isActive={pathname === '/blog'}>
+                        {t('blog')}
+                    </NavigationItem>
+                    <NavigationItem href="/about" isActive={pathname === '/about'}>
+                        {t('about')}
+                    </NavigationItem>
+                    <NavigationItem href="/contacts" isActive={pathname === '/contacts'}>
+                        {t('contacts')}
+                    </NavigationItem>
+                </Navigation>
+                <div className="py-8">
+                    <Suspense>
+                        <LanguageSwitcher />
+                    </Suspense>
                 </div>
-            </Sidebar>
-        );
+            </div>
+        </Sidebar>
+    );
 }

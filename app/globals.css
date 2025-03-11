@@ -33,13 +33,13 @@
 }
 
 .sidebar-open {
-  transform: translateX(100%);
+  transform: translateX(0);
   visibility: visible;
   transition: visibility 0s linear, transform 0.2s ease-out;
 }
 
 .sidebar-close {
-  transform: translateX(0);
+  transform: translateX(100%);
   visibility: hidden;
   pointer-events: none;
   transition: transform 0.2s ease-out, visibility 0s linear 0.2s;
