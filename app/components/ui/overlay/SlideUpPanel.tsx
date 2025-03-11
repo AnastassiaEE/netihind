@@ -37,7 +37,6 @@ export default function SlideUpPanel({
             <div
                 role="dialog"
                 aria-modal="true"
-                aria-hidden={!isOpened}
                 aria-labelledby={`${name}-panel-title`}
                 ref={panelRef}
                 tabIndex={isOpened ? 0 : undefined}

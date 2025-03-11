@@ -31,7 +31,6 @@ export default function Sidebar({
             <div
                 role="dialog"
                 aria-modal="true"
-                aria-hidden={!isOpened}
                 aria-labelledby={`sidebar-${name}-title`}
                 ref={sidebarRef}
                 tabIndex={isOpened ? 0 : undefined}

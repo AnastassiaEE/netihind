@@ -40,7 +40,6 @@ export default function Modal({
             <div
                 role="dialog"
                 aria-modal="true"
-                aria-hidden={!isOpened}
                 aria-labelledby={`${name}-modal-title`}
                 aria-describedby={description ? `${name}-modal-description` : undefined}
                 ref={modalRef}
