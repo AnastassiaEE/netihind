@@ -16,3 +16,17 @@
   background: #a3a5a6;
   border-radius: 10px;
 }
+
+.modal-open {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  visibility: visible;
+  transition: visibility 0s linear, transform 0.2s ease-out, opacity 0.2s ease-out;
+}
+
+.modal-close {
+  transform: translate(-50%, -50%) scale(0.7);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out, visibility 0s linear 0.2s;
+}

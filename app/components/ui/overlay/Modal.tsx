@@ -17,7 +17,7 @@ export default function Modal({
     name: string;
     title: string;
     description?: string;
-    isOpened: boolean
+    isOpened: boolean;
     handleClose: () => void;
     modalRef?: React.RefObject<HTMLDivElement>;
     className?: string;
@@ -27,7 +27,7 @@ export default function Modal({
 
     const modalClasses = classNames(
         'fixed left-1/2 top-1/2 z-50 h-dvh w-max max-w-[100vw] overflow-auto rounded-lg bg-primary-light p-6 shadow-lg md:p-14 lg:max-w-[calc(100vw-50px)] lg:h-[calc(100vh-50px)]',
-        isOpened ? 'opacity-100 visible' : 'opacity-0 pointer-events-none invisible',
+        isOpened ? 'modal-open' : 'modal-close pointer-events-none',
         className,
     );
     const titleClasses = classNames(
@@ -46,14 +46,6 @@ export default function Modal({
                 ref={modalRef}
                 tabIndex={isOpened ? 0 : -1}
                 className={modalClasses}
-                style={{
-                    transform: isOpened
-                        ? 'translate(-50%, -50%) scale(1)'
-                        : 'translate(-50%, -50%) scale(0.7)',
-                    transition: isOpened
-                        ? 'visibility 0s linear, transform 0.15s ease-out, opacity 0.15s ease-out'
-                        : 'transform 0.15s ease-out, opacity 0.15s ease-out, visibility 0s linear 0.15s'
-                }}
             >
                 <CloseButton
                     label={t(`${name}.close`)}
