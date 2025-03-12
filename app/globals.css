@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Scrollbar */
+
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -16,6 +18,8 @@
   background: #a3a5a6;
   border-radius: 10px;
 }
+
+/* Open/close animations */
 
 .modal-open {
   transform: translate(-50%, -50%) scale(1);
