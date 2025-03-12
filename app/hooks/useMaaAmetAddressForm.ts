@@ -128,7 +128,7 @@ export default function useMaaAmetAddressForm(nonce: string) {
       document.querySelector('.inads-input-clear')?.removeEventListener('click', removeAddress);
       document.querySelector('.inads-input-clear')?.removeEventListener('click', removeErrors);
     };
-  }, [locale]);
+  }, [locale, nonce]);
 
   return {
     isScriptLoaded,
