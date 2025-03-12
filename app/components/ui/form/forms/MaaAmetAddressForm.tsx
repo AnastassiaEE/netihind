@@ -7,10 +7,10 @@ import { useTranslations } from 'next-intl';
 import useMaaAmetAddressForm from '@/hooks/useMaaAmetAddressForm';
 import AddressFormLoader from '@/components/ui/loaders/AddressFormLoader';
 
-export default function MaaAmetAddressForm() {
+export default function MaaAmetAddressForm({ nonce }: { nonce: string }) {
     const t = useTranslations('Form');
     const { isScriptLoaded, isLoading, handleSubmit, handleKeyDown, isFormVisible, error } =
-        useMaaAmetAddressForm();
+        useMaaAmetAddressForm(nonce);
 
     return (
         <>

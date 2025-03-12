@@ -7,7 +7,7 @@ import MaaAmetAddressForm from '@/components/ui/form/forms/MaaAmetAddressForm';
 import { useTranslations } from 'next-intl';
 
 
-export default function TopSection() {
+export default function TopSection({ nonce }: { nonce: string }) {
     const t = useTranslations('HomePage');
     return (
         <SectionLayout
@@ -27,7 +27,7 @@ export default function TopSection() {
                     })}
                 </H1>
                 <p className="mb-4 md:text-lg">{t('topSection.description')}</p>
-                <MaaAmetAddressForm />
+                <MaaAmetAddressForm nonce={nonce} />
             </div>
             <div className="absolute inset-x-0 bottom-0 -z-10 bg-primary/10 py-3 md:p-9">
                 <div className="md:container">

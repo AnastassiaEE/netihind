@@ -7,6 +7,8 @@ import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 //import CookieConsent from '@/components/ui/cookies/CookieConsent';
+import { headers } from 'next/headers';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 
 const inter = Manrope({ subsets: ['latin'] });
 
@@ -32,16 +34,24 @@ export default async function RootLayout({
   }
 
   setRequestLocale(locale);
-
   const messages = await getMessages();
+
+  const nonce = headers().get('x-nonce') ?? '';
 
   return (
     <html lang={locale}>
       <body className={`${inter.className} relative`}>
         <NextIntlClientProvider messages={messages}>
-          <ScrollTopButton />
-          {/* <CookieConsent /> */}
-          {children}
+          <AppRouterCacheProvider
+            options={{
+              key: 'mui',
+              nonce: nonce,
+              prepend: true,
+            }}
+          >
+            <ScrollTopButton />
+            {children}
+          </AppRouterCacheProvider>
         </NextIntlClientProvider>
       </body>
     </html>

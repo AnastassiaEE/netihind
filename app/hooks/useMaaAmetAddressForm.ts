@@ -4,7 +4,7 @@ import { useRouter } from '@/i18n/routing';
 import { useEffect, useRef, useState } from 'react';
 import { getAddressSlug } from '@/utils/addressSlugifier';
 
-export default function useMaaAmetAddressForm() {
+export default function useMaaAmetAddressForm(nonce: string) {
   const isWidgetAdded = useRef(false);
   const [address, setAddress] = useState({
     full: '',
@@ -75,6 +75,17 @@ export default function useMaaAmetAddressForm() {
     }
   };
 
+  const removeInlineStyles = () => {
+    document.querySelectorAll('style').forEach((styleEl) => {
+      if (styleEl.textContent && styleEl.textContent.includes('inads')) {
+        styleEl.remove();
+      }
+    });
+    document.querySelectorAll('#in-address, #in-address *').forEach((el) => {
+      el.removeAttribute('style');
+    });
+  };
+
   useEffect(() => {
     const initializeWidget = () => {
       if (isWidgetAdded.current) return;
@@ -92,7 +103,9 @@ export default function useMaaAmetAddressForm() {
 
     const script = document.createElement('script');
     script.src = 'https://inaadress.maaamet.ee/inaadress/js/inaadress.min.js?d=20220510';
+    script.setAttribute('nonce', nonce);
     script.onload = () => {
+      removeInlineStyles();
       setIsScriptLoaded(true);
       initializeWidget();
       document.addEventListener('addressSelected', getAddress);
