@@ -50,7 +50,7 @@ const components = {
     );
   },
   table: ({ children }: { children: React.ReactNode }) => (
-    <table className="table-auto border border-collapse border-muted-light text-muted-dark [&:not(:last-child)]:mb-6">
+    <table className="table-auto border-collapse border border-muted-light text-muted-dark [&:not(:last-child)]:mb-6">
       {children}
     </table>
   ),
@@ -65,12 +65,12 @@ const components = {
     </td>
   ),
   a: ({ children }: { children: React.ReactNode }) => (
-    <a href={`mailto:${children}`} className="hover:text-primary transition-colors font-semibold">
+    <a href={`mailto:${children}`} className="font-semibold transition-colors hover:text-primary">
       {children}
     </a>
   ),
   strong: ({ children }: { children: React.ReactNode }) => (
-    <strong className="text-black font-bold">{children}</strong>
+    <strong className="font-bold text-black">{children}</strong>
   ),
   img: (props: any) => (
     <Image
