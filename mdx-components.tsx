@@ -1,4 +1,3 @@
-import type { MDXComponents } from 'mdx/types';
 import Check from '@/components/ui/icons/Check';
 import Image from 'next/image';
 import React, { Children } from 'react';
@@ -84,10 +83,3 @@ const components = {
 };
 
 export default components;
-
-export function useMDXComponents(components: MDXComponents): MDXComponents {
-  return {
-    components,
-    ...components,
-  };
-}

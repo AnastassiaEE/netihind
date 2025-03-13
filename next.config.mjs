@@ -1,13 +1,9 @@
-import createMDX from '@next/mdx';
-import remarkGfm from 'remark-gfm';
-import remarkFrontmatter from 'remark-frontmatter';
-import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 import createNextIntlPlugin from 'next-intl/plugin';
 
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
   //output: 'export',
   reactStrictMode: true,
   trailingSlash: true,
@@ -34,14 +30,6 @@ const nextConfig = {
     */
 };
 
-const withMDX = createMDX({
-  extension: /\.mdx?$/,
-  options: {
-    // More MDX options
-    remarkPlugins: [remarkGfm, remarkFrontmatter, remarkMdxFrontmatter],
-  },
-});
-
 const withNextIntl = createNextIntlPlugin();
 
-export default withNextIntl(withMDX(nextConfig));
+export default withNextIntl(nextConfig);
