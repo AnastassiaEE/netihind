@@ -3,7 +3,7 @@
 import secondaryLogo from '@/public/images/gradientsecondarylogo.svg';
 import useScrollPosition from '@/hooks/useScrollPosition';
 import Hamburger from '@/components/ui/header/Hamburger';
-import Logo from '@/components/ui/Logo';
+import LinkLogo from '@/components/ui/logo/LinkLogo';
 import { useSidebarMenuContext } from '@/app/contexts/SidebarMenuContext';
 import { useTranslations } from 'next-intl';
 
@@ -25,7 +25,7 @@ export default function StickyHeader() {
         >
             <div className="container">
                 <div className="flex flex-wrap justify-between">
-                    <Logo src={secondaryLogo} sizeClass="w-12" />
+                    <LinkLogo src={secondaryLogo} sizeClass="w-12" />
                     <div className="flex items-center">
                         <Hamburger label={t('menu.open')} handleClick={openSidebarMenu}></Hamburger>
                     </div>
