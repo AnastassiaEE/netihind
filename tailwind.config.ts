@@ -60,14 +60,9 @@ const config: Config = {
         'youtube-logo': 'rgb(255, 0, 0)',
         'linkedin-logo': '#0077B5',
       },
-
       backgroundImage: {
         'instagram-logo':
           'linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)',
-      },
-      gridTemplateColumns: {
-        'packages-4': 'repeat(4, minmax(max-content, 100%))',
-        'packages-5': 'repeat(5, minmax(max-content, 100%))',
       },
       boxShadow: {
         top: '0 -4px 8px rgba(0, 0, 0, .08), 0 -1px 1px rgba(0, 0, 0, .08);',
