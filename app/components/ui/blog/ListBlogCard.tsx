@@ -36,10 +36,9 @@ export default function ListBlogCard({
                     <Image
                         src={src}
                         alt={alt}
+                        className="object-cover max-md:rounded-t-lg md:rounded-l-lg"
                         fill={true}
-                        style={{ objectFit: 'cover' }}
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="max-md:rounded-t-lg md:rounded-l-lg"
+                        sizes="(max-width: 767px) 100vw, 33vw"
                     />
                 </div>
                 <div className="p-6 md:w-8/12">
