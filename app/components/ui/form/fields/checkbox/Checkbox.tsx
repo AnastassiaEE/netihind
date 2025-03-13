@@ -25,7 +25,7 @@ export default function Checkbox({
     children: React.ReactNode;
 }) {
     const checkboxClasses = classNames(
-        'mr-2 size-4 shrink-0 cursor-pointer appearance-none rounded-[.185em] border checked:border-primary checked:bg-primary checked:bg-[url("/images/tick.svg")] checked:bg-contain',
+        'checkbox mr-2 size-4 shrink-0 cursor-pointer appearance-none rounded-[.185em] border checked:border-primary checked:bg-primary checked:bg-contain',
         [sizes[size].checkboxSize],
         isValid ? 'border-valid' : 'border-invalid',
     );
