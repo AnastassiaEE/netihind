@@ -1,4 +1,4 @@
-import BlogCardsWrapper from '@/components/ui/blog/BlogCardsWrapper';
+import BlogCardsWrapper from '@/components/dataWrappers/BlogCardsWrapper';
 import ListBlogCards from '@/components/ui/blog/ListBlogCards';
 import SectionLayout from '@/layouts/SectionLayout';
 import { H1 } from '@/components/ui/headings/RestPageHeadings';

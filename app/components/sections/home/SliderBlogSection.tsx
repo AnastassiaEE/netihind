@@ -1,5 +1,5 @@
 import SectionLayout from '@/layouts/SectionLayout';
-import BlogCardsWrapper from '@/components/ui/blog/BlogCardsWrapper';
+import BlogCardsWrapper from '@/components/dataWrappers/BlogCardsWrapper';
 import SliderBlogCards from '@/components/ui/blog/SliderBlogCards';
 import { H2 } from '@/components/ui/headings/HomePageHeadings';
 import { useTranslations } from 'next-intl';
