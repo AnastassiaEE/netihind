@@ -10,7 +10,6 @@ import { useTranslations } from 'next-intl';
 import { formatISO } from 'date-fns';
 import { openGraphLogo, website, readAction } from '@/app/shared-metadata';
 import { metadataBaseUrl } from '@/app/[locale]/layout';
-import { headers } from 'next/headers'
 
 export const revalidate = 3600;
 
@@ -37,7 +36,6 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 export default function Home({ params: { locale } }: { params: { locale: string } }) {
   setRequestLocale(locale);
   const t = useTranslations('SEO');
-  const nonce = headers().get('x-nonce') ?? '';
 
   const homePageUrl = new URL(t('homePage.url'), metadataBaseUrl).toString();
   const jsonLd = {
@@ -74,7 +72,7 @@ export default function Home({ params: { locale } }: { params: { locale: string 
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <TopSection nonce={nonce} />
+      <TopSection />
       {/* <InfoSection i18n={t} /> */}
       {/* <ProvidersLogoSection /> */}
       <StepsSection />
