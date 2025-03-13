@@ -1,8 +1,7 @@
-import gradientMainLogo from '@/public/images/gradientmainlogo.png';
 import { metadataBaseUrl } from '@/app/[locale]/layout';
 
 export const openGraphLogo = {
-  url: gradientMainLogo.src,
+  url: 'https://rxysmdetqttpdqfmrpym.supabase.co/storage/v1/object/public/website-logos//gradientmainlogo.png',
   width: 1200,
   height: 630,
   alt: 'Netihind logo',
