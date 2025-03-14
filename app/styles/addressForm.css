@@ -36,6 +36,14 @@ text-muted-dark
   @apply w-full px-10;
 }
 
+.inads-input.apartmnet {
+  @apply w-9/12;
+}
+
+.inads-appartment {
+  @apply w-3/12;
+}
+
 .inads-input.invalid,
 .inads-appartment.invalid {
   @apply border-invalid;
@@ -82,5 +90,5 @@ text-muted-dark
 }
 
 .inads-input-clear.appartment {
-  @apply right-28 !important;
+  @apply right-[20.5%];
 }
