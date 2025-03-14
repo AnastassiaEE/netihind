@@ -22,7 +22,7 @@ export default function NotFound() {
                             })}
                         </p>
                         <Link href="/">
-                            <IconButton variant="contained" size="lg" Icon={HomeIcon}>
+                            <IconButton size="lg" Icon={HomeIcon}>
                                 {t('buttons.returnHome')}
                             </IconButton>
                         </Link>
