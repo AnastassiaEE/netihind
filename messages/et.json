@@ -2,11 +2,11 @@
   "HomePage": {
     "topSection": {
       "title": "Otsige koduseid <span>Interneti-teenuse pakkujaid</span> aadressi järgi",
-      "description": "Kas ei tea, milline teenusepakkuja Teie kodus on? Kas soovite valida kiiruse, hinna ja ühendustehnoloogia poolest teile sobiva paketi? Andke meile teada ja vaatame koos üle!"
+      "description": "Kas Te ei tea, milline teenusepakkuja Teie kodus on? Kas soovite valida kiiruselt, hinnalt ja ühendustehnoloogia poolest Teile sobiva paketi? Andke meile teada, vaatame koos üle!"
     },
     "stepsSection": {
       "title": "Kuidas see toimib?",
-      "description": "4 lihtsat sammu, mis aitavad Teil ühendada koduse Interneti.",
+      "description": "4 lihtsat sammu, mis aitavad Teil ühendada koduinterneti.",
       "steps": {
         "step1": {
           "title": "Aadressi täitmine",
@@ -217,8 +217,8 @@
   },
   "SEO": {
     "website": {
-      "name": "Netihind.ee - sõltumatu internetipaketide võrdlusportaal.",
-      "description": "Sõltumatu internetipaketide võrdlusportaal. Võrdle kõiki internetipakette ja vali enda jaoks parim lahendus.",
+      "name": "Netihind.ee - sõltumatu internetipakettide võrdlusportaal.",
+      "description": "Sõltumatu internetipakettide võrdlusportaal: võrrelge kõiki internetipakette ja leidke endale parim lahendus.",
       "url": "/"
     },
     "breadcrumbs": {
@@ -231,7 +231,7 @@
     },
     "homePage": {
       "name": "Netihind.ee - sõltumatu internetipaketide võrdlusportaal.",
-      "description": "Kas te ei tea, milline teenusepakkuja Teie kodus on? Kas soovite valida kiiruse, hinna ja ühendustehnoloogia poolest teile sobiva paketi? Andke meile teada ja vaatame koos üle!",
+      "description": "Kas Te ei tea, milline teenusepakkuja Teie kodus on? Kas soovite valida kiiruselt, hinnalt ja ühendustehnoloogia poolest Teile sobiva paketi? Andke meile teada, vaatame koos üle!",
       "url": "/"
     },
     "aboutPage": {
