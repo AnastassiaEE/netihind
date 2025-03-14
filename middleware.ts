@@ -29,8 +29,8 @@ export default async function middleware(request: NextRequest) {
 
   const cspHeader = `
       default-src 'self';
-      script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-eval';
-      style-src 'self' 'nonce-${nonce}' 
+      script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-eval' 'unsafe-inline' https: http:;
+      style-src 'self' 'nonce-${nonce}' 'unsafe-hashes' 'unsafe-inline'
       'sha256-zlqnbDt84zf1iSefLU/ImC54isoprH/MRiVZGskwexk='
       'sha256-ZDrxqUOB4m/L0JWL/+gS52g1CRH0l/qwMhjTw5Z/Fsc='
       'sha256-+94JOX1HQRANuLOsn1gpzNE3I3JLzO0wrP9KspQf0cM='
@@ -39,8 +39,7 @@ export default async function middleware(request: NextRequest) {
       'sha256-rynlmnuonFQE/bhX0o0hY3L3GGecC3V9h69Nzgskssw='
       'sha256-ci9xwDutagjdtNCnRmUkQW4727HuaEmJSYCcKZ+Mfyg='
       'sha256-fp4bBKkGWbpVH5qA/HvHgXdGgYgb4znhVPud+fdg8Yw='
-      'sha256-nGgRbGz9hsufKfu+i0QGgvvWtZBIe2KnFhQalyWW+7o='
-      'unsafe-hashes';
+      'sha256-nGgRbGz9hsufKfu+i0QGgvvWtZBIe2KnFhQalyWW+7o=';
       img-src 'self' data: https://cms.netihind.ee https://rxysmdetqttpdqfmrpym.supabase.co;
       font-src 'self' data:;
       connect-src 'self' https://inaadress.maaamet.ee https://rxysmdetqttpdqfmrpym.supabase.co https://api.resend.com;
