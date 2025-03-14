@@ -20,7 +20,7 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
     (
         {
             type = "button",
-            variant = "primary",
+            variant = "contained",
             size = "sm",
             disabled = false,
             name,
