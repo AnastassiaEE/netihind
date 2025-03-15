@@ -1,5 +1,6 @@
 import CloseIcon from '@mui/icons-material/Close';
 import classNames from 'classnames';
+import React from 'react';
 
 export default function CloseButton({
     label,
@@ -7,7 +8,7 @@ export default function CloseButton({
     className,
 }: {
     label: string;
-    handleClick: () => void;
+    handleClick: () => React.MouseEventHandler<HTMLButtonElement>;
     className?: string;
 }) {
     return (
