@@ -39,8 +39,7 @@ export default async function middleware(request: NextRequest) {
       'sha256-rynlmnuonFQE/bhX0o0hY3L3GGecC3V9h69Nzgskssw='
       'sha256-ci9xwDutagjdtNCnRmUkQW4727HuaEmJSYCcKZ+Mfyg='
       'sha256-fp4bBKkGWbpVH5qA/HvHgXdGgYgb4znhVPud+fdg8Yw='
-      'sha256-nGgRbGz9hsufKfu+i0QGgvvWtZBIe2KnFhQalyWW+7o='
-      'sha256-7rInq1py0NJmYMLkpu/N7oohA+V70GBDCyn1AP3ZDOA=';
+      'sha256-nGgRbGz9hsufKfu+i0QGgvvWtZBIe2KnFhQalyWW+7o=';
       img-src 'self' data: https://cms.netihind.ee https://rxysmdetqttpdqfmrpym.supabase.co;
       font-src 'self' data:;
       connect-src 'self' https://inaadress.maaamet.ee https://rxysmdetqttpdqfmrpym.supabase.co https://api.resend.com;
