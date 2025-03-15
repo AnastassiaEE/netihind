@@ -9,8 +9,9 @@ import TabPanel from '@/components/ui/tabs/TabPanel';
 import { useTranslations } from 'next-intl';
 
 export default function CookieConsent() {
-    const tabs = ['Nõusolek', 'Üksikasjad', 'Teave'];
-    const t = useTranslations('Buttons');
+    const b = useTranslations('Buttons');
+    const c = useTranslations('Cookies');
+    const tabs = [c('tabs.consent'), c('tabs.details'), c('tabs.info')];
     const {
         isOpened: isCookiesOpened,
         open: openCookies,
@@ -34,11 +35,11 @@ export default function CookieConsent() {
 
     return (
         <>
-            <CookieButton label={t('cookies.open')} handleClick={openCookies} />
+            <CookieButton label={b('cookies.open')} handleClick={openCookies} />
             <Dialogue
                 type="modal"
                 name="cookies"
-                title="Cookies"
+                title={c('title')}
                 isOpened={isCookiesOpened}
                 handleClose={closeCookies}
                 dialogRef={cookiesRef}

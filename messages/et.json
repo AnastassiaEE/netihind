@@ -265,6 +265,11 @@
     }
   },
   "Cookies": {
-    "title": "Küpsiste sätted"
+    "title": "Küpsiste sätted",
+    "tabs": {
+      "consent": "Nõusolek",
+      "details": "Üksikasjad",
+      "info": "Teave"
+    }
   }
 }
