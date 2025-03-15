@@ -31,7 +31,7 @@ export default function RequestForm({
                 .filter(([key]) => !['internet_technology_description', 'provider_img_url'].includes(key))
                 .map(([key, value]) => [key, value === null ? 'piiramatu' : value]),
         )
-        : null;
+        : {};
 
     const fields = {
         name: {
