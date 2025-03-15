@@ -11,7 +11,7 @@ export default function TabPanel({
     isActive?: boolean;
     children: React.ReactNode;
 }) {
-    const tabPanelClasses = classNames(!isActive && 'hidden');
+    const tabPanelClasses = classNames('p-3 w-[700px]', !isActive && 'hidden');
     return (
         <div
             id={tabPanelId}

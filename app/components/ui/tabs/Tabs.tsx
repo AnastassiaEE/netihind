@@ -50,26 +50,24 @@ export default function Tabs({ name, tabs, children }: { name: string; tabs: str
                         );
                     })}
                 </ul>
-                <div className="absolute h-1 w-full rounded-md bg-muted-light"></div>
+                <div className="absolute h-0.5 w-full rounded-md bg-muted-light"></div>
                 <div
-                    className={`absolute  h-1 rounded-md bg-primary transition-all`}
+                    className={`absolute h-0.5 rounded-md bg-primary transition-all`}
                     style={{ width: underlinePosition.width + 'px', left: underlinePosition.left + 'px' }}
                 ></div>
             </div>
-            <div className="w-[700px] p-4">
-                {React.Children.map(children, (child, index) => {
-                    if (
-                        React.isValidElement<{ tabId: string; tabPanelId: string; isActive: boolean }>(child)
-                    ) {
-                        return React.cloneElement(child, {
-                            tabId: getTabId(index),
-                            tabPanelId: getTabPanelId(index),
-                            isActive: getTabId(index) === activeTabId,
-                        });
-                    }
-                    return child;
-                })}
-            </div>
+            {React.Children.map(children, (child, index) => {
+                if (
+                    React.isValidElement<{ tabId: string; tabPanelId: string; isActive: boolean }>(child)
+                ) {
+                    return React.cloneElement(child, {
+                        tabId: getTabId(index),
+                        tabPanelId: getTabPanelId(index),
+                        isActive: getTabId(index) === activeTabId,
+                    });
+                }
+                return child;
+            })}
         </div>
     );
 }
