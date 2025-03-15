@@ -6,10 +6,10 @@ import { routing } from 'i18n/routing';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
-//import CookieConsent from '@/components/ui/cookies/CookieConsent';
 import { headers } from 'next/headers';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import { NonceProvider } from '@/context/NonceContext';
+import CookieConsent from '@/components/ui/cookies/CookieConsent';
 
 const inter = Manrope({ subsets: ['latin'] });
 
@@ -52,6 +52,7 @@ export default async function RootLayout({
           >
             <NonceProvider nonce={nonce}>
               <ScrollTopButton />
+              <CookieConsent />
               {children}
             </NonceProvider>
           </AppRouterCacheProvider>
