@@ -11,7 +11,7 @@ export default function Dialog({
     description,
     isOpened,
     handleClose,
-    modalRef,
+    dialogRef,
     className,
     children,
 }: {
@@ -21,7 +21,7 @@ export default function Dialog({
     description?: string;
     isOpened: boolean;
     handleClose: () => void;
-    modalRef?: React.RefObject<HTMLDivElement>;
+    dialogRef?: React.RefObject<HTMLDivElement>;
     className?: string;
     children: React.ReactNode;
 }) {
@@ -39,13 +39,13 @@ export default function Dialog({
 
     return (
         <>
-            <Backdrop isVisible={isOpened} handleClose={handleClose} />
+            {type === 'modal' && <Backdrop isVisible={isOpened} handleClose={handleClose} />}
             <div
                 role="dialog"
                 aria-modal="true"
                 aria-labelledby={`${name}-dialog-title`}
                 aria-describedby={description ? `${name}-dialog-description` : undefined}
-                ref={modalRef}
+                ref={dialogRef}
                 tabIndex={isOpened ? 0 : undefined}
                 className={dialogClasses}
             >
