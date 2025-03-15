@@ -73,7 +73,7 @@ export default function Packages({
                 description={t(`request.${requestType}.description`)}
                 isOpened={isModalOpened}
                 handleClose={closeModal}
-                modalRef={modalRef}
+                dialogRef={modalRef}
             >
                 <PackageRequestContent requestType={requestType} data={selectedPackage} address={address} />
             </Dialog>
