@@ -33,7 +33,8 @@ export default function SlideUpPanel({
     );
 
     return (
-        <Backdrop isVisible={isOpened} handleClose={handleClose}>
+        <>
+            <Backdrop isVisible={isOpened} handleClose={handleClose} />
             <div
                 role="dialog"
                 aria-modal="true"
@@ -62,6 +63,6 @@ export default function SlideUpPanel({
                 </div>
                 {actions && <PanelActions>{actions}</PanelActions>}
             </div>
-        </Backdrop>
+        </>
     );
 }
