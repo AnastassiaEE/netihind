@@ -258,9 +258,13 @@
     "language": {
       "ru": "Muuda keel vene keeleks",
       "et": "Muuda keel eesti keeleks"
+    },
+    "cookies": {
+      "open": "Ava küpsiste sätete modaalaken",
+      "close": "Sulge küpsiste sätete modaalaken"
     }
   },
   "Cookies": {
-    "message": ""
+    "title": "Küpsiste sätted"
   }
 }

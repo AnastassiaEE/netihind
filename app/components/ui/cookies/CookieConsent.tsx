@@ -6,14 +6,16 @@ import Dialogue from '@/components/ui/overlay/Dialog';
 import useOverlay from '@/hooks/useOverlay';
 import Tabs from '@/components/ui/tabs/Tabs';
 import TabPanel from '@/components/ui/tabs/TabPanel';
+import { useTranslations } from 'next-intl';
 
 export default function CookieConsent() {
     const tabs = ['Nõusolek', 'Üksikasjad', 'Teave'];
+    const t = useTranslations('Buttons')
     const {
         isOpened: isCookiesOpened,
         open: openCookies,
         close: closeCookies,
-        overlayRef,
+        overlayRef: cookesRef
     } = useOverlay(true);
 
 
@@ -33,17 +35,19 @@ export default function CookieConsent() {
 
     return (
         <>
-            <CookieButton handleClick={openCookies} />
+            <CookieButton label={t('cookies.open')} handleClick={openCookies} />
             <Dialogue
                 type="modal"
                 name="cookies"
                 title="Cookies"
                 isOpened={isCookiesOpened}
                 handleClose={closeCookies}
-
+                dialogRef={cookesRef}
             >
                 <Tabs name="cookies" tabs={tabs}>
-                    <TabPanel> rgergerg</TabPanel>
+                    <TabPanel> Content 1</TabPanel>
+                    <TabPanel> Content 2</TabPanel>
+                    <TabPanel> Content 3</TabPanel>
                 </Tabs>
             </Dialogue>
         </>
