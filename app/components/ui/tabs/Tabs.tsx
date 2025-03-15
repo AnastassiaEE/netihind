@@ -2,40 +2,51 @@ import { useEffect, useState, useCallback } from 'react';
 import Tab from '@/components/ui/tabs/Tab';
 import React from 'react';
 
-export default function Tabs({ name, tabs, children }: { name: string; tabs: string[], children: React.ReactNode }) {
+export default function Tabs({
+    name,
+    tabs,
+    children,
+}: {
+    name: string;
+    tabs: string[];
+    children: React.ReactNode;
+}) {
     const [activeTabId, setActiveTabId] = useState(`${name}-tab-1`);
-    const [underlinePosition, setUnderlinePosition] = useState({ left: 0, width: 0 });
 
     const handleTabClick = (event: React.MouseEvent<HTMLLIElement>) => {
         const tabElement = event.currentTarget as HTMLLIElement;
         setActiveTabId(tabElement.getAttribute('id')!);
     };
 
-    const updateUnderlinePosition = useCallback(() => {
-        const activeTab = document.getElementById(activeTabId);
-        if (activeTab) {
-            const left = activeTab.offsetLeft;
-            const { width } = activeTab.getBoundingClientRect();
-            setUnderlinePosition({ left, width });
-        }
-    }, [activeTabId]);
-
-    const getTabId = (index: number) => `${name}-tab-${index + 1}`;
+    const getTabId = useCallback((index: number) => `${name}-tab-${index + 1}`, [name]);
     const getTabPanelId = (index: number) => `${name}-tabpanel-${index + 1}`;
 
+    const handleKeyDown = useCallback(
+        (event: KeyboardEvent) => {
+            if (event.key === 'ArrowLeft') {
+                const currentIndex = tabs.findIndex((tab) => getTabId(tabs.indexOf(tab)) === activeTabId);
+                const newIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+                setActiveTabId(getTabId(newIndex));
+            } else if (event.key === 'ArrowRight') {
+                const currentIndex = tabs.findIndex((tab) => getTabId(tabs.indexOf(tab)) === activeTabId);
+                const newIndex = (currentIndex + 1) % tabs.length;
+                setActiveTabId(getTabId(newIndex));
+            }
+        },
+        [activeTabId, getTabId, tabs],
+    );
+
     useEffect(() => {
-        updateUnderlinePosition();
-        const handleResize = () => {
-            updateUnderlinePosition();
+        document.addEventListener('keydown', handleKeyDown);
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
         };
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, [activeTabId, updateUnderlinePosition]);
+    }, [activeTabId, handleKeyDown]);
 
     return (
         <div>
-            <div role="tablist" className="relative">
-                <ul className="flex">
+            <div role="tablist">
+                <ul className="flex border-b border-b-muted">
                     {tabs.map((tab, index) => {
                         return (
                             <Tab
@@ -50,16 +61,9 @@ export default function Tabs({ name, tabs, children }: { name: string; tabs: str
                         );
                     })}
                 </ul>
-                <div className="absolute h-0.5 w-full rounded-md bg-muted-light"></div>
-                <div
-                    className={`absolute h-0.5 rounded-md bg-primary transition-all`}
-                    style={{ width: underlinePosition.width + 'px', left: underlinePosition.left + 'px' }}
-                ></div>
             </div>
             {React.Children.map(children, (child, index) => {
-                if (
-                    React.isValidElement<{ tabId: string; tabPanelId: string; isActive: boolean }>(child)
-                ) {
+                if (React.isValidElement<{ tabId: string; tabPanelId: string; isActive: boolean }>(child)) {
                     return React.cloneElement(child, {
                         tabId: getTabId(index),
                         tabPanelId: getTabPanelId(index),

@@ -10,14 +10,13 @@ import { useTranslations } from 'next-intl';
 
 export default function CookieConsent() {
     const tabs = ['Nõusolek', 'Üksikasjad', 'Teave'];
-    const t = useTranslations('Buttons')
+    const t = useTranslations('Buttons');
     const {
         isOpened: isCookiesOpened,
         open: openCookies,
         close: closeCookies,
-        overlayRef: cookesRef
+        overlayRef: cookiesRef,
     } = useOverlay(true);
-
 
     // useEffect(() => {
     //     const consent = localStorage.getItem('cookieConsent');
@@ -42,7 +41,7 @@ export default function CookieConsent() {
                 title="Cookies"
                 isOpened={isCookiesOpened}
                 handleClose={closeCookies}
-                dialogRef={cookesRef}
+                dialogRef={cookiesRef}
             >
                 <Tabs name="cookies" tabs={tabs}>
                     <TabPanel> Content 1</TabPanel>
