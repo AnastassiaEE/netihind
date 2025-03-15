@@ -8,7 +8,7 @@ export default function CloseButton({
     className,
 }: {
     label: string;
-    handleClick: () => React.MouseEventHandler<HTMLButtonElement>;
+    handleClick: () => void;
     className?: string;
 }) {
     return (
