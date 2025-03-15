@@ -27,7 +27,8 @@ export default function Sidebar({
     );
 
     return (
-        <Backdrop isVisible={isOpened} handleClose={handleClose}>
+        <>
+            <Backdrop isVisible={isOpened} handleClose={handleClose} />
             <div
                 role="dialog"
                 aria-modal="true"
@@ -44,6 +45,6 @@ export default function Sidebar({
                 </div>
                 {children}
             </div>
-        </Backdrop>
+        </>
     );
 }

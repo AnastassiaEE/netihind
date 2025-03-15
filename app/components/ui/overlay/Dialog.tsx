@@ -15,7 +15,7 @@ export default function Dialog({
     className,
     children,
 }: {
-    type?: 'modal' | 'non-modal'
+    type?: 'modal' | 'non-modal';
     name: string;
     title: string;
     description?: string;
@@ -38,7 +38,8 @@ export default function Dialog({
     );
 
     return (
-        <Backdrop isVisible={isOpened} handleClose={handleClose}>
+        <>
+            <Backdrop isVisible={isOpened} handleClose={handleClose} />
             <div
                 role="dialog"
                 aria-modal="true"
@@ -63,6 +64,6 @@ export default function Dialog({
                 )}
                 {children}
             </div>
-        </Backdrop>
+        </>
     );
 }
