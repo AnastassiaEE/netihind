@@ -94,7 +94,7 @@ export default function useSelect() {
       const focusedOption = options ? options[focusedIndex] : null;
       if (focusedOption) focusedOption.focus();
     };
-    focusOption();
+    if (isExpanded) focusOption();
   }, [focusedIndex, isExpanded]);
 
   useEffect(() => {
