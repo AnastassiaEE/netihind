@@ -4,7 +4,8 @@ import classNames from 'classnames';
 import CloseButton from '@/components/ui/buttons/CloseButton';
 import { useTranslations } from 'next-intl';
 
-export default function Modal({
+export default function Dialog({
+    type = 'modal',
     name,
     title,
     description,
@@ -14,6 +15,7 @@ export default function Modal({
     className,
     children,
 }: {
+    type?: 'modal' | 'non-modal'
     name: string;
     title: string;
     description?: string;
@@ -25,8 +27,8 @@ export default function Modal({
 }) {
     const t = useTranslations('Buttons');
 
-    const modalClasses = classNames(
-        'fixed left-1/2 top-1/2 z-50 h-dvh w-max max-w-[100vw] overflow-auto rounded-lg bg-primary-light p-6 shadow-lg md:p-14 lg:max-w-[calc(100vw-50px)] lg:h-[calc(100vh-50px)]',
+    const dialogClasses = classNames(
+        'fixed left-1/2 top-1/2 z-50 h-dvh w-max max-w-[100vw] overflow-auto rounded-lg bg-primary-light p-6 shadow-lg md:p-14 lg:max-w-[calc(100vw-50px)] lg:h-max lg:max-h-[calc(100vh-50px)]',
         isOpened ? 'modal-open' : 'modal-close',
         className,
     );
@@ -40,22 +42,22 @@ export default function Modal({
             <div
                 role="dialog"
                 aria-modal="true"
-                aria-labelledby={`${name}-modal-title`}
-                aria-describedby={description ? `${name}-modal-description` : undefined}
+                aria-labelledby={`${name}-dialog-title`}
+                aria-describedby={description ? `${name}-dialog-description` : undefined}
                 ref={modalRef}
                 tabIndex={isOpened ? 0 : undefined}
-                className={modalClasses}
+                className={dialogClasses}
             >
                 <CloseButton
                     label={t(`${name}.close`)}
                     handleClick={handleClose}
                     className="absolute right-4 top-4 bg-white"
                 />
-                <p id={`${name}-modal-title`} className={titleClasses}>
+                <p id={`${name}-dialog-title`} className={titleClasses}>
                     {title}
                 </p>
                 {description && (
-                    <p id={`${name}-modal-description`} className="mb-6 text-lg font-medium">
+                    <p id={`${name}-dialog-description`} className="mb-6 text-lg font-medium">
                         {description}
                     </p>
                 )}

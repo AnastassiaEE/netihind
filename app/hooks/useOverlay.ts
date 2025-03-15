@@ -1,8 +1,8 @@
 import useBoolean from '@/hooks/useBoolean';
 import { useCallback, useEffect, useRef } from 'react';
 
-export default function useOverlay() {
-  const { value: isOpened, setTrue: open, setFalse: close } = useBoolean(false);
+export default function useOverlay(initialIsOpened: boolean = false) {
+  const { value: isOpened, setTrue: open, setFalse: close } = useBoolean(initialIsOpened);
 
   const overlayRef = useRef<HTMLDivElement | null>(null);
   const openElementRef = useRef<HTMLElement | null>(null);

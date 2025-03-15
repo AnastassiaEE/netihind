@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl';
 import PackageCard from '@/components/ui/address/packages/PackageCard';
 import PackagesError from '@/components/ui/errors/PackagesError';
 import { Link } from '@/i18n/routing';
-import Modal from '@/components/ui/overlay/Modal';
+import Dialog from '@/components/ui/overlay/Dialog';
 import useOverlay from '@/hooks/useOverlay';
 import PackageRequestContent from '@/components/ui/address/packages/PackageRequestContent';
 
@@ -67,7 +67,7 @@ export default function Packages({
                     />
                 ))}
             </div>
-            <Modal
+            <Dialog
                 name={requestType}
                 title={t(`request.${requestType}.title`)}
                 description={t(`request.${requestType}.description`)}
@@ -76,7 +76,7 @@ export default function Packages({
                 modalRef={modalRef}
             >
                 <PackageRequestContent requestType={requestType} data={selectedPackage} address={address} />
-            </Modal>
+            </Dialog>
         </>
     );
 }
