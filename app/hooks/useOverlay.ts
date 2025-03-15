@@ -1,11 +1,13 @@
+import { useCallback, useEffect, useRef, useState } from 'react';
 import useBoolean from '@/hooks/useBoolean';
-import { useCallback, useEffect, useRef } from 'react';
 
 export default function useOverlay(initialIsOpened: boolean = false) {
   const { value: isOpened, setTrue: open, setFalse: close } = useBoolean(initialIsOpened);
-
   const overlayRef = useRef<HTMLDivElement | null>(null);
   const openElementRef = useRef<HTMLElement | null>(null);
+  const focusableElementsRef = useRef<HTMLElement[]>([]);
+  const firstFocusableElementRef = useRef<HTMLElement | null>(null);
+  const lastFocusableElementRef = useRef<HTMLElement | null>(null);
 
   const handleOpen = () => {
     open();
@@ -25,46 +27,76 @@ export default function useOverlay(initialIsOpened: boolean = false) {
         handleClose();
       }
     };
+
     const overlayElement = overlayRef.current;
-    overlayElement?.addEventListener('keydown', handleEscKey);
-    return () => overlayElement?.removeEventListener('keydown', handleEscKey);
+    if (overlayElement) {
+      overlayElement.addEventListener('keydown', handleEscKey);
+      return () => overlayElement.removeEventListener('keydown', handleEscKey);
+    }
   }, [handleClose]);
+
+  const updateFocusableElements = () => {
+    const overlayElement = overlayRef.current;
+    if (!overlayElement) return;
+
+    const elements = Array.from(
+      overlayElement.querySelectorAll(
+        'button, a, input, textarea, select, [tabindex]:not([tabindex="-1"])',
+      ),
+    ) as HTMLElement[];
+
+    focusableElementsRef.current = elements;
+    firstFocusableElementRef.current = elements[0] || null;
+    lastFocusableElementRef.current = elements[elements.length - 1] || null;
+  };
 
   useEffect(() => {
     if (!overlayRef.current || !isOpened) return;
 
-    const overlayElement = overlayRef.current;
+    overlayRef.current.focus();
+    updateFocusableElements();
 
-    const focusableElements = overlayElement.querySelectorAll(
-      'button, a, input, textarea, select, [tabindex]:not([tabindex="-1"])',
-    ) as NodeListOf<HTMLElement>;
+    const observer = new MutationObserver(() => {
+      updateFocusableElements();
+    });
+    const config = {
+      childList: false,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['tabindex'],
+    };
+    observer.observe(overlayRef.current, config);
 
-    const firstFocusableElement = focusableElements[0];
-    const lastFocusableElement = focusableElements[focusableElements.length - 1];
+    return () => {
+      observer.disconnect();
+    };
+  }, [isOpened]);
 
-    if (firstFocusableElement) {
-      firstFocusableElement.focus();
-    }
-
-    const trapFocus = (e: KeyboardEvent) => {
-      if (e.key === 'Tab') {
-        if (e.shiftKey) {
-          if (document.activeElement === firstFocusableElement) {
-            lastFocusableElement?.focus();
-            e.preventDefault();
-          }
-        } else {
-          if (document.activeElement === lastFocusableElement) {
-            firstFocusableElement?.focus();
-            e.preventDefault();
-          }
+  const trapFocus = useCallback((e: KeyboardEvent) => {
+    if (e.key === 'Tab') {
+      if (e.shiftKey) {
+        if (document.activeElement === firstFocusableElementRef.current) {
+          lastFocusableElementRef.current?.focus();
+          e.preventDefault();
+        }
+      } else {
+        if (document.activeElement === lastFocusableElementRef.current) {
+          firstFocusableElementRef.current?.focus();
+          e.preventDefault();
         }
       }
-    };
+    }
+  }, []);
 
-    overlayElement.addEventListener('keydown', trapFocus);
-    return () => overlayElement.removeEventListener('keydown', trapFocus);
-  }, [isOpened]);
+  useEffect(() => {
+    const overlayElement = overlayRef.current;
+    if (overlayElement) {
+      overlayElement.addEventListener('keydown', trapFocus);
+      return () => {
+        overlayElement.removeEventListener('keydown', trapFocus);
+      };
+    }
+  }, [trapFocus]);
 
   return {
     isOpened,
