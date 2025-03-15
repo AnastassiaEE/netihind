@@ -5,7 +5,7 @@ export default function Hamburger({
     handleClick,
 }: {
     label: string;
-    handleClick: React.MouseEventHandler;
+    handleClick: React.MouseEventHandler<HTMLButtonElement>;
 }) {
     return (
         <button type="button" aria-label={label} onClick={handleClick}>
