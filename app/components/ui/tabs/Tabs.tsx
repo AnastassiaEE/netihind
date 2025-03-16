@@ -17,7 +17,7 @@ export default function Tabs({
   return (
     <div>
       <div role="tablist">
-        <ul className="flex border-b border-b-muted">
+        <ul className="flex border-b border-b-muted-light">
           {tabs.map((tab, index) => {
             return (
               <Tab
