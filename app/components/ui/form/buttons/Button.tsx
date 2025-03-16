@@ -1,18 +1,35 @@
 import React from 'react';
-import classNames from 'classnames';
-import { FormElementSizes as sizes } from '@/styles/styles';
+import { tv, VariantProps } from 'tailwind-variants';
 
-const variants = {
-  contained: 'rounded-md border border-primary bg-primary text-white shadow-md hover:bg-primary-dark',
-  outlined:
-    'rounded-md border border-primary bg-white text-primary hover:bg-primary hover:text-white',
-  neutral:
-    'rounded-md border border-primary-light bg-primary-light text-muted-dark hover:bg-primary hover:text-white',
-  text: 'text-primary hover:text-primary-dark',
-};
+const buttonClasses = tv({
+  base: 'font-semibold transition-all rounded-md border shadow-md',
+  variants: {
+    variant: {
+      contained: 'border-primary bg-primary text-white hover:bg-primary-dark',
+      outlined:
+        'border-primary bg-white text-primary hover:bg-primary hover:text-white',
+      neutral:
+        'border-primary-light bg-primary-light text-muted-dark hover:bg-primary hover:text-white',
+      text: 'text-primary hover:text-primary-dark border-transparent shadow-none',
+    },
+    size: {
+      sm: 'px-4 py-2.5 text-sm',
+      lg: 'px-5 py-3',
+    },
+    disabled: {
+      true: 'hover:cursor-not-allowed opacity-50',
+      false: '',
+    },
+  },
+  defaultVariants: {
+    variant: 'contained',
+    size: 'sm',
+    disabled: false,
+  },
+});
 
-export type ButtonVariant = keyof typeof variants;
-export type ButtonSize = keyof typeof sizes;
+export type ButtonVariant = VariantProps<typeof buttonClasses>['variant'];
+export type ButtonSize = VariantProps<typeof buttonClasses>['size'];
 
 interface ButtonProps {
   type?: 'button' | 'submit' | 'reset';
@@ -41,21 +58,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref,
   ) => {
-    const buttonClasses = classNames(
-      'font-semibold transition-all',
-      variants[variant],
-      sizes[size],
-      disabled && 'hover:cursor-not-allowed',
-      className,
-    );
-
     return (
       <button
         ref={ref}
         type={type}
         name={name}
         onClick={handleClick}
-        className={buttonClasses}
+        className={buttonClasses({ variant, size, disabled, className })}
         disabled={disabled}
         {...props}
       >
