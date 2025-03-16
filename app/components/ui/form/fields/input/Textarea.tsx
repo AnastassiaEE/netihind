@@ -1,7 +1,24 @@
 import FieldError from '@/components/ui/form/fields/FieldError';
 import FieldLabel from '@/components/ui/form/fields/FieldLabel';
-import classNames from 'classnames';
 import { FormElementSizes as sizes } from '@/styles/styles';
+import { tv, VariantProps } from 'tailwind-variants';
+
+const textAreaClasses = tv({
+  base: 'w-full rounded-md border bg-white text-muted-dark placeholder:text-muted focus:shadow-lg focus:shadow-indigo-500/10 focus:outline-none',
+  variants: {
+    size: sizes,
+    isValid: {
+      true: 'border-valid focus:border-primary/30',
+      false: 'border-invalid',
+    },
+  },
+  defaultVariants: {
+    size: 'sm',
+    isValid: true,
+  },
+});
+
+type TextareaSize = VariantProps<typeof textAreaClasses>['size'];
 
 export default function Textarea({
   size = 'sm',
@@ -16,7 +33,7 @@ export default function Textarea({
   required,
   className,
 }: {
-  size?: keyof typeof sizes;
+  size?: TextareaSize;
   name: string;
   label?: string;
   placeholder?: string;
@@ -28,13 +45,6 @@ export default function Textarea({
   required: boolean;
   className?: string;
 }) {
-  const textAreaClasses = classNames(
-    'w-full rounded-md border bg-white text-muted-dark placeholder:text-muted focus:shadow-lg focus:shadow-indigo-500/10 focus:outline-none',
-    sizes[size],
-    isValid ? 'border-valid focus:border-primary/30' : 'border-invalid',
-    className,
-  );
-
   return (
     <>
       {label && (
@@ -44,7 +54,7 @@ export default function Textarea({
       )}
       <textarea
         id={name}
-        className={textAreaClasses}
+        className={textAreaClasses({ size, isValid, className })}
         placeholder={placeholder}
         onChange={handleChange}
         onBlur={handleBlur}
