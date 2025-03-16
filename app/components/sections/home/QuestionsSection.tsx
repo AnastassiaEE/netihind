@@ -19,9 +19,8 @@ export default function QuestionsSection() {
       questions?.map(({ header, body }: { header: string; body: string }) => ({
         header: t(header),
         body: t.rich(body, {
-          ul: (chunks: React.ReactNode) => <ul>{chunks}</ul>,
-          li: (chunks: React.ReactNode) => <li className="mb-2">{chunks}</li>,
           i: () => <Check size="small" />,
+          br: () => <br />,
         }),
       })) ?? []
     );

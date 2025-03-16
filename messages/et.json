@@ -40,7 +40,7 @@
         },
         "question3": {
           "question": "Miks ma pean liituma läbi Netihind?",
-          "answer": "<ul><li><i></i>Säästame Teie aega. Anname Teile teavet kõigi teenusepakkujate pakkumiste kohta. Te ei pea mitut saiti korraga avama.</li><li><i></i>Sõltumatu arvamus. Meie töötame kõigi teenusepakkujatega ning lähtuvalt teie vajadustest saame valida parima lahenduse.</li></ul>"
+          "answer": "<i></i>Säästame Teie aega. Anname Teile teavet kõigi teenusepakkujate pakkumiste kohta. Te ei pea mitut saiti korraga avama.<br></br><i></i>Sõltumatu arvamus. Meie töötame kõigi teenusepakkujatega ning lähtuvalt teie vajadustest saame valida parima lahenduse."
         },
         "question4": {
           "question": "Miks Netihind veebilehe kasutamine on tasuta?",
