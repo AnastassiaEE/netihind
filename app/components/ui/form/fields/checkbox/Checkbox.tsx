@@ -26,14 +26,14 @@ export default function Checkbox({
         sm: 'w-4 h-4',
         lg: 'w-5 h-5',
       },
-      validity: {
-        valid: 'border-valid',
-        invalid: 'border-invalid',
+      isValid: {
+        true: 'border-valid',
+        false: 'border-invalid',
       },
     },
     defaultVariants: {
       size: 'sm',
-      validity: isValid ? 'valid' : 'invalid',
+      isValid: true,
     },
   });
 
@@ -61,7 +61,7 @@ export default function Checkbox({
         onChange={handleChange}
         className={checkboxClasses({
           size,
-          validity: isValid ? 'valid' : 'invalid',
+          isValid,
         })}
       />
       <span className={labelClasses({ size })}>{children}</span>
