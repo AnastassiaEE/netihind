@@ -28,8 +28,8 @@ const buttonClasses = tv({
   },
 });
 
-export type ButtonVariant = VariantProps<typeof buttonClasses>['variant'];
-export type ButtonSize = VariantProps<typeof buttonClasses>['size'];
+type ButtonVariant = VariantProps<typeof buttonClasses>['variant'];
+type ButtonSize = VariantProps<typeof buttonClasses>['size'];
 
 interface ButtonProps {
   type?: 'button' | 'submit' | 'reset';
