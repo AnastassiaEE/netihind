@@ -29,7 +29,7 @@ export default function AccordionItem({
   const { isOpened, toggle, collapsible, collapsibleHeight, id } =
     useAccordionItem(isCollapsed);
 
-  const itemWrapperClasses = tv({
+  const wrapperClasses = tv({
     base: 'overflow-hidden',
     variants: {
       border: {
@@ -38,10 +38,13 @@ export default function AccordionItem({
         full: 'border-muted-light [&:not(:last-child)]:border-b',
       },
     },
+    defaultVariants: {
+      border: 'none',
+    },
   });
 
   const buttonClasses = tv({
-    base: 'flex w-full items-center',
+    base: 'flex w-full items-center transition-all duration-300',
     variants: {
       border: {
         none: '',
@@ -59,6 +62,10 @@ export default function AccordionItem({
         right: 'flex-row-reverse justify-between',
       },
     },
+    defaultVariants: {
+      size: 'sm',
+      arrowPosition: 'right',
+    },
   });
 
   const panelClasses = tv({
@@ -67,6 +74,9 @@ export default function AccordionItem({
         sm: 'p-1',
         lg: 'p-6',
       },
+    },
+    defaultVariants: {
+      size: 'sm',
     },
   });
 
@@ -82,6 +92,9 @@ export default function AccordionItem({
         ),
       },
     },
+    defaultVariants: {
+      arrowStyle: 'default',
+    },
   });
 
   const renderArrow = () => {
@@ -96,7 +109,7 @@ export default function AccordionItem({
   };
 
   return (
-    <div className={itemWrapperClasses({ border })}>
+    <div className={wrapperClasses({ border })}>
       <button
         type="button"
         onClick={toggle}
