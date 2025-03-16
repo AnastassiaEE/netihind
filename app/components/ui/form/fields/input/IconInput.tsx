@@ -1,71 +1,74 @@
 import { SvgIconComponent } from '@mui/icons-material';
-import Input, { InputSize } from '@/components/ui/form/fields/input/Input';
+import Input from '@/components/ui/form/fields/input/Input';
 import classNames from 'classnames';
 
+interface IconInputProps
+  extends Omit<React.ComponentProps<typeof Input>, 'children'> {
+  icon: {
+    Icon: SvgIconComponent;
+    isVisible: boolean;
+    handleClick?: React.MouseEventHandler;
+  };
+}
+
 export default function IconInput({
-    size = 'sm',
-    name,
-    type = 'text',
-    inputmode = 'text',
-    label,
-    placeholder,
-    handleChange,
-    handleFocus,
-    handleBlur,
-    value,
-    isValid,
-    error,
-    required,
-    icon: { Icon, isVisible, handleClick },
-}: {
-    size?: InputSize;
-    name: string;
-    type?: 'text' | 'password' | 'email' | 'tel' | 'url' | 'search' | 'number' | 'range' | 'hidden';
-    inputmode?: 'text' | 'tel' | 'email' | 'url' | 'numeric' | 'decimal' | 'search' | 'none';
-    label?: string;
-    placeholder?: string;
-    handleChange?: React.ChangeEventHandler<HTMLInputElement>;
-    handleFocus?: React.FocusEventHandler<HTMLInputElement>;
-    handleBlur?: React.FocusEventHandler<HTMLInputElement>;
-    value?: string;
-    isValid: boolean;
-    error?: string;
-    required: boolean;
-    icon: { Icon: SvgIconComponent; isVisible: boolean; handleClick?: React.MouseEventHandler };
-}) {
-    const inputClasses = classNames({
-        'pl-10': isVisible && size === 'sm',
-        'pl-12': isVisible && size === 'lg',
-    });
+  size = 'sm',
+  name,
+  type = 'text',
+  inputmode = 'text',
+  label,
+  placeholder,
+  handleChange,
+  handleFocus,
+  handleBlur,
+  value,
+  isValid,
+  error,
+  required,
+  icon: { Icon, isVisible, handleClick },
+}: IconInputProps) {
+  const inputClasses = classNames({
+    'pl-10': isVisible && size === 'sm',
+    'pl-12': isVisible && size === 'lg',
+  });
 
-    const iconWrapperClasses = classNames('absolute flex h-full items-center px-3', isVisible ? 'block' : 'hidden');
+  const iconWrapperClasses = classNames(
+    'absolute flex h-full items-center px-3',
+    isVisible ? 'block' : 'hidden',
+  );
 
-    return (
-        <Input
-            size={size}
-            name={name}
-            type={type}
-            inputmode={inputmode}
-            label={label}
-            placeholder={placeholder}
-            handleChange={handleChange}
-            handleFocus={handleFocus}
-            handleBlur={handleBlur}
-            value={value}
-            isValid={isValid}
-            error={error}
-            required={required}
-            className={inputClasses}
-        >
-            <div className={iconWrapperClasses}>
-                {handleClick ? (
-                    <button type="button" onClick={handleClick}>
-                        <Icon fontSize={size === 'lg' ? 'medium' : 'small'} className="text-muted" />
-                    </button>
-                ) : (
-                    <Icon fontSize={size === 'lg' ? 'medium' : 'small'} className="text-muted" />
-                )}
-            </div>
-        </Input>
-    );
+  return (
+    <Input
+      size={size}
+      name={name}
+      type={type}
+      inputmode={inputmode}
+      label={label}
+      placeholder={placeholder}
+      handleChange={handleChange}
+      handleFocus={handleFocus}
+      handleBlur={handleBlur}
+      value={value}
+      isValid={isValid}
+      error={error}
+      required={required}
+      className={inputClasses}
+    >
+      <div className={iconWrapperClasses}>
+        {handleClick ? (
+          <button type="button" onClick={handleClick}>
+            <Icon
+              fontSize={size === 'lg' ? 'medium' : 'small'}
+              className="text-muted"
+            />
+          </button>
+        ) : (
+          <Icon
+            fontSize={size === 'lg' ? 'medium' : 'small'}
+            className="text-muted"
+          />
+        )}
+      </div>
+    </Input>
+  );
 }
