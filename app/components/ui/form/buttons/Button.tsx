@@ -1,5 +1,6 @@
 import React from 'react';
 import { tv, VariantProps } from 'tailwind-variants';
+import { FormElementSizes as sizes } from '@/styles/styles';
 
 const buttonClasses = tv({
   base: 'font-semibold transition-all rounded-md border shadow-md',
@@ -12,10 +13,7 @@ const buttonClasses = tv({
         'border-primary-light bg-primary-light text-muted-dark hover:bg-primary hover:text-white',
       text: 'text-primary hover:text-primary-dark border-transparent shadow-none',
     },
-    size: {
-      sm: 'px-4 py-2.5 text-sm',
-      lg: 'px-5 py-3',
-    },
+    size: sizes,
     disabled: {
       true: 'hover:cursor-not-allowed opacity-50',
       false: '',
