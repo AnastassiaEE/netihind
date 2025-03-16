@@ -11,72 +11,85 @@ import useOverlay from '@/hooks/useOverlay';
 import PackageRequestContent from '@/components/ui/address/packages/PackageRequestContent';
 
 export default function Packages({
-    oid,
-    address,
-    initialPackages,
-    initialError,
-    sortOption,
-    providers,
-    technologies,
+  oid,
+  address,
+  initialPackages,
+  initialError,
+  sortOption,
+  providers,
+  technologies,
 }: {
-    oid: string;
-    address: string;
-    initialPackages: { [key: string]: any }[];
-    initialError: string | null;
-    sortOption: string;
-    providers: string[];
-    technologies: string[];
+  oid: string;
+  address: string;
+  initialPackages: { [key: string]: any }[];
+  initialError: string | null;
+  sortOption: string;
+  providers: string[];
+  technologies: string[];
 }) {
-    const t = useTranslations('Packages');
+  const t = useTranslations('Packages');
 
-    const { packages, error, isLoading, selectedPackage, requestType, handleActionClick } =
-        usePackages(oid, initialPackages, sortOption, providers, technologies);
+  const {
+    packages,
+    error,
+    isLoading,
+    selectedPackage,
+    requestType,
+    handleActionClick,
+  } = usePackages(oid, initialPackages, sortOption, providers, technologies);
 
-    const {
-        isOpened: isModalOpened,
-        open: openModal,
-        close: closeModal,
-        overlayRef: modalRef,
-    } = useOverlay();
+  const {
+    isOpened: isModalOpened,
+    open: openModal,
+    close: closeModal,
+    overlayRef: modalRef,
+  } = useOverlay();
 
-    const errorContent = (error: string) => (
-        <PackagesError>
-            {t.rich(error, {
-                a: (chunks) => (
-                    <Link href="/contacts" className="font-extrabold underline">
-                        {chunks}
-                    </Link>
-                ),
-            })}
-        </PackagesError>
-    );
+  const errorContent = (error: string) => (
+    <PackagesError>
+      {t.rich(error, {
+        a: (chunks) => (
+          <Link href="/contacts" className="font-extrabold underline">
+            {chunks}
+          </Link>
+        ),
+      })}
+    </PackagesError>
+  );
 
-    if (isLoading) return <PackagesLoader />;
-    if (initialError) return errorContent(initialError);
-    if (error) return errorContent(error);
+  if (isLoading) return <PackagesLoader />;
+  if (initialError) return errorContent(initialError);
+  if (error) return errorContent(error);
 
-    return (
-        <>
-            <div>
-                {packages.map((data: { [key: string]: any }) => (
-                    <PackageCard
-                        key={data.internet_package_id}
-                        data={data}
-                        className="mb-5"
-                        handleActionClick={(action) => handleActionClick(data, action, openModal)}
-                    />
-                ))}
-            </div>
-            <Dialog
-                name={requestType}
-                title={t(`request.${requestType}.title`)}
-                description={t(`request.${requestType}.description`)}
-                isOpened={isModalOpened}
-                handleClose={closeModal}
-                dialogRef={modalRef}
-            >
-                <PackageRequestContent requestType={requestType} data={selectedPackage} address={address} />
-            </Dialog>
-        </>
-    );
+  return (
+    <>
+      <div>
+        {packages.map((data: { [key: string]: any }) => (
+          <PackageCard
+            key={data.internet_package_id}
+            data={data}
+            className="mb-5"
+            handleActionClick={(action) =>
+              handleActionClick(data, action, openModal)
+            }
+          />
+        ))}
+      </div>
+      <Dialog
+        name={requestType}
+        title={t(`request.${requestType}.title`)}
+        description={t(`request.${requestType}.description`)}
+        isOpened={isModalOpened}
+        handleClose={closeModal}
+        dialogRef={modalRef}
+        className="bg-primary-light"
+      >
+        <PackageRequestContent
+          requestType={requestType}
+          data={selectedPackage}
+          address={address}
+        />
+      </Dialog>
+    </>
+  );
 }
