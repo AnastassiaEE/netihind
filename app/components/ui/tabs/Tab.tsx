@@ -5,12 +5,14 @@ export default function Tab({
   tabPanelId,
   isActive,
   handleTabClick,
+  tabRef,
   children,
 }: {
   tabId: string;
   tabPanelId: string;
   isActive: boolean;
-  handleTabClick: React.MouseEventHandler<HTMLLIElement>;
+  handleTabClick: React.MouseEventHandler<HTMLElement>;
+  tabRef: React.Ref<HTMLLIElement>;
   children: React.ReactNode;
 }) {
   const tabClasses = classNames(
@@ -26,6 +28,7 @@ export default function Tab({
       tabIndex={isActive ? 0 : undefined}
       className={tabClasses}
       onClick={handleTabClick}
+      ref={tabRef}
     >
       {children}
     </li>
