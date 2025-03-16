@@ -3,22 +3,22 @@ import classNames from 'classnames';
 import React from 'react';
 
 export default function CloseButton({
-    label,
-    handleClick,
-    className,
+  label,
+  handleClick,
+  className,
 }: {
-    label: string;
-    handleClick: () => void;
-    className?: string;
+  label: string;
+  handleClick: () => void;
+  className?: string;
 }) {
-    return (
-        <button
-            type="button"
-            aria-label={label}
-            className={classNames('rounded-full p-[3px] w-max h-max', className)}
-            onClick={handleClick}
-        >
-            <CloseIcon className="text-muted transition-colors hover:text-black" />
-        </button>
-    );
+  return (
+    <button
+      type="button"
+      aria-label={label}
+      className={classNames('size-max rounded-full p-[3px]', className)}
+      onClick={handleClick}
+    >
+      <CloseIcon className="text-muted transition-colors hover:text-black" />
+    </button>
+  );
 }
