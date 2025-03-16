@@ -1,24 +1,32 @@
-import classNames from 'classnames';
+import { tv, VariantProps } from 'tailwind-variants';
 
-const sizes: { sm: string; lg: string } = {
-    sm: 'mb-1.5 text-sm',
-    lg: 'mb-2.5',
-};
+const labelClasses = tv({
+  base: 'block font-semibold',
+  variants: {
+    size: {
+      sm: 'mb-1.5 text-sm',
+      lg: 'mb-2.5',
+    },
+  },
+  defaultVariants: {
+    size: 'sm',
+  },
+});
+
+type FieldLableSize = VariantProps<typeof labelClasses>['size'];
 
 export default function FieldLabel({
-    htmlFor,
-    size = 'sm',
-    children,
+  htmlFor,
+  size = 'sm',
+  children,
 }: {
-    htmlFor: string;
-    size?: keyof typeof sizes;
-    children: React.ReactNode;
+  htmlFor: string;
+  size?: FieldLableSize;
+  children: React.ReactNode;
 }) {
-    const labelClasses = classNames(sizes[size], 'block font-semibold');
-
-    return (
-        <label htmlFor={htmlFor} className={labelClasses}>
-            {children}
-        </label>
-    );
+  return (
+    <label htmlFor={htmlFor} className={labelClasses({ size })}>
+      {children}
+    </label>
+  );
 }

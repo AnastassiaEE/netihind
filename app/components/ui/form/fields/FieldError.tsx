@@ -1,15 +1,26 @@
-import classNames from 'classnames';
+import { tv, VariantProps } from 'tailwind-variants';
+
+const errorClasses = tv({
+  base: 'absolute font-medium text-error',
+  variants: {
+    size: {
+      sm: 'text-xs',
+      lg: 'text-sm',
+    },
+  },
+  defaultVariants: {
+    size: 'sm',
+  },
+});
+
+type FieldErrorSize = VariantProps<typeof errorClasses>['size'];
 
 export default function FieldError({
-    size = 'sm',
-    children,
+  size = 'sm',
+  children,
 }: {
-    size?: 'sm' | 'lg';
-    children: React.ReactNode;
+  size?: FieldErrorSize;
+  children: React.ReactNode;
 }) {
-    const errorClasses = classNames('absolute font-medium text-error', {
-        'text-xs': size === 'sm',
-        'text-sm': size === 'lg',
-    });
-    return <div className={errorClasses}>{children}</div>;
+  return <div className={errorClasses({ size })}>{children}</div>;
 }
