@@ -3,76 +3,123 @@
 import CircleArrow from '@/components/ui/icons/CircleArrow';
 import useAccordionItem from '@/hooks/useAccordionItem';
 import classNames from 'classnames';
-import { AccordionFontStyles, AccordionVariant } from '@/components/ui/accordion/Accordion';
 import Arrow from '@/components/ui/icons/Arrow';
+import React from 'react';
+import { tv } from 'tailwind-variants';
+import { AccordionBorder } from '@/components/ui/accordion/Accordion';
+import { AccordionSize } from '@/components/ui/accordion/Accordion';
+import { ArrowStyle } from '@/components/ui/accordion/Accordion';
+import { ArrowPosition } from '@/components/ui/accordion/Accordion';
 
 export default function AccordionItem({
-    variant,
-    isCollapsed,
-    header,
-    body,
-    fontStyles,
+  border = 'none',
+  size = 'sm',
+  arrowStyle = 'default',
+  arrowPosition = 'right',
+  isCollapsed = true,
+  children,
 }: {
-    variant: AccordionVariant;
-    isCollapsed: boolean;
-    header: string;
-    body: React.ReactNode;
-    fontStyles: AccordionFontStyles;
+  border?: AccordionBorder;
+  size?: AccordionSize;
+  arrowStyle?: ArrowStyle;
+  arrowPosition?: ArrowPosition;
+  isCollapsed?: boolean;
+  children: React.ReactNode;
 }) {
-    const { isOpened, toggle, collapsible, collapsibleHeight, id } = useAccordionItem(isCollapsed);
+  const { isOpened, toggle, collapsible, collapsibleHeight, id } =
+    useAccordionItem(isCollapsed);
 
-    const isOutlined = variant === 'outlined';
-    const isSolid = variant === 'solid';
+  const itemWrapperClasses = tv({
+    base: 'overflow-hidden',
+    variants: {
+      border: {
+        none: '',
+        bottom: 'border-muted-light [&:not(:last-child)]:border-b',
+        full: 'border-muted-light [&:not(:last-child)]:border-b',
+      },
+    },
+  });
 
-    const wrapperClasses = classNames(
-        'overflow-hidden',
-        variant === 'outlined' &&
-        'border-x border-b border-muted-light first:rounded-t-lg first:border-t last:rounded-b-lg last:border-b',
-    );
+  const buttonClasses = tv({
+    base: 'flex w-full items-center',
+    variants: {
+      border: {
+        none: '',
+        bottom: '',
+        full: classNames(
+          isOpened && 'border-muted-light [&:not(:last-child)]:border-b',
+        ),
+      },
+      size: {
+        sm: 'p-1',
+        lg: 'p-6',
+      },
+      arrowPosition: {
+        left: 'justify-left gap-3',
+        right: 'flex-row-reverse justify-between',
+      },
+    },
+  });
 
-    const buttonClasses = classNames('flex w-full items-center justify-between text-left', {
-        'p-6': isOutlined,
-        'py-2': isSolid,
-        'border-b': isOpened && isOutlined,
-    });
+  const panelClasses = tv({
+    variants: {
+      size: {
+        sm: 'p-1',
+        lg: 'p-6',
+      },
+    },
+  });
 
-    const headerClasses = classNames('font-semibold', fontStyles.header);
+  const arrowClasses = tv({
+    variants: {
+      arrowStyle: {
+        default: '',
+        circle: classNames(
+          'transition-colors',
+          isOpened
+            ? 'bg-primary text-white shadow-md shadow-primary/50'
+            : 'bg-primary-light',
+        ),
+      },
+    },
+  });
 
-    const bodyClasses = classNames(fontStyles.body, {
-        'p-6': isOutlined,
-        'py-2': isSolid,
-    });
-
-    const arrowClasses = classNames(
-        'transition-colors',
-        isOpened ? 'bg-primary text-white shadow-md shadow-primary/50' : 'bg-primary-light',
-    );
-
+  const renderArrow = () => {
+    if (arrowStyle === 'default')
+      return <Arrow direction={isOpened ? 'up' : 'down'}></Arrow>;
     return (
-        <div className={wrapperClasses}>
-            <button
-                type="button"
-                className={buttonClasses}
-                onClick={toggle}
-                aria-expanded={isOpened ? 'true' : 'false'}
-                aria-controls={id.current}
-            >
-                <span className={headerClasses}>{header}</span>
-                {isOutlined ? (
-                    <CircleArrow direction={isOpened ? 'up' : 'down'} className={arrowClasses} />
-                ) : (
-                    <Arrow direction={isOpened ? 'up' : 'down'} />
-                )}
-            </button>
-            <div
-                id={id.current}
-                className="transition-all duration-500"
-                style={{ height: collapsibleHeight + 'px' }}
-            >
-                <div ref={collapsible} className={bodyClasses} tabIndex={isOpened ? 0 : undefined}>
-                    {body}
-                </div>
-            </div>
-        </div>
+      <CircleArrow
+        direction={isOpened ? 'up' : 'down'}
+        className={arrowClasses({ arrowStyle })}
+      />
     );
+  };
+
+  return (
+    <div className={itemWrapperClasses({ border })}>
+      <button
+        type="button"
+        onClick={toggle}
+        aria-expanded={isOpened}
+        aria-controls={id.current}
+        className={buttonClasses({ border, size, arrowPosition })}
+      >
+        {renderArrow()}
+        {children && React.Children.toArray(children)[0]}
+      </button>
+      <div
+        id={id.current}
+        className="transition-all duration-500"
+        style={{ height: collapsibleHeight + 'px' }}
+      >
+        <div
+          ref={collapsible}
+          tabIndex={isOpened ? 0 : undefined}
+          className={panelClasses({ size })}
+        >
+          {children && React.Children.toArray(children)[1]}
+        </div>
+      </div>
+    </div>
+  );
 }
