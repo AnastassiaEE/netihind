@@ -1,19 +1,34 @@
 import { ChevronLeft } from '@mui/icons-material';
-import classNames from 'classnames';
+import { tv, VariantProps } from 'tailwind-variants';
 
-export type ArrowDirection = 'left' | 'right' | 'up' | 'down';
+const arrowClasses = tv({
+  base: 'transition-transform duration-300',
+  variants: {
+    direction: {
+      left: '',
+      right: 'rotate-180',
+      up: 'rotate-90',
+      down: '-rotate-90',
+    },
+  },
+  defaultVariants: {
+    direction: 'left',
+  },
+});
+
+export type ArrowDirection = VariantProps<typeof arrowClasses>['direction'];
 
 export default function Arrow({
-    direction = 'left',
-    className,
+  direction = 'left',
+  className,
 }: {
-    direction?: ArrowDirection;
-    className?: string;
+  direction?: ArrowDirection;
+  className?: string;
 }) {
-    const arrowClasses = classNames('transition-transform duration-300', className, {
-        'rotate-180': direction === 'right',
-        'rotate-90': direction === 'up',
-        '-rotate-90': direction === 'down',
-    });
-    return <ChevronLeft key={direction} fontSize="small" className={arrowClasses} />;
+  return (
+    <ChevronLeft
+      fontSize="small"
+      className={arrowClasses({ direction, className })}
+    />
+  );
 }
