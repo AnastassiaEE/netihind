@@ -5,18 +5,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import CircleArrow from '@/components/ui/icons/CircleArrow';
 import SliderBlogCard from '@/components/ui/blog/SliderBlogCard';
 import 'swiper/css/bundle';
-import classNames from 'classnames';
 
-const arrowClasses = classNames(
-  'text-black',
-  'bg-white',
-  'shadow-md',
-  'shadow-black/30',
-  'max-xl:hidden',
-  'hover:bg-primary',
-  'hover:shadow-primary/50',
-  'hover:text-white',
-);
+const arrowClasses =
+  'text-black bg-white shadow-md shadow-black/30 max-xl:hidden hover:bg-primary hover:shadow-primary/50 hover:text-white';
 
 const breakpoints = {
   0: {
@@ -47,7 +38,11 @@ const pagination = {
 
 const modules = [Pagination, Navigation];
 
-export default function SliderBlogCards({ posts }: { posts?: { [key: string]: any }[] }) {
+export default function SliderBlogCards({
+  posts,
+}: {
+  posts?: { [key: string]: any }[];
+}) {
   return (
     <div className="relative xl:px-20">
       <div className="prev absolute left-0 top-1/2 -translate-y-1/2">
