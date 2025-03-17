@@ -9,7 +9,7 @@ const textAreaClasses = tv({
     size: sizes,
     isValid: {
       true: 'border-valid focus:border-primary/30',
-      false: 'border-invalid',
+      false: 'border-invalid focus:shadow-invalid/10',
     },
   },
   defaultVariants: {
