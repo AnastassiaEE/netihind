@@ -25,7 +25,7 @@ export default function CookiesDetails({
               <ToggleSwitch
                 name="cookie-required"
                 size="lg"
-                isChecked={true}
+                isChecked={cookies.necessary === true}
                 required={true}
                 disabled={true}
               />
