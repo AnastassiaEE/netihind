@@ -3,7 +3,7 @@ import { tv, VariantProps } from 'tailwind-variants';
 import { FormElementSizes as sizes } from '@/styles/styles';
 
 const buttonClasses = tv({
-  base: 'font-semibold transition-all rounded-md border shadow-md',
+  base: 'rounded-md border font-semibold shadow-md transition-all',
   variants: {
     variant: {
       contained: 'border-primary bg-primary text-white hover:bg-primary-dark',
@@ -11,11 +11,11 @@ const buttonClasses = tv({
         'border-primary bg-white text-primary hover:bg-primary hover:text-white',
       neutral:
         'border-primary-light bg-primary-light text-muted-dark hover:bg-primary hover:text-white',
-      text: 'text-primary hover:text-primary-dark border-transparent shadow-none',
+      text: 'border-transparent text-primary shadow-none hover:text-primary-dark',
     },
     size: sizes,
     disabled: {
-      true: 'hover:cursor-not-allowed opacity-50',
+      true: 'opacity-50 hover:cursor-not-allowed',
       false: '',
     },
   },
