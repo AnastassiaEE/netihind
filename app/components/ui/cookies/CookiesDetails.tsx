@@ -20,7 +20,7 @@ export default function CookiesDetails({
           <div>
             <div className="mb-2 flex items-center justify-between">
               <p className="font-semibold text-black">
-                {t('details.required.name')}
+                {t('details.necessary.name')}
               </p>
               <ToggleSwitch
                 name="cookie-required"
@@ -30,7 +30,7 @@ export default function CookiesDetails({
                 disabled={true}
               />
             </div>
-            <p>{t('details.required.description')}</p>
+            <p>{t('details.necessary.description')}</p>
           </div>
         </AccordionItemHeader>
         <AccordionItemBody>rwfwefwfff</AccordionItemBody>
@@ -40,19 +40,21 @@ export default function CookiesDetails({
           <div>
             <div className="mb-2 flex items-center justify-between">
               <p className="font-semibold text-black">
-                {t('details.preferenced.name')}
+                {t('details.preferences.name')}
               </p>
               <ToggleSwitch
                 name="cookie-preferences"
                 size="lg"
                 isChecked={cookies.preferenced === true}
-                handleChange={() => handleCookieChange('preferenced')}
+                handleChange={() => handleCookieChange('preferences')}
               />
             </div>
-            <p>{t('details.preferenced.description')}</p>
+            <p>{t('details.preferences.description')}</p>
           </div>
         </AccordionItemHeader>
-        <AccordionItemBody>rwfwefwfff</AccordionItemBody>
+        <AccordionItemBody>
+          <table></table>
+        </AccordionItemBody>
       </AccordionItem>
     </Accordion>
   );

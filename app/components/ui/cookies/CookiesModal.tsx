@@ -39,7 +39,7 @@ export default function CookiesModal() {
   const [cookies, setCookies] = useState<{
     [key: string]: boolean;
   }>({
-    preferenced: false,
+    preferences: false,
   });
   const handleCookieChange = (cookieType: string) => {
     setCookies((prevState) => ({
