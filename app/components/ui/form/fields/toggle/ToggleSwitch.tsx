@@ -5,7 +5,7 @@ const toggleVariants = tv({
   slots: {
     input: 'peer absolute opacity-0',
     switch:
-      "rounded-full bg-muted-light after:absolute after:left-1 after:top-1 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-focus:outline",
+      "rounded-full after:absolute after:left-1 after:top-1 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-focus-visible:outline",
     label: 'ml-2',
   },
   variants: {
@@ -32,10 +32,19 @@ const toggleVariants = tv({
         label: 'cursor-not-allowed opacity-50',
       },
     },
+    isValid: {
+      true: {
+        switch: 'bg-valid',
+      },
+      false: {
+        switch: 'bg-invalid',
+      },
+    },
   },
   defaultVariants: {
     size: 'sm',
     disabled: false,
+    isValid: true,
   },
 });
 
@@ -68,7 +77,7 @@ export default function ToggleSwitch({
     input: inputClasses,
     switch: switchClasses,
     label: labelClasses,
-  } = toggleVariants({ size, disabled });
+  } = toggleVariants({ size, disabled, isValid });
 
   return (
     <label className={toggleVariants().base()}>
