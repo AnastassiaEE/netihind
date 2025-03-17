@@ -10,16 +10,17 @@ import { useTranslations } from 'next-intl';
 import Button from '@/components/ui/form/buttons/Button';
 import CookiesConsent from '@/components/ui/cookies/CookiesConsent';
 import CookiesDetails from './CookiesDetails';
+import CookiesActions from './CookiesActions';
 
 export default function CookiesModal() {
   const b = useTranslations('Buttons');
   const c = useTranslations('Cookies');
   const tabs = [c('tabs.consent'), c('tabs.details'), c('tabs.info')];
   const {
-    isOpened: isCookiesOpened,
-    open: openCookies,
-    close: closeCookies,
-    overlayRef: cookiesRef,
+    isOpened: isCookiesModalOpened,
+    open: openCookiesModal,
+    close: closeCookiesModal,
+    overlayRef: cookiesModalRef,
   } = useOverlay(true);
 
   // useEffect(() => {
@@ -51,39 +52,29 @@ export default function CookiesModal() {
 
   return (
     <>
-      <CookieButton label={b('cookies.open')} handleClick={openCookies} />
+      <CookieButton label={b('cookies.open')} handleClick={openCookiesModal} />
       <Dialogue
         type="modal"
         name="cookies"
         title={c('title')}
-        isOpened={isCookiesOpened}
-        handleClose={closeCookies}
-        dialogRef={cookiesRef}
-        className="bg-white"
+        isOpened={isCookiesModalOpened}
+        handleClose={closeCookiesModal}
+        dialogRef={cookiesModalRef}
+        className="flex flex-col overflow-hidden bg-white"
       >
         <Tabs name="cookies" tabs={tabs}>
-          <TabPanel>
+          <TabPanel className="h-auto overflow-y-auto">
             <CookiesConsent />
-            <div className="flex gap-3">
-              <Button variant="outlined" size="lg" className="w-full">
-                Keeldu
-              </Button>
-              <Button variant="outlined" size="lg" className="w-full">
-                Luba valik
-              </Button>
-              <Button size="lg" className="w-full">
-                Luba kõik
-              </Button>
-            </div>
           </TabPanel>
-          <TabPanel>
+          <TabPanel className="h-auto overflow-y-auto">
             <CookiesDetails
               cookies={cookies}
               handleCookieChange={handleCookieChange}
             />
           </TabPanel>
-          <TabPanel> Content 3</TabPanel>
+          <TabPanel className="h-auto overflow-y-auto"> Content 3</TabPanel>
         </Tabs>
+        <CookiesActions />
       </Dialogue>
     </>
   );

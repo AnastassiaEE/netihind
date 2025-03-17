@@ -15,7 +15,7 @@ export default function Tabs({
     useTabs(name, tabs);
 
   return (
-    <div>
+    <>
       <div role="tablist">
         <ul className="flex border-b border-b-muted-light">
           {tabs.map((tab, index) => {
@@ -52,6 +52,6 @@ export default function Tabs({
         }
         return child;
       })}
-    </div>
+    </>
   );
 }

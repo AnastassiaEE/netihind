@@ -28,7 +28,7 @@ export default function Dialog({
   const t = useTranslations('Buttons');
 
   const dialogClasses = classNames(
-    'fixed left-1/2 top-1/2 z-50 h-dvh w-max max-w-[100vw] overflow-auto rounded-lg p-6 shadow-lg focus:outline-none md:p-14 lg:h-max lg:max-h-[calc(100vh-50px)] lg:max-w-[calc(100vw-50px)]',
+    'fixed left-1/2 top-1/2 z-50 h-max max-h-dvh w-max max-w-[100vw] overflow-auto rounded-lg p-6 shadow-lg focus:outline-none md:p-11 lg:h-max lg:max-h-[90vh] lg:max-w-[90vw]',
     isOpened ? 'modal-open' : 'modal-close',
     className,
   );
