@@ -282,6 +282,23 @@
         "description": "Eelistuste küpsised aitavad meil meeles pidada Teie kui kasutaja eelistusi meie veebilehte külastades, salvestades Teie kasutajaeelistusi, näiteks kasutajanimi, keelevalik jms. Eelistuste küpsised on vajalikud, muutmaks meie veebilehte kasutajamugavamaks."
       }
     },
-    "info": ""
+    "info": "",
+    "attributes": {
+      "description": {
+        "address": "Salvestab sisestatud aadressi, et automaatselt otsida saadavalolevaid internetipakette.",
+        "maaametGa1": "Kasutatakse Google Analyticsit ainulaadsete kasutajate jälgimiseks veebisaidil ja sessioonide eristamiseks. See aitab koguda külastuste andmeid ja töödelda veebisaidi kasutamise interaktsioone, et täiustada analüüsi ja mõista kasutajate käitumist.",
+        "maaametGa2": "Kasutatakse Google Analyticsit kasutajate jälgimiseks ja sessioonide vahel eristamiseks. See aitab koguda ja analüüsida andmeid veebisaidi kasutamise kohta, et parandada funktsionaalsust ja kasutajakogemust.",
+        "nextLocale": "Salvestab kasutaja valitud keele, tagades õige lokaliseerimise lehel järgmistel külastustel.",
+        "cookieConsent": "Salvestab kasutaja nõusoleku oleku küpsiste kasutamiseks."
+      },
+      "maxAge": {
+        "session": "Seanss",
+        "oneYear": "1 aasta",
+        "twoYears": "2 aastat"
+      },
+      "type": {
+        "http": "HTTP küpsis"
+      }
+    }
   }
 }

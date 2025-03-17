@@ -43,10 +43,10 @@ export default function CookiesModal() {
     necessary: true,
     preferences: false,
   });
-  const handleCookieChange = (cookieType: string) => {
+  const handleCookieChange = (cookie: string) => {
     setCookies((prevState) => ({
       ...prevState,
-      [cookieType]: !prevState[cookieType],
+      [cookie]: !prevState[cookie],
     }));
   };
 
