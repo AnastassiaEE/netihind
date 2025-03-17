@@ -8,11 +8,7 @@ import Tabs from '@/components/ui/tabs/Tabs';
 import TabPanel from '@/components/ui/tabs/TabPanel';
 import { useTranslations } from 'next-intl';
 import Button from '@/components/ui/form/buttons/Button';
-import Accordion from '../accordion/Accordion';
-import AccordionItem from '../accordion/AccordionItem';
-import AccordionItemHeader from '../accordion/AccordionItemHeader';
-import AccordionItemBody from '../accordion/AccordionItemBody';
-import ToggleSwitch from '../form/fields/toggle/ToggleSwitch';
+import CookiesConsent from '@/components/ui/cookies/CookiesConsent';
 
 export default function CookiesModal() {
   const b = useTranslations('Buttons');
@@ -68,19 +64,7 @@ export default function CookiesModal() {
       >
         <Tabs name="cookies" tabs={tabs}>
           <TabPanel>
-            {c.rich('consent', {
-              p: (chunks: React.ReactNode) => <p className="mb-3">{chunks}</p>,
-              strong: (chunks: React.ReactNode) => <strong>{chunks}</strong>,
-              a: (chunks: React.ReactNode) => (
-                <a
-                  href="/policy"
-                  target="_blank"
-                  className="font-semibold transition-colors hover:text-primary"
-                >
-                  {chunks}
-                </a>
-              ),
-            })}
+            <CookiesConsent />
             <div className="flex gap-3">
               <Button variant="outlined" size="lg" className="w-full">
                 Keeldu
@@ -94,54 +78,7 @@ export default function CookiesModal() {
             </div>
           </TabPanel>
           <TabPanel>
-            <Accordion border="bottom" size="md" arrowPosition="left">
-              <AccordionItem>
-                <AccordionItemHeader>
-                  <div>
-                    <div className="mb-2 flex items-center justify-between">
-                      <p className="font-semibold text-black">Vajalik</p>
-                      <ToggleSwitch
-                        name="cookie-required"
-                        size="lg"
-                        isChecked={true}
-                        required={true}
-                        disabled={true}
-                      />
-                    </div>
-                    <p>
-                      Vajalikud küpsised võimaldavad meie veebilehe
-                      põhifunktsioonide toimimise, ilma nendeta leht ei tööta.
-                    </p>
-                  </div>
-                </AccordionItemHeader>
-                <AccordionItemBody>rwfwefwfff</AccordionItemBody>
-              </AccordionItem>
-              <AccordionItem>
-                <AccordionItemHeader>
-                  <div>
-                    <div className="mb-2 flex items-center justify-between">
-                      <p className="font-semibold text-black">Eelistused</p>
-                      <ToggleSwitch
-                        name="cookie-preferences"
-                        size="lg"
-                        isChecked={selectedCookies.preferences === true}
-                        handleChange={(e) =>
-                          handleCookieChange(e, 'preferenced')
-                        }
-                      />
-                    </div>
-                    <p>
-                      Eelistuste küpsised aitavad meil meeles pidada Teie kui
-                      kasutaja eelistusi meie veebilehte külastades, salvestades
-                      Teie kasutajaeelistusi, näiteks kasutajanimi, keelevalik
-                      jms. Eelistuste küpsised on vajalikud, muutmaks meie
-                      veebilehte kasutajamugavamaks.
-                    </p>
-                  </div>
-                </AccordionItemHeader>
-                <AccordionItemBody>rwfwefwfff</AccordionItemBody>
-              </AccordionItem>
-            </Accordion>
+            <></>
           </TabPanel>
           <TabPanel> Content 3</TabPanel>
         </Tabs>
