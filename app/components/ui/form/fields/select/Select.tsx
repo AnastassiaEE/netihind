@@ -52,7 +52,7 @@ export default function Select({
   const listBoxClasses = classNames(
     'border-grey-300 absolute right-0 z-[1] w-full min-w-max rounded-md bg-white drop-shadow-md',
     openDirection === 'top' && 'bottom-full',
-    !isExpanded && 'pointer-events-none hidden',
+    !isExpanded && 'hidden',
   );
 
   const listBoxId = `${name}-select-box`;
