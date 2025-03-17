@@ -284,6 +284,11 @@
     },
     "info": "",
     "attributes": {
+      "labels": {
+        "domain": "Domeen",
+        "maxAge": "Maksimaalne hoidmise aeg",
+        "type": "Tüüp"
+      },
       "description": {
         "address": "Salvestab sisestatud aadressi, et automaatselt otsida saadavalolevaid internetipakette.",
         "maaametGa1": "Kasutatakse Google Analyticsit ainulaadsete kasutajate jälgimiseks veebisaidil ja sessioonide eristamiseks. See aitab koguda külastuste andmeid ja töödelda veebisaidi kasutamise interaktsioone, et täiustada analüüsi ja mõista kasutajate käitumist.",

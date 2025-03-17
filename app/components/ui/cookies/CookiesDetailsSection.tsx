@@ -5,8 +5,9 @@ import AccordionItemHeader from '@/components/ui/accordion/AccordionItemHeader';
 import ToggleSwitch from '@/components/ui/form/fields/toggle/ToggleSwitch';
 import { useTranslations } from 'next-intl';
 import React from 'react';
+import CookieDetails from '@/components/ui/cookies/CookieDetails';
 
-export default function CookiesDetails({
+export default function CookiesDetailsSection({
   cookies,
   handleCookieChange,
 }: {
@@ -73,15 +74,19 @@ export default function CookiesDetails({
           </div>
         </AccordionItemHeader>
         <AccordionItemBody>
-          {Object.entries(details.necessary).map(([name, details]) => (
-            <React.Fragment key={name}>
-              <p>{name}</p>
-              <p>{details.description}</p>
-              <p>{details.domain}</p>
-              <p>{details.maxAge}</p>
-              <p>{details.type}</p>
-            </React.Fragment>
-          ))}
+          {Object.entries(details.necessary).map(
+            ([name, { description, domain, maxAge, type }]) => (
+              <CookieDetails
+                key={name}
+                name={name}
+                description={description}
+                domain={domain}
+                maxAge={maxAge}
+                type={type}
+                className="[&:not(:last-child)]:mb-1.5"
+              />
+            ),
+          )}
         </AccordionItemBody>
       </AccordionItem>
       <AccordionItem>

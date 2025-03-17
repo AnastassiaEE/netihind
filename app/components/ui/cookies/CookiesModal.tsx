@@ -7,9 +7,8 @@ import useOverlay from '@/hooks/useOverlay';
 import Tabs from '@/components/ui/tabs/Tabs';
 import TabPanel from '@/components/ui/tabs/TabPanel';
 import { useTranslations } from 'next-intl';
-import Button from '@/components/ui/form/buttons/Button';
-import CookiesConsent from '@/components/ui/cookies/CookiesConsent';
-import CookiesDetails from './CookiesDetails';
+import CookiesConsentSection from '@/components/ui/cookies/CookiesConsentSection';
+import CookiesDetailsSection from './CookiesDetailsSection';
 import CookiesActions from './CookiesActions';
 
 export default function CookiesModal() {
@@ -64,10 +63,10 @@ export default function CookiesModal() {
       >
         <Tabs name="cookies" tabs={tabs}>
           <TabPanel className="h-auto overflow-y-auto">
-            <CookiesConsent />
+            <CookiesConsentSection />
           </TabPanel>
           <TabPanel className="h-auto overflow-y-auto">
-            <CookiesDetails
+            <CookiesDetailsSection
               cookies={cookies}
               handleCookieChange={handleCookieChange}
             />
