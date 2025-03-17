@@ -51,7 +51,7 @@ export default function CookiesDetailsSection({
     },
     preferences: {
       NEXT_LOCALE: {
-        description: t('attributes.description.maaametGa2'),
+        description: t('attributes.description.nextLocale'),
         domain: 'netihind.ee',
         policy: '/policy',
         maxAge: t('attributes.maxAge.twoYears'),
