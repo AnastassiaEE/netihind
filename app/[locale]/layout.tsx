@@ -9,7 +9,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { headers } from 'next/headers';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import { NonceProvider } from '@/context/NonceContext';
-import CookieConsent from '@/components/ui/cookies/CookieConsent';
+import CookiesModal from '@/components/ui/cookies/CookiesModal';
 
 const inter = Manrope({ subsets: ['latin'] });
 
@@ -52,7 +52,7 @@ export default async function RootLayout({
           >
             <NonceProvider nonce={nonce}>
               <ScrollTopButton />
-              <CookieConsent />
+              <CookiesModal />
               {children}
             </NonceProvider>
           </AppRouterCacheProvider>
