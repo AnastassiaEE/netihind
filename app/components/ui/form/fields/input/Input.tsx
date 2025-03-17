@@ -4,11 +4,11 @@ import { tv, VariantProps } from 'tailwind-variants';
 import { FormElementSizes as sizes } from '@/styles/styles';
 
 const inputClasses = tv({
-  base: 'w-full rounded-md border bg-white text-muted-dark transition-[padding] placeholder:text-muted focus:shadow-md focus:shadow-primary/10 focus:outline-none',
+  base: 'w-full rounded-md border bg-white text-muted-dark transition-[padding] placeholder:text-muted focus:shadow-md focus:outline-none',
   variants: {
     size: sizes,
     isValid: {
-      true: 'border-valid focus:border-primary/30',
+      true: 'border-valid focus:border-primary/30 focus:shadow-primary/10',
       false: 'border-invalid focus:shadow-invalid/10',
     },
   },
