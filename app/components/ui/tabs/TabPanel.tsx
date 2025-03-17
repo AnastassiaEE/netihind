@@ -20,7 +20,6 @@ export default function TabPanel({
       id={tabPanelId}
       role="tabpanel"
       aria-labelledby={tabId}
-      tabIndex={isActive ? 0 : undefined}
       className={tabPanelClasses}
     >
       {children}

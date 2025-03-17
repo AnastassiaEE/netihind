@@ -126,11 +126,7 @@ export default function AccordionItem({
         className="overflow-y-hidden transition-all duration-500"
         style={{ height: collapsibleHeight + 'px' }}
       >
-        <div
-          ref={collapsible}
-          tabIndex={isExpanded ? 0 : undefined}
-          className={panelClasses({ size })}
-        >
+        <div ref={collapsible} className={panelClasses({ size })}>
           {children && React.Children.toArray(children)[1]}
         </div>
       </div>
