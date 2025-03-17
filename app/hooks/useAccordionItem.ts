@@ -7,17 +7,39 @@ export default function useAccordionItem(isCollapsed: boolean) {
   const [collapsibleHeight, setCollapsibleHeight] = useState(0);
   const id = useRef(useId());
 
+  /**
+   * Effect hook that calculates and updates the height of the collapsible content
+   * when the accordion is expanded. It also listens for window resize events
+   * to adjust the height accordingly.
+   *
+   * The height is set to the scrollHeight of the collapsible element when expanded,
+   * and set to 0 when collapsed. The event listener is added on mount and removed
+   * on cleanup.
+   *
+   * @returns {void}
+   */
   useEffect(() => {
-    if (collapsible.current && isExpanded) {
-      setCollapsibleHeight(collapsible.current.scrollHeight);
-    }
+    const updateHeight = () => {
+      if (collapsible.current && isExpanded) {
+        setCollapsibleHeight(collapsible.current.scrollHeight);
+      } else {
+        setCollapsibleHeight(0);
+      }
+    };
+
+    updateHeight();
+
+    window.addEventListener('resize', updateHeight);
+    return () => {
+      window.removeEventListener('resize', updateHeight);
+    };
   }, [isExpanded]);
 
   return {
     isExpanded,
     toggle,
     collapsible,
-    collapsibleHeight: isExpanded ? collapsibleHeight : 0,
+    collapsibleHeight,
     id,
   };
 }
