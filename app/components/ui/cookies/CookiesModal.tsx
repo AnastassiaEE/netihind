@@ -9,6 +9,7 @@ import TabPanel from '@/components/ui/tabs/TabPanel';
 import { useTranslations } from 'next-intl';
 import Button from '@/components/ui/form/buttons/Button';
 import CookiesConsent from '@/components/ui/cookies/CookiesConsent';
+import CookiesDetails from './CookiesDetails';
 
 export default function CookiesModal() {
   const b = useTranslations('Buttons');
@@ -35,16 +36,13 @@ export default function CookiesModal() {
 
   // if (!isVisible) return null;
 
-  const [selectedCookies, setSelectedCookies] = useState<{
+  const [cookies, setCookies] = useState<{
     [key: string]: boolean;
   }>({
     preferenced: false,
   });
-  const handleCookieChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    cookieType: string,
-  ) => {
-    setSelectedCookies((prevState) => ({
+  const handleCookieChange = (cookieType: string) => {
+    setCookies((prevState) => ({
       ...prevState,
       [cookieType]: !prevState[cookieType],
     }));
@@ -78,7 +76,10 @@ export default function CookiesModal() {
             </div>
           </TabPanel>
           <TabPanel>
-            <></>
+            <CookiesDetails
+              cookies={cookies}
+              handleCookieChange={handleCookieChange}
+            />
           </TabPanel>
           <TabPanel> Content 3</TabPanel>
         </Tabs>
