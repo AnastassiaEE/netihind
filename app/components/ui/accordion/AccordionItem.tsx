@@ -26,11 +26,10 @@ export default function AccordionItem({
   isCollapsed?: boolean;
   children: React.ReactNode;
 }) {
-  const { isOpened, toggle, collapsible, collapsibleHeight, id } =
+  const { isExpanded, toggle, collapsible, collapsibleHeight, id } =
     useAccordionItem(isCollapsed);
 
   const wrapperClasses = tv({
-    base: 'overflow-hidden',
     variants: {
       border: {
         none: '',
@@ -50,7 +49,7 @@ export default function AccordionItem({
         none: '',
         bottom: '',
         full: classNames(
-          isOpened && 'border-muted-light [&:not(:last-child)]:border-b',
+          isExpanded && 'border-muted-light [&:not(:last-child)]:border-b',
         ),
       },
       size: {
@@ -86,7 +85,7 @@ export default function AccordionItem({
         default: '',
         circle: classNames(
           'transition-colors',
-          isOpened
+          isExpanded
             ? 'bg-primary text-white shadow-md shadow-primary/50'
             : 'bg-primary-light',
         ),
@@ -99,10 +98,10 @@ export default function AccordionItem({
 
   const renderArrow = () => {
     if (arrowStyle === 'default')
-      return <Arrow direction={isOpened ? 'up' : 'down'}></Arrow>;
+      return <Arrow direction={isExpanded ? 'down' : 'up'}></Arrow>;
     return (
       <CircleArrow
-        direction={isOpened ? 'up' : 'down'}
+        direction={isExpanded ? 'down' : 'up'}
         className={arrowClasses({ arrowStyle })}
       />
     );
@@ -113,7 +112,7 @@ export default function AccordionItem({
       <button
         type="button"
         onClick={toggle}
-        aria-expanded={isOpened}
+        aria-expanded={isExpanded}
         aria-controls={id.current}
         className={buttonClasses({ border, size, arrowPosition })}
       >
@@ -122,12 +121,12 @@ export default function AccordionItem({
       </button>
       <div
         id={id.current}
-        className="transition-all duration-500"
+        className="overflow-y-hidden transition-all duration-500"
         style={{ height: collapsibleHeight + 'px' }}
       >
         <div
           ref={collapsible}
-          tabIndex={isOpened ? 0 : undefined}
+          tabIndex={isExpanded ? 0 : undefined}
           className={panelClasses({ size })}
         >
           {children && React.Children.toArray(children)[1]}
