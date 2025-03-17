@@ -3,6 +3,7 @@ import AccordionItem from '@/components/ui/accordion/AccordionItem';
 import AccordionItemBody from '@/components/ui/accordion/AccordionItemBody';
 import AccordionItemHeader from '@/components/ui/accordion/AccordionItemHeader';
 import ToggleSwitch from '@/components/ui/form/fields/toggle/ToggleSwitch';
+import { useTranslations } from 'next-intl';
 
 export default function CookiesDetails({
   cookies,
@@ -11,13 +12,16 @@ export default function CookiesDetails({
   cookies: { [key: string]: boolean };
   handleCookieChange: (cookie: string) => void;
 }) {
+  const t = useTranslations('Cookies');
   return (
     <Accordion border="bottom" size="md" arrowPosition="left">
       <AccordionItem>
         <AccordionItemHeader>
           <div>
             <div className="mb-2 flex items-center justify-between">
-              <p className="font-semibold text-black">Vajalik</p>
+              <p className="font-semibold text-black">
+                {t('details.required.name')}
+              </p>
               <ToggleSwitch
                 name="cookie-required"
                 size="lg"
@@ -26,10 +30,7 @@ export default function CookiesDetails({
                 disabled={true}
               />
             </div>
-            <p>
-              Vajalikud küpsised võimaldavad meie veebilehe põhifunktsioonide
-              toimimise, ilma nendeta leht ei tööta.
-            </p>
+            <p>{t('details.required.description')}</p>
           </div>
         </AccordionItemHeader>
         <AccordionItemBody>rwfwefwfff</AccordionItemBody>
@@ -38,7 +39,9 @@ export default function CookiesDetails({
         <AccordionItemHeader>
           <div>
             <div className="mb-2 flex items-center justify-between">
-              <p className="font-semibold text-black">Eelistused</p>
+              <p className="font-semibold text-black">
+                {t('details.preferenced.name')}
+              </p>
               <ToggleSwitch
                 name="cookie-preferences"
                 size="lg"
@@ -46,13 +49,7 @@ export default function CookiesDetails({
                 handleChange={() => handleCookieChange('preferenced')}
               />
             </div>
-            <p>
-              Eelistuste küpsised aitavad meil meeles pidada Teie kui kasutaja
-              eelistusi meie veebilehte külastades, salvestades Teie
-              kasutajaeelistusi, näiteks kasutajanimi, keelevalik jms.
-              Eelistuste küpsised on vajalikud, muutmaks meie veebilehte
-              kasutajamugavamaks.
-            </p>
+            <p>{t('details.preferenced.description')}</p>
           </div>
         </AccordionItemHeader>
         <AccordionItemBody>rwfwefwfff</AccordionItemBody>
