@@ -8,6 +8,11 @@ import Tabs from '@/components/ui/tabs/Tabs';
 import TabPanel from '@/components/ui/tabs/TabPanel';
 import { useTranslations } from 'next-intl';
 import Button from '@/components/ui/form/buttons/Button';
+import Accordion from '../accordion/Accordion';
+import AccordionItem from '../accordion/AccordionItem';
+import AccordionItemHeader from '../accordion/AccordionItemHeader';
+import AccordionItemBody from '../accordion/AccordionItemBody';
+import ToggleSwitch from '../form/fields/toggle/ToggleSwitch';
 
 export default function CookieConsent() {
   const b = useTranslations('Buttons');
@@ -61,12 +66,73 @@ export default function CookieConsent() {
                 </a>
               ),
             })}
-            <div className="flex">
-              <Button>Keeldu</Button>
-              <Button>Luba kõik</Button>
+            <div className="flex gap-3">
+              <Button variant="outlined" size="lg" className="w-full">
+                Keeldu
+              </Button>
+              <Button variant="outlined" size="lg" className="w-full">
+                Luba valik
+              </Button>
+              <Button size="lg" className="w-full">
+                Luba kõik
+              </Button>
             </div>
           </TabPanel>
-          <TabPanel> Content 2</TabPanel>
+          <TabPanel>
+            <Accordion border="bottom" size="md" arrowPosition="left">
+              <AccordionItem>
+                <AccordionItemHeader>
+                  <div>
+                    <div className="mb-2 flex items-center justify-between">
+                      <p className="font-semibold text-black">Vajalik</p>
+                      <ToggleSwitch
+                        name={''}
+                        size="lg"
+                        isChecked={false}
+                        handleChange={function (
+                          event: ChangeEvent<HTMLInputElement>,
+                        ): void {
+                          throw new Error('Function not implemented.');
+                        }}
+                      />
+                    </div>
+                    <p>
+                      Vajalikud küpsised võimaldavad meie veebilehe
+                      põhifunktsioonide toimimise, ilma nendeta leht ei tööta.
+                    </p>
+                  </div>
+                </AccordionItemHeader>
+                <AccordionItemBody>rwfwefwfff</AccordionItemBody>
+              </AccordionItem>
+              <AccordionItem>
+                <AccordionItemHeader>
+                  <div>
+                    <div className="mb-2 flex items-center justify-between">
+                      <p className="font-semibold text-black">Eelistused</p>
+                      <ToggleSwitch
+                        name={''}
+                        size="lg"
+                        isChecked={false}
+                        handleChange={function (
+                          event: ChangeEvent<HTMLInputElement>,
+                        ): void {
+                          throw new Error('Function not implemented.');
+                        }}
+                      />
+                    </div>
+                    <p>
+                      Eelistuste küpsised aitavad meil meeles pidada Teie kui
+                      kasutaja eelistusi meie veebilehte külastades, salvestades
+                      Teie kasutajaeelistusi, näiteks kasutajanimi, keelevalik
+                      jms. Eelistuste küpsised on vajalikud, muutmaks meie
+                      veebilehte kasutajamugavamaks.
+                    </p>
+                  </div>
+                </AccordionItemHeader>
+                <AccordionItemBody>rwfwefwfff</AccordionItemBody>
+              </AccordionItem>
+            </Accordion>
+          </TabPanel>
           <TabPanel> Content 3</TabPanel>
         </Tabs>
       </Dialogue>
