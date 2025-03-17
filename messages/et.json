@@ -272,7 +272,8 @@
       "info": "Teave"
     },
     "consent": "<p><strong>Veebilehel on kasutatud küpsiseid.</strong></p><p><strong>Veebilehe paremaks toimimiseks palume Teil lubada küpsiste kasutamine.</strong> Kasutame vajalikke küpsiseid, mis on meie lehtede korrektseks toimimiseks vaikimisi sisse lülitatud. Samuti kasutame me valikulisi küpsiseid, mis aitavad täiustada meie lehti ning parandada Teie kasutajakogemust. Rohkem infot leiad meie <a>privaatsuspoliitika lehelt</a>.</p>",
-    "details": {
+    "info": "",
+    "types": {
       "necessary": {
         "name": "Kohustuslik",
         "description": "Vajalikud küpsised võimaldavad meie veebilehe põhifunktsioonide toimimise, ilma nendeta leht ei tööta."
@@ -282,7 +283,6 @@
         "description": "Eelistuste küpsised aitavad meil meeles pidada Teie kui kasutaja eelistusi meie veebilehte külastades, salvestades Teie kasutajaeelistusi, näiteks kasutajanimi, keelevalik jms. Eelistuste küpsised on vajalikud, muutmaks meie veebilehte kasutajamugavamaks."
       }
     },
-    "info": "",
     "attributes": {
       "labels": {
         "domain": "Domeen",

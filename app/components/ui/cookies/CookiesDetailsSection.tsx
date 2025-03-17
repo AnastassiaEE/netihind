@@ -60,7 +60,7 @@ export default function CookiesDetailsSection({
           <div>
             <div className="mb-2 flex items-center justify-between">
               <p className="font-semibold text-black">
-                {t('details.necessary.name')}
+                {t('types.necessary.name')}
               </p>
               <ToggleSwitch
                 name="cookie-required"
@@ -70,7 +70,7 @@ export default function CookiesDetailsSection({
                 disabled={true}
               />
             </div>
-            <p>{t('details.necessary.description')}</p>
+            <p>{t('types.necessary.description')}</p>
           </div>
         </AccordionItemHeader>
         <AccordionItemBody>
@@ -94,7 +94,7 @@ export default function CookiesDetailsSection({
           <div>
             <div className="mb-2 flex items-center justify-between">
               <p className="font-semibold text-black">
-                {t('details.preferences.name')}
+                {t('types.preferences.name')}
               </p>
               <ToggleSwitch
                 name="cookie-preferences"
@@ -103,7 +103,7 @@ export default function CookiesDetailsSection({
                 handleChange={() => handleCookieChange('preferences')}
               />
             </div>
-            <p>{t('details.preferences.description')}</p>
+            <p>{t('types.preferences.description')}</p>
           </div>
         </AccordionItemHeader>
         <AccordionItemBody>rtgrtgrtg</AccordionItemBody>
