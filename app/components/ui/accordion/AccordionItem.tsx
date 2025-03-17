@@ -43,7 +43,7 @@ export default function AccordionItem({
   });
 
   const buttonClasses = tv({
-    base: 'flex w-full items-center text-left transition-all duration-300',
+    base: 'flex w-full items-center text-left transition-all',
     variants: {
       border: {
         none: '',
