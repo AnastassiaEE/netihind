@@ -5,6 +5,7 @@ export default function CookieDetails({
   name,
   description,
   domain,
+  policy,
   maxAge,
   type,
   className,
@@ -12,23 +13,25 @@ export default function CookieDetails({
   name: string;
   description: string;
   domain: string;
+  policy: string;
   maxAge: string;
   type: string;
   className?: string;
 }) {
   const t = useTranslations('Cookies');
   return (
-    <div
-      className={classNames(
-        'rounded-md bg-primary-light p-3 text-sm',
-        className,
-      )}
-    >
+    <div className={classNames('rounded-md p-3 text-sm', className)}>
       <p className="mb-2 font-semibold text-black">{name}</p>
       <p className="mb-2">{description}</p>
       <p>
         <span className="font-semibold">{t('attributes.labels.domain')}: </span>
-        {domain}
+        <a
+          href={policy}
+          target="_blank"
+          className="underline transition-colors hover:text-primary"
+        >
+          {domain}
+        </a>
       </p>
       <p>
         <span className="font-semibold">{t('attributes.labels.maxAge')}: </span>

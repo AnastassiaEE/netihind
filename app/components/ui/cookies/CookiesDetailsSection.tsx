@@ -21,24 +21,30 @@ export default function CookiesDetailsSection({
       ADDRESS: {
         description: t('attributes.description.address'),
         domain: 'netihind.ee',
+        policy: '/policy',
         maxAge: t('attributes.maxAge.session'),
         type: t('attributes.type.http'),
       },
       _ga: {
         description: t('attributes.description.maaametGa1'),
         domain: 'maamaet.ee',
+        policy:
+          'https://geoportaal.maaamet.ee/docs/aadress/In-ADS_kasutustingimused.pdf',
         maxAge: t('attributes.maxAge.twoYears'),
         type: t('attributes.type.http'),
       },
       _ga_470HYMSPJ6: {
         description: t('attributes.description.maaametGa2'),
         domain: 'maamaet.ee',
+        policy:
+          'https://geoportaal.maaamet.ee/docs/aadress/In-ADS_kasutustingimused.pdf',
         maxAge: t('attributes.maxAge.twoYears'),
         type: t('attributes.type.http'),
       },
       COOKIE_CONSENT: {
         description: t('attributes.description.cookieConsent'),
         domain: 'netihind.ee',
+        policy: '/policy',
         maxAge: t('attributes.maxAge.oneYear'),
         type: t('attributes.type.http'),
       },
@@ -46,11 +52,37 @@ export default function CookiesDetailsSection({
     preferences: {
       NEXT_LOCALE: {
         description: t('attributes.description.maaametGa2'),
-        domeen: 'maamaet.ee',
+        domain: 'netihind.ee',
+        policy: '/policy',
         maxAge: t('attributes.maxAge.twoYears'),
         type: t('attributes.type.http'),
       },
     },
+  };
+
+  const renderCookieDetails = (cookies: {
+    [key: string]: {
+      description: string;
+      domain: string;
+      policy: string;
+      maxAge: string;
+      type: string;
+    };
+  }) => {
+    return Object.entries(cookies).map(
+      ([name, { description, domain, policy, maxAge, type }]) => (
+        <CookieDetails
+          key={name}
+          name={name}
+          description={description}
+          domain={domain}
+          policy={policy}
+          maxAge={maxAge}
+          type={type}
+          className="bg-primary-light [&:not(:last-child)]:mb-1.5"
+        />
+      ),
+    );
   };
 
   return (
@@ -74,19 +106,7 @@ export default function CookiesDetailsSection({
           </div>
         </AccordionItemHeader>
         <AccordionItemBody>
-          {Object.entries(details.necessary).map(
-            ([name, { description, domain, maxAge, type }]) => (
-              <CookieDetails
-                key={name}
-                name={name}
-                description={description}
-                domain={domain}
-                maxAge={maxAge}
-                type={type}
-                className="[&:not(:last-child)]:mb-1.5"
-              />
-            ),
-          )}
+          {renderCookieDetails(details.necessary)}
         </AccordionItemBody>
       </AccordionItem>
       <AccordionItem>
@@ -106,7 +126,9 @@ export default function CookiesDetailsSection({
             <p>{t('types.preferences.description')}</p>
           </div>
         </AccordionItemHeader>
-        <AccordionItemBody>rtgrtgrtg</AccordionItemBody>
+        <AccordionItemBody>
+          {renderCookieDetails(details.preferences)}
+        </AccordionItemBody>
       </AccordionItem>
     </Accordion>
   );

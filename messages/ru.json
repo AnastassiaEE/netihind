@@ -302,7 +302,7 @@
         "twoYears": "2 года"
       },
       "type": {
-        "http": "HTTP файл cookie"
+        "http": "HTTP cookie"
       }
     }
   }
