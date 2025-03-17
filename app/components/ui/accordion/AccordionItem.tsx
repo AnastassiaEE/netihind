@@ -33,7 +33,7 @@ export default function AccordionItem({
     variants: {
       border: {
         none: '',
-        bottom: 'border-muted-light [&:not(:last-child)]:border-b',
+        bottom: 'border-b border-muted-light',
         full: 'border-muted-light [&:not(:last-child)]:border-b',
       },
     },
@@ -54,6 +54,7 @@ export default function AccordionItem({
       },
       size: {
         sm: 'p-1',
+        md: 'p-3',
         lg: 'p-6',
       },
       arrowPosition: {
@@ -71,6 +72,7 @@ export default function AccordionItem({
     variants: {
       size: {
         sm: 'p-1',
+        md: 'p-3',
         lg: 'p-6',
       },
     },

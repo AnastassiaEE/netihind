@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import React from 'react';
 
 export type AccordionBorder = 'none' | 'bottom' | 'full';
-export type AccordionSize = 'sm' | 'lg';
+export type AccordionSize = 'sm' | 'md' | 'lg';
 export type ArrowStyle = 'default' | 'circle';
 export type ArrowPosition = 'left' | 'right';
 
