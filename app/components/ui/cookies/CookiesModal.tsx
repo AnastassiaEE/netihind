@@ -39,6 +39,7 @@ export default function CookiesModal() {
   const [cookies, setCookies] = useState<{
     [key: string]: boolean;
   }>({
+    necessary: true,
     preferences: false,
   });
   const handleCookieChange = (cookieType: string) => {
