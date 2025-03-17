@@ -4,7 +4,7 @@ import { tv, VariantProps } from 'tailwind-variants';
 import { FormElementSizes as sizes } from '@/styles/styles';
 
 const inputClasses = tv({
-  base: 'w-full rounded-md border bg-white text-muted-dark transition-[padding] placeholder:text-muted focus:shadow-md focus:outline-none',
+  base: 'w-full rounded-md border bg-white text-muted-dark transition-[padding] placeholder:text-muted focus:outline-none',
   variants: {
     size: sizes,
     isValid: {
