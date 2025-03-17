@@ -23,8 +23,8 @@ export default function Checkbox({
     base: 'checkbox mr-2 shrink-0 cursor-pointer appearance-none rounded-[.185em] border checked:border-primary checked:bg-primary checked:bg-contain',
     variants: {
       size: {
-        sm: 'w-4 h-4',
-        lg: 'w-5 h-5',
+        sm: 'size-4',
+        lg: 'size-5',
       },
       isValid: {
         true: 'border-valid',
