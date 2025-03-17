@@ -13,6 +13,7 @@ import AccordionItem from '../accordion/AccordionItem';
 import AccordionItemHeader from '../accordion/AccordionItemHeader';
 import AccordionItemBody from '../accordion/AccordionItemBody';
 import ToggleSwitch from '../form/fields/toggle/ToggleSwitch';
+import Input from '../form/fields/input/Input';
 
 export default function CookieConsent() {
   const b = useTranslations('Buttons');
@@ -38,6 +39,21 @@ export default function CookieConsent() {
   // };
 
   // if (!isVisible) return null;
+
+  const [selectedCookies, setSelectedCookies] = useState<{
+    [key: string]: boolean;
+  }>({
+    preferences: false,
+  });
+  const handleCookieChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    cookieType: string,
+  ) => {
+    setSelectedCookies((prevState) => ({
+      ...prevState,
+      [cookieType]: !prevState[cookieType],
+    }));
+  };
 
   return (
     <>
@@ -86,14 +102,11 @@ export default function CookieConsent() {
                     <div className="mb-2 flex items-center justify-between">
                       <p className="font-semibold text-black">Vajalik</p>
                       <ToggleSwitch
-                        name={''}
+                        name="cookie-required"
                         size="lg"
-                        isChecked={false}
-                        handleChange={function (
-                          event: ChangeEvent<HTMLInputElement>,
-                        ): void {
-                          throw new Error('Function not implemented.');
-                        }}
+                        isChecked={true}
+                        required={true}
+                        disabled={true}
                       />
                     </div>
                     <p>
@@ -110,14 +123,12 @@ export default function CookieConsent() {
                     <div className="mb-2 flex items-center justify-between">
                       <p className="font-semibold text-black">Eelistused</p>
                       <ToggleSwitch
-                        name={''}
+                        name="cookie-preferences"
                         size="lg"
-                        isChecked={false}
-                        handleChange={function (
-                          event: ChangeEvent<HTMLInputElement>,
-                        ): void {
-                          throw new Error('Function not implemented.');
-                        }}
+                        isChecked={selectedCookies.preferences === true}
+                        handleChange={(e) =>
+                          handleCookieChange(e, 'preferences')
+                        }
                       />
                     </div>
                     <p>

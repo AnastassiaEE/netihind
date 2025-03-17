@@ -3,9 +3,9 @@ import { tv, VariantProps } from 'tailwind-variants';
 const toggleVariants = tv({
   base: 'relative flex cursor-pointer items-center',
   slots: {
-    input: 'peer sr-only',
+    input: 'peer absolute opacity-0',
     switch:
-      "rounded-full bg-muted-light after:absolute after:left-1 after:top-1 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary",
+      "rounded-full bg-muted-light after:absolute after:left-1 after:top-1 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-focus:outline",
     label: 'ml-2',
   },
   variants: {
@@ -61,7 +61,7 @@ export default function ToggleSwitch({
   isValid?: boolean;
   required?: boolean;
   disabled?: boolean;
-  handleChange: React.ChangeEventHandler<HTMLInputElement>;
+  handleChange?: React.ChangeEventHandler<HTMLInputElement>;
   children?: React.ReactNode;
 }) {
   const {
