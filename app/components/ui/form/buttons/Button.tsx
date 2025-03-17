@@ -15,7 +15,7 @@ const buttonClasses = tv({
     },
     size: sizes,
     disabled: {
-      true: 'opacity-50 hover:cursor-not-allowed',
+      true: 'cursor-not-allowed opacity-50',
       false: '',
     },
   },
