@@ -50,7 +50,6 @@ export default function Dialog({
           description ? `${name}-dialog-description` : undefined
         }
         ref={dialogRef}
-        tabIndex={isOpened ? 0 : undefined}
         className={dialogClasses}
       >
         {handleClose && (
@@ -60,6 +59,7 @@ export default function Dialog({
             className="absolute right-4 top-4 bg-white"
           />
         )}
+
         <p id={`${name}-dialog-title`} className={titleClasses}>
           {title}
         </p>

@@ -63,7 +63,11 @@ export default function useOverlay(
     let parent = element.parentElement;
     while (parent) {
       const parentStyle = window.getComputedStyle(parent);
-      if (parentStyle.display === 'none' || parentStyle.visibility === 'hidden')
+      if (
+        parentStyle.display === 'none' ||
+        parentStyle.visibility === 'hidden'
+        //parent.offsetHeight === 0
+      )
         return false;
       parent = parent.parentElement;
     }
@@ -95,12 +99,9 @@ export default function useOverlay(
       ),
     ) as HTMLElement[];
 
-    const visibleElements = elements.filter((element) =>
-      isElementFocusable(element),
-    );
-    firstFocusableElementRef.current = visibleElements[0] || null;
-    lastFocusableElementRef.current =
-      visibleElements[visibleElements.length - 1] || null;
+    firstFocusableElementRef.current = elements[0] || null;
+    lastFocusableElementRef.current = elements[elements.length - 1] || null;
+    firstFocusableElementRef.current.focus();
   }, []);
 
   /**
@@ -124,7 +125,6 @@ export default function useOverlay(
   useEffect(() => {
     if (!overlayRef.current || !isOpened) return;
 
-    overlayRef.current.focus();
     updateFocusableElements();
 
     const observer = new MutationObserver(() => {
