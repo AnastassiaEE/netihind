@@ -95,7 +95,7 @@ export default function CookiesDetailsSection({
                 {t('types.necessary.name')}
               </p>
               <ToggleSwitch
-                name="cookie-required"
+                name="cookie-necessary"
                 size="lg"
                 isChecked={cookies.necessary === true}
                 required={true}
@@ -119,6 +119,11 @@ export default function CookiesDetailsSection({
               <ToggleSwitch
                 name="cookie-preferences"
                 size="lg"
+                label={t('types.preferences.switchLabel', {
+                  state: t(
+                    `types.preferences.switchState.${cookies.preferences === true}`,
+                  ),
+                })}
                 isChecked={cookies.preferences === true}
                 handleChange={() => handleCookieChange('preferences')}
               />

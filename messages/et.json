@@ -280,7 +280,12 @@
       },
       "preferences": {
         "name": "Eelistused",
-        "description": "Eelistuste küpsised aitavad meil meeles pidada Teie kui kasutaja eelistusi meie veebilehte külastades, salvestades Teie kasutajaeelistusi, näiteks kasutajanimi, keelevalik jms. Eelistuste küpsised on vajalikud, muutmaks meie veebilehte kasutajamugavamaks."
+        "description": "Eelistuste küpsised aitavad meil meeles pidada Teie kui kasutaja eelistusi meie veebilehte külastades, salvestades Teie kasutajaeelistusi, näiteks kasutajanimi, keelevalik jms. Eelistuste küpsised on vajalikud, muutmaks meie veebilehte kasutajamugavamaks.",
+        "switchLabel": "Luba eelistuste küpsised. Praegune seisund: {state}",
+        "switchState": {
+          "true": "lubatud",
+          "false": "pole lubatud"
+        }
       }
     },
     "attributes": {
