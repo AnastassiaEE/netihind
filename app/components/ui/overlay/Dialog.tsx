@@ -20,7 +20,7 @@ export default function Dialog({
   title: string;
   description?: string;
   isOpened: boolean;
-  handleClose: () => void;
+  handleClose?: () => void;
   dialogRef?: React.RefObject<HTMLDivElement>;
   className?: string;
   children: React.ReactNode;
@@ -53,11 +53,13 @@ export default function Dialog({
         tabIndex={isOpened ? 0 : undefined}
         className={dialogClasses}
       >
-        <CloseButton
-          label={t(`${name}.close`)}
-          handleClick={handleClose}
-          className="absolute right-4 top-4 bg-white"
-        />
+        {handleClose && (
+          <CloseButton
+            label={t(`${name}.close`)}
+            handleClick={handleClose}
+            className="absolute right-4 top-4 bg-white"
+          />
+        )}
         <p id={`${name}-dialog-title`} className={titleClasses}>
           {title}
         </p>
