@@ -1,7 +1,13 @@
 import Button from '@/components/ui/form/buttons/Button';
 import classNames from 'classnames';
 
-export default function CookiesActions({ className }: { className?: string }) {
+export default function CookiesActions({
+  className,
+  managePreferences,
+}: {
+  className?: string;
+  managePreferences: (action: string) => void;
+}) {
   return (
     <div
       className={classNames(
@@ -9,13 +15,27 @@ export default function CookiesActions({ className }: { className?: string }) {
         className,
       )}
     >
-      <Button variant="outlined" size="lg" className="w-full">
+      <Button
+        variant="outlined"
+        size="lg"
+        className="w-full"
+        handleClick={() => managePreferences('disable-all')}
+      >
         Keeldu
       </Button>
-      <Button variant="outlined" size="lg" className="w-full">
+      <Button
+        variant="outlined"
+        size="lg"
+        className="w-full"
+        handleClick={() => managePreferences('enable-selected')}
+      >
         Luba valik
       </Button>
-      <Button size="lg" className="w-full">
+      <Button
+        size="lg"
+        className="w-full"
+        handleClick={() => managePreferences('enable-all')}
+      >
         Luba kõik
       </Button>
     </div>

@@ -11,43 +11,68 @@ import CookiesConsentSection from '@/components/ui/cookies/CookiesConsentSection
 import CookiesDetailsSection from '@/components/ui/cookies/CookiesDetailsSection';
 import CookiesActions from '@/components/ui/cookies/CookiesActions';
 import CookiesInfoSection from '@/components/ui/cookies/CookiesInfoSection';
+import { getCookie, hasCookie, setCookie } from 'cookies-next';
 
 export default function CookiesModal() {
   const b = useTranslations('Buttons');
   const c = useTranslations('Cookies');
   const tabs = [c('tabs.consent'), c('tabs.details'), c('tabs.info')];
-  const {
-    isOpened: isCookiesModalOpened,
-    open: openCookiesModal,
-    close: closeCookiesModal,
-    overlayRef: cookiesModalRef,
-  } = useOverlay(true);
-
-  // useEffect(() => {
-  //     const consent = localStorage.getItem('cookieConsent');
-  //     if (!consent) {
-  //         setIsVisible(true);
-  //     }
-  // }, []);
-
-  // const acceptCookies = () => {
-  //     localStorage.setItem('cookieConsent', 'true');
-  //     setIsVisible(false);
-  // };
-
-  // if (!isVisible) return null;
-
-  const [cookies, setCookies] = useState<{
+  const COOKIE_KEY = 'COOKIE_CONSENT';
+  const [preferences, setPreferences] = useState<{
     [key: string]: boolean;
   }>({
     necessary: true,
     preferences: false,
   });
-  const handleCookieChange = (cookie: string) => {
-    setCookies((prevState) => ({
+
+  const {
+    isOpened: isCookiesModalOpened,
+    open: openCookiesModal,
+    close: closeCookiesModal,
+    overlayRef: cookiesModalRef,
+  } = useOverlay(false, false);
+
+  useEffect(() => {
+    if (hasCookie(COOKIE_KEY)) {
+      const preferencesCookie = getCookie(COOKIE_KEY);
+      if (preferencesCookie) setPreferences(JSON.parse(preferencesCookie));
+    } else {
+      openCookiesModal();
+    }
+  }, []);
+
+  const togglePreference = (preference: string) => {
+    setPreferences((prevState) => ({
       ...prevState,
-      [cookie]: !prevState[cookie],
+      [preference]: !prevState[preference],
     }));
+  };
+
+  const savePreferencesCookie = (cookies: { [key: string]: boolean }) => {
+    setCookie(COOKIE_KEY, JSON.stringify(cookies), {
+      maxAge: 365 * 24 * 60 * 60,
+    });
+    closeCookiesModal();
+  };
+
+  const managePreferences = (action: string) => {
+    let newPreferences = { ...preferences };
+    switch (action) {
+      case 'enable-all':
+        newPreferences = Object.fromEntries(
+          Object.keys(newPreferences).map((key) => [key, true]),
+        );
+        break;
+      case 'disable-all':
+        newPreferences = Object.fromEntries(
+          Object.keys(newPreferences).map((key) => [key, key === 'necessary']),
+        );
+        break;
+      default:
+        break;
+    }
+    setPreferences(newPreferences);
+    savePreferencesCookie(newPreferences);
   };
 
   return (
@@ -58,7 +83,6 @@ export default function CookiesModal() {
         name="cookies"
         title={c('title')}
         isOpened={isCookiesModalOpened}
-        handleClose={closeCookiesModal}
         dialogRef={cookiesModalRef}
         className="flex flex-col overflow-hidden bg-white"
       >
@@ -68,15 +92,18 @@ export default function CookiesModal() {
           </TabPanel>
           <TabPanel className="h-auto overflow-y-auto">
             <CookiesDetailsSection
-              cookies={cookies}
-              handleCookieChange={handleCookieChange}
+              preferences={preferences}
+              togglePreference={togglePreference}
             />
           </TabPanel>
           <TabPanel className="h-auto overflow-y-auto">
             <CookiesInfoSection />
           </TabPanel>
         </Tabs>
-        <CookiesActions className="mt-3" />
+        <CookiesActions
+          managePreferences={managePreferences}
+          className="mt-3"
+        />
       </Dialogue>
     </>
   );

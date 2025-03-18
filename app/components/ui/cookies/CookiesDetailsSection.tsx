@@ -8,11 +8,11 @@ import React from 'react';
 import CookieDetails from '@/components/ui/cookies/CookieDetails';
 
 export default function CookiesDetailsSection({
-  cookies,
-  handleCookieChange,
+  preferences,
+  togglePreference,
 }: {
-  cookies: { [key: string]: boolean };
-  handleCookieChange: (cookie: string) => void;
+  preferences: { [key: string]: boolean };
+  togglePreference: (cookieType: string) => void;
 }) {
   const t = useTranslations('Cookies');
 
@@ -97,7 +97,7 @@ export default function CookiesDetailsSection({
               <ToggleSwitch
                 name="cookie-necessary"
                 size="lg"
-                isChecked={cookies.necessary === true}
+                isChecked={preferences.necessary === true}
                 required={true}
                 disabled={true}
               />
@@ -121,11 +121,11 @@ export default function CookiesDetailsSection({
                 size="lg"
                 label={t('types.preferences.switchLabel', {
                   state: t(
-                    `types.preferences.switchState.${cookies.preferences === true}`,
+                    `types.preferences.switchState.${preferences.preferences === true}`,
                   ),
                 })}
-                isChecked={cookies.preferences === true}
-                handleChange={() => handleCookieChange('preferences')}
+                isChecked={preferences.preferences === true}
+                handleChange={() => togglePreference('preferences')}
               />
             </div>
             <p>{t('types.preferences.description')}</p>
