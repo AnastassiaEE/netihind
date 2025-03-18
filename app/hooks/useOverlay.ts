@@ -1,7 +1,10 @@
 import { useCallback, useEffect, useRef } from 'react';
 import useBoolean from '@/hooks/useBoolean';
 
-export default function useOverlay(initialIsOpened: boolean = false) {
+export default function useOverlay(
+  initialIsOpened: boolean = false,
+  isClosable: boolean = true,
+) {
   const {
     value: isOpened,
     setTrue: open,
@@ -178,11 +181,11 @@ export default function useOverlay(initialIsOpened: boolean = false) {
   }, []);
 
   /**
-   * Effect hook that listens for the "Escape" key press to close the overlay or modal.
+   * Effect hook that listens for the "Escape" key press to close the overlay.
    *
    * This effect:
    * 1. Sets up an event listener on the `overlayElement` for `keydown` events.
-   * 2. When the "Escape" key is pressed, it checks if the target element has the `role="option"`.
+   * 2. When the "Escape" key is pressed and the overlay is closable, it checks if the target element has the `role="option"`.
    *    If the target has this role, the function returns early, preventing the close action.
    * 3. If the target doesn't have the `role="option"`, it calls the `handleClose` function to close the overlay or modal.
    * 4. The event listener is cleaned up when the component is unmounted or when the `overlayElement` reference changes.
@@ -193,7 +196,7 @@ export default function useOverlay(initialIsOpened: boolean = false) {
    */
   useEffect(() => {
     const handleEscKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
+      if (e.key === 'Escape' && isClosable) {
         const target = e.target as HTMLElement;
         if (target?.getAttribute('role') === 'option') return;
         handleClose();
