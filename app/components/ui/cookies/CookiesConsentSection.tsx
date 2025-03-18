@@ -5,7 +5,9 @@ export default function CookiesConsentSection() {
   return (
     <>
       {t.rich('consent', {
-        p: (chunks: React.ReactNode) => <p className="mb-3">{chunks}</p>,
+        p: (chunks: React.ReactNode) => (
+          <p className="[&:not(:last-child)]:mb-3">{chunks}</p>
+        ),
         strong: (chunks: React.ReactNode) => <strong>{chunks}</strong>,
         a: (chunks: React.ReactNode) => (
           <a

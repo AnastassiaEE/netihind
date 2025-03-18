@@ -54,7 +54,7 @@ export default function CookiesDetailsSection({
         description: t('attributes.description.nextLocale'),
         domain: 'netihind.ee',
         policy: '/policy',
-        maxAge: t('attributes.maxAge.twoYears'),
+        maxAge: t('attributes.maxAge.oneYear'),
         type: t('attributes.type.http'),
       },
     },

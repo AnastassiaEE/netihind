@@ -8,8 +8,9 @@ import Tabs from '@/components/ui/tabs/Tabs';
 import TabPanel from '@/components/ui/tabs/TabPanel';
 import { useTranslations } from 'next-intl';
 import CookiesConsentSection from '@/components/ui/cookies/CookiesConsentSection';
-import CookiesDetailsSection from './CookiesDetailsSection';
-import CookiesActions from './CookiesActions';
+import CookiesDetailsSection from '@/components/ui/cookies/CookiesDetailsSection';
+import CookiesActions from '@/components/ui/cookies/CookiesActions';
+import CookiesInfoSection from '@/components/ui/cookies/CookiesInfoSection';
 
 export default function CookiesModal() {
   const b = useTranslations('Buttons');
@@ -71,9 +72,11 @@ export default function CookiesModal() {
               handleCookieChange={handleCookieChange}
             />
           </TabPanel>
-          <TabPanel className="h-auto overflow-y-auto"> Content 3</TabPanel>
+          <TabPanel className="h-auto overflow-y-auto">
+            <CookiesInfoSection />
+          </TabPanel>
         </Tabs>
-        <CookiesActions />
+        <CookiesActions className="mt-3" />
       </Dialogue>
     </>
   );

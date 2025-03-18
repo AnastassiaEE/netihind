@@ -272,7 +272,7 @@
       "info": "Teave"
     },
     "consent": "<p><strong>Veebilehel on kasutatud küpsiseid.</strong></p><p><strong>Veebilehe paremaks toimimiseks palume Teil lubada küpsiste kasutamine.</strong> Kasutame vajalikke küpsiseid, mis on meie lehtede korrektseks toimimiseks vaikimisi sisse lülitatud. Samuti kasutame me valikulisi küpsiseid, mis aitavad täiustada meie lehti ning parandada Teie kasutajakogemust. Rohkem infot leiad meie <a>privaatsuspoliitika lehelt</a>.</p>",
-    "info": "",
+    "info": "<p>Küpsised on väikesed tekstifailid, mille abil veebilehed võivad pakkuda paremat kasutajakogemust.</p><p>Seadus sätestab, et võime salvestada küpsiseid teie seadmesse, kui need on saidi tööks hädavajalikud. Kõigi teiste küpsiste salvestamiseks on vaja teie luba.</p><p>Võite igal ajal meie veebisaidil küpsiste deklaratsioonil oma nõusolekut muuta või tühistada.</p>",
     "types": {
       "necessary": {
         "name": "Kohustuslik",
