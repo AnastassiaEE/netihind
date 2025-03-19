@@ -5,6 +5,7 @@
 .inads-appartment.hidden,
 .inads-input-clear.hidden,
 .inads-input-search.hidden,
+.inads_spinner.hidden,
 .inads-result.hidden {
   display: none;
 }
@@ -19,17 +20,7 @@
 
 .inads-input,
 .inads-appartment {
-  @apply border 
-border-valid 
-focus:border-primary/30
-  rounded-md
-  focus:outline-none
-  focus:shadow-lg
-focus:shadow-primary/10 
-placeholder:text-muted  
-text-muted-dark 
-  text-base
-  px-2;
+  @apply rounded-md border border-valid px-2 text-base text-muted-dark placeholder:text-muted focus:border-primary/30 focus:shadow-lg focus:shadow-primary/10 focus:outline-none;
 }
 
 .inads-input {
@@ -54,14 +45,7 @@ text-muted-dark
 }
 
 .inads-result-container {
-  @apply absolute
-  bg-white
-  w-full
-  z-10
-  list-none
-  rounded-md
-  border-primary/30
-  text-sm;
+  @apply absolute z-10 w-full list-none rounded-md border-primary/30 bg-white text-sm;
 }
 
 .inads-result {
@@ -69,9 +53,7 @@ text-muted-dark
 }
 
 .inads-result li {
-  @apply px-4 py-3
-  text-muted-dark
-  cursor-pointer;
+  @apply cursor-pointer px-4 py-3 text-muted-dark;
 }
 
 .inads-result li:hover,
@@ -80,15 +62,17 @@ text-muted-dark
 }
 
 .inads-input-search {
-  @apply absolute left-3 top-3 size-5 bg-no-repeat bg-contain
-  bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMzIiIHdpZHRoPSIzMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiPjxwYXRoIGZpbGw9IiM2MzY2ZjEiIGQ9Ik00MTYgMjA4YzAgNDUuOS0xNC45IDg4LjMtNDAgMTIyLjdMNTAyLjYgNDU3LjRjMTIuNSAxMi41IDEyLjUgMzIuOCAwIDQ1LjNzLTMyLjggMTIuNS00NS4zIDBMMzMwLjcgMzc2Yy0zNC40IDI1LjItNzYuOCA0MC0xMjIuNyA0MEM5My4xIDQxNiAwIDMyMi45IDAgMjA4UzkzLjEgMCAyMDggMFM0MTYgOTMuMSA0MTYgMjA4ek0yMDggMzUyYTE0NCAxNDQgMCAxIDAgMC0yODggMTQ0IDE0NCAwIDEgMCAwIDI4OHoiLz48L3N2Zz4=')];
+  @apply absolute left-3.5 top-4 size-4 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMzIiIHdpZHRoPSIzMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiPjxwYXRoIGZpbGw9IiM2MzY2ZjEiIGQ9Ik00MTYgMjA4YzAgNDUuOS0xNC45IDg4LjMtNDAgMTIyLjdMNTAyLjYgNDU3LjRjMTIuNSAxMi41IDEyLjUgMzIuOCAwIDQ1LjNzLTMyLjggMTIuNS00NS4zIDBMMzMwLjcgMzc2Yy0zNC40IDI1LjItNzYuOCA0MC0xMjIuNyA0MEM5My4xIDQxNiAwIDMyMi45IDAgMjA4UzkzLjEgMCAyMDggMFM0MTYgOTMuMSA0MTYgMjA4ek0yMDggMzUyYTE0NCAxNDQgMCAxIDAgMC0yODggMTQ0IDE0NCAwIDEgMCAwIDI4OHoiLz48L3N2Zz4=')] bg-contain bg-no-repeat;
 }
 
 .inads-input-clear {
-  @apply absolute right-2 top-3 size-6 bg-no-repeat bg-contain cursor-pointer
-  bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMzIiIHdpZHRoPSIyNCIgdmlld0JveD0iMCAwIDM4NCA1MTIiPjxwYXRoIGZpbGw9IiM2MzY2ZjEiIGQ9Ik0zNDIuNiAxNTAuNmMxMi41LTEyLjUgMTIuNS0zMi44IDAtNDUuM3MtMzIuOC0xMi41LTQ1LjMgMEwxOTIgMjEwLjcgODYuNiAxMDUuNGMtMTIuNS0xMi41LTMyLjgtMTIuNS00NS4zIDBzLTEyLjUgMzIuOCAwIDQ1LjNMMTQ2LjcgMjU2IDQxLjQgMzYxLjRjLTEyLjUgMTIuNS0xMi41IDMyLjggMCA0NS4zczMyLjggMTIuNSA0NS4zIDBMMTkyIDMwMS4zIDI5Ny40IDQwNi42YzEyLjUgMTIuNSAzMi44IDEyLjUgNDUuMyAwczEyLjUtMzIuOCAwLTQ1LjNMMjM3LjMgMjU2IDM0Mi42IDE1MC42eiIvPjwvc3ZnPg==')];
+  @apply absolute right-3 top-4 size-4 cursor-pointer bg-[url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBMaWNlbnNlOiBQRC4gTWFkZSBieSBtb25leXRyZWU6IGh0dHBzOi8vZ2l0aHViLmNvbS9tb25leXRyZWUvbXQtd2ViLWljb25zIC0tPgo8c3ZnIGZpbGw9IiM2MzY2ZjEiIHdpZHRoPSI4MDBweCIgaGVpZ2h0PSI4MDBweCIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNNTEyLjQ4MSA0MjEuOTA2TDg1MC42ODIgODQuNjIxYzI1LjAyMy0yNC45NjQgNjUuNTQ1LTI0LjkxNyA5MC41MS4xMDVzMjQuOTE3IDY1LjU0NS0uMTA1IDkwLjUxTDYwMy4wMyA1MTIuMzc3IDk0MC45NCA4NTBjMjUuMDAzIDI0Ljk4NCAyNS4wMTcgNjUuNTA3LjAzMyA5MC41MXMtNjUuNTA3IDI1LjAxNy05MC41MS4wMzNMNTEyLjM5NyA2MDIuNzY0IDE3NC4yMTUgOTQwLjAzYy0yNS4wMjMgMjQuOTY0LTY1LjU0NSAyNC45MTctOTAuNTEtLjEwNXMtMjQuOTE3LTY1LjU0NS4xMDUtOTAuNTFsMzM4LjAzOC0zMzcuMTIyTDg0LjE0IDE3NC44NzJjLTI1LjAwMy0yNC45ODQtMjUuMDE3LTY1LjUwNy0uMDMzLTkwLjUxczY1LjUwNy0yNS4wMTcgOTAuNTEtLjAzM0w1MTIuNDggNDIxLjkwNnoiLz48L3N2Zz4=')] bg-contain bg-no-repeat;
 }
 
 .inads-input-clear.appartment {
   @apply right-[20.5%];
+}
+
+.inads_spinner {
+  @apply absolute left-3 top-3.5 size-5 animate-spin bg-[url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBMaWNlbnNlOiBDQyBBdHRyaWJ1dGlvbi4gTWFkZSBieSBKZXRCcmFpbnM6IGh0dHBzOi8vZ2l0aHViLmNvbS9KZXRCcmFpbnMvaWNvbnMgLS0+CjxzdmcgZmlsbD0iIzYzNjZmMSIgd2lkdGg9IjgwMHB4IiBoZWlnaHQ9IjgwMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+Cgo8Zz4KCjxwYXRoIGQ9Ik0xMCwxVjNhNyw3LDAsMSwxLTcsN0gxYTksOSwwLDEsMCw5LTlaIi8+Cgo8L2c+Cgo8L3N2Zz4=')] bg-contain bg-no-repeat;
 }
