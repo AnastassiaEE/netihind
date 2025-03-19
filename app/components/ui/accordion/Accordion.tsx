@@ -11,14 +11,14 @@ export default function Accordion({
   size = 'sm',
   arrowStyle = 'default',
   arrowPosition = 'right',
-  isCollapsed = true,
+  collapsed = true,
   children,
 }: {
   border?: AccordionBorder;
   size?: AccordionSize;
   arrowStyle?: ArrowStyle;
   arrowPosition?: ArrowPosition;
-  isCollapsed?: boolean;
+  collapsed?: boolean;
   children: React.ReactNode;
 }) {
   return (
@@ -34,7 +34,7 @@ export default function Accordion({
             size?: AccordionSize;
             arrowStyle?: ArrowStyle;
             arrowPosition?: ArrowPosition;
-            isCollapsed?: boolean;
+            collapsed?: boolean;
           }>(child)
         ) {
           return React.cloneElement(child, {
@@ -42,7 +42,7 @@ export default function Accordion({
             size,
             arrowStyle,
             arrowPosition,
-            isCollapsed,
+            collapsed,
           });
         }
         return child;

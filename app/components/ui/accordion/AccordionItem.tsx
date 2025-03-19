@@ -16,18 +16,25 @@ export default function AccordionItem({
   size = 'sm',
   arrowStyle = 'default',
   arrowPosition = 'right',
-  isCollapsed = true,
+  collapsed = true,
   children,
 }: {
   border?: AccordionBorder;
   size?: AccordionSize;
   arrowStyle?: ArrowStyle;
   arrowPosition?: ArrowPosition;
-  isCollapsed?: boolean;
+  collapsed?: boolean;
   children: React.ReactNode;
 }) {
-  const { isExpanded, toggle, collapsible, collapsibleHeight, id } =
-    useAccordionItem(isCollapsed);
+  const {
+    isCollapsed,
+    isVisible,
+    toggle,
+    collapsibleRef,
+    collapsibleHeight,
+    id,
+    handleTransitionEnd,
+  } = useAccordionItem(collapsed);
 
   const wrapperClasses = tv({
     variants: {
@@ -49,7 +56,7 @@ export default function AccordionItem({
         none: '',
         bottom: '',
         full: classNames(
-          isExpanded && 'border-muted-light [&:not(:last-child)]:border-b',
+          !isCollapsed && 'border-muted-light [&:not(:last-child)]:border-b',
         ),
       },
       size: {
@@ -87,9 +94,9 @@ export default function AccordionItem({
         default: '',
         circle: classNames(
           'transition-colors',
-          isExpanded
-            ? 'bg-primary text-white shadow-md shadow-primary/50'
-            : 'bg-primary-light',
+          isCollapsed
+            ? 'bg-primary-light'
+            : 'bg-primary text-white shadow-md shadow-primary/50',
         ),
       },
     },
@@ -100,10 +107,10 @@ export default function AccordionItem({
 
   const renderArrow = () => {
     if (arrowStyle === 'default')
-      return <Arrow direction={isExpanded ? 'down' : 'up'}></Arrow>;
+      return <Arrow direction={isCollapsed ? 'up' : 'down'}></Arrow>;
     return (
       <CircleArrow
-        direction={isExpanded ? 'down' : 'up'}
+        direction={isCollapsed ? 'up' : 'down'}
         className={arrowClasses({ arrowStyle })}
       />
     );
@@ -114,22 +121,25 @@ export default function AccordionItem({
       <button
         type="button"
         onClick={toggle}
-        aria-expanded={isExpanded}
+        aria-expanded={!isCollapsed}
         aria-controls={id.current}
         className={buttonClasses({ border, size, arrowPosition })}
       >
         {renderArrow()}
         {children && React.Children.toArray(children)[0]}
       </button>
-      <div
-        id={id.current}
-        className="overflow-y-hidden transition-all duration-500"
-        style={{ height: collapsibleHeight + 'px' }}
-      >
-        <div ref={collapsible} className={panelClasses({ size })}>
-          {children && React.Children.toArray(children)[1]}
+      {isVisible && (
+        <div
+          id={id.current}
+          className={`overflow-hidden transition-all duration-500`}
+          onTransitionEnd={handleTransitionEnd}
+          style={{ height: collapsibleHeight + 'px' }}
+        >
+          <div ref={collapsibleRef} className={panelClasses({ size })}>
+            {children && React.Children.toArray(children)[1]}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

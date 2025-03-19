@@ -46,7 +46,7 @@ const CheckboxFilters = forwardRef(
             </Button>
           </div>
         )}
-        <Accordion arrowPosition="right" isCollapsed={false}>
+        <Accordion arrowPosition="right" collapsed={false}>
           {Object.entries(selectedFilters)
             .filter(
               ([filterKey, filterValue]) =>
