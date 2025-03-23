@@ -1,6 +1,6 @@
 import CookieIcon from '@mui/icons-material/Cookie';
 
-export default function CookieButton({
+export default function CookiesButton({
   label,
   handleClick,
 }: {

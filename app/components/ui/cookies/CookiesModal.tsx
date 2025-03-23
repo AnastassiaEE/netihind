@@ -1,7 +1,7 @@
 'use client';
 
-import { ChangeEvent, useEffect, useState } from 'react';
-import CookieButton from '@/components/ui/cookies/CookieButton';
+import { useEffect, useState } from 'react';
+import CookiesButton from '@/components/ui/cookies/CookiesButton';
 import Dialogue from '@/components/ui/overlay/Dialog';
 import useOverlay from '@/hooks/useOverlay';
 import Tabs from '@/components/ui/tabs/Tabs';
@@ -77,7 +77,7 @@ export default function CookiesModal() {
 
   return (
     <>
-      <CookieButton label={b('cookies.open')} handleClick={openCookiesModal} />
+      <CookiesButton label={b('cookies.open')} handleClick={openCookiesModal} />
       <Dialogue
         type="modal"
         name="cookies"
