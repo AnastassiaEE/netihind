@@ -17,7 +17,7 @@ export default function CookiesModal() {
   const b = useTranslations('Buttons');
   const c = useTranslations('Cookies');
   const tabs = [c('tabs.consent'), c('tabs.details'), c('tabs.info')];
-  const COOKIE_KEY = 'COOKIE_CONSENT';
+  const CONSENT_COOKIE_KEY = 'COOKIE_CONSENT';
   const [preferences, setPreferences] = useState<{
     [key: string]: boolean;
   }>({
@@ -33,8 +33,8 @@ export default function CookiesModal() {
   } = useOverlay(false, false);
 
   useEffect(() => {
-    if (hasCookie(COOKIE_KEY)) {
-      const preferencesCookie = getCookie(COOKIE_KEY);
+    if (hasCookie(CONSENT_COOKIE_KEY)) {
+      const preferencesCookie = getCookie(CONSENT_COOKIE_KEY);
       if (preferencesCookie) setPreferences(JSON.parse(preferencesCookie));
     } else {
       openCookiesModal();
@@ -49,7 +49,7 @@ export default function CookiesModal() {
   };
 
   const savePreferencesCookie = (cookies: { [key: string]: boolean }) => {
-    setCookie(COOKIE_KEY, JSON.stringify(cookies), {
+    setCookie(CONSENT_COOKIE_KEY, JSON.stringify(cookies), {
       maxAge: 365 * 24 * 60 * 60,
     });
     closeCookiesModal();
