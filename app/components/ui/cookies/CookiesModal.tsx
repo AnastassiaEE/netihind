@@ -58,12 +58,12 @@ export default function CookiesModal() {
   const managePreferences = (action: string) => {
     let newPreferences = { ...preferences };
     switch (action) {
-      case 'enable-all':
+      case 'accept-all':
         newPreferences = Object.fromEntries(
           Object.keys(newPreferences).map((key) => [key, true]),
         );
         break;
-      case 'disable-all':
+      case 'decline-all':
         newPreferences = Object.fromEntries(
           Object.keys(newPreferences).map((key) => [key, key === 'necessary']),
         );

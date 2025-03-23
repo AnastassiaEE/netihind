@@ -1,5 +1,6 @@
 import Button from '@/components/ui/form/buttons/Button';
 import classNames from 'classnames';
+import { useTranslations } from 'next-intl';
 
 export default function CookiesActions({
   className,
@@ -8,6 +9,7 @@ export default function CookiesActions({
   className?: string;
   managePreferences: (action: string) => void;
 }) {
+  const t = useTranslations('Cookies');
   return (
     <div
       className={classNames(
@@ -19,24 +21,24 @@ export default function CookiesActions({
         variant="outlined"
         size="lg"
         className="w-full"
-        handleClick={() => managePreferences('disable-all')}
+        handleClick={() => managePreferences('decline-all')}
       >
-        Keeldu
+        {t('buttons.declineAll')}
       </Button>
       <Button
         variant="outlined"
         size="lg"
         className="w-full"
-        handleClick={() => managePreferences('enable-selected')}
+        handleClick={() => managePreferences('accept-selected')}
       >
-        Luba valik
+        {t('buttons.acceptSelected')}
       </Button>
       <Button
         size="lg"
         className="w-full"
-        handleClick={() => managePreferences('enable-all')}
+        handleClick={() => managePreferences('accept-all')}
       >
-        Luba kõik
+        {t('buttons.acceptAll')}
       </Button>
     </div>
   );
