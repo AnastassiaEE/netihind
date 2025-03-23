@@ -49,15 +49,7 @@ export default function CookiesDetailsSection({
         type: t('attributes.type.http'),
       },
     },
-    preferences: {
-      NEXT_LOCALE: {
-        description: t('attributes.description.nextLocale'),
-        domain: 'netihind.ee',
-        policy: '/policy',
-        maxAge: t('attributes.maxAge.oneYear'),
-        type: t('attributes.type.http'),
-      },
-    },
+    statistics: {},
   };
 
   const renderCookieDetails = (cookies: {
@@ -114,25 +106,25 @@ export default function CookiesDetailsSection({
           <div>
             <div className="mb-2 flex items-center justify-between">
               <p className="font-semibold text-black">
-                {t('types.preferences.name')}
+                {t('types.statistics.name')}
               </p>
               <ToggleSwitch
-                name="cookie-preferences"
+                name="cookie-statistics"
                 size="lg"
-                label={t('types.preferences.switchLabel', {
+                label={t('types.statistics.switchLabel', {
                   state: t(
-                    `types.preferences.switchState.${preferences.preferences === true}`,
+                    `types.statistics.switchState.${preferences.statistics === true}`,
                   ),
                 })}
-                isChecked={preferences.preferences === true}
-                handleChange={() => togglePreference('preferences')}
+                isChecked={preferences.statistics === true}
+                handleChange={() => togglePreference('statistics')}
               />
             </div>
-            <p>{t('types.preferences.description')}</p>
+            <p>{t('types.statistics.description')}</p>
           </div>
         </AccordionItemHeader>
         <AccordionItemBody>
-          {renderCookieDetails(details.preferences)}
+          {renderCookieDetails(details.statistics)}
         </AccordionItemBody>
       </AccordionItem>
     </Accordion>

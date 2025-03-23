@@ -22,7 +22,7 @@ export default function CookiesModal() {
     [key: string]: boolean;
   }>({
     necessary: true,
-    preferences: false,
+    statistics: false,
   });
 
   const {

@@ -278,10 +278,10 @@
         "name": "Kohustuslik",
         "description": "Vajalikud küpsised võimaldavad meie veebilehe põhifunktsioonide toimimise, ilma nendeta leht ei tööta."
       },
-      "preferences": {
-        "name": "Eelistused",
-        "description": "Eelistuste küpsised aitavad meil meeles pidada Teie kui kasutaja eelistusi meie veebilehte külastades, salvestades Teie kasutajaeelistusi, näiteks kasutajanimi, keelevalik jms. Eelistuste küpsised on vajalikud, muutmaks meie veebilehte kasutajamugavamaks.",
-        "switchLabel": "Luba eelistuste küpsised. Praegune seisund: {state}",
+      "statistics": {
+        "name": "Statistika",
+        "description": "Statistikaga seotud küpsised aitavad veebilehtede omanikel mõista, kuidas külastajad saidiga suhtlevad, kogudes ja avaldades andmeid anonüümselt.",
+        "switchLabel": "Luba statistikaga seotud küpsised. Praegune seisund: {state}",
         "switchState": {
           "true": "lubatud",
           "false": "pole lubatud"
