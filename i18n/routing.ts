@@ -5,8 +5,8 @@ export const routing = defineRouting({
   locales: ['et', 'ru'],
   defaultLocale: 'et',
   localePrefix: 'as-needed',
-  localeDetection: true,
-  localeCookie: true,
+  localeDetection: false,
+  localeCookie: false,
   pathnames: {
     '/': '/',
     '/about': {
@@ -47,4 +47,5 @@ export const routing = defineRouting({
 export type Pathnames = keyof typeof routing.pathnames;
 export type Locale = (typeof routing.locales)[number];
 
-export const { Link, getPathname, redirect, usePathname, useRouter } = createNavigation(routing);
+export const { Link, getPathname, redirect, usePathname, useRouter } =
+  createNavigation(routing);
