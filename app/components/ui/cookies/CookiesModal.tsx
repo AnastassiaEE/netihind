@@ -13,11 +13,12 @@ import CookiesActions from '@/components/ui/cookies/CookiesActions';
 import CookiesInfoSection from '@/components/ui/cookies/CookiesInfoSection';
 import { getCookie, hasCookie, setCookie } from 'cookies-next';
 
+const CONSENT_COOKIE_KEY = 'COOKIE_CONSENT';
+
 export default function CookiesModal() {
   const b = useTranslations('Buttons');
   const c = useTranslations('Cookies');
   const tabs = [c('tabs.consent'), c('tabs.details'), c('tabs.info')];
-  const CONSENT_COOKIE_KEY = 'COOKIE_CONSENT';
   const [preferences, setPreferences] = useState<{
     [key: string]: boolean;
   }>({
