@@ -16,26 +16,23 @@ export default function Tabs({
 
   return (
     <>
-      <div role="tablist">
-        <ul className="flex border-b border-b-muted-light">
-          {tabs.map((tab, index) => {
-            return (
-              <Tab
-                key={tab}
-                tabId={getTabId(index)}
-                tabPanelId={getTabPanelId(index)}
-                isActive={getTabId(index) === activeTabId}
-                handleTabClick={handleTabClick}
-                tabRef={(el: HTMLElement | null) =>
-                  (tabsRef.current[index] = el)
-                }
-              >
-                {tab}
-              </Tab>
-            );
-          })}
-        </ul>
-      </div>
+      <ul role="tablist" className="flex border-b border-b-muted-light">
+        {tabs.map((tab, index) => {
+          return (
+            <Tab
+              key={tab}
+              tabId={getTabId(index)}
+              tabPanelId={getTabPanelId(index)}
+              isActive={getTabId(index) === activeTabId}
+              handleTabClick={handleTabClick}
+              tabRef={(el: HTMLElement | null) => (tabsRef.current[index] = el)}
+            >
+              {tab}
+            </Tab>
+          );
+        })}
+      </ul>
+
       {React.Children.map(children, (child, index) => {
         if (
           React.isValidElement<{
