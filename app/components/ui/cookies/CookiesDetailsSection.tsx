@@ -26,7 +26,7 @@ export default function CookiesDetailsSection({
         type: t('attributes.type.http'),
       },
       _ga: {
-        description: t('attributes.description.maaametGa1'),
+        description: t('attributes.description.maaametGa'),
         domain: 'maamaet.ee',
         policy:
           'https://geoportaal.maaamet.ee/docs/aadress/In-ADS_kasutustingimused.pdf',
@@ -34,7 +34,7 @@ export default function CookiesDetailsSection({
         type: t('attributes.type.http'),
       },
       _ga_470HYMSPJ6: {
-        description: t('attributes.description.maaametGa2'),
+        description: t('attributes.description.maaametGaId'),
         domain: 'maamaet.ee',
         policy:
           'https://geoportaal.maaamet.ee/docs/aadress/In-ADS_kasutustingimused.pdf',
@@ -49,7 +49,22 @@ export default function CookiesDetailsSection({
         type: t('attributes.type.http'),
       },
     },
-    statistics: {},
+    statistics: {
+      _ga: {
+        description: t('attributes.description.localGa'),
+        domain: 'netihind.ee',
+        policy: '/policy',
+        maxAge: t('attributes.maxAge.twoYears'),
+        type: t('attributes.type.http'),
+      },
+      _ga_34TYLS6VTB: {
+        description: t('attributes.description.localGaId'),
+        domain: 'netihind.ee',
+        policy: '/policy',
+        maxAge: t('attributes.maxAge.twoYears'),
+        type: t('attributes.type.http'),
+      },
+    },
   };
 
   const renderCookieDetails = (cookies: {

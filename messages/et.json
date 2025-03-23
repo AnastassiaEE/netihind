@@ -301,10 +301,11 @@
       },
       "description": {
         "address": "Salvestab sisestatud aadressi, et automaatselt otsida saadavalolevaid internetipakette.",
-        "maaametGa1": "Kasutatakse Google Analyticsit ainulaadsete kasutajate jälgimiseks veebisaidil ja sessioonide eristamiseks. See aitab koguda külastuste andmeid ja töödelda veebisaidi kasutamise interaktsioone, et täiustada analüüsi ja mõista kasutajate käitumist.",
-        "maaametGa2": "Kasutatakse Google Analyticsit kasutajate jälgimiseks ja sessioonide vahel eristamiseks. See aitab koguda ja analüüsida andmeid veebisaidi kasutamise kohta, et parandada funktsionaalsust ja kasutajakogemust.",
-        "nextLocale": "Salvestab kasutaja valitud keele, tagades õige lokaliseerimise lehel järgmistel külastustel.",
-        "cookieConsent": "Salvestab kasutaja nõusoleku oleku küpsiste kasutamiseks."
+        "maaametGa": "Kasutatakse Google Analyticsit ainulaadsete kasutajate jälgimiseks veebisaidil. See aitab koguda külastuste andmeid ja töödelda veebisaidi kasutamise interaktsioone, et täiustada analüüsi ja mõista kasutajate käitumist.",
+        "maaametGaId": "Kasutatakse Google Analyticsit kasutajate jälgimiseks ja sessioonide vahel eristamiseks. See aitab koguda ja analüüsida andmeid veebisaidi kasutamise kohta, et parandada funktsionaalsust ja kasutajakogemust.",
+        "cookieConsent": "Salvestab kasutaja nõusoleku oleku küpsiste kasutamiseks.",
+        "localGa": "Kasutatakse Google Analyticsit ainulaadsete kasutajate jälgimiseks veebisaidil. See aitab koguda külastuste andmeid ja töödelda veebisaidi kasutamise interaktsioone, et täiustada analüüsi ja mõista kasutajate käitumist.",
+        "localGaId": "Kasutatakse Google Analyticsit kasutajate jälgimiseks ja sessioonide vahel eristamiseks. See aitab koguda ja analüüsida andmeid veebisaidi kasutamise kohta, et parandada funktsionaalsust ja kasutajakogemust."
       },
       "maxAge": {
         "session": "Seanss",
