@@ -37,10 +37,6 @@ export const routing = defineRouting({
       et: '/kasutustingimused',
       ru: '/usloviya-ispolzovaniya',
     },
-    '/providers': {
-      et: '/pakkujad',
-      ru: '/provajdery',
-    },
   },
 });
 
