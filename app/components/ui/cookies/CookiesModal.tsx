@@ -35,8 +35,8 @@ export default function CookiesModal() {
 
   useEffect(() => {
     if (hasCookie(CONSENT_COOKIE_KEY)) {
-      const preferencesCookie = getCookie(CONSENT_COOKIE_KEY);
-      if (preferencesCookie) setPreferences(JSON.parse(preferencesCookie));
+      const consentCookie = getCookie(CONSENT_COOKIE_KEY);
+      if (consentCookie) setPreferences(JSON.parse(consentCookie));
     } else {
       openCookiesModal();
     }
