@@ -54,7 +54,9 @@ export default async function RootLayout({
             <ScrollTopButton />
             <ConsentProvider>
               <GoogleAnalytics
-                ga_measurement_id={process.env.GA_MEASUREMENT_ID as string}
+                ga_measurement_id={
+                  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID as string
+                }
               />
               <CookiesModal />
             </ConsentProvider>
