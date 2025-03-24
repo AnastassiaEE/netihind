@@ -42,7 +42,7 @@ export default async function middleware(request: NextRequest) {
       'sha256-nGgRbGz9hsufKfu+i0QGgvvWtZBIe2KnFhQalyWW+7o=';
       img-src 'self' data: https://cms.netihind.ee https://rxysmdetqttpdqfmrpym.supabase.co;
       font-src 'self' data:;
-      connect-src 'self' https://inaadress.maaamet.ee https://rxysmdetqttpdqfmrpym.supabase.co https://api.resend.com;
+      connect-src 'self' https://inaadress.maaamet.ee https://rxysmdetqttpdqfmrpym.supabase.co https://api.resend.com https://region1.google-analytics.com;
       object-src 'none';
       base-uri 'self';
       form-action 'self';
@@ -50,9 +50,14 @@ export default async function middleware(request: NextRequest) {
       upgrade-insecure-requests;
     `;
 
-  const contentSecurityPolicyHeaderValue = cspHeader.replace(/\s{2,}/g, ' ').trim();
+  const contentSecurityPolicyHeaderValue = cspHeader
+    .replace(/\s{2,}/g, ' ')
+    .trim();
 
-  response.headers.set('Content-Security-Policy', contentSecurityPolicyHeaderValue);
+  response.headers.set(
+    'Content-Security-Policy',
+    contentSecurityPolicyHeaderValue,
+  );
   response.headers.set('x-nonce', nonce);
 
   return response;

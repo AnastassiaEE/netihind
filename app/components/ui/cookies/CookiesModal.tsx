@@ -12,6 +12,7 @@ import CookiesDetailsSection from '@/components/ui/cookies/CookiesDetailsSection
 import CookiesActions from '@/components/ui/cookies/CookiesActions';
 import CookiesInfoSection from '@/components/ui/cookies/CookiesInfoSection';
 import { getCookie, hasCookie, setCookie } from 'cookies-next';
+import { useConsentContext } from '@/context/ConsentContext';
 
 const CONSENT_COOKIE_KEY = 'COOKIE_CONSENT';
 
@@ -25,6 +26,7 @@ export default function CookiesModal() {
     necessary: true,
     statistics: false,
   });
+  const { setConsent } = useConsentContext();
 
   const {
     isOpened: isCookiesModalOpened,
@@ -36,8 +38,13 @@ export default function CookiesModal() {
   useEffect(() => {
     if (hasCookie(CONSENT_COOKIE_KEY)) {
       const consentCookie = getCookie(CONSENT_COOKIE_KEY);
-      if (consentCookie) setPreferences(JSON.parse(consentCookie));
+      if (consentCookie) {
+        const preferences = JSON.parse(consentCookie);
+        setPreferences(preferences);
+        setConsent(preferences);
+      }
     } else {
+      setConsent(preferences);
       openCookiesModal();
     }
   }, []);
@@ -49,11 +56,12 @@ export default function CookiesModal() {
     }));
   };
 
-  const savePreferencesCookie = (cookies: { [key: string]: boolean }) => {
-    setCookie(CONSENT_COOKIE_KEY, JSON.stringify(cookies), {
+  const saveConsentCookie = (preferences: { [key: string]: boolean }) => {
+    setCookie(CONSENT_COOKIE_KEY, JSON.stringify(preferences), {
       maxAge: 365 * 24 * 60 * 60,
     });
     closeCookiesModal();
+    setConsent(preferences);
   };
 
   const managePreferences = (action: string) => {
@@ -73,7 +81,7 @@ export default function CookiesModal() {
         break;
     }
     setPreferences(newPreferences);
-    savePreferencesCookie(newPreferences);
+    saveConsentCookie(newPreferences);
   };
 
   return (

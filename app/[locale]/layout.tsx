@@ -1,5 +1,4 @@
 import '@/app/globals.css';
-import type { Metadata } from 'next';
 import { Manrope } from 'next/font/google';
 import ScrollTopButton from '@/components/ui/buttons/ScrollTopButton';
 import { routing } from 'i18n/routing';
@@ -10,6 +9,8 @@ import { headers } from 'next/headers';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import { NonceProvider } from '@/context/NonceContext';
 import CookiesModal from '@/components/ui/cookies/CookiesModal';
+import GoogleAnalytics from '@/components/tracking/GoogleAnalytics';
+import { ConsentProvider } from '@/context/ConsentContext';
 
 const inter = Manrope({ subsets: ['latin'] });
 
@@ -50,11 +51,14 @@ export default async function RootLayout({
               prepend: true,
             }}
           >
-            <NonceProvider nonce={nonce}>
-              <ScrollTopButton />
+            <ScrollTopButton />
+            <ConsentProvider>
+              <GoogleAnalytics
+                ga_measurement_id={process.env.GA_MEASUREMENT_ID as string}
+              />
               <CookiesModal />
-              {children}
-            </NonceProvider>
+            </ConsentProvider>
+            <NonceProvider nonce={nonce}>{children}</NonceProvider>
           </AppRouterCacheProvider>
         </NextIntlClientProvider>
       </body>
