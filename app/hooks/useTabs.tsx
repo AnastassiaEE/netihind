@@ -2,10 +2,10 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 export default function useTabs(name: string, tabs: string[]) {
   const [activeTabId, setActiveTabId] = useState(`${name}-tab-1`);
-  const tabsRef = useRef<(HTMLElement | null)[]>([]);
+  const tabsRef = useRef<HTMLElement[]>([]);
 
   const handleTabClick = (event: React.MouseEvent<HTMLElement>) => {
-    const tabElement = event.currentTarget as HTMLElement;
+    const tabElement = event.currentTarget;
     setActiveTabId(tabElement.getAttribute('id')!);
   };
 

@@ -25,7 +25,9 @@ export default function Tabs({
               tabPanelId={getTabPanelId(index)}
               isActive={getTabId(index) === activeTabId}
               handleTabClick={handleTabClick}
-              tabRef={(el: HTMLElement | null) => (tabsRef.current[index] = el)}
+              tabRef={(el: HTMLLIElement) => {
+                tabsRef.current[index] = el;
+              }}
             >
               {tab}
             </Tab>
