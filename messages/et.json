@@ -1,8 +1,8 @@
 {
   "HomePage": {
     "topSection": {
-      "title": "Otsige koduseid <span>Interneti-teenuse pakkujaid</span> aadressi järgi",
-      "description": "Kas Te ei tea, milline teenusepakkuja Teie kodus on? Kas soovite valida kiiruselt, hinnalt ja ühendustehnoloogia poolest Teile sobiva paketi? Andke meile teada, vaatame koos üle!"
+      "title": "Leidke <span>koduinterneti teenusepakkujad</span> aadressi järgi",
+      "description": "Kas Te ei tea, milline teenusepakkuja on Teie kodus? Soovite valida endale sobiva paketi kiiruse, hinna ja ühendustehnoloogia järgi? Andke meile teada – vaatame koos üle!"
     },
     "stepsSection": {
       "title": "Kuidas see toimib?",
@@ -32,19 +32,19 @@
       "questions": {
         "question1": {
           "question": "Miks pean oma telefoni numbrit jagama?",
-          "answer": "Telefoninumbrit on vaja selleks, et Netihindi operaator saaks Teiega ühendust võtta ja kodust internetiühendust taotleda, samal ajal saame vastata küsimustele erinevate teenusepakkujate paketide ja jooksvate soodustuste kohta."
+          "answer": "Telefoninumber on vajalik, et Netihindi operaator saaks Teiega ühendust võtta ja aidata koduse internetiühenduse taotlemisel, samuti saame vastata küsimustele erinevate teenusepakkujate pakettide ja soodustuste kohta."
         },
         "question2": {
           "question": "Miks pean kirjutama oma aadressi?",
-          "answer": "Igas majas on oma interneti kaablid ja erinevad tehnoloogiad. Aadressi järgi näeme, millised tehnoloogiad on Teie majas saadaval ja selle põhjal valida Teile sobivaima paketi."
+          "answer": "Igas majas on saadaval erinevad internetiühenduse tehnoloogiad. Aadressi järgi määrame, millised tehnoloogiad on Teie majas saadaval, ja selle põhjal pakume Teile valikuks kõiki võimalikke internetipakette."
         },
         "question3": {
           "question": "Miks ma pean liituma läbi Netihind?",
-          "answer": "<i></i>Säästame Teie aega. Anname Teile teavet kõigi teenusepakkujate pakkumiste kohta. Te ei pea mitut saiti korraga avama.<br></br><i></i>Sõltumatu arvamus. Meie töötame kõigi teenusepakkujatega ning lähtuvalt teie vajadustest saame valida parima lahenduse."
+          "answer": "<i></i>Säästame Teie aega. Anname Teile teavet kõigi teenusepakkujate pakkumiste kohta, nii et Te ei pea mitut saiti korraga avama.<br></br><i></i>Sõltumatu arvamus. Me töötame kõigi teenusepakkujatega ning lähtuvalt Teie vajadustest saame valida parima lahenduse."
         },
         "question4": {
           "question": "Miks Netihind veebilehe kasutamine on tasuta?",
-          "answer": "Teenus on kasutajatele täiesti tasuta. Aitame Teil valida enda jaoks parima lahenduse. Teenusepakkuja maksab meile Teie liitumise eest."
+          "answer": "Teenus on kasutajatele täiesti tasuta. Aitame Teil valida endale parima lahenduse. Teenusepakkuja maksab meile Teie liitumise eest."
         }
       },
       "contactButton": "Võtta ühendust"
@@ -54,7 +54,7 @@
     },
     "contactsSection": {
       "title": "Võtke meiega ühendust",
-      "description": "Kui Teil on küsimusi, andke meile teada ja me võtame Teiega esimesel võimalusel ühendust või võtke meiega ise ühendust!",
+      "description": "Kui Teil on küsimusi, andke meile teada, ja me võtame Teiega ühendust esimesel võimalusel. Võite ka ise meiega ühendust võtta!",
       "subtitle": "Kontaktid"
     }
   },
@@ -231,7 +231,7 @@
     },
     "homePage": {
       "name": "Netihind.ee - sõltumatu internetipaketide võrdlusportaal.",
-      "description": "Kas Te ei tea, milline teenusepakkuja Teie kodus on? Kas soovite valida kiiruselt, hinnalt ja ühendustehnoloogia poolest Teile sobiva paketi? Andke meile teada, vaatame koos üle!",
+      "description": "Kas Te ei tea, milline teenusepakkuja on Teie kodus? Soovite valida endale sobiva paketi kiiruse, hinna ja ühendustehnoloogia järgi? Andke meile teada – vaatame koos üle!",
       "url": "/"
     },
     "aboutPage": {
