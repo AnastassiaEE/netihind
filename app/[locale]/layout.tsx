@@ -38,7 +38,7 @@ export default async function RootLayout({
   setRequestLocale(locale);
   const messages = await getMessages();
 
-  const nonce = headers().get('x-nonce') ?? '';
+  const nonce = headers().get('x-nonce') ?? ' ';
 
   return (
     <html lang={locale}>
