@@ -301,11 +301,12 @@
       },
       "description": {
         "address": "Salvestab sisestatud aadressi, et automaatselt otsida saadavalolevaid internetipakette.",
-        "maaametGa": "Kasutatakse Google Analyticsit ainulaadsete kasutajate jälgimiseks veebisaidil. See aitab koguda külastuste andmeid ja töödelda veebisaidi kasutamise interaktsioone, et täiustada analüüsi ja mõista kasutajate käitumist.",
-        "maaametGaId": "Kasutatakse Google Analyticsit kasutajate jälgimiseks ja sessioonide vahel eristamiseks. See aitab koguda ja analüüsida andmeid veebisaidi kasutamise kohta, et parandada funktsionaalsust ja kasutajakogemust.",
+        "maaametGa": "Kasutatakse Google Analytics'i poolt ainulaadsete kasutajate jälgimiseks veebisaidil. See aitab koguda külastuste andmeid ja töödelda veebisaidi kasutamise interaktsioone, et täiustada analüüsi ja mõista kasutajate käitumist.",
+        "maaametGaId": "Kasutatakse Google Analytics'i poolt kasutajate jälgimiseks ja sessioonide vahel eristamiseks. See aitab koguda ja analüüsida andmeid veebisaidi kasutamise kohta, et parandada funktsionaalsust ja kasutajakogemust.",
         "cookieConsent": "Salvestab kasutaja nõusoleku oleku küpsiste kasutamiseks.",
-        "localGa": "Kasutatakse Google Analyticsit ainulaadsete kasutajate jälgimiseks veebisaidil. See aitab koguda külastuste andmeid ja töödelda veebisaidi kasutamise interaktsioone, et täiustada analüüsi ja mõista kasutajate käitumist.",
-        "localGaId": "Kasutatakse Google Analyticsit kasutajate jälgimiseks ja sessioonide vahel eristamiseks. See aitab koguda ja analüüsida andmeid veebisaidi kasutamise kohta, et parandada funktsionaalsust ja kasutajakogemust."
+        "localGa": "Kasutatakse Google Analytics'i poolt ainulaadsete kasutajate jälgimiseks veebisaidil. See aitab koguda külastuste andmeid ja töödelda veebisaidi kasutamise interaktsioone, et täiustada analüüsi ja mõista kasutajate käitumist.",
+        "localGaId": "Kasutatakse Google Analytics'i poolt kasutajate jälgimiseks ja sessioonide vahel eristamiseks. See aitab koguda ja analüüsida andmeid veebisaidi kasutamise kohta, et parandada funktsionaalsust ja kasutajakogemust.",
+        "wordpressTest": "Kasutatakse WordPress'i poolt, et kontrollida, kas kasutaja brauser toetab küpsiseid."
       },
       "maxAge": {
         "session": "Seanss",

@@ -28,6 +28,7 @@ export default function CookieDetails({
         <a
           href={policy}
           target="_blank"
+          rel="noreferrer"
           className="underline transition-colors hover:text-primary"
         >
           {domain}
