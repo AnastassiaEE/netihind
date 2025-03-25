@@ -10,6 +10,8 @@
     "email": "email dev"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^5.15.7",
     "@mui/material-nextjs": "^6.4.3",
     "@react-email/components": "^0.0.34",
@@ -43,8 +45,8 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10",
-    "eslint": "^8",
-    "eslint-config-next": "^14.2.14",
+    "eslint": "^9.23.0",
+    "eslint-config-next": "^15.2.4",
     "file-loader": "^6.2.0",
     "postcss": "^8",
     "prettier": "^3.5.3",
