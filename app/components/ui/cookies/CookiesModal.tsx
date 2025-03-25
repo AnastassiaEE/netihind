@@ -1,9 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import CookiesButton from '@/components/ui/cookies/CookiesButton';
 import Dialogue from '@/components/ui/overlay/Dialog';
-import useOverlay from '@/hooks/useOverlay';
 import Tabs from '@/components/ui/tabs/Tabs';
 import TabPanel from '@/components/ui/tabs/TabPanel';
 import { useTranslations } from 'next-intl';
@@ -11,78 +9,21 @@ import CookiesConsentSection from '@/components/ui/cookies/CookiesConsentSection
 import CookiesDetailsSection from '@/components/ui/cookies/CookiesDetailsSection';
 import CookiesActions from '@/components/ui/cookies/CookiesActions';
 import CookiesInfoSection from '@/components/ui/cookies/CookiesInfoSection';
-import { getCookie, hasCookie, setCookie } from 'cookies-next';
-import { useConsentContext } from '@/context/ConsentContext';
-
-const CONSENT_COOKIE_KEY = 'COOKIE_CONSENT';
+import useCookiesModal from '@/hooks/useCookiesModal';
 
 export default function CookiesModal() {
   const b = useTranslations('Buttons');
   const c = useTranslations('Cookies');
   const tabs = [c('tabs.consent'), c('tabs.details'), c('tabs.info')];
-  const [preferences, setPreferences] = useState<{
-    [key: string]: boolean;
-  }>({
-    necessary: true,
-    statistics: false,
-  });
-  const { setConsent } = useConsentContext();
 
   const {
-    isOpened: isCookiesModalOpened,
-    open: openCookiesModal,
-    close: closeCookiesModal,
-    overlayRef: cookiesModalRef,
-  } = useOverlay(false, false);
-
-  useEffect(() => {
-    if (hasCookie(CONSENT_COOKIE_KEY)) {
-      const consentCookie = getCookie(CONSENT_COOKIE_KEY);
-      if (consentCookie) {
-        const preferences = JSON.parse(consentCookie);
-        setPreferences(preferences);
-        setConsent(preferences);
-      }
-    } else {
-      setConsent(preferences);
-      openCookiesModal();
-    }
-  }, []);
-
-  const togglePreference = (preference: string) => {
-    setPreferences((prevState) => ({
-      ...prevState,
-      [preference]: !prevState[preference],
-    }));
-  };
-
-  const saveConsentCookie = (preferences: { [key: string]: boolean }) => {
-    setCookie(CONSENT_COOKIE_KEY, JSON.stringify(preferences), {
-      maxAge: 365 * 24 * 60 * 60,
-    });
-    closeCookiesModal();
-    setConsent(preferences);
-  };
-
-  const managePreferences = (action: string) => {
-    let newPreferences = { ...preferences };
-    switch (action) {
-      case 'accept-all':
-        newPreferences = Object.fromEntries(
-          Object.keys(newPreferences).map((key) => [key, true]),
-        );
-        break;
-      case 'decline-all':
-        newPreferences = Object.fromEntries(
-          Object.keys(newPreferences).map((key) => [key, key === 'necessary']),
-        );
-        break;
-      default:
-        break;
-    }
-    setPreferences(newPreferences);
-    saveConsentCookie(newPreferences);
-  };
+    openCookiesModal,
+    isCookiesModalOpened,
+    cookiesModalRef,
+    preferences,
+    togglePreference,
+    managePreferences,
+  } = useCookiesModal();
 
   return (
     <>
