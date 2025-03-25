@@ -3,12 +3,12 @@
 import PackagesLoader from '@/components/ui/loaders/PackagesLoader';
 import usePackages from '@/hooks/usePackages';
 import { useTranslations } from 'next-intl';
-import PackageCard from '@/components/ui/address/packages/PackageCard';
+import PackageCard from '@/components/ui/packages/PackageCard';
 import PackagesError from '@/components/ui/errors/PackagesError';
 import { Link } from '@/i18n/routing';
 import Dialog from '@/components/ui/overlay/Dialog';
 import useOverlay from '@/hooks/useOverlay';
-import PackageRequestContent from '@/components/ui/address/packages/PackageRequestContent';
+import PackageRequestContent from '@/components/ui/packages/PackageRequestContent';
 
 export default function Packages({
   oid,
