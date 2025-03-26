@@ -51,7 +51,7 @@ export default function SliderBlogCards({
       <div className="next absolute right-0 top-1/2 -translate-y-1/2">
         <CircleArrow direction="right" className={arrowClasses} />
       </div>
-      <div className="swiper-pagination !-bottom-10"></div>
+      <div className="swiper-pagination !-bottom-10 z-0"></div>
       <Swiper
         breakpoints={breakpoints}
         navigation={navigation}
