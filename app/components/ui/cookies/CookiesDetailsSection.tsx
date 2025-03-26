@@ -41,13 +41,6 @@ export default function CookiesDetailsSection({
         maxAge: t('attributes.maxAge.twoYears'),
         type: t('attributes.type.http'),
       },
-      wordpress_test_cookie: {
-        description: t('attributes.description.wordpressTest'),
-        domain: 'wordpress.org',
-        policy: 'https://wordpress.org/about/privacy/cookies/',
-        maxAge: t('attributes.maxAge.session'),
-        type: t('attributes.type.http'),
-      },
       COOKIE_CONSENT: {
         description: t('attributes.description.cookieConsent'),
         domain: 'netihind.ee',
