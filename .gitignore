@@ -37,6 +37,6 @@ next-env.d.ts
 
 
 certificates
-ecosystem.config
-.vscode
+ecosystem.config.js
 .prettierrc
+/.vscode
