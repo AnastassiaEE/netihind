@@ -22,6 +22,7 @@ const labels: { [key: string]: string } = {
   time: 'Aeg',
   policy: 'Kas olete nõus privaatsuspoliitikaga?',
   address: 'Aadress',
+  'call-time': 'Kontaktaeg',
 };
 
 export default function EmailTemplate(
