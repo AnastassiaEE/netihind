@@ -40,17 +40,18 @@ export default function Contacts({
   params: { locale: string };
 }) {
   setRequestLocale(locale);
-  const t = useTranslations('ContactsPage');
+  const tContacts = useTranslations('ContactsPage');
+  const tSEO = useTranslations('SEO');
 
   const contactsList = Object.keys(contacts).map((type) => ({
     contactType: type as 'email' | 'phone' | 'address',
-    title: t(`cards.${type}.title`),
-    description: t(`cards.${type}.description`),
+    title: tContacts(`cards.${type}.title`),
+    description: tContacts(`cards.${type}.description`),
     contact: contacts[type as keyof typeof contacts],
   }));
 
   const contactsPageUrl = new URL(
-    t('contactsPage.url'),
+    tSEO('contactsPage.url'),
     metadataBaseUrl,
   ).toString();
 
@@ -60,12 +61,12 @@ export default function Contacts({
       {
         '@type': 'WebPage',
         '@id': contactsPageUrl,
-        name: t('aboutPage.name'),
+        name: tSEO('aboutPage.name'),
         url: contactsPageUrl,
         inLanguage: locale,
-        isPartOf: website(t, locale),
+        isPartOf: website(tSEO, locale),
       },
-      organization(t),
+      organization(tSEO),
       {
         '@type': 'BreadcrumbList',
         '@id': `${contactsPageUrl}#breadcrumbs`,
@@ -73,13 +74,13 @@ export default function Contacts({
           {
             '@type': 'ListItem',
             position: 1,
-            name: t('breadcrumbs.home.name'),
-            item: new URL(t('homePage.url'), metadataBaseUrl).toString(),
+            name: tSEO('breadcrumbs.home.name'),
+            item: new URL(tSEO('homePage.url'), metadataBaseUrl).toString(),
           },
           {
             '@type': 'ListItem',
             position: 2,
-            name: t('breadcrumbs.contacts.name'),
+            name: tSEO('breadcrumbs.contacts.name'),
             item: contactsPageUrl,
           },
         ],
@@ -94,13 +95,13 @@ export default function Contacts({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <SectionLayout>
-        <H1>{t('title')}</H1>
+        <H1>{tContacts('title')}</H1>
         <div className="items-center justify-between lg:flex">
           <div className="max-lg:mb-24 lg:w-6/12">
             <ContactCards contacts={contactsList} />
           </div>
           <div className="rounded-lg bg-primary-light px-7 py-9 shadow-md md:px-12 lg:w-5/12">
-            <H2>{t('formTitle')}</H2>
+            <H2>{tContacts('formTitle')}</H2>
             <ContactForm />
           </div>
         </div>
