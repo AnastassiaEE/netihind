@@ -5,14 +5,17 @@ import SliderBlogSection from '@/components/sections/home/SliderBlogSection';
 import TopSection from '@/components/sections/home/TopSection';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
-import { formatISO } from 'date-fns';
-import { openGraphLogo, website, readAction } from '@/app/shared-metadata';
-import { metadataBaseUrl } from '@/app/[locale]/layout';
+import { openGraphLogo, website, metadataBaseUrl } from '@/app/shared-metadata';
 
 export const revalidate = 3600;
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
   const t = await getTranslations({ locale, namespace: 'SEO' });
+
   return {
     title: t('homePage.name'),
     description: t('homePage.description'),
@@ -31,11 +34,16 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-export default function Home({ params: { locale } }: { params: { locale: string } }) {
+export default function Home({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
   setRequestLocale(locale);
   const t = useTranslations('SEO');
 
   const homePageUrl = new URL(t('homePage.url'), metadataBaseUrl).toString();
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -46,9 +54,7 @@ export default function Home({ params: { locale } }: { params: { locale: string 
         description: t('homePage.description'),
         url: homePageUrl,
         inLanguage: locale,
-        datePublished: formatISO(new Date('04-11-2024')),
         isPartOf: website(t, locale),
-        potentialAction: [readAction(homePageUrl)],
       },
       {
         '@type': 'BreadcrumbList',

@@ -11,10 +11,9 @@ import { NonceProvider } from '@/context/NonceContext';
 import CookiesModal from '@/components/ui/cookies/CookiesModal';
 import GoogleAnalytics from '@/components/tracking/GoogleAnalytics';
 import { ConsentProvider } from '@/context/ConsentContext';
+import { metadataBaseUrl } from '@/app/shared-metadata';
 
 const inter = Manrope({ subsets: ['latin'] });
-
-export const metadataBaseUrl = new URL('https://netihind.ee');
 
 export const metadata = {
   metadataBase: metadataBaseUrl,

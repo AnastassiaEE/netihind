@@ -1,7 +1,9 @@
-import { metadataBaseUrl } from '@/app/[locale]/layout';
+export const metadataBaseUrl = new URL('https://netihind.ee');
+const logoUrl =
+  'https://rxysmdetqttpdqfmrpym.supabase.co/storage/v1/object/public/website-logos//gradientmainlogo.png';
 
 export const openGraphLogo = {
-  url: 'https://rxysmdetqttpdqfmrpym.supabase.co/storage/v1/object/public/website-logos//gradientmainlogo.png',
+  url: logoUrl,
   width: 1200,
   height: 630,
   alt: 'Netihind logo',
@@ -16,6 +18,27 @@ export const website = (t: any, locale: string) => {
     description: t('website.description'),
     url: websiteUrl,
     inLanguage: locale,
+  };
+};
+
+export const organization = (t: any) => {
+  const websiteUrl = new URL(t('website.url'), metadataBaseUrl).toString();
+  return {
+    '@type': 'Organization',
+    '@id': `${websiteUrl}#organization`,
+    name: t('website.name'),
+    url: websiteUrl,
+    logo: logoUrl,
+    sameAs: ['https://www.facebook.com/people/Netihind/61564967082896/'],
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        telephone: '+37255543735',
+        contactType: 'customer service',
+        email: 'info@netihind.ee',
+        availableLanguage: ['Estonian', 'Russian'],
+      },
+    ],
   };
 };
 

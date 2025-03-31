@@ -217,8 +217,8 @@
   },
   "SEO": {
     "website": {
-      "name": "Netihind.ee - sõltumatu internetipakettide võrdlusportaal.",
-      "description": "Sõltumatu internetipakettide võrdlusportaal: võrrelge kõiki internetipakette ja leidke endale parim lahendus.",
+      "name": "Sõltumatu internetipakettide võrdlusportaal — Netihind.ee",
+      "description": "Sõltumatu internetipakettide võrdlusportaal: võrrelge internetipakette kiiruse, hinna ja ühenduse tehnoloogia järgi. Leidke endale parim lahendus.",
       "url": "/"
     },
     "breadcrumbs": {
@@ -227,16 +227,24 @@
       },
       "about": {
         "name": "Meist"
+      },
+      "contacts": {
+        "name": "Kontaktid"
       }
     },
     "homePage": {
-      "name": "Netihind.ee - sõltumatu internetipaketide võrdlusportaal.",
-      "description": "Kas Te ei tea, milline teenusepakkuja on Teie kodus? Soovite valida endale sobiva paketi kiiruse, hinna ja ühendustehnoloogia järgi? Andke meile teada – vaatame koos üle!",
+      "name": "Sõltumatu internetipakettide võrdlusportaal — Netihind.ee",
+      "description": "Sõltumatu internetipakettide võrdlusportaal: võrrelge internetipakette kiiruse, hinna ja ühenduse tehnoloogia järgi. Leidke endale parim lahendus.",
       "url": "/"
     },
     "aboutPage": {
-      "name": "Meist - Netihind.ee - sõltumatu internetipaketide võrdlusportaal.",
+      "name": "Meist — Netihind.ee — sõltumatu internetipaketide võrdlusportaal",
+      "description": "Netihind.ee pakub sõltumatut koduse interneti võrdlust teie aadressi järgi. Leidke parimad paketid kõigi Eesti teenusepakkujate seas.",
       "url": "/meist/"
+    },
+    "contactsPage": {
+      "name": "Kontaktid — Netihind.ee — sõltumatu internetipaketide võrdlusportaal",
+      "url": "/kontaktid/"
     }
   },
   "Buttons": {
