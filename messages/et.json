@@ -238,12 +238,12 @@
       "url": "/"
     },
     "aboutPage": {
-      "name": "Meist — Netihind.ee — sõltumatu internetipaketide võrdlusportaal",
+      "name": "Meist — Netihind.ee",
       "description": "Netihind.ee pakub sõltumatut koduse interneti võrdlust teie aadressi järgi. Leidke parimad paketid kõigi Eesti teenusepakkujate seas.",
       "url": "/meist/"
     },
     "contactsPage": {
-      "name": "Kontaktid — Netihind.ee — sõltumatu internetipaketide võrdlusportaal",
+      "name": "Kontaktid — Netihind.ee",
       "url": "/kontaktid/"
     }
   },
