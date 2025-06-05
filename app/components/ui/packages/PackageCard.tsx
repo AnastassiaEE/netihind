@@ -22,6 +22,9 @@ export default function PackageCard({
     internet_download_speed,
     internet_upload_speed,
     internet_package_price,
+    discount_price,
+    discount_duration,
+    discount_description,
   },
   handleActionClick,
   className,
@@ -71,7 +74,14 @@ export default function PackageCard({
           </PackageFeature>
         </PackageCardSection>
         <PackageCardSection className="flex w-full items-center justify-center lg:w-2/5">
-          <PackagePrice originalPrice={internet_package_price} />
+          <PackagePrice
+            price={internet_package_price}
+            discount={{
+              discount_price,
+              discount_duration,
+              discount_description,
+            }}
+          />
         </PackageCardSection>
       </div>
       <PackageActions handleActionClick={handleActionClick} />

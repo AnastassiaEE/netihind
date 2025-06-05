@@ -2,39 +2,51 @@ import classNames from 'classnames';
 import { useTranslations } from 'next-intl';
 
 export default function PackagePrice({
-    originalPrice,
-    promoPrice,
+  price,
+  discount,
 }: {
-    originalPrice: number;
-    promoPrice?: number;
+  price: number;
+  discount: {
+    discount_price: number | null;
+    discount_duration: string | null;
+    discount_description: string | null;
+  };
 }) {
-    const t = useTranslations('Packages');
+  const t = useTranslations('Packages');
 
-    const priceClasses = classNames(
-        'w-max rounded-lg px-2 py-1 text-lg tracking-tight md:text-xl',
-        promoPrice
-            ? 'bg-gradient-to-r from-primary via-secondary to-accent text-white'
-            : 'bg-primary-light text-muted-dark',
-    );
+  const { discount_price, discount_duration, discount_description } = discount;
 
-    const price = promoPrice ?? originalPrice;
-    const discountPercentage = promoPrice
-        ? Math.ceil(((originalPrice - promoPrice) / promoPrice) * 100)
-        : 0;
+  const priceClasses = classNames(
+    'w-max rounded-lg px-2 py-1 text-lg tracking-tight md:text-xl',
+    discount_price
+      ? 'bg-gradient-to-r from-primary via-secondary to-accent text-white'
+      : 'bg-primary-light text-muted-dark',
+  );
 
-    return (
-        <div className="max-lg:flex max-lg:items-center max-lg:gap-2">
-            <p className={priceClasses}>
-                <span className="font-bold text-black">{price} €</span> / {t('units.month')}
-            </p>
-            {promoPrice && (
-                <div className="mt-1">
-                    <p className="mr-2 inline font-semibold text-black">{originalPrice}€</p>
-                    <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-sm font-medium text-transparent">
-                        -{discountPercentage}%
-                    </span>
-                </div>
-            )}
-        </div>
-    );
+  const finalPrice = discount_price ?? price;
+  const discountPercentage = discount_price
+    ? Math.ceil(((price - discount_price) / discount_price) * 100)
+    : 0;
+
+  return (
+    <div>
+      <div className="flex flex-wrap gap-2 max-md:justify-center md:flex-col md:items-center">
+        <p className={priceClasses}>
+          <span className="font-bold">{finalPrice} €</span> / {t('units.month')}
+        </p>
+        {discount_price && (
+          <div className="flex flex-wrap items-center gap-2">
+            <p className="inline font-semibold text-black">{price}€</p>
+            <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-sm font-medium text-transparent">
+              -{discountPercentage}%{' '}
+              {t('discount.duration', { months: discount_duration })}
+            </span>
+          </div>
+        )}
+      </div>
+      {discount_description && (
+        <p className="mt-2 text-center text-xs">{discount_description}</p>
+      )}
+    </div>
+  );
 }

@@ -121,6 +121,10 @@
         }
       }
     },
+    "discount": {
+      "duration": "Esimesed {months} kuud",
+      "durationEnd": "Alates {months}. kuust"
+    },
     "errors": {
       "somethingWentWrong": "Midagi läks valesti. Proovige hiljem uuesti.",
       "noPackages": "Teie aadressilt ei leitud midagi. Personaalse pakkumise saamiseks kirjutage meile <a>e-kiri</a>."

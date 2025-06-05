@@ -53,14 +53,41 @@ export default function PackageRequestContent({
         <div className="md:w-5/12">
           {packadeDetailsSection}
           <PackageRequestSection title={getSectionTitle('total') + ':'}>
-            <p className="flex items-center justify-between">
-              <span className="font-medium">
-                {t(`request.${requestType}.details.packagePrice`)}:
-              </span>
-              <span className="text-2xl font-bold">
-                {data?.internet_package_price} €
-              </span>
-            </p>
+            {data?.discount_price ? (
+              <>
+                <p className="mb-2 flex items-center justify-between">
+                  <span className="font-medium">
+                    {t('discount.duration', {
+                      months: data?.discount_duration,
+                    })}
+                    :
+                  </span>
+                  <span className="text-2xl font-bold">
+                    {data?.discount_price} €
+                  </span>
+                </p>
+                <p className="flex items-center justify-between">
+                  <span className="font-medium">
+                    {t('discount.durationEnd', {
+                      months: Number(data?.discount_duration) + 1,
+                    })}
+                    :
+                  </span>
+                  <span className="text-xl font-medium">
+                    {data?.internet_package_price} €
+                  </span>
+                </p>
+              </>
+            ) : (
+              <p className="flex items-center justify-between">
+                <span className="font-medium">
+                  {t(`request.${requestType}.details.packagePrice`)}:
+                </span>
+                <span className="text-2xl font-bold">
+                  {data?.internet_package_price} €
+                </span>
+              </p>
+            )}
           </PackageRequestSection>
         </div>
       </div>
