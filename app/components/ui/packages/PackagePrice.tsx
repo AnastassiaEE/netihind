@@ -25,7 +25,7 @@ export default function PackagePrice({
 
   const finalPrice = discount_price ?? price;
   const discountPercentage = discount_price
-    ? Math.ceil(((price - discount_price) / discount_price) * 100)
+    ? Math.ceil(((price - discount_price) / price) * 100)
     : 0;
 
   return (
