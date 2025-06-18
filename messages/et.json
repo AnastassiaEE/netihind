@@ -1,8 +1,8 @@
 {
   "HomePage": {
     "topSection": {
-      "title": "Leidke <span>koduinterneti teenusepakkujad</span> aadressi järgi",
-      "description": "Kas Te ei tea, milline teenusepakkuja on Teie kodus? Soovite valida endale sobiva paketi kiiruse, hinna ja ühendustehnoloogia järgi? Andke meile teada – vaatame koos üle!"
+      "title": "Võrdle <span>koduinterneti</span> pakkumisi ja leia parim!",
+      "description": "Valguskaabel, 5G ja muud tehnoloogiad kõigilt teenusepakkujatelt. Hinnad ja kiirused ühes kohas — sisesta aadress ja vali parimat koduinternetti."
     },
     "stepsSection": {
       "title": "Kuidas see toimib?",
@@ -201,7 +201,7 @@
       "addressExample": "Nt Akadeemia tee 14"
     },
     "buttons": {
-      "findProviders": "Otsi pakkujad",
+      "findProviders": "Vaata pakkumisi",
       "send": "Saada"
     }
   },
@@ -221,8 +221,8 @@
   },
   "SEO": {
     "website": {
-      "name": "Sõltumatu internetipakettide võrdlusportaal - Netihind.ee",
-      "description": "Sõltumatu internetipakettide võrdlusportaal: võrrelge internetipakette kiiruse, hinna ja ühenduse tehnoloogia järgi. Leidke endale parim lahendus.",
+      "name": "Sõltumatu koduinterneti võrdlusportaal – Netihind.ee",
+      "description": "Sõltumatu koduinterneti võrdlusportaal - võrdle pakkumisi hinna, kiiruse ja ühendustehnoloogia järgi ning leia endale parim lahendus!",
       "url": "/"
     },
     "breadcrumbs": {
@@ -237,13 +237,13 @@
       }
     },
     "homePage": {
-      "name": "Sõltumatu internetipakettide võrdlusportaal - Netihind.ee",
-      "description": "Sõltumatu internetipakettide võrdlusportaal: võrrelge internetipakette kiiruse, hinna ja ühenduse tehnoloogia järgi. Leidke endale parim lahendus.",
+      "name": "Sõltumatu koduinterneti võrdlusportaal – Netihind.ee",
+      "description": "Sõltumatu koduinterneti võrdlusportaal - võrdle pakkumisi hinna, kiiruse ja ühendustehnoloogia järgi ning leia endale parim lahendus!",
       "url": "/"
     },
     "aboutPage": {
       "name": "Meist - Netihind.ee",
-      "description": "Netihind.ee pakub sõltumatut koduse interneti võrdlust teie aadressi järgi. Leidke parimad paketid kõigi Eesti teenusepakkujate seas.",
+      "description": "Netihind.ee pakub sõltumatut koduinterneti võrdlust teie aadressi alusel. Leidke parimad paketid kõigi Eesti teenusepakkujate hulgast.",
       "url": "/meist/"
     },
     "contactsPage": {
