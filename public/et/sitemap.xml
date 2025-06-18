@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+      xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<url>
+  <loc>https://netihind.ee/</loc>
+  <xhtml:link rel="alternate" hreflang="ru" href="https://netihind.ee/ru/" />
+  <changefreq>yearly</changefreq>
+  <lastmod>2025-06-18T14:56:58+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://netihind.ee/kasutustingimused/</loc>
+  <changefreq>yearly</changefreq>
+  <lastmod>2025-03-31T21:56:58+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://netihind.ee/blogi/</loc>
+  <changefreq>monthly</changefreq>
+  <lastmod>2025-03-31T21:56:58+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://netihind.ee/blogi/millist-internetikiirust-valida-koduseks-kasutamiseks/</loc>
+  <changefreq>monthly</changefreq>
+  <lastmod>2025-03-31T21:56:58+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://netihind.ee/blogi/millised-internetiuhendused-on-olemas/</loc>
+  <changefreq>monthly</changefreq>
+  <lastmod>2025-03-31T21:56:58+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://netihind.ee/meist/</loc>
+  <changefreq>yearly</changefreq>
+  <lastmod>2025-04-02T14:56:58+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://netihind.ee/kontaktid/</loc>
+  <changefreq>yearly</changefreq>
+  <lastmod>2025-04-01T17:56:58+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://netihind.ee/ru/</loc>
+  <xhtml:link rel="alternate" hreflang="et" href="https://netihind.ee/" />
+  <changefreq>yearly</changefreq>
+  <lastmod>2025-06-18T14:56:58+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://netihind.ee/ru/usloviya-ispolzovaniya/</loc>
+  <changefreq>yearly</changefreq>
+  <lastmod>2025-03-31T21:56:58+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://netihind.ee/ru/blog/</loc>
+  <changefreq>monthly</changefreq>
+  <lastmod>2025-03-31T21:56:58+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://netihind.ee/ru/blog/millist-internetikiirust-valida-koduseks-kasutamiseks/</loc>
+  <changefreq>monthly</changefreq>
+  <lastmod>2025-03-31T21:56:58+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://netihind.ee/ru/blog/millised-internetiuhendused-on-olemas/</loc>
+  <changefreq>monthly</changefreq>
+  <lastmod>2025-03-31T21:56:58+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://netihind.ee/ru/o-nas/</loc>
+  <changefreq>yearly</changefreq>
+  <lastmod>2025-04-02T14:56:58+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://netihind.ee/ru/kontakty/</loc>
+  <changefreq>yearly</changefreq>
+  <lastmod>2025-04-01T17:56:58+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+</urlset>
