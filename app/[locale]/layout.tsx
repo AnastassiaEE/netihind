@@ -13,7 +13,10 @@ import GoogleAnalytics from '@/components/tracking/GoogleAnalytics';
 import { ConsentProvider } from '@/context/ConsentContext';
 import { metadataBaseUrl } from '@/app/shared-metadata';
 
-const inter = Manrope({ subsets: ['latin'] });
+const inter = Manrope({
+  subsets: ['latin'],
+  weight: ['200', '300', '400', '500', '600', '700', '800'],
+});
 
 export const metadata = {
   metadataBase: metadataBaseUrl,
@@ -35,6 +38,7 @@ export default async function RootLayout({
   }
 
   setRequestLocale(locale);
+  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   const messages = await getMessages();
 
   const nonce = headers().get('x-nonce') ?? ' ';
@@ -42,7 +46,7 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body className={`${inter.className} relative`}>
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider timeZone={timeZone} messages={messages}>
           <AppRouterCacheProvider
             options={{
               key: 'mui',
