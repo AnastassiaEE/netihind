@@ -9,22 +9,18 @@ import PageLoader from '@/components/ui/loaders/PageLoader';
 import AddressPackagesSection from '@/components/sections/address/AddressPackagesSection';
 
 export default function PersonalAddress({
-    params: { slug, locale },
-    searchParams,
+  params: { slug, locale },
+  searchParams,
 }: {
-    params: { slug: string; locale: string };
-    searchParams: { [key: string]: string };
+  params: { slug: string; locale: string };
+  searchParams: { [key: string]: string };
 }) {
-    setRequestLocale(locale);
+  setRequestLocale(locale);
 
-    if (!hasCookie('ADDRESS', { cookies })) notFound();
-    const cookieString = getCookie('ADDRESS', { cookies })!;
-    const { fullAddress } = getAddressCookieValues(cookieString);
-    const addressSlug = getAddressSlug(fullAddress);
-    if (slug !== addressSlug) notFound();
-    return (
-        <Suspense fallback={<PageLoader />}>
-            <AddressPackagesSection searchParams={searchParams} />
-        </Suspense>
-    );
+  if (!hasCookie('ADDRESS', { cookies })) notFound();
+  const cookieString = getCookie('ADDRESS', { cookies })!;
+  const { fullAddress } = getAddressCookieValues(cookieString);
+  const addressSlug = getAddressSlug(fullAddress);
+  if (slug !== addressSlug) notFound();
+  return <AddressPackagesSection searchParams={searchParams} />;
 }

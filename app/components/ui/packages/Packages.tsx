@@ -13,16 +13,12 @@ import PackageRequestContent from '@/components/ui/packages/PackageRequestConten
 export default function Packages({
   oid,
   address,
-  initialPackages,
-  initialError,
   sortOption,
   providers,
   technologies,
 }: {
   oid: string;
   address: string;
-  initialPackages: { [key: string]: any }[];
-  initialError: string | null;
   sortOption: string;
   providers: string[];
   technologies: string[];
@@ -36,7 +32,7 @@ export default function Packages({
     selectedPackage,
     requestType,
     handleActionClick,
-  } = usePackages(oid, initialPackages, sortOption, providers, technologies);
+  } = usePackages(oid, sortOption, providers, technologies);
 
   const {
     isOpened: isModalOpened,
@@ -58,8 +54,7 @@ export default function Packages({
   );
 
   if (isLoading) return <PackagesLoader />;
-  if (initialError) return errorContent(initialError);
-  if (error) return errorContent(error);
+  if (error) return errorContent(error.message);
 
   return (
     <>
@@ -68,7 +63,7 @@ export default function Packages({
           <PackageCard
             key={data.internet_package_id}
             data={data}
-            className="mb-5"
+            className="mb-5 last:mb-0"
             handleActionClick={(action) =>
               handleActionClick(data, action, openModal)
             }

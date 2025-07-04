@@ -4,7 +4,6 @@ import useSWR from 'swr';
 
 export default function usePackages(
   oid: string,
-  initialPackages: { [key: string]: any }[],
   sortOption: string,
   providers: string[],
   technologies: string[],
@@ -17,16 +16,19 @@ export default function usePackages(
     [oid, sortOption, providers, technologies],
     () => getPackages(oid, sortOption, providers, technologies),
     {
-      fallbackData: initialPackages,
       revalidateOnFocus: false,
-      revalidateOnMount: false,
+      revalidateOnMount: true,
       revalidateIfStale: true,
       errorRetryCount: 0,
-      errorRetryInterval: 2000,
     },
   );
-  const [selectedPackage, setSelectedPackage] = useState<{ [key: string]: any } | null>(null);
-  const [requestType, setRequestType] = useState<'connection' | 'consultation'>('connection');
+
+  const [selectedPackage, setSelectedPackage] = useState<{
+    [key: string]: any;
+  } | null>(null);
+  const [requestType, setRequestType] = useState<'connection' | 'consultation'>(
+    'connection',
+  );
 
   const handleActionClick = (
     packageData: { [key: string]: any },
@@ -40,7 +42,7 @@ export default function usePackages(
 
   return {
     packages,
-    error: error?.message,
+    error,
     isLoading,
     selectedPackage,
     requestType,

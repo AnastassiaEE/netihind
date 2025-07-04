@@ -1,9 +1,12 @@
 import { supabase } from '@/lib/supabase';
 
 export const getProviders = async (oid: string) => {
-  let { data: providers, error: providersError } = await supabase.rpc('get_providers_by_address', {
-    p_oid: oid,
-  });
+  let { data: providers, error: providersError } = await supabase.rpc(
+    'get_providers_by_address',
+    {
+      p_oid: oid,
+    },
+  );
   return providers ?? [];
 };
 
@@ -23,12 +26,15 @@ export const getPackages = async (
   providers: string[],
   technologies: string[],
 ) => {
-  const { data: packages, error: packagesError } = await supabase.rpc('get_packages_by_address', {
-    p_oid: oid,
-    p_sort: sort,
-    p_provider_ids: providers,
-    p_technology_ids: technologies,
-  });
+  const { data: packages, error: packagesError } = await supabase.rpc(
+    'get_packages_by_address_test',
+    {
+      p_oid: oid,
+      p_sort: sort,
+      p_provider_ids: providers,
+      p_technology_ids: technologies,
+    },
+  );
   if (packagesError) throw new Error('errors.somethingWentWrong');
   if (!packages || packages.length === 0) throw new Error('errors.noPackages');
   return packages;
