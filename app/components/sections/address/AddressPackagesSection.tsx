@@ -71,25 +71,27 @@ export default function AddressPackagesSection({
       </p>
       <>
         <div className="md:flex">
-          <div className="md:w-8/12 md:pr-8">
-            <div className="sticky top-0 mb-4 flex justify-end bg-white max-md:hidden">
+          <div className="md:w-8/12">
+            <div className="sticky top-0 z-10 flex justify-end rounded-l-md bg-primary-light/80 p-5 backdrop-blur-md max-md:hidden">
               <Sort
                 name="packages"
                 variant="desktop"
                 options={SORT_OPTIONS}
                 selected={selectedSortOption}
-                className="rounded-md border border-muted-light"
+                className="rounded-md border border-muted-light bg-white"
               />
             </div>
-            <Packages
-              oid={oid}
-              address={address}
-              sortOption={selectedSortOption}
-              providers={providerSelectedIds}
-              technologies={technologySelectedIds}
-            />
+            <div className="px-5 pt-5">
+              <Packages
+                oid={oid}
+                address={address}
+                sortOption={selectedSortOption}
+                providers={providerSelectedIds}
+                technologies={technologySelectedIds}
+              />
+            </div>
           </div>
-          <div className="hidden rounded-lg bg-primary-light md:block md:w-4/12">
+          <div className="hidden rounded-r-md rounded-bl-md bg-primary-light/80 md:block md:w-4/12">
             <div className="sticky top-0 p-8">
               {isFiltersLoading ? (
                 <PingLoader />
@@ -99,14 +101,14 @@ export default function AddressPackagesSection({
             </div>
           </div>
         </div>
-        {/* <SortingToolbar
+        <SortingToolbar
           className="md:hidden"
           sortOptions={{
             options: SORT_OPTIONS,
             selected: selectedSortOption,
           }}
           filters={filters}
-        /> */}
+        />
       </>
     </SectionLayout>
   );
