@@ -22,8 +22,10 @@ type HeaderVariant = VariantProps<typeof headerClasses>['variant'];
 
 export default function Header({
   variant = 'secondary',
+  isSticky = true,
 }: {
   variant?: HeaderVariant;
+  isSticky?: boolean;
 }) {
   return (
     <SidebarMenuProvider>
@@ -32,7 +34,7 @@ export default function Header({
         <DesktopHeader />
         <MobileHeader />
       </header>
-      <StickyHeader />
+      {isSticky && <StickyHeader />}
     </SidebarMenuProvider>
   );
 }
