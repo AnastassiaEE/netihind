@@ -92,7 +92,7 @@ export default function AddressPackagesSection({
             </div>
           </div>
           <div className="hidden rounded-r-md rounded-bl-md bg-primary-light/80 md:block md:w-4/12">
-            <div className="sticky top-0 p-8">
+            <div className="sticky top-0 h-screen overflow-y-auto p-8">
               {isFiltersLoading ? (
                 <PingLoader />
               ) : (
