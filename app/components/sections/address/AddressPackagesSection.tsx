@@ -6,8 +6,6 @@ import { SORT_OPTIONS, getSortSelectedOption } from '@/utils/packagesHelper';
 import React from 'react';
 import Sort from '@/components/ui/sorting/Sort';
 import SortingToolbar from '@/components/ui/sorting/SortingToolbar';
-import { getCookie } from 'cookies-next';
-import { getAddressCookieValues } from '@/utils/addressCookieHelper';
 import { getProviders, getTechnologies } from '@/lib/packagesDataFetch';
 import CheckboxFilters from '@/components/ui/sorting/CheckboxFilters';
 import HomeIcon from '@mui/icons-material/Home';
@@ -17,13 +15,15 @@ import usePackagesCheckboxFilter from '@/hooks/usePackagesCheckboxFilter';
 
 export default function AddressPackagesSection({
   searchParams,
+  address,
+  oid,
 }: {
   searchParams: { [key: string]: string };
+  address: string;
+  oid: string;
 }) {
   const t = useTranslations('AddressPage');
 
-  const cookieString = getCookie('ADDRESS');
-  const { fullAddress: address, oid } = getAddressCookieValues(cookieString);
   const {
     filterData: providerFilterData,
     selectedIds: providerSelectedIds,
@@ -49,16 +49,16 @@ export default function AddressPackagesSection({
     'abbr',
   );
 
+  const filters = {
+    providers: providerFilterData,
+    technologies: technologyFilterData,
+  };
+
   const isFiltersLoading =
     isProviderFiltersLoading && isTechnologyFiltersLoading;
 
   // Sort options
   const selectedSortOption = getSortSelectedOption(searchParams['sort'] || '');
-
-  const filters = {
-    providers: providerFilterData,
-    technologies: technologyFilterData,
-  };
 
   return (
     <SectionLayout>

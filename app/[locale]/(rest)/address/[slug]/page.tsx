@@ -17,8 +17,14 @@ export default function PersonalAddress({
 
   if (!hasCookie('ADDRESS', { cookies })) notFound();
   const cookieString = getCookie('ADDRESS', { cookies })!;
-  const { fullAddress } = getAddressCookieValues(cookieString);
-  const addressSlug = getAddressSlug(fullAddress);
+  const { fullAddress: address, oid } = getAddressCookieValues(cookieString);
+  const addressSlug = getAddressSlug(address);
   if (slug !== addressSlug) notFound();
-  return <AddressPackagesSection searchParams={searchParams} />;
+  return (
+    <AddressPackagesSection
+      searchParams={searchParams}
+      address={address}
+      oid={oid}
+    />
+  );
 }
