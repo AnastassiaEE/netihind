@@ -3,15 +3,16 @@
 import SectionLayout from '@/layouts/SectionLayout';
 import Packages from '@/components/ui/packages/Packages';
 import { SORT_OPTIONS, getSortSelectedOption } from '@/utils/packagesHelper';
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Sort from '@/components/ui/sorting/Sort';
 import SortingToolbar from '@/components/ui/sorting/SortingToolbar';
 import { getProviders, getTechnologies } from '@/lib/packagesDataFetch';
-import CheckboxFilters from '@/components/ui/sorting/CheckboxFilters';
 import HomeIcon from '@mui/icons-material/Home';
 import { useTranslations } from 'next-intl';
 import PingLoader from '@/components/ui/loaders/PingLoader';
-import usePackagesCheckboxFilter from '@/hooks/usePackagesCheckboxFilter';
+import usePackagesFilter from '@/hooks/usePackagesFilter';
+import PackagesFilters from '@/components/ui/sorting/PackagesFilters';
+import { Filters } from '@/types/filters';
 
 export default function AddressPackagesSection({
   searchParams,
@@ -23,42 +24,66 @@ export default function AddressPackagesSection({
   oid: string;
 }) {
   const t = useTranslations('AddressPage');
+  const scrollToRef = useRef<HTMLDivElement>(null);
+
+  const [filters, setFilters] = useState<Filters>({
+    providers: { type: 'checkbox', options: [], selected: [] },
+    technologies: { type: 'checkbox', options: [], selected: [] },
+  });
 
   const {
     filterData: providerFilterData,
-    selectedIds: providerSelectedIds,
+    filterSelectedValues: providerFilterSelectedValues,
     isLoading: isProviderFiltersLoading,
-  } = usePackagesCheckboxFilter(
+  } = usePackagesFilter(
     oid,
     searchParams,
     'providers',
     getProviders,
     'providers',
     'name',
+    'checkbox',
   );
   const {
     filterData: technologyFilterData,
-    selectedIds: technologySelectedIds,
+    filterSelectedValues: technologyFilterSelectedValues,
     isLoading: isTechnologyFiltersLoading,
-  } = usePackagesCheckboxFilter(
+  } = usePackagesFilter(
     oid,
     searchParams,
     'technologies',
     getTechnologies,
     'technologies',
     'abbr',
+    'checkbox',
   );
 
-  const filters = {
-    providers: providerFilterData,
-    technologies: technologyFilterData,
-  };
+  useEffect(() => {
+    setFilters({
+      providers: providerFilterData,
+      technologies: technologyFilterData,
+    });
+  }, [providerFilterData, technologyFilterData]);
 
   const isFiltersLoading =
     isProviderFiltersLoading && isTechnologyFiltersLoading;
 
-  // Sort options
   const selectedSortOption = getSortSelectedOption(searchParams['sort'] || '');
+
+  // const clearFilters = () => {
+  //   const cleared = (Object.keys(filters) as (keyof Filters)[]).reduce(
+  //     (acc, key) => {
+  //       acc[key] = {
+  //         ...filters[key],
+  //         selected: [],
+  //       };
+  //       return acc;
+  //     },
+  //     {} as Filters,
+  //   );
+
+  //   setClearedFilters(cleared);
+  // };
 
   return (
     <SectionLayout>
@@ -70,7 +95,7 @@ export default function AddressPackagesSection({
         {address}
       </p>
       <>
-        <div className="md:flex">
+        <div className="md:flex" ref={scrollToRef}>
           <div className="md:w-8/12">
             <div className="sticky top-0 z-10 flex justify-end rounded-l-md bg-primary-light/80 p-5 backdrop-blur-md max-md:hidden">
               <Sort
@@ -86,29 +111,33 @@ export default function AddressPackagesSection({
                 oid={oid}
                 address={address}
                 sortOption={selectedSortOption}
-                providers={providerSelectedIds}
-                technologies={technologySelectedIds}
+                providers={providerFilterSelectedValues}
+                technologies={technologyFilterSelectedValues}
               />
             </div>
           </div>
           <div className="hidden rounded-r-md rounded-bl-md bg-primary-light/80 md:block md:w-4/12">
             <div className="sticky top-0 h-screen overflow-y-auto p-8">
               {isFiltersLoading ? (
-                <PingLoader />
+                <PingLoader sizeClass="h-10 w-10" />
               ) : (
-                <CheckboxFilters filters={filters} />
+                <PackagesFilters
+                  filters={filters}
+                  clear={() => void 0}
+                  setFilters={setFilters}
+                />
               )}
             </div>
           </div>
         </div>
-        <SortingToolbar
+        {/* <SortingToolbar
           className="md:hidden"
           sortOptions={{
             options: SORT_OPTIONS,
             selected: selectedSortOption,
           }}
           filters={filters}
-        />
+        /> */}
       </>
     </SectionLayout>
   );

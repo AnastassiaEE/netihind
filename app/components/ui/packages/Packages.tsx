@@ -9,6 +9,7 @@ import { Link } from '@/i18n/routing';
 import Dialog from '@/components/ui/overlay/Dialog';
 import useOverlay from '@/hooks/useOverlay';
 import PackageRequestContent from '@/components/ui/packages/PackageRequestContent';
+import { useEffect, useRef } from 'react';
 
 export default function Packages({
   oid,
@@ -24,6 +25,23 @@ export default function Packages({
   technologies: string[];
 }) {
   const t = useTranslations('Packages');
+
+  const isFirstRender = useRef(true);
+
+  useEffect(
+    () => {
+      if (isFirstRender.current) {
+        console.log('🔄 Это первый рендер!');
+        isFirstRender.current = false;
+        return;
+      }
+
+      console.log('✅ Это уже не первый рендер');
+    },
+    [
+      /* зависимости */
+    ],
+  );
 
   const {
     packages,

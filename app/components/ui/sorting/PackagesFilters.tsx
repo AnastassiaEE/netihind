@@ -1,0 +1,78 @@
+'use client';
+
+import Accordion from '@/components/ui/accordion/Accordion';
+import { useTranslations } from 'next-intl';
+import React, { useMemo } from 'react';
+import Button from '@/components/ui/form/buttons/Button';
+import CheckboxGroup from '@/components/ui/form/fields/checkbox/CheckboxGroup';
+import useCheckboxFilters from '@/hooks/useCheckboxFilters';
+import AccordionItem from '@/components/ui/accordion/AccordionItem';
+import AccordionItemHeader from '@/components/ui/accordion/AccordionItemHeader';
+import AccordionItemBody from '@/components/ui/accordion/AccordionItemBody';
+import { CheckboxFilters, Filters } from '@/types/filters';
+
+export default function PackagesFilters({
+  filters,
+  type = 'desktop',
+  clear,
+  setFilters,
+  className,
+}: {
+  filters: Filters;
+  type?: 'desktop' | 'mobile';
+  clear: () => void;
+  setFilters: React.Dispatch<React.SetStateAction<Filters>>;
+  className?: string;
+}) {
+  const t = useTranslations('Filters');
+
+  const checkboxFilters = useMemo(() => {
+    return Object.fromEntries(
+      Object.entries(filters).filter(
+        ([_, filter]) => filter.type === 'checkbox',
+      ),
+    ) as CheckboxFilters;
+  }, [filters]);
+
+  const { handleChange } = useCheckboxFilters(checkboxFilters, setFilters);
+
+  return (
+    <aside className={className}>
+      {type === 'desktop' && (
+        <div className="mb-4 flex flex-wrap justify-between">
+          <p className="text-xl font-extrabold text-black">{t('filters')}</p>
+          <Button variant="text" className="!p-0" handleClick={clear}>
+            {t('clear')}
+          </Button>
+        </div>
+      )}
+      <Accordion arrowPosition="right" collapsed={false}>
+        {Object.entries(filters)
+          .filter(
+            ([_, filterData]) =>
+              filterData.options && filterData.options.length > 0,
+          )
+          .map(([filterName, filterData]) => (
+            <AccordionItem key={filterName}>
+              <AccordionItemHeader>
+                <span className="text-sm font-semibold text-muted-dark">
+                  {t(filterName)}
+                </span>
+              </AccordionItemHeader>
+              <AccordionItemBody>
+                {filterData.type === 'checkbox' && (
+                  <CheckboxGroup
+                    name={filterName}
+                    options={filterData.options}
+                    selected={filterData.selected}
+                    checkboxSize="lg"
+                    handleChange={handleChange}
+                  />
+                )}
+              </AccordionItemBody>
+            </AccordionItem>
+          ))}
+      </Accordion>
+    </aside>
+  );
+}

@@ -1,13 +1,16 @@
 import { getFilterData } from '@/utils/packagesHelper';
+import { useMemo } from 'react';
 import useSWR from 'swr';
+import { FilterType } from '@/types/filters';
 
-export default function usePackagesCheckboxFilter(
+export default function usePackagesFilter(
   oid: string,
   searchParams: { [key: string]: string },
   fetchKey: string,
   fetcher: (oid: string) => Promise<any[]>,
   queryParamKey: string,
   labelKey: string,
+  filterType: FilterType,
 ) {
   const { data, isLoading } = useSWR([fetchKey, oid], () => fetcher(oid), {
     revalidateOnMount: true,
@@ -16,19 +19,25 @@ export default function usePackagesCheckboxFilter(
     errorRetryCount: 0,
   });
 
-  const filterData = getFilterData(
-    searchParams,
-    queryParamKey,
-    'id',
-    labelKey as string,
-    data ?? [],
-  );
+  const filterData = useMemo(() => {
+    return getFilterData(
+      searchParams,
+      queryParamKey,
+      'id',
+      labelKey,
+      data ?? [],
+      filterType,
+    );
+  }, [searchParams, data]);
 
-  const selectedIds = filterData.selected.map((option) => option.value);
+  const filterSelectedValues = useMemo(
+    () => filterData.selected.map((s) => s.value),
+    [filterData.selected],
+  );
 
   return {
     filterData,
-    selectedIds,
+    filterSelectedValues,
     isLoading,
   };
 }

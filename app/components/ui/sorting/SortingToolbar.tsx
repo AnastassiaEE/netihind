@@ -1,7 +1,7 @@
 'use client';
 
 import classNames from 'classnames';
-import CheckboxFilters from '@/components/ui/sorting/CheckboxFilters';
+import CheckboxFilters from '@/components/ui/sorting/PackagesFilters';
 import Button from '@/components/ui/form/buttons/Button';
 import Sort from '@/components/ui/sorting/Sort';
 import { useTranslations } from 'next-intl';
@@ -35,32 +35,32 @@ export default function SortingToolbar({
   sortOptions?: SortOptions;
   filters?: Filters;
 }) {
-  const t = useTranslations('Filters');
+  // const t = useTranslations('Filters');
 
-  const {
-    isOpened: isPanelOpened,
-    open: openPanel,
-    close: closePanel,
-    overlayRef: panelRef,
-  } = useOverlay();
+  // const {
+  //   isOpened: isPanelOpened,
+  //   open: openPanel,
+  //   close: closePanel,
+  //   overlayRef: panelRef,
+  // } = useOverlay();
 
-  const checkboxFiltersGroupRef = useRef<{ clearFilters: () => void } | null>(
-    null,
-  );
+  // const checkboxFiltersGroupRef = useRef<{ clearFilters: () => void } | null>(
+  //   null,
+  // );
 
-  const clearFilters = () => {
-    checkboxFiltersGroupRef.current?.clearFilters();
-  };
+  // const clearFilters = () => {
+  //   checkboxFiltersGroupRef.current?.clearFilters();
+  // };
 
-  const panelActions = (
-    <Button handleClick={clearFilters} className="w-full">
-      {t('clear').toUpperCase()}
-    </Button>
-  );
+  // const panelActions = (
+  //   <Button handleClick={clearFilters} className="w-full">
+  //     {t('clear').toUpperCase()}
+  //   </Button>
+  // );
 
   return (
     <>
-      <div
+      {/* <div
         className={classNames(
           'sticky bottom-0 mx-[-2.5%] mt-7 flex w-[105%] flex-wrap justify-around bg-white px-2 py-4 shadow-top',
           className,
@@ -101,7 +101,7 @@ export default function SortingToolbar({
             type="mobile"
           />
         </SlideUpPanel>
-      )}
+      )} */}
     </>
   );
 }

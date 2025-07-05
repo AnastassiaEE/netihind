@@ -1,26 +1,26 @@
 import { useParams, useSearchParams } from 'next/navigation';
 import { usePathname, useRouter } from '@/i18n/routing';
-import { useEffect, useState } from 'react';
-import { Filters } from '@/components/ui/sorting/CheckboxFilters';
+import { useEffect } from 'react';
+import { CheckboxFilters, Filters } from '@/types/filters';
 
-export default function useCheckboxFilters(filters: Filters) {
+export default function useCheckboxFilters(
+  filters: CheckboxFilters,
+  setFilters: React.Dispatch<React.SetStateAction<Filters>>,
+) {
   const router = useRouter();
   const pathname = usePathname();
   const params = useParams();
   const searchParams = useSearchParams();
 
-  const [selectedFilters, setSelectedFilters] = useState(filters);
-
   useEffect(() => {
-    setSelectedFilters(filters);
-  }, [filters]);
-
-  useEffect(() => {
-    const updateUrlParams = (selectedFilters: Filters) => {
+    const updateUrlParams = (filters: CheckboxFilters) => {
       const newSearchParams = new URLSearchParams(searchParams);
-      Object.entries(selectedFilters).forEach(([name, filter]) => {
+      Object.entries(filters).forEach(([name, filter]) => {
         filter.selected.length > 0
-          ? newSearchParams.set(name, filter.selected.map((opt) => opt.label).join(','))
+          ? newSearchParams.set(
+              name,
+              filter.selected.map((opt) => opt.label).join(','),
+            )
           : newSearchParams.delete(name);
       });
       const searchParamsObject = Object.fromEntries(newSearchParams.entries());
@@ -31,12 +31,12 @@ export default function useCheckboxFilters(filters: Filters) {
       );
     };
 
-    updateUrlParams(selectedFilters);
+    updateUrlParams(filters);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedFilters]);
+  }, [filters]);
 
   const handleChange = (name: string, value: string, checked: boolean) => {
-    setSelectedFilters((prevFilters) => {
+    setFilters((prevFilters) => {
       const filter = prevFilters[name];
       if (!filter) return prevFilters;
 
@@ -54,20 +54,18 @@ export default function useCheckboxFilters(filters: Filters) {
     });
   };
 
-  const clearFilters = () => {
-    const clearedFilters = Object.keys(selectedFilters).reduce(
-      (acc: typeof selectedFilters, filterKey) => {
-        acc[filterKey] = { ...selectedFilters[filterKey], selected: [] };
-        return acc;
-      },
-      {},
-    );
-    setSelectedFilters(clearedFilters);
-  };
+  // const clearFilters = () => {
+  //   const clearedFilters = Object.keys(selectedFilters).reduce(
+  //     (acc: typeof selectedFilters, filterKey) => {
+  //       acc[filterKey] = { ...selectedFilters[filterKey], selected: [] };
+  //       return acc;
+  //     },
+  //     {},
+  //   );
+  //   setSelectedFilters(clearedFilters);
+  // };
 
   return {
-    selectedFilters,
     handleChange,
-    clearFilters,
   };
 }

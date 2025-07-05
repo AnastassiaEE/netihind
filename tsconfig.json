@@ -30,6 +30,7 @@
       "@/context/*": ["app/contexts/*"],
       "@/i18n/*": ["./i18n/*"],
       "@/styles/*": ["app/styles/*"],
+      "@/types/*": ["app/types/*"],
       "@/app/*": ["app/*"],
       "@/*": ["./*"]
     }
