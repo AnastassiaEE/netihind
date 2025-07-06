@@ -12,16 +12,16 @@ import AccordionItemBody from '@/components/ui/accordion/AccordionItemBody';
 import { CheckboxFilters, Filters } from '@/types/filters';
 
 export default function PackagesFilters({
-  filters,
   type = 'desktop',
-  clear,
+  filters,
   setFilters,
+  handleClear,
   className,
 }: {
-  filters: Filters;
   type?: 'desktop' | 'mobile';
-  clear: () => void;
+  filters: Filters;
   setFilters: React.Dispatch<React.SetStateAction<Filters>>;
+  handleClear: () => void;
   className?: string;
 }) {
   const t = useTranslations('Filters');
@@ -41,7 +41,7 @@ export default function PackagesFilters({
       {type === 'desktop' && (
         <div className="mb-4 flex flex-wrap justify-between">
           <p className="text-xl font-extrabold text-black">{t('filters')}</p>
-          <Button variant="text" className="!p-0" handleClick={clear}>
+          <Button variant="text" className="!p-0" handleClick={handleClear}>
             {t('clear')}
           </Button>
         </div>

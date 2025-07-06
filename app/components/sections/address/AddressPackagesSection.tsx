@@ -70,20 +70,25 @@ export default function AddressPackagesSection({
 
   const selectedSortOption = getSortSelectedOption(searchParams['sort'] || '');
 
-  // const clearFilters = () => {
-  //   const cleared = (Object.keys(filters) as (keyof Filters)[]).reduce(
-  //     (acc, key) => {
-  //       acc[key] = {
-  //         ...filters[key],
-  //         selected: [],
-  //       };
-  //       return acc;
-  //     },
-  //     {} as Filters,
-  //   );
+  const clearFilters = () => {
+    const cleared = (Object.keys(filters) as (keyof Filters)[]).reduce(
+      (acc, key) => {
+        const filter = filters[key];
+        if (filter.type === 'checkbox') {
+          acc[key] = {
+            ...filter,
+            selected: [],
+          };
+        } else {
+          acc[key] = filter; // оставить как есть
+        }
+        return acc;
+      },
+      {} as Filters,
+    );
 
-  //   setClearedFilters(cleared);
-  // };
+    setFilters(cleared);
+  };
 
   return (
     <SectionLayout>
@@ -123,8 +128,8 @@ export default function AddressPackagesSection({
               ) : (
                 <PackagesFilters
                   filters={filters}
-                  clear={() => void 0}
                   setFilters={setFilters}
+                  handleClear={clearFilters}
                 />
               )}
             </div>
