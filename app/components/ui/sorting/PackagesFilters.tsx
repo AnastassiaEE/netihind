@@ -16,12 +16,14 @@ export default function PackagesFilters({
   filters,
   setFilters,
   clearFilters,
+  onUserChange,
   className,
 }: {
   type?: 'desktop' | 'mobile';
   filters: Filters;
   setFilters: React.Dispatch<React.SetStateAction<Filters>>;
   clearFilters: () => void;
+  onUserChange?: () => void;
   className?: string;
 }) {
   const t = useTranslations('Filters');
@@ -34,7 +36,11 @@ export default function PackagesFilters({
     ) as CheckboxFilters;
   }, [filters]);
 
-  const { handleChange } = useCheckboxFilters(checkboxFilters, setFilters);
+  const { handleChange } = useCheckboxFilters(
+    checkboxFilters,
+    setFilters,
+    onUserChange,
+  );
 
   return (
     <aside className={className}>

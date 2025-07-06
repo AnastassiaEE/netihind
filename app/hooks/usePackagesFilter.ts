@@ -15,7 +15,7 @@ export default function usePackagesFilter(
   const { data, isLoading } = useSWR([fetchKey, oid], () => fetcher(oid), {
     revalidateOnMount: true,
     revalidateOnFocus: false,
-    revalidateIfStale: true,
+    revalidateIfStale: false,
     errorRetryCount: 0,
   });
 

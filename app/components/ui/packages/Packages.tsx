@@ -9,7 +9,6 @@ import { Link } from '@/i18n/routing';
 import Dialog from '@/components/ui/overlay/Dialog';
 import useOverlay from '@/hooks/useOverlay';
 import PackageRequestContent from '@/components/ui/packages/PackageRequestContent';
-import { useEffect, useRef } from 'react';
 
 export default function Packages({
   oid,
@@ -17,31 +16,16 @@ export default function Packages({
   sortOption,
   providers,
   technologies,
+  onLoaded,
 }: {
   oid: string;
   address: string;
   sortOption: string;
   providers: string[];
   technologies: string[];
+  onLoaded?: () => void;
 }) {
   const t = useTranslations('Packages');
-
-  const isFirstRender = useRef(true);
-
-  useEffect(
-    () => {
-      if (isFirstRender.current) {
-        console.log('🔄 Это первый рендер!');
-        isFirstRender.current = false;
-        return;
-      }
-
-      console.log('✅ Это уже не первый рендер');
-    },
-    [
-      /* зависимости */
-    ],
-  );
 
   const {
     packages,
@@ -50,7 +34,7 @@ export default function Packages({
     selectedPackage,
     requestType,
     handleActionClick,
-  } = usePackages(oid, sortOption, providers, technologies);
+  } = usePackages(oid, sortOption, providers, technologies, onLoaded);
 
   const {
     isOpened: isModalOpened,

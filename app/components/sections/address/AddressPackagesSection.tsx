@@ -3,16 +3,14 @@
 import SectionLayout from '@/layouts/SectionLayout';
 import Packages from '@/components/ui/packages/Packages';
 import { SORT_OPTIONS, getSortSelectedOption } from '@/utils/packagesHelper';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import Sort from '@/components/ui/sorting/Sort';
-import { getProviders, getTechnologies } from '@/lib/packagesDataFetch';
 import HomeIcon from '@mui/icons-material/Home';
 import { useTranslations } from 'next-intl';
 import PingLoader from '@/components/ui/loaders/PingLoader';
-import usePackagesFilter from '@/hooks/usePackagesFilter';
 import PackagesFilters from '@/components/ui/sorting/PackagesFilters';
-import { Filters } from '@/types/filters';
 import PackagesSortingToolbar from '@/components/ui/sorting/PackagesSortingToolbar';
+import usePackagesFilters from '@/hooks/usePackagesFilters';
 
 export default function AddressPackagesSection({
   searchParams,
@@ -24,70 +22,34 @@ export default function AddressPackagesSection({
   oid: string;
 }) {
   const t = useTranslations('AddressPage');
+
   const scrollToRef = useRef<HTMLDivElement>(null);
-
-  const [filters, setFilters] = useState<Filters>({
-    providers: { type: 'checkbox', options: [], selected: [] },
-    technologies: { type: 'checkbox', options: [], selected: [] },
-  });
+  const shouldScrollRef = useRef(false);
+  const isPackagesLoadedRef = useRef(false);
 
   const {
-    filterData: providerFilterData,
-    filterSelectedValues: providerFilterSelectedValues,
-    isLoading: isProviderFiltersLoading,
-  } = usePackagesFilter(
-    oid,
-    searchParams,
-    'providers',
-    getProviders,
-    'providers',
-    'name',
-    'checkbox',
-  );
-  const {
-    filterData: technologyFilterData,
-    filterSelectedValues: technologyFilterSelectedValues,
-    isLoading: isTechnologyFiltersLoading,
-  } = usePackagesFilter(
-    oid,
-    searchParams,
-    'technologies',
-    getTechnologies,
-    'technologies',
-    'abbr',
-    'checkbox',
-  );
-
-  useEffect(() => {
-    setFilters({
-      providers: providerFilterData,
-      technologies: technologyFilterData,
-    });
-  }, [providerFilterData, technologyFilterData]);
-
-  const isFiltersLoading =
-    isProviderFiltersLoading && isTechnologyFiltersLoading;
+    filters,
+    setFilters,
+    isFiltersLoading,
+    clearFilters,
+    providerFilterSelectedValues,
+    technologyFilterSelectedValues,
+  } = usePackagesFilters(oid, searchParams);
 
   const selectedSortOption = getSortSelectedOption(searchParams['sort'] || '');
 
-  const clearFilters = () => {
-    const cleared = (Object.keys(filters) as (keyof Filters)[]).reduce(
-      (acc, key) => {
-        const filter = filters[key];
-        if (filter.type === 'checkbox') {
-          acc[key] = {
-            ...filter,
-            selected: [],
-          };
-        } else {
-          acc[key] = filter; // оставить как есть
-        }
-        return acc;
-      },
-      {} as Filters,
-    );
+  const handleUserInteraction = () => {
+    shouldScrollRef.current = true;
+  };
 
-    setFilters(cleared);
+  const handlePackagesLoaded = () => {
+    isPackagesLoadedRef.current = true;
+
+    if (shouldScrollRef.current) {
+      scrollToRef.current?.scrollIntoView({ behavior: 'smooth' });
+      shouldScrollRef.current = false;
+      isPackagesLoadedRef.current = false;
+    }
   };
 
   return (
@@ -108,6 +70,7 @@ export default function AddressPackagesSection({
                 variant="desktop"
                 options={SORT_OPTIONS}
                 selected={selectedSortOption}
+                onUserChange={handleUserInteraction}
                 className="rounded-md border border-muted-light bg-white"
               />
             </div>
@@ -118,6 +81,7 @@ export default function AddressPackagesSection({
                 sortOption={selectedSortOption}
                 providers={providerFilterSelectedValues}
                 technologies={technologyFilterSelectedValues}
+                onLoaded={handlePackagesLoaded}
               />
             </div>
           </div>
@@ -130,6 +94,7 @@ export default function AddressPackagesSection({
                   filters={filters}
                   setFilters={setFilters}
                   clearFilters={clearFilters}
+                  onUserChange={handleUserInteraction}
                 />
               )}
             </div>
@@ -143,6 +108,7 @@ export default function AddressPackagesSection({
           filters={filters}
           setFilters={setFilters}
           clearFilters={clearFilters}
+          onUserChange={handleUserInteraction}
           className="md:hidden"
         />
       </>

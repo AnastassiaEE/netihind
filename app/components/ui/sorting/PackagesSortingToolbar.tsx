@@ -14,12 +14,14 @@ export default function SortingToolbar({
   filters,
   setFilters,
   clearFilters,
+  onUserChange,
   className,
 }: {
   sortOptions: SortOptions;
   filters: Filters;
   setFilters: React.Dispatch<React.SetStateAction<Filters>>;
   clearFilters: () => void;
+  onUserChange?: () => void;
   className?: string;
 }) {
   const t = useTranslations('Filters');
@@ -79,6 +81,7 @@ export default function SortingToolbar({
             filters={filters}
             setFilters={setFilters}
             clearFilters={clearFilters}
+            onUserChange={onUserChange}
           />
         </SlideUpPanel>
       )}

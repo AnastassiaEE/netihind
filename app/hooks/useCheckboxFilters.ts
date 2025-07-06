@@ -6,6 +6,7 @@ import { CheckboxFilters, Filters } from '@/types/filters';
 export default function useCheckboxFilters(
   filters: CheckboxFilters,
   setFilters: React.Dispatch<React.SetStateAction<Filters>>,
+  onUserChange?: () => void,
 ) {
   const router = useRouter();
   const pathname = usePathname();
@@ -36,6 +37,7 @@ export default function useCheckboxFilters(
   }, [filters]);
 
   const handleChange = (name: string, value: string, checked: boolean) => {
+    onUserChange?.();
     setFilters((prevFilters) => {
       const filter = prevFilters[name];
       if (!filter) return prevFilters;

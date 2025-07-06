@@ -1,5 +1,5 @@
 import { getPackages } from '@/lib/packagesDataFetch';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useSWR from 'swr';
 
 export default function usePackages(
@@ -7,6 +7,7 @@ export default function usePackages(
   sortOption: string,
   providers: string[],
   technologies: string[],
+  onLoaded?: () => void,
 ) {
   const {
     data: packages,
@@ -18,7 +19,7 @@ export default function usePackages(
     {
       revalidateOnFocus: false,
       revalidateOnMount: true,
-      revalidateIfStale: true,
+      revalidateIfStale: false,
       errorRetryCount: 0,
     },
   );
@@ -26,6 +27,7 @@ export default function usePackages(
   const [selectedPackage, setSelectedPackage] = useState<{
     [key: string]: any;
   } | null>(null);
+
   const [requestType, setRequestType] = useState<'connection' | 'consultation'>(
     'connection',
   );
@@ -39,6 +41,12 @@ export default function usePackages(
     setRequestType(action);
     handleModal();
   };
+
+  useEffect(() => {
+    if (!isLoading && (packages || error)) {
+      onLoaded?.();
+    }
+  }, [isLoading, packages, error]);
 
   return {
     packages,

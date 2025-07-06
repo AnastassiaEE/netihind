@@ -7,42 +7,50 @@ import Select from '@/components/ui/form/fields/select/Select';
 import SelectOption from '@/components/ui/form/fields/select/SelectOption';
 
 export default function Sort({
-    name,
-    variant = 'desktop',
-    openDirection = 'bottom',
-    options,
-    selected,
-    className,
+  name,
+  variant = 'desktop',
+  openDirection = 'bottom',
+  options,
+  selected,
+  onUserChange,
+  className,
 }: {
-    name: string;
-    variant?: 'desktop' | 'mobile';
-    openDirection?: 'top' | 'bottom';
-    options: string[];
-    selected: string;
-    className?: string;
+  name: string;
+  variant?: 'desktop' | 'mobile';
+  openDirection?: 'top' | 'bottom';
+  options: string[];
+  selected: string;
+  onUserChange?: () => void;
+  className?: string;
 }) {
-    const t = useTranslations('Sort');
-    const { selectedOption, handleChange } = useSort(selected);
+  const t = useTranslations('Sort');
+  const { selectedOption, handleChange } = useSort(selected, onUserChange);
 
-    return (
-        <Select
-            name={`sort-${name}`}
-            translatedName={t(`${name}.button`)}
-            label={t(`${name}.label`, { selected: t(`${name}.options.${selectedOption}`) })}
-            selected={t(`${name}.options.${selectedOption}`)}
-            variant={variant === 'desktop' ? 'text' : 'outlined'}
-            Icon={variant === 'desktop' ? SortIcon : undefined}
-            hasArrow={variant === 'desktop'}
-            displaySelected={variant === 'desktop'}
-            openDirection={openDirection}
-            handleChange={handleChange}
-            className={className}
+  return (
+    <Select
+      name={`sort-${name}`}
+      translatedName={t(`${name}.button`)}
+      label={t(`${name}.label`, {
+        selected: t(`${name}.options.${selectedOption}`),
+      })}
+      selected={t(`${name}.options.${selectedOption}`)}
+      variant={variant === 'desktop' ? 'text' : 'outlined'}
+      Icon={variant === 'desktop' ? SortIcon : undefined}
+      hasArrow={variant === 'desktop'}
+      displaySelected={variant === 'desktop'}
+      openDirection={openDirection}
+      handleChange={handleChange}
+      className={className}
+    >
+      {options.map((option) => (
+        <SelectOption
+          key={option}
+          value={option}
+          isSelected={option === selectedOption}
         >
-            {options.map((option) => (
-                <SelectOption key={option} value={option} isSelected={option === selectedOption}>
-                    {t(`${name}.options.${option}`)}
-                </SelectOption>
-            ))}
-        </Select>
-    );
+          {t(`${name}.options.${option}`)}
+        </SelectOption>
+      ))}
+    </Select>
+  );
 }
