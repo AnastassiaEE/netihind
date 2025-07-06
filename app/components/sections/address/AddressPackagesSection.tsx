@@ -5,7 +5,6 @@ import Packages from '@/components/ui/packages/Packages';
 import { SORT_OPTIONS, getSortSelectedOption } from '@/utils/packagesHelper';
 import React, { useEffect, useRef, useState } from 'react';
 import Sort from '@/components/ui/sorting/Sort';
-import SortingToolbar from '@/components/ui/sorting/SortingToolbar';
 import { getProviders, getTechnologies } from '@/lib/packagesDataFetch';
 import HomeIcon from '@mui/icons-material/Home';
 import { useTranslations } from 'next-intl';
@@ -13,6 +12,7 @@ import PingLoader from '@/components/ui/loaders/PingLoader';
 import usePackagesFilter from '@/hooks/usePackagesFilter';
 import PackagesFilters from '@/components/ui/sorting/PackagesFilters';
 import { Filters } from '@/types/filters';
+import PackagesSortingToolbar from '@/components/ui/sorting/PackagesSortingToolbar';
 
 export default function AddressPackagesSection({
   searchParams,
@@ -135,7 +135,7 @@ export default function AddressPackagesSection({
             </div>
           </div>
         </div>
-        <SortingToolbar
+        <PackagesSortingToolbar
           sortOptions={{
             options: SORT_OPTIONS,
             selected: selectedSortOption,
