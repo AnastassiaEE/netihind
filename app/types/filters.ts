@@ -3,6 +3,11 @@ export type FilterOption = {
   label: string;
 };
 
+export type SortOptions = {
+  options: string[];
+  selected: string;
+};
+
 export type FilterType = 'checkbox' | 'range';
 
 export type Filters = {

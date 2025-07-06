@@ -1,66 +1,45 @@
 'use client';
 
 import classNames from 'classnames';
-import CheckboxFilters from '@/components/ui/sorting/PackagesFilters';
 import Button from '@/components/ui/form/buttons/Button';
 import Sort from '@/components/ui/sorting/Sort';
 import { useTranslations } from 'next-intl';
-import { useRef } from 'react';
 import SlideUpPanel from '@/components/ui/overlay/SlideUpPanel';
 import useOverlay from '@/hooks/useOverlay';
-
-type FilterOption = {
-  value: string;
-  label: string;
-};
-
-type Filters = {
-  [key: string]: {
-    options: FilterOption[];
-    selected: FilterOption[];
-  };
-};
-
-type SortOptions = {
-  options: string[];
-  selected: string;
-};
+import { Filters, SortOptions } from '@/types/filters';
+import PackagesFilters from '@/components/ui/sorting/PackagesFilters';
 
 export default function SortingToolbar({
-  className,
   sortOptions,
   filters,
+  setFilters,
+  clearFilters,
+  className,
 }: {
+  sortOptions: SortOptions;
+  filters: Filters;
+  setFilters: React.Dispatch<React.SetStateAction<Filters>>;
+  clearFilters: () => void;
   className?: string;
-  sortOptions?: SortOptions;
-  filters?: Filters;
 }) {
-  // const t = useTranslations('Filters');
+  const t = useTranslations('Filters');
 
-  // const {
-  //   isOpened: isPanelOpened,
-  //   open: openPanel,
-  //   close: closePanel,
-  //   overlayRef: panelRef,
-  // } = useOverlay();
+  const {
+    isOpened: isPanelOpened,
+    open: openPanel,
+    close: closePanel,
+    overlayRef: panelRef,
+  } = useOverlay();
 
-  // const checkboxFiltersGroupRef = useRef<{ clearFilters: () => void } | null>(
-  //   null,
-  // );
-
-  // const clearFilters = () => {
-  //   checkboxFiltersGroupRef.current?.clearFilters();
-  // };
-
-  // const panelActions = (
-  //   <Button handleClick={clearFilters} className="w-full">
-  //     {t('clear').toUpperCase()}
-  //   </Button>
-  // );
+  const panelActions = (
+    <Button handleClick={clearFilters} className="w-full">
+      {t('clear').toUpperCase()}
+    </Button>
+  );
 
   return (
     <>
-      {/* <div
+      <div
         className={classNames(
           'sticky bottom-0 mx-[-2.5%] mt-7 flex w-[105%] flex-wrap justify-around bg-white px-2 py-4 shadow-top',
           className,
@@ -95,13 +74,14 @@ export default function SortingToolbar({
           handleClose={closePanel}
           panelRef={panelRef}
         >
-          <CheckboxFilters
-            ref={checkboxFiltersGroupRef}
-            filters={filters}
+          <PackagesFilters
             type="mobile"
+            filters={filters}
+            setFilters={setFilters}
+            clearFilters={clearFilters}
           />
         </SlideUpPanel>
-      )} */}
+      )}
     </>
   );
 }

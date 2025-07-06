@@ -129,20 +129,22 @@ export default function AddressPackagesSection({
                 <PackagesFilters
                   filters={filters}
                   setFilters={setFilters}
-                  handleClear={clearFilters}
+                  clearFilters={clearFilters}
                 />
               )}
             </div>
           </div>
         </div>
-        {/* <SortingToolbar
-          className="md:hidden"
+        <SortingToolbar
           sortOptions={{
             options: SORT_OPTIONS,
             selected: selectedSortOption,
           }}
           filters={filters}
-        /> */}
+          setFilters={setFilters}
+          clearFilters={clearFilters}
+          className="md:hidden"
+        />
       </>
     </SectionLayout>
   );

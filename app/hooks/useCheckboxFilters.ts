@@ -54,17 +54,6 @@ export default function useCheckboxFilters(
     });
   };
 
-  // const clearFilters = () => {
-  //   const clearedFilters = Object.keys(selectedFilters).reduce(
-  //     (acc: typeof selectedFilters, filterKey) => {
-  //       acc[filterKey] = { ...selectedFilters[filterKey], selected: [] };
-  //       return acc;
-  //     },
-  //     {},
-  //   );
-  //   setSelectedFilters(clearedFilters);
-  // };
-
   return {
     handleChange,
   };

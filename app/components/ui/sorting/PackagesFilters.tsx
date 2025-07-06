@@ -15,13 +15,13 @@ export default function PackagesFilters({
   type = 'desktop',
   filters,
   setFilters,
-  handleClear,
+  clearFilters,
   className,
 }: {
   type?: 'desktop' | 'mobile';
   filters: Filters;
   setFilters: React.Dispatch<React.SetStateAction<Filters>>;
-  handleClear: () => void;
+  clearFilters: () => void;
   className?: string;
 }) {
   const t = useTranslations('Filters');
@@ -41,7 +41,7 @@ export default function PackagesFilters({
       {type === 'desktop' && (
         <div className="mb-4 flex flex-wrap justify-between">
           <p className="text-xl font-extrabold text-black">{t('filters')}</p>
-          <Button variant="text" className="!p-0" handleClick={handleClear}>
+          <Button variant="text" className="!p-0" handleClick={clearFilters}>
             {t('clear')}
           </Button>
         </div>
