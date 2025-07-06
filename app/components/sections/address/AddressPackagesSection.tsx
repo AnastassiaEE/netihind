@@ -10,7 +10,7 @@ import { useTranslations } from 'next-intl';
 import PingLoader from '@/components/ui/loaders/PingLoader';
 import PackagesFilters from '@/components/ui/sorting/PackagesFilters';
 import PackagesSortingToolbar from '@/components/ui/sorting/PackagesSortingToolbar';
-import usePackagesFilters from '@/hooks/usePackagesFilters';
+import usePackagesFilters from '@/hooks/packages/usePackagesFilters';
 
 export default function AddressPackagesSection({
   searchParams,

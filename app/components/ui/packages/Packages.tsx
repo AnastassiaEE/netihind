@@ -1,7 +1,7 @@
 'use client';
 
 import PackagesLoader from '@/components/ui/loaders/PackagesLoader';
-import usePackages from '@/hooks/usePackages';
+import usePackages from '@/hooks/packages/usePackages';
 import { useTranslations } from 'next-intl';
 import PackageCard from '@/components/ui/packages/PackageCard';
 import PackagesError from '@/components/ui/errors/PackagesError';
