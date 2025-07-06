@@ -32,7 +32,7 @@ export default function Packages({
     error,
     isLoading,
     selectedPackage,
-    action,
+    selectedAction,
     handleActionClick,
   } = usePackages(oid, sortOption, providers, technologies, onLoaded);
 
@@ -55,34 +55,37 @@ export default function Packages({
     </PackagesError>
   );
 
-  if (isLoading) return <PackagesLoader />;
   if (error) return errorContent(error.message);
 
   return (
     <>
-      <div>
-        {packages.map((data: { [key: string]: any }) => (
-          <PackageCard
-            key={data.internet_package_id}
-            data={data}
-            className="mb-5 last:mb-0"
-            handleActionClick={(action) =>
-              handleActionClick(data, action, openModal)
-            }
-          />
-        ))}
-      </div>
+      {isLoading ? (
+        <PackagesLoader />
+      ) : (
+        <div>
+          {packages.map((data: { [key: string]: any }) => (
+            <PackageCard
+              key={data.internet_package_id}
+              data={data}
+              className="mb-5 last:mb-0"
+              handleActionClick={(action) =>
+                handleActionClick(data, action, openModal)
+              }
+            />
+          ))}
+        </div>
+      )}
       <Dialog
-        name={action}
-        title={t(`action.${action}.title`)}
-        description={t(`action.${action}.description`)}
+        name={selectedAction}
+        title={t(`action.${selectedAction}.title`)}
+        description={t(`action.${selectedAction}.description`)}
         isOpened={isModalOpened}
         handleClose={closeModal}
         dialogRef={modalRef}
         className="bg-primary-light"
       >
         <PackageActionContent
-          action={action}
+          action={selectedAction}
           data={selectedPackage}
           address={address}
         />

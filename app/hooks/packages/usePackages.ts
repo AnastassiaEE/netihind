@@ -28,9 +28,9 @@ export default function usePackages(
     [key: string]: any;
   } | null>(null);
 
-  const [action, setAction] = useState<'connection' | 'consultation'>(
-    'connection',
-  );
+  const [selectedAction, setSelectedAction] = useState<
+    'connection' | 'consultation'
+  >('connection');
 
   const handleActionClick = (
     packageData: { [key: string]: any },
@@ -38,7 +38,7 @@ export default function usePackages(
     handleModal: () => void,
   ) => {
     setSelectedPackage(packageData);
-    setAction(action);
+    setSelectedAction(action);
     handleModal();
   };
 
@@ -53,7 +53,7 @@ export default function usePackages(
     error,
     isLoading,
     selectedPackage,
-    action,
+    selectedAction,
     handleActionClick,
   };
 }
