@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-export default function PackageRequestSection({
+export default function PackageActionSection({
   title,
   className,
   children,

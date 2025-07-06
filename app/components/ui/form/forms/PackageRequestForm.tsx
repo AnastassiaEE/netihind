@@ -12,7 +12,7 @@ import useForm from '@/hooks/useForm';
 import { useTranslations } from 'next-intl';
 import { Loop, Add } from '@mui/icons-material';
 
-export default function RequestForm({
+export default function PackageRequestForm({
   type = 'connection',
   address,
   packageData,

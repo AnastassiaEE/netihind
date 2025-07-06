@@ -1,34 +1,34 @@
 import Image from 'next/image';
-import PackageRequestSection from '@/components/ui/packages/PackageRequestSection';
+import PackageActionSection from '@/components/ui/packages/PackageActionSection';
 import HomeIcon from '@mui/icons-material/Home';
-import RequestForm from '@/components/ui/form/forms/RequestForm';
+import PackageRequestForm from '@/components/ui/form/forms/PackageRequestForm';
 import { useTranslations } from 'next-intl';
 
-export default function PackageRequestContent({
-  requestType,
+export default function PackageActionContent({
+  action,
   data,
   address,
 }: {
-  requestType: 'connection' | 'consultation';
+  action: 'connection' | 'consultation';
   data: { [key: string]: any } | null;
   address: string;
 }) {
   const t = useTranslations('Packages');
   const getSectionTitle = (section: string) =>
-    t(`request.${requestType}.sections.${section}`);
+    t(`action.${action}.sections.${section}`);
 
   const formSection = (
-    <PackageRequestSection title={getSectionTitle('fillForm')}>
+    <PackageActionSection title={getSectionTitle('fillForm')}>
       <p className="mb-4">
         <HomeIcon className="mr-1 inline align-sub text-primary" />
         {address}
       </p>
-      <RequestForm type={requestType} address={address} packageData={data} />
-    </PackageRequestSection>
+      <PackageRequestForm type={action} address={address} packageData={data} />
+    </PackageActionSection>
   );
 
   const packadeDetailsSection = (
-    <PackageRequestSection
+    <PackageActionSection
       title={getSectionTitle('selectedPackage') + ':'}
       className="mb-6"
     >
@@ -43,16 +43,16 @@ export default function PackageRequestContent({
         className="mr-3 inline"
       />
       <p className="inline align-middle">{data?.internet_package_name}</p>
-    </PackageRequestSection>
+    </PackageActionSection>
   );
 
-  if (requestType === 'connection')
+  if (action === 'connection')
     return (
       <div className="flex flex-col gap-6 md:flex-row">
         <div className="max-md:order-2 md:w-7/12">{formSection}</div>
         <div className="md:w-5/12">
           {packadeDetailsSection}
-          <PackageRequestSection title={getSectionTitle('total') + ':'}>
+          <PackageActionSection title={getSectionTitle('total') + ':'}>
             {data?.discount_price ? (
               <>
                 <p className="mb-2 flex items-center justify-between">
@@ -81,18 +81,18 @@ export default function PackageRequestContent({
             ) : (
               <p className="flex items-center justify-between">
                 <span className="font-medium">
-                  {t(`request.${requestType}.details.packagePrice`)}:
+                  {t(`action.${action}.details.packagePrice`)}:
                 </span>
                 <span className="text-2xl font-bold">
                   {data?.internet_package_price} €
                 </span>
               </p>
             )}
-          </PackageRequestSection>
+          </PackageActionSection>
         </div>
       </div>
     );
-  if (requestType === 'consultation') {
+  if (action === 'consultation') {
     return (
       <>
         {packadeDetailsSection}

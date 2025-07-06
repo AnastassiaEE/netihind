@@ -99,7 +99,7 @@
       "connect": "Подключиться",
       "consultation": "Консультация"
     },
-    "request": {
+    "action": {
       "connection": {
         "title": "Заявка на подключение",
         "description": "",

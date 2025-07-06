@@ -5,10 +5,10 @@ import usePackages from '@/hooks/packages/usePackages';
 import { useTranslations } from 'next-intl';
 import PackageCard from '@/components/ui/packages/PackageCard';
 import PackagesError from '@/components/ui/errors/PackagesError';
+import PackageActionContent from '@/components/ui/packages/PackageActionContent';
 import { Link } from '@/i18n/routing';
 import Dialog from '@/components/ui/overlay/Dialog';
 import useOverlay from '@/hooks/useOverlay';
-import PackageRequestContent from '@/components/ui/packages/PackageRequestContent';
 
 export default function Packages({
   oid,
@@ -32,7 +32,7 @@ export default function Packages({
     error,
     isLoading,
     selectedPackage,
-    requestType,
+    action,
     handleActionClick,
   } = usePackages(oid, sortOption, providers, technologies, onLoaded);
 
@@ -73,16 +73,16 @@ export default function Packages({
         ))}
       </div>
       <Dialog
-        name={requestType}
-        title={t(`request.${requestType}.title`)}
-        description={t(`request.${requestType}.description`)}
+        name={action}
+        title={t(`action.${action}.title`)}
+        description={t(`action.${action}.description`)}
         isOpened={isModalOpened}
         handleClose={closeModal}
         dialogRef={modalRef}
         className="bg-primary-light"
       >
-        <PackageRequestContent
-          requestType={requestType}
+        <PackageActionContent
+          action={action}
           data={selectedPackage}
           address={address}
         />
