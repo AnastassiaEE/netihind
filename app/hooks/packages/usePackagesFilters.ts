@@ -1,6 +1,6 @@
 import { Filters } from '@/types/filters';
 import { useEffect, useState } from 'react';
-import usePackagesFilter from '@/hooks/usePackagesFilter';
+import usePackagesFilter from '@/hooks/packages/usePackagesFilter';
 import { getProviders, getTechnologies } from '@/lib/packagesDataFetch';
 
 export default function usePackagesFilters(
