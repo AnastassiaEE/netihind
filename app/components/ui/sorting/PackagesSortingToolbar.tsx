@@ -9,7 +9,7 @@ import useOverlay from '@/hooks/useOverlay';
 import { Filters, SortOptions } from '@/types/filters';
 import PackagesFilters from '@/components/ui/sorting/PackagesFilters';
 
-export default function SortingToolbar({
+export default function PackagesSortingToolbar({
   sortOptions,
   filters,
   setFilters,
