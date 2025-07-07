@@ -1,7 +1,3 @@
-import Accordion from '@/components/ui/accordions/Accordion';
-import AccordionItem from '@/components/ui/accordions/AccordionItem';
-import AccordionItemBody from '@/components/ui/accordions/AccordionItemBody';
-import AccordionItemHeader from '@/components/ui/accordions/AccordionItemHeader';
 import ToggleSwitch from '@/components/ui/form/fields/toggle/ToggleSwitch';
 import { useTranslations } from 'next-intl';
 import React from 'react';
@@ -93,55 +89,56 @@ export default function CookiesDetailsSection({
   };
 
   return (
-    <Accordion border="bottom" size="md" arrowPosition="left">
-      <AccordionItem>
-        <AccordionItemHeader>
-          <div>
-            <div className="mb-2 flex items-center justify-between">
-              <p className="font-semibold text-black">
-                {t('types.necessary.name')}
-              </p>
-              <ToggleSwitch
-                name="cookie-necessary"
-                size="lg"
-                isChecked={preferences.necessary === true}
-                required={true}
-                disabled={true}
-              />
-            </div>
-            <p>{t('types.necessary.description')}</p>
-          </div>
-        </AccordionItemHeader>
-        <AccordionItemBody>
-          {renderCookieDetails(details.necessary)}
-        </AccordionItemBody>
-      </AccordionItem>
-      <AccordionItem>
-        <AccordionItemHeader>
-          <div>
-            <div className="mb-2 flex items-center justify-between">
-              <p className="font-semibold text-black">
-                {t('types.statistics.name')}
-              </p>
-              <ToggleSwitch
-                name="cookie-statistics"
-                size="lg"
-                label={t('types.statistics.switchLabel', {
-                  state: t(
-                    `types.statistics.switchState.${preferences.statistics === true}`,
-                  ),
-                })}
-                isChecked={preferences.statistics === true}
-                handleChange={() => togglePreference('statistics')}
-              />
-            </div>
-            <p>{t('types.statistics.description')}</p>
-          </div>
-        </AccordionItemHeader>
-        <AccordionItemBody>
-          {renderCookieDetails(details.statistics)}
-        </AccordionItemBody>
-      </AccordionItem>
-    </Accordion>
+    // <Accordion border="bottom" size="md" arrowPosition="left">
+    //   <AccordionItem>
+    //     <AccordionItemHeader>
+    //       <div>
+    //         <div className="mb-2 flex items-center justify-between">
+    //           <p className="font-semibold text-black">
+    //             {t('types.necessary.name')}
+    //           </p>
+    //           <ToggleSwitch
+    //             name="cookie-necessary"
+    //             size="lg"
+    //             isChecked={preferences.necessary === true}
+    //             required={true}
+    //             disabled={true}
+    //           />
+    //         </div>
+    //         <p>{t('types.necessary.description')}</p>
+    //       </div>
+    //     </AccordionItemHeader>
+    //     <AccordionItemBody>
+    //       {renderCookieDetails(details.necessary)}
+    //     </AccordionItemBody>
+    //   </AccordionItem>
+    //   <AccordionItem>
+    //     <AccordionItemHeader>
+    //       <div>
+    //         <div className="mb-2 flex items-center justify-between">
+    //           <p className="font-semibold text-black">
+    //             {t('types.statistics.name')}
+    //           </p>
+    //           <ToggleSwitch
+    //             name="cookie-statistics"
+    //             size="lg"
+    //             label={t('types.statistics.switchLabel', {
+    //               state: t(
+    //                 `types.statistics.switchState.${preferences.statistics === true}`,
+    //               ),
+    //             })}
+    //             isChecked={preferences.statistics === true}
+    //             handleChange={() => togglePreference('statistics')}
+    //           />
+    //         </div>
+    //         <p>{t('types.statistics.description')}</p>
+    //       </div>
+    //     </AccordionItemHeader>
+    //     <AccordionItemBody>
+    //       {renderCookieDetails(details.statistics)}
+    //     </AccordionItemBody>
+    //   </AccordionItem>
+    // </Accordion>
+    <></>
   );
 }

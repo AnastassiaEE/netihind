@@ -6,6 +6,7 @@ import Button from '@/components/ui/form/buttons/Button';
 import CheckboxGroup from '@/components/ui/form/fields/checkbox/CheckboxGroup';
 import useCheckboxFilters from '@/hooks/useCheckboxFilters';
 import { CheckboxFilters, Filters } from '@/types/filters';
+import PackagesFilterAccordion from '@/components/ui/accordions/PackagesFilterAccordion';
 
 export default function PackagesFilters({
   type = 'desktop',
@@ -48,33 +49,30 @@ export default function PackagesFilters({
           </Button>
         </div>
       )}
-      {/* <Accordion arrowPosition="right" collapsed={false}>
+      <div>
         {Object.entries(filters)
           .filter(
             ([_, filterData]) =>
               filterData.options && filterData.options.length > 0,
           )
           .map(([filterName, filterData]) => (
-            <AccordionItem key={filterName}>
-              <AccordionItemHeader>
-                <span className="text-sm font-semibold text-muted-dark">
-                  {t(filterName)}
-                </span>
-              </AccordionItemHeader>
-              <AccordionItemBody>
-                {filterData.type === 'checkbox' && (
-                  <CheckboxGroup
-                    name={filterName}
-                    options={filterData.options}
-                    selected={filterData.selected}
-                    checkboxSize="lg"
-                    handleChange={handleChange}
-                  />
-                )}
-              </AccordionItemBody>
-            </AccordionItem>
+            <PackagesFilterAccordion
+              key={filterName}
+              filterName={t(filterName)}
+              className="mb-4"
+            >
+              {filterData.type === 'checkbox' && (
+                <CheckboxGroup
+                  name={filterName}
+                  options={filterData.options}
+                  selected={filterData.selected}
+                  checkboxSize="lg"
+                  handleChange={handleChange}
+                />
+              )}
+            </PackagesFilterAccordion>
           ))}
-      </Accordion> */}
+      </div>
     </aside>
   );
 }
