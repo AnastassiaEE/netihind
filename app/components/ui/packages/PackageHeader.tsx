@@ -1,16 +1,19 @@
+import classNames from 'classnames';
 import Image from 'next/image';
 
 export default function PackageHeader({
   logo_url,
   provider,
   name,
+  className,
 }: {
   logo_url: string;
   provider: string;
   name: string;
+  className?: string;
 }) {
   return (
-    <div className="mb-5">
+    <div className={classNames(className)}>
       {logo_url && (
         <div className="mb-1">
           <Image

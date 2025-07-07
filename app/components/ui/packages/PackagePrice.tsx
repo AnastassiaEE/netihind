@@ -9,12 +9,11 @@ export default function PackagePrice({
   discount: {
     discount_price: number | null;
     discount_duration: string | null;
-    discount_description: string | null;
   };
 }) {
   const t = useTranslations('Packages');
 
-  const { discount_price, discount_duration, discount_description } = discount;
+  const { discount_price, discount_duration } = discount;
 
   const priceClasses = classNames(
     'w-max rounded-lg px-2 py-1 text-lg tracking-tight md:text-xl',
@@ -44,9 +43,6 @@ export default function PackagePrice({
           </div>
         )}
       </div>
-      {discount_description && (
-        <p className="mt-2 text-center text-xs">{discount_description}</p>
-      )}
     </div>
   );
 }

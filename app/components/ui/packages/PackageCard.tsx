@@ -1,4 +1,3 @@
-import PackageFeature from '@/components/ui/packages/PackageFeature';
 import PackagePrice from '@/components/ui/packages/PackagePrice';
 import PackageHeader from '@/components/ui/packages/PackageHeader';
 import PackageActions from '@/components/ui/packages/PackageActions';
@@ -24,7 +23,8 @@ export default function PackageCard({
     internet_package_price,
     discount_price,
     discount_duration,
-    discount_description,
+    connection_min_price,
+    connection_price_description,
   },
   handleActionClick,
   className,
@@ -51,8 +51,9 @@ export default function PackageCard({
             logo_url={provider_img_url}
             provider={provider_name}
             name={internet_package_name}
+            className="mb-3"
           />
-          <PackageFeature>
+          <div className="mb-2 flex flex-wrap items-center font-medium uppercase text-muted-dark">
             <InternetSpeedFeature
               type="download"
               speed={internet_download_speed}
@@ -71,7 +72,14 @@ export default function PackageCard({
               }
               content={internet_technology_description}
             />
-          </PackageFeature>
+          </div>
+          {connection_min_price !== null && (
+            <p className="text-sm">
+              {connection_min_price > 0
+                ? t('connection.minPrice', { price: connection_min_price })
+                : t('connection.free')}
+            </p>
+          )}
         </PackageCardSection>
         <PackageCardSection className="flex w-full items-center justify-center lg:w-2/5">
           <PackagePrice
@@ -79,7 +87,6 @@ export default function PackageCard({
             discount={{
               discount_price,
               discount_duration,
-              discount_description,
             }}
           />
         </PackageCardSection>

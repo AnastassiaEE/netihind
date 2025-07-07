@@ -63,8 +63,8 @@ export default function AddressPackagesSection({
       </p>
       <>
         <div className="md:flex" ref={scrollToRef}>
-          <div className="md:w-8/12">
-            <div className="sticky top-0 z-10 flex justify-end rounded-l-md bg-primary-light/80 p-5 backdrop-blur-md max-md:hidden">
+          <div className="md:w-9/12">
+            <div className="sticky top-0 z-10 flex justify-end rounded-l-lg bg-primary-light/80 p-5 backdrop-blur-md max-md:hidden">
               <Sort
                 name="packages"
                 variant="desktop"
@@ -74,7 +74,7 @@ export default function AddressPackagesSection({
                 className="rounded-md border border-muted-light bg-white"
               />
             </div>
-            <div className="px-5 pt-5">
+            <div className="md:px-5 md:pt-5">
               <Packages
                 oid={oid}
                 address={address}
@@ -85,7 +85,7 @@ export default function AddressPackagesSection({
               />
             </div>
           </div>
-          <div className="hidden rounded-r-md rounded-bl-md bg-primary-light/80 md:block md:w-4/12">
+          <div className="hidden rounded-r-lg rounded-bl-lg bg-primary-light/80 md:block md:w-3/12">
             <div className="sticky top-0 h-screen overflow-y-auto p-8">
               {isFiltersLoading ? (
                 <PingLoader sizeClass="h-10 w-10" />
