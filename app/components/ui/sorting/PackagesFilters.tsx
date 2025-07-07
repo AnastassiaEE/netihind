@@ -1,14 +1,10 @@
 'use client';
 
-import Accordion from '@/components/ui/accordion/Accordion';
 import { useTranslations } from 'next-intl';
 import React, { useMemo } from 'react';
 import Button from '@/components/ui/form/buttons/Button';
 import CheckboxGroup from '@/components/ui/form/fields/checkbox/CheckboxGroup';
 import useCheckboxFilters from '@/hooks/useCheckboxFilters';
-import AccordionItem from '@/components/ui/accordion/AccordionItem';
-import AccordionItemHeader from '@/components/ui/accordion/AccordionItemHeader';
-import AccordionItemBody from '@/components/ui/accordion/AccordionItemBody';
 import { CheckboxFilters, Filters } from '@/types/filters';
 
 export default function PackagesFilters({
@@ -52,7 +48,7 @@ export default function PackagesFilters({
           </Button>
         </div>
       )}
-      <Accordion arrowPosition="right" collapsed={false}>
+      {/* <Accordion arrowPosition="right" collapsed={false}>
         {Object.entries(filters)
           .filter(
             ([_, filterData]) =>
@@ -78,7 +74,7 @@ export default function PackagesFilters({
               </AccordionItemBody>
             </AccordionItem>
           ))}
-      </Accordion>
+      </Accordion> */}
     </aside>
   );
 }

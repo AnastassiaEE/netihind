@@ -1,5 +1,6 @@
+'use client';
+
 import SectionLayout from '@/layouts/SectionLayout';
-import Accordion from '@/components/ui/accordion/Accordion';
 import questions from '@/data/questions';
 import Button from '@/components/ui/form/buttons/Button';
 import { Link } from '@/i18n/routing';
@@ -7,18 +8,16 @@ import { H2 } from '@/components/ui/headings/HomePageHeadings';
 import { useTranslations } from 'next-intl';
 import { useMemo } from 'react';
 import Check from '@/components/ui/icons/Check';
-import AccordionItem from '@/components/ui/accordion/AccordionItem';
-import AccordionItemHeader from '@/components/ui/accordion/AccordionItemHeader';
-import AccordionItemBody from '@/components/ui/accordion/AccordionItemBody';
 import React from 'react';
+import FaqAccordion from '@/components/ui/accordions/FaqAccordion';
 
 export default function QuestionsSection() {
   const t = useTranslations('HomePage');
   const translatedQuestions = useMemo(() => {
     return (
-      questions?.map(({ header, body }: { header: string; body: string }) => ({
-        header: t(header),
-        body: t.rich(body, {
+      questions?.map(({ question, answer }) => ({
+        question: t(question),
+        answer: t.rich(answer, {
           i: () => <Check size="small" />,
           br: () => <br />,
         }),
@@ -40,18 +39,11 @@ export default function QuestionsSection() {
           </Link>
         </div>
         <div className="md:w-7/12">
-          <Accordion border="full" size="lg" arrowStyle="circle">
+          <div>
             {translatedQuestions.map((question) => (
-              <AccordionItem key={question.header}>
-                <AccordionItemHeader>
-                  <span className="font-semibold">{question.header}</span>
-                </AccordionItemHeader>
-                <AccordionItemBody>
-                  <p className="text-sm">{question.body}</p>
-                </AccordionItemBody>
-              </AccordionItem>
+              <FaqAccordion key={question.question} question={question} />
             ))}
-          </Accordion>
+          </div>
         </div>
       </div>
     </SectionLayout>

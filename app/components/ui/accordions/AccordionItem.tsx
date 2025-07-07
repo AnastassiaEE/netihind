@@ -6,10 +6,10 @@ import classNames from 'classnames';
 import Arrow from '@/components/ui/icons/Arrow';
 import React from 'react';
 import { tv } from 'tailwind-variants';
-import { AccordionBorder } from '@/components/ui/accordion/Accordion';
-import { AccordionSize } from '@/components/ui/accordion/Accordion';
-import { ArrowStyle } from '@/components/ui/accordion/Accordion';
-import { ArrowPosition } from '@/components/ui/accordion/Accordion';
+import { AccordionBorder } from '@/components/ui/accordions/Accordion';
+import { AccordionSize } from '@/components/ui/accordions/Accordion';
+import { ArrowStyle } from '@/components/ui/accordions/Accordion';
+import { ArrowPosition } from '@/components/ui/accordions/Accordion';
 
 export default function AccordionItem({
   border = 'none',

@@ -1,7 +1,7 @@
-import Accordion from '@/components/ui/accordion/Accordion';
-import AccordionItem from '@/components/ui/accordion/AccordionItem';
-import AccordionItemBody from '@/components/ui/accordion/AccordionItemBody';
-import AccordionItemHeader from '@/components/ui/accordion/AccordionItemHeader';
+import Accordion from '@/components/ui/accordions/Accordion';
+import AccordionItem from '@/components/ui/accordions/AccordionItem';
+import AccordionItemBody from '@/components/ui/accordions/AccordionItemBody';
+import AccordionItemHeader from '@/components/ui/accordions/AccordionItemHeader';
 import ToggleSwitch from '@/components/ui/form/fields/toggle/ToggleSwitch';
 import { useTranslations } from 'next-intl';
 import React from 'react';
