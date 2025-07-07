@@ -13,7 +13,7 @@ export default function PackageHeader({
   className?: string;
 }) {
   return (
-    <div className={classNames(className)}>
+    <div className={className}>
       {logo_url && (
         <div className="mb-1">
           <Image
