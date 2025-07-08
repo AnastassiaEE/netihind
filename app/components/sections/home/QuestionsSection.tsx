@@ -42,9 +42,8 @@ export default function QuestionsSection() {
               <FaqAccordion
                 key={question.question}
                 question={question.question}
-              >
-                {question.answer}
-              </FaqAccordion>
+                answer={question.answer}
+              />
             ))}
           </div>
         </div>

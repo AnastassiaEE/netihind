@@ -6,10 +6,10 @@ import CircleArrow from '@/components/ui/icons/CircleArrow';
 
 export default function FaqAccordion({
   question,
-  children,
+  answer,
 }: {
   question: string;
-  children: React.ReactNode;
+  answer: React.ReactNode;
 }) {
   const {
     isClosed,
@@ -40,7 +40,7 @@ export default function FaqAccordion({
       {isVisible && (
         <div {...getPanelProps()}>
           <div ref={collapsibleRef} className="p-6">
-            <p className="text-sm">{children}</p>
+            <p className="text-sm">{answer}</p>
           </div>
         </div>
       )}
