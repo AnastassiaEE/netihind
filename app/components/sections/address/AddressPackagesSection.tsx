@@ -8,8 +8,8 @@ import Sort from '@/components/ui/sorting/Sort';
 import HomeIcon from '@mui/icons-material/Home';
 import { useTranslations } from 'next-intl';
 import PingLoader from '@/components/ui/loaders/PingLoader';
-import PackagesFilters from '@/components/ui/sorting/PackagesFilters';
-import PackagesSortingToolbar from '@/components/ui/sorting/PackagesSortingToolbar';
+import PackagesFilters from '@/components/ui/packages/filters/PackagesFilters';
+import PackagesSortingToolbar from '@/components/ui/packages/sorting/PackagesSortingToolbar';
 import usePackagesFilters from '@/hooks/packages/usePackagesFilters';
 
 export default function AddressPackagesSection({

@@ -1,12 +1,12 @@
-import PackagePrice from '@/components/ui/packages/PackagePrice';
-import PackageHeader from '@/components/ui/packages/PackageHeader';
-import PackageActions from '@/components/ui/packages/PackageActions';
+import PackagePrice from '@/components/ui/packages/card/PackagePrice';
+import PackageHeader from '@/components/ui/packages/card/PackageHeader';
+import PackageActions from '@/components/ui/packages/card/PackageActions';
 import classNames from 'classnames';
 import { useTranslations } from 'next-intl';
 import { Wifi } from '@mui/icons-material';
-import PackageCardSection from '@/components/ui/packages/PackageCardSection';
+import PackageCardSection from '@/components/ui/packages/card/PackageCardSection';
 import dynamic from 'next/dynamic';
-import InternetSpeedFeature from '@/components/ui/packages/InternetSpeedFeature';
+import InternetSpeedFeature from '@/components/ui/packages/card/InternetSpeedFeature';
 
 const Tooltip = dynamic(() => import('@/components/ui/overlay/Tooltip'));
 

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import PackageActionSection from '@/components/ui/packages/PackageActionSection';
+import PackageActionSection from '@/components/ui/packages/action/PackageActionSection';
 import HomeIcon from '@mui/icons-material/Home';
 import PackageRequestForm from '@/components/ui/form/forms/PackageRequestForm';
 import { useTranslations } from 'next-intl';

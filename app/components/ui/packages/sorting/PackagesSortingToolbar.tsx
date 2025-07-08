@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 import SlideUpPanel from '@/components/ui/overlay/SlideUpPanel';
 import useOverlay from '@/hooks/useOverlay';
 import { Filters, SortOptions } from '@/types/filters';
-import PackagesFilters from '@/components/ui/sorting/PackagesFilters';
+import PackagesFilters from '@/components/ui/packages/filters/PackagesFilters';
 
 export default function PackagesSortingToolbar({
   sortOptions,

@@ -1,6 +1,6 @@
 import { SvgIconComponent } from '@mui/icons-material';
 import classNames from 'classnames';
-import PackageIcon from '@/components/ui/packages/PackageIcon';
+import PackageIcon from '@/components/ui/packages/card/PackageIcon';
 
 export default function PackageCardSection({
   Icon,
