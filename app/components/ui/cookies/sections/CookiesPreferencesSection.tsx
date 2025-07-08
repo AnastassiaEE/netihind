@@ -2,13 +2,14 @@ import ToggleSwitch from '@/components/ui/form/fields/toggle/ToggleSwitch';
 import { useTranslations } from 'next-intl';
 import React from 'react';
 import CookieDetails from '@/components/ui/cookies/CookieDetails';
+import CookiesDetailsAccordion from '@/components/ui/cookies/CookiesDetailsAccordion';
 
-export default function CookiesDetailsSection({
+export default function CookiesPreferencesSection({
   preferences,
   togglePreference,
 }: {
   preferences: { [key: string]: boolean };
-  togglePreference: (cookieType: string) => void;
+  togglePreference: (cookiesType: string) => void;
 }) {
   const t = useTranslations('Cookies');
 
@@ -89,56 +90,39 @@ export default function CookiesDetailsSection({
   };
 
   return (
-    // <Accordion border="bottom" size="md" arrowPosition="left">
-    //   <AccordionItem>
-    //     <AccordionItemHeader>
-    //       <div>
-    //         <div className="mb-2 flex items-center justify-between">
-    //           <p className="font-semibold text-black">
-    //             {t('types.necessary.name')}
-    //           </p>
-    //           <ToggleSwitch
-    //             name="cookie-necessary"
-    //             size="lg"
-    //             isChecked={preferences.necessary === true}
-    //             required={true}
-    //             disabled={true}
-    //           />
-    //         </div>
-    //         <p>{t('types.necessary.description')}</p>
-    //       </div>
-    //     </AccordionItemHeader>
-    //     <AccordionItemBody>
-    //       {renderCookieDetails(details.necessary)}
-    //     </AccordionItemBody>
-    //   </AccordionItem>
-    //   <AccordionItem>
-    //     <AccordionItemHeader>
-    //       <div>
-    //         <div className="mb-2 flex items-center justify-between">
-    //           <p className="font-semibold text-black">
-    //             {t('types.statistics.name')}
-    //           </p>
-    //           <ToggleSwitch
-    //             name="cookie-statistics"
-    //             size="lg"
-    //             label={t('types.statistics.switchLabel', {
-    //               state: t(
-    //                 `types.statistics.switchState.${preferences.statistics === true}`,
-    //               ),
-    //             })}
-    //             isChecked={preferences.statistics === true}
-    //             handleChange={() => togglePreference('statistics')}
-    //           />
-    //         </div>
-    //         <p>{t('types.statistics.description')}</p>
-    //       </div>
-    //     </AccordionItemHeader>
-    //     <AccordionItemBody>
-    //       {renderCookieDetails(details.statistics)}
-    //     </AccordionItemBody>
-    //   </AccordionItem>
-    // </Accordion>
-    <></>
+    <div>
+      <CookiesDetailsAccordion
+        typeName={t('types.necessary.name')}
+        typeDescription={t('types.necessary.description')}
+        typeToggleSwitch={
+          <ToggleSwitch
+            name="cookie-necessary"
+            size="lg"
+            isChecked={preferences.necessary === true}
+            required={true}
+            disabled={true}
+          />
+        }
+        details={renderCookieDetails(details.necessary)}
+      />
+      <CookiesDetailsAccordion
+        typeName={t('types.statistics.name')}
+        typeDescription={t('types.statistics.description')}
+        typeToggleSwitch={
+          <ToggleSwitch
+            name="cookie-statistics"
+            size="lg"
+            label={t('types.statistics.switchLabel', {
+              state: t(
+                `types.statistics.switchState.${preferences.statistics === true}`,
+              ),
+            })}
+            isChecked={preferences.statistics === true}
+            handleChange={() => togglePreference('statistics')}
+          />
+        }
+        details={renderCookieDetails(details.statistics)}
+      />
+    </div>
   );
 }

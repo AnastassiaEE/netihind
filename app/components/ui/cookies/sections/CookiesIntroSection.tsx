@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 
-export default function CookiesConsentSection() {
+export default function CookiesIntroSection() {
   const t = useTranslations('Cookies');
   return (
     <>
