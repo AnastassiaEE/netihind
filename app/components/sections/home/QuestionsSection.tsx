@@ -1,5 +1,3 @@
-'use client';
-
 import SectionLayout from '@/layouts/SectionLayout';
 import questions from '@/data/questions';
 import Button from '@/components/ui/form/buttons/Button';
@@ -41,7 +39,12 @@ export default function QuestionsSection() {
         <div className="md:w-7/12">
           <div>
             {translatedQuestions.map((question) => (
-              <FaqAccordion key={question.question} question={question} />
+              <FaqAccordion
+                key={question.question}
+                question={question.question}
+              >
+                {question.answer}
+              </FaqAccordion>
             ))}
           </div>
         </div>

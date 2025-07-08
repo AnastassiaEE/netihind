@@ -6,8 +6,10 @@ import CircleArrow from '@/components/ui/icons/CircleArrow';
 
 export default function FaqAccordion({
   question,
+  children,
 }: {
-  question: { question: string; answer: React.ReactNode };
+  question: string;
+  children: React.ReactNode;
 }) {
   const {
     isClosed,
@@ -33,12 +35,12 @@ export default function FaqAccordion({
         className="flex w-full flex-row-reverse items-center justify-between border-muted-light p-6 text-left transition-all [&:not(:last-child)]:border-b"
       >
         <CircleArrow {...getArrowProps()} className={arrowClasses} />
-        <span className="font-semibold">{question.question}</span>
+        <span className="font-semibold">{question}</span>
       </button>
       {isVisible && (
         <div {...getPanelProps()}>
           <div ref={collapsibleRef} className="p-6">
-            <p className="text-sm">{question.answer}</p>
+            <p className="text-sm">{children}</p>
           </div>
         </div>
       )}
