@@ -3,9 +3,9 @@
 import PackagesLoader from '@/components/ui/loaders/PackagesLoader';
 import usePackages from '@/hooks/packages/usePackages';
 import { useTranslations } from 'next-intl';
-import PackageCard from '@/components/ui/packages/PackageCard';
+import PackageCard from '@/components/ui/packages/card/PackageCard';
 import PackagesError from '@/components/ui/errors/PackagesError';
-import PackageActionContent from '@/components/ui/packages/PackageActionContent';
+import PackageActionContent from '@/components/ui/packages/action/PackageActionContent';
 import { Link } from '@/i18n/routing';
 import Dialog from '@/components/ui/overlay/Dialog';
 import useOverlay from '@/hooks/useOverlay';
