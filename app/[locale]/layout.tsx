@@ -13,9 +13,10 @@ import GoogleAnalytics from '@/components/tracking/GoogleAnalytics';
 import { ConsentProvider } from '@/context/ConsentContext';
 import { metadataBaseUrl } from '@/app/shared-metadata';
 
-const inter = Manrope({
+const manrope = Manrope({
   subsets: ['latin'],
   weight: ['200', '300', '400', '500', '600', '700', '800'],
+  display: 'swap',
 });
 
 export const metadata = {
@@ -45,7 +46,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <body className={`${inter.className} relative`}>
+      <body className={`${manrope.className} relative`}>
         <NextIntlClientProvider timeZone={timeZone} messages={messages}>
           <AppRouterCacheProvider
             options={{
