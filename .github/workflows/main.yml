@@ -42,28 +42,11 @@ jobs:
           RESEND_API_KEY="${{ secrets.RESEND_API_KEY }}"
           EOL
 
-          cat > ecosystem.config.js << EOL
-          module.exports = {
-            apps: [
-              {
-                name: "netihind-test",
-                script: "npm",
-                args: "run start",
-                env: {
-                  NODE_ENV: "production",
-                  HOST: '127.2.46.244',
-                  PORT: 8080
-                }
-              }
-            ]
-          };
-          EOL
-
           npm ci
           rm -rf .next
           npm run build
 
-          pm2 delete ecosystem.config.js || true
-          pm2 start ecosystem.config.js --max-memory-restart 200M
+          pm2 delete netihind-test || true
+          pm2 start /data03/virt133092/domeenid/www.netihind.ee/ecosystems/ecosystem.config.dev.js
           pm2 save
           EOF
