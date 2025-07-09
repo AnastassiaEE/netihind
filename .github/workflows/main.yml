@@ -29,24 +29,24 @@ jobs:
 
       - name: Restart pm2 on server
         run: |
-          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << EOF
-            set -e
-            cd ${{ secrets.DEPLOY_PATH }}
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} bash -s << 'EOF'
+          set -e
+          cd ${{ secrets.DEPLOY_PATH }}
 
-            cat > .env << EOL
-            APP_NAME="${{ vars.APP_NAME }}"
-            APP_HOST="${{ vars.APP_HOST }}"
-            APP_PORT="${{ vars.APP_PORT }}"
-            NEXT_PUBLIC_GA_MEASUREMENT_ID="${{ vars.NEXT_PUBLIC_GA_MEASUREMENT_ID }}"
-            NEXT_PUBLIC_SUPABASE_ANON_KEY="${{ vars.NEXT_PUBLIC_SUPABASE_ANON_KEY }}"
-            NEXT_PUBLIC_SUPABASE_URL="${{ vars.NEXT_PUBLIC_SUPABASE_URL }}"
-            NEXT_PUBLIC_WORDPRESS_API_ENDPOINT="${{ vars.NEXT_PUBLIC_WORDPRESS_API_ENDPOINT }}"
-            WORDPRESS_AUTH_REFRESH_TOKEN="${{ vars.WORDPRESS_AUTH_REFRESH_TOKEN }}"
-            RESEND_API_KEY="${{ vars.RESEND_API_KEY }}"
-            EOL
+          cat > .env << EOL
+          APP_NAME="${{ vars.APP_NAME }}"
+          APP_HOST="${{ vars.APP_HOST }}"
+          APP_PORT="${{ vars.APP_PORT }}"
+          NEXT_PUBLIC_GA_MEASUREMENT_ID="${{ vars.NEXT_PUBLIC_GA_MEASUREMENT_ID }}"
+          NEXT_PUBLIC_SUPABASE_ANON_KEY="${{ vars.NEXT_PUBLIC_SUPABASE_ANON_KEY }}"
+          NEXT_PUBLIC_SUPABASE_URL="${{ vars.NEXT_PUBLIC_SUPABASE_URL }}"
+          NEXT_PUBLIC_WORDPRESS_API_ENDPOINT="${{ vars.NEXT_PUBLIC_WORDPRESS_API_ENDPOINT }}"
+          WORDPRESS_AUTH_REFRESH_TOKEN="${{ vars.WORDPRESS_AUTH_REFRESH_TOKEN }}"
+          RESEND_API_KEY="${{ vars.RESEND_API_KEY }}"
+          EOL
 
-            npm ci
-            rm -rf .next
-            npm run build
-            pm2 restart ecosystem.config.js --max-memory-restart 200M
+          npm ci
+          rm -rf .next
+          npm run build
+          pm2 restart ecosystem.config.js --max-memory-restart 200M
           EOF
