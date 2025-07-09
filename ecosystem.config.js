@@ -1,13 +1,13 @@
 module.exports = {
   apps: [
     {
-      name: process.env.APP_NAME,
+      name: 'netihind-test',
       script: 'npm',
       args: 'run start',
       env: {
         NODE_ENV: 'production',
-        HOST: process.env.APP_HOST,
-        PORT: process.env.APP_PORT,
+        HOST: '127.2.46.244',
+        PORT: 8080,
       },
     },
   ],
