@@ -24,7 +24,7 @@ export default function FaqAccordion({
     'transition-colors',
     isClosed
       ? 'bg-primary-light'
-      : 'bg-primary text-white shadow-md shadow-primary/50',
+      : 'bg-red text-white shadow-md shadow-primary/50',
   );
 
   return (
