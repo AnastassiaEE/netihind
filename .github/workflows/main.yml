@@ -47,6 +47,6 @@ jobs:
           npm run build
 
           pm2 delete netihind-test || true
-          pm2 start /data03/virt133092/domeenid/www.netihind.ee/ecosystems/ecosystem.config.dev.js
+          pm2 start /data03/virt133092/domeenid/www.netihind.ee/ecosystems/ecosystem-dev.config.js
           pm2 save
           EOF
