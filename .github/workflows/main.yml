@@ -1,0 +1,43 @@
+name: Deploy to Zone.ee Server
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: Development  
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup SSH
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+    - name: Copy files to server with rsync
+      run: |
+        rsync -avz --delete ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}
+
+    - name: Restart pm2 on server
+      run: |
+        ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << EOF
+          set -e
+          cd ${{ secrets.DEPLOY_PATH }}
+
+          export APP_NAME="${{ vars.APP_NAME }}"
+          export APP_HOST="${{ vars.APP_HOST }}"
+          export APP_PORT="${{ vars.PORT }}"
+          
+          npm install --production
+          rm -rf .next
+          npm run build
+          pm2 restart ecosystem.config.js --max-memory-restart 200M
+        EOF
