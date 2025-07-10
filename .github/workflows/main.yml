@@ -10,7 +10,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     environment:
-      name: Development
+      name: ${{ github.ref_name == 'main' && 'Production' || 'Development' }}
 
     steps:
       - name: Checkout repository
@@ -28,6 +28,8 @@ jobs:
           rsync -avz --delete ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}
 
       - name: Restart pm2 on server
+        env:
+          GITHUB_REF_NAME: ${{ github.ref_name }}
         run: |
           ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} bash -s << 'EOF'
           set -e
@@ -46,7 +48,13 @@ jobs:
           rm -rf .next
           npm run build
 
-          pm2 delete netihind-test || true
-          pm2 start /data03/virt133092/domeenid/www.netihind.ee/ecosystems/ecosystem-dev.config.js
+          if [ "$GITHUB_REF_NAME" = "main" ]; then
+            pm2 delete netihind || true
+            pm2 start /data03/virt133092/domeenid/www.netihind.ee/ecosystems/ecosystem-prod.config.js
+          else
+            pm2 delete netihind-test || true
+            pm2 start /data03/virt133092/domeenid/www.netihind.ee/ecosystems/ecosystem-dev.config.js
+          fi
+
           pm2 save
           EOF
