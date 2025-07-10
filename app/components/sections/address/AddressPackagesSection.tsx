@@ -30,7 +30,7 @@ export default function AddressPackagesSection({
   const {
     filters,
     setFilters,
-    isFiltersLoading,
+    isFiltersInitialized,
     clearFilters,
     providerFilterSelectedValues,
     technologyFilterSelectedValues,
@@ -87,7 +87,7 @@ export default function AddressPackagesSection({
           </div>
           <div className="hidden rounded-r-lg rounded-bl-lg bg-primary-light/80 md:block md:w-3/12">
             <div className="sticky top-0 h-screen overflow-y-auto p-8">
-              {isFiltersLoading ? (
+              {!isFiltersInitialized ? (
                 <PingLoader sizeClass="h-10 w-10" />
               ) : (
                 <PackagesFilters
@@ -95,6 +95,7 @@ export default function AddressPackagesSection({
                   setFilters={setFilters}
                   clearFilters={clearFilters}
                   onUserChange={handleUserInteraction}
+                  isFiltersInitialized={isFiltersInitialized}
                 />
               )}
             </div>
@@ -109,6 +110,7 @@ export default function AddressPackagesSection({
           setFilters={setFilters}
           clearFilters={clearFilters}
           onUserChange={handleUserInteraction}
+          isFiltersInitialized={isFiltersInitialized}
           className="md:hidden"
         />
       </>

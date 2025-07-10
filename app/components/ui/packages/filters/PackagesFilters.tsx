@@ -1,12 +1,12 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import React, { useMemo } from 'react';
+import React from 'react';
 import Button from '@/components/ui/form/buttons/Button';
-import CheckboxGroup from '@/components/ui/form/fields/checkbox/CheckboxGroup';
-import useCheckboxFilters from '@/hooks/useCheckboxFilters';
-import { CheckboxFilters, Filters } from '@/types/filters';
+import { Filters } from '@/types/filters';
 import PackagesFilterAccordion from '@/components/ui/packages/filters/PackagesFilterAccordion';
+import CheckboxFilter from '@/components/ui/filters/CheckboxFilter';
+import useFiltersUrlSync from '@/hooks/useFiltersUrlSync';
 
 export default function PackagesFilters({
   type = 'desktop',
@@ -14,6 +14,7 @@ export default function PackagesFilters({
   setFilters,
   clearFilters,
   onUserChange,
+  isFiltersInitialized,
   className,
 }: {
   type?: 'desktop' | 'mobile';
@@ -21,23 +22,11 @@ export default function PackagesFilters({
   setFilters: React.Dispatch<React.SetStateAction<Filters>>;
   clearFilters: () => void;
   onUserChange?: () => void;
+  isFiltersInitialized: boolean;
   className?: string;
 }) {
   const t = useTranslations('Filters');
-
-  const checkboxFilters = useMemo(() => {
-    return Object.fromEntries(
-      Object.entries(filters).filter(
-        ([_, filter]) => filter.type === 'checkbox',
-      ),
-    ) as CheckboxFilters;
-  }, [filters]);
-
-  const { handleChange } = useCheckboxFilters(
-    checkboxFilters,
-    setFilters,
-    onUserChange,
-  );
+  useFiltersUrlSync(filters, isFiltersInitialized);
 
   return (
     <aside className={className}>
@@ -49,30 +38,29 @@ export default function PackagesFilters({
           </Button>
         </div>
       )}
-      <div>
-        {Object.entries(filters)
-          .filter(
-            ([_, filterData]) =>
-              filterData.options && filterData.options.length > 0,
-          )
-          .map(([filterName, filterData]) => (
-            <PackagesFilterAccordion
-              key={filterName}
-              filterName={t(filterName)}
-              className="mb-4"
-            >
-              {filterData.type === 'checkbox' && (
-                <CheckboxGroup
-                  name={filterName}
-                  options={filterData.options}
-                  selected={filterData.selected}
-                  checkboxSize="lg"
-                  handleChange={handleChange}
-                />
-              )}
-            </PackagesFilterAccordion>
-          ))}
-      </div>
+
+      {Object.entries(filters)
+        .filter(
+          ([_, filterData]) =>
+            filterData.options && filterData.options.length > 0,
+        )
+        .map(([filterName, filterData]) => (
+          <PackagesFilterAccordion
+            key={filterName}
+            filterName={t(filterName)}
+            className="mb-4"
+          >
+            {filterData.type === 'checkbox' && (
+              <CheckboxFilter
+                name={filterName}
+                filter={filterData}
+                setFilters={setFilters}
+                onUserChange={onUserChange}
+                size="lg"
+              />
+            )}
+          </PackagesFilterAccordion>
+        ))}
     </aside>
   );
 }

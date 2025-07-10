@@ -1,3 +1,4 @@
+import { CheckboxSize } from '@/types/sizes';
 import { tv } from 'tailwind-variants';
 
 export default function Checkbox({
@@ -12,7 +13,7 @@ export default function Checkbox({
 }: {
   name: string;
   value?: string;
-  size?: 'sm' | 'lg';
+  size?: CheckboxSize;
   isChecked: boolean;
   isValid?: boolean;
   required?: boolean;

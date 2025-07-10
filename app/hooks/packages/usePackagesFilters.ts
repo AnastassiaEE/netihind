@@ -41,14 +41,25 @@ export default function usePackagesFilters(
   });
 
   useEffect(() => {
-    setFilters({
-      providers: providerFilterData,
-      technologies: technologyFilterData,
-    });
-  }, [providerFilterData, technologyFilterData]);
+    if (providerFilterData.options.length > 0) {
+      setFilters((prev) => ({
+        ...prev,
+        providers: providerFilterData,
+      }));
+    }
+  }, [providerFilterData]);
 
-  const isFiltersLoading =
-    isProviderFiltersLoading && isTechnologyFiltersLoading;
+  useEffect(() => {
+    if (technologyFilterData.options.length > 0) {
+      setFilters((prev) => ({
+        ...prev,
+        technologies: technologyFilterData,
+      }));
+    }
+  }, [technologyFilterData]);
+
+  const isFiltersInitialized =
+    !isProviderFiltersLoading && !isTechnologyFiltersLoading;
 
   const clearFilters = () => {
     let hasChanges = false;
@@ -74,7 +85,7 @@ export default function usePackagesFilters(
   return {
     filters,
     setFilters,
-    isFiltersLoading,
+    isFiltersInitialized,
     clearFilters,
     providerFilterSelectedValues,
     technologyFilterSelectedValues,
