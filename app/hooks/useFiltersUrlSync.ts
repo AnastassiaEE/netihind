@@ -12,13 +12,15 @@ export default function useFiltersUrlSync(filters: Filters) {
   useEffect(() => {
     const newSearchParams = new URLSearchParams(searchParams);
     Object.entries(filters).forEach(([name, filter]) => {
-      if (filter.options.length === 0) return;
-
-      if (filter.selected.length > 0) {
-        newSearchParams.set(
-          name,
-          filter.selected.map((opt) => opt.label).join(','),
-        );
+      if (filter.options.length > 0) {
+        if (filter.selected.length > 0) {
+          newSearchParams.set(
+            name,
+            filter.selected.map((opt) => opt.label).join(','),
+          );
+        } else {
+          newSearchParams.delete(name);
+        }
       } else {
         newSearchParams.delete(name);
       }

@@ -41,11 +41,22 @@ export default function usePackagesFilters(
   });
 
   useEffect(() => {
-    setFilters({
-      providers: providerFilterData,
-      technologies: technologyFilterData,
-    });
-  }, [providerFilterData, technologyFilterData]);
+    if (providerFilterData.options.length > 0) {
+      setFilters((prev) => ({
+        ...prev,
+        providers: providerFilterData,
+      }));
+    }
+  }, [providerFilterData]);
+
+  useEffect(() => {
+    if (technologyFilterData.options.length > 0) {
+      setFilters((prev) => ({
+        ...prev,
+        technologies: technologyFilterData,
+      }));
+    }
+  }, [technologyFilterData]);
 
   const isFiltersLoading =
     isProviderFiltersLoading && isTechnologyFiltersLoading;
