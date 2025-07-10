@@ -6,7 +6,7 @@ import Button from '@/components/ui/form/buttons/Button';
 import { Filters } from '@/types/filters';
 import PackagesFilterAccordion from '@/components/ui/packages/filters/PackagesFilterAccordion';
 import CheckboxFilter from '@/components/ui/filters/CheckboxFilter';
-import useFiltersUrlSync from '@/hooks/useFilterUrlSync';
+import useFiltersUrlSync from '@/hooks/useFiltersUrlSync';
 
 export default function PackagesFilters({
   type = 'desktop',
