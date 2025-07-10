@@ -10,7 +10,7 @@ export default function useFiltersUrlSync(filters: Filters) {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    const newSearchParams = new URLSearchParams(searchParams);
+    const newSearchParams = new URLSearchParams();
     Object.entries(filters).forEach(([name, filter]) => {
       filter.selected.length > 0
         ? newSearchParams.set(

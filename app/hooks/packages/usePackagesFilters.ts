@@ -45,6 +45,7 @@ export default function usePackagesFilters(
       providers: providerFilterData,
       technologies: technologyFilterData,
     });
+    console.log(filters);
   }, [providerFilterData, technologyFilterData]);
 
   const isFiltersLoading =
