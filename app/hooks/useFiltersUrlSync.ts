@@ -10,14 +10,18 @@ export default function useFiltersUrlSync(filters: Filters) {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    const newSearchParams = new URLSearchParams();
+    const newSearchParams = new URLSearchParams(searchParams);
     Object.entries(filters).forEach(([name, filter]) => {
-      filter.selected.length > 0
-        ? newSearchParams.set(
-            name,
-            filter.selected.map((opt) => opt.label).join(','),
-          )
-        : newSearchParams.delete(name);
+      if (filter.options.length === 0) return;
+
+      if (filter.selected.length > 0) {
+        newSearchParams.set(
+          name,
+          filter.selected.map((opt) => opt.label).join(','),
+        );
+      } else {
+        newSearchParams.delete(name);
+      }
     });
 
     const query = Object.fromEntries(newSearchParams.entries());
