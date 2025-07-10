@@ -4,40 +4,57 @@ on:
   push:
     branches:
       - dev
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     environment:
-      name: Development  
+      name: ${{ github.ref_name == 'main' && 'Production' || 'Development' }}
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Setup SSH
-      run: |
-        mkdir -p ~/.ssh
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
-    - name: Copy files to server with rsync
-      run: |
-        rsync -avz --delete ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}
+      - name: Copy files to server with rsync
+        run: |
+          rsync -avz --delete ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}
 
-    - name: Restart pm2 on server
-      run: |
-        ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << EOF
+      - name: Restart pm2 on server
+        env:
+          GITHUB_REF_NAME: ${{ github.ref_name }}
+        run: |
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} bash -s << 'EOF'
           set -e
           cd ${{ secrets.DEPLOY_PATH }}
 
-          export APP_NAME="${{ vars.APP_NAME }}"
-          export APP_HOST="${{ vars.APP_HOST }}"
-          export APP_PORT="${{ vars.PORT }}"
-          
-          npm install --production
+          cat > .env << EOL
+          NEXT_PUBLIC_GA_MEASUREMENT_ID="${{ vars.NEXT_PUBLIC_GA_MEASUREMENT_ID }}"
+          NEXT_PUBLIC_SUPABASE_ANON_KEY="${{ vars.NEXT_PUBLIC_SUPABASE_ANON_KEY }}"
+          NEXT_PUBLIC_SUPABASE_URL="${{ vars.NEXT_PUBLIC_SUPABASE_URL }}"
+          NEXT_PUBLIC_WORDPRESS_API_ENDPOINT="${{ vars.NEXT_PUBLIC_WORDPRESS_API_ENDPOINT }}"
+          WORDPRESS_AUTH_REFRESH_TOKEN="${{ secrets.WORDPRESS_AUTH_REFRESH_TOKEN }}"
+          RESEND_API_KEY="${{ secrets.RESEND_API_KEY }}"
+          EOL
+
+          npm ci
           rm -rf .next
           npm run build
-          pm2 restart ecosystem.config.js --max-memory-restart 200M
-        EOF
+
+          if [ "$GITHUB_REF_NAME" = "main" ]; then
+            pm2 delete netihind || true
+            pm2 start /data03/virt133092/domeenid/www.netihind.ee/ecosystems/ecosystem-prod.config.js
+          else
+            pm2 delete netihind-test || true
+            pm2 start /data03/virt133092/domeenid/www.netihind.ee/ecosystems/ecosystem-dev.config.js
+          fi
+
+          pm2 save
+          EOF
