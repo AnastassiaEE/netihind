@@ -32,9 +32,11 @@ jobs:
         env:
           GITHUB_REF_NAME: ${{ github.ref_name }}
         run: |
-          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} bash -s << 'EOF'
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} bash -s << EOF
           set -e
           cd ${{ secrets.DEPLOY_PATH }}
+
+          echo "Deploying branch: $GITHUB_REF_NAME"
 
           cat > .env << EOL
           NEXT_PUBLIC_GA_MEASUREMENT_ID="${{ vars.NEXT_PUBLIC_GA_MEASUREMENT_ID }}"
@@ -50,9 +52,11 @@ jobs:
           npm run build
 
           if [ "$GITHUB_REF_NAME" = "main" ]; then
+            echo "This is the main branch, restarting production pm2 process"
             pm2 delete netihind || true
             pm2 start /data03/virt133092/domeenid/www.netihind.ee/ecosystems/ecosystem-prod.config.js
           else
+            echo "This is not main branch, restarting test pm2 process"
             pm2 delete netihind-test || true
             pm2 start /data03/virt133092/domeenid/www.netihind.ee/ecosystems/ecosystem-dev.config.js
           fi
