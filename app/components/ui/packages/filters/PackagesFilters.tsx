@@ -24,7 +24,7 @@ export default function PackagesFilters({
   className?: string;
 }) {
   const t = useTranslations('Filters');
-  useFiltersUrlSync(filters);
+  useFiltersUrlSync(filters, setFilters);
 
   return (
     <aside className={className}>
