@@ -15,6 +15,7 @@ export default function PackagesSortingToolbar({
   setFilters,
   clearFilters,
   onUserChange,
+  isFiltersInitialized,
   className,
 }: {
   sortOptions: SortOptions;
@@ -22,6 +23,7 @@ export default function PackagesSortingToolbar({
   setFilters: React.Dispatch<React.SetStateAction<Filters>>;
   clearFilters: () => void;
   onUserChange?: () => void;
+  isFiltersInitialized: boolean;
   className?: string;
 }) {
   const t = useTranslations('Filters');
@@ -63,6 +65,7 @@ export default function PackagesSortingToolbar({
             openDirection="top"
             options={sortOptions.options}
             selected={sortOptions.selected}
+            onUserChange={onUserChange}
             className="min-w-[150px]"
           />
         )}
@@ -82,6 +85,7 @@ export default function PackagesSortingToolbar({
             setFilters={setFilters}
             clearFilters={clearFilters}
             onUserChange={onUserChange}
+            isInitialized={isFiltersInitialized}
           />
         </SlideUpPanel>
       )}

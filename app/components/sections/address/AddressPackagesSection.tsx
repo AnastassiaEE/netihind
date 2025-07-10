@@ -110,6 +110,7 @@ export default function AddressPackagesSection({
           setFilters={setFilters}
           clearFilters={clearFilters}
           onUserChange={handleUserInteraction}
+          isFiltersInitialized={isFiltersInitialized}
           className="md:hidden"
         />
       </>
