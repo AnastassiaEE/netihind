@@ -14,6 +14,7 @@ export default function PackagesFilters({
   setFilters,
   clearFilters,
   onUserChange,
+  isInitialized,
   className,
 }: {
   type?: 'desktop' | 'mobile';
@@ -21,10 +22,11 @@ export default function PackagesFilters({
   setFilters: React.Dispatch<React.SetStateAction<Filters>>;
   clearFilters: () => void;
   onUserChange?: () => void;
+  isInitialized: boolean;
   className?: string;
 }) {
   const t = useTranslations('Filters');
-  useFiltersUrlSync(filters);
+  useFiltersUrlSync(filters, isInitialized);
 
   return (
     <aside className={className}>

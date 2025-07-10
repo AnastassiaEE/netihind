@@ -58,8 +58,8 @@ export default function usePackagesFilters(
     }
   }, [technologyFilterData]);
 
-  const isFiltersLoading =
-    isProviderFiltersLoading && isTechnologyFiltersLoading;
+  const isFiltersInitialized =
+    !isProviderFiltersLoading && !isTechnologyFiltersLoading;
 
   const clearFilters = () => {
     let hasChanges = false;
@@ -85,7 +85,7 @@ export default function usePackagesFilters(
   return {
     filters,
     setFilters,
-    isFiltersLoading,
+    isFiltersInitialized,
     clearFilters,
     providerFilterSelectedValues,
     technologyFilterSelectedValues,

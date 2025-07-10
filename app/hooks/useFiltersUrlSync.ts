@@ -3,24 +3,24 @@ import { useParams, useSearchParams } from 'next/navigation';
 import { usePathname, useRouter } from '@/i18n/routing';
 import { Filters } from '@/types/filters';
 
-export default function useFiltersUrlSync(filters: Filters) {
+export default function useFiltersUrlSync(
+  filters: Filters,
+  isInitialized: boolean,
+) {
   const router = useRouter();
   const pathname = usePathname();
   const params = useParams();
   const searchParams = useSearchParams();
 
   useEffect(() => {
+    if (!isInitialized) return;
     const newSearchParams = new URLSearchParams(searchParams);
     Object.entries(filters).forEach(([name, filter]) => {
-      if (filter.options.length > 0) {
-        if (filter.selected.length > 0) {
-          newSearchParams.set(
-            name,
-            filter.selected.map((opt) => opt.label).join(','),
-          );
-        } else {
-          newSearchParams.delete(name);
-        }
+      if (filter.selected.length > 0) {
+        newSearchParams.set(
+          name,
+          filter.selected.map((opt) => opt.label).join(','),
+        );
       } else {
         newSearchParams.delete(name);
       }
@@ -33,5 +33,5 @@ export default function useFiltersUrlSync(filters: Filters) {
       { scroll: false },
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filters]);
+  }, [filters, isInitialized]);
 }
