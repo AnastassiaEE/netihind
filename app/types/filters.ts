@@ -18,10 +18,8 @@ export type Filters = {
   };
 };
 
-export type CheckboxFilters = {
-  [filterName: string]: {
-    type: 'checkbox';
-    options: FilterOption[];
-    selected: FilterOption[];
-  };
+export type Filter = {
+  type: string;
+  options: FilterOption[];
+  selected: FilterOption[];
 };
