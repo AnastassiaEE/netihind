@@ -95,7 +95,7 @@ export default function AddressPackagesSection({
                   setFilters={setFilters}
                   clearFilters={clearFilters}
                   onUserChange={handleUserInteraction}
-                  isInitialized={isFiltersInitialized}
+                  isFiltersInitialized={isFiltersInitialized}
                 />
               )}
             </div>

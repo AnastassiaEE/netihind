@@ -5,7 +5,7 @@ import { Filters } from '@/types/filters';
 
 export default function useFiltersUrlSync(
   filters: Filters,
-  isInitialized: boolean,
+  isFiltersInitialized: boolean,
 ) {
   const router = useRouter();
   const pathname = usePathname();
@@ -13,7 +13,7 @@ export default function useFiltersUrlSync(
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (!isInitialized) return;
+    if (!isFiltersInitialized) return;
     const newSearchParams = new URLSearchParams(searchParams);
     Object.entries(filters).forEach(([name, filter]) => {
       if (filter.selected.length > 0) {
@@ -33,5 +33,5 @@ export default function useFiltersUrlSync(
       { scroll: false },
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filters, isInitialized]);
+  }, [filters, isFiltersInitialized]);
 }

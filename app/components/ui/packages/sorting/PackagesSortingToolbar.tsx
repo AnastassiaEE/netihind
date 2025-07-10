@@ -85,7 +85,7 @@ export default function PackagesSortingToolbar({
             setFilters={setFilters}
             clearFilters={clearFilters}
             onUserChange={onUserChange}
-            isInitialized={isFiltersInitialized}
+            isFiltersInitialized={isFiltersInitialized}
           />
         </SlideUpPanel>
       )}
