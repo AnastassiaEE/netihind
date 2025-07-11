@@ -27,17 +27,6 @@ export default function AddressPackagesSection({
   const shouldScrollRef = useRef(false);
   const isPackagesLoadedRef = useRef(false);
 
-  const {
-    filters,
-    setFilters,
-    isFiltersInitialized,
-    clearFilters,
-    providerFilterSelectedValues,
-    technologyFilterSelectedValues,
-  } = usePackagesFilters(oid, searchParams);
-
-  const selectedSortOption = getSortSelectedOption(searchParams['sort'] || '');
-
   const handleUserInteraction = () => {
     shouldScrollRef.current = true;
   };
@@ -51,6 +40,17 @@ export default function AddressPackagesSection({
       isPackagesLoadedRef.current = false;
     }
   };
+
+  const {
+    filters,
+    setFilters,
+    isFiltersInitialized,
+    clearFilters,
+    providerFilterSelectedValues,
+    technologyFilterSelectedValues,
+  } = usePackagesFilters(oid, searchParams, handleUserInteraction);
+
+  const selectedSortOption = getSortSelectedOption(searchParams['sort'] || '');
 
   return (
     <SectionLayout>

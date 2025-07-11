@@ -6,6 +6,7 @@ import { getProviders, getTechnologies } from '@/lib/packagesDataFetch';
 export default function usePackagesFilters(
   oid: string,
   searchParams: { [key: string]: string },
+  onUserChange?: () => void,
 ) {
   const {
     filterData: providerFilterData,
@@ -76,10 +77,8 @@ export default function usePackagesFilters(
       },
       {} as Filters,
     );
-
+    if (hasChanges) onUserChange?.();
     setFilters(cleared);
-
-    return hasChanges;
   };
 
   return {
