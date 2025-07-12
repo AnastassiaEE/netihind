@@ -1,73 +1,50 @@
 import React from 'react';
 import classNames from 'classnames';
 import Arrow from '@/components/ui/icons/Arrow';
-import Button from '@/components/ui/form/buttons/Button';
-import IconButton from '@/components/ui/form/buttons/IconButton';
 import { SvgIconComponent } from '@mui/icons-material';
 import { FormElementSizes as sizes } from '@/styles/styles';
 import useSelect from '@/hooks/useSelect';
 
 export default function Select({
-  size = 'sm',
   name,
   translatedName,
   label,
   selected,
-  variant = 'contained',
   Icon,
   hasArrow = true,
   displaySelected = true,
   openDirection = 'bottom',
   handleChange,
+  comboBoxElement,
   className,
   children,
 }: {
-  size?: keyof typeof sizes;
   name: string;
   translatedName?: string;
   label: string;
   selected: string;
-  variant?: 'contained' | 'outlined' | 'neutral' | 'text';
   Icon?: SvgIconComponent;
   hasArrow?: boolean;
   displaySelected?: boolean;
   openDirection?: 'top' | 'bottom';
   handleChange: (name: string, value: string) => void;
+  comboBoxElement: (comboBoxProps: any) => JSX.Element;
   className?: string;
   children: React.ReactNode;
 }) {
   const {
     isExpanded,
-    comboBoxRef,
+    listBoxId,
     listBoxRef,
-    toggleSelect,
     handleOptionSelect,
-  } = useSelect();
+    comboBoxProps,
+  } = useSelect(name, label);
 
-  const comboBoxClasses = classNames(
-    sizes[size],
-    className,
-    !displaySelected && 'uppercase',
-  );
   const listBoxClasses = classNames(
     'border-grey-300 absolute right-0 z-[1] w-full min-w-max rounded-md bg-white drop-shadow-md',
     openDirection === 'top' && 'bottom-full',
     !isExpanded && 'hidden',
   );
-
-  const listBoxId = `${name}-select-box`;
-
-  const comboBoxProps = {
-    variant: variant,
-    handleClick: toggleSelect,
-    className: comboBoxClasses,
-    ref: comboBoxRef,
-    role: 'combobox',
-    'aria-label': label,
-    'aria-expanded': isExpanded,
-    'aria-haspopup': 'listbox',
-    'aria-controls': listBoxId,
-  };
 
   const ArrowIcon = () => (
     <Arrow direction={isExpanded ? 'up' : 'down'} className="align-bottom" />
@@ -76,7 +53,7 @@ export default function Select({
 
   return (
     <div className="relative">
-      {Icon ? (
+      {/* {{Icon ? (
         <IconButton Icon={Icon} {...comboBoxProps}>
           {comboBoxContent}
           {hasArrow && <ArrowIcon />}
@@ -86,7 +63,8 @@ export default function Select({
           {comboBoxContent}
           {hasArrow && <ArrowIcon />}
         </Button>
-      )}
+      )}} */}
+      {comboBoxElement(comboBoxProps())}
       <div
         id={listBoxId}
         role="listbox"

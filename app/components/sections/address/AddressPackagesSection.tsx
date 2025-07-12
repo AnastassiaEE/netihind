@@ -67,7 +67,7 @@ export default function AddressPackagesSection({
             <div className="sticky top-0 z-10 flex justify-end rounded-l-lg bg-primary-light/80 p-5 backdrop-blur-md max-md:hidden">
               <Sort
                 name="packages"
-                variant="desktop"
+                variant="labeled"
                 options={SORT_OPTIONS}
                 selectedOption={selectedSortOption}
                 setSelectedOption={setSelectedSortOption}

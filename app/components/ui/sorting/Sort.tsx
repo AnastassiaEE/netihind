@@ -5,10 +5,12 @@ import SortIcon from '@mui/icons-material/Sort';
 import useSort from '@/hooks/useSort';
 import Select from '@/components/ui/form/fields/select/Select';
 import SelectOption from '@/components/ui/form/fields/select/SelectOption';
+import { SelectVariant } from '@/types/formElemets';
+import PlainSelect from '../form/fields/select/PlainSelect';
 
 export default function Sort({
   name,
-  variant = 'desktop',
+  variant = 'labeled',
   openDirection = 'bottom',
   options,
   selectedOption,
@@ -17,7 +19,7 @@ export default function Sort({
   className,
 }: {
   name: string;
-  variant?: 'desktop' | 'mobile';
+  variant?: SelectVariant;
   openDirection?: 'top' | 'bottom';
   options: string[];
   selectedOption: string;
@@ -33,30 +35,56 @@ export default function Sort({
   );
 
   return (
-    <Select
-      name={`sort-${name}`}
-      translatedName={t(`${name}.button`)}
-      label={t(`${name}.label`, {
-        selected: t(`${name}.options.${selectedOption}`),
-      })}
-      selected={t(`${name}.options.${selectedOption}`)}
-      variant={variant === 'desktop' ? 'text' : 'outlined'}
-      Icon={variant === 'desktop' ? SortIcon : undefined}
-      hasArrow={variant === 'desktop'}
-      displaySelected={variant === 'desktop'}
-      openDirection={openDirection}
-      handleChange={handleChange}
-      className={className}
-    >
-      {options.map((option) => (
-        <SelectOption
-          key={option}
-          value={option}
-          isSelected={option === selectedOption}
+    <>
+      {variant === 'plain' && (
+        <PlainSelect
+          name={`sort-${name}`}
+          translatedName={t(`${name}.button`)}
+          label={t(`${name}.label`, {
+            selected: t(`${name}.options.${selectedOption}`),
+          })}
+          selected={t(`${name}.options.${selectedOption}`)}
+          openDirection={openDirection}
+          handleChange={handleChange}
+          className={className}
         >
-          {t(`${name}.options.${option}`)}
-        </SelectOption>
-      ))}
-    </Select>
+          {options.map((option) => (
+            <SelectOption
+              key={option}
+              value={option}
+              isSelected={option === selectedOption}
+            >
+              {t(`${name}.options.${option}`)}
+            </SelectOption>
+          ))}
+        </PlainSelect>
+      )}
+      {variant === 'labeled' && <>test</>}
+    </>
+    // <Select
+    //   name={`sort-${name}`}
+    //   translatedName={t(`${name}.button`)}
+    //   label={t(`${name}.label`, {
+    //     selected: t(`${name}.options.${selectedOption}`),
+    //   })}
+    //   selected={t(`${name}.options.${selectedOption}`)}
+    //   variant={variant === 'desktop' ? 'text' : 'outlined'}
+    //   Icon={variant === 'desktop' ? SortIcon : undefined}
+    //   hasArrow={variant === 'desktop'}
+    //   displaySelected={variant === 'desktop'}
+    //   openDirection={openDirection}
+    //   handleChange={handleChange}
+    //   className={className}
+    // >
+    //   {options.map((option) => (
+    //     <SelectOption
+    //       key={option}
+    //       value={option}
+    //       isSelected={option === selectedOption}
+    //     >
+    //       {t(`${name}.options.${option}`)}
+    //     </SelectOption>
+    //   ))}
+    // </Select>
   );
 }

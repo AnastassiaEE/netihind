@@ -63,7 +63,7 @@ export default function PackagesSortingToolbar({
         {sortOptions && (
           <Sort
             name="packages"
-            variant="mobile"
+            variant="plain"
             openDirection="top"
             options={sortOptions.options}
             selectedOption={sortOptions.selected}

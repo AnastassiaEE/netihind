@@ -129,7 +129,7 @@ export default function PackageRequestForm({
         />
       </div>
       <div className="mb-6">
-        <Select
+        {/* <Select
           name="call-time"
           label={t('labels.time', {
             selected: t(`selectOptions.${values['call-time'] as string}`),
@@ -149,7 +149,7 @@ export default function PackageRequestForm({
               {t(`selectOptions.${option}`)}
             </SelectOption>
           ))}
-        </Select>
+        </Select> */}
       </div>
       <div className="mb-6">
         <Checkbox
