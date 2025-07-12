@@ -2,7 +2,7 @@
 
 import SectionLayout from '@/layouts/SectionLayout';
 import Packages from '@/components/ui/packages/Packages';
-import { SORT_OPTIONS, getSortSelectedOption } from '@/utils/packagesHelper';
+import { SORT_OPTIONS } from '@/utils/packagesHelper';
 import React, { useRef } from 'react';
 import Sort from '@/components/ui/sorting/Sort';
 import HomeIcon from '@mui/icons-material/Home';
@@ -48,9 +48,9 @@ export default function AddressPackagesSection({
     clearFilters,
     providerFilterSelectedValues,
     technologyFilterSelectedValues,
+    selectedSortOption,
+    setSelectedSortOption,
   } = usePackagesFilters(oid, searchParams, handleUserInteraction);
-
-  const selectedSortOption = getSortSelectedOption(searchParams['sort'] || '');
 
   return (
     <SectionLayout>
@@ -69,7 +69,8 @@ export default function AddressPackagesSection({
                 name="packages"
                 variant="desktop"
                 options={SORT_OPTIONS}
-                selected={selectedSortOption}
+                selectedOption={selectedSortOption}
+                setSelectedOption={setSelectedSortOption}
                 onUserChange={handleUserInteraction}
                 className="rounded-md border border-muted-light bg-white"
               />
@@ -106,6 +107,7 @@ export default function AddressPackagesSection({
             options: SORT_OPTIONS,
             selected: selectedSortOption,
           }}
+          setSelectedSortOption={setSelectedSortOption}
           filters={filters}
           setFilters={setFilters}
           clearFilters={clearFilters}

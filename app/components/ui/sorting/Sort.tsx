@@ -11,7 +11,8 @@ export default function Sort({
   variant = 'desktop',
   openDirection = 'bottom',
   options,
-  selected,
+  selectedOption,
+  setSelectedOption,
   onUserChange,
   className,
 }: {
@@ -19,12 +20,17 @@ export default function Sort({
   variant?: 'desktop' | 'mobile';
   openDirection?: 'top' | 'bottom';
   options: string[];
-  selected: string;
+  selectedOption: string;
+  setSelectedOption: React.Dispatch<React.SetStateAction<string>>;
   onUserChange?: () => void;
   className?: string;
 }) {
   const t = useTranslations('Sort');
-  const { selectedOption, handleChange } = useSort(selected, onUserChange);
+  const { handleChange } = useSort(
+    selectedOption,
+    setSelectedOption,
+    onUserChange,
+  );
 
   return (
     <Select
