@@ -1,45 +1,48 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import SortIcon from '@mui/icons-material/Sort';
 import useSort from '@/hooks/useSort';
-import Select from '@/components/ui/form/fields/select/Select';
 import SelectOption from '@/components/ui/form/fields/select/SelectOption';
+import { SelectVariant } from '@/types/formElemets';
+import SortIcon from '@mui/icons-material/Sort';
+import Select from '@/components/ui/form/fields/select/Select';
 
 export default function Sort({
   name,
-  variant = 'desktop',
+  variant = 'labeled',
   openDirection = 'bottom',
   options,
-  selected,
+  selectedOption,
+  setSelectedOption,
   onUserChange,
   className,
 }: {
   name: string;
-  variant?: 'desktop' | 'mobile';
+  variant?: SelectVariant;
   openDirection?: 'top' | 'bottom';
   options: string[];
-  selected: string;
+  selectedOption: string;
+  setSelectedOption: React.Dispatch<React.SetStateAction<string>>;
   onUserChange?: () => void;
   className?: string;
 }) {
   const t = useTranslations('Sort');
-  const { selectedOption, handleChange } = useSort(selected, onUserChange);
+  const { handleChange } = useSort(
+    selectedOption,
+    setSelectedOption,
+    onUserChange,
+  );
 
   return (
     <Select
+      variant={variant}
       name={`sort-${name}`}
       translatedName={t(`${name}.button`)}
-      label={t(`${name}.label`, {
-        selected: t(`${name}.options.${selectedOption}`),
-      })}
+      label={t(`${name}.label`)}
       selected={t(`${name}.options.${selectedOption}`)}
-      variant={variant === 'desktop' ? 'text' : 'outlined'}
-      Icon={variant === 'desktop' ? SortIcon : undefined}
-      hasArrow={variant === 'desktop'}
-      displaySelected={variant === 'desktop'}
       openDirection={openDirection}
-      handleChange={handleChange}
+      Icon={SortIcon}
+      onChange={handleChange}
       className={className}
     >
       {options.map((option) => (

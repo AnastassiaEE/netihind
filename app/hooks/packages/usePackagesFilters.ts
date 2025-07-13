@@ -2,6 +2,7 @@ import { Filters } from '@/types/filters';
 import { useEffect, useState } from 'react';
 import usePackagesFilter from '@/hooks/packages/usePackagesFilter';
 import { getProviders, getTechnologies } from '@/lib/packagesDataFetch';
+import { getSelectedSortOption } from '@/utils/packagesHelper';
 
 export default function usePackagesFilters(
   oid: string,
@@ -40,6 +41,10 @@ export default function usePackagesFilters(
     providers: { type: 'checkbox', options: [], selected: [] },
     technologies: { type: 'checkbox', options: [], selected: [] },
   });
+
+  const [selectedSortOption, setSelectedSortOption] = useState(
+    getSelectedSortOption(searchParams['sort'] || ''),
+  );
 
   useEffect(() => {
     if (providerFilterData.options.length > 0) {
@@ -88,5 +93,7 @@ export default function usePackagesFilters(
     clearFilters,
     providerFilterSelectedValues,
     technologyFilterSelectedValues,
+    selectedSortOption,
+    setSelectedSortOption,
   };
 }

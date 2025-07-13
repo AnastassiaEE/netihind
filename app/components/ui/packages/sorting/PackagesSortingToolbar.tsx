@@ -11,6 +11,7 @@ import PackagesFilters from '@/components/ui/packages/filters/PackagesFilters';
 
 export default function PackagesSortingToolbar({
   sortOptions,
+  setSelectedSortOption,
   filters,
   setFilters,
   clearFilters,
@@ -19,6 +20,7 @@ export default function PackagesSortingToolbar({
   className,
 }: {
   sortOptions: SortOptions;
+  setSelectedSortOption: React.Dispatch<React.SetStateAction<string>>;
   filters: Filters;
   setFilters: React.Dispatch<React.SetStateAction<Filters>>;
   clearFilters: () => void;
@@ -61,12 +63,13 @@ export default function PackagesSortingToolbar({
         {sortOptions && (
           <Sort
             name="packages"
-            variant="mobile"
+            variant="plain"
             openDirection="top"
             options={sortOptions.options}
-            selected={sortOptions.selected}
+            selectedOption={sortOptions.selected}
+            setSelectedOption={setSelectedSortOption}
             onUserChange={onUserChange}
-            className="min-w-[150px]"
+            className="min-w-[150px] uppercase"
           />
         )}
       </div>

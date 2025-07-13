@@ -10,7 +10,7 @@ export const SORT_OPTIONS = [
   'speed_desc',
 ];
 
-export const getSortSelectedOption = (sortParam: string) => {
+export const getSelectedSortOption = (sortParam: string) => {
   return SORT_OPTIONS.includes(sortParam) ? sortParam : 'default';
 };
 

@@ -1,11 +1,13 @@
+import { ComboBoxProps } from '@/types/formElemets';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 const openKeys = ['ArrowDown', 'ArrowUp', 'Enter', ' ', 'Home', 'End'];
 
-export default function useSelect() {
+export default function useSelect(name: string, label: string) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [focusedIndex, setFocusedIndex] = useState(0);
   const comboBoxRef = useRef<HTMLButtonElement>(null);
+  const listBoxId = `${name}-select-box`;
   const listBoxRef = useRef<HTMLDivElement>(null);
 
   const toggleSelect = () => setIsExpanded((prev) => !prev);
@@ -120,15 +122,23 @@ export default function useSelect() {
       }
     };
     document.addEventListener('click', handleClickOutsideSelect);
-    return () => document.removeEventListener('click', handleClickOutsideSelect);
+    return () =>
+      document.removeEventListener('click', handleClickOutsideSelect);
   }, []);
 
   return {
     isExpanded,
-    comboBoxRef,
+    listBoxId,
     listBoxRef,
-    toggleSelect,
     handleOptionSelect,
-    focusedIndex,
+    comboBoxProps: (): ComboBoxProps => ({
+      handleClick: toggleSelect,
+      ref: comboBoxRef,
+      role: 'combobox',
+      'aria-label': label,
+      'aria-expanded': isExpanded,
+      'aria-haspopup': 'listbox',
+      'aria-controls': listBoxId,
+    }),
   };
 }
