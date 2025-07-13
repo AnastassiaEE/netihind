@@ -69,7 +69,7 @@ export default function PackagesSortingToolbar({
             selectedOption={sortOptions.selected}
             setSelectedOption={setSelectedSortOption}
             onUserChange={onUserChange}
-            className="min-w-[150px]"
+            className="min-w-[150px] uppercase"
           />
         )}
       </div>

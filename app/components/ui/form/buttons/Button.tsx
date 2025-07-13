@@ -1,6 +1,7 @@
 import React from 'react';
 import { tv, VariantProps } from 'tailwind-variants';
 import { FormElementSizes as sizes } from '@/styles/styles';
+import { ButtonVariant } from '@/types/formElemets';
 
 const buttonClasses = tv({
   base: 'rounded-md border font-semibold shadow-md transition-all',
@@ -26,7 +27,6 @@ const buttonClasses = tv({
   },
 });
 
-type ButtonVariant = VariantProps<typeof buttonClasses>['variant'];
 type ButtonSize = VariantProps<typeof buttonClasses>['size'];
 
 interface ButtonProps {

@@ -3,11 +3,10 @@ import { SvgIconComponent } from '@mui/icons-material';
 import Button from '@/components/ui/form/buttons/Button';
 import classNames from 'classnames';
 
-interface IconButtonProps
-  extends Omit<React.ComponentProps<typeof Button>, 'children'> {
+type IconButtonProps = Omit<React.ComponentProps<typeof Button>, 'children'> & {
   Icon: SvgIconComponent;
   children: React.ReactNode;
-}
+};
 
 const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
   (
@@ -33,7 +32,10 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
         size={size}
         disabled={disabled}
         name={name}
-        className={classNames('flex items-center gap-2', className)}
+        className={classNames(
+          'flex items-center justify-around gap-2',
+          className,
+        )}
         handleClick={handleClick}
         {...props}
       >

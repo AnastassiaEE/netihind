@@ -129,15 +129,13 @@ export default function PackageRequestForm({
         />
       </div>
       <div className="mb-6">
-        {/* <Select
+        <Select
+          variant="labeled"
           name="call-time"
-          label={t('labels.time', {
-            selected: t(`selectOptions.${values['call-time'] as string}`),
-          })}
+          label={t('labels.time')}
           selected={t(`selectOptions.${values['call-time'] as string}`)}
-          variant="text"
           openDirection="top"
-          handleChange={handleSelectChange}
+          onChange={handleSelectChange}
           className="!p-0"
         >
           {timeOptions.map((option) => (
@@ -149,7 +147,7 @@ export default function PackageRequestForm({
               {t(`selectOptions.${option}`)}
             </SelectOption>
           ))}
-        </Select> */}
+        </Select>
       </div>
       <div className="mb-6">
         <Checkbox

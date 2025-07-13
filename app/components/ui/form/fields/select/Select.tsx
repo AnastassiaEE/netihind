@@ -1,34 +1,35 @@
 import React from 'react';
 import classNames from 'classnames';
 import Arrow from '@/components/ui/icons/Arrow';
+import Button from '@/components/ui/form/buttons/Button';
+import IconButton from '@/components/ui/form/buttons/IconButton';
 import { SvgIconComponent } from '@mui/icons-material';
 import { FormElementSizes as sizes } from '@/styles/styles';
 import useSelect from '@/hooks/useSelect';
+import { ButtonVariant, SelectVariant } from '@/types/formElemets';
 
 export default function Select({
+  variant = 'labeled',
+  size = 'sm',
   name,
   translatedName,
   label,
   selected,
   Icon,
-  hasArrow = true,
-  displaySelected = true,
   openDirection = 'bottom',
-  handleChange,
-  comboBoxElement,
+  onChange,
   className,
   children,
 }: {
+  variant?: SelectVariant;
+  size?: keyof typeof sizes;
   name: string;
   translatedName?: string;
   label: string;
   selected: string;
   Icon?: SvgIconComponent;
-  hasArrow?: boolean;
-  displaySelected?: boolean;
   openDirection?: 'top' | 'bottom';
-  handleChange: (name: string, value: string) => void;
-  comboBoxElement: (comboBoxProps: any) => JSX.Element;
+  onChange: (name: string, value: string) => void;
   className?: string;
   children: React.ReactNode;
 }) {
@@ -40,6 +41,8 @@ export default function Select({
     comboBoxProps,
   } = useSelect(name, label);
 
+  const comboBoxClasses = classNames(sizes[size], className);
+
   const listBoxClasses = classNames(
     'border-grey-300 absolute right-0 z-[1] w-full min-w-max rounded-md bg-white drop-shadow-md',
     openDirection === 'top' && 'bottom-full',
@@ -49,22 +52,39 @@ export default function Select({
   const ArrowIcon = () => (
     <Arrow direction={isExpanded ? 'up' : 'down'} className="align-bottom" />
   );
-  const comboBoxContent = displaySelected ? selected : (translatedName ?? name);
+
+  const renderComboBox = (
+    variant: ButtonVariant,
+    hasArrow = true,
+    content: string,
+    Icon?: SvgIconComponent,
+  ) =>
+    Icon ? (
+      <IconButton
+        variant={variant}
+        Icon={Icon}
+        {...comboBoxProps()}
+        className={comboBoxClasses}
+      >
+        {content}
+        {hasArrow && <ArrowIcon />}
+      </IconButton>
+    ) : (
+      <Button
+        variant={variant}
+        {...comboBoxProps()}
+        className={comboBoxClasses}
+      >
+        {content}
+        {hasArrow && <ArrowIcon />}
+      </Button>
+    );
 
   return (
     <div className="relative">
-      {/* {{Icon ? (
-        <IconButton Icon={Icon} {...comboBoxProps}>
-          {comboBoxContent}
-          {hasArrow && <ArrowIcon />}
-        </IconButton>
-      ) : (
-        <Button {...comboBoxProps}>
-          {comboBoxContent}
-          {hasArrow && <ArrowIcon />}
-        </Button>
-      )}} */}
-      {comboBoxElement(comboBoxProps())}
+      {variant === 'plain' &&
+        renderComboBox('outlined', false, translatedName ?? name)}
+      {variant === 'labeled' && renderComboBox('text', true, selected, Icon)}
       <div
         id={listBoxId}
         role="listbox"
@@ -76,12 +96,12 @@ export default function Select({
             if (
               React.isValidElement<{
                 value: string;
-                handleSelect?: (value: string) => void;
+                onSelect?: (value: string) => void;
               }>(child)
             ) {
               return React.cloneElement(child, {
-                handleSelect: (value: string) =>
-                  handleOptionSelect(name, value, handleChange),
+                onSelect: (value: string) =>
+                  handleOptionSelect(name, value, onChange),
               });
             }
             return child;

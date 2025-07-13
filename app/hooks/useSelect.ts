@@ -1,8 +1,9 @@
+import { ComboBoxProps } from '@/types/formElemets';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 const openKeys = ['ArrowDown', 'ArrowUp', 'Enter', ' ', 'Home', 'End'];
 
-export default function useSelect(label: string, name: string) {
+export default function useSelect(name: string, label: string) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [focusedIndex, setFocusedIndex] = useState(0);
   const comboBoxRef = useRef<HTMLButtonElement>(null);
@@ -130,8 +131,7 @@ export default function useSelect(label: string, name: string) {
     listBoxId,
     listBoxRef,
     handleOptionSelect,
-    focusedIndex,
-    comboBoxProps: () => ({
+    comboBoxProps: (): ComboBoxProps => ({
       handleClick: toggleSelect,
       ref: comboBoxRef,
       role: 'combobox',
