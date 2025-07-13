@@ -83,7 +83,7 @@ export default function Select({
   return (
     <div className="relative">
       {variant === 'plain' &&
-        renderComboBox('outlined', false, translatedName ?? name)}
+        renderComboBox('outlined', false, translatedName ?? name, Icon)}
       {variant === 'labeled' && renderComboBox('text', true, selected, Icon)}
       <div
         id={listBoxId}

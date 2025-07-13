@@ -33,7 +33,7 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
         disabled={disabled}
         name={name}
         className={classNames(
-          'flex items-center justify-around gap-2',
+          'flex items-center justify-center gap-2',
           className,
         )}
         handleClick={handleClick}
