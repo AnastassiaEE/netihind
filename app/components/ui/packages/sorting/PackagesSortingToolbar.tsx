@@ -79,7 +79,7 @@ export default function PackagesSortingToolbar({
           title={t('filters')}
           actions={panelActions}
           isOpened={isPanelOpened}
-          handleClose={closePanel}
+          onClose={closePanel}
           panelRef={panelRef}
         >
           <PackagesFilters

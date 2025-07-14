@@ -28,7 +28,7 @@ export default function SidebarMenu() {
       title={t('menu')}
       isOpened={isSidebarMenuOpened}
       sidebarRef={sidebarMenuRef}
-      handleClose={closeSidebarMenu}
+      onClose={closeSidebarMenu}
     >
       <div className="p-6" onClick={handleNavigationLinkClick}>
         <Navigation type="vertical">

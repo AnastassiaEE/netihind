@@ -1,5 +1,6 @@
 // type
 export type NavigationType = 'horizontal' | 'vertical';
+export type DialogType = 'modal' | 'non-modal';
 
 // variant
 export type HeaderVariant = 'primary' | 'secondary';

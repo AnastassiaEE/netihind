@@ -80,7 +80,7 @@ export default function Packages({
         title={t(`action.${selectedAction}.title`)}
         description={t(`action.${selectedAction}.description`)}
         isOpened={isModalOpened}
-        handleClose={closeModal}
+        onClose={closeModal}
         dialogRef={modalRef}
         className="bg-primary-light"
       >

@@ -12,7 +12,7 @@ export default function SlideUpPanel({
   title,
   actions,
   isOpened,
-  handleClose,
+  onClose,
   panelRef,
   children,
 }: {
@@ -20,11 +20,11 @@ export default function SlideUpPanel({
   title: string;
   actions?: React.ReactNode;
   isOpened: boolean;
-  handleClose: () => void;
+  onClose: () => void;
   panelRef?: React.RefObject<HTMLDivElement>;
   children: React.ReactNode;
 }) {
-  const { handleTouchStart, handleTouchEnd } = useSlideUpPanel(handleClose);
+  const { handleTouchStart, handleTouchEnd } = useSlideUpPanel(onClose);
   const t = useTranslations('Buttons');
 
   const panelClasses = classNames(
@@ -34,7 +34,7 @@ export default function SlideUpPanel({
 
   return (
     <>
-      <Backdrop isVisible={isOpened} handleClose={handleClose} />
+      <Backdrop isVisible={isOpened} onClose={onClose} />
       <div
         role="dialog"
         aria-modal="true"
@@ -53,7 +53,7 @@ export default function SlideUpPanel({
           </p>
           <CloseButton
             label={t(`${name}.close`)}
-            handleClick={handleClose}
+            onClick={onClose}
             className="absolute right-6 top-1/2 -translate-y-1/2"
           />
         </div>
