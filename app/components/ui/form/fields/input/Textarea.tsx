@@ -1,7 +1,8 @@
 import FieldError from '@/components/ui/form/fields/FieldError';
 import FieldLabel from '@/components/ui/form/fields/FieldLabel';
 import { FormElementSizes as sizes } from '@/components/ui/form/config';
-import { tv, VariantProps } from 'tailwind-variants';
+import { tv } from 'tailwind-variants';
+import { TextareaSize } from '@/types/formElemets';
 
 const textAreaClasses = tv({
   base: 'w-full rounded-md border bg-white text-muted-dark placeholder:text-muted focus:shadow-lg focus:shadow-indigo-500/10 focus:outline-none',
@@ -18,15 +19,13 @@ const textAreaClasses = tv({
   },
 });
 
-type TextareaSize = VariantProps<typeof textAreaClasses>['size'];
-
 export default function Textarea({
   size = 'sm',
   name,
   label,
   placeholder,
-  handleChange,
-  handleBlur,
+  onChange,
+  onBlur,
   value,
   isValid = true,
   error,
@@ -37,8 +36,8 @@ export default function Textarea({
   name: string;
   label?: string;
   placeholder?: string;
-  handleChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
-  handleBlur?: React.FocusEventHandler<HTMLTextAreaElement>;
+  onChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
+  onBlur?: React.FocusEventHandler<HTMLTextAreaElement>;
   value?: string;
   isValid?: boolean;
   error?: string;
@@ -56,8 +55,8 @@ export default function Textarea({
         id={name}
         className={textAreaClasses({ size, isValid, className })}
         placeholder={placeholder}
-        onChange={handleChange}
-        onBlur={handleBlur}
+        onChange={onChange}
+        onBlur={onBlur}
         value={value}
         aria-invalid={!isValid}
         aria-required={required}

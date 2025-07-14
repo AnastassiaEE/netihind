@@ -122,8 +122,8 @@ export default function PackageRequestForm({
         <Textarea
           name="message"
           label={t('labels.message')}
-          handleChange={(e) => handleChange(e, 'message')}
-          handleBlur={(e) => handleBlur(e, 'message')}
+          onChange={(e) => handleChange(e, 'message')}
+          onBlur={(e) => handleBlur(e, 'message')}
           value={values.message as string}
           required={fields['message'].isRequired}
         />
