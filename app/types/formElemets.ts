@@ -15,6 +15,8 @@ export type InputSize = 'sm' | 'lg';
 export type TextareaSize = 'sm' | 'lg';
 export type SelectOptionSize = 'sm' | 'lg';
 export type ToggleSwitchSize = 'sm' | 'md' | 'lg';
+export type FieldErrorSize = 'sm' | 'lg';
+export type FieldLabelSize = 'sm' | 'lg';
 
 // props type
 export type ComboBoxProps = {

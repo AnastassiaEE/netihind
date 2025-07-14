@@ -1,4 +1,5 @@
-import { tv, VariantProps } from 'tailwind-variants';
+import { FieldLabelSize } from '@/types/formElemets';
+import { tv } from 'tailwind-variants';
 
 const labelClasses = tv({
   base: 'block font-semibold',
@@ -13,15 +14,13 @@ const labelClasses = tv({
   },
 });
 
-type FieldLableSize = VariantProps<typeof labelClasses>['size'];
-
 export default function FieldLabel({
   htmlFor,
   size = 'sm',
   children,
 }: {
   htmlFor: string;
-  size?: FieldLableSize;
+  size?: FieldLabelSize;
   children: React.ReactNode;
 }) {
   return (
