@@ -7,9 +7,9 @@ export default function TabPanel({
   className,
   children,
 }: {
-  tabId: string;
-  id: string;
-  isActive: boolean;
+  tabId?: string;
+  id?: string;
+  isActive?: boolean;
   className?: string;
   children: React.ReactNode;
 }) {

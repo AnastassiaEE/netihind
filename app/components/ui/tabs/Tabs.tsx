@@ -38,9 +38,9 @@ export default function Tabs({
       {React.Children.map(children, (child, index) => {
         if (
           React.isValidElement<{
-            tabId: string;
-            id: string;
-            isActive: boolean;
+            tabId?: string;
+            id?: string;
+            isActive?: boolean;
           }>(child)
         ) {
           return React.cloneElement(child, {
