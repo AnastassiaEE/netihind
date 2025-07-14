@@ -68,7 +68,7 @@ export default function Packages({
               key={data.internet_package_id}
               data={data}
               className="mb-5 last:mb-0"
-              handleActionClick={(action) =>
+              onActionClick={(action) =>
                 handleActionClick(data, action, openModal)
               }
             />

@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { validateField } from '@/utils/fieldsValidator';
+import { FormType } from '@/types/elements.types';
 
 const responses = {
   success: { message: 'messages.sentSuccessfully' },
@@ -10,13 +11,18 @@ export default function useForm(
   fields: {
     [key: string]: { initialValue: string | boolean; isRequired: boolean };
   },
-  type: 'contact' | 'connection' | 'consultation',
+  type: FormType,
   additionalData?: { [key: string]: any },
 ) {
   const initialValues = Object.fromEntries(
-    Object.entries(fields).map(([field, { initialValue }]) => [field, initialValue]),
+    Object.entries(fields).map(([field, { initialValue }]) => [
+      field,
+      initialValue,
+    ]),
   );
-  const initialErrors = Object.fromEntries(Object.keys(fields).map((field) => [field, '']));
+  const initialErrors = Object.fromEntries(
+    Object.keys(fields).map((field) => [field, '']),
+  );
   const initialBluredFields = Object.fromEntries(
     Object.keys(fields).map((field) => [field, false]),
   );
@@ -26,7 +32,10 @@ export default function useForm(
   const bluredFields = useRef(initialBluredFields);
 
   const [isSending, setIsSending] = useState(false);
-  const [response, setResponse] = useState<{ type: string; message: string } | null>(null);
+  const [response, setResponse] = useState<{
+    type: string;
+    message: string;
+  } | null>(null);
 
   const resetValues = () => {
     setValues(initialValues);
@@ -37,7 +46,9 @@ export default function useForm(
     field: string,
   ) => {
     const value =
-      e.target.type === 'checkbox' ? (e.target as HTMLInputElement).checked : e.target.value;
+      e.target.type === 'checkbox'
+        ? (e.target as HTMLInputElement).checked
+        : e.target.value;
     setValues((prev) => ({ ...prev, [field]: value }));
 
     if (bluredFields.current[field]) {
@@ -54,8 +65,15 @@ export default function useForm(
     e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
     field: string,
   ) => {
-    if (bluredFields.current[field] === false && (values[field] as string).length > 0) {
-      const error = validateField(field, e.target.value, fields[field].isRequired);
+    if (
+      bluredFields.current[field] === false &&
+      (values[field] as string).length > 0
+    ) {
+      const error = validateField(
+        field,
+        e.target.value,
+        fields[field].isRequired,
+      );
       setErrors((prevState) => ({ ...prevState, [field]: error }));
       bluredFields.current[field] = true;
     }

@@ -11,13 +11,14 @@ import SelectOption from '@/components/ui/form/fields/select/SelectOption';
 import useForm from '@/hooks/useForm';
 import { useTranslations } from 'next-intl';
 import { Loop, Add } from '@mui/icons-material';
+import { PackageActionType } from '@/types/elements.types';
 
 export default function PackageRequestForm({
   type = 'connection',
   address,
   packageData,
 }: {
-  type?: 'connection' | 'consultation';
+  type?: PackageActionType;
   address: string;
   packageData: { [key: string]: string } | null;
 }) {

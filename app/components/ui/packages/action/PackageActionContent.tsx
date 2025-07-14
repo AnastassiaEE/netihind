@@ -3,13 +3,14 @@ import PackageActionSection from '@/components/ui/packages/action/PackageActionS
 import HomeIcon from '@mui/icons-material/Home';
 import PackageRequestForm from '@/components/ui/form/forms/PackageRequestForm';
 import { useTranslations } from 'next-intl';
+import { PackageActionType } from '@/types/elements.types';
 
 export default function PackageActionContent({
   action,
   data,
   address,
 }: {
-  action: 'connection' | 'consultation';
+  action: PackageActionType;
   data: { [key: string]: any } | null;
   address: string;
 }) {

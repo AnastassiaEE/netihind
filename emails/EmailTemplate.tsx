@@ -1,3 +1,4 @@
+import { FormType } from '@/types/elements.types';
 import {
   Body,
   Container,
@@ -26,7 +27,7 @@ const labels: { [key: string]: string } = {
 };
 
 export default function EmailTemplate(
-  type: 'contact' | 'connection' | 'consultation',
+  type: FormType,
   values: { [key: string]: string },
 ) {
   return (

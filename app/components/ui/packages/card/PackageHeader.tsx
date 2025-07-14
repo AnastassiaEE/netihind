@@ -1,31 +1,30 @@
-import classNames from 'classnames';
 import Image from 'next/image';
 
 export default function PackageHeader({
-  logo_url,
-  provider,
-  name,
+  providerLogoSrc,
+  providerName,
+  packageName,
   className,
 }: {
-  logo_url: string;
-  provider: string;
-  name: string;
+  providerLogoSrc: string;
+  providerName: string;
+  packageName: string;
   className?: string;
 }) {
   return (
     <div className={className}>
-      {logo_url && (
+      {providerLogoSrc && (
         <div className="mb-1">
           <Image
-            src={logo_url}
-            alt={`Logo of ${provider} internet package`}
+            src={providerLogoSrc}
+            alt={`Logo of ${providerName} internet package`}
             width={56}
             height={32}
           />
         </div>
       )}
-      <span className="mb-1 text-xs text-muted">{provider}</span>
-      <p className="text-sm font-medium">{name}</p>
+      <span className="mb-1 text-xs text-muted">{providerName}</span>
+      <p className="text-sm font-medium">{packageName}</p>
     </div>
   );
 }
