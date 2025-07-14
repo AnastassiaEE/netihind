@@ -1,5 +1,6 @@
+import { ArrowIconDirection } from '@/types/elements.types';
 import { ChevronLeft } from '@mui/icons-material';
-import { tv, VariantProps } from 'tailwind-variants';
+import { tv } from 'tailwind-variants';
 
 const arrowClasses = tv({
   base: 'transition-transform duration-300',
@@ -16,13 +17,11 @@ const arrowClasses = tv({
   },
 });
 
-export type ArrowDirection = VariantProps<typeof arrowClasses>['direction'];
-
 export default function Arrow({
   direction = 'left',
   className,
 }: {
-  direction?: ArrowDirection;
+  direction?: ArrowIconDirection;
   className?: string;
 }) {
   return (
