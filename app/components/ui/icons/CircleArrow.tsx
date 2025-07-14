@@ -1,11 +1,12 @@
-import Arrow, { ArrowDirection } from '@/components/ui/icons/Arrow';
+import Arrow from '@/components/ui/icons/Arrow';
+import { ArrowIconDirection } from '@/types/elements.types';
 import classNames from 'classnames';
 
 export default function CircleArrow({
   direction = 'left',
   className,
 }: {
-  direction?: ArrowDirection;
+  direction?: ArrowIconDirection;
   className?: string;
 }) {
   return (
