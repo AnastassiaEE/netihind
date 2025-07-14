@@ -11,6 +11,7 @@ export type SelectVariant = 'plain' | 'labeled';
 export type ButtonSize = 'sm' | 'lg';
 export type SelectSize = 'sm' | 'lg';
 export type CheckboxSize = 'sm' | 'lg';
+export type InputSize = 'sm' | 'lg';
 
 // props type
 export type ComboBoxProps = {

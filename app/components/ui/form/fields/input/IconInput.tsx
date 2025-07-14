@@ -7,7 +7,7 @@ interface IconInputProps
   icon: {
     Icon: SvgIconComponent;
     isVisible: boolean;
-    handleClick?: React.MouseEventHandler;
+    onClick?: React.MouseEventHandler<HTMLButtonElement>;
   };
 }
 
@@ -18,14 +18,14 @@ export default function IconInput({
   inputmode = 'text',
   label,
   placeholder,
-  handleChange,
-  handleFocus,
-  handleBlur,
+  onChange,
+  onFocus,
+  onBlur,
   value,
   isValid,
   error,
   required,
-  icon: { Icon, isVisible, handleClick },
+  icon: { Icon, isVisible, onClick },
 }: IconInputProps) {
   const inputClasses = classNames({
     'pl-10': isVisible && size === 'sm',
@@ -45,9 +45,9 @@ export default function IconInput({
       inputmode={inputmode}
       label={label}
       placeholder={placeholder}
-      handleChange={handleChange}
-      handleFocus={handleFocus}
-      handleBlur={handleBlur}
+      onChange={onChange}
+      onFocus={onFocus}
+      onBlur={onBlur}
       value={value}
       isValid={isValid}
       error={error}
@@ -55,8 +55,8 @@ export default function IconInput({
       className={inputClasses}
     >
       <div className={iconWrapperClasses}>
-        {handleClick ? (
-          <button type="button" onClick={handleClick}>
+        {onClick ? (
+          <button type="button" onClick={onClick}>
             <Icon
               fontSize={size === 'lg' ? 'medium' : 'small'}
               className="text-muted"

@@ -1,7 +1,8 @@
 import FieldError from '@/components/ui/form/fields/FieldError';
 import FieldLabel from '@/components/ui/form/fields/FieldLabel';
-import { tv, VariantProps } from 'tailwind-variants';
+import { tv } from 'tailwind-variants';
 import { FormElementSizes as sizes } from '@/components/ui/form/config';
+import { InputSize } from '@/types/formElemets';
 
 const inputClasses = tv({
   base: 'w-full rounded-md border bg-white text-muted-dark transition-[padding] placeholder:text-muted focus:outline-none',
@@ -18,8 +19,6 @@ const inputClasses = tv({
   },
 });
 
-type InputSize = VariantProps<typeof inputClasses>['size'];
-
 export default function Input({
   size = 'sm',
   name,
@@ -27,9 +26,9 @@ export default function Input({
   inputmode = 'text',
   label,
   placeholder,
-  handleChange,
-  handleFocus,
-  handleBlur,
+  onChange,
+  onFocus,
+  onBlur,
   value,
   isValid = true,
   error,
@@ -60,9 +59,9 @@ export default function Input({
     | 'none';
   label?: string;
   placeholder?: string;
-  handleChange?: React.ChangeEventHandler<HTMLInputElement>;
-  handleFocus?: React.FocusEventHandler<HTMLInputElement>;
-  handleBlur?: React.FocusEventHandler<HTMLInputElement>;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onFocus?: React.FocusEventHandler<HTMLInputElement>;
+  onBlur?: React.FocusEventHandler<HTMLInputElement>;
   value?: string;
   isValid?: boolean;
   error?: string;
@@ -86,9 +85,9 @@ export default function Input({
           inputMode={inputmode}
           className={inputClasses({ size, isValid, className })}
           placeholder={placeholder}
-          onChange={handleChange}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
+          onChange={onChange}
+          onFocus={onFocus}
+          onBlur={onBlur}
           value={value}
           autoComplete={name}
           aria-invalid={!isValid}

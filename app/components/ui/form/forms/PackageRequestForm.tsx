@@ -81,8 +81,8 @@ export default function PackageRequestForm({
         <Input
           name="name"
           label={t('labels.name')}
-          handleChange={(e) => handleChange(e, 'name')}
-          handleBlur={(e) => handleBlur(e, 'name')}
+          onChange={(e) => handleChange(e, 'name')}
+          onBlur={(e) => handleBlur(e, 'name')}
           value={values.name as string}
           isValid={!errors.name}
           error={errors.name ? t(errors.name) : ''}
@@ -95,8 +95,8 @@ export default function PackageRequestForm({
           type="email"
           inputmode="email"
           label={t('labels.email')}
-          handleChange={(e) => handleChange(e, 'email')}
-          handleBlur={(e) => handleBlur(e, 'email')}
+          onChange={(e) => handleChange(e, 'email')}
+          onBlur={(e) => handleBlur(e, 'email')}
           value={values.email as string}
           isValid={!errors.email}
           error={errors.email ? t(errors.email) : ''}
@@ -109,8 +109,8 @@ export default function PackageRequestForm({
           type="tel"
           inputmode="tel"
           label={t('labels.phone')}
-          handleChange={(e) => handleChange(e, 'phone')}
-          handleBlur={(e) => handleBlur(e, 'phone')}
+          onChange={(e) => handleChange(e, 'phone')}
+          onBlur={(e) => handleBlur(e, 'phone')}
           value={values.phone as string}
           isValid={!errors.phone}
           error={errors.phone ? t(errors.phone) : ''}
