@@ -2,14 +2,14 @@ import classNames from 'classnames';
 
 export default function TabPanel({
   tabId,
-  tabPanelId,
+  id,
   isActive,
   className,
   children,
 }: {
-  tabId?: string;
-  tabPanelId?: string;
-  isActive?: boolean;
+  tabId: string;
+  id: string;
+  isActive: boolean;
   className?: string;
   children: React.ReactNode;
 }) {
@@ -20,7 +20,7 @@ export default function TabPanel({
   );
   return (
     <div
-      id={tabPanelId}
+      id={id}
       role="tabpanel"
       aria-labelledby={tabId}
       className={tabPanelClasses}
