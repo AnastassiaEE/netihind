@@ -1,6 +1,6 @@
 import FieldError from '@/components/ui/form/fields/FieldError';
 import FieldLabel from '@/components/ui/form/fields/FieldLabel';
-import { FormElementSizes as sizes } from '@/styles/styles';
+import { FormElementSizes as sizes } from '@/components/ui/form/config';
 import { tv, VariantProps } from 'tailwind-variants';
 
 const textAreaClasses = tv({

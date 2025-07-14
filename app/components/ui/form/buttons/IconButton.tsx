@@ -17,7 +17,7 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
       disabled = false,
       name,
       Icon,
-      handleClick,
+      onClick,
       className,
       children,
       ...props
@@ -36,7 +36,7 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
           'flex items-center justify-center gap-2',
           className,
         )}
-        handleClick={handleClick}
+        onClick={onClick}
         {...props}
       >
         <Icon fontSize={size === 'lg' ? 'medium' : 'small'} />

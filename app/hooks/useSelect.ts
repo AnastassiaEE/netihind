@@ -132,7 +132,7 @@ export default function useSelect(name: string, label: string) {
     listBoxRef,
     handleOptionSelect,
     comboBoxProps: (): ComboBoxProps => ({
-      handleClick: toggleSelect,
+      onClick: toggleSelect,
       ref: comboBoxRef,
       role: 'combobox',
       'aria-label': label,

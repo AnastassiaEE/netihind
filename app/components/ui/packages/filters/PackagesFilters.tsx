@@ -33,7 +33,7 @@ export default function PackagesFilters({
       {type === 'desktop' && (
         <div className="mb-4 flex flex-wrap justify-between">
           <p className="text-xl font-extrabold text-black">{t('filters')}</p>
-          <Button variant="text" className="!p-0" handleClick={clearFilters}>
+          <Button variant="text" className="!p-0" onClick={clearFilters}>
             {t('clear')}
           </Button>
         </div>

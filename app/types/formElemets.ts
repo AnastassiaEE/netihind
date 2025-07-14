@@ -1,10 +1,19 @@
 import { RefObject } from 'react';
 
-export type SelectVariant = 'plain' | 'labeled';
-export type ButtonVariant = 'contained' | 'outlined' | 'neutral' | 'text';
+// type
+export type ButtonType = 'button' | 'submit' | 'reset';
 
+// variant
+export type ButtonVariant = 'contained' | 'outlined' | 'neutral' | 'text';
+export type SelectVariant = 'plain' | 'labeled';
+
+// size
+export type ButtonSize = 'sm' | 'lg';
+export type SelectSize = 'sm' | 'lg';
+
+// props type
 export type ComboBoxProps = {
-  handleClick: () => void;
+  onClick: () => void;
   ref: RefObject<HTMLButtonElement>;
   role: 'combobox';
   'aria-label': string;

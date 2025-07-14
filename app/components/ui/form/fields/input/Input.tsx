@@ -1,7 +1,7 @@
 import FieldError from '@/components/ui/form/fields/FieldError';
 import FieldLabel from '@/components/ui/form/fields/FieldLabel';
 import { tv, VariantProps } from 'tailwind-variants';
-import { FormElementSizes as sizes } from '@/styles/styles';
+import { FormElementSizes as sizes } from '@/components/ui/form/config';
 
 const inputClasses = tv({
   base: 'w-full rounded-md border bg-white text-muted-dark transition-[padding] placeholder:text-muted focus:outline-none',

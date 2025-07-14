@@ -1,7 +1,7 @@
 'use client';
 
 import classNames from 'classnames';
-import { FormElementSizes as sizes } from '@/styles/styles';
+import { FormElementSizes as sizes } from '@/components/ui/form/config';
 import { KeyboardEvent as ReactKeyboardEvent } from 'react';
 
 export default function SelectOption({

@@ -11,14 +11,14 @@ export default function PackageActions({
     <div className="flex">
       <Button
         className="w-full rounded-t-none rounded-br-none"
-        handleClick={() => handleActionClick('connection')}
+        onClick={() => handleActionClick('connection')}
       >
         {t('buttons.connect')}
       </Button>
       <Button
         variant="outlined"
         className="w-full rounded-t-none rounded-bl-none"
-        handleClick={() => handleActionClick('consultation')}
+        onClick={() => handleActionClick('consultation')}
       >
         {t('buttons.consultation')}
       </Button>

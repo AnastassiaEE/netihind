@@ -38,7 +38,7 @@ export default function PackagesSortingToolbar({
   } = useOverlay();
 
   const panelActions = (
-    <Button handleClick={clearFilters} className="w-full">
+    <Button onClick={clearFilters} className="w-full">
       {t('clear').toUpperCase()}
     </Button>
   );
@@ -53,7 +53,7 @@ export default function PackagesSortingToolbar({
       >
         {filters && (
           <Button
-            handleClick={openPanel}
+            onClick={openPanel}
             variant="outlined"
             className="min-w-[150px]"
           >

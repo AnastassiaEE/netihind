@@ -1,7 +1,7 @@
 import React from 'react';
-import { tv, VariantProps } from 'tailwind-variants';
-import { FormElementSizes as sizes } from '@/styles/styles';
-import { ButtonVariant } from '@/types/formElemets';
+import { tv } from 'tailwind-variants';
+import { FormElementSizes as sizes } from '@/components/ui/form/config';
+import { ButtonSize, ButtonType, ButtonVariant } from '@/types/formElemets';
 
 const buttonClasses = tv({
   base: 'rounded-md border font-semibold shadow-md transition-all',
@@ -27,15 +27,13 @@ const buttonClasses = tv({
   },
 });
 
-type ButtonSize = VariantProps<typeof buttonClasses>['size'];
-
 interface ButtonProps {
-  type?: 'button' | 'submit' | 'reset';
+  type?: ButtonType;
   variant?: ButtonVariant;
   size?: ButtonSize;
   disabled?: boolean;
   name?: string;
-  handleClick?: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
   children: React.ReactNode;
   [key: string]: any;
@@ -49,7 +47,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       size = 'sm',
       disabled = false,
       name,
-      handleClick,
+      onClick,
       className,
       children,
       ...props
@@ -61,7 +59,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         type={type}
         name={name}
-        onClick={handleClick}
+        onClick={onClick}
         className={buttonClasses({ variant, size, disabled, className })}
         disabled={disabled}
         {...props}

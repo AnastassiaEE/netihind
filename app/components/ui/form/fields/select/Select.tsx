@@ -4,9 +4,9 @@ import Arrow from '@/components/ui/icons/Arrow';
 import Button from '@/components/ui/form/buttons/Button';
 import IconButton from '@/components/ui/form/buttons/IconButton';
 import { SvgIconComponent } from '@mui/icons-material';
-import { FormElementSizes as sizes } from '@/styles/styles';
 import useSelect from '@/hooks/useSelect';
-import { ButtonVariant, SelectVariant } from '@/types/formElemets';
+import { ButtonVariant, SelectSize, SelectVariant } from '@/types/formElemets';
+import { FormElementSizes as sizes } from '@/components/ui/form/config';
 
 export default function Select({
   variant = 'labeled',
@@ -22,7 +22,7 @@ export default function Select({
   children,
 }: {
   variant?: SelectVariant;
-  size?: keyof typeof sizes;
+  size?: SelectSize;
   name: string;
   translatedName?: string;
   label: string;
