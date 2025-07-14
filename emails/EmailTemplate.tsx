@@ -1,4 +1,4 @@
-import { FormType } from '@/types/elements.types';
+import { FormType } from '@/types/form.types';
 import {
   Body,
   Container,

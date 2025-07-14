@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { validateField } from '@/utils/fieldsValidator';
-import { FormType } from '@/types/elements.types';
+import { FormType } from '@/types/form.types';
 
 const responses = {
   success: { message: 'messages.sentSuccessfully' },
