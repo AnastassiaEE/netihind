@@ -1,7 +1,7 @@
 import React from 'react';
 import { tv } from 'tailwind-variants';
 import { FormElementSizes as sizes } from '@/components/ui/form/config';
-import { ButtonSize, ButtonType, ButtonVariant } from '@/types/formElemets';
+import { ButtonSize, ButtonType, ButtonVariant } from '@/types/form.types';
 
 const buttonClasses = tv({
   base: 'rounded-md border font-semibold shadow-md transition-all',

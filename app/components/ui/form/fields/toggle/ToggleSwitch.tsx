@@ -1,4 +1,4 @@
-import { ToggleSwitchSize } from '@/types/formElemets';
+import { ToggleSwitchSize } from '@/types/form.types';
 import { tv } from 'tailwind-variants';
 
 const toggleVariants = tv({

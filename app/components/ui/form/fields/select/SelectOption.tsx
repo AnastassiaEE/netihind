@@ -3,7 +3,7 @@
 import classNames from 'classnames';
 import { FormElementSizes as sizes } from '@/components/ui/form/config';
 import { KeyboardEvent as ReactKeyboardEvent } from 'react';
-import { SelectOptionSize } from '@/types/formElemets';
+import { SelectOptionSize } from '@/types/form.types';
 
 export default function SelectOption({
   value,

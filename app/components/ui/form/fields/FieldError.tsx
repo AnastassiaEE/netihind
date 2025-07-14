@@ -1,4 +1,4 @@
-import { FieldErrorSize } from '@/types/formElemets';
+import { FieldErrorSize } from '@/types/form.types';
 import { tv } from 'tailwind-variants';
 
 const errorClasses = tv({

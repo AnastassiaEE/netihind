@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import useSort from '@/hooks/useSort';
 import SelectOption from '@/components/ui/form/fields/select/SelectOption';
-import { SelectVariant } from '@/types/formElemets';
+import { SelectVariant } from '@/types/form.types';
 import SortIcon from '@mui/icons-material/Sort';
 import Select from '@/components/ui/form/fields/select/Select';
 

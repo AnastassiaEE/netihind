@@ -1,4 +1,4 @@
-import { FieldLabelSize } from '@/types/formElemets';
+import { FieldLabelSize } from '@/types/form.types';
 import { tv } from 'tailwind-variants';
 
 const labelClasses = tv({

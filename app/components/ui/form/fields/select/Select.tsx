@@ -5,7 +5,7 @@ import Button from '@/components/ui/form/buttons/Button';
 import IconButton from '@/components/ui/form/buttons/IconButton';
 import { SvgIconComponent } from '@mui/icons-material';
 import useSelect from '@/hooks/useSelect';
-import { ButtonVariant, SelectSize, SelectVariant } from '@/types/formElemets';
+import { ButtonVariant, SelectSize, SelectVariant } from '@/types/form.types';
 import { FormElementSizes as sizes } from '@/components/ui/form/config';
 
 export default function Select({

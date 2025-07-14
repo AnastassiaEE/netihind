@@ -1,4 +1,4 @@
-import { CheckboxSize } from '@/types/formElemets';
+import { CheckboxSize } from '@/types/form.types';
 import { tv } from 'tailwind-variants';
 
 export default function Checkbox({

@@ -1,4 +1,4 @@
-import { ComboBoxProps } from '@/types/formElemets';
+import { ComboBoxProps } from '@/types/form.types';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 const openKeys = ['ArrowDown', 'ArrowUp', 'Enter', ' ', 'Home', 'End'];

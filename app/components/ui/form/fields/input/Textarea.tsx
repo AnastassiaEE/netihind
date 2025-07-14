@@ -2,7 +2,7 @@ import FieldError from '@/components/ui/form/fields/FieldError';
 import FieldLabel from '@/components/ui/form/fields/FieldLabel';
 import { FormElementSizes as sizes } from '@/components/ui/form/config';
 import { tv } from 'tailwind-variants';
-import { TextareaSize } from '@/types/formElemets';
+import { TextareaSize } from '@/types/form.types';
 
 const textAreaClasses = tv({
   base: 'w-full rounded-md border bg-white text-muted-dark placeholder:text-muted focus:shadow-lg focus:shadow-indigo-500/10 focus:outline-none',
