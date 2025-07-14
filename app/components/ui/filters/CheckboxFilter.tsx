@@ -1,5 +1,5 @@
 import useCheckboxFilter from '@/hooks/useCheckboxFilter';
-import { Filter, Filters } from '@/types/filters';
+import { Filter, Filters } from '@/types/filters.types';
 import Checkbox from '@/components/ui/form/fields/checkbox/Checkbox';
 import { CheckboxSize } from '@/types/form.types';
 

@@ -1,4 +1,4 @@
-import { Filters } from '@/types/filters';
+import { Filters } from '@/types/filters.types';
 import { useCallback } from 'react';
 
 export default function useCheckboxFilter(

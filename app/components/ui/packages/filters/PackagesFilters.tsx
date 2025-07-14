@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import React from 'react';
 import Button from '@/components/ui/form/buttons/Button';
-import { Filters } from '@/types/filters';
+import { Filters } from '@/types/filters.types';
 import PackagesFilterAccordion from '@/components/ui/packages/filters/PackagesFilterAccordion';
 import CheckboxFilter from '@/components/ui/filters/CheckboxFilter';
 import useFiltersUrlSync from '@/hooks/useFiltersUrlSync';

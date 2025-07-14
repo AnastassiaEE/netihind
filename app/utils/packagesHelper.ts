@@ -1,4 +1,4 @@
-import { FilterType } from '@/types/filters';
+import { FilterType } from '@/types/filters.types';
 
 const DEFAULT_SERVICE = 'all';
 

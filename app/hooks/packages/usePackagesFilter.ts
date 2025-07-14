@@ -1,7 +1,7 @@
 import { getFilterData } from '@/utils/packagesHelper';
 import { useMemo } from 'react';
 import useSWR from 'swr';
-import { FilterType } from '@/types/filters';
+import { FilterType } from '@/types/filters.types';
 
 export default function usePackagesFilter(
   oid: string,
