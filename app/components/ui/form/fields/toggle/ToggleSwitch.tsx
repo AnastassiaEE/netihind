@@ -1,4 +1,5 @@
-import { tv, VariantProps } from 'tailwind-variants';
+import { ToggleSwitchSize } from '@/types/formElemets';
+import { tv } from 'tailwind-variants';
 
 const toggleVariants = tv({
   base: 'relative flex cursor-pointer items-center',
@@ -48,8 +49,6 @@ const toggleVariants = tv({
   },
 });
 
-type ToggleSize = VariantProps<typeof toggleVariants>['size'];
-
 export default function ToggleSwitch({
   name,
   value,
@@ -59,18 +58,18 @@ export default function ToggleSwitch({
   isValid = true,
   required = false,
   disabled = false,
-  handleChange,
+  onChange,
   children,
 }: {
   name: string;
   value?: string;
-  size?: ToggleSize;
+  size?: ToggleSwitchSize;
   label?: string;
   isChecked: boolean;
   isValid?: boolean;
   required?: boolean;
   disabled?: boolean;
-  handleChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
   children?: React.ReactNode;
 }) {
   const {
@@ -90,7 +89,7 @@ export default function ToggleSwitch({
         aria-label={!children ? label : undefined}
         checked={isChecked}
         disabled={disabled}
-        onChange={handleChange}
+        onChange={onChange}
         className={inputClasses()}
       />
       <div className={switchClasses()}></div>

@@ -118,7 +118,7 @@ export default function CookiesPreferencesSection({
               ),
             })}
             isChecked={preferences.statistics === true}
-            handleChange={() => togglePreference('statistics')}
+            onChange={() => togglePreference('statistics')}
           />
         }
         details={renderCookieDetails(details.statistics)}
