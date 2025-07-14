@@ -10,27 +10,25 @@ import { useTranslations } from 'next-intl';
 const TOOLBAR_SHOW_POSITION = 400;
 
 export default function StickyHeader() {
-    const y = useScrollPosition();
-    const { openSidebarMenu } = useSidebarMenuContext();
-    const t = useTranslations('Buttons')
+  const y = useScrollPosition();
+  const { openSidebarMenu } = useSidebarMenuContext();
+  const t = useTranslations('Buttons');
 
-    let toolbarVisibility = 'hidden';
-    if (y > TOOLBAR_SHOW_POSITION) {
-        toolbarVisibility = 'animate-show';
-    }
-
-    return (
-        <div
-            className={`sticky-header fixed inset-x-0 top-0 z-10 bg-white p-4 shadow-lg ${toolbarVisibility}`}
-        >
-            <div className="container">
-                <div className="flex flex-wrap justify-between">
-                    <LinkLogo src={secondaryLogo} sizeClass="w-12" />
-                    <div className="flex items-center">
-                        <Hamburger label={t('menu.open')} handleClick={openSidebarMenu}></Hamburger>
-                    </div>
-                </div>
-            </div>
+  return (
+    <div
+      className={`sticky-header fixed inset-x-0 top-0 z-10 bg-white p-4 shadow-lg ${y > TOOLBAR_SHOW_POSITION ? 'animate-show' : 'hidden'}`}
+    >
+      <div className="container">
+        <div className="flex flex-wrap justify-between">
+          <LinkLogo src={secondaryLogo} sizeClass="w-12" />
+          <div className="flex items-center">
+            <Hamburger
+              label={t('menu.open')}
+              onClick={openSidebarMenu}
+            ></Hamburger>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 }
