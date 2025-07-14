@@ -11,14 +11,14 @@ import SelectOption from '@/components/ui/form/fields/select/SelectOption';
 import useForm from '@/hooks/useForm';
 import { useTranslations } from 'next-intl';
 import { Loop, Add } from '@mui/icons-material';
-import { PackageActionType } from '@/types/elements.types';
+import { PackageAction } from '@/types/elements.types';
 
-export default function PackageRequestForm({
-  type = 'connection',
+export default function PackageActionForm({
+  action = 'connection',
   address,
   packageData,
 }: {
-  type?: PackageActionType;
+  action?: PackageAction;
   address: string;
   packageData: { [key: string]: string } | null;
 }) {
@@ -74,7 +74,7 @@ export default function PackageRequestForm({
     handleSelectChange,
     handleBlur,
     handleSubmit,
-  } = useForm(fields, type, { address: address, ...filteredPackageData });
+  } = useForm(fields, action, { address: address, ...filteredPackageData });
 
   return (
     <form onSubmit={handleSubmit} autoComplete="on" noValidate>

@@ -1,16 +1,16 @@
 import Image from 'next/image';
 import PackageActionSection from '@/components/ui/packages/action/PackageActionSection';
 import HomeIcon from '@mui/icons-material/Home';
-import PackageRequestForm from '@/components/ui/form/forms/PackageRequestForm';
 import { useTranslations } from 'next-intl';
-import { PackageActionType } from '@/types/elements.types';
+import PackageActionForm from '@/components/ui/form/forms/PackageActionForm';
+import { PackageAction } from '@/types/elements.types';
 
 export default function PackageActionContent({
   action,
   data,
   address,
 }: {
-  action: PackageActionType;
+  action: PackageAction;
   data: { [key: string]: any } | null;
   address: string;
 }) {
@@ -24,7 +24,7 @@ export default function PackageActionContent({
         <HomeIcon className="mr-1 inline align-sub text-primary" />
         {address}
       </p>
-      <PackageRequestForm type={action} address={address} packageData={data} />
+      <PackageActionForm action={action} address={address} packageData={data} />
     </PackageActionSection>
   );
 

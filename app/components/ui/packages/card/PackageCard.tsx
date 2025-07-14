@@ -7,7 +7,7 @@ import { Wifi } from '@mui/icons-material';
 import PackageCardSection from '@/components/ui/packages/card/PackageCardSection';
 import dynamic from 'next/dynamic';
 import InternetSpeedFeature from '@/components/ui/packages/card/InternetSpeedFeature';
-import { PackageActionType } from '@/types/elements.types';
+import { PackageAction } from '@/types/elements.types';
 
 const Tooltip = dynamic(() => import('@/components/ui/overlay/Tooltip'));
 
@@ -31,7 +31,7 @@ export default function PackageCard({
   className,
 }: {
   data: { [key: string]: any };
-  onActionClick: (action: PackageActionType) => void;
+  onActionClick: (action: PackageAction) => void;
   className?: string;
 }) {
   const t = useTranslations('Packages');

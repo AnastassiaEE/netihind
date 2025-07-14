@@ -1,8 +1,8 @@
 import { RefObject } from 'react';
-import { PackageActionType } from '@/types/elements.types';
+import { PackageAction } from '@/types/elements.types';
 
 // type
-export type FormType = 'contact' | PackageActionType;
+export type FormType = 'contact' | PackageAction;
 export type ButtonType = 'button' | 'submit' | 'reset';
 
 // variant

@@ -1,8 +1,8 @@
 // type
 export type NavigationType = 'horizontal' | 'vertical';
 export type DialogType = 'modal' | 'non-modal';
-export type PackageActionType = 'connection' | 'consultation';
-export type FormType = 'contact' | PackageActionType;
+export type PackageAction = 'connection' | 'consultation';
+export type FormType = 'contact' | PackageAction;
 
 // variant
 export type HeaderVariant = 'primary' | 'secondary';

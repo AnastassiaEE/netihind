@@ -1,11 +1,11 @@
 import Button from '@/components/ui/form/buttons/Button';
-import { PackageActionType } from '@/types/elements.types';
+import { PackageAction } from '@/types/elements.types';
 import { useTranslations } from 'next-intl';
 
 export default function PackageActions({
   onActionClick,
 }: {
-  onActionClick: (action: PackageActionType) => void;
+  onActionClick: (action: PackageAction) => void;
 }) {
   const t = useTranslations('Packages');
   return (
