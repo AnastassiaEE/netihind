@@ -152,7 +152,7 @@ export default function PackageRequestForm({
       <div className="mb-6">
         <Checkbox
           name="policy"
-          handleChange={(e) => handleChange(e, 'policy')}
+          onChange={(e) => handleChange(e, 'policy')}
           isChecked={values.policy as boolean}
           isValid={!errors.policy}
           required={fields['policy'].isRequired}
