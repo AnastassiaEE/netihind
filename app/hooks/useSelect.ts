@@ -131,7 +131,7 @@ export default function useSelect(name: string, label: string) {
     listBoxId,
     listBoxRef,
     handleOptionSelect,
-    comboBoxProps: (): ComboBoxProps => ({
+    getComboBoxProps: (): ComboBoxProps => ({
       onClick: toggleSelect,
       ref: comboBoxRef,
       role: 'combobox',

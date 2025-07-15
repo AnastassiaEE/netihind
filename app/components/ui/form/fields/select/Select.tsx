@@ -38,7 +38,7 @@ export default function Select({
     listBoxId,
     listBoxRef,
     handleOptionSelect,
-    comboBoxProps,
+    getComboBoxProps,
   } = useSelect(name, label);
 
   const comboBoxClasses = classNames(sizes[size], className);
@@ -63,7 +63,7 @@ export default function Select({
       <IconButton
         variant={variant}
         Icon={Icon}
-        {...comboBoxProps()}
+        {...getComboBoxProps()}
         className={comboBoxClasses}
       >
         {content}
@@ -72,7 +72,7 @@ export default function Select({
     ) : (
       <Button
         variant={variant}
-        {...comboBoxProps()}
+        {...getComboBoxProps()}
         className={comboBoxClasses}
       >
         {content}
