@@ -1,4 +1,4 @@
-import { ComboBoxProps } from '@/types/formElemets';
+import { ComboBoxProps } from '@/types/form.types';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 const openKeys = ['ArrowDown', 'ArrowUp', 'Enter', ' ', 'Home', 'End'];
@@ -131,8 +131,8 @@ export default function useSelect(name: string, label: string) {
     listBoxId,
     listBoxRef,
     handleOptionSelect,
-    comboBoxProps: (): ComboBoxProps => ({
-      handleClick: toggleSelect,
+    getComboBoxProps: (): ComboBoxProps => ({
+      onClick: toggleSelect,
       ref: comboBoxRef,
       role: 'combobox',
       'aria-label': label,

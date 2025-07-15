@@ -1,15 +1,15 @@
 import MenuIcon from '@mui/icons-material/Menu';
 
 export default function Hamburger({
-    label,
-    handleClick,
+  label,
+  onClick,
 }: {
-    label: string;
-    handleClick: () => void;
+  label: string;
+  onClick: () => void;
 }) {
-    return (
-        <button type="button" aria-label={label} onClick={handleClick}>
-            <MenuIcon fontSize="large" className="text-muted-dark" />
-        </button>
-    );
+  return (
+    <button type="button" aria-label={label} onClick={onClick}>
+      <MenuIcon fontSize="large" className="text-muted-dark" />
+    </button>
+  );
 }

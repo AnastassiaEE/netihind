@@ -21,10 +21,10 @@ export default function Tabs({
           return (
             <Tab
               key={tab}
-              tabId={getTabId(index)}
-              tabPanelId={getTabPanelId(index)}
+              id={getTabId(index)}
+              panelId={getTabPanelId(index)}
               isActive={getTabId(index) === activeTabId}
-              handleTabClick={handleTabClick}
+              onClick={handleTabClick}
               tabRef={(el: HTMLLIElement) => {
                 tabsRef.current[index] = el;
               }}
@@ -38,14 +38,14 @@ export default function Tabs({
       {React.Children.map(children, (child, index) => {
         if (
           React.isValidElement<{
-            tabId: string;
-            tabPanelId: string;
-            isActive: boolean;
+            tabId?: string;
+            id?: string;
+            isActive?: boolean;
           }>(child)
         ) {
           return React.cloneElement(child, {
             tabId: getTabId(index),
-            tabPanelId: getTabPanelId(index),
+            id: getTabPanelId(index),
             isActive: getTabId(index) === activeTabId,
           });
         }

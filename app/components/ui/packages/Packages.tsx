@@ -68,7 +68,7 @@ export default function Packages({
               key={data.internet_package_id}
               data={data}
               className="mb-5 last:mb-0"
-              handleActionClick={(action) =>
+              onActionClick={(action) =>
                 handleActionClick(data, action, openModal)
               }
             />
@@ -80,7 +80,7 @@ export default function Packages({
         title={t(`action.${selectedAction}.title`)}
         description={t(`action.${selectedAction}.description`)}
         isOpened={isModalOpened}
-        handleClose={closeModal}
+        onClose={closeModal}
         dialogRef={modalRef}
         className="bg-primary-light"
       >

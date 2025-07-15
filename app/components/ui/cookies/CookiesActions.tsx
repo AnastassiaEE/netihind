@@ -21,7 +21,7 @@ export default function CookiesActions({
         variant="outlined"
         size="lg"
         className="w-full"
-        handleClick={() => managePreferences('decline-all')}
+        onClick={() => managePreferences('decline-all')}
       >
         {t('buttons.declineAll')}
       </Button>
@@ -29,14 +29,14 @@ export default function CookiesActions({
         variant="outlined"
         size="lg"
         className="w-full"
-        handleClick={() => managePreferences('accept-selected')}
+        onClick={() => managePreferences('accept-selected')}
       >
         {t('buttons.acceptSelected')}
       </Button>
       <Button
         size="lg"
         className="w-full"
-        handleClick={() => managePreferences('accept-all')}
+        onClick={() => managePreferences('accept-all')}
       >
         {t('buttons.acceptAll')}
       </Button>

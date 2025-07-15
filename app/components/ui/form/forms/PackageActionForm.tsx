@@ -11,13 +11,14 @@ import SelectOption from '@/components/ui/form/fields/select/SelectOption';
 import useForm from '@/hooks/useForm';
 import { useTranslations } from 'next-intl';
 import { Loop, Add } from '@mui/icons-material';
+import { PackageAction } from '@/types/elements.types';
 
-export default function PackageRequestForm({
-  type = 'connection',
+export default function PackageActionForm({
+  action = 'connection',
   address,
   packageData,
 }: {
-  type?: 'connection' | 'consultation';
+  action?: PackageAction;
   address: string;
   packageData: { [key: string]: string } | null;
 }) {
@@ -73,7 +74,7 @@ export default function PackageRequestForm({
     handleSelectChange,
     handleBlur,
     handleSubmit,
-  } = useForm(fields, type, { address: address, ...filteredPackageData });
+  } = useForm(fields, action, { address: address, ...filteredPackageData });
 
   return (
     <form onSubmit={handleSubmit} autoComplete="on" noValidate>
@@ -81,8 +82,8 @@ export default function PackageRequestForm({
         <Input
           name="name"
           label={t('labels.name')}
-          handleChange={(e) => handleChange(e, 'name')}
-          handleBlur={(e) => handleBlur(e, 'name')}
+          onChange={(e) => handleChange(e, 'name')}
+          onBlur={(e) => handleBlur(e, 'name')}
           value={values.name as string}
           isValid={!errors.name}
           error={errors.name ? t(errors.name) : ''}
@@ -95,8 +96,8 @@ export default function PackageRequestForm({
           type="email"
           inputmode="email"
           label={t('labels.email')}
-          handleChange={(e) => handleChange(e, 'email')}
-          handleBlur={(e) => handleBlur(e, 'email')}
+          onChange={(e) => handleChange(e, 'email')}
+          onBlur={(e) => handleBlur(e, 'email')}
           value={values.email as string}
           isValid={!errors.email}
           error={errors.email ? t(errors.email) : ''}
@@ -109,8 +110,8 @@ export default function PackageRequestForm({
           type="tel"
           inputmode="tel"
           label={t('labels.phone')}
-          handleChange={(e) => handleChange(e, 'phone')}
-          handleBlur={(e) => handleBlur(e, 'phone')}
+          onChange={(e) => handleChange(e, 'phone')}
+          onBlur={(e) => handleBlur(e, 'phone')}
           value={values.phone as string}
           isValid={!errors.phone}
           error={errors.phone ? t(errors.phone) : ''}
@@ -122,8 +123,8 @@ export default function PackageRequestForm({
         <Textarea
           name="message"
           label={t('labels.message')}
-          handleChange={(e) => handleChange(e, 'message')}
-          handleBlur={(e) => handleBlur(e, 'message')}
+          onChange={(e) => handleChange(e, 'message')}
+          onBlur={(e) => handleBlur(e, 'message')}
           value={values.message as string}
           required={fields['message'].isRequired}
         />
@@ -152,7 +153,7 @@ export default function PackageRequestForm({
       <div className="mb-6">
         <Checkbox
           name="policy"
-          handleChange={(e) => handleChange(e, 'policy')}
+          onChange={(e) => handleChange(e, 'policy')}
           isChecked={values.policy as boolean}
           isValid={!errors.policy}
           required={fields['policy'].isRequired}

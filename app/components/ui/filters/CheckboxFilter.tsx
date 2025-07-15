@@ -1,7 +1,7 @@
 import useCheckboxFilter from '@/hooks/useCheckboxFilter';
-import { Filter, Filters } from '@/types/filters';
+import { Filter, Filters } from '@/types/filters.types';
 import Checkbox from '@/components/ui/form/fields/checkbox/Checkbox';
-import { CheckboxSize } from '@/types/sizes';
+import { CheckboxSize } from '@/types/form.types';
 
 export default function CheckboxFilter({
   name,
@@ -28,7 +28,7 @@ export default function CheckboxFilter({
           isChecked={filter.selected.some(
             (opt) => opt.value.toString() === option.value.toString(),
           )}
-          handleChange={(e) => handleChange(option.value, e.target.checked)}
+          onChange={(e) => handleChange(option.value, e.target.checked)}
           size={size}
         >
           {option.label}

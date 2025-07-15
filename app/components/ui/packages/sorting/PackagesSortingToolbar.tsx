@@ -6,7 +6,7 @@ import Sort from '@/components/ui/sorting/Sort';
 import { useTranslations } from 'next-intl';
 import SlideUpPanel from '@/components/ui/overlay/SlideUpPanel';
 import useOverlay from '@/hooks/useOverlay';
-import { Filters, SortOptions } from '@/types/filters';
+import { Filters, SortOptions } from '@/types/filters.types';
 import PackagesFilters from '@/components/ui/packages/filters/PackagesFilters';
 
 export default function PackagesSortingToolbar({
@@ -38,7 +38,7 @@ export default function PackagesSortingToolbar({
   } = useOverlay();
 
   const panelActions = (
-    <Button handleClick={clearFilters} className="w-full">
+    <Button onClick={clearFilters} className="w-full">
       {t('clear').toUpperCase()}
     </Button>
   );
@@ -53,7 +53,7 @@ export default function PackagesSortingToolbar({
       >
         {filters && (
           <Button
-            handleClick={openPanel}
+            onClick={openPanel}
             variant="outlined"
             className="min-w-[150px]"
           >
@@ -79,7 +79,7 @@ export default function PackagesSortingToolbar({
           title={t('filters')}
           actions={panelActions}
           isOpened={isPanelOpened}
-          handleClose={closePanel}
+          onClose={closePanel}
           panelRef={panelRef}
         >
           <PackagesFilters

@@ -1,4 +1,5 @@
-import { tv, VariantProps } from 'tailwind-variants';
+import { FieldErrorSize } from '@/types/form.types';
+import { tv } from 'tailwind-variants';
 
 const errorClasses = tv({
   base: 'absolute font-medium text-error',
@@ -12,8 +13,6 @@ const errorClasses = tv({
     size: 'sm',
   },
 });
-
-type FieldErrorSize = VariantProps<typeof errorClasses>['size'];
 
 export default function FieldError({
   size = 'sm',

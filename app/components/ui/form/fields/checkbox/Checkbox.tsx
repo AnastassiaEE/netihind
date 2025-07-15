@@ -1,4 +1,4 @@
-import { CheckboxSize } from '@/types/sizes';
+import { CheckboxSize } from '@/types/form.types';
 import { tv } from 'tailwind-variants';
 
 export default function Checkbox({
@@ -8,7 +8,7 @@ export default function Checkbox({
   isChecked = false,
   isValid = true,
   required = false,
-  handleChange,
+  onChange,
   children,
 }: {
   name: string;
@@ -17,7 +17,7 @@ export default function Checkbox({
   isChecked: boolean;
   isValid?: boolean;
   required?: boolean;
-  handleChange: React.ChangeEventHandler<HTMLInputElement>;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
   children: React.ReactNode;
 }) {
   const checkboxClasses = tv({
@@ -59,7 +59,7 @@ export default function Checkbox({
         aria-invalid={!isValid}
         aria-required={required}
         checked={isChecked}
-        onChange={handleChange}
+        onChange={onChange}
         className={checkboxClasses({
           size,
           isValid,

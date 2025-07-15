@@ -1,8 +1,9 @@
 'use client';
 
 import classNames from 'classnames';
-import { FormElementSizes as sizes } from '@/styles/styles';
+import { FormElementSizes as sizes } from '@/components/ui/form/config';
 import { KeyboardEvent as ReactKeyboardEvent } from 'react';
+import { SelectOptionSize } from '@/types/form.types';
 
 export default function SelectOption({
   value,
@@ -15,7 +16,7 @@ export default function SelectOption({
   value: string;
   onSelect?: (value: string) => void;
   isSelected: boolean;
-  size?: keyof typeof sizes;
+  size?: SelectOptionSize;
   className?: string;
   children: React.ReactNode;
 }) {

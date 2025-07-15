@@ -4,11 +4,11 @@ import React from 'react';
 
 export default function CloseButton({
   label,
-  handleClick,
+  onClick,
   className,
 }: {
   label: string;
-  handleClick: () => void;
+  onClick: () => void;
   className?: string;
 }) {
   return (
@@ -16,7 +16,7 @@ export default function CloseButton({
       type="button"
       aria-label={label}
       className={classNames('size-max rounded-full p-[3px]', className)}
-      onClick={handleClick}
+      onClick={onClick}
     >
       <CloseIcon className="text-muted transition-colors hover:text-black" />
     </button>

@@ -3,6 +3,7 @@ import Backdrop from '@/components/ui/overlay/Backdrop';
 import classNames from 'classnames';
 import CloseButton from '@/components/ui/buttons/CloseButton';
 import { useTranslations } from 'next-intl';
+import { DialogType } from '@/types/elements.types';
 
 export default function Dialog({
   type = 'modal',
@@ -10,17 +11,17 @@ export default function Dialog({
   title,
   description,
   isOpened,
-  handleClose,
+  onClose,
   dialogRef,
   className,
   children,
 }: {
-  type?: 'modal' | 'non-modal';
+  type?: DialogType;
   name: string;
   title: string;
   description?: string;
   isOpened: boolean;
-  handleClose?: () => void;
+  onClose?: () => void;
   dialogRef?: React.RefObject<HTMLDivElement>;
   className?: string;
   children: React.ReactNode;
@@ -39,9 +40,7 @@ export default function Dialog({
 
   return (
     <>
-      {type === 'modal' && (
-        <Backdrop isVisible={isOpened} handleClose={handleClose} />
-      )}
+      {type === 'modal' && <Backdrop isVisible={isOpened} onClose={onClose} />}
       <div
         role="dialog"
         aria-modal="true"
@@ -52,10 +51,10 @@ export default function Dialog({
         ref={dialogRef}
         className={dialogClasses}
       >
-        {handleClose && (
+        {onClose && (
           <CloseButton
             label={t(`${name}.close`)}
-            handleClick={handleClose}
+            onClick={onClose}
             className="absolute right-4 top-4 bg-white"
           />
         )}

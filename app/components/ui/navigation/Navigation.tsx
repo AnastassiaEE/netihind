@@ -1,12 +1,13 @@
 import React, { isValidElement } from 'react';
 import classNames from 'classnames';
+import { NavigationType } from '@/types/elements.types';
 
 export default function Navigation({
   type = 'horizontal',
   className = 'text-muted-dark',
   children,
 }: {
-  type?: 'horizontal' | 'vertical';
+  type?: NavigationType;
   className?: string;
   children: React.ReactNode;
 }) {

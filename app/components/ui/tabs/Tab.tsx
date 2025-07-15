@@ -1,17 +1,17 @@
 import classNames from 'classnames';
 
 export default function Tab({
-  tabId,
-  tabPanelId,
+  id,
+  panelId,
   isActive,
-  handleTabClick,
+  onClick,
   tabRef,
   children,
 }: {
-  tabId: string;
-  tabPanelId: string;
+  id: string;
+  panelId: string;
   isActive: boolean;
-  handleTabClick: React.MouseEventHandler<HTMLElement>;
+  onClick: React.MouseEventHandler<HTMLElement>;
   tabRef: React.Ref<HTMLLIElement>;
   children: React.ReactNode;
 }) {
@@ -21,13 +21,13 @@ export default function Tab({
   );
   return (
     <li
-      id={tabId}
+      id={id}
       role="tab"
       aria-selected={isActive}
-      aria-controls={tabPanelId}
+      aria-controls={panelId}
       tabIndex={isActive ? 0 : undefined}
       className={tabClasses}
-      onClick={handleTabClick}
+      onClick={onClick}
       ref={tabRef}
     >
       {children}

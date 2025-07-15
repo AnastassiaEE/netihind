@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import React from 'react';
 import Button from '@/components/ui/form/buttons/Button';
-import { Filters } from '@/types/filters';
+import { Filters } from '@/types/filters.types';
 import PackagesFilterAccordion from '@/components/ui/packages/filters/PackagesFilterAccordion';
 import CheckboxFilter from '@/components/ui/filters/CheckboxFilter';
 import useFiltersUrlSync from '@/hooks/useFiltersUrlSync';
@@ -33,7 +33,7 @@ export default function PackagesFilters({
       {type === 'desktop' && (
         <div className="mb-4 flex flex-wrap justify-between">
           <p className="text-xl font-extrabold text-black">{t('filters')}</p>
-          <Button variant="text" className="!p-0" handleClick={clearFilters}>
+          <Button variant="text" className="!p-0" onClick={clearFilters}>
             {t('clear')}
           </Button>
         </div>

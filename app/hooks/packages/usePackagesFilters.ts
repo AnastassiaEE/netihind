@@ -1,4 +1,4 @@
-import { Filters } from '@/types/filters';
+import { Filters } from '@/types/filters.types';
 import { useEffect, useState } from 'react';
 import usePackagesFilter from '@/hooks/packages/usePackagesFilter';
 import { getProviders, getTechnologies } from '@/lib/packagesDataFetch';

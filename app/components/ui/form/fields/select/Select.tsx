@@ -4,9 +4,9 @@ import Arrow from '@/components/ui/icons/Arrow';
 import Button from '@/components/ui/form/buttons/Button';
 import IconButton from '@/components/ui/form/buttons/IconButton';
 import { SvgIconComponent } from '@mui/icons-material';
-import { FormElementSizes as sizes } from '@/styles/styles';
 import useSelect from '@/hooks/useSelect';
-import { ButtonVariant, SelectVariant } from '@/types/formElemets';
+import { ButtonVariant, SelectSize, SelectVariant } from '@/types/form.types';
+import { FormElementSizes as sizes } from '@/components/ui/form/config';
 
 export default function Select({
   variant = 'labeled',
@@ -22,7 +22,7 @@ export default function Select({
   children,
 }: {
   variant?: SelectVariant;
-  size?: keyof typeof sizes;
+  size?: SelectSize;
   name: string;
   translatedName?: string;
   label: string;
@@ -38,7 +38,7 @@ export default function Select({
     listBoxId,
     listBoxRef,
     handleOptionSelect,
-    comboBoxProps,
+    getComboBoxProps,
   } = useSelect(name, label);
 
   const comboBoxClasses = classNames(sizes[size], className);
@@ -63,7 +63,7 @@ export default function Select({
       <IconButton
         variant={variant}
         Icon={Icon}
-        {...comboBoxProps()}
+        {...getComboBoxProps()}
         className={comboBoxClasses}
       >
         {content}
@@ -72,7 +72,7 @@ export default function Select({
     ) : (
       <Button
         variant={variant}
-        {...comboBoxProps()}
+        {...getComboBoxProps()}
         className={comboBoxClasses}
       >
         {content}

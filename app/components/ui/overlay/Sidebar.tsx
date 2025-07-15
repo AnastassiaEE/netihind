@@ -8,14 +8,14 @@ export default function Sidebar({
   name,
   title,
   isOpened,
-  handleClose,
+  onClose,
   sidebarRef,
   children,
 }: {
   name: string;
   title: string;
   isOpened: boolean;
-  handleClose: () => void;
+  onClose: () => void;
   sidebarRef?: React.RefObject<HTMLDivElement>;
   children: React.ReactNode;
 }) {
@@ -28,7 +28,7 @@ export default function Sidebar({
 
   return (
     <>
-      <Backdrop isVisible={isOpened} handleClose={handleClose} />
+      <Backdrop isVisible={isOpened} onClose={onClose} />
       <div
         role="dialog"
         aria-modal="true"
@@ -43,7 +43,7 @@ export default function Sidebar({
           >
             {title}
           </p>
-          <CloseButton label={t(`${name}.close`)} handleClick={handleClose} />
+          <CloseButton label={t(`${name}.close`)} onClick={onClose} />
         </div>
         {children}
       </div>

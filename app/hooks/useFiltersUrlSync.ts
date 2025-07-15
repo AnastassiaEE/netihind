@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useParams, useSearchParams } from 'next/navigation';
 import { usePathname, useRouter } from '@/i18n/routing';
-import { Filters } from '@/types/filters';
+import { Filters } from '@/types/filters.types';
 
 export default function useFiltersUrlSync(
   filters: Filters,

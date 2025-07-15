@@ -7,6 +7,7 @@ import { Wifi } from '@mui/icons-material';
 import PackageCardSection from '@/components/ui/packages/card/PackageCardSection';
 import dynamic from 'next/dynamic';
 import InternetSpeedFeature from '@/components/ui/packages/card/InternetSpeedFeature';
+import { PackageAction } from '@/types/elements.types';
 
 const Tooltip = dynamic(() => import('@/components/ui/overlay/Tooltip'));
 
@@ -26,12 +27,12 @@ export default function PackageCard({
     connection_min_price,
     connection_price_description,
   },
-  handleActionClick,
+  onActionClick,
   className,
 }: {
   data: { [key: string]: any };
-  handleActionClick: (action: 'connection' | 'consultation') => void;
-  className: string;
+  onActionClick: (action: PackageAction) => void;
+  className?: string;
 }) {
   const t = useTranslations('Packages');
 
@@ -48,9 +49,9 @@ export default function PackageCard({
           className="w-full border-b border-r lg:w-3/5"
         >
           <PackageHeader
-            logo_url={provider_img_url}
-            provider={provider_name}
-            name={internet_package_name}
+            providerLogoSrc={provider_img_url}
+            providerName={provider_name}
+            packageName={internet_package_name}
             className="mb-3"
           />
           <div className="mb-2 flex flex-wrap items-center font-medium uppercase text-muted-dark">
@@ -91,7 +92,7 @@ export default function PackageCard({
           />
         </PackageCardSection>
       </div>
-      <PackageActions handleActionClick={handleActionClick} />
+      <PackageActions onActionClick={onActionClick} />
     </article>
   );
 }
