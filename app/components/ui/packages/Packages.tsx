@@ -77,8 +77,8 @@ export default function Packages({
       )}
       <Dialog
         name={selectedAction}
-        title={t(`action.${selectedAction}.title`)}
-        description={t(`action.${selectedAction}.description`)}
+        title={t(`actions.${selectedAction}.title`)}
+        description={t(`actions.${selectedAction}.description`)}
         isOpened={isModalOpened}
         onClose={closeModal}
         dialogRef={modalRef}

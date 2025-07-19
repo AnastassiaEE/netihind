@@ -16,7 +16,7 @@ export default function PackageActionContent({
 }) {
   const t = useTranslations('Packages');
   const getSectionTitle = (section: string) =>
-    t(`action.${action}.sections.${section}`);
+    t(`actions.${action}.sections.${section}`);
 
   const formSection = (
     <PackageActionSection title={getSectionTitle('fillForm')}>
@@ -82,7 +82,7 @@ export default function PackageActionContent({
             ) : (
               <p className="flex items-center justify-between">
                 <span className="font-medium">
-                  {t(`action.${action}.details.packagePrice`)}:
+                  {t(`actions.${action}.details.packagePrice`)}:
                 </span>
                 <span className="text-2xl font-bold">
                   {data?.internet_package_price} €

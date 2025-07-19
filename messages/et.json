@@ -99,7 +99,7 @@
       "connect": "Ühendada",
       "consultation": "Konsultatsioon"
     },
-    "action": {
+    "actions": {
       "connection": {
         "title": "Ühenduse taotlus",
         "description": "",
