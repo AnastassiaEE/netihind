@@ -28,21 +28,21 @@ export default function PackagePrice({
     : 0;
 
   return (
-    <div>
-      <div className="flex flex-wrap gap-2 max-md:justify-center md:flex-col md:items-center">
-        <p className={priceClasses}>
-          <span className="font-bold">{finalPrice} €</span> / {t('units.month')}
-        </p>
-        {discount_price && (
-          <div className="flex flex-wrap items-center gap-2">
-            <p className="inline font-semibold text-black">{price}€</p>
-            <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-sm font-medium text-transparent">
+    <>
+      <p className={priceClasses}>
+        <span className="font-bold">{finalPrice} €</span> / {t('units.month')}
+      </p>
+      {discount_price && (
+        <>
+          <p className="font-semibold text-black">
+            {price}€
+            <span className="ml-2 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-sm font-medium text-transparent">
               -{discountPercentage}%{' '}
               {t('discount.duration', { months: discount_duration })}
             </span>
-          </div>
-        )}
-      </div>
-    </div>
+          </p>
+        </>
+      )}
+    </>
   );
 }
