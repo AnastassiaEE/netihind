@@ -39,7 +39,7 @@ export default function PackagesSortingToolbar({
 
   const panelActions = (
     <Button onClick={clearFilters} className="w-full">
-      {t('clear').toUpperCase()}
+      {t('buttons.clear').toUpperCase()}
     </Button>
   );
 
@@ -57,7 +57,7 @@ export default function PackagesSortingToolbar({
             variant="outlined"
             className="min-w-[150px]"
           >
-            {t('filter').toUpperCase()}
+            {t('buttons.filter').toUpperCase()}
           </Button>
         )}
         {sortOptions && (
@@ -76,17 +76,15 @@ export default function PackagesSortingToolbar({
       {filters && (
         <SlideUpPanel
           name="filters"
-          title={t('filters')}
+          title={t('labels.filters')}
           actions={panelActions}
           isOpened={isPanelOpened}
           onClose={closePanel}
           panelRef={panelRef}
         >
           <PackagesFilters
-            type="mobile"
             filters={filters}
             setFilters={setFilters}
-            clearFilters={clearFilters}
             onUserChange={onUserChange}
             isFiltersInitialized={isFiltersInitialized}
           />

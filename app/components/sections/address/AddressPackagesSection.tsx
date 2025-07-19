@@ -11,6 +11,7 @@ import PingLoader from '@/components/ui/loaders/PingLoader';
 import PackagesFilters from '@/components/ui/packages/filters/PackagesFilters';
 import PackagesSortingToolbar from '@/components/ui/packages/sorting/PackagesSortingToolbar';
 import usePackagesFilters from '@/hooks/packages/usePackagesFilters';
+import Button from '@/components/ui/form/buttons/Button';
 
 export default function AddressPackagesSection({
   searchParams,
@@ -21,7 +22,8 @@ export default function AddressPackagesSection({
   address: string;
   oid: string;
 }) {
-  const t = useTranslations('AddressPage');
+  const tPage = useTranslations('AddressPage');
+  const tFilters = useTranslations('Filters');
 
   const scrollToRef = useRef<HTMLDivElement>(null);
   const shouldScrollRef = useRef(false);
@@ -55,7 +57,7 @@ export default function AddressPackagesSection({
   return (
     <SectionLayout>
       <h1 className="mb-6 text-[calc(1.275rem+0.3vw)] font-extrabold md:text-2xl">
-        {t('packagesSection.title')}
+        {tPage('packagesSection.title')}
       </h1>
       <p className="mb-6 font-medium">
         <HomeIcon className="mr-1 inline align-sub text-primary" />
@@ -86,21 +88,34 @@ export default function AddressPackagesSection({
               />
             </div>
           </div>
-          <div className="hidden rounded-r-lg rounded-bl-lg bg-primary-light/80 md:block md:w-3/12">
+          <aside className="hidden rounded-r-lg rounded-bl-lg bg-primary-light/80 md:block md:w-3/12">
             <div className="sticky top-0 h-screen overflow-y-auto p-8">
               {!isFiltersInitialized ? (
                 <PingLoader sizeClass="h-10 w-10" />
               ) : (
-                <PackagesFilters
-                  filters={filters}
-                  setFilters={setFilters}
-                  clearFilters={clearFilters}
-                  onUserChange={handleUserInteraction}
-                  isFiltersInitialized={isFiltersInitialized}
-                />
+                <>
+                  <div className="mb-4 flex flex-wrap justify-between">
+                    <p className="text-xl font-extrabold text-black">
+                      {tFilters('labels.filters')}
+                    </p>
+                    <Button
+                      variant="text"
+                      className="!p-0"
+                      onClick={clearFilters}
+                    >
+                      {tFilters('buttons.clear')}
+                    </Button>
+                  </div>
+                  <PackagesFilters
+                    filters={filters}
+                    setFilters={setFilters}
+                    onUserChange={handleUserInteraction}
+                    isFiltersInitialized={isFiltersInitialized}
+                  />
+                </>
               )}
             </div>
-          </div>
+          </aside>
         </div>
         <PackagesSortingToolbar
           sortOptions={{

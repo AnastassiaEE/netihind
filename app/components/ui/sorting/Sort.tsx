@@ -37,8 +37,8 @@ export default function Sort({
     <Select
       variant={variant}
       name={`sort-${name}`}
-      translatedName={t(`${name}.button`)}
-      label={t(`${name}.label`)}
+      buttonLabel={t(`${name}.buttonLabel`)}
+      label={t(`${name}.ariaLabel`)}
       selected={t(`${name}.options.${selectedOption}`)}
       openDirection={openDirection}
       Icon={SortIcon}

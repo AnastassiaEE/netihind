@@ -99,7 +99,7 @@
       "connect": "Ühendada",
       "consultation": "Konsultatsioon"
     },
-    "action": {
+    "actions": {
       "connection": {
         "title": "Ühenduse taotlus",
         "description": "",
@@ -135,19 +135,22 @@
     }
   },
   "Filters": {
-    "filter": "Filtreeri",
-    "all": "Kõik",
-    "internet": "Ainult internet",
-    "internet-tv": "Internet + TV",
-    "filters": "Filtrid",
-    "clear": "Tühista",
-    "providers": "Teenusepakkujad",
-    "technologies": "Tehnoloogiad"
+    "labels": {
+      "filters": "Filtrid"
+    },
+    "buttons": {
+      "filter": "Filtreeri",
+      "clear": "Tühista"
+    },
+    "categories": {
+      "providers": "Teenusepakkujad",
+      "technologies": "Tehnoloogiad"
+    }
   },
   "Sort": {
     "packages": {
-      "button": "Järjesta",
-      "label": "Internetipakettide järjestus",
+      "buttonLabel": "Järjesta",
+      "ariaLabel": "Internetipakettide järjestus",
       "options": {
         "default": "Vaikimisi",
         "price_asc": "Soodsamad enne",

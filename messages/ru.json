@@ -99,7 +99,7 @@
       "connect": "Подключиться",
       "consultation": "Консультация"
     },
-    "action": {
+    "actions": {
       "connection": {
         "title": "Заявка на подключение",
         "description": "",
@@ -135,19 +135,22 @@
     }
   },
   "Filters": {
-    "filter": "Отфильтровать",
-    "all": "Все",
-    "internet": "Только интернет",
-    "internet-tv": "Интернет + ТВ",
-    "filters": "Фильтры",
-    "clear": "Очистить",
-    "providers": "Провайдеры",
-    "technologies": "Технологии"
+    "labels": {
+      "filters": "Фильтры"
+    },
+    "buttons": {
+      "filter": "Отфильтровать",
+      "clear": "Очистить"
+    },
+    "categories": {
+      "providers": "Провайдеры",
+      "technologies": "Технологии"
+    }
   },
   "Sort": {
     "packages": {
-      "button": "Сортировать",
-      "label": "Сортировка интернет-пакетов",
+      "buttonLabel": "Сортировать",
+      "ariaLabel": "Сортировка интернет-пакетов",
       "options": {
         "default": "По умолчанию",
         "price_asc": "Сначала дешевле",
