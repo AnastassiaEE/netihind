@@ -2,43 +2,27 @@
 
 import { useTranslations } from 'next-intl';
 import React from 'react';
-import Button from '@/components/ui/form/buttons/Button';
 import { Filters } from '@/types/filters.types';
 import PackagesFilterAccordion from '@/components/ui/packages/filters/PackagesFilterAccordion';
 import CheckboxFilter from '@/components/ui/filters/CheckboxFilter';
 import useFiltersUrlSync from '@/hooks/useFiltersUrlSync';
 
 export default function PackagesFilters({
-  type = 'desktop',
   filters,
   setFilters,
-  clearFilters,
   onUserChange,
   isFiltersInitialized,
-  className,
 }: {
-  type?: 'desktop' | 'mobile';
   filters: Filters;
   setFilters: React.Dispatch<React.SetStateAction<Filters>>;
-  clearFilters: () => void;
   onUserChange?: () => void;
   isFiltersInitialized: boolean;
-  className?: string;
 }) {
   const t = useTranslations('Filters');
   useFiltersUrlSync(filters, isFiltersInitialized);
 
   return (
-    <aside className={className}>
-      {type === 'desktop' && (
-        <div className="mb-4 flex flex-wrap justify-between">
-          <p className="text-xl font-extrabold text-black">{t('filters')}</p>
-          <Button variant="text" className="!p-0" onClick={clearFilters}>
-            {t('clear')}
-          </Button>
-        </div>
-      )}
-
+    <>
       {Object.entries(filters)
         .filter(
           ([_, filterData]) =>
@@ -47,7 +31,7 @@ export default function PackagesFilters({
         .map(([filterName, filterData]) => (
           <PackagesFilterAccordion
             key={filterName}
-            filterName={t(filterName)}
+            filterName={t(`categories.${filterName}`)}
             className="mb-4"
           >
             {filterData.type === 'checkbox' && (
@@ -61,6 +45,6 @@ export default function PackagesFilters({
             )}
           </PackagesFilterAccordion>
         ))}
-    </aside>
+    </>
   );
 }

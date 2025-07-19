@@ -12,7 +12,7 @@ export default function Select({
   variant = 'labeled',
   size = 'sm',
   name,
-  translatedName,
+  buttonLabel,
   label,
   selected,
   Icon,
@@ -24,7 +24,7 @@ export default function Select({
   variant?: SelectVariant;
   size?: SelectSize;
   name: string;
-  translatedName?: string;
+  buttonLabel?: string;
   label: string;
   selected: string;
   Icon?: SvgIconComponent;
@@ -83,7 +83,7 @@ export default function Select({
   return (
     <div className="relative">
       {variant === 'plain' &&
-        renderComboBox('outlined', false, translatedName ?? name, Icon)}
+        renderComboBox('outlined', false, buttonLabel ?? name, Icon)}
       {variant === 'labeled' && renderComboBox('text', true, selected, Icon)}
       <div
         id={listBoxId}
