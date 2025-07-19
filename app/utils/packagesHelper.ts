@@ -31,9 +31,11 @@ export const getFilterSelectedOptions = (
   }[],
   params: string[],
 ) =>
-  options.filter(({ label }) =>
-    params.some((param) => param.toLowerCase() === label.toLowerCase()),
-  );
+  params
+    .map((param) =>
+      options.find((opt) => opt.label.toLowerCase() === param.toLowerCase()),
+    )
+    .filter((opt) => !!opt);
 
 export const getFilterData = (
   searchParams: { [key: string]: string },
