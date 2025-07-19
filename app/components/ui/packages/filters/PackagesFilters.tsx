@@ -22,7 +22,7 @@ export default function PackagesFilters({
   useFiltersUrlSync(filters, isFiltersInitialized);
 
   return (
-    <>
+    <div>
       {Object.entries(filters)
         .filter(
           ([_, filterData]) =>
@@ -45,6 +45,6 @@ export default function PackagesFilters({
             )}
           </PackagesFilterAccordion>
         ))}
-    </>
+    </div>
   );
 }
