@@ -19,7 +19,7 @@ export default function CheckboxFilter({
   const { handleChange } = useCheckboxFilter(name, setFilters, onUserChange);
 
   return (
-    <div className="flex flex-col gap-1">
+    <>
       {filter.options.map((option) => (
         <Checkbox
           key={option.value}
@@ -34,6 +34,6 @@ export default function CheckboxFilter({
           {option.label}
         </Checkbox>
       ))}
-    </div>
+    </>
   );
 }
