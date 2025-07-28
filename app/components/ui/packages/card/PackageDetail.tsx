@@ -11,7 +11,7 @@ export default function PackageDetail({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex">
+    <div className="flex lg:flex-1">
       <Icon className="mr-4 text-6xl text-muted-light" />
       <div>
         <p className="mb-1 text-sm font-semibold">{title}</p>

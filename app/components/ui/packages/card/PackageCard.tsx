@@ -1,3 +1,5 @@
+'use client';
+
 import PackagePrice from '@/components/ui/packages/card/PackagePrice';
 import PackageHeader from '@/components/ui/packages/card/PackageHeader';
 import PackageActions from '@/components/ui/packages/card/PackageActions';
@@ -13,6 +15,8 @@ import Button from '@/components/ui/form/buttons/Button';
 import Arrow from '@/components/ui/icons/Arrow';
 import PackageDetail from '@/components/ui/packages/card/PackageDetail';
 import CircleArrow from '@/components/ui/icons/CircleArrow';
+import { MDXRemote } from 'next-mdx-remote/rsc';
+import components from '@/mdx-components';
 
 const Tooltip = dynamic(() => import('@/components/ui/overlay/Tooltip'));
 
@@ -124,11 +128,11 @@ export default function PackageCard({
             ref={collapsibleRef}
             className="flex flex-wrap gap-5 border border-t p-6"
           >
-            <PackageDetail Icon={Engineering} title={'Connection'}>
-              <>test 1</>
-              <>test 2</>
-              <>test 3</>
-            </PackageDetail>
+            {connection_price_description && (
+              <PackageDetail Icon={Engineering} title={'Connection'}>
+                <>{connection_price_description}</>
+              </PackageDetail>
+            )}
             <PackageDetail Icon={Router} title={'Equpment'}>
               <>test 1</>
               <>test 2</>
