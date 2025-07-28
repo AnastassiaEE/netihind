@@ -114,7 +114,7 @@ export default function PackageCard({
             {...getButtonProps()}
             className="!pb-0 max-lg:hidden"
           >
-            Детали <Arrow {...getArrowProps()} />
+            {t('buttons.showDetails')} <Arrow {...getArrowProps()} />
           </Button>
         </PackageCardSection>
       </div>

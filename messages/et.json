@@ -97,7 +97,8 @@
     },
     "buttons": {
       "connect": "Ühendada",
-      "consultation": "Konsultatsioon"
+      "consultation": "Konsultatsioon",
+      "showDetails": "Vaata lähemalt"
     },
     "actions": {
       "connection": {

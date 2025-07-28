@@ -97,7 +97,8 @@
     },
     "buttons": {
       "connect": "Подключиться",
-      "consultation": "Консультация"
+      "consultation": "Консультация",
+      "showDetails": "Детали"
     },
     "actions": {
       "connection": {
