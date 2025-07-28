@@ -128,7 +128,7 @@ export default function PackageCard({
             className="flex flex-wrap gap-5 border border-t p-6"
           >
             {connection_price_description && (
-              <PackageDetail Icon={Engineering} title={'Connection'}>
+              <PackageDetail Icon={Engineering} title={t('details.connection')}>
                 <>
                   {translations[connection_price_description]?.[
                     currentLocale as 'ru' | 'et'
@@ -136,7 +136,7 @@ export default function PackageCard({
                 </>
               </PackageDetail>
             )}
-            <PackageDetail Icon={Router} title={'Equpment'}>
+            <PackageDetail Icon={Router} title={t('details.equipment')}>
               <>test 1</>
               <>test 2</>
             </PackageDetail>
