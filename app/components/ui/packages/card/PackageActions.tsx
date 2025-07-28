@@ -11,18 +11,18 @@ export default function PackageActions({
   return (
     <div className="flex">
       <Button
-        className="w-full rounded-t-none rounded-br-none"
+        className="w-full rounded-t-none"
         onClick={() => onActionClick('connection')}
       >
         {t('buttons.connect')}
       </Button>
-      <Button
+      {/* <Button
         variant="outlined"
         className="w-full rounded-t-none rounded-bl-none"
         onClick={() => onActionClick('consultation')}
       >
         {t('buttons.consultation')}
-      </Button>
+      </Button> */}
     </div>
   );
 }

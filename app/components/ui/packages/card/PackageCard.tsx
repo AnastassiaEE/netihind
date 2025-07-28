@@ -125,7 +125,7 @@ export default function PackageCard({
         <div {...getPanelProps()}>
           <div
             ref={collapsibleRef}
-            className="flex flex-wrap gap-5 border border-t p-6"
+            className="flex flex-wrap gap-5 border-t p-6"
           >
             {connection_price_description && (
               <PackageDetail Icon={Engineering} title={t('details.connection')}>
@@ -143,7 +143,7 @@ export default function PackageCard({
           </div>
         </div>
       )}
-      {/* <PackageActions onActionClick={onActionClick} /> */}
+      <PackageActions onActionClick={onActionClick} />
     </article>
   );
 }
