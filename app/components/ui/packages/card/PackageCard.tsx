@@ -1,10 +1,8 @@
-'use client';
-
 import PackagePrice from '@/components/ui/packages/card/PackagePrice';
 import PackageHeader from '@/components/ui/packages/card/PackageHeader';
 import PackageActions from '@/components/ui/packages/card/PackageActions';
 import classNames from 'classnames';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { Router, Engineering, Wifi } from '@mui/icons-material';
 import PackageCardSection from '@/components/ui/packages/card/PackageCardSection';
 import dynamic from 'next/dynamic';
@@ -15,8 +13,7 @@ import Button from '@/components/ui/form/buttons/Button';
 import Arrow from '@/components/ui/icons/Arrow';
 import PackageDetail from '@/components/ui/packages/card/PackageDetail';
 import CircleArrow from '@/components/ui/icons/CircleArrow';
-import { MDXRemote } from 'next-mdx-remote/rsc';
-import components from '@/mdx-components';
+import { useTranslationsContext } from '@/context/TranslationsContext';
 
 const Tooltip = dynamic(() => import('@/components/ui/overlay/Tooltip'));
 
@@ -44,6 +41,8 @@ export default function PackageCard({
   className?: string;
 }) {
   const t = useTranslations('Packages');
+  const translations = useTranslationsContext();
+  const currentLocale = useLocale();
 
   const cardClasses = classNames(
     'rounded-lg border border-muted-light bg-white shadow-md',
@@ -130,7 +129,11 @@ export default function PackageCard({
           >
             {connection_price_description && (
               <PackageDetail Icon={Engineering} title={'Connection'}>
-                <>{connection_price_description}</>
+                <>
+                  {translations[connection_price_description]?.[
+                    currentLocale as 'ru' | 'et'
+                  ] ?? connection_price_description}
+                </>
               </PackageDetail>
             )}
             <PackageDetail Icon={Router} title={'Equpment'}>

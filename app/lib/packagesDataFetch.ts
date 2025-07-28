@@ -39,3 +39,10 @@ export const getPackages = async (
   if (!packages || packages.length === 0) throw new Error('errors.noPackages');
   return packages;
 };
+
+export const getStringTranslations = async () => {
+  const { data: stringTranslations, error } = await supabase.rpc(
+    'get_string_translations',
+  );
+  return stringTranslations ?? [];
+};
