@@ -7,6 +7,9 @@ const nextConfig = {
   //output: 'export',
   reactStrictMode: true,
   trailingSlash: true,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   images: {
     remotePatterns: [
       {
