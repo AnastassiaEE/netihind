@@ -1,6 +1,5 @@
 import PackagePrice from '@/components/ui/packages/card/PackagePrice';
 import PackageHeader from '@/components/ui/packages/card/PackageHeader';
-import PackageActions from '@/components/ui/packages/card/PackageActions';
 import classNames from 'classnames';
 import { useLocale, useTranslations } from 'next-intl';
 import { Router, Engineering, Wifi } from '@mui/icons-material';
@@ -92,6 +91,7 @@ export default function PackageCard({
           </div>
           {connection_min_price !== null && (
             <p className="text-sm">
+              {t('details.connection')}:{' '}
               {connection_min_price > 0
                 ? t('connection.minPrice', { price: connection_min_price })
                 : t('connection.free')}
@@ -143,7 +143,12 @@ export default function PackageCard({
           </div>
         </div>
       )}
-      <PackageActions onActionClick={onActionClick} />
+      <Button
+        className="w-full rounded-t-none"
+        onClick={() => onActionClick('connection')}
+      >
+        {t('buttons.connect')}
+      </Button>
     </article>
   );
 }
