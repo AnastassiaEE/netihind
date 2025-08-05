@@ -47,6 +47,8 @@ export default function PackageActionContent({
     </PackageActionSection>
   );
 
+  const priceRowClasses = 'flex items-center justify-between mb-1';
+
   if (action === 'connection')
     return (
       <div className="flex flex-col gap-6 md:flex-row">
@@ -55,40 +57,59 @@ export default function PackageActionContent({
           {packadeDetailsSection}
           <PackageActionSection title={getSectionTitle('total') + ':'}>
             {data?.discount_price ? (
+              // With Discount
               <>
-                <p className="mb-2 flex items-center justify-between">
+                <p className={priceRowClasses}>
                   <span className="font-medium">
                     {t('discount.duration', {
                       months: data?.discount_duration,
                     })}
                     :
                   </span>
-                  <span className="text-2xl font-bold">
+                  <span className="text-xl font-bold">
                     {data?.discount_price} €
                   </span>
                 </p>
-                <p className="flex items-center justify-between">
-                  <span className="font-medium">
+                <p className={priceRowClasses}>
+                  <span className="text-sm font-medium">
                     {t('discount.durationEnd', {
                       months: Number(data?.discount_duration) + 1,
                     })}
                     :
                   </span>
-                  <span className="text-xl font-medium">
+                  <span className="text-sm font-bold">
                     {data?.internet_package_price} €
                   </span>
                 </p>
               </>
             ) : (
-              <p className="flex items-center justify-between">
+              // Without Discount
+              <p className={priceRowClasses}>
                 <span className="font-medium">
-                  {t(`actions.${action}.details.packagePrice`)}:
+                  {t(`details.packagePrice`)}:
                 </span>
-                <span className="text-2xl font-bold">
+                <span className="text-xl font-bold">
                   {data?.internet_package_price} €
                 </span>
               </p>
             )}
+            {/* Connection */}
+            <p className={priceRowClasses}>
+              {data?.installation_min_price !== null && (
+                <>
+                  <span className="text-sm font-medium">
+                    {t('details.installation')}:
+                  </span>
+                  <span className="text-sm">
+                    {data?.installation_min_price > 0
+                      ? t('installation.minPrice', {
+                          price: data?.installation_min_price,
+                        })
+                      : t('installation.free')}
+                  </span>
+                </>
+              )}
+            </p>
           </PackageActionSection>
         </div>
       </div>

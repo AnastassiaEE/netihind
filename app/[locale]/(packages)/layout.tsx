@@ -1,8 +1,10 @@
 import MainFooter from '@/components/ui/footer/MainFooter';
 import Header from '@/components/ui/header/Header';
+import { TranslationsProvider } from '@/context/TranslationsContext';
+import { getStringTranslations } from '@/lib/packagesDataFetch';
 import { setRequestLocale } from 'next-intl/server';
 
-export default function Layout({
+export default async function Layout({
   params: { locale },
   children,
 }: {
@@ -10,10 +12,13 @@ export default function Layout({
   children: React.ReactNode;
 }) {
   setRequestLocale(locale);
+  const translations = await getStringTranslations();
   return (
     <>
       <Header isSticky={false} />
-      <main className="py-24">{children}</main>
+      <TranslationsProvider rawTranslations={translations}>
+        <main className="py-24">{children}</main>
+      </TranslationsProvider>
       <MainFooter />
     </>
   );

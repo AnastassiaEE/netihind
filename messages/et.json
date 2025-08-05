@@ -96,8 +96,9 @@
       "month": "kuus"
     },
     "buttons": {
-      "connect": "Ühendada",
-      "consultation": "Konsultatsioon"
+      "connect": "Liituda",
+      "consultation": "Konsultatsioon",
+      "showDetails": "Vaata lähemalt"
     },
     "actions": {
       "connection": {
@@ -107,9 +108,6 @@
           "fillForm": "Kontrollige aadress ja täitke vorm",
           "selectedPackage": "Valitud pakett",
           "total": "Kokku"
-        },
-        "details": {
-          "packagePrice": "Kuu hind"
         }
       },
       "consultation": {
@@ -125,9 +123,14 @@
       "duration": "Esimesed {months} kuud",
       "durationEnd": "Alates {months}. kuust"
     },
-    "connection": {
-      "minPrice": "Liitumine: alates {price} €",
-      "free": "Liitumine: Tasuta"
+    "installation": {
+      "minPrice": "alates {price} €",
+      "free": "tasuta"
+    },
+    "details": {
+      "packagePrice": "Kuu hind",
+      "installation": "Paigaldus",
+      "equipment": "Seadmed"
     },
     "errors": {
       "somethingWentWrong": "Midagi läks valesti. Proovige hiljem uuesti.",

@@ -60,11 +60,7 @@ export default function useAccordion(defaultClosed: boolean = true) {
   return {
     isClosed,
     isVisible,
-    toggle,
     collapsibleRef,
-    collapsibleHeight,
-    panelId,
-    handleTransitionEnd,
     getButtonProps: () => ({
       onClick: toggle,
       'aria-expanded': !isClosed,
@@ -77,7 +73,7 @@ export default function useAccordion(defaultClosed: boolean = true) {
       className: 'overflow-hidden transition-all duration-500',
     }),
     getArrowProps: (): { direction: 'up' | 'down' } => ({
-      direction: isClosed ? 'up' : 'down',
+      direction: isClosed ? 'down' : 'up',
     }),
   };
 }

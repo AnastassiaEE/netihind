@@ -1,13 +1,18 @@
 import PackagePrice from '@/components/ui/packages/card/PackagePrice';
 import PackageHeader from '@/components/ui/packages/card/PackageHeader';
-import PackageActions from '@/components/ui/packages/card/PackageActions';
 import classNames from 'classnames';
-import { useTranslations } from 'next-intl';
-import { Wifi } from '@mui/icons-material';
+import { useLocale, useTranslations } from 'next-intl';
+import { Router, Engineering, Wifi } from '@mui/icons-material';
 import PackageCardSection from '@/components/ui/packages/card/PackageCardSection';
 import dynamic from 'next/dynamic';
 import InternetSpeedFeature from '@/components/ui/packages/card/InternetSpeedFeature';
 import { PackageAction } from '@/types/elements.types';
+import useAccordion from '@/hooks/useAccordion';
+import Button from '@/components/ui/form/buttons/Button';
+import Arrow from '@/components/ui/icons/Arrow';
+import PackageDetail from '@/components/ui/packages/card/PackageDetail';
+import CircleArrow from '@/components/ui/icons/CircleArrow';
+import { useTranslationsContext } from '@/context/TranslationsContext';
 
 const Tooltip = dynamic(() => import('@/components/ui/overlay/Tooltip'));
 
@@ -24,8 +29,8 @@ export default function PackageCard({
     internet_package_price,
     discount_price,
     discount_duration,
-    connection_min_price,
-    connection_price_description,
+    installation_min_price,
+    installation_description,
   },
   onActionClick,
   className,
@@ -35,18 +40,28 @@ export default function PackageCard({
   className?: string;
 }) {
   const t = useTranslations('Packages');
+  const translations = useTranslationsContext();
+  const currentLocale = useLocale();
 
   const cardClasses = classNames(
     'rounded-lg border border-muted-light bg-white shadow-md',
     className,
   );
 
+  const {
+    isVisible,
+    collapsibleRef,
+    getArrowProps,
+    getButtonProps,
+    getPanelProps,
+  } = useAccordion();
+
   return (
     <article data-id={internet_package_id} className={cardClasses}>
       <div className="flex flex-wrap">
         <PackageCardSection
           Icon={Wifi}
-          className="w-full border-b border-r lg:w-3/5"
+          className="w-full max-lg:border-b lg:w-3/5 lg:border-r"
         >
           <PackageHeader
             providerLogoSrc={provider_img_url}
@@ -74,15 +89,16 @@ export default function PackageCard({
               content={internet_technology_description}
             />
           </div>
-          {connection_min_price !== null && (
+          {installation_min_price !== null && (
             <p className="text-sm">
-              {connection_min_price > 0
-                ? t('connection.minPrice', { price: connection_min_price })
-                : t('connection.free')}
+              {t('details.installation')}:{' '}
+              {installation_min_price > 0
+                ? t('installation.minPrice', { price: installation_min_price })
+                : t('installation.free')}
             </p>
           )}
         </PackageCardSection>
-        <PackageCardSection className="flex w-full items-center justify-center lg:w-2/5">
+        <PackageCardSection className="flex w-full flex-col items-center justify-center gap-1 lg:w-2/5">
           <PackagePrice
             price={internet_package_price}
             discount={{
@@ -90,9 +106,53 @@ export default function PackageCard({
               discount_duration,
             }}
           />
+          <button
+            {...getButtonProps()}
+            className="absolute right-4 top-1/2 -translate-y-1/2 lg:hidden"
+          >
+            <CircleArrow {...getArrowProps()} className="bg-primary-light" />
+          </button>
+          <Button
+            variant="text"
+            {...getButtonProps()}
+            className="!pb-0 max-lg:hidden"
+          >
+            {t('buttons.showDetails')} <Arrow {...getArrowProps()} />
+          </Button>
         </PackageCardSection>
       </div>
-      <PackageActions onActionClick={onActionClick} />
+      {isVisible && (
+        <div {...getPanelProps()}>
+          <div
+            ref={collapsibleRef}
+            className="flex flex-wrap gap-5 border-t p-6"
+          >
+            {installation_description && (
+              <PackageDetail
+                Icon={Engineering}
+                title={t('details.installation')}
+              >
+                <>
+                  {translations[installation_description]?.[
+                    currentLocale as 'ru' | 'et'
+                  ] ?? installation_description}
+                </>
+              </PackageDetail>
+            )}
+
+            {/* <PackageDetail Icon={Router} title={t('details.equipment')}>
+              <>test 1</>
+              <>test 2</>
+            </PackageDetail> */}
+          </div>
+        </div>
+      )}
+      <Button
+        className="w-full rounded-t-none"
+        onClick={() => onActionClick('connection')}
+      >
+        {t('buttons.connect')}
+      </Button>
     </article>
   );
 }
