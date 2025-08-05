@@ -95,17 +95,17 @@ export default function PackageActionContent({
             )}
             {/* Connection */}
             <p className={priceRowClasses}>
-              {data?.connection_min_price !== null && (
+              {data?.installation_min_price !== null && (
                 <>
                   <span className="text-sm font-medium">
-                    {t('details.connection')}:
+                    {t('details.installation')}:
                   </span>
                   <span className="text-sm">
-                    {data?.connection_min_price > 0
-                      ? t('connection.minPrice', {
-                          price: data?.connection_min_price,
+                    {data?.installation_min_price > 0
+                      ? t('installation.minPrice', {
+                          price: data?.installation_min_price,
                         })
-                      : t('connection.free')}
+                      : t('installation.free')}
                   </span>
                 </>
               )}

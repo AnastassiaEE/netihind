@@ -29,8 +29,8 @@ export default function PackageCard({
     internet_package_price,
     discount_price,
     discount_duration,
-    connection_min_price,
-    connection_price_description,
+    installation_min_price,
+    installation_description,
   },
   onActionClick,
   className,
@@ -89,12 +89,12 @@ export default function PackageCard({
               content={internet_technology_description}
             />
           </div>
-          {connection_min_price !== null && (
+          {installation_min_price !== null && (
             <p className="text-sm">
-              {t('details.connection')}:{' '}
-              {connection_min_price > 0
-                ? t('connection.minPrice', { price: connection_min_price })
-                : t('connection.free')}
+              {t('details.installation')}:{' '}
+              {installation_min_price > 0
+                ? t('installation.minPrice', { price: installation_min_price })
+                : t('installation.free')}
             </p>
           )}
         </PackageCardSection>
@@ -127,19 +127,23 @@ export default function PackageCard({
             ref={collapsibleRef}
             className="flex flex-wrap gap-5 border-t p-6"
           >
-            {connection_price_description && (
-              <PackageDetail Icon={Engineering} title={t('details.connection')}>
+            {installation_description && (
+              <PackageDetail
+                Icon={Engineering}
+                title={t('details.installation')}
+              >
                 <>
-                  {translations[connection_price_description]?.[
+                  {translations[installation_description]?.[
                     currentLocale as 'ru' | 'et'
-                  ] ?? connection_price_description}
+                  ] ?? installation_description}
                 </>
               </PackageDetail>
             )}
-            <PackageDetail Icon={Router} title={t('details.equipment')}>
+
+            {/* <PackageDetail Icon={Router} title={t('details.equipment')}>
               <>test 1</>
               <>test 2</>
-            </PackageDetail>
+            </PackageDetail> */}
           </div>
         </div>
       )}

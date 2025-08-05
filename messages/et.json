@@ -123,13 +123,13 @@
       "duration": "Esimesed {months} kuud",
       "durationEnd": "Alates {months}. kuust"
     },
-    "connection": {
+    "installation": {
       "minPrice": "alates {price} €",
       "free": "tasuta"
     },
     "details": {
       "packagePrice": "Kuu hind",
-      "connection": "Paigaldus",
+      "installation": "Paigaldus",
       "equipment": "Seadmed"
     },
     "errors": {

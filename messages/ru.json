@@ -123,13 +123,13 @@
       "duration": "Первые {months} мес",
       "durationEnd": "Начиная с {months} мес"
     },
-    "connection": {
+    "installation": {
       "minPrice": "начиная от {price} €",
       "free": "бесплатно"
     },
     "details": {
       "packagePrice": "Оплата в месяц",
-      "connection": "Установка",
+      "installation": "Установка",
       "equipment": "Устройства"
     },
     "errors": {
