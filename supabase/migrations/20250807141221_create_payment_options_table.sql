@@ -1,0 +1,4 @@
+CREATE TABLE payment_options (
+  id SMALLSERIAL PRIMARY KEY,     
+  name TEXT UNIQUE NOT NULL
+);
