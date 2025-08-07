@@ -36,11 +36,10 @@ jobs:
       - name: Prepare files (robots.txt + .env)
         env:
           GITHUB_REF_NAME: ${{ github.ref_name }}
-          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
         run: |
-          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} bash -s << 'EOF'
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} bash -s << EOF
           set -e
-          cd "$DEPLOY_PATH"
+          cd ${{ secrets.DEPLOY_PATH }}
 
           echo "Starting robots.txt copy for branch: $GITHUB_REF_NAME"
 
