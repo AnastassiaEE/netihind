@@ -40,7 +40,7 @@ export default async function middleware(request: NextRequest) {
       'sha256-nGgRbGz9hsufKfu+i0QGgvvWtZBIe2KnFhQalyWW+7o=';
       img-src 'self' data: https://cms.netihind.ee https://rxysmdetqttpdqfmrpym.supabase.co;
       font-src 'self' data:;
-      connect-src 'self' https://inaadress.maaamet.ee https://rxysmdetqttpdqfmrpym.supabase.co https://api.resend.com https://region1.google-analytics.com;
+      connect-src 'self' http://127.0.0.1:54321 https://inaadress.maaamet.ee https://rxysmdetqttpdqfmrpym.supabase.co https://api.resend.com https://region1.google-analytics.com;
       object-src 'none';
       base-uri 'self';
       form-action 'self';
