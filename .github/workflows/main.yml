@@ -74,23 +74,10 @@ jobs:
           set -e
           cd ${{ secrets.DEPLOY_PATH }}
 
-          echo "Current directory:"
-          pwd
-
           npm ci
           rm -rf .next
           npm run build
           EOF
-
-      - name: Deploy Supabase migrations
-        env:
-          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
-          SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
-          SUPABASE_PROJECT_ID: ${{ secrets.SUPABASE_PROJECT_ID }}
-        run: |
-          echo "Deploying Supabase migrations for branch: ${{ github.ref_name }}"
-          supabase link --project-ref $SUPABASE_PROJECT_ID
-          supabase db push
 
       - name: Restart pm2 on server
         env:
@@ -109,3 +96,13 @@ jobs:
           fi
           pm2 save
           EOF
+
+      - name: Deploy Supabase migrations
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+          SUPABASE_PROJECT_ID: ${{ secrets.SUPABASE_PROJECT_ID }}
+        run: |
+          echo "Deploying Supabase migrations for branch: ${{ github.ref_name }}"
+          supabase link --project-ref $SUPABASE_PROJECT_ID
+          supabase db push
