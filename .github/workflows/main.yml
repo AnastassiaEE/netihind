@@ -74,6 +74,9 @@ jobs:
           set -e
           cd ${{ secrets.DEPLOY_PATH }}
 
+          echo "Current directory:"
+          pwd
+
           npm ci
           rm -rf .next
           npm run build
