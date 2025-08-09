@@ -39,7 +39,7 @@ export default async function RootLayout({
   }
 
   setRequestLocale(locale);
-  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const { timeZone } = Intl.DateTimeFormat().resolvedOptions();
   const messages = await getMessages();
 
   const nonce = headers().get('x-nonce') ?? ' ';
