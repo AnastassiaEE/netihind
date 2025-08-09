@@ -63,9 +63,9 @@ export default function Packages({
         <PackagesLoader />
       ) : (
         <div>
-          {packages.map((data: { [key: string]: any }) => (
+          {packages.map((data: { [key: string]: any }, index: number) => (
             <PackageCard
-              key={data.internet_package_id}
+              key={data.internet_package_id ?? `package-${index}`}
               data={data}
               className="mb-5 last:mb-0"
               onActionClick={(action) =>
