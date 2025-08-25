@@ -60,11 +60,13 @@ export default async function RootLayout(props: {
           >
             <ScrollTopButton />
             <ConsentProvider>
-              <GoogleAnalytics
-                ga_measurement_id={
-                  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID as string
-                }
-              />
+              <NonceProvider nonce={nonce}>
+                <GoogleAnalytics
+                  ga_measurement_id={
+                    process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID as string
+                  }
+                />
+              </NonceProvider>
               <CookiesModal />
             </ConsentProvider>
             <NonceProvider nonce={nonce}>{children}</NonceProvider>

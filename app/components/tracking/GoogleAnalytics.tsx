@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { useConsentContext } from '@/context/ConsentContext';
 import Script from 'next/script';
+import { useNonceContext } from '@/context/NonceContext';
 
 declare global {
   interface Window {
@@ -18,6 +19,7 @@ export default function GoogleAnalytics({
 }) {
   const { consent } = useConsentContext();
   const pathname = usePathname();
+  const nonce = useNonceContext();
 
   useEffect(() => {
     if (window.gtag) {
@@ -45,6 +47,7 @@ export default function GoogleAnalytics({
       <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${ga_measurement_id}`}
+        nonce={nonce}
       />
       <Script
         id="google-analytics"

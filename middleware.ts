@@ -44,8 +44,7 @@ export default async function middleware(request: NextRequest) {
   : [
       "'self'",
       `'nonce-${nonce}'`,
-      "https://cms.netihind.ee",
-      "https://region1.google-analytics.com"
+      "https://cms.netihind.ee"
     ];
 
   const styleSrc = isDev
