@@ -43,8 +43,8 @@ export default async function middleware(request: NextRequest) {
   ? ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://inaadress.maaamet.ee"]
   : [
       "'self'",
+      "'unsafe-inline'",
       `'nonce-${nonce}'`,
-      "https://cms.netihind.ee",
       "https://www.googletagmanager.com",
       "https://www.google-analytics.com"
     ];
