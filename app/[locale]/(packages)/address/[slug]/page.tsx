@@ -6,17 +6,20 @@ import { getAddressSlug } from '@/utils/addressSlugifier';
 import { setRequestLocale } from 'next-intl/server';
 import AddressPackagesSection from '@/components/sections/address/AddressPackagesSection';
 
-export default function PersonalAddress({
-  params: { slug, locale },
-  searchParams,
-}: {
-  params: { slug: string; locale: string };
-  searchParams: { [key: string]: string };
+export default async function PersonalAddress(props: {
+  params: Promise<{ slug: string; locale: string }>;
+  searchParams: Promise<{ [key: string]: string }>;
 }) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
+
+  const { slug, locale } = params;
+
   setRequestLocale(locale);
 
-  if (!hasCookie('ADDRESS', { cookies })) notFound();
-  const cookieString = getCookie('ADDRESS', { cookies })!;
+  const cookiesExists = await hasCookie('ADDRESS', { cookies });
+  if (!cookiesExists) notFound();
+  const cookieString = await getCookie('ADDRESS', { cookies })!;
   const { fullAddress: address, oid } = getAddressCookieValues(cookieString);
   const addressSlug = getAddressSlug(address);
   if (slug !== addressSlug) notFound();

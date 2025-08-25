@@ -16,7 +16,13 @@ const options = {
     },
 };
 
-export default async function Policy({ params: { locale } }: { params: { locale: string } }) {
+export default async function Policy(props: { params: Promise<{ locale: string }> }) {
+    const params = await props.params;
+
+    const {
+        locale
+    } = params;
+
     setRequestLocale(locale);
     const page = await getPage(`policy-${locale}`);
     if (!page) notFound();

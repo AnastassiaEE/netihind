@@ -1,3 +1,4 @@
+import { use } from 'react';
 import ContactCards from '@/components/ui/contacts/ContactCards';
 import ContactForm from '@/components/ui/form/forms/ContactForm';
 import { H1, H2 } from '@/components/ui/headings/RestPageHeadings';
@@ -12,12 +13,15 @@ import {
   website,
 } from '@/app/shared-metadata';
 
-export async function generateMetadata({
-  params: { locale },
-}: {
-  params: { locale: string };
+export async function generateMetadata(props: {
+  params: Promise<{ locale: string }>;
 }) {
+  const params = await props.params;
+
+  const { locale } = params;
+
   const t = await getTranslations({ locale, namespace: 'SEO' });
+
   return {
     title: t('contactsPage.name'),
     alternates: {
@@ -34,12 +38,15 @@ export async function generateMetadata({
   };
 }
 
-export default function Contacts({
-  params: { locale },
-}: {
-  params: { locale: string };
+export default function Contacts(props: {
+  params: Promise<{ locale: string }>;
 }) {
+  const params = use(props.params);
+
+  const { locale } = params;
+
   setRequestLocale(locale);
+
   const tContacts = useTranslations('ContactsPage');
   const tSEO = useTranslations('SEO');
 

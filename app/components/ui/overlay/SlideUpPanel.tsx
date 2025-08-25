@@ -21,7 +21,7 @@ export default function SlideUpPanel({
   actions?: React.ReactNode;
   isOpened: boolean;
   onClose: () => void;
-  panelRef?: React.RefObject<HTMLDivElement>;
+  panelRef?: React.RefObject<HTMLDivElement | null>;
   children: React.ReactNode;
 }) {
   const { handleTouchStart, handleTouchEnd } = useSlideUpPanel(onClose);

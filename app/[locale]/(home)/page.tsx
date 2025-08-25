@@ -1,3 +1,4 @@
+import { use } from 'react';
 import QuestionsSection from '@/components/sections/home/QuestionsSection';
 import ContactsSection from '@/components/sections/home/ContactsSection';
 import StepsSection from '@/components/sections/home/StepsSection';
@@ -9,11 +10,12 @@ import { openGraphLogo, website, metadataBaseUrl } from '@/app/shared-metadata';
 
 export const revalidate = 3600;
 
-export async function generateMetadata({
-  params: { locale },
-}: {
-  params: { locale: string };
+export async function generateMetadata(props: {
+  params: Promise<{ locale: string }>;
 }) {
+  const params = await props.params;
+  const { locale } = params;
+
   const t = await getTranslations({ locale, namespace: 'SEO' });
 
   return {
@@ -34,12 +36,12 @@ export async function generateMetadata({
   };
 }
 
-export default function Home({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
+export default function Home(props: { params: Promise<{ locale: string }> }) {
+  const params = use(props.params);
+  const { locale } = params;
+
   setRequestLocale(locale);
+
   const t = useTranslations('SEO');
 
   const homePageUrl = new URL(t('homePage.url'), metadataBaseUrl).toString();

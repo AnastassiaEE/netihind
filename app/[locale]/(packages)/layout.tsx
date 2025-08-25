@@ -4,15 +4,18 @@ import { TranslationsProvider } from '@/context/TranslationsContext';
 import { getStringTranslations } from '@/lib/packagesDataFetch';
 import { setRequestLocale } from 'next-intl/server';
 
-export default async function Layout({
-  params: { locale },
-  children,
-}: {
-  params: { locale: string };
+export default async function Layout(props: {
+  params: Promise<{ locale: string }>;
   children: React.ReactNode;
 }) {
+  const params = await props.params;
+  const { locale } = params;
+  const { children } = props;
+
   setRequestLocale(locale);
+
   const translations = await getStringTranslations();
+
   return (
     <>
       <Header isSticky={false} />

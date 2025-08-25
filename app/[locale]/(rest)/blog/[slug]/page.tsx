@@ -9,6 +9,7 @@ import getFormattedSlug from '@/utils/slugFormatter';
 import { setRequestLocale } from 'next-intl/server';
 import PageLoader from '@/components/ui/loaders/PageLoader';
 
+export const dynamic = 'force-static';
 export const revalidate = 3600;
 
 export async function generateStaticParams() {
@@ -22,14 +23,17 @@ export async function generateStaticParams() {
   return paths;
 }
 
-export default async function Post({
-  params: { slug, locale },
-}: {
-  params: { slug: string; locale: string };
+export default async function Post(props: {
+  params: Promise<{ slug: string; locale: string }>;
 }) {
+  const params = await props.params;
+  const { slug, locale } = params;
+
   setRequestLocale(locale);
+
   const post = await getPostBySlug(`${slug}-${locale}`);
   if (!post) notFound();
+
   return (
     <Suspense fallback={<PageLoader />}>
       <BlogPostHeaderSection title={post.title} date={post.date} />

@@ -8,7 +8,7 @@ export default function Tooltip({
   elementToInteract,
   content,
 }: {
-  elementToInteract: React.ReactElement;
+  elementToInteract: React.ReactElement<any>;
   content: string;
 }) {
   const { isVisible, show, hide } = useTooltip();
