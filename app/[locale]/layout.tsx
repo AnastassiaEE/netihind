@@ -7,11 +7,11 @@ import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { headers } from 'next/headers';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
-import { NonceProvider } from '@/context/NonceContext';
 import CookiesModal from '@/components/ui/cookies/CookiesModal';
 import GoogleAnalytics from '@/components/tracking/GoogleAnalytics';
 import { ConsentProvider } from '@/context/ConsentContext';
 import { metadataBaseUrl } from '@/app/shared-metadata';
+import { NonceProvider } from '@/context/NonceContext';
 
 const manrope = Manrope({
   subsets: ['latin'],
@@ -60,13 +60,11 @@ export default async function RootLayout(props: {
           >
             <ScrollTopButton />
             <ConsentProvider>
-              <NonceProvider nonce={nonce}>
-                <GoogleAnalytics
-                  ga_measurement_id={
-                    process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID as string
-                  }
-                />
-              </NonceProvider>
+              <GoogleAnalytics
+                ga_measurement_id={
+                  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID as string
+                }
+              />
               <CookiesModal />
             </ConsentProvider>
             <NonceProvider nonce={nonce}>{children}</NonceProvider>
