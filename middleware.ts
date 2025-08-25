@@ -40,8 +40,13 @@ export default async function middleware(request: NextRequest) {
 ];
 
   const scriptSrc = isDev
-    ? ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://inaadress.maaamet.ee"]   
-    : ["'self'", `'nonce-${nonce}'`, "'strict-dynamic'", "https:", "http:"]; 
+  ? ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://inaadress.maaamet.ee"]
+  : [
+      "'self'",
+      `'nonce-${nonce}'`,
+      "https://cms.netihind.ee",
+      "https://region1.google-analytics.com"
+    ];
 
   const styleSrc = isDev
     ? ["'self'", "'unsafe-inline'"]  
