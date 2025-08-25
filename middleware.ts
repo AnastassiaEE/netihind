@@ -39,14 +39,17 @@ export default async function middleware(request: NextRequest) {
   'sha256-nGgRbGz9hsufKfu+i0QGgvvWtZBIe2KnFhQalyWW+7o=',
 ];
 
+  const scriptHashes = [
+    'sha256-O1qawWm1Nrr3e6Xlu//ZpDu4FL6ECaww2pgFqUEBTh0='
+  ]
+
   const scriptSrc = isDev
   ? ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://inaadress.maaamet.ee"]
   : [
       "'self'",
-      "'unsafe-inline'",
       `'nonce-${nonce}'`,
-      "https://www.googletagmanager.com",
-      "https://www.google-analytics.com"
+      "'unsafe-hashes'",
+       ...scriptHashes.map(h => `'${h}'`)
     ];
 
   const styleSrc = isDev
