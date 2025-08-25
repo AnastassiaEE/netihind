@@ -1,4 +1,4 @@
-import { getCookie, hasCookie } from 'cookies-next';
+import { getCookie, hasCookie } from 'cookies-next/server';
 import { cookies } from 'next/headers';
 import { notFound } from 'next/navigation';
 import { getAddressCookieValues } from '@/utils/addressCookieHelper';

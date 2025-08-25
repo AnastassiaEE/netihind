@@ -1,7 +1,7 @@
 import { useConsentContext } from '@/context/ConsentContext';
 import { useEffect, useState } from 'react';
 import useOverlay from './useOverlay';
-import { getCookie, hasCookie, setCookie } from 'cookies-next';
+import { getCookie, hasCookie, setCookie } from 'cookies-next/client';
 
 const CONSENT_COOKIE_KEY = 'COOKIE_CONSENT';
 
