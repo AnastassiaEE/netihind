@@ -9,9 +9,6 @@ import getFormattedSlug from '@/utils/slugFormatter';
 import { setRequestLocale } from 'next-intl/server';
 import PageLoader from '@/components/ui/loaders/PageLoader';
 
-export const dynamic = 'force-static';
-export const revalidate = 3600;
-
 export async function generateStaticParams() {
   const posts = await getPostsWithSlugsOnly();
   let paths = posts.map((post: { [key: string]: any }) => {

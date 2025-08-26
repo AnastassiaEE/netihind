@@ -4,9 +4,6 @@ import { setRequestLocale } from 'next-intl/server';
 
 import { Suspense, use } from 'react';
 
-export const dynamic = 'force-static';
-export const revalidate = 3600;
-
 export default function Blog(props: { params: Promise<{ locale: string }> }) {
   const params = use(props.params);
   const { locale } = params;

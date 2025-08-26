@@ -29,49 +29,25 @@ export default async function middleware(request: NextRequest) {
 
   const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
 
-  const styleHashes = [
-  'sha256-zlqnbDt84zf1iSefLU/ImC54isoprH/MRiVZGskwexk=',
-  'sha256-ZDrxqUOB4m/L0JWL/+gS52g1CRH0l/qwMhjTw5Z/Fsc=',
-  'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=',
-  'sha256-EtMbx9k/muOjUy42QlSBZb6J88TNtSy99Y+VsAia0Mw=',
-  'sha256-tEd4lBbiysGj/wvNlLDvwZnlGLMloPzWaf2aUrdDBFE=',
-  'sha256-ci9xwDutagjdtNCnRmUkQW4727HuaEmJSYCcKZ+Mfyg=',
-  'sha256-nGgRbGz9hsufKfu+i0QGgvvWtZBIe2KnFhQalyWW+7o=',
-];
-
-  const scriptHashes = [
-    'sha256-O1qawWm1Nrr3e6Xlu//ZpDu4FL6ECaww2pgFqUEBTh0='
-  ]
-
   const scriptSrc = isDev
-  ? ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://inaadress.maaamet.ee"]
-  : [
-      "'self'",
-      `'nonce-${nonce}'`,
-      "'unsafe-hashes'",
-       ...scriptHashes.map(h => `'${h}'`)
-    ];
+  ? ["'self'", "'unsafe-inline'", "*"] 
+  : ["'self'", `'nonce-${nonce}'`, "'strict-dynamic'"];
 
-  const styleSrc = isDev
-    ? ["'self'", "'unsafe-inline'"]  
-    : ["'self'", `'nonce-${nonce}'`, "'unsafe-hashes'", ...styleHashes.map(h => `'${h}'`)];
-
-    const connectSrc = isDev
+  const connectSrc = isDev
   ? "*" 
   : [
       "'self'",
-      "http://127.0.0.1:54321",
       "https://inaadress.maaamet.ee",
       "https://tshbfrxtlarxxnfegvyl.supabase.co",
       "https://rxysmdetqttpdqfmrpym.supabase.co",
       "https://api.resend.com",
       "https://region1.google-analytics.com",
-    ].join(" ");
+    ].join(' ');
 
   const cspHeader = `
     default-src 'self';
     script-src ${scriptSrc.join(' ')};
-    style-src ${styleSrc.join(' ')};
+    style-src 'self' 'unsafe-inline';
     img-src 'self' data: https://cms.netihind.ee https://rxysmdetqttpdqfmrpym.supabase.co;
     font-src 'self' data:;
     connect-src ${connectSrc};

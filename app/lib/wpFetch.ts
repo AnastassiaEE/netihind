@@ -8,7 +8,6 @@ export async function fetchAPI(query = '', { variables }: Record<string, any> = 
   }
 
   const res = await fetch(API_URL, {
-    next: { revalidate: 3600 },
     headers,
     method: 'POST',
     body: JSON.stringify({

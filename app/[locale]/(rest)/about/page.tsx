@@ -8,8 +8,6 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { metadataBaseUrl, openGraphLogo, website } from '@/app/shared-metadata';
 import PageLoader from '@/components/ui/loaders/PageLoader';
 
-export const revalidate = 3600;
-
 export async function generateMetadata(props: {
   params: Promise<{ locale: string }>;
 }) {
