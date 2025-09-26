@@ -52,7 +52,7 @@ export default function SlideUpPanel({
             {title}
           </p>
           <CloseButton
-            label={t(`${name}.close`)}
+            label={t(`${name}.close` as any)}
             onClick={onClose}
             className="absolute right-6 top-1/2 -translate-y-1/2"
           />

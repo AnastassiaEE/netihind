@@ -53,7 +53,7 @@ export default function Dialog({
       >
         {onClose && (
           <CloseButton
-            label={t(`${name}.close`)}
+            label={t(`${name}.close` as any)}
             onClick={onClose}
             className="absolute right-4 top-4 bg-white"
           />

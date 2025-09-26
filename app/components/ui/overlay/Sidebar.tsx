@@ -43,7 +43,7 @@ export default function Sidebar({
           >
             {title}
           </p>
-          <CloseButton label={t(`${name}.close`)} onClick={onClose} />
+          <CloseButton label={t(`${name}.close` as any)} onClick={onClose} />
         </div>
         {children}
       </div>

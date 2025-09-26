@@ -38,7 +38,7 @@ export default function PackagePrice({
             {price}€
             <span className="ml-2 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-sm font-medium text-transparent">
               -{discountPercentage}%{' '}
-              {t('discount.duration', { months: discount_duration })}
+              {t('discount.duration', { months: discount_duration ?? '' })}
             </span>
           </p>
         </>
