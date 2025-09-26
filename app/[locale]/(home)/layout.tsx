@@ -1,5 +1,6 @@
 import MainFooter from '@/components/ui/footer/MainFooter';
 import Header from '@/components/ui/header/Header';
+import { Locale } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { use } from 'react';
 
@@ -11,7 +12,7 @@ export default function Layout(props: {
   const { locale } = params;
   const { children } = props;
 
-  setRequestLocale(locale);
+  setRequestLocale(locale as Locale);
 
   return (
     <>

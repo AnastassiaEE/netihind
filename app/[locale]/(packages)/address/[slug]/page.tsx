@@ -5,9 +5,10 @@ import { getAddressCookieValues } from '@/utils/addressCookieHelper';
 import { getAddressSlug } from '@/utils/addressSlugifier';
 import { setRequestLocale } from 'next-intl/server';
 import AddressPackagesSection from '@/components/sections/address/AddressPackagesSection';
+import { Locale } from 'next-intl';
 
 export default async function PersonalAddress(props: {
-  params: Promise<{ slug: string; locale: string }>;
+  params: Promise<{ slug: string; locale: Locale }>;
   searchParams: Promise<{ [key: string]: string }>;
 }) {
   const searchParams = await props.searchParams;

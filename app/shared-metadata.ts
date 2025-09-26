@@ -1,3 +1,5 @@
+import { Locale } from "next-intl";
+
 export const metadataBaseUrl = new URL('https://netihind.ee');
 const logoUrl =
   'https://rxysmdetqttpdqfmrpym.supabase.co/storage/v1/object/public/website-logos//gradientmainlogo.png';
@@ -9,7 +11,7 @@ export const openGraphLogo = {
   alt: 'Netihind logo',
 };
 
-export const website = (t: any, locale: string) => {
+export const website = (t: any, locale: Locale) => {
   const websiteUrl = new URL(t('website.url'), metadataBaseUrl).toString();
   return {
     '@type': 'WebSite',

@@ -133,9 +133,8 @@ export default function PackageCard({
                 title={t('details.installation')}
               >
                 <>
-                  {translations[installation_description]?.[
-                    currentLocale as 'ru' | 'et'
-                  ] ?? installation_description}
+                  {translations[installation_description]?.[currentLocale] ??
+                    installation_description}
                 </>
               </PackageDetail>
             )}

@@ -5,11 +5,11 @@ import StepsSection from '@/components/sections/home/StepsSection';
 import SliderBlogSection from '@/components/sections/home/SliderBlogSection';
 import TopSection from '@/components/sections/home/TopSection';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { useTranslations } from 'next-intl';
+import { Locale, useTranslations } from 'next-intl';
 import { openGraphLogo, website, metadataBaseUrl } from '@/app/shared-metadata';
 
 export async function generateMetadata(props: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: Locale }>;
 }) {
   const params = await props.params;
   const { locale } = params;
@@ -34,7 +34,7 @@ export async function generateMetadata(props: {
   };
 }
 
-export default function Home(props: { params: Promise<{ locale: string }> }) {
+export default function Home(props: { params: Promise<{ locale: Locale }> }) {
   const params = use(props.params);
   const { locale } = params;
 

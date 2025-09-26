@@ -3,7 +3,7 @@ import ContactCards from '@/components/ui/contacts/ContactCards';
 import ContactForm from '@/components/ui/form/forms/ContactForm';
 import { H1, H2 } from '@/components/ui/headings/RestPageHeadings';
 import SectionLayout from '@/layouts/SectionLayout';
-import { useTranslations } from 'next-intl';
+import { Locale, useTranslations } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { contacts } from '@/data/contacts';
 import {
@@ -14,7 +14,7 @@ import {
 } from '@/app/shared-metadata';
 
 export async function generateMetadata(props: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: Locale }>;
 }) {
   const params = await props.params;
 
@@ -39,7 +39,7 @@ export async function generateMetadata(props: {
 }
 
 export default function Contacts(props: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: Locale }>;
 }) {
   const params = use(props.params);
 
@@ -50,11 +50,13 @@ export default function Contacts(props: {
   const tContacts = useTranslations('ContactsPage');
   const tSEO = useTranslations('SEO');
 
-  const contactsList = Object.keys(contacts).map((type) => ({
-    contactType: type as 'email' | 'phone' | 'address',
+  const cardTypes = ['email', 'phone'] as const;
+
+  const contactsList = cardTypes.map((type) => ({
+    contactType: type,
     title: tContacts(`cards.${type}.title`),
     description: tContacts(`cards.${type}.description`),
-    contact: contacts[type as keyof typeof contacts],
+    contact: contacts[type],
   }));
 
   const contactsPageUrl = new URL(

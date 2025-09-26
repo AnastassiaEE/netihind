@@ -2,9 +2,9 @@ import '@/app/globals.css';
 import { Manrope } from 'next/font/google';
 import ScrollTopButton from '@/components/ui/buttons/ScrollTopButton';
 import { routing } from 'i18n/routing';
-import { getMessages, setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { NextIntlClientProvider } from 'next-intl';
+import { Locale, NextIntlClientProvider } from 'next-intl';
 import { headers } from 'next/headers';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import CookiesModal from '@/components/ui/cookies/CookiesModal';
@@ -35,21 +35,20 @@ export default async function RootLayout(props: {
   const { locale } = params;
   const { children } = props;
 
-  if (!routing.locales.includes(locale as any)) {
+  if (!routing.locales.includes(locale as Locale)) {
     notFound();
   }
 
-  setRequestLocale(locale);
+  setRequestLocale(locale as Locale);
 
   const { timeZone } = Intl.DateTimeFormat().resolvedOptions();
-  const messages = await getMessages();
 
   const nonce = (await headers()).get('x-nonce') ?? ' ';
 
   return (
     <html lang={locale}>
       <body className={`${manrope.className} relative`}>
-        <NextIntlClientProvider timeZone={timeZone} messages={messages}>
+        <NextIntlClientProvider timeZone={timeZone}>
           <AppRouterCacheProvider
             options={{
               enableCssLayer: true,

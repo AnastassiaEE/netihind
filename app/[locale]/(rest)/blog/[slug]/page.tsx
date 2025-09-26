@@ -8,6 +8,7 @@ import { Suspense } from 'react';
 import getFormattedSlug from '@/utils/slugFormatter';
 import { setRequestLocale } from 'next-intl/server';
 import PageLoader from '@/components/ui/loaders/PageLoader';
+import { Locale } from 'next-intl';
 
 export async function generateStaticParams() {
   const posts = await getPostsWithSlugsOnly();
@@ -21,7 +22,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Post(props: {
-  params: Promise<{ slug: string; locale: string }>;
+  params: Promise<{ slug: string; locale: Locale }>;
 }) {
   const params = await props.params;
   const { slug, locale } = params;

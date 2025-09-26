@@ -7,9 +7,10 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { metadataBaseUrl, openGraphLogo, website } from '@/app/shared-metadata';
 import PageLoader from '@/components/ui/loaders/PageLoader';
+import { Locale } from 'next-intl';
 
 export async function generateMetadata(props: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: Locale }>;
 }) {
   const params = await props.params;
   const { locale } = params;
@@ -35,7 +36,7 @@ export async function generateMetadata(props: {
 }
 
 export default async function About(props: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: Locale }>;
 }) {
   const params = await props.params;
   const { locale } = params;

@@ -2,6 +2,7 @@ import MainFooter from '@/components/ui/footer/MainFooter';
 import Header from '@/components/ui/header/Header';
 import { TranslationsProvider } from '@/context/TranslationsContext';
 import { getStringTranslations } from '@/lib/packagesDataFetch';
+import { Locale } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 
 export default async function Layout(props: {
@@ -12,7 +13,7 @@ export default async function Layout(props: {
   const { locale } = params;
   const { children } = props;
 
-  setRequestLocale(locale);
+  setRequestLocale(locale as Locale);
 
   const translations = await getStringTranslations();
 

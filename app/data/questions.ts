@@ -1,4 +1,4 @@
-const questions: { question: string; answer: string }[] = [
+const questions = [
   {
     question: 'questionsSection.questions.question1.question',
     answer: 'questionsSection.questions.question1.answer',
@@ -15,6 +15,6 @@ const questions: { question: string; answer: string }[] = [
     question: 'questionsSection.questions.question4.question',
     answer: 'questionsSection.questions.question4.answer',
   },
-];
+] as const;
 
 export default questions;

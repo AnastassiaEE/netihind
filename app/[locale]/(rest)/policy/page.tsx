@@ -7,6 +7,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import components from '@/mdx-components';
 import { setRequestLocale } from 'next-intl/server';
 import PageLoader from '@/components/ui/loaders/PageLoader';
+import { Locale } from 'next-intl';
 
 const options = {
   mdxOptions: {
@@ -15,7 +16,7 @@ const options = {
 };
 
 export default async function Policy(props: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: Locale }>;
 }) {
   const params = await props.params;
 
