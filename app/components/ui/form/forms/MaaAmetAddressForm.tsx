@@ -39,7 +39,7 @@ export default function MaaAmetAddressForm() {
                 {t('messages.addressExample')}
               </span>
             ) : (
-              <FieldError size="lg">{t(error)}</FieldError>
+              <FieldError size="lg">{t(error as any)}</FieldError>
             )}
           </div>
           <Button type="submit" size="lg" className="max-md:mt-6 max-md:w-full">
