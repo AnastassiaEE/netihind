@@ -1,4 +1,5 @@
 import { CheckboxSize } from '@/types/form.types';
+import classNames from 'classnames';
 import { tv } from 'tailwind-variants';
 
 export default function Checkbox({
@@ -9,6 +10,7 @@ export default function Checkbox({
   isValid = true,
   required = false,
   onChange,
+  className,
   children,
 }: {
   name: string;
@@ -18,10 +20,11 @@ export default function Checkbox({
   isValid?: boolean;
   required?: boolean;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
+  className?: string;
   children: React.ReactNode;
 }) {
   const checkboxClasses = tv({
-    base: 'checkbox mr-2 shrink-0 cursor-pointer appearance-none rounded-[.185em] border checked:border-primary checked:bg-primary checked:bg-contain',
+    base: 'checkbox align-sub mr-2 shrink-0 cursor-pointer appearance-none rounded-[.185em] border checked:border-primary checked:bg-primary checked:bg-contain',
     variants: {
       size: {
         sm: 'size-4',
@@ -51,7 +54,13 @@ export default function Checkbox({
   });
 
   return (
-    <label className="flex cursor-pointer items-center">
+    <label
+      className={classNames(
+        'block cursor-pointer',
+        labelClasses({ size }),
+        className,
+      )}
+    >
       <input
         name={name}
         value={value}
@@ -65,7 +74,7 @@ export default function Checkbox({
           isValid,
         })}
       />
-      <span className={labelClasses({ size })}>{children}</span>
+      {children}
     </label>
   );
 }

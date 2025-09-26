@@ -32,7 +32,7 @@ const pagination = {
   clickable: true,
   el: '.swiper-pagination',
   bulletClass:
-    'pagination-bullet mx-1.5 inline-block size-1.5 cursor-pointer rounded-lg bg-muted transition-all duration-500',
+    'pagination-bullet mx-1.5 inline-block size-1.5 cursor-pointer rounded-md bg-muted transition-all duration-500',
   bulletActiveClass: 'pagination-bullet-active !w-6 !bg-primary',
 };
 

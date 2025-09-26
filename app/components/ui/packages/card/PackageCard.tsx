@@ -44,7 +44,7 @@ export default function PackageCard({
   const currentLocale = useLocale();
 
   const cardClasses = classNames(
-    'rounded-lg border border-muted-light bg-white shadow-md',
+    'rounded-md border border-muted-light bg-white shadow-md',
     className,
   );
 

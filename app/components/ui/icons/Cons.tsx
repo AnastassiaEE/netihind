@@ -1,10 +1,21 @@
 import { IconSize } from '@/types/elements.types';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
+import classNames from 'classnames';
 
-export default function Pros({ size = 'medium' }: { size?: IconSize }) {
+export default function Pros({
+  size = 'medium',
+  className,
+}: {
+  size?: IconSize;
+  className?: string;
+}) {
   return (
-    <i className="inline align-text-bottom">
-      <RemoveCircleOutlineIcon fontSize={size} className="mr-3 text-red-600" />
-    </i>
+    <RemoveCircleOutlineIcon
+      fontSize={size}
+      className={classNames(
+        'mr-3 inline align-text-bottom text-red-600',
+        className,
+      )}
+    />
   );
 }

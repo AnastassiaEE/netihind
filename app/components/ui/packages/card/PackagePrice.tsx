@@ -16,7 +16,7 @@ export default function PackagePrice({
   const { discount_price, discount_duration } = discount;
 
   const priceClasses = classNames(
-    'w-max rounded-lg px-2 py-1 text-lg tracking-tight md:text-xl',
+    'w-max rounded-md px-2 py-1 text-lg tracking-tight md:text-xl',
     discount_price
       ? 'bg-gradient-to-r from-primary via-secondary to-accent text-white'
       : 'bg-primary-light text-muted-dark',

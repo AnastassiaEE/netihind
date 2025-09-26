@@ -7,30 +7,30 @@ import { H2, H3 } from '@/components/ui/headings/HomePageHeadings';
 import { useTranslations } from 'next-intl';
 
 export default function ContactsSection() {
-    const t = useTranslations('HomePage');
-    const { phone, email } = contacts;
-    return (
-        <SectionLayout className="py-24">
-            <div className="md:flex md:items-center md:justify-between">
-                <div className="max-md:mb-12 md:w-1/2">
-                    <div className="mb-20">
-                        <H2>{t('contactsSection.title')}</H2>
-                        <p className="text-lg">{t('contactsSection.description')}</p>
-                    </div>
-                    <div>
-                        <H3>{t('contactsSection.subtitle')}</H3>
-                        <ContactLinks>
-                            <ContactLink contactType="phone" contact={phone} />
-                            <ContactLink contactType="email" contact={email} />
-                        </ContactLinks>
-                    </div>
-                </div>
-                <div className="md:w-1/3">
-                    <div className="rounded-lg p-6 shadow-md">
-                        <ContactForm />
-                    </div>
-                </div>
-            </div>
-        </SectionLayout>
-    );
+  const t = useTranslations('HomePage');
+  const { phone, email } = contacts;
+  return (
+    <SectionLayout className="py-24">
+      <div className="md:flex md:items-center md:justify-between">
+        <div className="max-md:mb-12 md:w-1/2">
+          <div className="mb-20">
+            <H2>{t('contactsSection.title')}</H2>
+            <p className="text-lg">{t('contactsSection.description')}</p>
+          </div>
+          <div>
+            <H3>{t('contactsSection.subtitle')}</H3>
+            <ContactLinks>
+              <ContactLink contactType="phone" contact={phone} />
+              <ContactLink contactType="email" contact={email} />
+            </ContactLinks>
+          </div>
+        </div>
+        <div className="md:w-1/3">
+          <div className="rounded-md p-6 shadow-md">
+            <ContactForm />
+          </div>
+        </div>
+      </div>
+    </SectionLayout>
+  );
 }

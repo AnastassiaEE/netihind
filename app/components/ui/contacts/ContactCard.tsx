@@ -4,50 +4,52 @@ import { H2 } from '@/components/ui/headings/RestPageHeadings';
 import classNames from 'classnames';
 
 const iconMap = {
-    email: Email,
-    phone: LocalPhone,
-    address: LocationOn,
+  email: Email,
+  phone: LocalPhone,
+  address: LocationOn,
 };
 
 const hrefMap = {
-    email: (contact: string) => `mailto:${contact}`,
-    phone: (contact: string) => `tel:${contact}`,
-    address: (contact: string) => `#`,
+  email: (contact: string) => `mailto:${contact}`,
+  phone: (contact: string) => `tel:${contact}`,
+  address: (contact: string) => `#`,
 };
 
 export default function ContactCard({
-    contactType,
-    title,
-    description,
-    contact,
-    className,
+  contactType,
+  title,
+  description,
+  contact,
+  className,
 }: {
-    contactType: 'email' | 'phone' | 'address';
-    title: string;
-    description: string;
-    contact: string;
-    className?: string;
+  contactType: 'email' | 'phone' | 'address';
+  title: string;
+  description: string;
+  contact: string;
+  className?: string;
 }) {
-    const cardClasses = classNames(
-        'flex rounded-lg border border-muted-light p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg',
-        className,
-    );
+  const cardClasses = classNames(
+    'flex rounded-md border border-muted-light p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg',
+    className,
+  );
 
-    const Icon = iconMap[contactType];
-    const href = hrefMap[contactType](contact);
+  const Icon = iconMap[contactType];
+  const href = hrefMap[contactType](contact);
 
-    return (
-        <div className={cardClasses}>
-            <div>
-                <ContactCircle Icon={Icon} />
-            </div>
-            <div className="pl-6">
-                <H2 className="!mb-3">{title}</H2>
-                <p className="mb-3">{description}</p>
-                <a href={href} className="block py-3 font-semibold text-primary hover:text-primary-dark">
-                    {contact}
-                </a>
-            </div>
-        </div>
-    );
+  return (
+    <div className={cardClasses}>
+      <ContactCircle Icon={Icon} />
+
+      <div className="pl-6">
+        <H2 className="!mb-3">{title}</H2>
+        <p className="mb-3">{description}</p>
+        <a
+          href={href}
+          className="block py-3 font-semibold text-primary hover:text-primary-dark"
+        >
+          {contact}
+        </a>
+      </div>
+    </div>
+  );
 }

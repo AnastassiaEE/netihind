@@ -121,7 +121,7 @@ export default function ContactForm() {
       </div>
       <Button type="submit" size="lg" disabled={isSending} className="w-full">
         {isSending ? (
-          <Loop className="animate-spin" />
+          <Loop className="ml-2 animate-spin align-middle" />
         ) : (
           <>{t('buttons.send')}</>
         )}
