@@ -7,15 +7,16 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { metadataBaseUrl, openGraphLogo, website } from '@/app/shared-metadata';
 import PageLoader from '@/components/ui/loaders/PageLoader';
+import { Locale } from 'next-intl';
 
-export const revalidate = 3600;
-
-export async function generateMetadata({
-  params: { locale },
-}: {
-  params: { locale: string };
+export async function generateMetadata(props: {
+  params: Promise<{ locale: Locale }>;
 }) {
+  const params = await props.params;
+  const { locale } = params;
+
   const t = await getTranslations({ locale, namespace: 'SEO' });
+
   return {
     title: t('aboutPage.name'),
     description: t('aboutPage.description'),
@@ -34,12 +35,14 @@ export async function generateMetadata({
   };
 }
 
-export default async function About({
-  params: { locale },
-}: {
-  params: { locale: string };
+export default async function About(props: {
+  params: Promise<{ locale: Locale }>;
 }) {
+  const params = await props.params;
+  const { locale } = params;
+
   setRequestLocale(locale);
+
   const t = await getTranslations({ locale, namespace: 'SEO' });
 
   const aboutPageUrl = new URL(t('aboutPage.url'), metadataBaseUrl).toString();

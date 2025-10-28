@@ -8,6 +8,8 @@ export default async function middleware(request: NextRequest) {
   const updatedSearchParams = new URLSearchParams();
   let needsRedirect = false;
 
+  const isDev = process.env.NODE_ENV === 'development';
+
   searchParams.forEach((value, key) => {
     if (value.endsWith('/')) {
       updatedSearchParams.set(key, value.slice(0, -1));
@@ -27,26 +29,33 @@ export default async function middleware(request: NextRequest) {
 
   const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
 
+  const scriptSrc = isDev
+  ? ["'self'", "'unsafe-inline'", "*"] 
+  : ["'self'", `'nonce-${nonce}'`, "'strict-dynamic'"];
+
+  const connectSrc = isDev
+  ? "*" 
+  : [
+      "'self'",
+      "https://inaadress.maaamet.ee",
+      "https://tshbfrxtlarxxnfegvyl.supabase.co",
+      "https://rxysmdetqttpdqfmrpym.supabase.co",
+      "https://api.resend.com",
+      "https://region1.google-analytics.com",
+    ].join(' ');
+
   const cspHeader = `
-      default-src 'self';
-      script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-eval' 'unsafe-inline' https: http:;
-      style-src 'self' 'nonce-${nonce}' 'unsafe-hashes' 
-      'sha256-zlqnbDt84zf1iSefLU/ImC54isoprH/MRiVZGskwexk='
-      'sha256-ZDrxqUOB4m/L0JWL/+gS52g1CRH0l/qwMhjTw5Z/Fsc='
-      'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU='
-      'sha256-EtMbx9k/muOjUy42QlSBZb6J88TNtSy99Y+VsAia0Mw='
-      'sha256-tEd4lBbiysGj/wvNlLDvwZnlGLMloPzWaf2aUrdDBFE='
-      'sha256-ci9xwDutagjdtNCnRmUkQW4727HuaEmJSYCcKZ+Mfyg='
-      'sha256-nGgRbGz9hsufKfu+i0QGgvvWtZBIe2KnFhQalyWW+7o=';
-      img-src 'self' data: https://cms.netihind.ee https://rxysmdetqttpdqfmrpym.supabase.co;
-      font-src 'self' data:;
-      connect-src 'self' http://127.0.0.1:54321 https://inaadress.maaamet.ee https://tshbfrxtlarxxnfegvyl.supabase.co https://rxysmdetqttpdqfmrpym.supabase.co https://api.resend.com https://region1.google-analytics.com;
-      object-src 'none';
-      base-uri 'self';
-      form-action 'self';
-      frame-ancestors 'none';
-      upgrade-insecure-requests;
-    `;
+    default-src 'self';
+    script-src ${scriptSrc.join(' ')};
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' data: https://cms.netihind.ee https://rxysmdetqttpdqfmrpym.supabase.co;
+    font-src 'self' data:;
+    connect-src ${connectSrc};
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+    frame-ancestors 'none';
+  `;
 
   const contentSecurityPolicyHeaderValue = cspHeader
     .replace(/\s{2,}/g, ' ')

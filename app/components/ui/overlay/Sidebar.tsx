@@ -16,7 +16,7 @@ export default function Sidebar({
   title: string;
   isOpened: boolean;
   onClose: () => void;
-  sidebarRef?: React.RefObject<HTMLDivElement>;
+  sidebarRef?: React.RefObject<HTMLDivElement | null>;
   children: React.ReactNode;
 }) {
   const t = useTranslations('Buttons');
@@ -43,7 +43,7 @@ export default function Sidebar({
           >
             {title}
           </p>
-          <CloseButton label={t(`${name}.close`)} onClick={onClose} />
+          <CloseButton label={t(`${name}.close` as any)} onClick={onClose} />
         </div>
         {children}
       </div>

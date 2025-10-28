@@ -8,8 +8,7 @@ import { Suspense } from 'react';
 import getFormattedSlug from '@/utils/slugFormatter';
 import { setRequestLocale } from 'next-intl/server';
 import PageLoader from '@/components/ui/loaders/PageLoader';
-
-export const revalidate = 3600;
+import { Locale } from 'next-intl';
 
 export async function generateStaticParams() {
   const posts = await getPostsWithSlugsOnly();
@@ -22,14 +21,17 @@ export async function generateStaticParams() {
   return paths;
 }
 
-export default async function Post({
-  params: { slug, locale },
-}: {
-  params: { slug: string; locale: string };
+export default async function Post(props: {
+  params: Promise<{ slug: string; locale: Locale }>;
 }) {
+  const params = await props.params;
+  const { slug, locale } = params;
+
   setRequestLocale(locale);
+
   const post = await getPostBySlug(`${slug}-${locale}`);
   if (!post) notFound();
+
   return (
     <Suspense fallback={<PageLoader />}>
       <BlogPostHeaderSection title={post.title} date={post.date} />

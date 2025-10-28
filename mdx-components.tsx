@@ -6,12 +6,8 @@ import Cons from '@/components/ui/icons/Cons';
 import { H1, H2 } from '@/components/ui/headings/RestPageHeadings';
 
 const components = {
-  h1: ({ children }: { children: React.ReactNode }) => (
-    <H1>{children}</H1>
-  ),
-  h2: ({ children }: { children: React.ReactNode }) => (
-    <H2>{children}</H2>
-  ),
+  h1: ({ children }: { children: React.ReactNode }) => <H1>{children}</H1>,
+  h2: ({ children }: { children: React.ReactNode }) => <H2>{children}</H2>,
   p: ({ children }: { children: React.ReactNode }) => (
     <p className="[&:not(:last-child)]:mb-6"> {children} </p>
   ),
@@ -23,7 +19,7 @@ const components = {
   ),
   li: ({ children }: { children: React.ReactNode }) => {
     let childrenCopy = children;
-    let icon = <Check size="small" />;
+    let icon = <Check size="small" className="align-sub" />;
     const hasChildClassName = (className: string) => {
       return Children.toArray(childrenCopy).some(
         (child: any) => child.props?.className === className,
@@ -36,10 +32,10 @@ const components = {
     };
     if (hasChildClassName('pros')) {
       childrenCopy = filterChildrenByClassName('pros');
-      icon = <Pros size="small" />;
+      icon = <Pros size="small" className="align-sub" />;
     } else if (hasChildClassName('cons')) {
       childrenCopy = filterChildrenByClassName('cons');
-      icon = <Cons size="small" />;
+      icon = <Cons size="small" className="align-sub" />;
     }
     return (
       <li className="text-muted-dark [&:not(:last-child)]:mb-1.5">
@@ -64,7 +60,10 @@ const components = {
     </td>
   ),
   a: ({ children }: { children: React.ReactNode }) => (
-    <a href={`mailto:${children}`} className="font-semibold transition-colors hover:text-primary">
+    <a
+      href={`mailto:${children}`}
+      className="font-semibold transition-colors hover:text-primary"
+    >
       {children}
     </a>
   ),

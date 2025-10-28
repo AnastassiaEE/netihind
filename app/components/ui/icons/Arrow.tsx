@@ -3,7 +3,7 @@ import { ChevronLeft } from '@mui/icons-material';
 import { tv } from 'tailwind-variants';
 
 const arrowClasses = tv({
-  base: 'transition-transform duration-300',
+  base: 'transition-transform duration-300 inline',
   variants: {
     direction: {
       left: '',

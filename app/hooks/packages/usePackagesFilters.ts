@@ -9,6 +9,8 @@ export default function usePackagesFilters(
   searchParams: { [key: string]: string },
   onUserChange?: () => void,
 ) {
+  const [filtersInitialized, setFiltersInitialized] = useState(false);
+
   const {
     filterData: providerFilterData,
     filterSelectedValues: providerFilterSelectedValues,
@@ -46,26 +48,23 @@ export default function usePackagesFilters(
     getSelectedSortOption(searchParams['sort'] || ''),
   );
 
-  useEffect(() => {
-    if (providerFilterData.options.length > 0) {
-      setFilters((prev) => ({
-        ...prev,
-        providers: providerFilterData,
-      }));
-    }
-  }, [providerFilterData]);
 
   useEffect(() => {
-    if (technologyFilterData.options.length > 0) {
-      setFilters((prev) => ({
-        ...prev,
+    if (!filtersInitialized &&
+        providerFilterData.options.length > 0 &&
+        technologyFilterData.options.length > 0) {
+      setFilters({
+        providers: providerFilterData,
         technologies: technologyFilterData,
-      }));
+      });
+      setFiltersInitialized(true);
     }
-  }, [technologyFilterData]);
+  }, [providerFilterData, technologyFilterData, filtersInitialized]);
 
   const isFiltersInitialized =
-    !isProviderFiltersLoading && !isTechnologyFiltersLoading;
+    filtersInitialized &&
+    !isProviderFiltersLoading &&
+    !isTechnologyFiltersLoading;
 
   const clearFilters = () => {
     let hasChanges = false;

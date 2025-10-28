@@ -7,24 +7,33 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import components from '@/mdx-components';
 import { setRequestLocale } from 'next-intl/server';
 import PageLoader from '@/components/ui/loaders/PageLoader';
-
-export const revalidate = 3600;
+import { Locale } from 'next-intl';
 
 const options = {
-    mdxOptions: {
-        remarkPlugins: [remarkGfm],
-    },
+  mdxOptions: {
+    remarkPlugins: [remarkGfm],
+  },
 };
 
-export default async function Policy({ params: { locale } }: { params: { locale: string } }) {
-    setRequestLocale(locale);
-    const page = await getPage(`policy-${locale}`);
-    if (!page) notFound();
-    return (
-        <Suspense fallback={<PageLoader />}>
-            <SectionLayout>
-                <MDXRemote source={page.content} components={components as {}} options={options} />
-            </SectionLayout>
-        </Suspense>
-    );
+export default async function Policy(props: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const params = await props.params;
+
+  const { locale } = params;
+
+  setRequestLocale(locale);
+  const page = await getPage(`policy-${locale}`);
+  if (!page) notFound();
+  return (
+    <Suspense fallback={<PageLoader />}>
+      <SectionLayout>
+        <MDXRemote
+          source={page.content}
+          components={components as {}}
+          options={options}
+        />
+      </SectionLayout>
+    </Suspense>
+  );
 }

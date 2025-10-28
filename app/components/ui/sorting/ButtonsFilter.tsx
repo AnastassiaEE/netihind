@@ -22,7 +22,7 @@ export default function ButtonsFilter({
           className="rounded-md uppercase"
           name={option}
         >
-          {t(option)}
+          {t(option as any)}
         </Button>
       ))}
     </div>

@@ -10,7 +10,7 @@ export default function LanguageSwitcher() {
   const currentLocale = useLocale();
   const params = useParams();
   const searchParams = useSearchParams();
-  const searchParamsObject = Object.fromEntries(searchParams.entries())
+  const searchParamsObject = Object.fromEntries(searchParams.entries());
 
   return (
     <div className="flex items-center gap-4">

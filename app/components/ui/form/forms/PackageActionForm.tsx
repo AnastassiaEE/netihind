@@ -86,7 +86,7 @@ export default function PackageActionForm({
           onBlur={(e) => handleBlur(e, 'name')}
           value={values.name as string}
           isValid={!errors.name}
-          error={errors.name ? t(errors.name) : ''}
+          error={errors.name ? t(errors.name as any) : ''}
           required={fields['name'].isRequired}
         />
       </div>
@@ -100,7 +100,7 @@ export default function PackageActionForm({
           onBlur={(e) => handleBlur(e, 'email')}
           value={values.email as string}
           isValid={!errors.email}
-          error={errors.email ? t(errors.email) : ''}
+          error={errors.email ? t(errors.email as any) : ''}
           required={fields['email'].isRequired}
         />
       </div>
@@ -114,7 +114,7 @@ export default function PackageActionForm({
           onBlur={(e) => handleBlur(e, 'phone')}
           value={values.phone as string}
           isValid={!errors.phone}
-          error={errors.phone ? t(errors.phone) : ''}
+          error={errors.phone ? t(errors.phone as any) : ''}
           icon={{ Icon: Add, isVisible: true }}
           required={fields['phone'].isRequired}
         />
@@ -134,7 +134,7 @@ export default function PackageActionForm({
           variant="labeled"
           name="call-time"
           label={t('labels.time')}
-          selected={t(`selectOptions.${values['call-time'] as string}`)}
+          selected={t(`selectOptions.${values['call-time'] as string}` as any)}
           openDirection="top"
           onChange={handleSelectChange}
           className="!p-0"
@@ -145,7 +145,7 @@ export default function PackageActionForm({
               value={option}
               isSelected={values['call-time'] === option}
             >
-              {t(`selectOptions.${option}`)}
+              {t(`selectOptions.${option}` as any)}
             </SelectOption>
           ))}
         </Select>
@@ -179,7 +179,9 @@ export default function PackageActionForm({
         )}
       </Button>
       {!isSending && response && (
-        <FormResponse type={response.type}>{t(response.message)}</FormResponse>
+        <FormResponse type={response.type}>
+          {t(response.message as any)}
+        </FormResponse>
       )}
     </form>
   );

@@ -1,22 +1,26 @@
-import { getCookie, hasCookie } from 'cookies-next';
+import { getCookie, hasCookie } from 'cookies-next/server';
 import { cookies } from 'next/headers';
 import { notFound } from 'next/navigation';
 import { getAddressCookieValues } from '@/utils/addressCookieHelper';
 import { getAddressSlug } from '@/utils/addressSlugifier';
 import { setRequestLocale } from 'next-intl/server';
 import AddressPackagesSection from '@/components/sections/address/AddressPackagesSection';
+import { Locale } from 'next-intl';
 
-export default function PersonalAddress({
-  params: { slug, locale },
-  searchParams,
-}: {
-  params: { slug: string; locale: string };
-  searchParams: { [key: string]: string };
+export default async function PersonalAddress(props: {
+  params: Promise<{ slug: string; locale: Locale }>;
+  searchParams: Promise<{ [key: string]: string }>;
 }) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
+
+  const { slug, locale } = params;
+
   setRequestLocale(locale);
 
-  if (!hasCookie('ADDRESS', { cookies })) notFound();
-  const cookieString = getCookie('ADDRESS', { cookies })!;
+  const cookiesExists = await hasCookie('ADDRESS', { cookies });
+  if (!cookiesExists) notFound();
+  const cookieString = await getCookie('ADDRESS', { cookies })!;
   const { fullAddress: address, oid } = getAddressCookieValues(cookieString);
   const addressSlug = getAddressSlug(address);
   if (slug !== addressSlug) notFound();

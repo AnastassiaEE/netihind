@@ -28,7 +28,7 @@ export default function usePackagesFilter(
       data ?? [],
       filterType,
     );
-  }, [searchParams, data]);
+  }, [searchParams, data, queryParamKey, labelKey, filterType]);
 
   const filterSelectedValues = useMemo(
     () => filterData.selected.map((s) => s.value),

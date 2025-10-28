@@ -55,7 +55,7 @@ export default function ContactForm() {
           onBlur={(e) => handleBlur(e, 'name')}
           value={values.name as string}
           isValid={!errors.name}
-          error={errors.name ? t(errors.name) : ''}
+          error={errors.name ? t(errors.name as any) : ''}
           required={fields['name'].isRequired}
         />
       </div>
@@ -69,7 +69,7 @@ export default function ContactForm() {
           onBlur={(e) => handleBlur(e, 'email')}
           value={values.email as string}
           isValid={!errors.email}
-          error={errors.email ? t(errors.email) : ''}
+          error={errors.email ? t(errors.email as any) : ''}
           required={fields['email'].isRequired}
         />
       </div>
@@ -83,7 +83,7 @@ export default function ContactForm() {
           onBlur={(e) => handleBlur(e, 'phone')}
           value={values.phone as string}
           isValid={!errors.phone}
-          error={errors.phone ? t(errors.phone) : ''}
+          error={errors.phone ? t(errors.phone as any) : ''}
           required={fields['phone'].isRequired}
           icon={{ Icon: Add, isVisible: true }}
         />
@@ -121,13 +121,15 @@ export default function ContactForm() {
       </div>
       <Button type="submit" size="lg" disabled={isSending} className="w-full">
         {isSending ? (
-          <Loop className="animate-spin" />
+          <Loop className="mx-auto animate-spin" />
         ) : (
           <>{t('buttons.send')}</>
         )}
       </Button>
       {!isSending && response && (
-        <FormResponse type={response.type}>{t(response.message)}</FormResponse>
+        <FormResponse type={response.type}>
+          {t(response.message as any)}
+        </FormResponse>
       )}
     </form>
   );

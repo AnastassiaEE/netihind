@@ -31,7 +31,7 @@ jobs:
 
       - name: Copy files to server with rsync
         run: |
-          rsync -avz --delete ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}
+          rsync -avz --delete --exclude='maintenance.html' ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}
 
       - name: Prepare files (robots.txt + .env)
         env:

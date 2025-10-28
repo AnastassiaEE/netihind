@@ -5,8 +5,8 @@ import classNames from 'classnames';
 export default function Copyright({ className }: { className?: string }) {
   return (
     <p className={classNames('text-center', className)}>
-      © All rights reserved. Made with <FavoriteBorderIcon fontSize="small" />{' '}
-      by{' '}
+      © All rights reserved. Made with{' '}
+      <FavoriteBorderIcon fontSize="small" className="inline align-middle" /> by{' '}
       <span className="font-semibold">
         <NavigationItem href="/">Netihind.ee</NavigationItem>
       </span>

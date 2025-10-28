@@ -44,7 +44,7 @@ export default function PackageCard({
   const currentLocale = useLocale();
 
   const cardClasses = classNames(
-    'rounded-lg border border-muted-light bg-white shadow-md',
+    'rounded-md border border-muted-light bg-white shadow-md',
     className,
   );
 
@@ -133,9 +133,8 @@ export default function PackageCard({
                 title={t('details.installation')}
               >
                 <>
-                  {translations[installation_description]?.[
-                    currentLocale as 'ru' | 'et'
-                  ] ?? installation_description}
+                  {translations[installation_description]?.[currentLocale] ??
+                    installation_description}
                 </>
               </PackageDetail>
             )}

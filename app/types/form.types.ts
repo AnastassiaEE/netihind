@@ -23,7 +23,7 @@ export type FieldLabelSize = 'sm' | 'lg';
 // props type
 export type ComboBoxProps = {
   onClick: () => void;
-  ref: RefObject<HTMLButtonElement>;
+  ref: RefObject<HTMLButtonElement | null>;
   role: 'combobox';
   'aria-label': string;
   'aria-expanded': boolean;

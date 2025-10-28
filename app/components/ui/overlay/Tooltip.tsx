@@ -8,7 +8,7 @@ export default function Tooltip({
   elementToInteract,
   content,
 }: {
-  elementToInteract: React.ReactElement;
+  elementToInteract: React.ReactElement<any>;
   content: string;
 }) {
   const { isVisible, show, hide } = useTooltip();
@@ -31,7 +31,7 @@ export default function Tooltip({
         <span
           id="tooltip-content"
           role="tooltip"
-          className="absolute -left-full bottom-full w-max max-w-xs rounded-lg bg-white p-3 text-center text-sm lowercase shadow-md"
+          className="absolute -left-full bottom-full w-max max-w-xs rounded-md bg-white p-3 text-center text-sm lowercase shadow-md"
         >
           {content}
         </span>

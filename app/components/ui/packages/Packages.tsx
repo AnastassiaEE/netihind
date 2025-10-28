@@ -43,7 +43,7 @@ export default function Packages({
     overlayRef: modalRef,
   } = useOverlay();
 
-  const errorContent = (error: string) => (
+  const errorContent = (error: Parameters<typeof t.rich>[0]) => (
     <PackagesError>
       {t.rich(error, {
         a: (chunks) => (

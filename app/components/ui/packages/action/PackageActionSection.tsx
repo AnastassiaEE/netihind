@@ -10,7 +10,7 @@ export default function PackageActionSection({
   children: React.ReactNode;
 }) {
   return (
-    <div className={classNames('rounded-lg bg-white p-6 shadow-md', className)}>
+    <div className={classNames('rounded-md bg-white p-6 shadow-md', className)}>
       <p className="mb-4 text-lg font-extrabold text-black">{title}</p>
       {children}
     </div>

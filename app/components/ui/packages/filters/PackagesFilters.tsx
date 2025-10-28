@@ -31,7 +31,7 @@ export default function PackagesFilters({
         .map(([filterName, filterData]) => (
           <PackagesFilterAccordion
             key={filterName}
-            filterName={t(`categories.${filterName}`)}
+            filterName={t(`categories.${filterName}` as any)}
             className="mb-4"
           >
             {filterData.type === 'checkbox' && (

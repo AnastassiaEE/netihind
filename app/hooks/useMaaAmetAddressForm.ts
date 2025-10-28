@@ -1,4 +1,4 @@
-import { setCookie } from 'cookies-next';
+import { setCookie } from 'cookies-next/client';
 import { useLocale } from 'next-intl';
 import { useRouter } from '@/i18n/routing';
 import { useEffect, useRef, useState } from 'react';

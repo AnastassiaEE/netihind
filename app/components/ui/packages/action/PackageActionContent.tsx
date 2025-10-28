@@ -16,7 +16,7 @@ export default function PackageActionContent({
 }) {
   const t = useTranslations('Packages');
   const getSectionTitle = (section: string) =>
-    t(`actions.${action}.sections.${section}`);
+    t(`actions.${action}.sections.${section}` as any);
 
   const formSection = (
     <PackageActionSection title={getSectionTitle('fillForm')}>

@@ -37,9 +37,9 @@ export default function Sort({
     <Select
       variant={variant}
       name={`sort-${name}`}
-      buttonLabel={t(`${name}.buttonLabel`)}
-      label={t(`${name}.ariaLabel`)}
-      selected={t(`${name}.options.${selectedOption}`)}
+      buttonLabel={t(`${name}.buttonLabel` as any)}
+      label={t(`${name}.ariaLabel` as any)}
+      selected={t(`${name}.options.${selectedOption}` as any)}
       openDirection={openDirection}
       Icon={SortIcon}
       onChange={handleChange}
@@ -51,7 +51,7 @@ export default function Sort({
           value={option}
           isSelected={option === selectedOption}
         >
-          {t(`${name}.options.${option}`)}
+          {t(`${name}.options.${option}` as any)}
         </SelectOption>
       ))}
     </Select>
