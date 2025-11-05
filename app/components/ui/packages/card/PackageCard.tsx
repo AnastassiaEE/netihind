@@ -13,6 +13,7 @@ import Arrow from '@/components/ui/icons/Arrow';
 import PackageDetail from '@/components/ui/packages/card/PackageDetail';
 import CircleArrow from '@/components/ui/icons/CircleArrow';
 import { useTranslationsContext } from '@/context/TranslationsContext';
+import { Package } from '@/types/packages.types';
 
 const Tooltip = dynamic(() => import('@/components/ui/overlay/Tooltip'));
 
@@ -34,20 +35,7 @@ export default function PackageCard({
   onActionClick,
   className,
 }: {
-  data: {
-    id: number;
-    name: string;
-    description: string | null;
-    download_speed: number;
-    upload_speed: number;
-    data: number;
-    technology: string;
-    provider_name: string;
-    provider_image_url: string | null;
-    infrastructure_provider_name: string | null;
-    is_infrastructure_provider_partner: boolean | null;
-    price: number;
-  };
+  data: Package;
   onActionClick: (action: PackageAction) => void;
   className?: string;
 }) {

@@ -9,6 +9,7 @@ import PackageActionContent from '@/components/ui/packages/action/PackageActionC
 import { Link } from '@/i18n/routing';
 import Dialog from '@/components/ui/overlay/Dialog';
 import useOverlay from '@/hooks/useOverlay';
+import { Package } from '@/types/packages.types';
 
 export default function Packages({
   oid,
@@ -63,9 +64,9 @@ export default function Packages({
         <PackagesLoader />
       ) : (
         <div>
-          {packages.map((data: { [key: string]: any }, index: number) => (
+          {packages.map((data: Package) => (
             <PackageCard
-              key={data.internet_package_id ?? `package-${index}`}
+              key={data.id}
               data={data}
               className="mb-5 last:mb-0"
               onActionClick={(action) =>
