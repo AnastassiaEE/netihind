@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS internet_speeds CASCADE;
+DROP TABLE IF EXISTS provider_internet_packages CASCADE;
+DROP TABLE IF EXISTS provider_technologies CASCADE;
+DROP TABLE IF EXISTS provider_technology_internet_packages CASCADE;
+DROP TABLE IF EXISTS provider_tv_channels CASCADE;
+DROP TABLE IF EXISTS tv_channels CASCADE;
+DROP TABLE IF EXISTS devices CASCADE;
+DROP TABLE IF EXISTS device_types CASCADE;
+DROP TABLE IF EXISTS address_provider_technologies CASCADE;
+DROP TABLE IF EXISTS address_provider_technologies_duplicate CASCADE;

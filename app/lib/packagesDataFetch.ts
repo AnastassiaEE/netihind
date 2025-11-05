@@ -26,8 +26,9 @@ export const getPackages = async (
   providers: string[],
   technologies: string[],
 ) => {
+
   const { data: packages, error: packagesError } = await supabase.rpc(
-    'get_packages_by_address_test',
+    'get_internet_packages_by_address',
     {
       p_oid: oid,
       p_sort: sort,

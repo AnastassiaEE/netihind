@@ -6,7 +6,7 @@ export default function PackageHeader({
   packageName,
   className,
 }: {
-  providerLogoSrc: string;
+  providerLogoSrc: string | null;
   providerName: string;
   packageName: string;
   className?: string;
@@ -15,12 +15,14 @@ export default function PackageHeader({
     <div className={className}>
       {providerLogoSrc && (
         <div className="mb-1">
-          <Image
-            src={providerLogoSrc}
-            alt={`Logo of ${providerName} internet package`}
-            width={56}
-            height={32}
-          />
+          {providerLogoSrc && (
+            <Image
+              src={providerLogoSrc}
+              alt={`Logo of ${providerName} internet package`}
+              width={56}
+              height={32}
+            />
+          )}
         </div>
       )}
       <span className="mb-1 text-xs text-muted">{providerName}</span>

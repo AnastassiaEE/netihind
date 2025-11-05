@@ -11,15 +11,15 @@ export default function PackagesFilters({
   filters,
   setFilters,
   onUserChange,
-  isFiltersInitialized,
+  isFiltersLoaded,
 }: {
   filters: Filters;
   setFilters: React.Dispatch<React.SetStateAction<Filters>>;
   onUserChange?: () => void;
-  isFiltersInitialized: boolean;
+  isFiltersLoaded: boolean;
 }) {
   const t = useTranslations('Filters');
-  useFiltersUrlSync(filters, isFiltersInitialized);
+  useFiltersUrlSync(filters, isFiltersLoaded);
 
   return (
     <>

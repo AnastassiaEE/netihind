@@ -1,8 +1,5 @@
 import { FilterType } from '@/types/filters.types';
 
-const DEFAULT_SERVICE = 'all';
-
-export const SERVICES = ['all', 'internet', 'internet-tv'];
 export const SORT_OPTIONS = [
   'default',
   'price_asc',

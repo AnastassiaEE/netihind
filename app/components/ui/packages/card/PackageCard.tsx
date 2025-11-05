@@ -18,24 +18,36 @@ const Tooltip = dynamic(() => import('@/components/ui/overlay/Tooltip'));
 
 export default function PackageCard({
   data: {
-    internet_package_id,
-    internet_package_name,
+    id,
+    name,
+    description,
+    download_speed,
+    upload_speed,
+    data,
+    technology,
     provider_name,
-    provider_img_url,
-    internet_technology_abbr,
-    internet_technology_description,
-    internet_download_speed,
-    internet_upload_speed,
-    internet_package_price,
-    discount_price,
-    discount_duration,
-    installation_min_price,
-    installation_description,
+    provider_image_url,
+    infrastructure_provider_name,
+    is_infrastructure_provider_partner,
+    price,
   },
   onActionClick,
   className,
 }: {
-  data: { [key: string]: any };
+  data: {
+    id: number;
+    name: string;
+    description: string | null;
+    download_speed: number;
+    upload_speed: number;
+    data: number;
+    technology: string;
+    provider_name: string;
+    provider_image_url: string | null;
+    infrastructure_provider_name: string | null;
+    is_infrastructure_provider_partner: boolean | null;
+    price: number;
+  };
   onActionClick: (action: PackageAction) => void;
   className?: string;
 }) {
@@ -57,53 +69,55 @@ export default function PackageCard({
   } = useAccordion();
 
   return (
-    <article data-id={internet_package_id} className={cardClasses}>
+    <article data-id={id} className={cardClasses}>
       <div className="flex flex-wrap">
         <PackageCardSection
           Icon={Wifi}
           className="w-full max-lg:border-b lg:w-3/5 lg:border-r"
         >
           <PackageHeader
-            providerLogoSrc={provider_img_url}
+            providerLogoSrc={provider_image_url}
             providerName={provider_name}
-            packageName={internet_package_name}
+            packageName={name}
             className="mb-3"
           />
-          <div className="mb-2 flex flex-wrap items-center font-medium uppercase text-muted-dark">
+          <div className="mb-2 flex flex-wrap items-center gap-2 font-medium uppercase text-muted-dark">
             <InternetSpeedFeature
               type="download"
-              speed={internet_download_speed}
+              speed={download_speed}
               units={t('units.speed')}
             />
             <InternetSpeedFeature
               type="upload"
-              speed={internet_upload_speed}
+              speed={upload_speed}
               units={t('units.speed')}
             />
             <Tooltip
               elementToInteract={
-                <span className="ml-2 block rounded-md border border-primary px-1 py-0.5 font-semibold text-primary">
-                  {internet_technology_abbr}
+                <span className="rounded-md border border-primary px-1 py-0.5 font-semibold text-primary">
+                  {is_infrastructure_provider_partner
+                    ? infrastructure_provider_name
+                    : technology}
                 </span>
               }
-              content={internet_technology_description}
+              content={''}
             />
           </div>
-          {installation_min_price !== null && (
+          {/* {installation_min_price !== null && (
             <p className="text-sm">
               {t('details.installation')}:{' '}
               {installation_min_price > 0
                 ? t('installation.minPrice', { price: installation_min_price })
                 : t('installation.free')}
             </p>
-          )}
+          )} */}
         </PackageCardSection>
         <PackageCardSection className="flex w-full flex-col items-center justify-center gap-1 lg:w-2/5">
           <PackagePrice
-            price={internet_package_price}
+            price={price}
             discount={{
-              discount_price,
-              discount_duration,
+              discount_price: null,
+              discount_duration: null,
             }}
           />
           <button
@@ -127,7 +141,7 @@ export default function PackageCard({
             ref={collapsibleRef}
             className="flex flex-wrap gap-5 border-t p-6"
           >
-            {installation_description && (
+            {/* {installation_description && (
               <PackageDetail
                 Icon={Engineering}
                 title={t('details.installation')}
@@ -137,7 +151,7 @@ export default function PackageCard({
                     installation_description}
                 </>
               </PackageDetail>
-            )}
+            )} */}
 
             {/* <PackageDetail Icon={Router} title={t('details.equipment')}>
               <>test 1</>

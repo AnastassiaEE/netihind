@@ -1,4 +1,4 @@
-import { Download, Upload, AllInclusive } from '@mui/icons-material';
+import { South, North, AllInclusive } from '@mui/icons-material';
 
 export default function InternetSpeedFeature({
   type,
@@ -6,14 +6,20 @@ export default function InternetSpeedFeature({
   units,
 }: {
   type: 'download' | 'upload';
-  speed: string;
+  speed: number;
   units: string;
 }) {
   return (
     <span>
-      {type === 'download' && <Download className="text-green-700" />}
-      {type === 'upload' && <Upload className="text-red-700" />}
-      <span className="font-bold">{speed ?? <AllInclusive />} </span>
+      {type === 'download' && (
+        <South fontSize="small" className="inline align-text-bottom" />
+      )}
+      {type === 'upload' && (
+        <North fontSize="small" className="inline align-text-bottom" />
+      )}
+      <span className="inline font-bold">
+        {speed === -1 ? <AllInclusive /> : speed}{' '}
+      </span>
       <span className="text-muted">{units}</span>
     </span>
   );

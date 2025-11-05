@@ -9,8 +9,6 @@ export default function usePackagesFilters(
   searchParams: { [key: string]: string },
   onUserChange?: () => void,
 ) {
-  const [filtersInitialized, setFiltersInitialized] = useState(false);
-
   const {
     filterData: providerFilterData,
     filterSelectedValues: providerFilterSelectedValues,
@@ -35,7 +33,7 @@ export default function usePackagesFilters(
     'technologies',
     getTechnologies,
     'technologies',
-    'abbr',
+    'name',
     'checkbox',
   );
 
@@ -48,23 +46,21 @@ export default function usePackagesFilters(
     getSelectedSortOption(searchParams['sort'] || ''),
   );
 
+  const [isFiltersInitialized, setIsFiltersInitialized] = useState(false);
 
   useEffect(() => {
-    if (!filtersInitialized &&
-        providerFilterData.options.length > 0 &&
-        technologyFilterData.options.length > 0) {
+    if (
+      !isFiltersInitialized &&
+      providerFilterData.options.length > 0 &&
+      technologyFilterData.options.length > 0
+    ) {
       setFilters({
         providers: providerFilterData,
         technologies: technologyFilterData,
       });
-      setFiltersInitialized(true);
+      setIsFiltersInitialized(true);
     }
-  }, [providerFilterData, technologyFilterData, filtersInitialized]);
-
-  const isFiltersInitialized =
-    filtersInitialized &&
-    !isProviderFiltersLoading &&
-    !isTechnologyFiltersLoading;
+  }, [providerFilterData, technologyFilterData]);
 
   const clearFilters = () => {
     let hasChanges = false;
@@ -88,7 +84,7 @@ export default function usePackagesFilters(
   return {
     filters,
     setFilters,
-    isFiltersInitialized,
+    isFiltersLoaded: !isProviderFiltersLoading && !isTechnologyFiltersLoading,
     clearFilters,
     providerFilterSelectedValues,
     technologyFilterSelectedValues,

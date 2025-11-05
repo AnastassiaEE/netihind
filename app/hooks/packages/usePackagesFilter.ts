@@ -30,10 +30,9 @@ export default function usePackagesFilter(
     );
   }, [searchParams, data, queryParamKey, labelKey, filterType]);
 
-  const filterSelectedValues = useMemo(
-    () => filterData.selected.map((s) => s.value),
-    [filterData.selected],
-  );
+  const filterSelectedValues = useMemo(() => {
+    return filterData.selected.map((s) => s.value);
+  }, [filterData]);
 
   return {
     filterData,

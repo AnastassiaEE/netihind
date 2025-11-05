@@ -1,0 +1,2 @@
+ALTER TABLE providers
+RENAME CONSTRAINT name_company_name TO providers_name_company_name_key;
