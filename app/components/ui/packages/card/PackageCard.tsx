@@ -6,7 +6,7 @@ import { Router, Engineering, Wifi } from '@mui/icons-material';
 import PackageCardSection from '@/components/ui/packages/card/PackageCardSection';
 import dynamic from 'next/dynamic';
 import InternetSpeedFeature from '@/components/ui/packages/card/InternetSpeedFeature';
-import { PackageAction } from '@/types/elements.types';
+import { PackageAction } from '@/types/packages.types';
 import useAccordion from '@/hooks/useAccordion';
 import Button from '@/components/ui/form/buttons/Button';
 import Arrow from '@/components/ui/icons/Arrow';
@@ -148,12 +148,21 @@ export default function PackageCard({
           </div>
         </div>
       )}
-      <Button
-        className="w-full rounded-t-none"
-        onClick={() => onActionClick('connection')}
-      >
-        {t('buttons.connect')}
-      </Button>
+      <div className="flex">
+        <Button
+          className="w-full rounded-t-none rounded-br-none"
+          onClick={() => onActionClick('connection')}
+        >
+          {t('buttons.connect')}
+        </Button>
+        <Button
+          variant="outlined"
+          className="w-full rounded-t-none rounded-bl-none"
+          onClick={() => onActionClick('details')}
+        >
+          {t('buttons.details')}
+        </Button>
+      </div>
     </article>
   );
 }

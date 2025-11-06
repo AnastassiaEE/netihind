@@ -1,7 +1,8 @@
+import { PackageAction } from "@/types/packages.types";
+
 // type
 export type NavigationType = 'horizontal' | 'vertical';
 export type DialogType = 'modal' | 'non-modal';
-export type PackageAction = 'connection' | 'consultation';
 export type FormType = 'contact' | PackageAction;
 
 // variant

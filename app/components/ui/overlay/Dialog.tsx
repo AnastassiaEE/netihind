@@ -18,7 +18,7 @@ export default function Dialog({
 }: {
   type?: DialogType;
   name: string;
-  title: string;
+  title?: string;
   description?: string;
   isOpened: boolean;
   onClose?: () => void;
@@ -58,10 +58,11 @@ export default function Dialog({
             className="absolute right-4 top-4 bg-white"
           />
         )}
-
-        <p id={`${name}-dialog-title`} className={titleClasses}>
-          {title}
-        </p>
+        {title && (
+          <p id={`${name}-dialog-title`} className={titleClasses}>
+            {title}
+          </p>
+        )}
         {description && (
           <p
             id={`${name}-dialog-description`}

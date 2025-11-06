@@ -5,11 +5,12 @@ import usePackages from '@/hooks/packages/usePackages';
 import { useTranslations } from 'next-intl';
 import PackageCard from '@/components/ui/packages/card/PackageCard';
 import PackagesError from '@/components/ui/errors/PackagesError';
-import PackageActionContent from '@/components/ui/packages/action/PackageActionContent';
 import { Link } from '@/i18n/routing';
 import Dialog from '@/components/ui/overlay/Dialog';
 import useOverlay from '@/hooks/useOverlay';
 import { Package } from '@/types/packages.types';
+import PackageActionConnection from '@/components/ui/packages/action/PackageActionConnection';
+import PackageActionDetails from '@/components/ui/packages/action/PackageActionDetails';
 
 export default function Packages({
   oid,
@@ -78,18 +79,20 @@ export default function Packages({
       )}
       <Dialog
         name={selectedAction}
-        title={t(`actions.${selectedAction}.title`)}
-        description={t(`actions.${selectedAction}.description`)}
+        title={
+          selectedAction === 'connection'
+            ? t(`actions.${selectedAction}.title` as any)
+            : undefined
+        }
         isOpened={isModalOpened}
         onClose={closeModal}
         dialogRef={modalRef}
         className="bg-primary-light"
       >
-        <PackageActionContent
-          action={selectedAction}
-          data={selectedPackage}
-          address={address}
-        />
+        {selectedAction == 'connection' && (
+          <PackageActionConnection data={selectedPackage} address={address} />
+        )}
+        {selectedAction == 'details' && <PackageActionDetails />}
       </Dialog>
     </>
   );

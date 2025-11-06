@@ -11,7 +11,7 @@ import SelectOption from '@/components/ui/form/fields/select/SelectOption';
 import useForm from '@/hooks/useForm';
 import { useTranslations } from 'next-intl';
 import { Loop, Add } from '@mui/icons-material';
-import { PackageAction } from '@/types/elements.types';
+import { PackageAction } from '@/types/packages.types';
 
 export default function PackageActionForm({
   action = 'connection',

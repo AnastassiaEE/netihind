@@ -96,13 +96,13 @@
       "month": "kuus"
     },
     "buttons": {
-      "connect": "Liituda",
-      "consultation": "Konsultatsioon",
+      "connect": "Liitun",
+      "details": "Vaatan lähemalt",
       "showDetails": "Vaata lähemalt"
     },
     "actions": {
       "connection": {
-        "title": "Ühenduse taotlus",
+        "title": "Liitumise taotlus",
         "description": "",
         "sections": {
           "fillForm": "Kontrollige aadress ja täitke vorm",
@@ -110,9 +110,7 @@
           "total": "Kokku"
         }
       },
-      "consultation": {
-        "title": "Saada konsultatsioon",
-        "description": "Räägime paketist või valime Teie soove arvestades parema",
+      "details": {
         "sections": {
           "fillForm": "Kontrollige aadress ja täitke vorm",
           "selectedPackage": "Valitud pakett"
@@ -263,10 +261,10 @@
   },
   "Buttons": {
     "connection": {
-      "close": "Sulge ühenduse modaalaken"
+      "close": "Sulge liitumise modaalaken"
     },
-    "consultation": {
-      "close": "Sulge konsultatsiooni modaalaken"
+    "details": {
+      "close": "Sulge paketiinfo aken"
     },
     "menu": {
       "open": "Ava külgmenüü",

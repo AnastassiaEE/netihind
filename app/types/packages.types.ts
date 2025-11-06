@@ -12,3 +12,5 @@ export type Package = {
     is_infrastructure_provider_partner: boolean | null;
     price: number;
 };
+
+export type PackageAction = 'connection' | 'details';

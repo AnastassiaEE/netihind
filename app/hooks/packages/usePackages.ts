@@ -1,5 +1,5 @@
 import { getPackages } from '@/lib/packagesDataFetch';
-import { PackageAction } from '@/types/elements.types';
+import { PackageAction } from '@/types/packages.types';
 import { useEffect, useState } from 'react';
 import useSWR from 'swr';
 
