@@ -37,7 +37,7 @@ export default function CookiesModal() {
         className="flex flex-col overflow-hidden bg-white"
       >
         <Tabs name="cookies" tabs={tabs}>
-          <TabPanel className="h-auto overflow-y-auto">
+          <TabPanel className="h-auto space-y-3 overflow-y-auto">
             <CookiesIntroSection />
           </TabPanel>
           <TabPanel className="h-auto overflow-y-auto">
@@ -46,7 +46,7 @@ export default function CookiesModal() {
               togglePreference={togglePreference}
             />
           </TabPanel>
-          <TabPanel className="h-auto overflow-y-auto">
+          <TabPanel className="h-auto space-y-3 overflow-y-auto">
             <CookiesInfoSection />
           </TabPanel>
         </Tabs>

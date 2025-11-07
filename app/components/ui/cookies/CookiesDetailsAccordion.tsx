@@ -41,7 +41,7 @@ export default function CookiesDetailsAccordion({
       </button>
       {isVisible && (
         <div {...getPanelProps()}>
-          <div ref={collapsibleRef} className="p-3">
+          <div ref={collapsibleRef} className="space-y-2 p-3">
             {details}
           </div>
         </div>

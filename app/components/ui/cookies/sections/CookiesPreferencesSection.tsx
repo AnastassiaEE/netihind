@@ -83,7 +83,7 @@ export default function CookiesPreferencesSection({
           policy={policy}
           maxAge={maxAge}
           type={type}
-          className="bg-primary-light [&:not(:last-child)]:mb-1.5"
+          className="bg-primary-light"
         />
       ),
     );

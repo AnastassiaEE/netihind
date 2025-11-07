@@ -30,7 +30,6 @@ export default function CheckboxFilter({
           )}
           onChange={(e) => handleChange(option.value, e.target.checked)}
           size={size}
-          className="[&:not(:last-child)]:mb-1"
         >
           {option.label}
         </Checkbox>

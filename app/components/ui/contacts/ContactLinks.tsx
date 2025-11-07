@@ -6,9 +6,9 @@ export default function ContactLinks({
   children: React.ReactNode;
 }) {
   return (
-    <ul>
+    <ul className="space-y-2">
       {React.Children.map(children, (child) => (
-        <li className="[&:not(:last-child)]:mb-3">{child}</li>
+        <li>{child}</li>
       ))}
     </ul>
   );

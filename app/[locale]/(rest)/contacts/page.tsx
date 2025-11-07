@@ -106,7 +106,7 @@ export default function Contacts(props: {
       <SectionLayout>
         <H1>{tContacts('title')}</H1>
         <div className="items-center justify-between lg:flex">
-          <div className="max-lg:mb-24 lg:w-6/12">
+          <div className="space-y-3 max-lg:mb-24 lg:w-6/12">
             <ContactCards contacts={contactsList} />
           </div>
           <div className="rounded-md bg-primary-light px-7 py-9 shadow-md md:px-12 lg:w-5/12">
