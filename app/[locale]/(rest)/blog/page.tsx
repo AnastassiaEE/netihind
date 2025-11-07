@@ -1,4 +1,4 @@
-import ListBlogSection from '@/components/sections/blog/ListBlogSection';
+import BlogSection from '@/components/sections/blog/BlogSection';
 import PageLoader from '@/components/ui/loaders/PageLoader';
 import { Locale } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
@@ -13,7 +13,7 @@ export default function Blog(props: { params: Promise<{ locale: Locale }> }) {
 
   return (
     <Suspense fallback={<PageLoader />}>
-      <ListBlogSection />
+      <BlogSection />
     </Suspense>
   );
 }

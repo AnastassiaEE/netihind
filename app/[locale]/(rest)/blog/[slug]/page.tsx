@@ -1,6 +1,5 @@
-import RelatedBlogPostsSection from '@/components/sections/blog/RelatedBlogPostsSection';
-import BlogPostContentSection from '@/components/sections/blog-post/BlogPostContentSection';
-import BlogPostHeaderSection from '@/components/sections/blog-post/BlogPostHeaderSection';
+import PostHeaderSection from '@/components/sections/blog-post/PostHeaderSection';
+import PostContentSection from '@/components/sections/blog-post/PostContentSection';
 import ParallaxBg from '@/components/ui/ParallaxBg';
 import { getPostBySlug, getPostsWithSlugsOnly } from '@/app/lib/wpPosts';
 import { notFound } from 'next/navigation';
@@ -9,6 +8,7 @@ import getFormattedSlug from '@/utils/slugFormatter';
 import { setRequestLocale } from 'next-intl/server';
 import PageLoader from '@/components/ui/loaders/PageLoader';
 import { Locale } from 'next-intl';
+import RelatedPostsSection from '@/components/sections/blog/RelatedPostsSection';
 
 export async function generateStaticParams() {
   const posts = await getPostsWithSlugsOnly();
@@ -34,10 +34,10 @@ export default async function Post(props: {
 
   return (
     <Suspense fallback={<PageLoader />}>
-      <BlogPostHeaderSection title={post.title} date={post.date} />
+      <PostHeaderSection title={post.title} date={post.date} />
       <ParallaxBg imgSrc={post.featuredImage.node.sourceUrl} />
-      <BlogPostContentSection content={post.content} />
-      <RelatedBlogPostsSection />
+      <PostContentSection content={post.content} />
+      <RelatedPostsSection />
     </Suspense>
   );
 }

@@ -3,7 +3,7 @@ import { Link } from '@/i18n/routing';
 import PostDate from '@/components/ui/blog/PostDate';
 import getFormattedSlug from '@/utils/slugFormatter';
 
-export default function SliderBlogCard({
+export default function SliderPostCard({
   href,
   src,
   alt,

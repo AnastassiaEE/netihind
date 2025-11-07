@@ -5,7 +5,7 @@ import Button from '@/components/ui/form/buttons/Button';
 import { Link } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
 
-export default function RelatedBlogPostsSection() {
+export default function RelatedPostsSection() {
   const t = useTranslations('BlogPage');
   return (
     <SectionLayout>

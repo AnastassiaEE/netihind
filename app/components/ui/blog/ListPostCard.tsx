@@ -5,7 +5,7 @@ import getFormattedSlug from '@/utils/slugFormatter';
 import { H2 } from '@/components/ui/headings/RestPageHeadings';
 import classNames from 'classnames';
 
-export default function ListBlogCard({
+export default function ListPostCard({
   href,
   src,
   alt,

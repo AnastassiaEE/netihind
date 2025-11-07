@@ -1,6 +1,6 @@
-import ListBlogCard from '@/components/ui/blog/ListBlogCard';
+import ListPostCard from '@/components/ui/blog/ListPostCard';
 
-export default function ListBlogCards({
+export default function BlogList({
   posts,
 }: {
   posts?: { [key: string]: any }[];
@@ -8,7 +8,7 @@ export default function ListBlogCards({
   return (
     <>
       {posts?.map((post) => (
-        <ListBlogCard
+        <ListPostCard
           key={post.title}
           href={post.slug}
           src={post.featuredImage.node.sourceUrl}

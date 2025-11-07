@@ -2,7 +2,7 @@ import { use } from 'react';
 import QuestionsSection from '@/components/sections/home/QuestionsSection';
 import ContactsSection from '@/components/sections/home/ContactsSection';
 import StepsSection from '@/components/sections/home/StepsSection';
-import SliderBlogSection from '@/components/sections/home/SliderBlogSection';
+import BlogSection from '@/components/sections/home/BlogSection';
 import TopSection from '@/components/sections/home/TopSection';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Locale, useTranslations } from 'next-intl';
@@ -79,7 +79,7 @@ export default function Home(props: { params: Promise<{ locale: Locale }> }) {
       <TopSection />
       <StepsSection />
       <QuestionsSection />
-      <SliderBlogSection />
+      <BlogSection />
       <ContactsSection />
     </>
   );
