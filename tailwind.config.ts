@@ -100,6 +100,7 @@ const config: Config = {
     plugin(({ addBase, theme }) => {
       addBase({
         p: { color: theme('colors.muted-dark') },
+        table: {color: theme('colors.muted-dark')}
       });
     }),
   ],

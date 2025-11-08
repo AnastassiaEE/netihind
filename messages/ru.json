@@ -91,8 +91,7 @@
   },
   "Packages": {
     "units": {
-      "speed": "мбит/c",
-      "channels": "каналов",
+      "speed": "Мбит/c",
       "month": "мес"
     },
     "buttons": {
@@ -100,7 +99,7 @@
       "details": "Подробнее",
       "showDetails": "Детали"
     },
-    "actions": {
+    "modals": {
       "connection": {
         "title": "Заявка на подключение",
         "description": "",
@@ -129,7 +128,13 @@
     "details": {
       "packagePrice": "Оплата в месяц",
       "installation": "Установка",
-      "equipment": "Устройства"
+      "equipment": "Устройства",
+      "connectionType": "Тип подключения",
+      "speed": {
+        "download": "Скорсоть загрузки",
+        "upload": "Скорость отдачи",
+        "upTo": "до {value} {unit}"
+      }
     },
     "errors": {
       "somethingWentWrong": "Что-то пошло не так. Попробуйте позже.",

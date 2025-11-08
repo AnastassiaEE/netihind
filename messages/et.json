@@ -91,8 +91,7 @@
   },
   "Packages": {
     "units": {
-      "speed": "mbit/s",
-      "channels": "kanalit",
+      "speed": "Mbit/s",
       "month": "kuus"
     },
     "buttons": {
@@ -100,7 +99,7 @@
       "details": "Vaatan lähemalt",
       "showDetails": "Vaata lähemalt"
     },
-    "actions": {
+    "modals": {
       "connection": {
         "title": "Liitumise taotlus",
         "description": "",
@@ -129,7 +128,13 @@
     "details": {
       "packagePrice": "Kuu hind",
       "installation": "Paigaldus",
-      "equipment": "Seadmed"
+      "equipment": "Seadmed",
+      "connectionType": "Ühenduse tüüp",
+      "speed": {
+        "download": "Allalaadimise kiirus",
+        "upload": "Üleslaadimise kiirus",
+        "upTo": "kuni {value} {unit}"
+      }
     },
     "errors": {
       "somethingWentWrong": "Midagi läks valesti. Proovige hiljem uuesti.",

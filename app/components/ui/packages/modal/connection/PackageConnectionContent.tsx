@@ -19,7 +19,7 @@ export default function PackageConnectionContent({
     <div className="flex flex-col space-x-6 md:flex-row">
       <div className="max-md:order-2 md:w-7/12">
         <PackageModalSection
-          title={t('actions.connection.sections.fillForm')}
+          title={t('modals.connection.sections.fillForm')}
           className="bg-white"
         >
           <p className="mb-4">
@@ -35,7 +35,7 @@ export default function PackageConnectionContent({
       </div>
       <div className="space-y-6 md:w-5/12">
         <PackageModalSection
-          title={t('actions.connection.sections.selectedPackage') + ':'}
+          title={t('modals.connection.sections.selectedPackage') + ':'}
           className="bg-white"
         >
           <Image
@@ -53,7 +53,7 @@ export default function PackageConnectionContent({
           </p>
         </PackageModalSection>
         <PackageModalSection
-          title={t('actions.connection.sections.total') + ':'}
+          title={t('modals.connection.sections.total') + ':'}
           className="bg-white"
         >
           {packageData?.discount_price ? (
