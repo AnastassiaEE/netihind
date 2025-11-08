@@ -1,5 +1,5 @@
 import { getPackages } from '@/lib/packagesDataFetch';
-import { PackageAction } from '@/types/packages.types';
+import { Package, PackageAction } from '@/types/packages.types';
 import { useEffect, useState } from 'react';
 import useSWR from 'swr';
 
@@ -27,17 +27,13 @@ export default function usePackages(
 
   console.log(packages);
 
-  
-
-  const [selectedPackage, setSelectedPackage] = useState<{
-    [key: string]: any;
-  } | null>(null);
+  const [selectedPackage, setSelectedPackage] = useState<Package | null>(null);
 
   const [selectedAction, setSelectedAction] =
     useState<PackageAction>('connection');
 
   const handleActionClick = (
-    packageData: { [key: string]: any },
+    packageData: Package,
     action: PackageAction,
     handleModal: () => void,
   ) => {

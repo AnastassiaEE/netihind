@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-export default function PackageActionSection({
+export default function PackageModalSection({
   title,
   className,
   children,
@@ -10,7 +10,7 @@ export default function PackageActionSection({
   children: React.ReactNode;
 }) {
   return (
-    <div className={classNames('rounded-md bg-white p-6 shadow-md', className)}>
+    <div className={classNames('rounded-md p-6 shadow-md', className)}>
       <p className="mb-4 text-lg font-extrabold text-black">{title}</p>
       {children}
     </div>

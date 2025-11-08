@@ -13,7 +13,7 @@ import { useTranslations } from 'next-intl';
 import { Loop, Add } from '@mui/icons-material';
 import { PackageAction } from '@/types/packages.types';
 
-export default function PackageActionForm({
+export default function PackageForm({
   action = 'connection',
   address,
   packageData,

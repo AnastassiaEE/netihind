@@ -1,14 +1,14 @@
 import Image from 'next/image';
-import PackageActionSection from '@/components/ui/packages/action/PackageActionSection';
+import PackageModalSection from '@/components/ui/packages/modal/PackageModalSection';
 import HomeIcon from '@mui/icons-material/Home';
 import { useTranslations } from 'next-intl';
-import PackageActionForm from '@/components/ui/form/forms/PackageActionForm';
+import PackageForm from '@/components/ui/form/forms/PackageForm';
 
-export default function PackageConnection({
-  data,
+export default function PackageConnectionContent({
+  packageData,
   address,
 }: {
-  data: { [key: string]: any } | null;
+  packageData: { [key: string]: any } | null;
   address: string;
 }) {
   const t = useTranslations('Packages');
@@ -16,63 +16,69 @@ export default function PackageConnection({
   const priceRowClasses = 'flex items-center justify-between mb-1';
 
   return (
-    <div className="flex flex-col gap-6 md:flex-row">
+    <div className="flex flex-col space-x-6 md:flex-row">
       <div className="max-md:order-2 md:w-7/12">
-        <PackageActionSection title={t('actions.connection.sections.fillForm')}>
+        <PackageModalSection
+          title={t('actions.connection.sections.fillForm')}
+          className="bg-white"
+        >
           <p className="mb-4">
             <HomeIcon className="mr-1 inline align-sub text-primary" />
             {address}
           </p>
-          <PackageActionForm
+          <PackageForm
             action="connection"
             address={address}
-            packageData={data}
+            packageData={packageData}
           />
-        </PackageActionSection>
+        </PackageModalSection>
       </div>
-      <div className="md:w-5/12">
-        <PackageActionSection
+      <div className="space-y-6 md:w-5/12">
+        <PackageModalSection
           title={t('actions.connection.sections.selectedPackage') + ':'}
-          className="mb-6"
+          className="bg-white"
         >
           <Image
             src={
-              data?.provider_img_url ||
+              packageData?.provider_img_url ||
               'https://rxysmdetqttpdqfmrpym.supabase.co/storage/v1/object/public/website-logos//gradientmainlogo.png'
             }
-            alt={`Selected package provider logo - ${data?.provider_name}`}
+            alt={`Selected package provider logo - ${packageData?.provider_name}`}
             width={50}
             height={32}
             className="mr-3 inline"
           />
-          <p className="inline align-middle">{data?.internet_package_name}</p>
-        </PackageActionSection>
-        <PackageActionSection
+          <p className="inline align-middle">
+            {packageData?.internet_package_name}
+          </p>
+        </PackageModalSection>
+        <PackageModalSection
           title={t('actions.connection.sections.total') + ':'}
+          className="bg-white"
         >
-          {data?.discount_price ? (
+          {packageData?.discount_price ? (
             // With Discount
             <>
               <p className={priceRowClasses}>
                 <span className="font-medium">
                   {t('discount.duration', {
-                    months: data?.discount_duration,
+                    months: packageData?.discount_duration,
                   })}
                   :
                 </span>
                 <span className="text-xl font-bold">
-                  {data?.discount_price} €
+                  {packageData?.discount_price} €
                 </span>
               </p>
               <p className={priceRowClasses}>
                 <span className="text-sm font-medium">
                   {t('discount.durationEnd', {
-                    months: Number(data?.discount_duration) + 1,
+                    months: Number(packageData?.discount_duration) + 1,
                   })}
                   :
                 </span>
                 <span className="text-sm font-bold">
-                  {data?.internet_package_price} €
+                  {packageData?.internet_package_price} €
                 </span>
               </p>
             </>
@@ -81,28 +87,28 @@ export default function PackageConnection({
             <p className={priceRowClasses}>
               <span className="font-medium">{t(`details.packagePrice`)}:</span>
               <span className="text-xl font-bold">
-                {data?.internet_package_price} €
+                {packageData?.internet_package_price} €
               </span>
             </p>
           )}
           {/* Connection */}
           <p className={priceRowClasses}>
-            {data?.installation_min_price !== null && (
+            {packageData?.installation_min_price !== null && (
               <>
                 <span className="text-sm font-medium">
                   {t('details.installation')}:
                 </span>
                 <span className="text-sm">
-                  {data?.installation_min_price > 0
+                  {packageData?.installation_min_price > 0
                     ? t('installation.minPrice', {
-                        price: data?.installation_min_price,
+                        price: packageData?.installation_min_price,
                       })
                     : t('installation.free')}
                 </span>
               </>
             )}
           </p>
-        </PackageActionSection>
+        </PackageModalSection>
       </div>
     </div>
   );
