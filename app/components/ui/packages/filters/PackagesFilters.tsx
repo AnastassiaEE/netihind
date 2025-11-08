@@ -18,7 +18,7 @@ export default function PackagesFilters({
   onUserChange?: () => void;
   isFiltersLoaded: boolean;
 }) {
-  const t = useTranslations('Filters');
+  const t = useTranslations('Filters.categories');
   useFiltersUrlSync(filters, isFiltersLoaded);
 
   return (
@@ -31,7 +31,7 @@ export default function PackagesFilters({
         .map(([filterName, filterData]) => (
           <PackagesFilterAccordion
             key={filterName}
-            filterName={t(`categories.${filterName}` as any)}
+            filterName={t(`${filterName}` as any)}
             className="mb-4"
           >
             {filterData.type === 'checkbox' && (

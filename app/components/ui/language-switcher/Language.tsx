@@ -11,7 +11,7 @@ export default function Language({
   locale: Locale;
   current: boolean;
 }) {
-  const t = useTranslations('Buttons');
+  const t = useTranslations('Buttons.language');
 
   const languageClasses = classNames(
     'cursor-pointer border-b-2 font-semibold uppercase text-muted-dark transition-colors hover:text-primary',
@@ -22,7 +22,7 @@ export default function Language({
     <Link
       href={href}
       locale={locale}
-      aria-label={t(`language.${locale}`)}
+      aria-label={t(`${locale}`)}
       aria-current={current ? 'true' : undefined}
       className={languageClasses}
     >

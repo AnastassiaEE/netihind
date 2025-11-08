@@ -10,7 +10,7 @@ import React from 'react';
 import FaqAccordion from '@/components/ui/accordions/FaqAccordion';
 
 export default function QuestionsSection() {
-  const t = useTranslations('HomePage');
+  const t = useTranslations('HomePage.questionsSection');
   const translatedQuestions = useMemo(() => {
     return (
       questions?.map(({ question, answer }) => ({
@@ -26,13 +26,11 @@ export default function QuestionsSection() {
     <SectionLayout className="py-24">
       <div className="md:flex md:items-center md:justify-between">
         <div className="max-md:mb-12 md:w-4/12">
-          <H2>{t('questionsSection.title')}</H2>
-          <p className="mb-12 text-lg md:mb-8">
-            {t('questionsSection.description')}
-          </p>
+          <H2>{t('title')}</H2>
+          <p className="mb-12 text-lg md:mb-8">{t('description')}</p>
           <Link href="/contacts" className="md:inline-block">
             <Button size="lg" className="w-full">
-              {t('questionsSection.contactButton')}
+              {t('contactButton')}
             </Button>
           </Link>
         </div>

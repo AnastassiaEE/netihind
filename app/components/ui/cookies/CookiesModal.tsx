@@ -12,7 +12,7 @@ import CookiesInfoSection from '@/components/ui/cookies/sections/CookiesInfoSect
 import useCookiesModal from '@/hooks/useCookiesModal';
 
 export default function CookiesModal() {
-  const b = useTranslations('Buttons');
+  const b = useTranslations('Buttons.cookies');
   const c = useTranslations('Cookies');
   const tabs = [c('tabs.consent'), c('tabs.details'), c('tabs.info')];
 
@@ -27,7 +27,7 @@ export default function CookiesModal() {
 
   return (
     <>
-      <CookiesButton label={b('cookies.open')} handleClick={openCookiesModal} />
+      <CookiesButton label={b('open')} handleClick={openCookiesModal} />
       <Dialogue
         type="modal"
         name="cookies"

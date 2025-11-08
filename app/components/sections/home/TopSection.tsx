@@ -7,7 +7,7 @@ import MaaAmetAddressForm from '@/components/ui/form/forms/MaaAmetAddressForm';
 import { useTranslations } from 'next-intl';
 
 export default function TopSection() {
-  const t = useTranslations('HomePage');
+  const t = useTranslations('HomePage.topSection');
   return (
     <SectionLayout
       className="relative flex h-screen min-h-[650px] flex-col justify-center pt-[80px] md:min-h-[720px] md:pt-[140px]"
@@ -18,7 +18,7 @@ export default function TopSection() {
       </div>
       <div className="relative md:-translate-y-16">
         <H1>
-          {t.rich('topSection.title', {
+          {t.rich('title', {
             span: (chunks) => (
               <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
                 {chunks}
@@ -26,7 +26,7 @@ export default function TopSection() {
             ),
           })}
         </H1>
-        <p className="mb-4 md:text-lg">{t('topSection.description')}</p>
+        <p className="mb-4 md:text-lg">{t('description')}</p>
         <MaaAmetAddressForm />
       </div>
       <div className="absolute inset-x-0 bottom-0 -z-10 bg-primary/10 py-3 md:p-9">

@@ -112,8 +112,9 @@
       },
       "details": {
         "sections": {
-          "fillForm": "Проверьте адрес и заполните форму",
-          "selectedPackage": "Выбранный пакет"
+          "description": "Описание услуги",
+          "installation": "Установка",
+          "equipment": "Устройства"
         }
       }
     },

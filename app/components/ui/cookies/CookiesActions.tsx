@@ -9,7 +9,7 @@ export default function CookiesActions({
   className?: string;
   managePreferences: (action: string) => void;
 }) {
-  const t = useTranslations('Cookies');
+  const t = useTranslations('Cookies.buttons');
   return (
     <div
       className={classNames(
@@ -23,7 +23,7 @@ export default function CookiesActions({
         className="w-full"
         onClick={() => managePreferences('decline-all')}
       >
-        {t('buttons.declineAll')}
+        {t('declineAll')}
       </Button>
       <Button
         variant="outlined"
@@ -31,14 +31,14 @@ export default function CookiesActions({
         className="w-full"
         onClick={() => managePreferences('accept-selected')}
       >
-        {t('buttons.acceptSelected')}
+        {t('acceptSelected')}
       </Button>
       <Button
         size="lg"
         className="w-full"
         onClick={() => managePreferences('accept-all')}
       >
-        {t('buttons.acceptAll')}
+        {t('acceptAll')}
       </Button>
     </div>
   );

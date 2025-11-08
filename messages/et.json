@@ -112,8 +112,9 @@
       },
       "details": {
         "sections": {
-          "fillForm": "Kontrollige aadress ja täitke vorm",
-          "selectedPackage": "Valitud pakett"
+          "description": "Teenuse kirjeldus",
+          "installation": "Paigaldus",
+          "equipment": "Seadmed"
         }
       }
     },

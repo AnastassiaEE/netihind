@@ -7,10 +7,10 @@ import { Suspense } from 'react';
 import PingLoader from '@/components/ui/loaders/PingLoader';
 
 export default function BlogSection() {
-  const t = useTranslations('HomePage');
+  const t = useTranslations('HomePage.blogSection');
   return (
     <SectionLayout bg="bg-primary-light" className="py-24">
-      <H2 className="!mb-10 text-center">{t('blogSection.title')}</H2>
+      <H2 className="!mb-10 text-center">{t('title')}</H2>
       <Suspense fallback={<PingLoader />}>
         <BlogCardsWrapper>
           <BlogSlider />
