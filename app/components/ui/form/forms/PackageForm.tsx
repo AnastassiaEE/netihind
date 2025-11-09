@@ -20,7 +20,7 @@ export default function PackageForm({
 }: {
   action?: PackageAction;
   address: string;
-  packageData: { [key: string]: string } | null;
+  packageData?: { [key: string]: string };
 }) {
   const t = useTranslations('Form');
   const timeOptions = ['hour', '9-11', '11-13', '13-15', '15-17', '17-20'];

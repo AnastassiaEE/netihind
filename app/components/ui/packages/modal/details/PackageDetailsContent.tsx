@@ -1,12 +1,12 @@
 import PackageModalSection from '@/components/ui/packages/modal/PackageModalSection';
 import PackageDescriptionSection from '@/components/ui/packages/modal/details/PackageDescriptionSection';
+import PackageInstallationSection from '@/components/ui/packages/modal/details/PackageInstallationSection';
 import { Package } from '@/types/packages.types';
-import { useTranslations } from 'next-intl';
 
 export default function PackageDetailsContent({
   packageData,
 }: {
-  packageData: Package | null;
+  packageData?: Package;
 }) {
   return (
     <div className="space-y-4">
@@ -14,9 +14,9 @@ export default function PackageDetailsContent({
         downloadSpeed={packageData?.download_speed}
         uploadSpeed={packageData?.upload_speed}
       />
-      <PackageModalSection title={'Установка'} className="bg-white">
-        <div></div>
-      </PackageModalSection>
+      <PackageInstallationSection
+        installationData={packageData?.installation}
+      />
       <PackageModalSection title={'Устройства'} className="bg-white">
         <div></div>
       </PackageModalSection>

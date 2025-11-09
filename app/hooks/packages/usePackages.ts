@@ -27,7 +27,7 @@ export default function usePackages(
 
   console.log(packages);
 
-  const [selectedPackage, setSelectedPackage] = useState<Package | null>(null);
+  const [selectedPackage, setSelectedPackage] = useState<Package | undefined>(undefined);
 
   const [selectedAction, setSelectedAction] =
     useState<PackageAction>('connection');

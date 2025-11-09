@@ -17,7 +17,7 @@ export default function PackageModal({
   isOpnened: boolean;
   onClose: () => void;
   ref: RefObject<HTMLDivElement | null>;
-  selectedPackage: Package | null;
+  selectedPackage?: Package;
   address: string;
 }) {
   const t = useTranslations('Packages.modals');

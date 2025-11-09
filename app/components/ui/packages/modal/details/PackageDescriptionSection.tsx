@@ -48,7 +48,9 @@ export default function PackageDescriptionSection({
             <tr key={i}>
               <td className={classNames('pr-1', colClasses)}>{row.icon}</td>
               <td className={colClasses}>{row.label}</td>
-              <td className={classNames('text-right font-bold', colClasses)}>
+              <td
+                className={classNames('text-right font-semibold', colClasses)}
+              >
                 {row.value}
               </td>
             </tr>

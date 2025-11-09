@@ -127,7 +127,12 @@
     },
     "details": {
       "packagePrice": "Оплата в месяц",
-      "installation": "Установка",
+      "installation": {
+        "paidVisit": "Установку оборудования можно поручить техническому специалисту. <strong> Вызов техника стоит {visit_fee} €. </strong>",
+        "freeVisit": "Установку оборудования можно поручить техническому специалисту. <strong> Вызов техника бесплатно. </strong>",
+        "additionalTime": "Повременная оплата {additional_time_fee} € за каждые начавшиеся {additional_time} минут работы.",
+        "materials": "Может взиматься плата за материалы."
+      },
       "equipment": "Устройства",
       "connectionType": "Тип подключения",
       "speed": {

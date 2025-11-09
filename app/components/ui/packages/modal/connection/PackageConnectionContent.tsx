@@ -8,7 +8,7 @@ export default function PackageConnectionContent({
   packageData,
   address,
 }: {
-  packageData: { [key: string]: any } | null;
+  packageData?: { [key: string]: any };
   address: string;
 }) {
   const t = useTranslations('Packages');
@@ -93,7 +93,7 @@ export default function PackageConnectionContent({
           )}
           {/* Connection */}
           <p className={priceRowClasses}>
-            {packageData?.installation_min_price !== null && (
+            {/* {packageData?.installation_min_price !== null && (
               <>
                 <span className="text-sm font-medium">
                   {t('details.installation')}:
@@ -106,7 +106,7 @@ export default function PackageConnectionContent({
                     : t('installation.free')}
                 </span>
               </>
-            )}
+            )} */}
           </p>
         </PackageModalSection>
       </div>
