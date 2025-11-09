@@ -4,8 +4,8 @@ import classNames from 'classnames';
 import { useTranslations } from 'next-intl';
 
 export default function PackageDescriptionSection({
-  downloadSpeed,
-  uploadSpeed,
+  downloadSpeed = 0,
+  uploadSpeed = 0,
 }: {
   downloadSpeed?: number;
   uploadSpeed?: number;
@@ -21,7 +21,7 @@ export default function PackageDescriptionSection({
       icon: <South fontSize="large" />,
       label: t('details.speed.download'),
       value: t('details.speed.upTo', {
-        value: downloadSpeed ?? '',
+        value: downloadSpeed,
         unit: t('units.speed'),
       }),
     },
@@ -29,7 +29,7 @@ export default function PackageDescriptionSection({
       icon: <North fontSize="large" />,
       label: t('details.speed.upload'),
       value: t('details.speed.upTo', {
-        value: uploadSpeed ?? '',
+        value: uploadSpeed,
         unit: t('units.speed'),
       }),
     },
@@ -42,21 +42,21 @@ export default function PackageDescriptionSection({
       title={t('modals.details.sections.description')}
       className="bg-white"
     >
-      <table className="w-full">
-        <tbody>
-          {rows.map((row, i) => (
-            <tr key={i}>
-              <td className={classNames('pr-1', colClasses)}>{row.icon}</td>
-              <td className={colClasses}>{row.label}</td>
-              <td
-                className={classNames('text-right font-semibold', colClasses)}
-              >
-                {row.value}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div className="overflow-x-auto">
+        <table className="w-full">
+          <tbody>
+            {rows.map((row, i) => (
+              <tr key={i}>
+                <td className={classNames('w-10', colClasses)}>{row.icon}</td>
+                <td className={colClasses}>{row.label}</td>
+                <td className={classNames('text-right font-bold', colClasses)}>
+                  {row.value}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </PackageModalSection>
   );
 }
