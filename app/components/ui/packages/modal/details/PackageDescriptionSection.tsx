@@ -22,7 +22,7 @@ export default function PackageDescriptionSection({
       label: t('details.speed.download'),
       value: t('details.speed.upTo', {
         value: speed.download,
-        unit: t('units.speed'),
+        unit: t('details.units.speed'),
       }),
     },
     {
@@ -30,7 +30,7 @@ export default function PackageDescriptionSection({
       label: t('details.speed.upload'),
       value: t('details.speed.upTo', {
         value: speed.upload,
-        unit: t('units.speed'),
+        unit: t('details.units.speed'),
       }),
     },
   ];
