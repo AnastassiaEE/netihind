@@ -11,8 +11,8 @@ export default function PackageDetailsContent({
   return (
     <div className="space-y-4">
       <PackageDescriptionSection
-        downloadSpeed={packageData?.download_speed}
-        uploadSpeed={packageData?.upload_speed}
+        downloadSpeed={packageData?.speed.download}
+        uploadSpeed={packageData?.speed.upload}
       />
       <PackageInstallationSection
         installationData={packageData?.installation}

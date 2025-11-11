@@ -11,11 +11,7 @@ export default function PackageCardSection({
   className?: string;
   children: React.ReactNode;
 }) {
-  const sectionClasses = classNames(
-    'relative border-muted-light py-5',
-    Icon ? 'px-8' : 'px-1',
-    className,
-  );
+  const sectionClasses = classNames('relative border-muted-light', className);
   return (
     <div className={sectionClasses}>
       {Icon && <PackageIcon Icon={Icon} />}

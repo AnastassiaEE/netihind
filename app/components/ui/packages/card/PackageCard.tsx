@@ -7,11 +7,8 @@ import PackageCardSection from '@/components/ui/packages/card/PackageCardSection
 import dynamic from 'next/dynamic';
 import InternetSpeedFeature from '@/components/ui/packages/card/InternetSpeedFeature';
 import { PackageAction } from '@/types/packages.types';
-import useAccordion from '@/hooks/useAccordion';
 import Button from '@/components/ui/form/buttons/Button';
-import Arrow from '@/components/ui/icons/Arrow';
 import PackageDetail from '@/components/ui/packages/card/PackageDetail';
-import CircleArrow from '@/components/ui/icons/CircleArrow';
 import { useTranslationsContext } from '@/context/TranslationsContext';
 import { Package } from '@/types/packages.types';
 
@@ -21,15 +18,11 @@ export default function PackageCard({
   data: {
     id,
     name,
-    description,
-    download_speed,
-    upload_speed,
-    data,
+    provider,
+    speed,
+    infrustructure,
     technology,
-    provider_name,
-    provider_image_url,
-    infrastructure_provider_name,
-    is_infrastructure_provider_partner,
+    installation,
     price,
   },
   onActionClick,
@@ -48,59 +41,59 @@ export default function PackageCard({
     className,
   );
 
-  const {
-    isVisible,
-    collapsibleRef,
-    getArrowProps,
-    getButtonProps,
-    getPanelProps,
-  } = useAccordion();
-
   return (
     <article data-id={id} className={cardClasses}>
-      <div className="flex flex-wrap">
+      <div className="grid gap-0 lg:grid-cols-3">
         <PackageCardSection
           Icon={Wifi}
-          className="w-full max-lg:border-b lg:w-3/5 lg:border-r"
+          className="border-b border-b-muted-light px-8 py-5 lg:col-span-2 lg:row-start-1 lg:border-r lg:border-r-muted-light"
         >
           <PackageHeader
-            providerLogoSrc={provider_image_url}
-            providerName={provider_name}
+            providerLogoSrc={provider.image_url}
+            providerName={provider.name}
             packageName={name}
             className="mb-3"
           />
           <div className="mb-2 flex flex-wrap items-center gap-2 font-medium uppercase text-muted-dark">
             <InternetSpeedFeature
               type="download"
-              speed={download_speed}
+              speed={speed.download}
               units={t('units.speed')}
             />
             <InternetSpeedFeature
               type="upload"
-              speed={upload_speed}
+              speed={speed.upload}
               units={t('units.speed')}
             />
             <Tooltip
               elementToInteract={
                 <span className="rounded-md border border-primary px-1 py-0.5 font-semibold text-primary">
-                  {is_infrastructure_provider_partner
-                    ? infrastructure_provider_name
+                  {infrustructure?.is_partner
+                    ? infrustructure?.name
                     : technology}
                 </span>
               }
               content={''}
             />
           </div>
-          {/* {installation_min_price !== null && (
-            <p className="text-sm">
-              {t('details.installation')}:{' '}
-              {installation_min_price > 0
-                ? t('installation.minPrice', { price: installation_min_price })
-                : t('installation.free')}
-            </p>
-          )} */}
         </PackageCardSection>
-        <PackageCardSection className="flex w-full flex-col items-center justify-center gap-1 lg:w-2/5">
+        <PackageCardSection className="px-8 py-3 max-lg:border-b max-lg:border-b-muted-light lg:col-span-2 lg:row-start-2 lg:border-r lg:border-r-muted-light">
+          <div className="flex flex-wrap gap-3">
+            <PackageDetail Icon={Engineering}>
+              <>
+                {installation.visit_fee > 0
+                  ? t('details.installation.minPrice', {
+                      visit_fee: installation.visit_fee,
+                    })
+                  : t('details.installation.free')}
+              </>
+            </PackageDetail>
+            <PackageDetail Icon={Router}>
+              <>rent</>
+            </PackageDetail>
+          </div>
+        </PackageCardSection>
+        <PackageCardSection className="flex flex-col items-center justify-center gap-1 p-4 lg:row-span-2">
           <PackagePrice
             price={price}
             discount={{
@@ -108,46 +101,8 @@ export default function PackageCard({
               discount_duration: null,
             }}
           />
-          <button
-            {...getButtonProps()}
-            className="absolute right-4 top-1/2 -translate-y-1/2 lg:hidden"
-          >
-            <CircleArrow {...getArrowProps()} className="bg-primary-light" />
-          </button>
-          <Button
-            variant="text"
-            {...getButtonProps()}
-            className="!pb-0 max-lg:hidden"
-          >
-            {t('buttons.showDetails')} <Arrow {...getArrowProps()} />
-          </Button>
         </PackageCardSection>
       </div>
-      {isVisible && (
-        <div {...getPanelProps()}>
-          <div
-            ref={collapsibleRef}
-            className="flex flex-wrap gap-5 border-t p-6"
-          >
-            {/* {installation_description && (
-              <PackageDetail
-                Icon={Engineering}
-                title={t('details.installation')}
-              >
-                <>
-                  {translations[installation_description]?.[currentLocale] ??
-                    installation_description}
-                </>
-              </PackageDetail>
-            )} */}
-
-            {/* <PackageDetail Icon={Router} title={t('details.equipment')}>
-              <>test 1</>
-              <>test 2</>
-            </PackageDetail> */}
-          </div>
-        </div>
-      )}
       <div className="flex">
         <Button
           className="w-full rounded-t-none rounded-br-none"

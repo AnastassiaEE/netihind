@@ -2,14 +2,20 @@ export type Package = {
     id: number;
     name: string;
     description: string | null;
-    download_speed: number;
-    upload_speed: number;
+    speed: {
+        upload: number,
+        download: number
+    }
     data: number;
     technology: string;
-    provider_name: string;
-    provider_image_url: string | null;
-    infrastructure_provider_name: string | null;
-    is_infrastructure_provider_partner: boolean | null;
+    provider: {
+        name: string,
+        image_url: string | null
+    }
+    infrustructure: {
+        name: string | null,
+        is_partner: boolean | null
+    }
     price: number;
     installation: {
         visit_fee: number,
