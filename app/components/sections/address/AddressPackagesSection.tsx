@@ -77,7 +77,7 @@ export default function AddressPackagesSection({
                 className="rounded-md border-muted-light bg-white"
               />
             </div>
-            <div className="md:px-5 md:pt-5">
+            <div className="md:pr-5 md:pt-5">
               <Packages
                 oid={oid}
                 address={address}

@@ -30,7 +30,8 @@ export default function PackagePrice({
   return (
     <>
       <p className={priceClasses}>
-        <span className="font-bold">{finalPrice} €</span> / {t('units.month')}
+        <span className="font-bold">{finalPrice} €</span> /{' '}
+        {t('details.units.month')}
       </p>
       {discount_price && (
         <>

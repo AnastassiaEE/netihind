@@ -10,13 +10,8 @@ export default function PackageDetailsContent({
 }) {
   return (
     <div className="space-y-4">
-      <PackageDescriptionSection
-        downloadSpeed={packageData?.speed.download}
-        uploadSpeed={packageData?.speed.upload}
-      />
-      <PackageInstallationSection
-        installationData={packageData?.installation}
-      />
+      <PackageDescriptionSection speed={packageData?.speed} />
+      <PackageInstallationSection installation={packageData?.installation} />
       <PackageModalSection title={'Устройства'} className="bg-white">
         <div></div>
       </PackageModalSection>

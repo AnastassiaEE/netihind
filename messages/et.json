@@ -90,10 +90,6 @@
     }
   },
   "Packages": {
-    "units": {
-      "speed": "Mbit/s",
-      "month": "kuus"
-    },
     "buttons": {
       "connect": "Liitun",
       "details": "Vaatan lähemalt",
@@ -136,7 +132,12 @@
       "speed": {
         "download": "Allalaadimise kiirus",
         "upload": "Üleslaadimise kiirus",
-        "upTo": "kuni {value} {unit}"
+        "upTo": "kuni {value} {unit}",
+        "unlimited": "piiramatu"
+      },
+      "units": {
+        "speed": "Mbit/s",
+        "month": "kuus"
       }
     },
     "errors": {

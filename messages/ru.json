@@ -90,10 +90,6 @@
     }
   },
   "Packages": {
-    "units": {
-      "speed": "Мбит/c",
-      "month": "мес"
-    },
     "buttons": {
       "connect": "Подключиться",
       "details": "Подробнее",
@@ -136,7 +132,12 @@
       "speed": {
         "download": "Скорсоть загрузки",
         "upload": "Скорость отдачи",
-        "upTo": "до {value} {unit}"
+        "upTo": "до {value} {unit}",
+        "unlimited": "Неограниченная"
+      },
+      "units": {
+        "speed": "Мбит/c",
+        "month": "мес"
       }
     },
     "errors": {

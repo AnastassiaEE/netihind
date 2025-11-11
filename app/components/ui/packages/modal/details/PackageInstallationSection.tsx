@@ -3,17 +3,17 @@ import { Package } from '@/types/packages.types';
 import { useTranslations } from 'next-intl';
 
 export default function PackageInstallationSection({
-  installationData,
+  installation = {
+    visit_fee: 0,
+    additional_time: null,
+    additional_time_fee: null,
+  },
 }: {
-  installationData?: Package['installation'];
+  installation?: Package['installation'];
 }) {
   const t = useTranslations('Packages');
 
-  const {
-    visit_fee = 0,
-    additional_time = null,
-    additional_time_fee = null,
-  } = installationData ?? {};
+  const { visit_fee, additional_time, additional_time_fee } = installation;
 
   const richStrong = (chunks: React.ReactNode) => (
     <span className="font-bold">{chunks}</span>

@@ -2,15 +2,15 @@ import { Language, North, South } from '@mui/icons-material';
 import PackageModalSection from '@/components/ui/packages/modal/PackageModalSection';
 import classNames from 'classnames';
 import { useTranslations } from 'next-intl';
+import { Package } from '@/types/packages.types';
 
 export default function PackageDescriptionSection({
-  downloadSpeed = 0,
-  uploadSpeed = 0,
+  speed = { download: 0, upload: 0 },
 }: {
-  downloadSpeed?: number;
-  uploadSpeed?: number;
+  speed?: Package['speed'];
 }) {
   const t = useTranslations('Packages');
+
   const rows = [
     {
       icon: <Language fontSize="large" />,
@@ -21,7 +21,7 @@ export default function PackageDescriptionSection({
       icon: <South fontSize="large" />,
       label: t('details.speed.download'),
       value: t('details.speed.upTo', {
-        value: downloadSpeed,
+        value: speed.download,
         unit: t('units.speed'),
       }),
     },
@@ -29,7 +29,7 @@ export default function PackageDescriptionSection({
       icon: <North fontSize="large" />,
       label: t('details.speed.upload'),
       value: t('details.speed.upTo', {
-        value: uploadSpeed,
+        value: speed.upload,
         unit: t('units.speed'),
       }),
     },

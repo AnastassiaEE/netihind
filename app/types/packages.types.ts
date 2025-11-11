@@ -12,7 +12,7 @@ export type Package = {
         name: string,
         image_url: string | null
     }
-    infrustructure: {
+    infrastructure: {
         name: string | null,
         is_partner: boolean | null
     }
