@@ -30,7 +30,7 @@ export default function PackageCardHeaderSection({
         className="mb-3"
       />
       <div className="mb-2 flex flex-wrap items-center gap-2 font-medium uppercase text-muted-dark">
-        <PackageCardSpeed type="download" speed={-1} />
+        <PackageCardSpeed type="download" speed={speed.download} />
         <PackageCardSpeed type="upload" speed={speed.upload} />
         <Tooltip
           elementToInteract={
