@@ -1,6 +1,8 @@
 import PackageHeader from '@/components/ui/packages/card/PackageCardHeader';
 import PackageCardSpeed from '@/components/ui/packages/card/PackageCardSpeed';
+import { useTranslationsContext } from '@/context/TranslationsContext';
 import { Package } from '@/types/packages.types';
+import { useLocale } from 'next-intl';
 import dynamic from 'next/dynamic';
 
 interface PackageHeaderSectionProps
@@ -21,6 +23,9 @@ export default function PackageCardHeaderSection({
   infrastructure,
   className,
 }: PackageHeaderSectionProps) {
+  const translations = useTranslationsContext();
+  const currentLocale = useLocale();
+
   return (
     <div className={className}>
       <PackageHeader
@@ -40,7 +45,10 @@ export default function PackageCardHeaderSection({
                 : technology.name}
             </span>
           }
-          content={''}
+          content={
+            translations[technology.description][currentLocale] ??
+            technology.description
+          }
         />
       </div>
     </div>
