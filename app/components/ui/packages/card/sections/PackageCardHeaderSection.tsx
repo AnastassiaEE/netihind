@@ -35,7 +35,9 @@ export default function PackageCardHeaderSection({
         <Tooltip
           elementToInteract={
             <span className="rounded-md border border-primary px-1 py-0.5 font-semibold text-primary">
-              {infrastructure?.is_partner ? infrastructure?.name : technology}
+              {infrastructure?.is_partner
+                ? infrastructure?.name
+                : technology.name}
             </span>
           }
           content={''}

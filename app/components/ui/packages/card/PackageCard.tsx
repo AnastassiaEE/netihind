@@ -17,9 +17,6 @@ export default function PackageCard({
   onActionClick: (action: PackageAction) => void;
   className?: string;
 }) {
-  const translations = useTranslationsContext();
-  const currentLocale = useLocale();
-
   const cardClasses = classNames(
     'rounded-md border border-muted-light bg-white shadow-md',
     className,

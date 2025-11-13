@@ -1,21 +1,27 @@
 import { Language, North, South } from '@mui/icons-material';
 import PackageModalSection from '@/components/ui/packages/modal/PackageModalSection';
 import classNames from 'classnames';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { Package } from '@/types/packages.types';
+import { useTranslationsContext } from '@/context/TranslationsContext';
 
 export default function PackageDescriptionSection({
   speed = { download: 0, upload: 0 },
+  technology = { name: '', description: '' },
 }: {
   speed?: Package['speed'];
+  technology?: Package['technology'];
 }) {
   const t = useTranslations('Packages');
+  const translations = useTranslationsContext();
+  const currentLocale = useLocale();
 
   const rows = [
     {
       icon: <Language fontSize="large" />,
       label: t('details.connectionType'),
-      value: 'Кабельный интернет',
+      value:
+        translations[technology.description][currentLocale] ?? technology.name,
     },
     {
       icon: <South fontSize="large" />,
