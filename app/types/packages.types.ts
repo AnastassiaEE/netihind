@@ -7,7 +7,10 @@ export type Package = {
         download: number
     }
     data: number;
-    technology: string;
+    technology: {
+        name: string,
+        description: string
+    },
     provider: {
         name: string,
         image_url: string | null
