@@ -1,15 +1,31 @@
-import useBoolean from '@/hooks/useBoolean';
+import { useRef, useState } from 'react';
 
 export default function useTooltip() {
-  const { value: isVisible, setTrue, setFalse, toggle } = useBoolean(false);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [pos, setPos] = useState({ top: 0, left: 0, width: 0 });
 
-  const show = () => setTrue();
-  const hide = () => setFalse();
+  const show = () => {
+    if (!wrapperRef.current) return;
+
+    const rect = wrapperRef.current.getBoundingClientRect();
+
+    setPos({
+      top: rect.bottom + 6, // тултип СНИЗУ, не перекрывает
+      left: rect.left + rect.width / 2,
+      width: rect.width,
+    });
+
+    setIsVisible(true);
+  };
+
+  const hide = () => setIsVisible(false);
 
   return {
     isVisible,
+    pos,
+    wrapperRef,
     show,
     hide,
-    toggle,
   };
 }

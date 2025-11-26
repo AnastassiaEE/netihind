@@ -1,7 +1,8 @@
-import PackageModalSection from '@/components/ui/packages/modal/PackageModalSection';
 import PackageDescriptionSection from '@/components/ui/packages/modal/details/PackageDescriptionSection';
 import PackageInstallationSection from '@/components/ui/packages/modal/details/PackageInstallationSection';
 import { Package } from '@/types/packages.types';
+import PackageEquipmentSection from '@/components/ui/packages/modal/details/PackageEquipmentSection';
+import { groupEquipmentByCombination } from '@/utils/packagesHelper';
 
 export default function PackageDetailsContent({
   packageData,
@@ -15,9 +16,9 @@ export default function PackageDetailsContent({
         technology={packageData?.technology}
       />
       <PackageInstallationSection installation={packageData?.installation} />
-      <PackageModalSection title={'Устройства'} className="bg-white">
-        <div></div>
-      </PackageModalSection>
+      <PackageEquipmentSection
+        equipment={groupEquipmentByCombination(packageData?.equipment ?? [])}
+      />
     </div>
   );
 }

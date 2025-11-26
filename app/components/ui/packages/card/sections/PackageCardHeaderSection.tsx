@@ -39,9 +39,9 @@ export default function PackageCardHeaderSection({
         <PackageCardSpeed type="upload" speed={speed.upload} />
         <Tooltip
           elementToInteract={
-            <span className="rounded-md border border-primary px-1 py-0.5 font-semibold text-primary">
-              {infrastructure?.is_partner
-                ? infrastructure?.name
+            <span className="rounded-md border border-primary px-1 py-0.5 text-xs font-semibold text-primary">
+              {infrastructure.is_partner
+                ? infrastructure.name
                 : technology.name}
             </span>
           }

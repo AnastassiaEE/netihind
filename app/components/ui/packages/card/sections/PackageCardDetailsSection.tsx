@@ -16,15 +16,17 @@ export default function PackageCardDetailsSection({
   return (
     <div className={className}>
       <div className="flex flex-wrap gap-3">
-        <PackageDetail Icon={Engineering}>
-          <>
-            {installation.visit_fee > 0
-              ? t('installation.minPrice', {
-                  visit_fee: installation.visit_fee,
-                })
-              : t('installation.free')}
-          </>
-        </PackageDetail>
+        {installation && (
+          <PackageDetail Icon={Engineering}>
+            <>
+              {installation.visit_fee > 0
+                ? t('installation.minPrice', {
+                    visit_fee: installation.visit_fee,
+                  })
+                : t('installation.free')}
+            </>
+          </PackageDetail>
+        )}
         <PackageDetail Icon={Router}>
           <>rent</>
         </PackageDetail>

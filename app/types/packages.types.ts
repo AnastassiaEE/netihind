@@ -14,17 +14,28 @@ export type Package = {
     provider: {
         name: string,
         image_url: string | null
-    }
+    },
     infrastructure: {
-        name: string | null,
-        is_partner: boolean | null
-    }
+        name: string,
+        is_partner: boolean
+    },
     price: number;
     installation: {
         visit_fee: number,
         additional_time: number | null,
         additional_time_fee: number | null
-    }
+    } | null,
+    equipment: EquipmentItem[]| null
 };
 
 export type PackageAction = 'connection' | 'details';
+
+export type EquipmentItem = {
+    id: number,
+    combination_id: number,
+    type: string,
+    brand: string | null,
+    model: string | null,
+    name: string | null,
+    description: string | null
+}

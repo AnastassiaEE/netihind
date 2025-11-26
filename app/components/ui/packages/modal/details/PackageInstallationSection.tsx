@@ -3,15 +3,13 @@ import { Package } from '@/types/packages.types';
 import { useTranslations } from 'next-intl';
 
 export default function PackageInstallationSection({
-  installation = {
-    visit_fee: 0,
-    additional_time: null,
-    additional_time_fee: null,
-  },
+  installation,
 }: {
   installation?: Package['installation'];
 }) {
   const t = useTranslations('Packages');
+
+  if (!installation) return null;
 
   const { visit_fee, additional_time, additional_time_fee } = installation;
 

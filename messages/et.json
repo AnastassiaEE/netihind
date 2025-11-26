@@ -127,7 +127,10 @@
         "additionalTime": "Iga alustatud {additional_time} minuti töö eest on tasu {additional_time_fee} €.",
         "materials": "Materjalide eest võib tulla tasu."
       },
-      "equipment": "Seadmed",
+      "equipment": {
+        "allCombinations": "Teenuse kasutamiseks on vajalik seadmed. Allpool on esitatud kõik võimalikud seadmekomplektid.",
+        "noEquipment": "Sobivaid seadmeid ei leidu."
+      },
       "connectionType": "Ühenduse tüüp",
       "speed": {
         "download": "Allalaadimise kiirus",
