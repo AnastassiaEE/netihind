@@ -11,7 +11,7 @@ export default function useTooltip() {
     const rect = wrapperRef.current.getBoundingClientRect();
 
     setPos({
-      top: rect.bottom + 6, // тултип СНИЗУ, не перекрывает
+      top: rect.bottom + 6, 
       left: rect.left + rect.width / 2,
       width: rect.width,
     });
