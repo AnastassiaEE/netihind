@@ -9,7 +9,7 @@ export default function Tooltip({
   elementToInteract: React.ReactElement<any>;
   content: string;
 }) {
-  const { isVisible, pos, wrapperRef, show, hide } = useTooltip();
+  const { isVisible, pos, wrapperRef, tooltipRef, show, hide } = useTooltip();
 
   return (
     <div
@@ -27,7 +27,8 @@ export default function Tooltip({
       {isVisible &&
         createPortal(
           <div
-            className="fixed z-50 rounded-md bg-white p-3 text-sm shadow-md"
+            ref={tooltipRef}
+            className="fixed z-50 max-w-[250px] rounded-md bg-white p-3 text-sm text-muted-dark shadow-md"
             style={{
               top: pos.top,
               left: pos.left,
