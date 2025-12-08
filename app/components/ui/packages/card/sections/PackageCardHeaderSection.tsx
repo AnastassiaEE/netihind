@@ -46,7 +46,7 @@ export default function PackageCardHeaderSection({
             </span>
           }
           content={
-            translations[technology.description][currentLocale] ??
+            translations[technology.description]?.[currentLocale] ??
             technology.description
           }
         />
