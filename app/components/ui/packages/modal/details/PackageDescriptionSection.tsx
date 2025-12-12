@@ -22,7 +22,7 @@ export default function PackageDescriptionSection({
       label: t('details.connectionType'),
       value:
         translations[technology.description]?.[currentLocale] ??
-        technology.name,
+        technology.description,
     },
     {
       icon: <South fontSize="large" />,

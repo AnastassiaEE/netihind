@@ -40,7 +40,7 @@ export default function PackageEquipmentSection({
         }
         content={`${device.model ?? ''}${
           device.model && device.description
-            ? ` - ${device.description}`
+            ? ` - ${translations[device.description]?.[currentLocale] ?? device.description}`
             : (device.description ?? '')
         }`}
       />
