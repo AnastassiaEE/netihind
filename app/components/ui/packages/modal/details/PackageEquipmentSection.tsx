@@ -1,8 +1,10 @@
 import TextDivider from '@/components/ui/dividers/TextDivider';
 import Tooltip from '@/components/ui/overlay/Tooltip';
 import PackageModalSection from '@/components/ui/packages/modal/PackageModalSection';
+import { useTranslationsContext } from '@/context/TranslationsContext';
 import { EquipmentItem } from '@/types/packages.types';
-import { useTranslations } from 'next-intl';
+import { formatMoney } from '@/utils/numberFormatter';
+import { useLocale, useTranslations } from 'next-intl';
 import React from 'react';
 
 export default function PackageEquipmentSection({
@@ -12,11 +14,68 @@ export default function PackageEquipmentSection({
 }) {
   const tPackages = useTranslations('Packages');
   const tDividers = useTranslations('Dividers');
+  const translations = useTranslationsContext();
+  const currentLocale = useLocale();
 
-  const borderedTdClasses = 'border border-muted-light p-1.5';
-  const borderlessTdClasses = 'border-b-0 border-t-0 p-1.5';
+  const borderedCellClasses =
+    'text-[0.95rem] border border-muted-light p-1.5 min-w-40';
+  const borderlessCellClasses = 'text-[0.95rem] border-b-0 border-t-0 p-1.5';
+  const priceClasses = 'font-semibold';
 
-  console.log(equipment);
+  const paymentOptions = Array.from(
+    new Set(
+      equipment.flatMap((combination) =>
+        combination.flatMap((device) => Object.keys(device.payment)),
+      ),
+    ),
+  );
+
+  function EquipmentHeader({ device }: { device: EquipmentItem }) {
+    const deviceType =
+      translations[device.type]?.[currentLocale] ?? device.type;
+    return device.model || device.description ? (
+      <Tooltip
+        elementToInteract={
+          <p className="text-primary underline">{deviceType}</p>
+        }
+        content={`${device.model ?? ''}${
+          device.model && device.description
+            ? ` - ${device.description}`
+            : (device.description ?? '')
+        }`}
+      />
+    ) : (
+      <p>{deviceType}</p>
+    );
+  }
+
+  function renderEquipmentPayment(
+    paymentOption: string,
+    payment: EquipmentItem['payment'][string] | undefined,
+  ) {
+    if (!payment) return '';
+    const price = formatMoney(payment.price);
+    if ('installments_months' in payment)
+      return (
+        <>
+          <span className={priceClasses}>{price} €</span> /{' '}
+          {tPackages('details.units.month')} ({payment.installments_months}{' '}
+          {tPackages('details.units.months')})
+        </>
+      );
+    if (paymentOption === 'rent')
+      return (
+        <>
+          <span className={priceClasses}> {price} € </span> /{' '}
+          {tPackages('details.units.month')}
+        </>
+      );
+    return (
+      <>
+        <span className={priceClasses}>{price} €</span>
+      </>
+    );
+  }
 
   return (
     <PackageModalSection
@@ -37,43 +96,37 @@ export default function PackageEquipmentSection({
                 <tbody>
                   <tr className="text-center">
                     <td></td>
-                    <td className={borderlessTdClasses}></td>
+                    <td className={borderlessCellClasses}></td>
                     {combination.map((device, idx) => (
                       <React.Fragment key={device.id}>
-                        <td className={borderlessTdClasses}>
-                          {device.model || device.description ? (
-                            <Tooltip
-                              elementToInteract={
-                                <p className="text-primary underline">
-                                  {device.type}
-                                </p>
-                              }
-                              content={`${device.model ?? ''}${
-                                device.model && device.description
-                                  ? ` - ${device.description}`
-                                  : (device.description ?? '')
-                              }`}
-                            />
-                          ) : (
-                            <p>{device.type}</p>
-                          )}
+                        <td className={borderlessCellClasses}>
+                          <EquipmentHeader device={device} />
                         </td>
                         {idx < combination.length - 1 && (
-                          <td className={borderlessTdClasses}>+</td>
+                          <td className={borderlessCellClasses}>+</td>
                         )}
                       </React.Fragment>
                     ))}
                   </tr>
 
-                  {['rent', 'järelmaks', 'väljaost'].map((payment) => (
-                    <tr key={payment}>
-                      <td className={borderlessTdClasses}>{payment}</td>
-                      <td className={borderlessTdClasses}></td>
+                  {paymentOptions.map((paymentOption) => (
+                    <tr key={paymentOption}>
+                      <td className={borderlessCellClasses}>
+                        {translations[paymentOption]?.[currentLocale] ??
+                          paymentOption}
+                      </td>
+                      <td className={borderlessCellClasses}></td>
+
                       {combination.map((device, idx) => (
                         <React.Fragment key={device.id}>
-                          <td className={borderedTdClasses}></td>
+                          <td className={borderedCellClasses}>
+                            {renderEquipmentPayment(
+                              paymentOption,
+                              device.payment[paymentOption],
+                            )}
+                          </td>
                           {idx < combination.length - 1 && (
-                            <td className={borderlessTdClasses}></td>
+                            <td className={borderlessCellClasses}></td>
                           )}
                         </React.Fragment>
                       ))}
@@ -81,6 +134,7 @@ export default function PackageEquipmentSection({
                   ))}
                 </tbody>
               </table>
+
               {i < equipment.length - 1 && (
                 <TextDivider text={tDividers('or')} />
               )}

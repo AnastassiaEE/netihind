@@ -140,7 +140,8 @@
       },
       "units": {
         "speed": "Mbit/s",
-        "month": "kuus"
+        "month": "kuus",
+        "months": "kuud"
       }
     },
     "errors": {

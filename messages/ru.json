@@ -140,7 +140,8 @@
       },
       "units": {
         "speed": "Мбит/c",
-        "month": "мес"
+        "month": "мес",
+        "months": "мес"
       }
     },
     "errors": {
