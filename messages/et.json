@@ -124,7 +124,7 @@
         "free": "Paigaldus tasuta",
         "paidVisit": "Seadmed võid lasta paigaldada tehnikul. <strong> Tehniku tasu on {visit_fee} € väljasõidu eest. </strong>",
         "freeVisit": "Seadmed võid lasta paigaldada tehnikul. <strong> Tehniku väljasõit on tasuta. </strong>",
-        "additionalTime": "Iga alustatud {additional_time} minuti töö eest on tasu {additional_time_fee} €.",
+        "additionalTime": "Iga alustatud <strong>{additional_time} minuti töö eest on tasu {additional_time_fee} €</strong>.",
         "materials": "Materjalide eest võib tulla tasu."
       },
       "equipment": {

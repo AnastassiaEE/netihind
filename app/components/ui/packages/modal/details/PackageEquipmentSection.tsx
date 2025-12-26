@@ -4,6 +4,7 @@ import PackageModalSection from '@/components/ui/packages/modal/PackageModalSect
 import { useTranslationsContext } from '@/context/TranslationsContext';
 import { EquipmentItem } from '@/types/packages.types';
 import { formatMoney } from '@/utils/numberFormatter';
+import classNames from 'classnames';
 import { useLocale, useTranslations } from 'next-intl';
 import React from 'react';
 
@@ -111,7 +112,12 @@ export default function PackageEquipmentSection({
 
                   {paymentOptions.map((paymentOption) => (
                     <tr key={paymentOption}>
-                      <td className={borderlessCellClasses}>
+                      <td
+                        className={classNames(
+                          borderlessCellClasses,
+                          'capitalize',
+                        )}
+                      >
                         {translations[paymentOption]?.[currentLocale] ??
                           paymentOption}
                       </td>

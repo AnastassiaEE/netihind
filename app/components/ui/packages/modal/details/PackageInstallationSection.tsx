@@ -34,7 +34,8 @@ export default function PackageInstallationSection({
             })}
         {additional_time &&
           additional_time_fee &&
-          t('details.installation.additionalTime', {
+          t.rich('details.installation.additionalTime', {
+            strong: richStrong,
             additional_time,
             additional_time_fee,
           })}{' '}
