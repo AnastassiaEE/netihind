@@ -25,7 +25,7 @@ export default function usePackages(
     },
   );
 
-  console.log(packages);
+  //console.log(packages);
 
   const [selectedPackage, setSelectedPackage] = useState<Package | undefined>(undefined);
 

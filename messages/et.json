@@ -128,6 +128,9 @@
         "materials": "Materjalide eest võib tulla tasu."
       },
       "equipment": {
+        "rentMinPrice": "Seadme rent alates {rent_fee} € / kuus",
+        "installmentsMinPrice": "Seadme järelmaks alates {installments_fee} € / kuus",
+        "fullPurchaseMinPrice": "Seadme väljaost alates {full_purchase_fee} €",
         "allCombinations": "Teenuse kasutamiseks on vajalik seadmed. Allpool on esitatud kõik võimalikud seadmekomplektid.",
         "noEquipment": "Sobivaid seadmeid ei leidu."
       },

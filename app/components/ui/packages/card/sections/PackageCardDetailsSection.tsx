@@ -2,16 +2,24 @@ import { Engineering, Router } from '@mui/icons-material';
 import PackageDetail from '@/components/ui/packages/card/PackageCardDetail';
 import { Package } from '@/types/packages.types';
 import { useTranslations } from 'next-intl';
+import { getEquipmentMinPricesByPayment } from '@/utils/packagesHelper';
+import { formatMoney } from '@/utils/numberFormatter';
 
-interface PackageDetailsSectionProps extends Pick<Package, 'installation'> {
+interface PackageDetailsSectionProps
+  extends Pick<Package, 'installation' | 'equipment'> {
   className?: string;
 }
 
 export default function PackageCardDetailsSection({
   installation,
+  equipment,
   className,
 }: PackageDetailsSectionProps) {
   const t = useTranslations('Packages.details');
+
+  const equipmentMinPrices = getEquipmentMinPricesByPayment(equipment);
+  const firstPaymentType = Object.keys(equipmentMinPrices)[0];
+  const firstPrice = formatMoney(equipmentMinPrices[firstPaymentType]);
 
   return (
     <div className={className}>
@@ -27,9 +35,16 @@ export default function PackageCardDetailsSection({
             </>
           </PackageDetail>
         )}
-        <PackageDetail Icon={Router}>
-          <>rent</>
-        </PackageDetail>
+        {equipment.length > 0 && (
+          <PackageDetail Icon={Router}>
+            {t(
+              `equipment.${firstPaymentType}MinPrice` as any,
+              {
+                [`${firstPaymentType}_fee`]: firstPrice,
+              } as any,
+            )}
+          </PackageDetail>
+        )}
       </div>
     </div>
   );

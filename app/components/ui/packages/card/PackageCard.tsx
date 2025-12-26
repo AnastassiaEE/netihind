@@ -30,6 +30,7 @@ export default function PackageCard({
     infrastructure,
     technology,
     installation,
+    equipment,
     price,
   } = data;
 
@@ -46,6 +47,7 @@ export default function PackageCard({
         />
         <PackageCardDetailsSection
           installation={installation}
+          equipment={equipment}
           className="px-8 py-3 max-lg:border-b max-lg:border-b-muted-light lg:col-span-2 lg:row-start-2 lg:border-r lg:border-r-muted-light"
         />
         <PackageCardPriceSection

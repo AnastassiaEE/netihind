@@ -60,3 +60,20 @@ export function groupEquipmentByCombination(equipment: Package['equipment']) {
 
   return Object.values(groups);
 }
+
+export function getEquipmentMinPricesByPayment(
+  equipment: EquipmentItem[],
+) {
+  const result: {[key: string]: number} = {};
+
+  for (const item of equipment) {
+    for (const [paymentType, payment] of Object.entries(item.payment)) {
+      const currentMin = result[paymentType];
+      if (currentMin === undefined || payment.price < currentMin) {
+        result[paymentType] = payment.price;
+      }
+    }
+  }
+
+  return result;
+}
