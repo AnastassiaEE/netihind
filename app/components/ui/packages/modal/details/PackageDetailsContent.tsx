@@ -9,6 +9,7 @@ export default function PackageDetailsContent({
 }: {
   packageData?: Package;
 }) {
+  console.log(packageData);
   return (
     <div className="space-y-4">
       <PackageDescriptionSection
