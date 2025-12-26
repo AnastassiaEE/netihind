@@ -18,6 +18,9 @@ export default function PackageDescriptionSection({
 
   console.log(translations);
   console.log(currentLocale);
+  console.log(technology.description);
+  console.log(translations[technology.description]?.[currentLocale]);
+
   const rows = [
     {
       icon: <Language fontSize="large" />,
