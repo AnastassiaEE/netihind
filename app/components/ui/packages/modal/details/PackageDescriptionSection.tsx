@@ -1,9 +1,16 @@
-import { Language, North, South } from '@mui/icons-material';
+import { Language, North, South, AllInclusive } from '@mui/icons-material';
 import PackageModalSection from '@/components/ui/packages/modal/PackageModalSection';
 import classNames from 'classnames';
 import { useLocale, useTranslations } from 'next-intl';
 import { Package } from '@/types/packages.types';
 import { useTranslationsContext } from '@/context/TranslationsContext';
+
+interface Row {
+  icon: React.ReactNode;
+  label: string;
+  value: React.ReactNode;
+  ariaLabel?: string;
+}
 
 export default function PackageDescriptionSection({
   speed = { download: 0, upload: 0 },
@@ -16,7 +23,40 @@ export default function PackageDescriptionSection({
   const translations = useTranslationsContext();
   const currentLocale = useLocale();
 
-  const rows = [
+  const formatSpeed = (value: number) =>
+    value < 0
+      ? t.rich('details.speed.unlimitedRich', {
+          InfinityIcon: () => (
+            <AllInclusive className="mx-0.5 inline-block align-bottom" />
+          ),
+          unit: t('details.units.speed'),
+        })
+      : t('details.speed.upTo', {
+          value,
+          unit: t('details.units.speed'),
+        });
+
+  const formatSpeedAriaLabel = (value: number) =>
+    value < 0
+      ? t('details.speed.unlimited')
+      : t('details.speed.upTo', { value, unit: t('details.units.speed') });
+
+  const getSpeedRow = (type: 'download' | 'upload') => ({
+    icon:
+      type === 'download' ? (
+        <South fontSize="large" />
+      ) : (
+        <North fontSize="large" />
+      ),
+    label:
+      type === 'download'
+        ? t('details.speed.download')
+        : t('details.speed.upload'),
+    value: formatSpeed(speed[type]),
+    ariaLabel: formatSpeedAriaLabel(speed[type]),
+  });
+
+  const rows: Row[] = [
     {
       icon: <Language fontSize="large" />,
       label: t('details.connectionType'),
@@ -24,22 +64,8 @@ export default function PackageDescriptionSection({
         translations[technology.description]?.[currentLocale] ??
         technology.description,
     },
-    {
-      icon: <South fontSize="large" />,
-      label: t('details.speed.download'),
-      value: t('details.speed.upTo', {
-        value: speed.download,
-        unit: t('details.units.speed'),
-      }),
-    },
-    {
-      icon: <North fontSize="large" />,
-      label: t('details.speed.upload'),
-      value: t('details.speed.upTo', {
-        value: speed.upload,
-        unit: t('details.units.speed'),
-      }),
-    },
+    getSpeedRow('download'),
+    getSpeedRow('upload'),
   ];
 
   const colClasses = 'py-0.5';
@@ -56,7 +82,10 @@ export default function PackageDescriptionSection({
               <tr key={i}>
                 <td className={classNames('w-10', colClasses)}>{row.icon}</td>
                 <td className={colClasses}>{row.label}</td>
-                <td className={classNames('text-right font-bold', colClasses)}>
+                <td
+                  aria-label={row.ariaLabel}
+                  className={classNames('text-right font-bold', colClasses)}
+                >
                   {row.value}
                 </td>
               </tr>

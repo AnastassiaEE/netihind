@@ -136,10 +136,11 @@
       },
       "connectionType": "Тип подключения",
       "speed": {
-        "download": "Скорсоть загрузки",
+        "download": "Скорость загрузки",
         "upload": "Скорость отдачи",
         "upTo": "до {value} {unit}",
-        "unlimited": "Неограниченная"
+        "unlimited": "безлимитный",
+        "unlimitedRich": "до <InfinityIcon></InfinityIcon> {unit}"
       },
       "units": {
         "speed": "Мбит/c",

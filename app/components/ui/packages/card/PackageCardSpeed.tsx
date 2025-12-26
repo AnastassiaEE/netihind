@@ -9,13 +9,16 @@ export default function InternetSpeedFeature({
   speed: number;
 }) {
   const t = useTranslations('Packages.details');
+
+  const label = type === 'download' ? t('speed.download') : t('speed.upload');
+  const valueText =
+    speed < 0
+      ? t('speed.unlimited')
+      : t('speed.upTo', { value: speed, unit: t('units.speed') });
+
   return (
     <div
-      aria-label={
-        type === 'download'
-          ? `${t('speed.download')}: ${speed === -1 ? t('speed.unlimited') : `${speed} ${t('units.speed')}`}`
-          : `${t('speed.upload')}: ${speed === -1 ? t('speed.unlimited') : `${speed} ${t('units.speed')}`}`
-      }
+      aria-label={`${label}: ${valueText}`}
       className="flex items-center gap-x-0.5"
     >
       {type === 'download' && (
@@ -25,7 +28,7 @@ export default function InternetSpeedFeature({
         <North fontSize="small" className="inline align-text-bottom" />
       )}
       <span className="font-bold">
-        {speed === -1 ? (
+        {speed < 0 ? (
           <AllInclusive fontSize="small" className="inline align-text-bottom" />
         ) : (
           speed

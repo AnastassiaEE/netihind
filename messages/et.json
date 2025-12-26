@@ -139,7 +139,8 @@
         "download": "Allalaadimise kiirus",
         "upload": "Üleslaadimise kiirus",
         "upTo": "kuni {value} {unit}",
-        "unlimited": "piiramatu"
+        "unlimited": "piiramatu",
+        "unlimitedRich": "kuni <InfinityIcon></InfinityIcon> {unit}"
       },
       "units": {
         "speed": "Mbit/s",
