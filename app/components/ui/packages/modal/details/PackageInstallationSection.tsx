@@ -31,7 +31,7 @@ export default function PackageInstallationSection({
           : t.rich('details.installation.freeVisit', {
               strong: richStrong,
               visit_fee,
-            })}
+            })}{' '}
         {additional_time &&
           additional_time_fee &&
           t.rich('details.installation.additionalTime', {
