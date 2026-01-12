@@ -21,7 +21,7 @@
     "cross-spawn": "^7.0.6",
     "date-fns": "^4.1.0",
     "eslint-plugin-tailwindcss": "^3.18.2",
-    "next": "^15.5.4",
+    "next": "^15.5.9",
     "next-images": "^1.8.5",
     "next-intl": "^4.3.9",
     "next-mdx-remote": "^5.0.0",
