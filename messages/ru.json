@@ -118,8 +118,9 @@
       "durationEnd": "Начиная с {months} мес"
     },
     "details": {
-      "packagePrice": "Оплата в месяц",
+      "packagePrice": "Оплата пакета в месяц",
       "installation": {
+        "label": "Установка",
         "minPrice": "Установка от {visit_fee} €",
         "free": "Установка бесплатно",
         "paidVisit": "Установку оборудования можно поручить техническому специалисту. <strong> Стоимость вызова техника — {visit_fee} €.</strong>",
@@ -128,6 +129,7 @@
         "materials": "Возможна дополнительная плата за материалы."
       },
       "equipment": {
+        "label": "Оборудование",
         "rentMinPrice": "Аренда устройства от {rent_fee} € / мес",
         "installmentsMinPrice": "Рассрочка устройства от {installments_fee} € / мес",
         "fullPurchaseMinPrice": "Покупка устройства от {full_purchase_fee} €",

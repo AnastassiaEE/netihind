@@ -11,7 +11,7 @@ import SelectOption from '@/components/ui/form/fields/select/SelectOption';
 import useForm from '@/hooks/useForm';
 import { useTranslations } from 'next-intl';
 import { Loop, Add } from '@mui/icons-material';
-import { PackageAction } from '@/types/packages.types';
+import { Package, PackageAction } from '@/types/packages.types';
 
 export default function PackageForm({
   action = 'connection',
@@ -20,7 +20,7 @@ export default function PackageForm({
 }: {
   action?: PackageAction;
   address: string;
-  packageData?: { [key: string]: string };
+  packageData?: Package;
 }) {
   const t = useTranslations('Form');
   const timeOptions = ['hour', '9-11', '11-13', '13-15', '15-17', '17-20'];

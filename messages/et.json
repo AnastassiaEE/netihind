@@ -118,8 +118,9 @@
       "durationEnd": "Alates {months}. kuust"
     },
     "details": {
-      "packagePrice": "Kuu hind",
+      "packagePrice": "Paketi kuu hind",
       "installation": {
+        "label": "Paigaldus",
         "minPrice": "Paigaldus alates {visit_fee} €",
         "free": "Paigaldus tasuta",
         "paidVisit": "Seadmed võid lasta paigaldada tehnikul. <strong> Tehniku tasu on {visit_fee} € väljasõidu eest. </strong>",
@@ -128,6 +129,7 @@
         "materials": "Materjalide eest võib tulla tasu."
       },
       "equipment": {
+        "label": "Seadmed",
         "rentMinPrice": "Seadme rent alates {rent_fee} € / kuus",
         "installmentsMinPrice": "Seadme järelmaks alates {installments_fee} € / kuus",
         "fullPurchaseMinPrice": "Seadme väljaost alates {full_purchase_fee} €",
