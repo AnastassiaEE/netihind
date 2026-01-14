@@ -1,0 +1,4 @@
+ALTER TABLE internet_packages
+DROP CONSTRAINT internet_packages_infrastructure_provider_id_fkey;
+
+ALTER TABLE public.internet_packages ADD CONSTRAINT internet_packages_infrastructure_provider_id_fkey FOREIGN KEY (infrastructure_provider_id) REFERENCES infrastructure_providers (id);
