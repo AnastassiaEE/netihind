@@ -9,7 +9,6 @@ export default function PackagePriceSection({
   packageData?: Package;
 }) {
   const t = useTranslations('Packages');
-  const priceRowClasses = 'flex items-center justify-between mb-1';
   const { price, discount } = packageData || {};
 
   return (
@@ -20,22 +19,27 @@ export default function PackagePriceSection({
       {/* { With a discount } */}
       {discount && (
         <>
-          <p className={priceRowClasses}>
-            <span className="font-medium">{t('details.price.label')}:</span>
+          <p className="flex items-center justify-between">
+            <span className="font-medium">
+              {`${t('details.price.label')}:`}
+            </span>
             <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-xl font-extrabold text-transparent">
-              {formatMoney(discount.price)} €
+              {`${formatMoney(discount.price)} €`}
             </span>
           </p>
-          <p className={priceRowClasses}>
-            <span className="text-sm font-bold line-through">
+          <p className="mb-1 text-right">
+            <span aria-hidden="true" className="text-sm font-bold line-through">
               {formatMoney(price)} €
+            </span>
+            <span className="sr-only">
+              {t('details.price.regularPrice', { price: formatMoney(price) })}
             </span>
           </p>
         </>
       )}
 
-      <p className="text-sm">+ {t('details.installation.label')}</p>
-      <p className="text-sm">+ {t('details.equipment.label')}</p>
+      <p className="text-sm">{`+ ${t('details.installation.label')}`}</p>
+      <p className="text-sm">{`+ ${t('details.equipment.label')}`}</p>
     </PackageModalSection>
   );
 }

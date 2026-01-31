@@ -51,16 +51,14 @@ export default function PackageCardPrice({
             <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-sm font-medium text-transparent">
               -{discountPercentage}%{' '}
               {hasDiscountDuration &&
-                t('discount.duration', { months: discount_duration })}
+                t('details.discount.duration', { months: discount_duration })}
             </span>
           </p>
           <p className="sr-only">
-            {t('details.price.regularPrice', {
-              price: formatMoney(price),
-              discount_percentage: discountPercentage,
-            })}
-            {hasDiscountDuration &&
-              t('discount.duration', { months: discount_duration })}
+            {`${t('details.price.regularPrice', { price: formatMoney(price) })} ${t(
+              'details.discount.percentage',
+              { discount_percentage: discountPercentage },
+            )}${hasDiscountDuration ? ` ${t('details.discount.duration', { months: discount_duration })}` : ''}`}
           </p>
         </>
       )}

@@ -113,13 +113,15 @@
         }
       }
     },
-    "discount": {
-      "duration": "esimesed {months} kuud"
-    },
+
     "details": {
       "price": {
         "label": "Paketi kuu hind",
-        "regularPrice": "Tavahind: {price} €. {discount_percentage}% allahindlus"
+        "regularPrice": "Tavahind: {price} €."
+      },
+      "discount": {
+        "duration": "esimesed {months} kuud",
+        "percentage": "{discount_percentage}% allahindlus"
       },
       "installation": {
         "label": "Paigaldus",

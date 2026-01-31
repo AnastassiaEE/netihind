@@ -115,12 +115,12 @@
     },
     "discount": {
       "duration": "первые {months} мес",
-      "durationEnd": "Начиная с {months} мес"
+      "percentage": "cкидка {discount_percentage}%"
     },
     "details": {
       "price": {
         "label": "Оплата пакета в месяц",
-        "regularPrice": "Обычная цена: {price} €. Скидка {discount_percentage}%"
+        "regularPrice": "Обычная цена: {price} €."
       },
       "installation": {
         "label": "Установка",
