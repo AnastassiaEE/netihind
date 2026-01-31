@@ -6,6 +6,7 @@ import PackageCardDetailsSection from '@/components/ui/packages/card/sections/Pa
 import PackageCardPriceSection from '@/components/ui/packages/card/sections/PackageCardPriceSection';
 import PackageCardActions from '@/components/ui/packages/card/PackageCardActions';
 import { useTranslations } from 'next-intl';
+import PackageCardCampaignSection from '@/components/ui/packages/card/sections/PackageCardCampaignSection';
 
 export default function PackageCard({
   data,
@@ -36,10 +37,13 @@ export default function PackageCard({
     discount_campaigns,
   } = data;
 
+  const hasDiscountCampaigns =
+    discount_campaigns && discount_campaigns.length > 0;
+
   return (
     <article data-id={id} className={cardClasses}>
-      {(discount || discount_campaigns.length > 0) && (
-        <span className="absolute -top-3 right-5 rounded-md bg-yellow-400 px-3 py-1 text-sm font-semibold">
+      {(discount || hasDiscountCampaigns) && (
+        <span className="absolute -top-3 right-5 rounded-md bg-yellow-400 px-3 py-1 text-sm font-medium">
           {t('discount.campaign')}
         </span>
       )}
@@ -53,6 +57,9 @@ export default function PackageCard({
           infrastructure={infrastructure}
           className="border-b border-b-muted-light px-8 py-5 lg:col-span-2 lg:row-start-1 lg:border-r lg:border-r-muted-light"
         />
+        {hasDiscountCampaigns && (
+          <PackageCardCampaignSection discount_campaigns={discount_campaigns} />
+        )}
         <PackageCardDetailsSection
           installation={installation}
           equipment={equipment}
