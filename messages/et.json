@@ -113,7 +113,6 @@
         }
       }
     },
-
     "details": {
       "price": {
         "label": "Paketi kuu hind",
@@ -121,7 +120,8 @@
       },
       "discount": {
         "duration": "esimesed {months} kuud",
-        "percentage": "{discount_percentage}% allahindlus"
+        "percentage": "{discount_percentage}% allahindlus",
+        "campaign": "Kampaania"
       },
       "installation": {
         "label": "Paigaldus",

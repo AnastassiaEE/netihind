@@ -5,6 +5,7 @@ import PackageCardHeaderSection from '@/components/ui/packages/card/sections/Pac
 import PackageCardDetailsSection from '@/components/ui/packages/card/sections/PackageCardDetailsSection';
 import PackageCardPriceSection from '@/components/ui/packages/card/sections/PackageCardPriceSection';
 import PackageCardActions from '@/components/ui/packages/card/PackageCardActions';
+import { useTranslations } from 'next-intl';
 
 export default function PackageCard({
   data,
@@ -15,8 +16,9 @@ export default function PackageCard({
   onActionClick: (action: PackageAction) => void;
   className?: string;
 }) {
+  const t = useTranslations('Packages.details');
   const cardClasses = classNames(
-    'rounded-md border border-muted-light bg-white shadow-md',
+    'rounded-md border border-muted-light bg-white shadow-md relative',
     className,
   );
 
@@ -31,10 +33,17 @@ export default function PackageCard({
     equipment,
     price,
     discount,
+    discount_campaigns,
   } = data;
 
   return (
     <article data-id={id} className={cardClasses}>
+      {(discount || discount_campaigns.length > 0) && (
+        <span className="absolute -top-3 right-5 rounded-md bg-yellow-400 px-3 py-1 text-sm font-semibold">
+          {t('discount.campaign')}
+        </span>
+      )}
+
       <div className="grid gap-0 lg:grid-cols-3">
         <PackageCardHeaderSection
           name={name}

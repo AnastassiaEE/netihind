@@ -113,14 +113,15 @@
         }
       }
     },
-    "discount": {
-      "duration": "первые {months} мес",
-      "percentage": "cкидка {discount_percentage}%"
-    },
     "details": {
       "price": {
         "label": "Оплата пакета в месяц",
         "regularPrice": "Обычная цена: {price} €."
+      },
+      "discount": {
+        "duration": "первые {months} мес",
+        "percentage": "cкидка {discount_percentage}%",
+        "campaign": "Кампания"
       },
       "installation": {
         "label": "Установка",
