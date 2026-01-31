@@ -17,24 +17,27 @@ export default function InternetCardSpeed({
       : t('speed.upTo', { value: speed, unit: t('units.speed') });
 
   return (
-    <div
-      aria-label={`${label}: ${valueText}`}
-      className="flex items-center gap-x-0.5"
-    >
-      {type === 'download' && (
-        <South fontSize="small" className="inline align-text-bottom" />
-      )}
-      {type === 'upload' && (
-        <North fontSize="small" className="inline align-text-bottom" />
-      )}
-      <span className="font-bold">
-        {speed < 0 ? (
-          <AllInclusive fontSize="small" className="inline align-text-bottom" />
-        ) : (
-          speed
+    <>
+      <div aria-hidden="true" className="flex items-center gap-x-0.5">
+        {type === 'download' && (
+          <South fontSize="small" className="inline align-text-bottom" />
         )}
-      </span>
-      <span className="text-muted">{t('units.speed')}</span>
-    </div>
+        {type === 'upload' && (
+          <North fontSize="small" className="inline align-text-bottom" />
+        )}
+        <span className="font-bold">
+          {speed < 0 ? (
+            <AllInclusive
+              fontSize="small"
+              className="inline align-text-bottom"
+            />
+          ) : (
+            speed
+          )}
+        </span>
+        <span className="text-muted">{t('units.speed')}</span>
+      </div>
+      <p className="sr-only">{`${label}: ${valueText}`}</p>
+    </>
   );
 }
