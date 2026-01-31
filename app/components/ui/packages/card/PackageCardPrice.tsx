@@ -17,17 +17,22 @@ export default function PackageCardPrice({
     duration: null,
   };
 
+  const hasDiscount = discount_price !== null && discount_price !== undefined;
+  const hasDiscountDuration =
+    discount_duration !== null && discount_duration !== undefined;
+
+  const finalPrice = formatMoney(hasDiscount ? discount_price : price);
+
+  const discountPercentage = hasDiscount
+    ? Math.ceil(((price - discount_price) / price) * 100)
+    : 0;
+
   const priceClasses = classNames(
     'w-max rounded-md px-2 py-1 text-lg tracking-tight md:text-xl',
-    discount_price
+    hasDiscount
       ? 'bg-gradient-to-r from-primary via-secondary to-accent text-white'
       : 'bg-primary-light text-muted-dark',
   );
-
-  const finalPrice = formatMoney(discount_price ?? price);
-  const discountPercentage = discount_price
-    ? Math.ceil(((price - discount_price) / price) * 100)
-    : 0;
 
   return (
     <>
@@ -36,7 +41,7 @@ export default function PackageCardPrice({
         <span>{` / ${t('details.units.month')}`}</span>
       </p>
       <p className="sr-only">{`${t('details.price.label')}: ${finalPrice} €`}</p>
-      {discount_price && (
+      {hasDiscount && (
         <>
           <p
             className="mt-1 text-center text-sm font-semibold text-black"
@@ -45,7 +50,7 @@ export default function PackageCardPrice({
             {formatMoney(price)} €{' '}
             <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-sm font-medium text-transparent">
               -{discountPercentage}%{' '}
-              {discount_duration &&
+              {hasDiscountDuration &&
                 t('discount.duration', { months: discount_duration })}
             </span>
           </p>
@@ -54,7 +59,7 @@ export default function PackageCardPrice({
               price: formatMoney(price),
               discount_percentage: discountPercentage,
             })}
-            {discount_duration &&
+            {hasDiscountDuration &&
               t('discount.duration', { months: discount_duration })}
           </p>
         </>
