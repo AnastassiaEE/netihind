@@ -5,7 +5,7 @@ import { Package } from '@/types/packages.types';
 import { useLocale } from 'next-intl';
 import dynamic from 'next/dynamic';
 
-interface PackageHeaderSectionProps
+interface PackageCardHeaderSectionProps
   extends Pick<
     Package,
     'name' | 'technology' | 'provider' | 'speed' | 'infrastructure'
@@ -22,7 +22,7 @@ export default function PackageCardHeaderSection({
   speed,
   infrastructure,
   className,
-}: PackageHeaderSectionProps) {
+}: PackageCardHeaderSectionProps) {
   const translations = useTranslationsContext();
   const currentLocale = useLocale();
 

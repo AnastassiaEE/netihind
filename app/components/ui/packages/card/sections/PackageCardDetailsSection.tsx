@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { getEquipmentMinPricesByPayment } from '@/utils/packagesHelper';
 import { formatMoney } from '@/utils/numberFormatter';
 
-interface PackageDetailsSectionProps
+interface PackageCardDetailsSectionProps
   extends Pick<Package, 'installation' | 'equipment'> {
   className?: string;
 }
@@ -14,7 +14,7 @@ export default function PackageCardDetailsSection({
   installation,
   equipment,
   className,
-}: PackageDetailsSectionProps) {
+}: PackageCardDetailsSectionProps) {
   const t = useTranslations('Packages.details');
 
   const equipmentMinPrices = getEquipmentMinPricesByPayment(equipment);
