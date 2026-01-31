@@ -1,4 +1,4 @@
-export const formatMoney = (value: number) => {
-  if (Number.isInteger(value)) return value.toString();
-  return value.toFixed(2);
-}
+export const formatMoney = (value?: number) => {
+  if (value === undefined) return '';
+  return Number.isInteger(value) ? value.toString() : value.toFixed(2);
+};

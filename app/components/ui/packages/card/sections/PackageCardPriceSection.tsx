@@ -1,22 +1,18 @@
 import { Package } from '@/types/packages.types';
-import PackagePrice from '@/components/ui/packages/card/PackageCardPrice';
+import PackageCardPrice from '@/components/ui/packages/card/PackageCardPrice';
 
 export default function PackageCardPriceSection({
   price,
+  discount,
   className,
 }: {
   price: Package['price'];
+  discount: Package['discount'];
   className?: string;
 }) {
   return (
     <div className={className}>
-      <PackagePrice
-        price={price}
-        discount={{
-          discount_price: null,
-          discount_duration: null,
-        }}
-      />
+      <PackageCardPrice price={price} discount={discount} />
     </div>
   );
 }

@@ -114,11 +114,14 @@
       }
     },
     "discount": {
-      "duration": "Первые {months} мес",
+      "duration": "первые {months} мес",
       "durationEnd": "Начиная с {months} мес"
     },
     "details": {
-      "packagePrice": "Оплата пакета в месяц",
+      "price": {
+        "label": "Оплата пакета в месяц",
+        "regularPrice": "Обычная цена: {price} €. Скидка {discount_percentage}%"
+      },
       "installation": {
         "label": "Установка",
         "minPrice": "Установка от {visit_fee} €",

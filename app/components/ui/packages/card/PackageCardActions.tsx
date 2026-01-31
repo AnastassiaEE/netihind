@@ -2,7 +2,7 @@ import { PackageAction } from '@/types/packages.types';
 import Button from '@/components/ui/form/buttons/Button';
 import { useTranslations } from 'next-intl';
 
-export default function PackageActions({
+export default function PackageCardActions({
   onActionClick,
   className,
 }: {

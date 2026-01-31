@@ -1,5 +1,5 @@
 import { Engineering, Router } from '@mui/icons-material';
-import PackageDetail from '@/components/ui/packages/card/PackageCardDetail';
+import PackageCardDetail from '@/components/ui/packages/card/PackageCardDetail';
 import { Package } from '@/types/packages.types';
 import { useTranslations } from 'next-intl';
 import { getEquipmentMinPricesByPayment } from '@/utils/packagesHelper';
@@ -25,7 +25,7 @@ export default function PackageCardDetailsSection({
     <div className={className}>
       <div className="flex flex-wrap gap-3">
         {installation && (
-          <PackageDetail Icon={Engineering}>
+          <PackageCardDetail Icon={Engineering}>
             <>
               {installation.visit_fee > 0
                 ? t('installation.minPrice', {
@@ -33,17 +33,17 @@ export default function PackageCardDetailsSection({
                   })
                 : t('installation.free')}
             </>
-          </PackageDetail>
+          </PackageCardDetail>
         )}
         {equipment.length > 0 && (
-          <PackageDetail Icon={Router}>
+          <PackageCardDetail Icon={Router}>
             {t(
               `equipment.${firstPaymentType}MinPrice` as any,
               {
                 [`${firstPaymentType}_fee`]: firstPrice,
               } as any,
             )}
-          </PackageDetail>
+          </PackageCardDetail>
         )}
       </div>
     </div>

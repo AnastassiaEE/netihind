@@ -114,11 +114,13 @@
       }
     },
     "discount": {
-      "duration": "Esimesed {months} kuud",
-      "durationEnd": "Alates {months}. kuust"
+      "duration": "esimesed {months} kuud"
     },
     "details": {
-      "packagePrice": "Paketi kuu hind",
+      "price": {
+        "label": "Paketi kuu hind",
+        "regularPrice": "Tavahind: {price} €. {discount_percentage}% allahindlus"
+      },
       "installation": {
         "label": "Paigaldus",
         "minPrice": "Paigaldus alates {visit_fee} €",

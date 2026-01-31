@@ -1,4 +1,4 @@
-import PackageHeader from '@/components/ui/packages/card/PackageCardHeader';
+import PackageCardHeader from '@/components/ui/packages/card/PackageCardHeader';
 import PackageCardSpeed from '@/components/ui/packages/card/PackageCardSpeed';
 import { useTranslationsContext } from '@/context/TranslationsContext';
 import { Package } from '@/types/packages.types';
@@ -28,7 +28,7 @@ export default function PackageCardHeaderSection({
 
   return (
     <div className={className}>
-      <PackageHeader
+      <PackageCardHeader
         providerLogoSrc={provider.image_url}
         providerName={provider.name}
         packageName={name}

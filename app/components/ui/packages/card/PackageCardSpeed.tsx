@@ -1,7 +1,7 @@
 import { South, North, AllInclusive } from '@mui/icons-material';
 import { useTranslations } from 'next-intl';
 
-export default function InternetSpeedFeature({
+export default function InternetCardSpeed({
   type,
   speed,
 }: {

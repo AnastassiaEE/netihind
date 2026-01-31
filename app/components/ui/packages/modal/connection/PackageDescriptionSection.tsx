@@ -9,6 +9,7 @@ export default function PackageDescriptionSection({
   packageData?: Package;
 }) {
   const t = useTranslations('Packages.modals.connection.sections');
+  const { name, provider } = packageData || {};
   return (
     <PackageModalSection
       title={t('selectedPackage') + ':'}
@@ -19,12 +20,12 @@ export default function PackageDescriptionSection({
           packageData?.provider.image_url ||
           'https://rxysmdetqttpdqfmrpym.supabase.co/storage/v1/object/public/website-logos//gradientmainlogo.png'
         }
-        alt={`Selected package provider logo - ${packageData?.provider.name}`}
+        alt={`Selected package provider logo - ${provider?.name}`}
         width={50}
         height={32}
         className="mr-3 inline"
       />
-      <p className="inline align-middle">{packageData?.name}</p>
+      <p className="inline align-middle">{name}</p>
     </PackageModalSection>
   );
 }

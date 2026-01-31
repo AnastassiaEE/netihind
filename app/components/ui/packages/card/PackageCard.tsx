@@ -1,7 +1,5 @@
 import classNames from 'classnames';
-import { useLocale } from 'next-intl';
 import { PackageAction } from '@/types/packages.types';
-import { useTranslationsContext } from '@/context/TranslationsContext';
 import { Package } from '@/types/packages.types';
 import PackageCardHeaderSection from '@/components/ui/packages/card/sections/PackageCardHeaderSection';
 import PackageCardDetailsSection from '@/components/ui/packages/card/sections/PackageCardDetailsSection';
@@ -32,6 +30,7 @@ export default function PackageCard({
     installation,
     equipment,
     price,
+    discount,
   } = data;
 
   return (
@@ -52,6 +51,7 @@ export default function PackageCard({
         />
         <PackageCardPriceSection
           price={price}
+          discount={discount}
           className="flex flex-col items-center justify-center gap-1 p-4 lg:row-span-2"
         />
       </div>

@@ -1,7 +1,7 @@
 import { SvgIconComponent } from '@mui/icons-material';
 import React from 'react';
 
-export default function PackageDetail({
+export default function PackageCardDetail({
   Icon,
   children,
 }: {

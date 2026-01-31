@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-export default function PackageHeader({
+export default function PackageCardHeader({
   providerLogoSrc,
   providerName,
   packageName,

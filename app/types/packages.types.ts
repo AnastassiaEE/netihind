@@ -25,7 +25,12 @@ export type Package = {
         additional_time: number | null,
         additional_time_fee: number | null
     } | null,
-    equipment: EquipmentItem[]
+    equipment: EquipmentItem[],
+    discount: {
+        price: number,
+        duration: number | null;
+    } | null;
+    discount_campaigns: DiscountCampaign[];
 };
 
 export type PackageAction = 'connection' | 'details';
@@ -39,4 +44,10 @@ export type EquipmentItem = {
     name: string | null,
     description: string | null,
     payment: { [key: string]: { price: number } | { price: number; installments_months: number }}
+}
+
+export type DiscountCampaign = {
+    code: string | null,
+    name: string | null, 
+    description: string,
 }
