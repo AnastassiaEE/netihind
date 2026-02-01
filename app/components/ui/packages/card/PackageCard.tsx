@@ -55,20 +55,23 @@ export default function PackageCard({
           provider={provider}
           speed={speed}
           infrastructure={infrastructure}
-          className="border-b border-b-muted-light px-8 py-5 lg:col-span-2 lg:row-start-1 lg:border-r lg:border-r-muted-light"
+          className="border-muted-light px-8 py-5 lg:col-span-2 lg:row-start-1 lg:border-r"
         />
         {hasDiscountCampaigns && (
-          <PackageCardCampaignSection discount_campaigns={discount_campaigns} />
+          <PackageCardCampaignSection
+            discount_campaigns={discount_campaigns}
+            className="border-muted-light px-8 pb-3 lg:col-span-2 lg:row-start-2 lg:border-r"
+          />
         )}
         <PackageCardDetailsSection
           installation={installation}
           equipment={equipment}
-          className="px-8 py-3 max-lg:border-b max-lg:border-b-muted-light lg:col-span-2 lg:row-start-2 lg:border-r lg:border-r-muted-light"
+          className="muted-light border-t border-r-muted-light px-8 py-3 lg:col-span-2 lg:row-start-3 lg:border-r"
         />
         <PackageCardPriceSection
           price={price}
           discount={discount}
-          className="flex flex-col items-center justify-center gap-1 p-4 lg:row-span-2"
+          className="flex flex-col items-center justify-center gap-1 border-muted-light p-4 max-lg:border-t lg:row-span-3"
         />
       </div>
       <PackageCardActions onActionClick={onActionClick} className="flex" />
