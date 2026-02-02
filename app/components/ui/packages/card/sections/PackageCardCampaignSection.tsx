@@ -16,7 +16,7 @@ export default function PackageCardCampaignSection({
   const currentLocale = useLocale();
 
   return (
-    <div className={classNames(className, 'flex items-start gap-2')}>
+    <div className={classNames(className, 'flex items-center gap-2')}>
       <CampaignIcon className="text-yellow-400" fontSize="large" />
       <div className="space-y-1">
         {discount_campaigns.map((campaign: DiscountCampaign, index: number) => (
