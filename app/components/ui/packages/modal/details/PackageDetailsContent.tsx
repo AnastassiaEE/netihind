@@ -15,7 +15,10 @@ export default function PackageDetailsContent({
         speed={packageData?.speed}
         technology={packageData?.technology}
       />
-      <PackageInstallationSection installation={packageData?.installation} />
+      {packageData?.installation && (
+        <PackageInstallationSection installation={packageData.installation} />
+      )}
+
       <PackageEquipmentSection
         equipment={groupEquipmentByCombination(packageData?.equipment ?? [])}
       />

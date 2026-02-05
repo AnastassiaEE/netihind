@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 export default function PackageInstallationSection({
   installation,
 }: {
-  installation?: Package['installation'];
+  installation: Package['installation'];
 }) {
   const t = useTranslations('Packages');
 
