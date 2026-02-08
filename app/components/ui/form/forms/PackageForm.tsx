@@ -23,20 +23,27 @@ export default function PackageForm({
   packageData?: Package;
 }) {
   const t = useTranslations('Form');
-  const timeOptions = ['hour', '9-11', '11-13', '13-15', '15-17', '17-20'];
+  //const timeOptions = ['hour', '9-11', '11-13', '13-15', '15-17', '17-20'];
 
-  const filteredPackageData = packageData
-    ? Object.fromEntries(
-        Object.entries(packageData)
-          .filter(
-            ([key]) =>
-              !['internet_technology_description', 'provider_img_url'].includes(
-                key,
-              ),
-          )
-          .map(([key, value]) => [key, value ?? 'null']),
-      )
-    : {};
+  const filteredPackageData = {
+    'Paketi ID': packageData?.id ?? '',
+    'Paketi nimi': packageData?.name ?? '',
+    'Teenuse pakkuja': packageData?.provider.name ?? '',
+    Tehnoloogia: packageData?.technology.name ?? '',
+    Kiirused: packageData
+      ? `${packageData.speed.download} / ${packageData.speed.upload}`
+      : '',
+    'Paketi hind': packageData?.price ?? '',
+    ...(packageData?.discount && {
+      'Paketi soodushind': packageData.discount.price,
+    }),
+    ...(packageData?.discount_campaigns &&
+      packageData?.discount_campaigns.length > 0 && {
+        Kampaania: packageData.discount_campaigns
+          .map((campaign) => campaign.description)
+          .join(', '),
+      }),
+  };
 
   const fields = {
     name: {
@@ -55,10 +62,10 @@ export default function PackageForm({
       initialValue: '',
       isRequired: false,
     },
-    'call-time': {
-      initialValue: 'hour',
-      isRequired: false,
-    },
+    // 'call-time': {
+    //   initialValue: 'hour',
+    //   isRequired: false,
+    // },
     policy: {
       initialValue: false,
       isRequired: true,
@@ -129,7 +136,7 @@ export default function PackageForm({
           required={fields['message'].isRequired}
         />
       </div>
-      <div className="mb-6">
+      {/* <div className="mb-6">
         <Select
           variant="labeled"
           name="call-time"
@@ -149,7 +156,7 @@ export default function PackageForm({
             </SelectOption>
           ))}
         </Select>
-      </div>
+      </div> */}
       <div className="mb-6">
         <Checkbox
           name="policy"

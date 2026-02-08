@@ -26,10 +26,7 @@ export type Package = {
         additional_time_fee: number | null
     } | null,
     equipment: EquipmentItem[],
-    discount: {
-        price: number,
-        duration: number | null;
-    } | null;
+    discount: Discount | null;
     discount_campaigns: DiscountCampaign[];
 };
 
@@ -50,4 +47,9 @@ export type DiscountCampaign = {
     code: string | null,
     name: string | null, 
     description: string,
+}
+
+export type Discount = {
+     price: number,
+     duration: number | null;
 }
