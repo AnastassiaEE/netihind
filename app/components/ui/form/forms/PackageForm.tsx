@@ -4,14 +4,14 @@ import FormResponse from '@/components/ui/form/forms/FormResponse';
 import IconInput from '@/components/ui/form/fields/input/IconInput';
 import Checkbox from '@/components/ui/form/fields/checkbox/Checkbox';
 import Textarea from '@/components/ui/form/fields/input/Textarea';
-import Button from '@/components/ui/form//buttons/Button';
 import Input from '@/components/ui/form/fields/input/Input';
 import Select from '@/components/ui/form/fields/select/Select';
 import SelectOption from '@/components/ui/form/fields/select/SelectOption';
 import useForm from '@/hooks/useForm';
 import { useTranslations } from 'next-intl';
-import { Loop, Add } from '@mui/icons-material';
+import { Add } from '@mui/icons-material';
 import { Package, PackageAction } from '@/types/packages.types';
+import SendButton from '@/components/ui/buttons/SendButton';
 
 export default function PackageForm({
   action = 'connection',
@@ -178,13 +178,9 @@ export default function PackageForm({
           })}
         </Checkbox>
       </div>
-      <Button type="submit" size="lg" disabled={isSending} className="w-full">
-        {isSending ? (
-          <Loop className="animate-spin" />
-        ) : (
-          <>{t('buttons.send')}</>
-        )}
-      </Button>
+      <SendButton size="lg" isSending={isSending} className="w-full">
+        {t('buttons.send')}
+      </SendButton>
       {!isSending && response && (
         <FormResponse type={response.type}>
           {t(response.message as any)}

@@ -1,13 +1,13 @@
 'use client';
 import FormResponse from '@/components/ui/form/forms/FormResponse';
-import { Loop, Add } from '@mui/icons-material';
+import { Add } from '@mui/icons-material';
 import IconInput from '@/components/ui/form/fields/input/IconInput';
 import Checkbox from '@/components/ui/form/fields/checkbox/Checkbox';
 import Textarea from '@/components/ui/form/fields/input/Textarea';
-import Button from '@/components/ui/form/buttons/Button';
 import Input from '@/components/ui/form/fields/input/Input';
 import useForm from '@/hooks/useForm';
 import { useTranslations } from 'next-intl';
+import SendButton from '@/components/ui/buttons/SendButton';
 
 export default function ContactForm() {
   const t = useTranslations('Form');
@@ -119,13 +119,9 @@ export default function ContactForm() {
           })}
         </Checkbox>
       </div>
-      <Button type="submit" size="lg" disabled={isSending} className="w-full">
-        {isSending ? (
-          <Loop className="mx-auto animate-spin" />
-        ) : (
-          <>{t('buttons.send')}</>
-        )}
-      </Button>
+      <SendButton size="lg" isSending={isSending} className="w-full">
+        {t('buttons.send')}
+      </SendButton>
       {!isSending && response && (
         <FormResponse type={response.type}>
           {t(response.message as any)}
