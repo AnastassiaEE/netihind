@@ -27,22 +27,29 @@ export default async function middleware(request: NextRequest) {
   const handleI18nRouting = createMiddleware(routing);
   let response = handleI18nRouting(request);
 
+  const staticPages = ['/about', '/policy', '/landing'];
+  const isBlogPage = /\/[a-z]{2}\/blog\//.test(request.nextUrl.pathname);
+  const isStaticPage =
+    staticPages.includes(request.nextUrl.pathname) || isBlogPage;
+
   const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
 
   const scriptSrc = isDev
-  ? ["'self'", "'unsafe-inline'", "*"] 
-  : ["'self'", `'nonce-${nonce}'`, "'strict-dynamic'"];
+    ? ["'self'", "'unsafe-inline'", '*']
+    : isStaticPage
+      ? ["'self'"]
+      : ["'self'", `'nonce-${nonce}'`, "'strict-dynamic'"];
 
   const connectSrc = isDev
-  ? "*" 
-  : [
-      "'self'",
-      "https://inaadress.maaamet.ee",
-      "https://tshbfrxtlarxxnfegvyl.supabase.co",
-      "https://rxysmdetqttpdqfmrpym.supabase.co",
-      "https://api.resend.com",
-      "https://region1.google-analytics.com",
-    ].join(' ');
+    ? '*'
+    : [
+        "'self'",
+        'https://inaadress.maaamet.ee',
+        'https://tshbfrxtlarxxnfegvyl.supabase.co',
+        'https://rxysmdetqttpdqfmrpym.supabase.co',
+        'https://api.resend.com',
+        'https://region1.google-analytics.com',
+      ].join(' ');
 
   const cspHeader = `
     default-src 'self';
