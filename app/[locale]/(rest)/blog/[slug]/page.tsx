@@ -10,6 +10,9 @@ import PageLoader from '@/components/ui/loaders/PageLoader';
 import { Locale } from 'next-intl';
 import RelatedPostsSection from '@/components/sections/blog/RelatedPostsSection';
 
+export const dynamic = 'force-static';
+export const revalidate = 300;
+
 export async function generateStaticParams() {
   const posts = await getPostsWithSlugsOnly();
   let paths = posts.map((post: { [key: string]: any }) => {
