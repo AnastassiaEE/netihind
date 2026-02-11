@@ -3,18 +3,21 @@ import React from 'react';
 import Backdrop from '@/components/ui/overlay/Backdrop';
 import CloseButton from '@/components/ui/buttons/CloseButton';
 import { useTranslations } from 'next-intl';
+import { usePortal } from '@/hooks/usePortal';
 
 export default function Sidebar({
   name,
   title,
-  isOpened,
+  isMounted,
+  isVisible,
   onClose,
   sidebarRef,
   children,
 }: {
   name: string;
   title: string;
-  isOpened: boolean;
+  isMounted: boolean;
+  isVisible: boolean;
   onClose: () => void;
   sidebarRef?: React.RefObject<HTMLDivElement | null>;
   children: React.ReactNode;
@@ -23,12 +26,11 @@ export default function Sidebar({
 
   const sidebarClasses = classNames(
     'fixed inset-y-0 right-0 z-50 w-80 max-w-full bg-white shadow-md',
-    isOpened ? 'sidebar-open' : 'sidebar-close',
+    isVisible ? 'sidebar-visible' : 'sidebar-hidden',
   );
-
-  return (
+  const PortalContent = (
     <>
-      <Backdrop isVisible={isOpened} onClose={onClose} />
+      <Backdrop isVisible={isVisible} onClose={onClose} />
       <div
         role="dialog"
         aria-modal="true"
@@ -49,4 +51,6 @@ export default function Sidebar({
       </div>
     </>
   );
+
+  return usePortal(PortalContent, isMounted);
 }
