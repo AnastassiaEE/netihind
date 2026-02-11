@@ -37,7 +37,8 @@ export default function Packages({
   } = usePackages(oid, sortOption, providers, technologies, onLoaded);
 
   const {
-    isOpened: isModalOpened,
+    isMounted: isModalMounted,
+    isVisible: isModalVisible,
     open: openModal,
     close: closeModal,
     overlayRef: modalRef,
@@ -77,7 +78,8 @@ export default function Packages({
       )}
       <PackageModal
         action={selectedAction}
-        isOpnened={isModalOpened}
+        isMounted={isModalMounted}
+        isVisible={isModalVisible}
         onClose={closeModal}
         ref={modalRef}
         selectedPackage={selectedPackage}

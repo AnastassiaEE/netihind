@@ -18,7 +18,8 @@ export default function CookiesModal() {
 
   const {
     openCookiesModal,
-    isCookiesModalOpened,
+    isCookiesModalMounted,
+    isCookiesModalVisible,
     cookiesModalRef,
     preferences,
     togglePreference,
@@ -32,7 +33,8 @@ export default function CookiesModal() {
         type="modal"
         name="cookies"
         title={c('title')}
-        isOpened={isCookiesModalOpened}
+        isMounted={isCookiesModalMounted}
+        isVisible={isCookiesModalVisible}
         dialogRef={cookiesModalRef}
         className="flex flex-col overflow-hidden bg-white"
       >

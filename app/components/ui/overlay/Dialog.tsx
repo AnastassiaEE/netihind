@@ -4,13 +4,15 @@ import classNames from 'classnames';
 import CloseButton from '@/components/ui/buttons/CloseButton';
 import { useTranslations } from 'next-intl';
 import { DialogType } from '@/types/elements.types';
+import { usePortal } from '@/hooks/usePortal';
 
 export default function Dialog({
   type = 'modal',
   name,
   title,
   description,
-  isOpened,
+  isMounted,
+  isVisible,
   onClose,
   dialogRef,
   className,
@@ -20,7 +22,8 @@ export default function Dialog({
   name: string;
   title?: string;
   description?: string;
-  isOpened: boolean;
+  isMounted: boolean;
+  isVisible: boolean;
   onClose?: () => void;
   dialogRef?: React.RefObject<HTMLDivElement | null>;
   className?: string;
@@ -30,7 +33,7 @@ export default function Dialog({
 
   const dialogClasses = classNames(
     'fixed left-1/2 top-1/2 z-50 size-max max-h-dvh max-w-[100vw] overflow-auto rounded-md p-6 shadow-lg focus:outline-none md:p-11 lg:h-max lg:max-h-[90vh] lg:max-w-[90vw]',
-    isOpened ? 'modal-open' : 'modal-close',
+    isVisible ? 'modal-visible' : 'modal-hidden',
     className,
   );
   const titleClasses = classNames(
@@ -38,9 +41,9 @@ export default function Dialog({
     description ? 'mb-3' : 'mb-6',
   );
 
-  return (
+  const portalContent = (
     <>
-      {type === 'modal' && <Backdrop isVisible={isOpened} onClose={onClose} />}
+      {type === 'modal' && <Backdrop isVisible={isVisible} onClose={onClose} />}
       <div
         role="dialog"
         aria-modal="true"
@@ -75,4 +78,6 @@ export default function Dialog({
       </div>
     </>
   );
+
+  return usePortal(portalContent, isMounted);
 }

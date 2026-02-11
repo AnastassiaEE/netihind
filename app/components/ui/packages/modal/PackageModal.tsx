@@ -7,14 +7,16 @@ import PackageDetailsContent from '@/components/ui/packages/modal/details/Packag
 
 export default function PackageModal({
   action,
-  isOpnened,
+  isMounted,
+  isVisible,
   onClose,
   ref,
   selectedPackage,
   address,
 }: {
   action: PackageAction;
-  isOpnened: boolean;
+  isMounted: boolean;
+  isVisible: boolean;
   onClose: () => void;
   ref: RefObject<HTMLDivElement | null>;
   selectedPackage?: Package;
@@ -25,7 +27,8 @@ export default function PackageModal({
     <Dialog
       name={action}
       title={action === 'connection' ? t(`${action}.title` as any) : undefined}
-      isOpened={isOpnened}
+      isMounted={isMounted}
+      isVisible={isVisible}
       onClose={onClose}
       dialogRef={ref}
       className="bg-primary-light"

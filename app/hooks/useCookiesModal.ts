@@ -15,7 +15,8 @@ export default function useCookiesModal() {
   const { setConsent } = useConsentContext();
 
   const {
-    isOpened: isCookiesModalOpened,
+    isMounted: isCookiesModalMounted,
+    isVisible: isCookiesModalVisible,
     open: openCookiesModal,
     close: closeCookiesModal,
     overlayRef: cookiesModalRef,
@@ -72,7 +73,8 @@ export default function useCookiesModal() {
 
   return {
     openCookiesModal,
-    isCookiesModalOpened,
+    isCookiesModalMounted,
+    isCookiesModalVisible,
     cookiesModalRef,
     preferences,
     togglePreference,

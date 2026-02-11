@@ -21,45 +21,54 @@
 
 /* Open/close animations */
 
-.modal-open {
-  transform: translate(-50%, -50%) scale(1);
+.modal-visible {
   opacity: 1;
-  visibility: visible;
-  transition: visibility 0s linear, transform 0.2s ease-out, opacity 0.2s ease-out;
+  transform: translate(-50%, -50%) scale(1);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
-.modal-close {
-  transform: translate(-50%, -50%) scale(0.7);
+.modal-hidden {
   opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: transform 0.2s ease-out, opacity 0.2s ease-out, visibility 0s linear 0.2s;
+  transform: translate(-50%, -50%) scale(0.95);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .sidebar-open {
   transform: translateX(0);
   visibility: visible;
-  transition: visibility 0s linear, transform 0.2s ease-out;
+  transition:
+    visibility 0s linear,
+    transform 0.2s ease-out;
 }
 
 .sidebar-close {
   transform: translateX(100%);
   visibility: hidden;
   pointer-events: none;
-  transition: transform 0.2s ease-out, visibility 0s linear 0.2s;
+  transition:
+    transform 0.2s ease-out,
+    visibility 0s linear 0.2s;
 }
 
 .slideUpPanel-open {
   transform: translateY(0);
   visibility: visible;
-  transition: visibility 0s linear, transform 0.2s ease-out;
+  transition:
+    visibility 0s linear,
+    transform 0.2s ease-out;
 }
 
 .slideUpPanel-close {
   transform: translateY(100%);
   visibility: hidden;
   pointer-events: none;
-  transition: transform 0.2s ease-out, visibility 0s linear 0.2s;
+  transition:
+    transform 0.2s ease-out,
+    visibility 0s linear 0.2s;
 }
 
 /* Checkbox */
