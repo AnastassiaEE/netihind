@@ -47,21 +47,14 @@
   transition: transform 0.2s ease-out;
 }
 
-.slideUpPanel-open {
+.slideUpPanel-visible {
   transform: translateY(0);
-  visibility: visible;
-  transition:
-    visibility 0s linear,
-    transform 0.2s ease-out;
+  transition: transform 0.2s ease-out;
 }
 
-.slideUpPanel-close {
+.slideUpPanel-hidden {
   transform: translateY(100%);
-  visibility: hidden;
-  pointer-events: none;
-  transition:
-    transform 0.2s ease-out,
-    visibility 0s linear 0.2s;
+  transition: transform 0.2s ease-out;
 }
 
 /* Checkbox */

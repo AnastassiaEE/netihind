@@ -6,12 +6,14 @@ import Backdrop from '@/components/ui/overlay/Backdrop';
 import PanelActions from '@/components/ui/overlay/PanelActions';
 import CloseButton from '@/components/ui/buttons/CloseButton';
 import { useTranslations } from 'next-intl';
+import { usePortal } from '@/hooks/usePortal';
 
 export default function SlideUpPanel({
   name,
   title,
   actions,
-  isOpened,
+  isMounted,
+  isVisible,
   onClose,
   panelRef,
   children,
@@ -19,7 +21,8 @@ export default function SlideUpPanel({
   name: string;
   title: string;
   actions?: React.ReactNode;
-  isOpened: boolean;
+  isMounted: boolean;
+  isVisible: boolean;
   onClose: () => void;
   panelRef?: React.RefObject<HTMLDivElement | null>;
   children: React.ReactNode;
@@ -29,12 +32,12 @@ export default function SlideUpPanel({
 
   const panelClasses = classNames(
     'fixed inset-x-0 bottom-0 z-50 h-dvh rounded-t-2xl bg-white',
-    isOpened ? 'slideUpPanel-open' : 'slideUpPanel-close',
+    isVisible ? 'slideUpPanel-visible' : 'slideUpPanel-hidden',
   );
 
-  return (
+  const portalContent = (
     <>
-      <Backdrop isVisible={isOpened} onClose={onClose} />
+      <Backdrop isVisible={isVisible} onClose={onClose} />
       <div
         role="dialog"
         aria-modal="true"
@@ -67,4 +70,6 @@ export default function SlideUpPanel({
       </div>
     </>
   );
+
+  return usePortal(portalContent, isMounted);
 }

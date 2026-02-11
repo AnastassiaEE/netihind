@@ -31,7 +31,8 @@ export default function PackagesSortingToolbar({
   const t = useTranslations('Filters');
 
   const {
-    isOpened: isPanelOpened,
+    isMounted: isPanelMounted,
+    isVisible: isPanelVisible,
     open: openPanel,
     close: closePanel,
     overlayRef: panelRef,
@@ -78,7 +79,8 @@ export default function PackagesSortingToolbar({
           name="filters"
           title={t('labels.filters')}
           actions={panelActions}
-          isOpened={isPanelOpened}
+          isMounted={isPanelMounted}
+          isVisible={isPanelVisible}
           onClose={closePanel}
           panelRef={panelRef}
         >
