@@ -1,6 +1,5 @@
-import type { Config } from 'tailwindcss';
-import colors from 'tailwindcss/colors';
-import plugin from 'tailwindcss/plugin';
+const colors = require('tailwindcss/colors');
+const plugin = require('tailwindcss/plugin');
 
 const breakpointValues = {
   sm: '540px',
@@ -18,7 +17,7 @@ export const breakpoints = {
   '2xl': `(max-width: ${breakpointValues['2xl']})`,
 };
 
-const config: Config = {
+const config = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -73,7 +72,7 @@ const config: Config = {
     container: false,
   },
   plugins: [
-    function ({ addComponents }: { addComponents: any }) {
+    function ({ addComponents }) {
       addComponents({
         '.container': {
           marginLeft: 'auto',
@@ -100,7 +99,7 @@ const config: Config = {
     plugin(({ addBase, theme }) => {
       addBase({
         p: { color: theme('colors.muted-dark') },
-        table: {color: theme('colors.muted-dark')}
+        table: { color: theme('colors.muted-dark') },
       });
     }),
   ],
