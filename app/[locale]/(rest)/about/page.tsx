@@ -9,6 +9,9 @@ import { metadataBaseUrl, openGraphLogo, website } from '@/app/shared-metadata';
 import PageLoader from '@/components/ui/loaders/PageLoader';
 import { Locale } from 'next-intl';
 
+export const dynamic = 'force-static';
+export const revalidate = 300;
+
 export async function generateMetadata(props: {
   params: Promise<{ locale: Locale }>;
 }) {

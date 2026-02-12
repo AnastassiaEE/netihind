@@ -1,14 +1,16 @@
 import createMiddleware from 'next-intl/middleware';
 import { routing } from '@/i18n/routing';
 import { NextRequest, NextResponse } from 'next/server';
+import { Locale } from 'next-intl';
+import { isLocale, normalizePath } from '@/utils/routesHelper';
 
 export default async function middleware(request: NextRequest) {
   const { searchParams } = request.nextUrl;
 
+  /* -------------------- REMOVE TRAILING SLASHES FROM SEARCH PARAMETERS -------------------- */
+
   const updatedSearchParams = new URLSearchParams();
   let needsRedirect = false;
-
-  const isDev = process.env.NODE_ENV === 'development';
 
   searchParams.forEach((value, key) => {
     if (value.endsWith('/')) {
@@ -24,20 +26,53 @@ export default async function middleware(request: NextRequest) {
     return NextResponse.redirect(request.nextUrl, 308);
   }
 
+  /* -------------------- I18N MIDDLEWARE -------------------- */
+
   const handleI18nRouting = createMiddleware(routing);
   let response = handleI18nRouting(request);
 
-  const staticPages = ['/about', '/policy', '/landing'];
-  const isBlogPage = /\/[a-z]{2}\/blog\//.test(request.nextUrl.pathname);
-  const isStaticPage =
-    staticPages.includes(request.nextUrl.pathname) || isBlogPage;
+  const pathname = request.nextUrl.pathname;
+  const defaultLocale = routing.defaultLocale;
 
+  const segments = pathname.split('/').filter(Boolean);
+
+  let locale: Locale = defaultLocale;
+  let pathnameWithoutLocale = pathname;
+
+  if (segments[0] && isLocale(segments[0]) && segments[0] !== defaultLocale) {
+    locale = segments[0];
+    pathnameWithoutLocale = '/' + segments.slice(1).join('/');
+  }
+
+  pathnameWithoutLocale = normalizePath(pathnameWithoutLocale);
+
+  /* -------------------- PREPARE ISR (STATIC/SSG) PAGES -------------------- */
+
+  const ssgBasePaths = ['/about', '/policy', '/blog', '/blog/[slug]'];
+
+  const ssgPathsLocalized = ssgBasePaths.flatMap((path) => {
+    const val = routing.pathnames[path as keyof typeof routing.pathnames];
+    if (!val) return [];
+    if (typeof val === 'string') return [normalizePath(val)];
+    return Object.values(val).map(normalizePath);
+  });
+
+  const isStaticPage = ssgPathsLocalized.some((p) => {
+    if (p.includes('[slug]')) {
+      const base = p.replace('/[slug]', '');
+      return pathnameWithoutLocale.startsWith(base + '/');
+    }
+    return pathnameWithoutLocale === p;
+  });
+
+  /* -------------------- CSP / NONCE -------------------- */
+
+  const isDev = process.env.NODE_ENV === 'development';
   const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
 
-  const scriptSrc = isDev
-    ? ["'self'", "'unsafe-inline'", '*']
-    : isStaticPage
-      ? ["'self'"]
+  const scriptSrc =
+    isDev || isStaticPage
+      ? ["'self'", "'unsafe-inline'", '*']
       : ["'self'", `'nonce-${nonce}'`, "'strict-dynamic'"];
 
   const connectSrc = isDev

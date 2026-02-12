@@ -15,6 +15,9 @@ const options = {
   },
 };
 
+export const dynamic = 'force-static';
+export const revalidate = 300;
+
 export default async function Policy(props: {
   params: Promise<{ locale: Locale }>;
 }) {
