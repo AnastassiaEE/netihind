@@ -4,7 +4,7 @@
   --animate-show: show 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
   --color-primary: #6366f1;
-  --color-primary-rgb: 99, 102, 241;
+  --color-primary-rgb: 99 102 241;
   --color-primary-dark: #4044ee;
   --color-primary-light: #eff2fc;
   --color-secondary: #8b5cf6;
@@ -65,6 +65,10 @@
   p,
   table {
     color: var(--color-muted-dark);
+  }
+
+  button:not(:disabled) {
+    cursor: pointer;
   }
 }
 

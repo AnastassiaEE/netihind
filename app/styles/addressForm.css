@@ -24,7 +24,6 @@
   padding-inline: calc(var(--spacing) * 2);
   font-size: var(--text-base);
   line-height: var(--text-base--line-height);
-  box-shadow: var(--shadow-md);
 }
 
 .inads-input::placeholder,
@@ -34,8 +33,10 @@
 
 .inads-input:focus,
 .inads-appartment:focus {
-  border: 1px solid rgba(var(--color-primary-rgb), 0.3);
-  box-shadow: var(--shadow-lg);
+  border: 1px solid rgb(var(--color-primary-rgb) / 0.3);
+  box-shadow:
+    0 10px 15px -3px rgb(var(--color-primary-rgb) / 0.1),
+    0 4px 6px -4px rgb(var(--color-primary-rgb) / 0.1);
   outline-style: none;
 }
 
@@ -62,7 +63,6 @@
 }
 
 .inads-result-container {
-  border: 1px solid rgba(var(--color-primary-rgb), 0.3);
   position: absolute;
   z-index: 10;
   width: 100%;
@@ -70,6 +70,10 @@
   border-radius: var(--radius-md);
   background-color: white;
   font-size: var(--text-sm);
+}
+
+.inads-result-container:has(> .inads-result:not(.hidden)) {
+  border: 1px solid rgb(var(--color-primary-rgb) / 0.3);
 }
 
 .inads-result {
@@ -85,7 +89,7 @@
 
 .inads-result li:hover,
 .inads-result li.active {
-  background-color: rgba(var(--color-primary-rgb), 0.1);
+  background-color: rgb(var(--color-primary-rgb) / 0.1);
 }
 
 .inads-input-search {

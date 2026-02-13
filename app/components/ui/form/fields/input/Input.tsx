@@ -5,7 +5,7 @@ import { FormElementSizes as sizes } from '@/components/ui/form/config';
 import { InputSize } from '@/types/form.types';
 
 const inputClasses = tv({
-  base: 'w-full rounded-md border bg-white text-muted-dark transition-[padding] placeholder:text-muted focus:outline-hidden',
+  base: 'w-full rounded-md border bg-white text-muted-dark transition-[padding] placeholder:text-muted focus:shadow-md focus:outline-hidden',
   variants: {
     size: sizes,
     isValid: {
