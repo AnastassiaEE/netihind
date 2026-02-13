@@ -2,17 +2,19 @@ import React from 'react';
 import { tv } from 'tailwind-variants';
 import { FormElementSizes as sizes } from '@/components/ui/form/config';
 import { ButtonSize, ButtonType, ButtonVariant } from '@/types/form.types';
+import classNames from 'classnames';
 
 const buttonClasses = tv({
-  base: 'rounded-md border font-semibold shadow-md transition-all',
+  base: 'rounded-md border font-semibold transition-all',
   variants: {
     variant: {
-      contained: 'border-primary bg-primary text-white hover:bg-primary-dark',
+      contained:
+        'border-primary bg-primary text-white hover:bg-primary-dark shadow-md shadow-primary/30 hover:shadow-none',
       outlined:
         'border-primary bg-white text-primary hover:bg-primary hover:text-white',
       neutral:
         'border-primary-light bg-primary-light text-muted-dark hover:bg-primary hover:text-white',
-      text: 'border-transparent text-primary shadow-none hover:text-primary-dark',
+      text: 'text-primary hover:text-primary-dark',
     },
     size: sizes,
     disabled: {
@@ -60,7 +62,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         type={type}
         name={name}
         onClick={onClick}
-        className={buttonClasses({ variant, size, disabled, className })}
+        className={classNames(
+          buttonClasses({ variant, size, disabled }),
+          className,
+        )}
         disabled={disabled}
         {...props}
       >

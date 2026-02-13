@@ -60,13 +60,13 @@ export default function AddressPackagesSection({
         {tPage('packagesSection.title')}
       </h1>
       <p className="mb-6 font-medium">
-        <HomeIcon className="mr-1 inline align-sub text-primary" />
+        <HomeIcon className="text-primary mr-1 inline align-sub" />
         {address}
       </p>
       <>
         <div className="md:flex" ref={scrollToRef}>
           <div className="md:w-9/12">
-            <div className="sticky top-0 z-10 flex justify-end rounded-l-lg bg-primary-light/80 p-5 backdrop-blur-md max-md:hidden">
+            <div className="bg-primary-light/80 sticky top-0 z-10 flex justify-end rounded-l-lg p-5 backdrop-blur-md max-md:hidden">
               <Sort
                 name="packages"
                 variant="labeled"
@@ -74,10 +74,10 @@ export default function AddressPackagesSection({
                 selectedOption={selectedSortOption}
                 setSelectedOption={setSelectedSortOption}
                 onUserChange={handleUserInteraction}
-                className="rounded-md border-muted-light bg-white"
+                className="border-muted-light rounded-md bg-white"
               />
             </div>
-            <div className="md:pr-5 md:pt-5">
+            <div className="md:pt-5 md:pr-5">
               <Packages
                 oid={oid}
                 address={address}
@@ -88,7 +88,7 @@ export default function AddressPackagesSection({
               />
             </div>
           </div>
-          <aside className="hidden rounded-r-lg rounded-bl-lg bg-primary-light/80 md:block md:w-3/12">
+          <aside className="bg-primary-light/80 hidden rounded-r-lg rounded-bl-lg md:block md:w-3/12">
             <div className="sticky top-0 h-screen overflow-y-auto p-8">
               {!isFiltersLoaded ? (
                 <PingLoader sizeClass="h-10 w-10" />
