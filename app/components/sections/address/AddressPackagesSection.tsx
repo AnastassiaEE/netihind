@@ -74,7 +74,7 @@ export default function AddressPackagesSection({
                 selectedOption={selectedSortOption}
                 setSelectedOption={setSelectedSortOption}
                 onUserChange={handleUserInteraction}
-                className="border-muted-light rounded-md bg-white"
+                className="border-muted-light rounded-md border bg-white"
               />
             </div>
             <div className="md:pt-5 md:pr-5">

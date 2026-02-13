@@ -5,15 +5,15 @@ import { ButtonSize, ButtonType, ButtonVariant } from '@/types/form.types';
 import classNames from 'classnames';
 
 const buttonClasses = tv({
-  base: 'rounded-md border font-semibold transition-all',
+  base: 'rounded-md font-semibold transition-all',
   variants: {
     variant: {
       contained:
-        'border-primary bg-primary text-white hover:bg-primary-dark shadow-md shadow-primary/30 hover:shadow-none',
+        'border border-primary bg-primary text-white hover:bg-primary-dark shadow-md shadow-primary/30 hover:shadow-none',
       outlined:
-        'border-primary bg-white text-primary hover:bg-primary hover:text-white',
+        'border border-primary bg-white text-primary hover:bg-primary hover:text-white',
       neutral:
-        'border-primary-light bg-primary-light text-muted-dark hover:bg-primary hover:text-white',
+        'border border-primary-light bg-primary-light text-muted-dark hover:bg-primary hover:text-white',
       text: 'text-primary hover:text-primary-dark',
     },
     size: sizes,
