@@ -35,6 +35,7 @@ Built entirely by me as a **solo full‑stack project**, this application demons
 - ⚛️ **SWR** – Data fetching with caching and revalidation
 - 📧 **Resend API** – Sending emails (e.g., request confirmations)
 - 🔁 **URL‑Synced State** – Filters/sorting reflected in the browser URL
+- 📝 **WordPress (Headless CMS + GraphQL)** – Manages static pages in Markdown format
 
 ---
 
