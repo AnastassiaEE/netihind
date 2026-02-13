@@ -23,7 +23,7 @@ export default function PackagePriceSection({
             <span className="font-medium">
               {`${t('details.price.label')}:`}
             </span>
-            <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-xl font-extrabold text-transparent">
+            <span className="bg-linear-to-r from-primary via-secondary to-accent bg-clip-text text-xl font-extrabold text-transparent">
               {`${formatMoney(discount.price)} €`}
             </span>
           </p>

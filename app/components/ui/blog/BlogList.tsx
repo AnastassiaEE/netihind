@@ -16,7 +16,7 @@ export default function BlogList({
           date={post.date}
           title={post.title}
           excerpt={post.excerpt}
-          className="[&:not(:last-child)]:mb-6"
+          className="not-last:mb-6"
         />
       ))}
     </>

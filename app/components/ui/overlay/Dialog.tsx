@@ -32,7 +32,7 @@ export default function Dialog({
   const t = useTranslations('Buttons');
 
   const dialogClasses = classNames(
-    'fixed left-1/2 top-1/2 z-50 size-max max-h-dvh max-w-[100vw] overflow-auto rounded-md p-6 shadow-lg focus:outline-none md:p-11 lg:h-max lg:max-h-[90vh] lg:max-w-[90vw]',
+    'fixed left-1/2 top-1/2 z-50 size-max max-h-dvh max-w-screen overflow-auto rounded-md p-6 shadow-lg focus:outline-hidden md:p-11 lg:h-max lg:max-h-[90vh] lg:max-w-[90vw]',
     isVisible ? 'modal-visible' : 'modal-hidden',
     className,
   );
@@ -58,7 +58,7 @@ export default function Dialog({
           <CloseButton
             label={t(`${name}.close` as any)}
             onClick={onClose}
-            className="absolute right-4 top-4 bg-white"
+            className="absolute top-4 right-4 bg-white"
           />
         )}
         {title && (

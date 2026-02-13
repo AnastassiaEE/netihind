@@ -48,16 +48,12 @@ export default function PackagesSortingToolbar({
     <>
       <div
         className={classNames(
-          'sticky bottom-0 mx-[-2.5%] mt-7 flex w-[105%] flex-wrap justify-around bg-white px-2 py-4 shadow-top',
+          'shadow-top sticky bottom-0 mx-[-2.5%] mt-7 flex w-[105%] flex-wrap justify-around bg-white px-2 py-4',
           className,
         )}
       >
         {filters && (
-          <Button
-            onClick={openPanel}
-            variant="outlined"
-            className="min-w-[150px]"
-          >
+          <Button onClick={openPanel} variant="outlined" className="min-w-37.5">
             {t('buttons.filter').toUpperCase()}
           </Button>
         )}
@@ -70,7 +66,7 @@ export default function PackagesSortingToolbar({
             selectedOption={sortOptions.selected}
             setSelectedOption={setSelectedSortOption}
             onUserChange={onUserChange}
-            className="min-w-[150px] uppercase"
+            className="min-w-37.5 uppercase"
           />
         )}
       </div>

@@ -28,11 +28,11 @@ export default function FaqAccordion({
   );
 
   return (
-    <div className="border-x border-muted-light first:rounded-t-md first:border-t last:rounded-b-md last:border-b [&:not(:last-child)]:border-b">
+    <div className="border-x border-muted-light first:rounded-t-md first:border-t last:rounded-b-md last:border-b not-last:border-b">
       <button
         type="button"
         {...getButtonProps()}
-        className="flex w-full flex-row-reverse items-center justify-between border-muted-light p-6 text-left transition-all [&:not(:last-child)]:border-b"
+        className="flex w-full flex-row-reverse items-center justify-between border-muted-light p-6 text-left transition-all not-last:border-b"
       >
         <CircleArrow {...getArrowProps()} className={arrowClasses} />
         <span className="font-semibold">{question}</span>

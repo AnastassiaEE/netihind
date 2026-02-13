@@ -15,7 +15,7 @@ export default function Tooltip({
     <div
       id="tooltip-content"
       ref={tooltipRef}
-      className="fixed z-50 max-w-[250px] rounded-md bg-white p-3 text-sm text-muted-dark shadow-md"
+      className="text-muted-dark fixed z-50 max-w-62.5 rounded-md bg-white p-3 text-sm shadow-md"
       style={{
         top: pos.top,
         left: pos.left,

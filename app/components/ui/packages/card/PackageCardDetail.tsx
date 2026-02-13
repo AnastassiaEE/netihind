@@ -10,7 +10,7 @@ export default function PackageCardDetail({
 }) {
   return (
     <div className="flex items-center gap-2 text-sm">
-      <Icon className="flex-shrink-0 text-4xl text-muted-light" />
+      <Icon className="shrink-0 text-4xl text-muted-light" />
       <span className="text-muted-dark">{children}</span>
     </div>
   );

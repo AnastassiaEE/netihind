@@ -100,7 +100,7 @@ export default function AddressPackagesSection({
                     </p>
                     <Button
                       variant="text"
-                      className="!p-0"
+                      className="p-0!"
                       onClick={clearFilters}
                     >
                       {tFilters('buttons.clear')}

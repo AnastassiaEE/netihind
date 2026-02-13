@@ -44,7 +44,7 @@ export default function Select({
   const comboBoxClasses = classNames(sizes[size], className);
 
   const listBoxClasses = classNames(
-    'border-grey-300 absolute right-0 z-[1] w-full min-w-max rounded-md bg-white drop-shadow-md',
+    'border-grey-300 absolute right-0 z-1 w-full min-w-max rounded-md bg-white drop-shadow-md',
     openDirection === 'top' && 'bottom-full',
     !isExpanded && 'hidden',
   );

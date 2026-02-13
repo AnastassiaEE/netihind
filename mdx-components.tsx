@@ -9,13 +9,13 @@ const components = {
   h1: ({ children }: { children: React.ReactNode }) => <H1>{children}</H1>,
   h2: ({ children }: { children: React.ReactNode }) => <H2>{children}</H2>,
   p: ({ children }: { children: React.ReactNode }) => (
-    <p className="[&:not(:last-child)]:mb-6"> {children} </p>
+    <p className="not-last:mb-6"> {children} </p>
   ),
   ul: ({ children }: { children: React.ReactNode }) => (
-    <ul className="[&:not(:last-child)]:mb-6">{children}</ul>
+    <ul className="not-last:mb-6">{children}</ul>
   ),
   ol: ({ children }: { children: React.ReactNode }) => (
-    <ol className="[&:not(:last-child)]:mb-6">{children}</ol>
+    <ol className="not-last:mb-6">{children}</ol>
   ),
   li: ({ children }: { children: React.ReactNode }) => {
     let childrenCopy = children;
@@ -38,14 +38,14 @@ const components = {
       icon = <Cons size="small" className="align-sub" />;
     }
     return (
-      <li className="text-muted-dark [&:not(:last-child)]:mb-1.5">
+      <li className="text-muted-dark not-last:mb-1.5">
         {icon}
         {childrenCopy}
       </li>
     );
   },
   table: ({ children }: { children: React.ReactNode }) => (
-    <table className="table-auto border-collapse border border-muted-light text-muted-dark [&:not(:last-child)]:mb-6">
+    <table className="table-auto border-collapse border border-muted-light text-muted-dark not-last:mb-6">
       {children}
     </table>
   ),
@@ -76,7 +76,7 @@ const components = {
       alt={props.alt}
       width={600}
       height={200}
-      className="[&:not(:last-child)]:mb-6"
+      className="not-last:mb-6"
     />
   ),
 };

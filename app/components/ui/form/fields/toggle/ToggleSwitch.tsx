@@ -6,24 +6,24 @@ const toggleVariants = tv({
   slots: {
     input: 'peer absolute opacity-0',
     switch:
-      "rounded-full after:absolute after:left-1 after:top-1 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-focus-visible:outline",
+      "rounded-full after:absolute after:left-1 after:top-1 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-focus-visible:outline-solid",
     label: 'ml-2',
   },
   variants: {
     size: {
       sm: {
         switch:
-          'h-[22px] w-[43px] after:size-[14px] peer-checked:after:translate-x-[21px]',
+          'h-5.5 w-10.75 after:size-3.5 peer-checked:after:translate-x-5.25',
         label: 'text-sm',
       },
       md: {
         switch:
-          'h-[27px] w-[53px] after:size-[19px] peer-checked:after:translate-x-[26px]',
+          'h-6.75 w-13.25 after:size-4.75 peer-checked:after:translate-x-6.5',
         label: 'text-base',
       },
       lg: {
         switch:
-          'h-[33px] w-[65px] after:size-[25px] peer-checked:after:translate-x-[32px]',
+          'h-8.25 w-16.25 after:size-6.25 peer-checked:after:translate-x-8',
         label: 'text-lg',
       },
     },

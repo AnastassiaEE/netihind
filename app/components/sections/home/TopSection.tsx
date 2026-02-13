@@ -10,17 +10,17 @@ export default function TopSection() {
   const t = useTranslations('HomePage.topSection');
   return (
     <SectionLayout
-      className="relative flex h-screen min-h-[650px] flex-col justify-center pt-[80px] md:min-h-[720px] md:pt-[140px]"
-      bg="bg-gradient-to-t from-primary/20 from-0% via-accent/10 via-secondary/10 via-40% to-80%"
+      className="relative flex h-screen min-h-162.5 flex-col justify-center pt-20 md:min-h-180 md:pt-35"
+      bg="bg-linear-to-t from-primary/20 from-0% via-accent/10 via-secondary/10 via-40% to-80%"
     >
-      <div className="absolute bottom-[50px] right-0 -z-10 h-auto w-[230px] max-md:top-[80px] md:w-[500px]">
+      <div className="absolute right-0 bottom-12.5 -z-10 h-auto w-57.5 max-md:top-20 md:w-125">
         <GradientMesh />
       </div>
       <div className="relative md:-translate-y-16">
         <H1>
           {t.rich('title', {
             span: (chunks) => (
-              <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+              <span className="from-primary via-secondary to-accent bg-linear-to-r bg-clip-text text-transparent">
                 {chunks}
               </span>
             ),
@@ -29,7 +29,7 @@ export default function TopSection() {
         <p className="mb-4 md:text-lg">{t('description')}</p>
         <MaaAmetAddressForm />
       </div>
-      <div className="absolute inset-x-0 bottom-0 -z-10 bg-primary/10 py-3 md:p-9">
+      <div className="bg-primary/10 absolute inset-x-0 bottom-0 -z-10 py-3 md:p-9">
         <div className="md:container">
           <LogoCards logos={providerLogos} />
         </div>

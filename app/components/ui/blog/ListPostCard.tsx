@@ -48,7 +48,7 @@ export default function ListPostCard({
           <div className="mb-4">
             <PostDate date={date} />
           </div>
-          <H2 className="!mb-4 !font-bold text-muted-dark transition-colors group-hover:text-primary">
+          <H2 className="mb-4! font-bold! text-muted-dark transition-colors group-hover:text-primary">
             {title}
           </H2>
           <p>{excerpt}</p>

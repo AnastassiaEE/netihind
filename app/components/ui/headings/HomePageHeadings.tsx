@@ -10,7 +10,7 @@ export const H1 = ({
   return (
     <h1
       className={classNames(
-        'mb-6 text-[calc(1.475rem+2.7vw)] font-extrabold !leading-snug md:text-5xl',
+        'mb-6 text-[calc(1.475rem+2.7vw)] font-extrabold leading-snug! md:text-5xl',
         className,
       )}
     >

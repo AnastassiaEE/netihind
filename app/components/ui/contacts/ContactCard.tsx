@@ -41,7 +41,7 @@ export default function ContactCard({
       <ContactCircle Icon={Icon} />
 
       <div className="pl-6">
-        <H2 className="!mb-3">{title}</H2>
+        <H2 className="mb-3!">{title}</H2>
         <p className="mb-3">{description}</p>
         <a
           href={href}

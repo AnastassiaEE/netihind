@@ -33,7 +33,7 @@ const pagination = {
   el: '.swiper-pagination',
   bulletClass:
     'pagination-bullet mx-1.5 inline-block size-1.5 cursor-pointer rounded-md bg-muted transition-all duration-500',
-  bulletActiveClass: 'pagination-bullet-active !w-6 !bg-primary',
+  bulletActiveClass: 'pagination-bullet-active w-6! bg-primary!',
 };
 
 const modules = [Pagination, Navigation];
@@ -51,7 +51,7 @@ export default function BlogSlider({
       <div className="next absolute right-0 top-1/2 -translate-y-1/2">
         <CircleArrow direction="right" className={arrowClasses} />
       </div>
-      <div className="swiper-pagination !-bottom-10 z-0"></div>
+      <div className="swiper-pagination -bottom-10! z-0"></div>
       <Swiper
         breakpoints={breakpoints}
         navigation={navigation}
@@ -59,7 +59,7 @@ export default function BlogSlider({
         modules={modules}
       >
         {posts?.map((post) => (
-          <SwiperSlide key={post.title} className="!h-auto pb-4">
+          <SwiperSlide key={post.title} className="h-auto! pb-4">
             <SliderPostCard
               href={post.slug}
               src={post.featuredImage.node.sourceUrl}
