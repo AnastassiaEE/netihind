@@ -3,6 +3,23 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 const openKeys = ['ArrowDown', 'ArrowUp', 'Enter', ' ', 'Home', 'End'];
 
+/**
+ * Provides accessible keyboard and click interactions for a custom select (combobox) component.
+ *
+ * This hook manages open/close state, keyboard navigation (Arrow keys, Home/End, Tab, Enter, Space),
+ * focus management, and outside click handling. It returns props and helpers to wire up
+ * a button acting as the combobox and a listbox with selectable options.
+ *
+ * @param name - Unique name for the select field
+ * @param label - Accessible label for the combobox
+ *
+ * @returns An object containing:
+ *  - isExpanded: whether the combobox is open
+ *  - listBoxId: the ID for the listbox element
+ *  - listBoxRef: ref to the listbox DOM element
+ *  - handleOptionSelect: function to select an option and close the combobox
+ *  - getComboBoxProps: props to spread onto the combobox button for accessibility
+ */
 export default function useSelect(name: string, label: string) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [focusedIndex, setFocusedIndex] = useState(0);
@@ -10,10 +27,15 @@ export default function useSelect(name: string, label: string) {
   const listBoxId = `${name}-select-box`;
   const listBoxRef = useRef<HTMLDivElement>(null);
 
+  /* -------------------- OPEN / CLOSE HANDLERS -------------------- */
+
   const toggleSelect = () => setIsExpanded((prev) => !prev);
   const closeSelect = () => setIsExpanded(false);
   const openSelect = () => setIsExpanded(true);
 
+  /**
+   * Selects an option and closes the combobox.
+   */
   const handleOptionSelect = (
     name: string,
     value: string,
@@ -23,6 +45,11 @@ export default function useSelect(name: string, label: string) {
     closeSelect();
   };
 
+  /* -------------------- FOCUS MANAGEMENT -------------------- */
+
+  /**
+   * Updates the currently focused index, clamping it within the option range.
+   */
   const updateFocusedIndex = useCallback((newIndex: number) => {
     const options = listBoxRef.current?.querySelectorAll('li');
     if (options && options.length > 0) {
@@ -31,6 +58,11 @@ export default function useSelect(name: string, label: string) {
     }
   }, []);
 
+  /* -------------------- KEYBOARD NAVIGATION -------------------- */
+
+  /**
+   * Handles keyboard events for opening, navigating, and selecting options.
+   */
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       const { key } = e;
@@ -90,6 +122,8 @@ export default function useSelect(name: string, label: string) {
     [focusedIndex, isExpanded, updateFocusedIndex],
   );
 
+  /* -------------------- FOCUS HIGHLIGHT -------------------- */
+
   useEffect(() => {
     const focusOption = () => {
       const options = listBoxRef.current?.querySelectorAll('li');
@@ -98,6 +132,8 @@ export default function useSelect(name: string, label: string) {
     };
     if (isExpanded) focusOption();
   }, [focusedIndex, isExpanded]);
+
+  /* -------------------- ATTACH KEYDOWN LISTENERS -------------------- */
 
   useEffect(() => {
     const comboBox = comboBoxRef.current;
@@ -109,6 +145,8 @@ export default function useSelect(name: string, label: string) {
       listBox?.removeEventListener('keydown', handleKeyDown);
     };
   }, [handleKeyDown]);
+
+  /* -------------------- CLICK OUTSIDE -------------------- */
 
   useEffect(() => {
     const handleClickOutsideSelect = (e: MouseEvent) => {

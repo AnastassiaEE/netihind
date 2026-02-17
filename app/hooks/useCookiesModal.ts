@@ -5,7 +5,26 @@ import { getCookie, hasCookie, setCookie } from 'cookies-next/client';
 
 const CONSENT_COOKIE_KEY = 'COOKIE_CONSENT';
 
+/**
+ * Manages cookie consent modal state and user preferences.
+ *
+ * This hook:
+ * - Initializes consent state from cookies
+ * - Opens the cookie modal if no consent is stored
+ * - Allows toggling individual preferences
+ * - Saves consent to cookies and updates global consent context
+ *
+ * Intended for GDPR-compliant cookie consent handling.
+ *
+ * @returns An object containing modal state, user preferences,
+ * and handlers for managing consent.
+ */
 export default function useCookiesModal() {
+
+  /**
+   * Stores current cookie preferences.
+   * "necessary" is always enabled by default.
+   */
   const [preferences, setPreferences] = useState<{
     [key: string]: boolean;
   }>({
@@ -22,6 +41,11 @@ export default function useCookiesModal() {
     overlayRef: cookiesModalRef,
   } = useOverlay(false, false);
 
+  /**
+   * Initialize consent state on mount:
+   * - If consent cookie exists, apply stored preferences
+   * - Otherwise, open the cookie consent modal
+   */
   useEffect(() => {
     if (hasCookie(CONSENT_COOKIE_KEY)) {
       const consentCookie = getCookie(CONSENT_COOKIE_KEY);
@@ -36,6 +60,9 @@ export default function useCookiesModal() {
     }
   }, []);
 
+  /**
+   * Toggles a single cookie preference.
+   */
   const togglePreference = (preference: string) => {
     setPreferences((prevState) => ({
       ...prevState,
@@ -43,6 +70,9 @@ export default function useCookiesModal() {
     }));
   };
 
+  /**
+   * Persists consent preferences in cookies and updates global state.
+   */
   const saveConsentCookie = (preferences: { [key: string]: boolean }) => {
     setCookie(CONSENT_COOKIE_KEY, JSON.stringify(preferences), {
       maxAge: 365 * 24 * 60 * 60,
@@ -51,6 +81,9 @@ export default function useCookiesModal() {
     setConsent(preferences);
   };
 
+  /**
+   * Applies predefined consent actions (accept all / decline all).
+   */
   const managePreferences = (action: string) => {
     let newPreferences = { ...preferences };
     switch (action) {
