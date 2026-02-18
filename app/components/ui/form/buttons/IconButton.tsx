@@ -8,7 +8,7 @@ type IconButtonProps = React.ComponentProps<typeof Button> & {
 };
 
 const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
-  ({ Icon, onClick, className, children, ...props }, ref) => {
+  ({ Icon, className, children, ...props }, ref) => {
     return (
       <Button
         ref={ref}
