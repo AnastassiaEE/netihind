@@ -19,8 +19,10 @@ import { FilterType } from '@/types/filters.types';
  * @param labelKey - Object key used to display filter labels
  * @param filterType - Type of filter (e.g. checkbox or range)
  *
- * @returns An object containing prepared filter data, selected values,
- * and loading state.
+ * @returns An object containing:
+ *  - `filterData`: prepared filter data ready for UI consumption, including:
+ *  - `filterSelectedValues`: array of currently selected values extracted from `filterData`
+ *  - `isLoading`: boolean indicating whether the filter data is currently being loaded
  */
 export default function usePackagesFilter(
   oid: string,

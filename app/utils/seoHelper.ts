@@ -78,7 +78,7 @@ export async function getMetadata(
  * @param breadcrumbs - Array of breadcrumb items
  * @param isPartOf - Object representing parent entity (e.g., website)
  * @param locale - Page locale
- * @param extraGraphItems - Additional items to include in the @graph array
+ * @param extraGraphItems - Additional items to include in the `@graph` array
  * 
  * @returns JSON-LD object for the page
  */

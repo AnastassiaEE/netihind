@@ -19,6 +19,7 @@ const usePrevState = (state: any) => {
   useEffect(() => {
     prevState.current = state;
   }, [state]);
+  
   return prevState.current;
 };
 

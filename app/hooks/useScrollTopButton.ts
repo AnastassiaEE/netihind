@@ -10,8 +10,8 @@ import useScrollPosition from '@/hooks/useScrollPosition';
  * scrolls past a certain point.
  *
  * @returns An object containing:
- *  - y: the current vertical scroll position in pixels
- *  - handleClick: function to smoothly scroll to the top of the page
+ *  - `y`: the current vertical scroll position in pixels
+ *  - `handleClick`: function to smoothly scroll to the top of the page
  */
 export default function useScrollTopButton() {
   const y = useScrollPosition();

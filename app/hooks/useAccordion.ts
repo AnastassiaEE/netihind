@@ -10,12 +10,12 @@ import useBoolean from '@/hooks/useBoolean';
  * @param defaultClosed - Whether the accordion is initially closed (default: true)
  *
  * @returns An object containing:
- *  - isClosed: boolean indicating if the accordion is closed
- *  - isVisible: boolean controlling whether the panel is rendered
- *  - collapsibleRef: ref to attach to the collapsible panel
- *  - getButtonProps: returns props to spread on the toggle button
- *  - getPanelProps: returns props to spread on the panel element
- *  - getArrowProps: returns the arrow direction for UI
+ *  - `isClosed`: boolean indicating if the accordion is closed
+ *  - `isVisible`: boolean controlling whether the panel is rendered
+ *  - `collapsibleRef`: ref to attach to the collapsible panel
+ *  - `getButtonProps`: returns props to spread on the toggle button
+ *  - `getPanelProps`: returns props to spread on the panel element
+ *  - `getArrowProps`: returns the arrow direction for UI
  */
 export default function useAccordion(defaultClosed: boolean = true) {
   const {

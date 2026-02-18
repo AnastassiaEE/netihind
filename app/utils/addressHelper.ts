@@ -7,10 +7,11 @@ const apartmentRegex = /(?<=\-).*$/g;
  * Parses an address object stored in a cookie string.
  *
  * @param cookieString - JSON string from the ADDRESS cookie
+ * 
  * @returns An object containing:
- *  - fullAddress: full street address
- *  - oid: address identifier
- *  - apartment: apartment number (if any)
+ *  - `fullAddress`: full street address
+ *  - `oid`: address identifier
+ *  - `apartment`: apartment number (if any)
  */
 export const getAddressCookieValues = (cookieString: string | undefined) => {
   const cookie = JSON.parse(cookieString || '{}');
@@ -30,6 +31,7 @@ export const getAddressCookieValues = (cookieString: string | undefined) => {
  * Uses a regex to remove apartment numbers or other trailing info.
  *
  * @param address - Full address string
+ * 
  * @returns Street part of the address
  */
 export const getAddress = (address: string) => {
@@ -42,6 +44,7 @@ export const getAddress = (address: string) => {
  * Assumes the apartment follows a hyphen (e.g., "Main St 5-12").
  *
  * @param address - Full address string
+ * 
  * @returns Apartment number if present, otherwise empty string
  */
 export const getApartment = (address: string) => {
@@ -55,6 +58,7 @@ export const getApartment = (address: string) => {
  * Removes special characters that are unsafe in URLs.
  *
  * @param address - Full address string
+ * 
  * @returns URL-friendly slug
  */
 export const getAddressSlug = (address: string) => {

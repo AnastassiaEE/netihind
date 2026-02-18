@@ -6,6 +6,7 @@
  *
  * @param date - Date string or ISO date
  * @param timeZone - Optional IANA timezone (e.g., 'Europe/Tallinn')
+ * 
  * @returns Formatted date string in 'DD.MM.YYYY' format
  */
 const getFormattedDate = (date: string, timeZone?: string) =>

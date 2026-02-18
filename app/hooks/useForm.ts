@@ -22,8 +22,16 @@ const responses = {
  * @param type - Form type identifier used on submit
  * @param additionalData - Optional extra payload data sent with the form
  *
- * @returns An object containing form state, validation errors,
- * submission status, response info, and event handlers.
+ * @returns An object containing:
+ *  - `errors`: object mapping each field name to its validation error message (empty string if no error)
+ *  - `values`: object mapping each field name to its current value
+ *  - `isSending`: boolean indicating if the form submission request is in progress
+ *  - `response`: object containing submission result
+ *  - `bluredFields`: ref object tracking which fields have been blurred at least once
+ *  - `handleChange`: function to handle input/textarea value changes
+ *  - `handleSelectChange`: function to handle controlled select value changes
+ *  - `handleBlur`: function to mark a field as blurred and validate it
+ *  - `handleSubmit`: function to handle form submission
  */
 export default function useForm(
   fields: {
@@ -32,7 +40,6 @@ export default function useForm(
   type: FormType,
   additionalData?: { [key: string]: any },
 ) {
-
   /**
    * Initialize form values, errors and blur state based on field config.
    */
@@ -72,8 +79,10 @@ export default function useForm(
   };
 
   /**
-   * Handles input value changes and performs validation
-   * if the field has already been blurred.
+   * Handles input value changes and performs validation if the field has already been blurred.
+   *
+   * @param e - The input or textarea change event
+   * @param field - The name of the field being changed
    */
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -93,6 +102,9 @@ export default function useForm(
 
   /**
    * Handles controlled select value changes.
+   *
+   * @param name - The name of the select field
+   * @param value - The new value selected by the user
    */
   const handleSelectChange = (name: string, value: string) => {
     setValues((prev) => ({ ...prev, [name]: value }));
@@ -100,6 +112,9 @@ export default function useForm(
 
   /**
    * Marks a field as blurred and validates it once the user leaves the field.
+   *
+   * @param e - The input or textarea blur (focus out) event
+   * @param field - The name of the field being blurred
    */
   const handleBlur = (
     e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -136,8 +151,9 @@ export default function useForm(
   };
 
   /**
-   * Handles form submission, including validation,
-   * async request, and response state management.
+   * Handles form submission, including validation, async request, and response state management.
+   *
+   * @param e - The form submission event
    */
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

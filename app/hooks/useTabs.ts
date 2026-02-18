@@ -11,11 +11,11 @@ import { useCallback, useEffect, useRef, useState } from 'react';
  * @param tabs - Array of tab labels used to determine number of tabs
  *
  * @returns An object containing:
- *  - activeTabId: currently active tab's ID
- *  - handleTabClick: click handler to activate a tab
- *  - getTabId: function to get a tab ID by index
- *  - getTabPanelId: function to get the corresponding tabpanel ID
- *  - tabsRef: ref array to store tab elements for focus management
+ *  - `activeTabId`: currently active tab's ID
+ *  - `handleTabClick`: click handler to activate a tab
+ *  - `getTabId`: function to get a tab ID by index
+ *  - `getTabPanelId`: function to get the corresponding tabpanel ID
+ *  - `tabsRef`: ref array to store tab elements for focus management
  */
 export default function useTabs(name: string, tabs: string[]) {
   const [activeTabId, setActiveTabId] = useState(`${name}-tab-1`);
@@ -23,6 +23,8 @@ export default function useTabs(name: string, tabs: string[]) {
 
   /**
    * Activates a tab when clicked and updates the active tab state.
+   *
+   * @param event - The mouse click event triggered on the tab element.
    */
   const handleTabClick = (event: React.MouseEvent<HTMLElement>) => {
     const tabElement = event.currentTarget;
@@ -30,20 +32,37 @@ export default function useTabs(name: string, tabs: string[]) {
   };
 
   /**
-   * Generates a unique ID for a tab by its index.
+   * Generates a unique ID for a tab based on its index.
+   *
+   * @param index - The zero-based index of the tab.
+   *
+   * @returns A string representing the unique ID of the tab.
+   *
+   * @example getTabId(0) // profile-tab-1 (name="profile")
    */
-  const getTabId = useCallback(
-    (index: number) => `${name}-tab-${index + 1}`,
-    [name],
-  );
+  const getTabId = (index: number) => `${name}-tab-${index + 1}`;
 
   /**
-   * Generates a unique ID for the corresponding tabpanel by index.
+   * Generates a unique ID for the corresponding tab panel based on its index.
+   *
+   * @param index - The zero-based index of the tab panel.
+   *
+   * @returns A string representing the unique ID of the tab panel.
+   *
+   * @example getTabPanelId(0) // profile-tabpanel-1 (name="profile")
    */
   const getTabPanelId = (index: number) => `${name}-tabpanel-${index + 1}`;
 
   /**
-   * Handles left/right arrow key navigation to move focus between tabs.
+   * Handles keyboard navigation between tabs using the left and right arrow keys.
+   *
+   * @param event - The keyboard event triggered when a key is pressed while a tab is focused.
+   *
+   * Behavior:
+   * - `ArrowLeft`: moves focus to the previous tab (wraps around to last tab if at the first tab).
+   * - `ArrowRight`: moves focus to the next tab (wraps around to first tab if at the last tab).
+   * - Updates the `activeTabId` state to the newly focused tab.
+   * - Moves focus programmatically to the new tab element.
    */
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {

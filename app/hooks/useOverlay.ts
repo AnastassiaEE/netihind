@@ -11,6 +11,13 @@ import { useCallback, useEffect, useRef, useState } from 'react';
  *
  * @param initialIsOpened - Determines if the overlay is initially opened
  * @param isClosable - Whether the overlay can be closed via ESC key
+ *
+ * @returns An object containing:
+ *  - `isMounted`: boolean indicating if the overlay is mounted in the DOM
+ *  - `isVisible`: boolean indicating if the overlay is visible (used for CSS transitions)
+ *  - `open`: function to open the overlay and set focus
+ *  - `close`: function to close the overlay and return focus to the previously active element
+ *  - `overlayRef`: React ref attached to the overlay container element
  */
 export default function useOverlay(
   initialIsOpened: boolean = false,

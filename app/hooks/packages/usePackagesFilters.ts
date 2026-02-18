@@ -17,14 +17,14 @@ import { getSelectedSortOption } from '@/utils/packagesHelper';
  * @param onUserChange - Optional callback triggered when the user modifies filters
  *
  * @returns An object containing:
- *  - filters: current filter data for providers and technologies
- *  - setFilters: function to update filter data
- *  - isFiltersLoaded: boolean indicating whether all filter options are loaded
- *  - clearFilters: function to reset all selected filters
- *  - providerFilterSelectedValues: currently selected provider values
- *  - technologyFilterSelectedValues: currently selected technology values
- *  - selectedSortOption: currently selected sort option
- *  - setSelectedSortOption: function to update the sort option
+ *  - `filters`: current filter data for providers and technologies
+ *  - `setFilters`: function to update filter data
+ *  - `isFiltersLoaded`: boolean indicating whether all filter options are loaded
+ *  - `clearFilters`: function to reset all selected filters
+ *  - `providerFilterSelectedValues`: currently selected provider values
+ *  - `technologyFilterSelectedValues`: currently selected technology values
+ *  - `selectedSortOption`: currently selected sort option
+ *  - `setSelectedSortOption`: function to update the sort option
  */
 export default function usePackagesFilters(
   oid: string,

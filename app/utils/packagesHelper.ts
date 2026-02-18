@@ -63,6 +63,11 @@ export const getFilterSelectedOptions = (
  * @param labelKey - Key in items to use as label
  * @param items - List of raw items for the filter
  * @param filterType - Type of the filter (checkbox, radio, etc.)
+ *
+ *  @returns An object containing:
+ *  - `type`: the type of the filter (e.g., 'checkbox', 'radio', etc.)
+ *  - `options`: array of all available filter options in the form `{ label: string, value: string }`
+ *  - `selected`: array of currently selected options, filtered from `options` based on search parameters
  */
 export const getFilterData = (
   searchParams: { [key: string]: string },
@@ -82,7 +87,8 @@ export const getFilterData = (
  * Groups equipment items by their combination ID.
  *
  * @param equipment - List of equipment items from a package
- * @returns Array of groups of equipment items sharing the same combination_id
+ * 
+ * @returns Array of groups of equipment items sharing the same `combination_id`
  */
 export function groupEquipmentByCombination(equipment: Package['equipment']) {
   if (!equipment) return [];
@@ -102,6 +108,7 @@ export function groupEquipmentByCombination(equipment: Package['equipment']) {
  * Calculates the minimum prices for each payment type across a set of equipment items.
  *
  * @param equipment - List of equipment items
+ * 
  * @returns Object mapping each payment type to the minimum price found
  */
 export function getEquipmentMinPricesByPayment(equipment: EquipmentItem[]) {

@@ -26,8 +26,11 @@ export default function useSort(
   const searchParams = useSearchParams();
 
   /**
-   * Updates the selected sort option and the URL query parameters.
-   * Skips the update if the new option is the same as the current one.
+   * Updates the selected sort option and synchronizes it with the URL query parameters.
+   * If the selected option is the same as the current one, no update is performed.
+   *
+   * @param name - The name of the sorting field (used for context, e.g., "sortBy")
+   * @param option - The new sort option to apply
    */
   const handleChange = (name: string, option: string) => {
     if (option === selectedOption) return;

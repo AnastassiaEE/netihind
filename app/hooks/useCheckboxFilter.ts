@@ -13,7 +13,7 @@ import { useCallback } from 'react';
  * @param onUserChange - Optional callback triggered when user changes a filter
  *
  * @returns An object containing:
- *  - handleChange: checkbox change handler
+ *  - `handleChange`: checkbox change handler
  */
 export default function useCheckboxFilter(
   name: string,
@@ -22,8 +22,11 @@ export default function useCheckboxFilter(
 ) {
 
   /**
-   * Updates selected options for the given checkbox filter.
-   */
+ * Updates the selected options for a checkbox filter.
+ *
+ * @param value - The value of the checkbox option that was changed
+ * @param checked - Boolean indicating whether the checkbox is now checked (true) or unchecked (false)
+ */
   const handleChange = useCallback(
     (value: string, checked: boolean) => {
       onUserChange?.();

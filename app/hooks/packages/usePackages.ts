@@ -16,8 +16,13 @@ import useSWR from 'swr';
  * @param technologies - List of selected connection technologies
  * @param onLoaded - Optional callback triggered once data is loaded or an error occurs
  *
- * @returns An object containing fetched packages, loading and error states,
- * selected package data, selected action, and UI handlers.
+ * @returns An object containing:
+ *  - `packages`: array of fetched packages (`Package[]`) or `undefined` while loading
+ *  - `error`: error object if fetching fails (`unknown`)
+ *  - `isLoading`: boolean indicating whether packages are currently loading
+ *  - `selectedPackage`: the currently selected package (`Package` | `undefined`)
+ *  - `selectedAction`: the currently selected action for the package (`PackageAction`)
+ *  - `handleActionClick`: function to select a package and trigger its modal
  */
 export default function usePackages(
   oid: string,
@@ -48,9 +53,12 @@ export default function usePackages(
   const [selectedAction, setSelectedAction] =
     useState<PackageAction>('connection');
 
- 
   /**
    * Sets the selected package and action, then opens the corresponding modal.
+   *
+   * @param packageData - The package object that was clicked/selected
+   * @param action - The action to perform on the selected package (e.g., 'connection', 'consultation', etc.)
+   * @param handleModal - Callback function that opens the modal associated with the action
    */
   const handleActionClick = (
     packageData: Package,

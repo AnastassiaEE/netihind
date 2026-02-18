@@ -6,6 +6,7 @@
  *
  * @param url - The relative path or URL to convert (e.g., '/about' or 'contact').
  * @param baseUrl - The base URL to resolve against (e.g., 'https://example.com').
+ * 
  * @returns The fully qualified absolute URL as a string.
  *
  * @example

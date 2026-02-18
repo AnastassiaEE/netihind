@@ -7,6 +7,7 @@
  * - 2+ sentences → returns the first two sentences
  *
  * @param text - Source plain text (no HTML)
+ * 
  * @returns A string containing up to two sentences or an empty string
  */
 export function extractFirstTwoSentences(text: string): string {

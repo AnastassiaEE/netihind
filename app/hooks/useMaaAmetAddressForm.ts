@@ -16,8 +16,13 @@ import { getAddressSlug } from '@/utils/addressHelper';
  *
  * @param nonce - CSP nonce used for loading the external InAadress script
  *
- * @returns An object containing form state, visibility flags,
- * validation errors, and submit / keyboard handlers.
+ * @returns An object containing:
+ *  - `isScriptLoaded`: boolean indicating whether the InAadress script has been loaded
+ *  - `isLoading`: boolean indicating whether the widget and address form are still initializing
+ *  - `handleSubmit`: function to handle form submission
+ *  - `handleKeyDown`: function to prevent form submission when pressing Enter inside widget inputs
+ *  - `isFormVisible`: function returning boolean whether the address form should be displayed
+ *  - `error`: string containing the current validation error key for the form
  */
 export default function useMaaAmetAddressForm(nonce: string) {
   const isWidgetAdded = useRef(false);
@@ -35,6 +40,9 @@ export default function useMaaAmetAddressForm(nonce: string) {
   /**
    * Handles address selection event emitted by the InAadress widget
    * and updates local address state.
+   *
+   * @param e - The event emitted by the InAadress widget (expected to be a CustomEvent).
+   *             The event's `detail` property should contain an array with address info objects
    */
   const getAddress = (e: Event) => {
     var info = (e as CustomEvent).detail[0];
@@ -104,6 +112,8 @@ export default function useMaaAmetAddressForm(nonce: string) {
 
   /**
    * Prevents form submission when pressing Enter inside widget inputs.
+   *
+   * @param e - The keyboard event triggered inside an input element
    */
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
@@ -112,8 +122,10 @@ export default function useMaaAmetAddressForm(nonce: string) {
   };
 
   /**
-   * Validates the form, stores selected address in cookies,
+   * Validates the form, stores the selected address in cookies,
    * and navigates to the address results page.
+   *
+   * @param e - The form submission event
    */
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

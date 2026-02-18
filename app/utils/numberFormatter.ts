@@ -6,6 +6,7 @@
  * - If the value is undefined, it returns an empty string.
  *
  * @param value - The numeric value to format
+ * 
  * @returns Formatted string representing the money value
  */
 export const formatMoney = (value?: number) => {

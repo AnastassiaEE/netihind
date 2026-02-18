@@ -10,8 +10,8 @@ import { useState } from 'react';
  * @param handleClose - Callback function to close the slide-up panel
  *
  * @returns An object containing touch event handlers:
- *  - handleTouchStart: attach to the panel's `onTouchStart` event
- *  - handleTouchEnd: attach to the panel's `onTouchEnd` event
+ *  - `handleTouchStart`: attach to the panel's `onTouchStart` event
+ *  - `handleTouchEnd`: attach to the panel's `onTouchEnd` event
  */
 export default function useSlideUpPanel(handleClose: () => void) {
   const [startY, setStartY] = useState(0); // Track the vertical position where the touch started

@@ -16,11 +16,16 @@ const CONSENT_COOKIE_KEY = 'COOKIE_CONSENT';
  *
  * Intended for GDPR-compliant cookie consent handling.
  *
- * @returns An object containing modal state, user preferences,
- * and handlers for managing consent.
+ * @returns An object containing:
+ *  - `openCookiesModal`: function to open the cookie consent modal
+ *  - `isCookiesModalMounted`: boolean indicating if the modal component is mounted in the DOM
+ *  - `isCookiesModalVisible`: boolean indicating if the modal is currently visible
+ *  - `cookiesModalRef`: ref object to attach to the modal overlay
+ *  - `preferences`: object representing current cookie preferences (key = preference name, value = boolean)
+ *  - `togglePreference`: function to toggle a single cookie preference 
+ *  - `managePreferences`: function to apply predefined consent actions to all preferences
  */
 export default function useCookiesModal() {
-
   /**
    * Stores current cookie preferences.
    * "necessary" is always enabled by default.
@@ -62,6 +67,8 @@ export default function useCookiesModal() {
 
   /**
    * Toggles a single cookie preference.
+   *
+   * @param preference - The key of the cookie preference to toggle
    */
   const togglePreference = (preference: string) => {
     setPreferences((prevState) => ({
@@ -72,6 +79,8 @@ export default function useCookiesModal() {
 
   /**
    * Persists consent preferences in cookies and updates global state.
+   *
+   * @param preferences - Object representing consent preferences (key = preference name, value = true/false)
    */
   const saveConsentCookie = (preferences: { [key: string]: boolean }) => {
     setCookie(CONSENT_COOKIE_KEY, JSON.stringify(preferences), {
@@ -82,7 +91,11 @@ export default function useCookiesModal() {
   };
 
   /**
-   * Applies predefined consent actions (accept all / decline all).
+   * Applies predefined consent actions (accept all / decline all) to all preferences.
+   *
+   * @param action - The action to apply. Supported values:
+   *   - `accept-all`: marks all preferences as true
+   *   - `decline-all`: marks all preferences as false, except 'necessary' which remains true
    */
   const managePreferences = (action: string) => {
     let newPreferences = { ...preferences };

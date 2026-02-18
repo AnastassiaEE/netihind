@@ -14,11 +14,11 @@ const openKeys = ['ArrowDown', 'ArrowUp', 'Enter', ' ', 'Home', 'End'];
  * @param label - Accessible label for the combobox
  *
  * @returns An object containing:
- *  - isExpanded: whether the combobox is open
- *  - listBoxId: the ID for the listbox element
- *  - listBoxRef: ref to the listbox DOM element
- *  - handleOptionSelect: function to select an option and close the combobox
- *  - getComboBoxProps: props to spread onto the combobox button for accessibility
+ *  - `isExpanded`: whether the combobox is open
+ *  - `listBoxId`: the ID for the listbox element
+ *  - `listBoxRef`: ref to the listbox DOM element
+ *  - `handleOptionSelect`: function to select an option and close the combobox
+ *  - `getComboBoxProps`: props to spread onto the combobox button for accessibility
  */
 export default function useSelect(name: string, label: string) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -34,7 +34,11 @@ export default function useSelect(name: string, label: string) {
   const openSelect = () => setIsExpanded(true);
 
   /**
-   * Selects an option and closes the combobox.
+   * Selects an option in a combobox and closes the dropdown.
+   *
+   * @param name - The name of the field associated with the combobox
+   * @param value - The value of the selected option
+   * @param handleChange - Callback function to update the selected value in state
    */
   const handleOptionSelect = (
     name: string,
@@ -48,7 +52,9 @@ export default function useSelect(name: string, label: string) {
   /* -------------------- FOCUS MANAGEMENT -------------------- */
 
   /**
-   * Updates the currently focused index, clamping it within the option range.
+   * Updates the currently focused index in a listbox, ensuring it stays within the valid range.
+   *
+   * @param newIndex - The new index to focus. Will be clamped between 0 and (number of options - 1)
    */
   const updateFocusedIndex = useCallback((newIndex: number) => {
     const options = listBoxRef.current?.querySelectorAll('li');
@@ -61,7 +67,17 @@ export default function useSelect(name: string, label: string) {
   /* -------------------- KEYBOARD NAVIGATION -------------------- */
 
   /**
-   * Handles keyboard events for opening, navigating, and selecting options.
+   * Handles keyboard interactions for the custom select/combobox component.
+   *
+   * @param e - The keyboard event triggered on the combobox or input element
+   *
+   * Key behavior:
+   * - `Home` / `End` / `PageUp` / `PageDown`: moves focus to first/last option
+   * - `ArrowUp` / `ArrowDown`: moves focus up or down by one
+   * - `Tab`: cycles focus through options
+   * - `Escape`: closes the dropdown and focuses the combobox
+   * - `Enter` / `Space`: focuses the combobox (used for selection in combination with mouse or click handlers)
+   * - When closed, pressing keys in `openKeys` array opens the select dropdown
    */
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {

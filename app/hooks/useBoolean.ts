@@ -11,10 +11,10 @@ import { useState } from 'react';
  * @param initialValue - Initial boolean value
  *
  * @returns An object containing:
- *  - value: current boolean state
- *  - toggle: toggles the value
- *  - setTrue: sets the value to true
- *  - setFalse: sets the value to false
+ *  - `value`: current boolean state
+ *  - `toggle`: toggles the value
+ *  - `setTrue`: sets the value to true
+ *  - `setFalse`: sets the value to false
  */
 export default function useBoolean(initialValue: boolean) {
   const [value, setValue] = useState(initialValue);

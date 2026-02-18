@@ -5,11 +5,14 @@ import { useRef, useState, useLayoutEffect } from 'react';
  *
  * This hook calculates the tooltip position relative to its wrapper,
  * ensures it stays within the viewport, and exposes show/hide functions.
- *
- * Usage:
- * - Attach `wrapperRef` to the element that triggers the tooltip.
- * - Attach `tooltipRef` to the tooltip element itself.
- * - Use `isVisible` and `pos` to render and position the tooltip.
+ * 
+ * @returns An object containing:
+ *  - `isVisible`: boolean indicating whether the tooltip is currently shown
+ *  - `pos`: object with `{ top: number; left: number }` specifying tooltip coordinates
+ *  - `wrapperRef`: React ref to attach to the element that triggers the tooltip
+ *  - `tooltipRef`: React ref to attach to the tooltip element itself
+ *  - `show`: function to show the tooltip
+ *  - `hide`: function to hide the tooltip
  */
 export default function useTooltip() {
   const wrapperRef = useRef<HTMLDivElement>(null);

@@ -7,6 +7,7 @@
  * @param field - The name of the form field (e.g., 'name', 'email', 'phone', etc.)
  * @param value - The current value of the field (string or boolean for checkboxes)
  * @param isRequired - Whether the field is required
+ * 
  * @returns Validation error message key or empty string
  */
 export const validateField = (field: string, value: string | boolean, isRequired: boolean) => {
