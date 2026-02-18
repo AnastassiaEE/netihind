@@ -13,6 +13,6 @@
  * getPageUrl('/about', 'https://example.com'); // "https://example.com/about"
  * getPageUrl('contact', 'https://example.com'); // "https://example.com/contact"
  */ 
-export function getPageUrl(url: string | URL, baseUrl: string | URL) {
+export const getPageUrl = (url: string | URL, baseUrl: string | URL) => {
   return new URL(url, baseUrl).toString();
 }

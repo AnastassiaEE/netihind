@@ -10,7 +10,7 @@ import { Locale } from "next-intl";
  * @param value - The string value to check
  * @returns `true` if the value is a supported locale, otherwise `false`
  */
-export function isLocale(value: string): value is Locale {
+export const isLocale = (value: string): value is Locale => {
   return routing.locales.includes(value as Locale);
 }
 
@@ -23,7 +23,7 @@ export function isLocale(value: string): value is Locale {
  * @param path - The URL path to normalize
  * @returns The normalized path without trailing slashes
  */
-export function normalizePath(path: string) {
+export const normalizePath = (path: string) => {
   if (path === '/') return '/';
   return path.replace(/\/+$/, '');
 }

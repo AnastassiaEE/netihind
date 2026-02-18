@@ -89,7 +89,7 @@ export const getFilterData = (
  * @param equipment - List of equipment items from a package
  * @returns Array of groups of equipment items sharing the same `combination_id`
  */
-export function groupEquipmentByCombination(equipment: Package['equipment']) {
+export const groupEquipmentByCombination = (equipment: Package['equipment']) => {
   if (!equipment) return [];
 
   const groups = equipment.reduce(
@@ -109,7 +109,7 @@ export function groupEquipmentByCombination(equipment: Package['equipment']) {
  * @param equipment - List of equipment items
  * @returns Object mapping each payment type to the minimum price found
  */
-export function getEquipmentMinPricesByPayment(equipment: EquipmentItem[]) {
+export const getEquipmentMinPricesByPayment = (equipment: EquipmentItem[]) => {
   const result: { [key: string]: number } = {};
 
   for (const item of equipment) {

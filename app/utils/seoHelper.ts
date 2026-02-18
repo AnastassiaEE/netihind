@@ -26,7 +26,7 @@ export const openGraphLogo = {
 
 /**
  * Generates page metadata (for SEO, Open Graph, etc.)
- * 
+ *
  * @param title - Page title
  * @param description - Page description
  * @param type - Open Graph type (e.g., 'website', 'article')
@@ -35,10 +35,10 @@ export const openGraphLogo = {
  * @param locale - Page locale (e.g., 'et', 'en')
  * @param images - Array of images for Open Graph
  * @param additional - Additional fields to include in the metadata object
- * 
+ *
  * @returns Metadata object for the page
  */
-export async function getMetadata(
+export const getMetadata = async (
   title: string,
   description: string,
   type: string,
@@ -47,7 +47,7 @@ export async function getMetadata(
   locale: Locale,
   images: imageType[] | undefined,
   additional?: Record<string, any>,
-) {
+) => {
   const absoluteUrl = getPageUrl(url, metadataBaseUrl);
 
   return {
@@ -67,11 +67,11 @@ export async function getMetadata(
     },
     ...additional,
   };
-}
+};
 
 /**
  * Generates structured data (JSON-LD) for a page
- * 
+ *
  * @param title - Page title
  * @param description - Page description
  * @param url - Page URL
@@ -79,10 +79,10 @@ export async function getMetadata(
  * @param isPartOf - Object representing parent entity (e.g., website)
  * @param locale - Page locale
  * @param extraGraphItems - Additional items to include in the `@graph` array
- * 
+ *
  * @returns JSON-LD object for the page
  */
-export function getSchema(
+export const getSchema = (
   title: string,
   description: string,
   url: string | URL,
@@ -93,7 +93,7 @@ export function getSchema(
   isPartOf: { [key: string]: any },
   locale: Locale,
   extraGraphItems?: any[],
-) {
+) => {
   const pageUrl = getPageUrl(url, metadataBaseUrl);
 
   return {
@@ -121,20 +121,20 @@ export function getSchema(
       ...(extraGraphItems || []),
     ],
   };
-}
+};
 
 /**
  * Generates a JSON-LD schema for the website
- * 
+ *
  * @param t - Translation function
  * @param locale - Website locale
- * 
+ *
  * @returns JSON-LD object for the website
  */
-export function getWebsiteSchema<T extends (key: any) => string>(
+export const getWebsiteSchema = <T extends (key: any) => string>(
   t: T,
   locale: Locale,
-) {
+) => {
   const websiteUrl = getPageUrl(t('website.url'), metadataBaseUrl);
   return {
     '@type': 'WebSite',
@@ -144,15 +144,15 @@ export function getWebsiteSchema<T extends (key: any) => string>(
     url: websiteUrl,
     inLanguage: locale,
   };
-}
+};
 
 /**
  * Generates a JSON-LD schema for the organization
- * 
+ *
  * @param t - Translation function
  * @returns JSON-LD object for the organization
  */
-export function getOrganizationSchema<T extends (key: any) => string>(t: T) {
+export const getOrganizationSchema = <T extends (key: any) => string>(t: T) => {
   const websiteUrl = getPageUrl(t('website.url'), metadataBaseUrl);
   return {
     '@type': 'Organization',
@@ -171,26 +171,26 @@ export function getOrganizationSchema<T extends (key: any) => string>(t: T) {
       },
     ],
   };
-}
+};
 
 /**
  * Generates a JSON-LD schema for a blog article
- * 
+ *
  * @param title - Article title
  * @param description - Article description
  * @param url - Article URL
  * @param datePublished - Date of publication (ISO string)
  * @param locale - Article locale
- * 
+ *
  * @returns JSON-LD object for the article
  */
-export function getPostSchema(
+export const getPostSchema = (
   title: string,
   description: string,
   url: string | URL,
   datePublished: string,
   locale: Locale,
-) {
+) => {
   const pageUrl = getPageUrl(url, metadataBaseUrl);
   return {
     '@type': 'BlogPosting',
@@ -205,4 +205,4 @@ export function getPostSchema(
       '@id': pageUrl,
     },
   };
-}
+};
