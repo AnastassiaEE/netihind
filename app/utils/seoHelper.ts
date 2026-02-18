@@ -185,7 +185,7 @@ export function getOrganizationSchema<T extends (key: any) => string>(t: T) {
  * 
  * @returns JSON-LD object for the article
  */
-export function getArticleSchema(
+export function getPostSchema(
   title: string,
   description: string,
   url: string | URL,

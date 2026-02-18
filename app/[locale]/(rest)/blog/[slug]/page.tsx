@@ -10,7 +10,7 @@ import PageLoader from '@/components/ui/loaders/PageLoader';
 import { Locale, useTranslations } from 'next-intl';
 import RelatedPostsSection from '@/components/sections/blog/RelatedPostsSection';
 import {
-  getArticleSchema,
+  getPostSchema,
   getMetadata,
   getSchema,
   getWebsiteSchema,
@@ -103,7 +103,7 @@ export default function Post(props: {
     { name: t('breadcrumbs.blog.name'), url: t('blogPage.url') },
     { name: post.title || t('blogPage.title'), url: absoluteUrl },
   ];
-  const articleGraphItem = getArticleSchema(
+  const postGraphItem = getPostSchema(
     title,
     description,
     url,
@@ -121,7 +121,7 @@ export default function Post(props: {
           breadcrumbs,
           getWebsiteSchema(t, locale),
           locale,
-          [articleGraphItem],
+          [postGraphItem],
         )}
       />
       <Suspense fallback={<PageLoader />}>
