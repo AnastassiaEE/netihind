@@ -1,7 +1,7 @@
 import React from 'react';
 import { tv } from 'tailwind-variants';
 import { FormElementSizes as sizes } from '@/components/ui/form/config';
-import { ButtonSize, ButtonType, ButtonVariant } from '@/types/form.types';
+import { ButtonSize, ButtonVariant } from '@/types/form.types';
 import classNames from 'classnames';
 
 const buttonClasses = tv({
@@ -29,16 +29,9 @@ const buttonClasses = tv({
   },
 });
 
-interface ButtonProps {
-  type?: ButtonType;
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
-  disabled?: boolean;
-  name?: string;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  className?: string;
-  children: React.ReactNode;
-  [key: string]: any;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -48,8 +41,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       variant = 'contained',
       size = 'sm',
       disabled = false,
-      name,
-      onClick,
       className,
       children,
       ...props
@@ -60,8 +51,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         type={type}
-        name={name}
-        onClick={onClick}
         className={classNames(
           buttonClasses({ variant, size, disabled }),
           className,

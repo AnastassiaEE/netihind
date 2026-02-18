@@ -3,7 +3,6 @@ import { PackageAction } from '@/types/packages.types';
 
 // type
 export type FormType = 'contact' | PackageAction;
-export type ButtonType = 'button' | 'submit' | 'reset';
 
 // variant
 export type ButtonVariant = 'contained' | 'outlined' | 'neutral' | 'text';
