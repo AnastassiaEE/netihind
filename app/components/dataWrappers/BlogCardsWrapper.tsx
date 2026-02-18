@@ -11,7 +11,6 @@ export default async function BlogCardsWrapper({
 }) {
   const locale = await getLocale();
   const posts: BlogPost[] = await getPosts(locale.toUpperCase());
-  console.log(posts);
   if (!posts.length) return <NoPostsError />;
   const childrenWithPosts = React.Children.map(children, (child) => {
     if (React.isValidElement(child))
