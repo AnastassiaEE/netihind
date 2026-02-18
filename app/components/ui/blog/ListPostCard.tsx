@@ -7,7 +7,7 @@ import classNames from 'classnames';
 
 export default function ListPostCard({
   href,
-  src,
+  imgSrc,
   alt,
   date,
   title,
@@ -15,7 +15,7 @@ export default function ListPostCard({
   className,
 }: {
   href: string;
-  src: string;
+  imgSrc?: string;
   alt: string;
   date: string;
   title: string;
@@ -35,20 +35,26 @@ export default function ListPostCard({
         }}
         className="md:flex"
       >
-        <div className="relative max-md:h-48 md:w-4/12">
-          <Image
-            src={src}
-            alt={alt}
-            className="object-cover max-md:rounded-t-lg md:rounded-l-lg"
-            fill={true}
-            sizes="(max-width: 767px) 100vw, 33vw"
-          />
-        </div>
-        <div className="p-6 md:w-8/12">
+        {imgSrc && (
+          <div className="relative max-md:h-48 md:w-4/12">
+            <Image
+              src={imgSrc}
+              alt={alt}
+              className="object-cover max-md:rounded-t-lg md:rounded-l-lg"
+              fill={true}
+              sizes="(max-width: 767px) 100vw, 33vw"
+            />
+          </div>
+        )}
+        <div
+          className={classNames('p-6', {
+            'md:w-8/12': imgSrc,
+          })}
+        >
           <div className="mb-4">
             <PostDate date={date} />
           </div>
-          <H2 className="mb-4! font-bold! text-muted-dark transition-colors group-hover:text-primary">
+          <H2 className="text-muted-dark group-hover:text-primary mb-4! font-bold! transition-colors">
             {title}
           </H2>
           <p>{excerpt}</p>

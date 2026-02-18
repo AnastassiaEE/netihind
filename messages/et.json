@@ -256,7 +256,7 @@
   },
   "SEO": {
     "website": {
-      "name": "Sõltumatu koduinterneti võrdlusportaal – Netihind.ee",
+      "title": "Sõltumatu koduinterneti võrdlusportaal | Netihind.ee",
       "description": "Sõltumatu koduinterneti võrdlusportaal - võrdle pakkumisi hinna, kiiruse ja ühendustehnoloogia järgi ning leia endale parim lahendus!",
       "url": "/"
     },
@@ -267,22 +267,39 @@
       "about": {
         "name": "Meist"
       },
+      "blog": {
+        "name": "Blogi"
+      },
+      "policy": {
+        "name": "Kasutus- ja privaatsustingimused"
+      },
       "contacts": {
         "name": "Kontaktid"
       }
     },
     "homePage": {
-      "name": "Sõltumatu koduinterneti võrdlusportaal – Netihind.ee",
+      "title": "Sõltumatu koduinterneti võrdlusportaal | Netihind.ee",
       "description": "Sõltumatu koduinterneti võrdlusportaal - võrdle pakkumisi hinna, kiiruse ja ühendustehnoloogia järgi ning leia endale parim lahendus!",
       "url": "/"
     },
     "aboutPage": {
-      "name": "Meist - Netihind.ee",
+      "title": "Meist | Netihind.ee",
       "description": "Netihind.ee pakub sõltumatut koduinterneti võrdlust teie aadressi alusel. Leidke parimad paketid kõigi Eesti teenusepakkujate hulgast.",
       "url": "/meist/"
     },
+    "blogPage": {
+      "title": "Blogi | Netihind.ee",
+      "description": "Loe Netihind.ee blogist viimaseid uudiseid ja nõuandeid koduinterneti valimisel Eestis.",
+      "url": "/blogi/"
+    },
+    "policyPage": {
+      "title": "Kasutus- ja privaatsustingimused | Netihind.ee",
+      "description": "Käesolevad kasutus- ja privaatsustingimused kirjeldavad, kuidas Netihind töötlevad teie isikuandmeid ja mis on Portaali kasutustingimused.",
+      "url": "/kasutustingimused/"
+    },
     "contactsPage": {
-      "name": "Kontaktid - Netihind.ee",
+      "title": "Kontaktid | Netihind.ee",
+      "description": "Võta meiega ühendust vormi, e‑posti või telefoni teel.",
       "url": "/kontaktid/"
     }
   },

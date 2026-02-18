@@ -40,6 +40,7 @@ export async function getPostBySlug(id: string) {
     slug
     date
     title
+    excerpt(format: RAW)
     featuredImage {
       node {
         altText

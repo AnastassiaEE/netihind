@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import CircleArrow from '@/components/ui/icons/CircleArrow';
 import SliderPostCard from '@/components/ui/blog/SliderPostCard';
 import 'swiper/css/bundle';
+import { BlogPost } from '@/types/blog.types';
 
 const arrowClasses =
   'text-black bg-white shadow-md shadow-black/30 max-xl:hidden hover:bg-primary hover:shadow-primary/50 hover:text-white';
@@ -38,17 +39,13 @@ const pagination = {
 
 const modules = [Pagination, Navigation];
 
-export default function BlogSlider({
-  posts,
-}: {
-  posts?: { [key: string]: any }[];
-}) {
+export default function BlogSlider({ posts }: { posts?: BlogPost[] }) {
   return (
     <div className="relative xl:px-20">
-      <div className="prev absolute left-0 top-1/2 -translate-y-1/2">
+      <div className="prev absolute top-1/2 left-0 -translate-y-1/2">
         <CircleArrow direction="left" className={arrowClasses} />
       </div>
-      <div className="next absolute right-0 top-1/2 -translate-y-1/2">
+      <div className="next absolute top-1/2 right-0 -translate-y-1/2">
         <CircleArrow direction="right" className={arrowClasses} />
       </div>
       <div className="swiper-pagination -bottom-10! z-0"></div>
@@ -62,10 +59,10 @@ export default function BlogSlider({
           <SwiperSlide key={post.title} className="h-auto! pb-4">
             <SliderPostCard
               href={post.slug}
-              src={post.featuredImage.node.sourceUrl}
-              alt={post.featuredImage.node.altText}
+              imgSrc={post.featuredImage?.node.sourceUrl}
+              alt={post.featuredImage?.node.altText ?? ''}
               date={post.date}
-              title={post.title}
+              title={post.title ?? ''}
             ></SliderPostCard>
           </SwiperSlide>
         ))}
