@@ -8,7 +8,6 @@ import { useState } from 'react';
  * callback is invoked to close the panel.
  *
  * @param handleClose - Callback function to close the slide-up panel
- *
  * @returns An object containing touch event handlers:
  *  - `handleTouchStart`: attach to the panel's `onTouchStart` event
  *  - `handleTouchEnd`: attach to the panel's `onTouchEnd` event

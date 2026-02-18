@@ -15,7 +15,6 @@ import { getAddressSlug } from '@/utils/addressHelper';
  * and prevents duplicate widget initialization.
  *
  * @param nonce - CSP nonce used for loading the external InAadress script
- *
  * @returns An object containing:
  *  - `isScriptLoaded`: boolean indicating whether the InAadress script has been loaded
  *  - `isLoading`: boolean indicating whether the widget and address form are still initializing

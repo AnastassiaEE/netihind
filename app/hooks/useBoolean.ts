@@ -9,7 +9,6 @@ import { useState } from 'react';
  * Useful for UI state such as modals, dropdowns, accordions, etc.
  *
  * @param initialValue - Initial boolean value
- *
  * @returns An object containing:
  *  - `value`: current boolean state
  *  - `toggle`: toggles the value

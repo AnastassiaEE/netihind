@@ -87,7 +87,6 @@ export const getFilterData = (
  * Groups equipment items by their combination ID.
  *
  * @param equipment - List of equipment items from a package
- * 
  * @returns Array of groups of equipment items sharing the same `combination_id`
  */
 export function groupEquipmentByCombination(equipment: Package['equipment']) {
@@ -108,7 +107,6 @@ export function groupEquipmentByCombination(equipment: Package['equipment']) {
  * Calculates the minimum prices for each payment type across a set of equipment items.
  *
  * @param equipment - List of equipment items
- * 
  * @returns Object mapping each payment type to the minimum price found
  */
 export function getEquipmentMinPricesByPayment(equipment: EquipmentItem[]) {

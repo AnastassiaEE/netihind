@@ -150,7 +150,6 @@ export function getWebsiteSchema<T extends (key: any) => string>(
  * Generates a JSON-LD schema for the organization
  * 
  * @param t - Translation function
- * 
  * @returns JSON-LD object for the organization
  */
 export function getOrganizationSchema<T extends (key: any) => string>(t: T) {
