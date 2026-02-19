@@ -1,4 +1,4 @@
-import { IconSize } from '@/types/elements.types';
+import { IconSize } from '@/types/ui.types';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import classNames from 'classnames';
 

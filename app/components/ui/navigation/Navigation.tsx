@@ -1,6 +1,6 @@
 import React, { isValidElement } from 'react';
 import classNames from 'classnames';
-import { NavigationType } from '@/types/elements.types';
+import { NavigationType } from '@/types/ui.types';
 
 export default function Navigation({
   type = 'horizontal',

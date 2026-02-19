@@ -4,7 +4,7 @@ import DesktopHeader from '@/components/ui/header/DesktopHeader';
 import MobileHeader from '@/components/ui/header/MobileHeader';
 import SidebarMenu from '@/components/ui/header/SidebarMenu';
 import StickyHeader from '@/components/ui/header/StickyHeader';
-import { HeaderVariant } from '@/types/elements.types';
+import { HeaderVariant } from '@/types/ui.types';
 
 const headerClasses = tv({
   base: 'bg-white',

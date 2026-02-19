@@ -1,5 +1,5 @@
 import LogoCard from '@/components/ui/logo/LogoCard';
-import { Logo } from '@/types/media.types';
+import { Logo } from '@/types/logo.types';
 
 export default function LogoCards({ logos }: { logos: Logo[] }) {
   return (

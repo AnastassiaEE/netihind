@@ -3,7 +3,7 @@ import Backdrop from '@/components/ui/overlay/Backdrop';
 import classNames from 'classnames';
 import CloseButton from '@/components/ui/buttons/CloseButton';
 import { useTranslations } from 'next-intl';
-import { DialogType } from '@/types/elements.types';
+import { DialogType } from '@/types/ui.types';
 import { usePortal } from '@/hooks/usePortal';
 
 export default function Dialog({

@@ -1,4 +1,4 @@
-import { ArrowIconDirection } from '@/types/elements.types';
+import { ArrowIconDirection } from '@/types/ui.types';
 import { ChevronLeft } from '@mui/icons-material';
 import { tv } from 'tailwind-variants';
 

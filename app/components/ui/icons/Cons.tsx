@@ -1,4 +1,4 @@
-import { IconSize } from '@/types/elements.types';
+import { IconSize } from '@/types/ui.types';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import classNames from 'classnames';
 

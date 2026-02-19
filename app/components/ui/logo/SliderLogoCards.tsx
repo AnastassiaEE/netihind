@@ -4,7 +4,7 @@ import React from 'react';
 import { Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SliderLogoCard from '@/components/ui/logo/SliderLogoCard';
-import { Logo } from '@/types/media.types';
+import { Logo } from '@/types/logo.types';
 
 const breakpoints = {
   0: {

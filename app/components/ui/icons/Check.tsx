@@ -1,4 +1,4 @@
-import { IconSize } from '@/types/elements.types';
+import { IconSize } from '@/types/ui.types';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import classNames from 'classnames';
 
@@ -12,7 +12,7 @@ export default function Check({
   return (
     <CheckCircleOutlineIcon
       fontSize={size}
-      className={classNames('mr-2 inline text-primary', className)}
+      className={classNames('text-primary mr-2 inline', className)}
     />
   );
 }
