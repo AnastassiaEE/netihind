@@ -1,26 +1,17 @@
 import { Loop } from '@mui/icons-material';
 import Button from '@/components/ui/form/buttons/Button';
-import { ButtonSize } from '@/types/form.types';
 
 export default function SendButton({
-  size = 'sm',
   isSending,
   children,
-  className,
+  ...props
 }: {
-  size?: ButtonSize;
   isSending: boolean;
   children?: React.ReactNode;
-  className?: string;
-}) {
+} & React.ComponentProps<typeof Button>) {
   return (
-    <Button
-      type="submit"
-      size={size}
-      disabled={isSending}
-      className={className}
-    >
-      {isSending ? <Loop className="mx-auto animate-spin" /> : <>{children}</>}
+    <Button type="submit" disabled={isSending} {...props}>
+      {isSending ? <Loop className="mx-auto animate-spin" /> : children}
     </Button>
   );
 }

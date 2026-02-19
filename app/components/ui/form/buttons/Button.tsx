@@ -35,28 +35,17 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      type = 'button',
-      variant = 'contained',
-      size = 'sm',
-      disabled = false,
-      className,
-      children,
-      ...props
-    },
-    ref,
-  ) => {
+  ({ type = 'button', variant, size, disabled, children, ...props }, ref) => {
     return (
       <button
         ref={ref}
         type={type}
-        className={classNames(
-          buttonClasses({ variant, size, disabled }),
-          className,
-        )}
         disabled={disabled}
         {...props}
+        className={classNames(
+          buttonClasses({ variant, size, disabled }),
+          props.className,
+        )}
       >
         {children}
       </button>

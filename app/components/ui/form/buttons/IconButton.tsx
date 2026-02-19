@@ -8,17 +8,17 @@ type IconButtonProps = React.ComponentProps<typeof Button> & {
 };
 
 const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
-  ({ Icon, className, children, ...props }, ref) => {
+  ({ Icon, size = 'sm', children, ...props }, ref) => {
     return (
       <Button
         ref={ref}
         className={classNames(
           'flex items-center justify-center gap-2',
-          className,
+          props.className,
         )}
         {...props}
       >
-        <Icon fontSize={props.size === 'lg' ? 'medium' : 'small'} />
+        <Icon fontSize={size === 'lg' ? 'medium' : 'small'} />
         {children}
       </Button>
     );
