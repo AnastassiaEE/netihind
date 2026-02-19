@@ -1,27 +1,27 @@
-const providerLogos: { [key: string]: string }[] = [
+const providerLogos = [
   {
     name: 'Telia Eesti AS',
-    img_src:
+    src:
       'https://rxysmdetqttpdqfmrpym.supabase.co/storage/v1/object/public/providers-logos/Telia.png',
-    img_alt: 'Telia logo',
+    alt: 'Telia logo',
   },
   {
     name: 'Elisa Eesti AS',
-    img_src:
+    src:
       'https://rxysmdetqttpdqfmrpym.supabase.co/storage/v1/object/public/providers-logos/Elisa.png',
-    img_alt: 'Elisa logo',
+    alt: 'Elisa logo',
   },
   {
     name: 'Tele2 Eesti AS',
-    img_src:
+    src:
       'https://rxysmdetqttpdqfmrpym.supabase.co/storage/v1/object/public/providers-logos/Tele2.png',
-    img_alt: 'Tele2 logo',
+    alt: 'Tele2 logo',
   },
   {
     name: 'STV AS',
-    img_src:
+    src:
       'https://rxysmdetqttpdqfmrpym.supabase.co/storage/v1/object/public/providers-logos/Stv.png',
-    img_alt: 'Stv logo',
+    alt: 'Stv logo',
   },
 ];
 

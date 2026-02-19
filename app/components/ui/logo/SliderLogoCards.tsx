@@ -4,6 +4,7 @@ import React from 'react';
 import { Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SliderLogoCard from '@/components/ui/logo/SliderLogoCard';
+import { Logo } from '@/types/media.types';
 
 const breakpoints = {
   0: {
@@ -30,11 +31,7 @@ const pagination = {
 
 const modules = [Pagination];
 
-export default function SliderLogoCards({
-  logos,
-}: {
-  logos: { [key: string]: any }[];
-}) {
+export default function SliderLogoCards({ logos }: { logos: Logo[] }) {
   return (
     <>
       <Swiper
@@ -45,7 +42,7 @@ export default function SliderLogoCards({
       >
         {logos.map((logo) => (
           <SwiperSlide key={logo.alt} className="shrink py-5">
-            <SliderLogoCard image={logo.image} alt={logo.alt} />
+            <SliderLogoCard imgSrc={logo.src} alt={logo.alt} />
           </SwiperSlide>
         ))}
       </Swiper>
