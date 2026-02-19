@@ -16,7 +16,7 @@ export default function Footer() {
         <div className="mb-2 flex justify-center">
           <LinkLogo src={whitelogo} sizeClass="w-36" />
         </div>
-        <div className="pb-6 pt-4 text-center">
+        <div className="pt-4 pb-6 text-center">
           <Navigation className="text-white/80">
             <NavigationItem href="/">{t('home')}</NavigationItem>
             <NavigationItem href="/blog">{t('blog')}</NavigationItem>
@@ -26,7 +26,7 @@ export default function Footer() {
           </Navigation>
         </div>
         <div className="flex justify-center pt-6">
-          <SocialLinks data={socialLinks} />
+          <SocialLinks links={socialLinks} />
         </div>
         <div className="pt-12">
           <Copyright className="text-white/60" />
