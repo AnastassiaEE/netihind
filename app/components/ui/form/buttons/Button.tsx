@@ -35,7 +35,10 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ type = 'button', variant, size, disabled, children, ...props }, ref) => {
+  (
+    { type = 'button', variant, size, disabled = false, children, ...props },
+    ref,
+  ) => {
     return (
       <button
         ref={ref}
