@@ -19,31 +19,24 @@ const textAreaClasses = tv({
   },
 });
 
-export default function Textarea({
-  size = 'sm',
-  name,
-  label,
-  placeholder,
-  onChange,
-  onBlur,
-  value,
-  isValid = true,
-  error,
-  required,
-  className,
-}: {
+interface TextareaProps
+  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   size?: TextareaSize;
-  name: string;
   label?: string;
-  placeholder?: string;
-  onChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
-  onBlur?: React.FocusEventHandler<HTMLTextAreaElement>;
-  value?: string;
   isValid?: boolean;
   error?: string;
-  required: boolean;
-  className?: string;
-}) {
+}
+
+export default function Textarea({
+  size,
+  label,
+  isValid = true,
+  error,
+  required = false,
+  className,
+  ...props
+}: TextareaProps) {
+  const name = props.name ?? '';
   return (
     <>
       {label && (
@@ -54,12 +47,9 @@ export default function Textarea({
       <textarea
         id={name}
         className={textAreaClasses({ size, isValid, className })}
-        placeholder={placeholder}
-        onChange={onChange}
-        onBlur={onBlur}
-        value={value}
         aria-invalid={!isValid}
         aria-required={required}
+        {...props}
       ></textarea>
       {!isValid && <FieldError size={size}>{error}</FieldError>}
     </>
