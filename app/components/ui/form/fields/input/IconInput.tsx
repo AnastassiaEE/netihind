@@ -12,24 +12,13 @@ interface IconInputProps
 }
 
 export default function IconInput({
-  size = 'sm',
-  name,
-  type = 'text',
-  inputmode = 'text',
-  label,
-  placeholder,
-  onChange,
-  onFocus,
-  onBlur,
-  value,
-  isValid,
-  error,
-  required,
   icon: { Icon, isVisible, onClick },
+  inputSize = 'sm',
+  ...props
 }: IconInputProps) {
   const inputClasses = classNames({
-    'pl-10': isVisible && size === 'sm',
-    'pl-12': isVisible && size === 'lg',
+    'pl-10': isVisible && inputSize === 'sm',
+    'pl-12': isVisible && inputSize === 'lg',
   });
 
   const iconWrapperClasses = classNames(
@@ -38,33 +27,18 @@ export default function IconInput({
   );
 
   return (
-    <Input
-      size={size}
-      name={name}
-      type={type}
-      inputmode={inputmode}
-      label={label}
-      placeholder={placeholder}
-      onChange={onChange}
-      onFocus={onFocus}
-      onBlur={onBlur}
-      value={value}
-      isValid={isValid}
-      error={error}
-      required={required}
-      className={inputClasses}
-    >
+    <Input inputSize={inputSize} className={inputClasses} {...props}>
       <div className={iconWrapperClasses}>
         {onClick ? (
           <button type="button" onClick={onClick}>
             <Icon
-              fontSize={size === 'lg' ? 'medium' : 'small'}
+              fontSize={inputSize === 'lg' ? 'medium' : 'small'}
               className="text-muted"
             />
           </button>
         ) : (
           <Icon
-            fontSize={size === 'lg' ? 'medium' : 'small'}
+            fontSize={inputSize === 'lg' ? 'medium' : 'small'}
             className="text-muted"
           />
         )}

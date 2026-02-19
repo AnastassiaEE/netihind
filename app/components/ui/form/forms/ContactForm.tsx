@@ -63,7 +63,7 @@ export default function ContactForm() {
         <Input
           name="email"
           type="email"
-          inputmode="email"
+          inputMode="email"
           label={t('labels.email')}
           onChange={(e) => handleChange(e, 'email')}
           onBlur={(e) => handleBlur(e, 'email')}
@@ -77,7 +77,7 @@ export default function ContactForm() {
         <IconInput
           name="phone"
           type="tel"
-          inputmode="tel"
+          inputMode="tel"
           label={t('labels.phone')}
           onChange={(e) => handleChange(e, 'phone')}
           onBlur={(e) => handleBlur(e, 'phone')}
@@ -111,7 +111,7 @@ export default function ContactForm() {
               <a
                 href="/policy"
                 target="_blank"
-                className="font-semibold transition-colors hover:text-primary"
+                className="hover:text-primary font-semibold transition-colors"
               >
                 {chunks}
               </a>

@@ -3,76 +3,45 @@ import FieldLabel from '@/components/ui/form/fields/FieldLabel';
 import { tv } from 'tailwind-variants';
 import { FormElementSizes as sizes } from '@/components/ui/form/config';
 import { InputSize } from '@/types/form.types';
+import classNames from 'classnames';
 
 const inputClasses = tv({
   base: 'w-full rounded-md border bg-white text-muted-dark transition-[padding] placeholder:text-muted focus:shadow-md focus:outline-hidden',
   variants: {
-    size: sizes,
+    inputSize: sizes,
     isValid: {
       true: 'border-valid focus:border-primary/30 focus:shadow-primary/10',
       false: 'border-invalid focus:shadow-invalid/10',
     },
   },
   defaultVariants: {
-    size: 'sm',
+    inputSize: 'sm',
     isValid: true,
   },
 });
 
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  inputSize?: InputSize;
+  isValid?: boolean;
+  label?: string;
+  error?: string;
+}
+
 export default function Input({
-  size = 'sm',
-  name,
-  type = 'text',
-  inputmode = 'text',
-  label,
-  placeholder,
-  onChange,
-  onFocus,
-  onBlur,
-  value,
+  inputSize,
   isValid = true,
+  label,
   error,
-  required,
+  required = false,
   className,
   children,
-}: {
-  size?: InputSize;
-  name: string;
-  type?:
-    | 'text'
-    | 'password'
-    | 'email'
-    | 'tel'
-    | 'url'
-    | 'search'
-    | 'number'
-    | 'range'
-    | 'hidden';
-  inputmode?:
-    | 'text'
-    | 'tel'
-    | 'email'
-    | 'url'
-    | 'numeric'
-    | 'decimal'
-    | 'search'
-    | 'none';
-  label?: string;
-  placeholder?: string;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
-  onFocus?: React.FocusEventHandler<HTMLInputElement>;
-  onBlur?: React.FocusEventHandler<HTMLInputElement>;
-  value?: string;
-  isValid?: boolean;
-  error?: string;
-  required: boolean;
-  className?: string;
-  children?: React.ReactNode;
-}) {
+  ...props
+}: InputProps) {
+  const name = props.name ?? '';
   return (
     <>
       {label && (
-        <FieldLabel htmlFor={name} size={size}>
+        <FieldLabel htmlFor={name} size={inputSize}>
           {label}
         </FieldLabel>
       )}
@@ -81,20 +50,17 @@ export default function Input({
         <input
           id={name}
           name={name}
-          type={type}
-          inputMode={inputmode}
-          className={inputClasses({ size, isValid, className })}
-          placeholder={placeholder}
-          onChange={onChange}
-          onFocus={onFocus}
-          onBlur={onBlur}
-          value={value}
+          className={classNames(
+            inputClasses({ inputSize, isValid }),
+            className,
+          )}
           autoComplete={name}
           aria-invalid={!isValid}
           aria-required={required}
+          {...props}
         />
       </div>
-      {!isValid && <FieldError size={size}>{error}</FieldError>}
+      {!isValid && <FieldError size={inputSize}>{error}</FieldError>}
     </>
   );
 }
