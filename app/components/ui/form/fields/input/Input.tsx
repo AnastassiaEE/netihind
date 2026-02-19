@@ -50,10 +50,7 @@ export default function Input({
         <input
           id={name}
           name={name}
-          className={classNames(
-            inputClasses({ inputSize, isValid }),
-            className,
-          )}
+          className={inputClasses({ inputSize, isValid, className })}
           autoComplete={name}
           aria-invalid={!isValid}
           aria-required={required}

@@ -2,7 +2,6 @@ import React from 'react';
 import { tv } from 'tailwind-variants';
 import { FormElementSizes as sizes } from '@/components/ui/form/config';
 import { ButtonSize, ButtonVariant } from '@/types/form.types';
-import classNames from 'classnames';
 
 const buttonClasses = tv({
   base: 'rounded-md font-semibold transition-all',
@@ -53,10 +52,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         type={type}
         disabled={disabled}
         {...props}
-        className={classNames(
-          buttonClasses({ variant, size, disabled }),
-          className,
-        )}
+        className={buttonClasses({ variant, size, disabled, className })}
       >
         {children}
       </button>
