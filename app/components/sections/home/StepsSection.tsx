@@ -14,7 +14,7 @@ export default function StepsSection() {
     <SectionLayout className="pt-24">
       <H2 className="text-center">{t('title')}</H2>
       <p className="mb-12 text-center text-lg">{t('description')}</p>
-      <Steps data={translatedSteps} />
+      <Steps steps={translatedSteps} />
     </SectionLayout>
   );
 }
