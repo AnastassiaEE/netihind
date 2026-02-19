@@ -69,7 +69,7 @@ export async function generateMetadata(props: {
 
 export async function generateStaticParams() {
   const posts: BlogPost[] = await getPostsWithSlugsOnly();
-  let paths = posts.map((post: { [key: string]: any }) => {
+  let paths = posts.map((post: BlogPost) => {
     let slug = getFormattedSlug(post.slug);
     return {
       slug: slug,

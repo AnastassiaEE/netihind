@@ -2,8 +2,8 @@
 import { createContext, useContext, useState } from 'react';
 
 type ConsentContextType = {
-  consent: { [key: string]: boolean };
-  setConsent: React.Dispatch<React.SetStateAction<{ [key: string]: boolean }>>;
+  consent: Record<string, boolean>;
+  setConsent: React.Dispatch<React.SetStateAction<Record<string, boolean>>>;
 };
 
 const ConsentContext = createContext<ConsentContextType | undefined>(undefined);

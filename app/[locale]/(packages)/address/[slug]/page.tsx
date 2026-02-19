@@ -9,7 +9,7 @@ import { Locale } from 'next-intl';
 
 export default async function PersonalAddress(props: {
   params: Promise<{ slug: string; locale: Locale }>;
-  searchParams: Promise<{ [key: string]: string }>;
+  searchParams: Promise<Record<string, string>>;
 }) {
   const searchParams = await props.searchParams;
   const params = await props.params;

@@ -90,7 +90,7 @@ export const getSchema = (
     name: string;
     url: string | URL;
   }[],
-  isPartOf: { [key: string]: any },
+  isPartOf: Record<string, any>,
   locale: Locale,
   extraGraphItems?: any[],
 ) => {

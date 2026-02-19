@@ -3,6 +3,9 @@ import { PackageAction } from '@/types/packages.types';
 
 // type
 export type FormType = 'contact' | PackageAction;
+export type FormFields = {
+  [key: string]: { initialValue: string | boolean; isRequired: boolean };
+};
 
 // variant
 export type ButtonVariant = 'contained' | 'outlined' | 'neutral' | 'text';

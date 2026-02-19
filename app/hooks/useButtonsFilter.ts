@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useRouter, usePathname } from '@/i18n/routing';
 import { useParams } from 'next/navigation';
 
-export default function useButtonsFilter(options: { [key: string]: boolean }) {
+export default function useButtonsFilter(options: Record<string, boolean>) {
   const [usedOptions, setUsedOptions] = useState(options);
   const router = useRouter();
   const pathname = usePathname();
@@ -11,7 +11,10 @@ export default function useButtonsFilter(options: { [key: string]: boolean }) {
   const activateButton = (option: string) => {
     setUsedOptions((prevOptions) =>
       Object.fromEntries(
-        Object.keys(prevOptions).map((prevOption) => [prevOption, prevOption === option]),
+        Object.keys(prevOptions).map((prevOption) => [
+          prevOption,
+          prevOption === option,
+        ]),
       ),
     );
   };

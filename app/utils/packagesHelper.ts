@@ -26,7 +26,7 @@ export const getSelectedSortOption = (sortParam: string) => {
  * @param valueKey - Key to use for the value
  */
 const getFilterOptions = (
-  items: { [key: string]: string }[],
+  items: Record<string, string>[],
   labelKey: string,
   valueKey: string,
 ) =>
@@ -70,11 +70,11 @@ export const getFilterSelectedOptions = (
  *  - `selected`: array of currently selected options, filtered from `options` based on search parameters
  */
 export const getFilterData = (
-  searchParams: { [key: string]: string },
+  searchParams: Record<string, string>,
   paramKey: string,
   valueKey: string,
   labelKey: string,
-  items: { [key: string]: string }[],
+  items: Record<string, string>[],
   filterType: FilterType,
 ) => {
   const params = searchParams[paramKey]?.split(',') || [];
@@ -89,7 +89,9 @@ export const getFilterData = (
  * @param equipment - List of equipment items from a package
  * @returns Array of groups of equipment items sharing the same `combination_id`
  */
-export const groupEquipmentByCombination = (equipment: Package['equipment']) => {
+export const groupEquipmentByCombination = (
+  equipment: Package['equipment'],
+) => {
   if (!equipment) return [];
 
   const groups = equipment.reduce(
@@ -101,7 +103,7 @@ export const groupEquipmentByCombination = (equipment: Package['equipment']) => 
   );
 
   return Object.values(groups);
-}
+};
 
 /**
  * Calculates the minimum prices for each payment type across a set of equipment items.
@@ -110,7 +112,7 @@ export const groupEquipmentByCombination = (equipment: Package['equipment']) => 
  * @returns Object mapping each payment type to the minimum price found
  */
 export const getEquipmentMinPricesByPayment = (equipment: EquipmentItem[]) => {
-  const result: { [key: string]: number } = {};
+  const result: Record<string, number> = {};
 
   for (const item of equipment) {
     for (const [paymentType, payment] of Object.entries(item.payment)) {
@@ -122,4 +124,4 @@ export const getEquipmentMinPricesByPayment = (equipment: EquipmentItem[]) => {
   }
 
   return result;
-}
+};

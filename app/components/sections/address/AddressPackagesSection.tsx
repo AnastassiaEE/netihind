@@ -18,7 +18,7 @@ export default function AddressPackagesSection({
   address,
   oid,
 }: {
-  searchParams: { [key: string]: string };
+  searchParams: Record<string, string>;
   address: string;
   oid: string;
 }) {

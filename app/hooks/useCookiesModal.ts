@@ -22,7 +22,7 @@ const CONSENT_COOKIE_KEY = 'COOKIE_CONSENT';
  *  - `isCookiesModalVisible`: boolean indicating if the modal is currently visible
  *  - `cookiesModalRef`: ref object to attach to the modal overlay
  *  - `preferences`: object representing current cookie preferences (key = preference name, value = boolean)
- *  - `togglePreference`: function to toggle a single cookie preference 
+ *  - `togglePreference`: function to toggle a single cookie preference
  *  - `managePreferences`: function to apply predefined consent actions to all preferences
  */
 export default function useCookiesModal() {
@@ -30,9 +30,7 @@ export default function useCookiesModal() {
    * Stores current cookie preferences.
    * "necessary" is always enabled by default.
    */
-  const [preferences, setPreferences] = useState<{
-    [key: string]: boolean;
-  }>({
+  const [preferences, setPreferences] = useState<Record<string, boolean>>({
     necessary: true,
     statistics: false,
   });
@@ -82,7 +80,7 @@ export default function useCookiesModal() {
    *
    * @param preferences - Object representing consent preferences (key = preference name, value = true/false)
    */
-  const saveConsentCookie = (preferences: { [key: string]: boolean }) => {
+  const saveConsentCookie = (preferences: Record<string, boolean>) => {
     setCookie(CONSENT_COOKIE_KEY, JSON.stringify(preferences), {
       maxAge: 365 * 24 * 60 * 60,
     });

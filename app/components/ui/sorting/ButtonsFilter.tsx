@@ -8,7 +8,7 @@ import React from 'react';
 export default function ButtonsFilter({
   options,
 }: {
-  options: { [key: string]: boolean };
+  options: Record<string, boolean>;
 }) {
   const { usedOptions, handleOptionClick } = useButtonsFilter(options);
   const t = useTranslations('Filters');

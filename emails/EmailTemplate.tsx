@@ -14,7 +14,7 @@ import {
 } from '@react-email/components';
 import * as React from 'react';
 
-const labels: { [key: string]: string } = {
+const labels: Record<string, string> = {
   name: 'Nimi',
   email: 'E-post',
   phone: 'Telefon',
@@ -22,12 +22,11 @@ const labels: { [key: string]: string } = {
   time: 'Aeg',
   policy: 'Kas olete nõus privaatsuspoliitikaga?',
   address: 'Aadress',
-  'call-time': 'Kontaktaeg',
 };
 
 export default function EmailTemplate(
   type: FormType,
-  values: { [key: string]: string },
+  values: Record<string, string>,
 ) {
   return (
     <Tailwind

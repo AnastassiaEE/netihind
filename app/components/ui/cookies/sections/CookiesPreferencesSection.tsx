@@ -3,12 +3,13 @@ import { useTranslations } from 'next-intl';
 import React from 'react';
 import CookieDetails from '@/components/ui/cookies/CookieDetails';
 import CookiesDetailsAccordion from '@/components/ui/cookies/CookiesDetailsAccordion';
+import { CookieInfo } from '@/types/cookies.types';
 
 export default function CookiesPreferencesSection({
   preferences,
   togglePreference,
 }: {
-  preferences: { [key: string]: boolean };
+  preferences: Record<string, boolean>;
   togglePreference: (cookiesType: string) => void;
 }) {
   const t = useTranslations('Cookies');
@@ -64,15 +65,7 @@ export default function CookiesPreferencesSection({
     },
   };
 
-  const renderCookieDetails = (cookies: {
-    [key: string]: {
-      description: string;
-      domain: string;
-      policy: string;
-      maxAge: string;
-      type: string;
-    };
-  }) => {
+  const renderCookieDetails = (cookies: Record<string, CookieInfo>) => {
     return Object.entries(cookies).map(
       ([name, { description, domain, policy, maxAge, type }]) => (
         <CookieDetails

@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { validateField } from '@/utils/fieldsValidator';
-import { FormType } from '@/types/form.types';
+import { FormFields, FormType } from '@/types/form.types';
 
 const responses = {
   success: { message: 'messages.sentSuccessfully' },
@@ -34,11 +34,9 @@ const responses = {
  *  - `handleSubmit`: function to handle form submission
  */
 export default function useForm(
-  fields: {
-    [key: string]: { initialValue: string | boolean; isRequired: boolean };
-  },
+  fields: FormFields,
   type: FormType,
-  additionalData?: { [key: string]: any },
+  additionalData?: Record<string, any>,
 ) {
   /**
    * Initialize form values, errors and blur state based on field config.
