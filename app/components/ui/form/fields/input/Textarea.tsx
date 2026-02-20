@@ -2,7 +2,7 @@ import FieldError from '@/components/ui/form/fields/FieldError';
 import FieldLabel from '@/components/ui/form/fields/FieldLabel';
 import { FormElementSizes as sizes } from '@/components/ui/form/config';
 import { tv } from 'tailwind-variants';
-import { TextareaSize } from '@/types/form.types';
+import { Label, TextareaSize } from '@/types/form.types';
 
 const textAreaClasses = tv({
   base: 'w-full rounded-md border bg-white text-muted-dark placeholder:text-muted focus:shadow-md focus:outline-hidden',
@@ -22,7 +22,7 @@ const textAreaClasses = tv({
 interface TextareaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   size?: TextareaSize;
-  label?: string;
+  label?: Label;
   isValid?: boolean;
   error?: string;
 }
@@ -40,8 +40,8 @@ export default function Textarea({
   return (
     <>
       {label && (
-        <FieldLabel htmlFor={name} size={size}>
-          {label}
+        <FieldLabel htmlFor={name} size={size} className={label.className}>
+          {label.value}
         </FieldLabel>
       )}
       <textarea

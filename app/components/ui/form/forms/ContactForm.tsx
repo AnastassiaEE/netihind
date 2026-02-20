@@ -50,7 +50,7 @@ export default function ContactForm() {
       <div className="mb-6">
         <Input
           name="name"
-          label={t('labels.name')}
+          label={{ value: t('labels.name'), className: 'font-semibold' }}
           onChange={(e) => handleChange(e, 'name')}
           onBlur={(e) => handleBlur(e, 'name')}
           value={values.name as string}
@@ -64,7 +64,7 @@ export default function ContactForm() {
           name="email"
           type="email"
           inputMode="email"
-          label={t('labels.email')}
+          label={{ value: t('labels.email'), className: 'font-semibold' }}
           onChange={(e) => handleChange(e, 'email')}
           onBlur={(e) => handleBlur(e, 'email')}
           value={values.email as string}
@@ -78,7 +78,7 @@ export default function ContactForm() {
           name="phone"
           type="tel"
           inputMode="tel"
-          label={t('labels.phone')}
+          label={{ value: t('labels.phone'), className: 'font-semibold' }}
           onChange={(e) => handleChange(e, 'phone')}
           onBlur={(e) => handleBlur(e, 'phone')}
           value={values.phone as string}
@@ -91,7 +91,7 @@ export default function ContactForm() {
       <div className="mb-6">
         <Textarea
           name="message"
-          label={t('labels.message')}
+          label={{ value: t('labels.message'), className: 'font-semibold' }}
           onChange={(e) => handleChange(e, 'message')}
           onBlur={(e) => handleBlur(e, 'message')}
           value={values.message as string}
@@ -102,7 +102,7 @@ export default function ContactForm() {
         <Checkbox
           name="policy"
           onChange={(e) => handleChange(e, 'policy')}
-          isChecked={values.policy as boolean}
+          checked={values.policy as boolean}
           isValid={!errors.policy}
           required={fields['policy'].isRequired}
         >

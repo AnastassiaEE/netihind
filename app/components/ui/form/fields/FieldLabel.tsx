@@ -1,30 +1,29 @@
 import { FieldLabelSize } from '@/types/form.types';
 import { tv } from 'tailwind-variants';
+import { fieldLabelSizes } from '@/components/ui/form/config';
 
 const labelClasses = tv({
-  base: 'block font-semibold',
+  base: 'block',
   variants: {
-    size: {
-      sm: 'mb-1.5 text-sm',
-      lg: 'mb-2.5',
-    },
+    size: fieldLabelSizes,
   },
   defaultVariants: {
     size: 'sm',
   },
 });
 
-export default function FieldLabel({
-  htmlFor,
-  size = 'sm',
-  children,
-}: {
-  htmlFor: string;
+interface FieldLabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   size?: FieldLabelSize;
-  children: React.ReactNode;
-}) {
+}
+
+export default function FieldLabel({
+  size = 'sm',
+  className,
+  children,
+  ...props
+}: FieldLabelProps) {
   return (
-    <label htmlFor={htmlFor} className={labelClasses({ size })}>
+    <label className={labelClasses({ size, className })} {...props}>
       {children}
     </label>
   );

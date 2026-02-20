@@ -13,12 +13,12 @@ interface IconInputProps
 
 export default function IconInput({
   icon: { Icon, isVisible, onClick },
-  inputSize = 'sm',
+  size = 'sm',
   ...props
 }: IconInputProps) {
   const inputClasses = classNames({
-    'pl-10': isVisible && inputSize === 'sm',
-    'pl-12': isVisible && inputSize === 'lg',
+    'pl-10': isVisible && size === 'sm',
+    'pl-12': isVisible && size === 'lg',
   });
 
   const iconWrapperClasses = classNames(
@@ -27,18 +27,18 @@ export default function IconInput({
   );
 
   return (
-    <Input inputSize={inputSize} className={inputClasses} {...props}>
+    <Input size={size} className={inputClasses} {...props}>
       <div className={iconWrapperClasses}>
         {onClick ? (
           <button type="button" onClick={onClick}>
             <Icon
-              fontSize={inputSize === 'lg' ? 'medium' : 'small'}
+              fontSize={size === 'lg' ? 'medium' : 'small'}
               className="text-muted"
             />
           </button>
         ) : (
           <Icon
-            fontSize={inputSize === 'lg' ? 'medium' : 'small'}
+            fontSize={size === 'lg' ? 'medium' : 'small'}
             className="text-muted"
           />
         )}

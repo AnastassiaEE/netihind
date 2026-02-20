@@ -1,80 +1,57 @@
 import { CheckboxSize } from '@/types/form.types';
-import classNames from 'classnames';
 import { tv } from 'tailwind-variants';
+import { checkboxSizes as sizes } from '@/components/ui/form/config';
+import FieldLabel from '@/components/ui/form/fields/FieldLabel';
+import React from 'react';
+
+const checkboxClasses = tv({
+  base: 'checkbox align-sub mr-2 shrink-0 cursor-pointer appearance-none rounded-[.185em] border checked:border-primary checked:bg-primary checked:bg-contain',
+  variants: {
+    size: sizes,
+    isValid: {
+      true: 'border-valid',
+      false: 'border-invalid',
+    },
+  },
+  defaultVariants: {
+    size: 'sm',
+    isValid: true,
+  },
+});
+
+type CheckboxProps = Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  'type' | 'size'
+> & {
+  size?: CheckboxSize;
+  isValid?: boolean;
+};
 
 export default function Checkbox({
-  name,
-  value,
-  size = 'sm',
-  isChecked = false,
+  size,
   isValid = true,
   required = false,
-  onChange,
   className,
   children,
-}: {
-  name: string;
-  value?: string;
-  size?: CheckboxSize;
-  isChecked: boolean;
-  isValid?: boolean;
-  required?: boolean;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
-  className?: string;
-  children: React.ReactNode;
-}) {
-  const checkboxClasses = tv({
-    base: 'checkbox align-sub mr-2 shrink-0 cursor-pointer appearance-none rounded-[.185em] border checked:border-primary checked:bg-primary checked:bg-contain',
-    variants: {
-      size: {
-        sm: 'size-4',
-        lg: 'size-5',
-      },
-      isValid: {
-        true: 'border-valid',
-        false: 'border-invalid',
-      },
-    },
-    defaultVariants: {
-      size: 'sm',
-      isValid: true,
-    },
-  });
-
-  const labelClasses = tv({
-    variants: {
-      size: {
-        sm: 'text-sm',
-        lg: 'text-base',
-      },
-    },
-    defaultVariants: {
-      size: 'sm',
-    },
-  });
-
+  ...props
+}: CheckboxProps) {
+  const name = props.name ?? '';
+  const id = `${name}-${props.value ?? React.useId()}`;
   return (
-    <label
-      className={classNames(
-        'block cursor-pointer',
-        labelClasses({ size }),
-        className,
-      )}
-    >
+    <FieldLabel htmlFor={id} size={size} className="cursor-pointer">
       <input
+        id={id}
         name={name}
-        value={value}
         type="checkbox"
         aria-invalid={!isValid}
         aria-required={required}
-        checked={isChecked}
-        onChange={onChange}
         className={checkboxClasses({
           size,
           isValid,
         })}
+        {...props}
       />
       {children}
-    </label>
+    </FieldLabel>
   );
 }

@@ -32,3 +32,5 @@ export type ComboBoxProps = {
   'aria-haspopup': 'listbox';
   'aria-controls': string;
 };
+
+export type Label = {value: string; className?: string}

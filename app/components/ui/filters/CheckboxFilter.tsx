@@ -5,7 +5,7 @@ import { CheckboxSize } from '@/types/form.types';
 
 export default function CheckboxFilter({
   name,
-  size = 'sm',
+  size,
   filter,
   setFilters,
   onUserChange,
@@ -25,7 +25,7 @@ export default function CheckboxFilter({
           key={option.value}
           name={name}
           value={option.value}
-          isChecked={filter.selected.some(
+          checked={filter.selected.some(
             (opt) => opt.value.toString() === option.value.toString(),
           )}
           onChange={(e) => handleChange(option.value, e.target.checked)}

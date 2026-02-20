@@ -2,33 +2,33 @@ import FieldError from '@/components/ui/form/fields/FieldError';
 import FieldLabel from '@/components/ui/form/fields/FieldLabel';
 import { tv } from 'tailwind-variants';
 import { FormElementSizes as sizes } from '@/components/ui/form/config';
-import { InputSize } from '@/types/form.types';
-import classNames from 'classnames';
+import { InputSize, Label } from '@/types/form.types';
 
 const inputClasses = tv({
   base: 'w-full rounded-md border bg-white text-muted-dark transition-[padding] placeholder:text-muted focus:shadow-md focus:outline-hidden',
   variants: {
-    inputSize: sizes,
+    size: sizes,
     isValid: {
       true: 'border-valid focus:border-primary/30 focus:shadow-primary/10',
       false: 'border-invalid focus:shadow-invalid/10',
     },
   },
   defaultVariants: {
-    inputSize: 'sm',
+    size: 'sm',
     isValid: true,
   },
 });
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  inputSize?: InputSize;
+interface InputProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
+  size?: InputSize;
   isValid?: boolean;
-  label?: string;
+  label?: Label;
   error?: string;
 }
 
 export default function Input({
-  inputSize,
+  size,
   isValid = true,
   label,
   error,
@@ -41,8 +41,8 @@ export default function Input({
   return (
     <>
       {label && (
-        <FieldLabel htmlFor={name} size={inputSize}>
-          {label}
+        <FieldLabel htmlFor={name} size={size} className={label.className}>
+          {label.value}
         </FieldLabel>
       )}
       <div className="relative">
@@ -50,14 +50,14 @@ export default function Input({
         <input
           id={name}
           name={name}
-          className={inputClasses({ inputSize, isValid, className })}
+          className={inputClasses({ size, isValid, className })}
           autoComplete={name}
           aria-invalid={!isValid}
           aria-required={required}
           {...props}
         />
       </div>
-      {!isValid && <FieldError size={inputSize}>{error}</FieldError>}
+      {!isValid && <FieldError size={size}>{error}</FieldError>}
     </>
   );
 }
