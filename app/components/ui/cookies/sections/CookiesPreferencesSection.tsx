@@ -91,7 +91,7 @@ export default function CookiesPreferencesSection({
           <ToggleSwitch
             name="cookie-necessary"
             size="lg"
-            isChecked={preferences.necessary === true}
+            checked={preferences.necessary === true}
             required={true}
             disabled={true}
           />
@@ -110,7 +110,7 @@ export default function CookiesPreferencesSection({
                 `types.statistics.switchState.${preferences.statistics === true}`,
               ),
             })}
-            isChecked={preferences.statistics === true}
+            checked={preferences.statistics === true}
             onChange={() => togglePreference('statistics')}
           />
         }
