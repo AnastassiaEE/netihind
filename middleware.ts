@@ -73,7 +73,7 @@ export default async function middleware(request: NextRequest) {
   const scriptSrc =
     isDev || isStaticPage
       ? ["'self'", "'unsafe-inline'", '*']
-      : ["'self'", `'nonce-${nonce}'`, "'strict-dynamic'"];
+      : ["'self'", `'nonce-${nonce}'`, "'strict-dynamic'", "https://www.googletagmanager.com", "https://www.google-analytics.com"];
 
   const connectSrc = isDev
     ? '*'
@@ -84,13 +84,15 @@ export default async function middleware(request: NextRequest) {
         'https://rxysmdetqttpdqfmrpym.supabase.co',
         'https://api.resend.com',
         'https://region1.google-analytics.com',
+        'https://www.googletagmanager.com',
+        'https://www.google-analytics.com'
       ].join(' ');
 
   const cspHeader = `
     default-src 'self';
     script-src ${scriptSrc.join(' ')};
     style-src 'self' 'unsafe-inline';
-    img-src 'self' data: https://cms.netihind.ee https://rxysmdetqttpdqfmrpym.supabase.co https://www.googletagmanager.com;
+    img-src 'self' data: https://cms.netihind.ee https://rxysmdetqttpdqfmrpym.supabase.co https://www.googletagmanager.com https://www.google-analytics.com;
     font-src 'self' data:;
     connect-src ${connectSrc};
     object-src 'none';
