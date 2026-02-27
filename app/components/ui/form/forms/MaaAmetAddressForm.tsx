@@ -24,7 +24,7 @@ export default function MaaAmetAddressForm() {
     <>
       {!isScriptLoaded && isLoading && <AddressFormLoader />}
       {!isScriptLoaded && !isLoading && (
-        <p className="text-lg text-error">{t('errors.formIsNotLoaded')}</p>
+        <p className="text-error text-lg">{t('errors.formIsNotLoaded')}</p>
       )}
       <form
         onSubmit={handleSubmit}
@@ -35,14 +35,19 @@ export default function MaaAmetAddressForm() {
           <div className="grow">
             <div id="in-address"></div>
             {error === '' ? (
-              <span className="absolute text-sm font-medium text-muted-dark">
+              <span className="text-muted-dark absolute text-sm font-medium">
                 {t('messages.addressExample')}
               </span>
             ) : (
               <FieldError size="lg">{t(error as any)}</FieldError>
             )}
           </div>
-          <Button type="submit" size="lg" className="max-md:mt-6 max-md:w-full">
+          <Button
+            type="submit"
+            size="lg"
+            className="max-md:mt-6 max-md:w-full"
+            data-gtm="find-providers"
+          >
             {t('buttons.findProviders')}
           </Button>
         </div>
