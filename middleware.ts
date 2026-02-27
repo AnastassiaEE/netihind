@@ -90,7 +90,7 @@ export default async function middleware(request: NextRequest) {
     default-src 'self';
     script-src ${scriptSrc.join(' ')};
     style-src 'self' 'unsafe-inline';
-    img-src 'self' data: https://cms.netihind.ee https://rxysmdetqttpdqfmrpym.supabase.co;
+    img-src 'self' data: https://cms.netihind.ee https://rxysmdetqttpdqfmrpym.supabase.co https://www.googletagmanager.com;
     font-src 'self' data:;
     connect-src ${connectSrc};
     object-src 'none';
