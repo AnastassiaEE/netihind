@@ -13,7 +13,7 @@ const API_URL = process.env.NEXT_PUBLIC_WORDPRESS_API_ENDPOINT as string;
  */
 export async function fetchAPI(
   query = '',
-  { variables }: Record<string, any> = {},
+  { variables }: Record<string, unknown> = {},
 ) {
   const headers: Record<string, string> = {
     'Content-Type': 'application/json',
