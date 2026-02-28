@@ -4,9 +4,12 @@ import { Package } from '@/types/packages.types';
 import { useTranslations } from 'next-intl';
 import { getEquipmentMinPricesByPayment } from '@/utils/packagesHelper';
 import { formatMoney } from '@/utils/numberFormatter';
+import { translateKey } from '@/utils/translationHelper';
 
-interface PackageCardDetailsSectionProps
-  extends Pick<Package, 'installation' | 'equipment'> {
+interface PackageCardDetailsSectionProps extends Pick<
+  Package,
+  'installation' | 'equipment'
+> {
   className?: string;
 }
 
@@ -37,12 +40,9 @@ export default function PackageCardDetailsSection({
         )}
         {equipment.length > 0 && (
           <PackageCardDetail Icon={Router}>
-            {t(
-              `equipment.${firstPaymentType}MinPrice` as any,
-              {
-                [`${firstPaymentType}_fee`]: firstPrice,
-              } as any,
-            )}
+            {translateKey(t, `equipment.${firstPaymentType}MinPrice`, {
+              [`${firstPaymentType}_fee`]: firstPrice,
+            })}
           </PackageCardDetail>
         )}
       </div>

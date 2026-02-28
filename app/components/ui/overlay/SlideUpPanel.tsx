@@ -7,6 +7,7 @@ import PanelActions from '@/components/ui/overlay/PanelActions';
 import CloseButton from '@/components/ui/buttons/CloseButton';
 import { useTranslations } from 'next-intl';
 import { usePortal } from '@/hooks/usePortal';
+import { translateKey } from '@/utils/translationHelper';
 
 export default function SlideUpPanel({
   name,
@@ -47,7 +48,7 @@ export default function SlideUpPanel({
         onTouchEnd={handleTouchEnd}
         className={panelClasses}
       >
-        <div className="relative border-b border-muted-light px-6 pb-5 pt-7">
+        <div className="border-muted-light relative border-b px-6 pt-7 pb-5">
           <p
             id={`${name}-panel-title`}
             className="text-center text-xl font-extrabold text-black"
@@ -55,9 +56,9 @@ export default function SlideUpPanel({
             {title}
           </p>
           <CloseButton
-            label={t(`${name}.close` as any)}
+            label={translateKey(t, `${name}.close`)}
             onClick={onClose}
-            className="absolute right-6 top-1/2 -translate-y-1/2"
+            className="absolute top-1/2 right-6 -translate-y-1/2"
           />
         </div>
         <div

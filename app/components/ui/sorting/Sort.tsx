@@ -6,6 +6,7 @@ import SelectOption from '@/components/ui/form/fields/select/SelectOption';
 import { SelectVariant } from '@/types/form.types';
 import SortIcon from '@mui/icons-material/Sort';
 import Select from '@/components/ui/form/fields/select/Select';
+import { translateKey } from '@/utils/translationHelper';
 
 export default function Sort({
   name,
@@ -37,9 +38,9 @@ export default function Sort({
     <Select
       variant={variant}
       name={`sort-${name}`}
-      buttonLabel={t(`${name}.buttonLabel` as any)}
-      label={t(`${name}.ariaLabel` as any)}
-      selected={t(`${name}.options.${selectedOption}` as any)}
+      buttonLabel={translateKey(t, `${name}.buttonLabel`)}
+      label={translateKey(t, `${name}.ariaLabel`)}
+      selected={translateKey(t, `${name}.options.${selectedOption}`)}
       openDirection={openDirection}
       Icon={SortIcon}
       onChange={handleChange}
@@ -51,7 +52,7 @@ export default function Sort({
           value={option}
           isSelected={option === selectedOption}
         >
-          {t(`${name}.options.${option}` as any)}
+          {translateKey(t, `${name}.options.${option}`)}
         </SelectOption>
       ))}
     </Select>

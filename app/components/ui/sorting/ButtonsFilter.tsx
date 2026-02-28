@@ -4,6 +4,7 @@ import useButtonsFilter from '@/hooks/useButtonsFilter';
 import Button from '@/components/ui/form/buttons/Button';
 import { useTranslations } from 'next-intl';
 import React from 'react';
+import { translateKey } from '@/utils/translationHelper';
 
 export default function ButtonsFilter({
   options,
@@ -22,7 +23,7 @@ export default function ButtonsFilter({
           className="rounded-md uppercase"
           name={option}
         >
-          {t(option as any)}
+          {translateKey(t, option)}
         </Button>
       ))}
     </div>

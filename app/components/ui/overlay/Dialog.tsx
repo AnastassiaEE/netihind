@@ -5,6 +5,7 @@ import CloseButton from '@/components/ui/buttons/CloseButton';
 import { useTranslations } from 'next-intl';
 import { DialogType } from '@/types/ui.types';
 import { usePortal } from '@/hooks/usePortal';
+import { translateKey } from '@/utils/translationHelper';
 
 export default function Dialog({
   type = 'modal',
@@ -56,7 +57,7 @@ export default function Dialog({
       >
         {onClose && (
           <CloseButton
-            label={t(`${name}.close` as any)}
+            label={translateKey(t, `${name}.close`)}
             onClick={onClose}
             className="absolute top-4 right-4 bg-white"
           />

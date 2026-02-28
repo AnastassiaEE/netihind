@@ -4,6 +4,7 @@ import Backdrop from '@/components/ui/overlay/Backdrop';
 import CloseButton from '@/components/ui/buttons/CloseButton';
 import { useTranslations } from 'next-intl';
 import { usePortal } from '@/hooks/usePortal';
+import { translateKey } from '@/utils/translationHelper';
 
 export default function Sidebar({
   name,
@@ -38,14 +39,17 @@ export default function Sidebar({
         ref={sidebarRef}
         className={sidebarClasses}
       >
-        <div className="flex justify-between border-b border-muted-light px-6 py-5">
+        <div className="border-muted-light flex justify-between border-b px-6 py-5">
           <p
             id={`sidebar-${name}-title`}
             className="text-xl font-extrabold text-black"
           >
             {title}
           </p>
-          <CloseButton label={t(`${name}.close` as any)} onClick={onClose} />
+          <CloseButton
+            label={translateKey(t, `${name}.close`)}
+            onClick={onClose}
+          />
         </div>
         {children}
       </div>

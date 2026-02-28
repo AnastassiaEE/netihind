@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { RefObject } from 'react';
 import PackageConnectionContent from '@/components/ui/packages/modal/connection/PackageConnectionContent';
 import PackageDetailsContent from '@/components/ui/packages/modal/details/PackageDetailsContent';
+import { translateKey } from '@/utils/translationHelper';
 
 export default function PackageModal({
   action,
@@ -26,7 +27,9 @@ export default function PackageModal({
   return (
     <Dialog
       name={action}
-      title={action === 'connection' ? t(`${action}.title` as any) : undefined}
+      title={
+        action === 'connection' ? translateKey(t, `${action}.title`) : undefined
+      }
       isMounted={isMounted}
       isVisible={isVisible}
       onClose={onClose}

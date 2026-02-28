@@ -6,6 +6,7 @@ import { Filters } from '@/types/filters.types';
 import PackagesFilterAccordion from '@/components/ui/packages/filters/PackagesFilterAccordion';
 import CheckboxFilter from '@/components/ui/filters/CheckboxFilter';
 import useFiltersUrlSync from '@/hooks/useFiltersUrlSync';
+import { translateKey } from '@/utils/translationHelper';
 
 export default function PackagesFilters({
   filters,
@@ -31,7 +32,7 @@ export default function PackagesFilters({
         .map(([filterName, filterData]) => (
           <PackagesFilterAccordion
             key={filterName}
-            filterName={t(`${filterName}` as any)}
+            filterName={translateKey(t, filterName)}
             className="mb-4"
           >
             {filterData.type === 'checkbox' && (
