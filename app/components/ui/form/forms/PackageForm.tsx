@@ -10,6 +10,7 @@ import { useTranslations } from 'next-intl';
 import { Add } from '@mui/icons-material';
 import { Package, PackageAction } from '@/types/packages.types';
 import SendButton from '@/components/ui/buttons/SendButton';
+import { translateKey } from '@/utils/translationHelper';
 
 export default function PackageForm({
   action = 'connection',
@@ -90,7 +91,7 @@ export default function PackageForm({
           onBlur={(e) => handleBlur(e, 'name')}
           value={values.name as string}
           isValid={!errors.name}
-          error={errors.name ? t(errors.name as any) : ''}
+          error={translateKey(t, errors.name)}
           required={fields['name'].isRequired}
         />
       </div>
@@ -104,7 +105,7 @@ export default function PackageForm({
           onBlur={(e) => handleBlur(e, 'email')}
           value={values.email as string}
           isValid={!errors.email}
-          error={errors.email ? t(errors.email as any) : ''}
+          error={translateKey(t, errors.email)}
           required={fields['email'].isRequired}
         />
       </div>
@@ -118,7 +119,7 @@ export default function PackageForm({
           onBlur={(e) => handleBlur(e, 'phone')}
           value={values.phone as string}
           isValid={!errors.phone}
-          error={errors.phone ? t(errors.phone as any) : ''}
+          error={translateKey(t, errors.phone)}
           icon={{ Icon: Add, isVisible: true }}
           required={fields['phone'].isRequired}
         />
@@ -180,7 +181,7 @@ export default function PackageForm({
       </SendButton>
       {!isSending && response && (
         <FormResponse type={response.type}>
-          {t(response.message as any)}
+          {translateKey(t, response.message)}
         </FormResponse>
       )}
     </form>
