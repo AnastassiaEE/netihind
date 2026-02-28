@@ -1,4 +1,6 @@
-export default function JsonLd({ data }: { data: any }) {
+import { SchemaOrgGraph } from '@/types/schema.types';
+
+export default function JsonLd({ data }: { data: SchemaOrgGraph }) {
   return (
     <script
       type="application/ld+json"

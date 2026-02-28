@@ -13,7 +13,7 @@ import {
   getSchema,
   getWebsiteSchema,
   openGraphLogo,
-} from '@/utils/seoHelper';
+} from '@/utils/schemaHelper';
 import JsonLd from '@/components/seo/JsonLd';
 
 const options = {
@@ -79,7 +79,7 @@ export default async function Policy(props: {
         <SectionLayout>
           <MDXRemote
             source={page.content}
-            components={components as {}}
+            components={components}
             options={options}
           />
         </SectionLayout>

@@ -12,7 +12,7 @@ import {
   getSchema,
   getWebsiteSchema,
   openGraphLogo,
-} from '@/utils/seoHelper';
+} from '@/utils/schemaHelper';
 import JsonLd from '@/components/seo/JsonLd';
 
 export async function generateMetadata(props: {

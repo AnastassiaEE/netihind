@@ -10,7 +10,7 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import CookiesModal from '@/components/ui/cookies/CookiesModal';
 import GoogleAnalytics from '@/components/tracking/GoogleAnalytics';
 import { ConsentProvider } from '@/context/ConsentContext';
-import { metadataBaseUrl } from '@/app/utils/seoHelper';
+import { metadataBaseUrl } from '@/utils/schemaHelper';
 import { NonceProvider } from '@/context/NonceContext';
 
 const manrope = Manrope({

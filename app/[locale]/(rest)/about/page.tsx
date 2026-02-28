@@ -13,7 +13,7 @@ import {
   getSchema,
   getWebsiteSchema,
   openGraphLogo,
-} from '@/app/utils/seoHelper';
+} from '@/utils/schemaHelper';
 
 export const dynamic = 'force-static';
 export const revalidate = 300;
@@ -69,7 +69,7 @@ export default async function About(props: {
       />
       <Suspense fallback={<PageLoader />}>
         <SectionLayout>
-          <MDXRemote source={page.content} components={components as {}} />
+          <MDXRemote source={page.content} components={components} />
         </SectionLayout>
       </Suspense>
     </>

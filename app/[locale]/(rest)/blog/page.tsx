@@ -6,7 +6,7 @@ import {
   getSchema,
   getWebsiteSchema,
   openGraphLogo,
-} from '@/utils/seoHelper';
+} from '@/utils/schemaHelper';
 import { Locale, useTranslations } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 

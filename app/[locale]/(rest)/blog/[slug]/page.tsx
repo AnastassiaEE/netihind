@@ -15,7 +15,7 @@ import {
   getSchema,
   getWebsiteSchema,
   metadataBaseUrl,
-} from '@/utils/seoHelper';
+} from '@/utils/schemaHelper';
 import JsonLd from '@/components/seo/JsonLd';
 import { extractFirstTwoSentences } from '@/utils/textFormatter';
 import { BlogPost } from '@/types/blog.types';
@@ -69,8 +69,8 @@ export async function generateMetadata(props: {
 
 export async function generateStaticParams() {
   const posts: BlogPost[] = await getPostsWithSlugsOnly();
-  let paths = posts.map((post: BlogPost) => {
-    let slug = getFormattedSlug(post.slug);
+  const paths = posts.map((post: BlogPost) => {
+    const slug = getFormattedSlug(post.slug);
     return {
       slug: slug,
     };

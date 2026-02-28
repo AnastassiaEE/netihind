@@ -12,7 +12,7 @@ import {
   getSchema,
   getWebsiteSchema,
   openGraphLogo,
-} from '@/app/utils/seoHelper';
+} from '@/utils/schemaHelper';
 
 export async function generateMetadata(props: {
   params: Promise<{ locale: Locale }>;

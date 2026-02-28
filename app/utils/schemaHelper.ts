@@ -1,5 +1,7 @@
+import { Image } from '@/types/schema.types';
+import { TranslationFn } from '@/types/translation.types';
 import { getPageUrl } from '@/utils/urlHelper';
-import { Locale } from 'next-intl';
+import type { Locale } from 'next-intl';
 
 // Base URL for generating absolute links in metadata
 export const metadataBaseUrl = new URL('https://netihind.ee');
@@ -8,16 +10,8 @@ export const metadataBaseUrl = new URL('https://netihind.ee');
 const logoUrl =
   'https://rxysmdetqttpdqfmrpym.supabase.co/storage/v1/object/public/website-logos//gradientmainlogo.png';
 
-// Type for images in metadata
-type imageType = {
-  url: string;
-  width: number;
-  height: number;
-  alt: string;
-};
-
 // Default Open Graph image (logo)
-export const openGraphLogo = {
+export const openGraphLogo: Image = {
   url: logoUrl,
   width: 1200,
   height: 630,
@@ -45,8 +39,8 @@ export const getMetadata = async (
   url: string | URL,
   websiteName: string,
   locale: Locale,
-  images: imageType[] | undefined,
-  additional?: Record<string, any>,
+  images: Image[] | undefined,
+  additional?: Record<string, unknown>,
 ) => {
   const absoluteUrl = getPageUrl(url, metadataBaseUrl);
 
@@ -90,14 +84,14 @@ export const getSchema = (
     name: string;
     url: string | URL;
   }[],
-  isPartOf: Record<string, any>,
+  isPartOf: Record<string, unknown>,
   locale: Locale,
-  extraGraphItems?: any[],
+  extraGraphItems?: Record<string, unknown>[],
 ) => {
   const pageUrl = getPageUrl(url, metadataBaseUrl);
 
   return {
-    '@context': 'https://schema.org',
+    '@context': 'https://schema.org' as const,
     '@graph': [
       {
         '@type': 'WebPage',
@@ -131,10 +125,7 @@ export const getSchema = (
  *
  * @returns JSON-LD object for the website
  */
-export const getWebsiteSchema = <T extends (key: any) => string>(
-  t: T,
-  locale: Locale,
-) => {
+export const getWebsiteSchema = (t: TranslationFn, locale: Locale) => {
   const websiteUrl = getPageUrl(t('website.url'), metadataBaseUrl);
   return {
     '@type': 'WebSite',
@@ -152,7 +143,7 @@ export const getWebsiteSchema = <T extends (key: any) => string>(
  * @param t - Translation function
  * @returns JSON-LD object for the organization
  */
-export const getOrganizationSchema = <T extends (key: any) => string>(t: T) => {
+export const getOrganizationSchema = (t: TranslationFn) => {
   const websiteUrl = getPageUrl(t('website.url'), metadataBaseUrl);
   return {
     '@type': 'Organization',
