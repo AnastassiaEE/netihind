@@ -8,7 +8,7 @@ import { Locale, NextIntlClientProvider } from 'next-intl';
 import { headers } from 'next/headers';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import CookiesModal from '@/components/ui/cookies/CookiesModal';
-import GoogleAnalytics from '@/components/tracking/GoogleAnalytics';
+import GoogleTagManager from '@/components/tracking/GoogleTagManager';
 import { ConsentProvider } from '@/context/ConsentContext';
 import { metadataBaseUrl } from '@/utils/schemaHelper';
 import { NonceProvider } from '@/context/NonceContext';
@@ -60,10 +60,8 @@ export default async function RootLayout(props: {
             <ScrollTopButton />
             <ConsentProvider>
               <NonceProvider nonce={nonce}>
-                <GoogleAnalytics
-                  ga_measurement_id={
-                    process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID as string
-                  }
+                <GoogleTagManager
+                  gtm_id={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID as string}
                 />
               </NonceProvider>
               <CookiesModal />
