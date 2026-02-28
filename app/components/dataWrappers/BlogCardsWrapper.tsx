@@ -11,13 +11,21 @@ export default async function BlogCardsWrapper({
 }) {
   const locale = await getLocale();
   const posts: BlogPost[] = await getPosts(locale.toUpperCase());
+
   if (!posts.length) return <NoPostsError />;
-  const childrenWithPosts = React.Children.map(children, (child) => {
-    if (React.isValidElement(child))
-      return React.cloneElement(child as React.ReactElement<any>, {
-        posts: posts,
-      });
-    return child;
-  });
-  return <>{childrenWithPosts}</>;
+
+  return (
+    <>
+      {React.Children.map(children, (child) =>
+        React.isValidElement(child)
+          ? React.cloneElement(
+              child as React.ReactElement<{ posts: BlogPost[] }>,
+              {
+                posts,
+              },
+            )
+          : child,
+      )}
+    </>
+  );
 }
