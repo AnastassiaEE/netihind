@@ -112,7 +112,7 @@ export default function useSelect(name: string, label: string) {
             e.preventDefault();
             updateFocusedIndex(focusedIndex + 1);
             break;
-          case 'Tab':
+          case 'Tab': {
             e.preventDefault();
             const totalOptions = options?.length || 0;
             const newIndex = e.shiftKey
@@ -120,6 +120,7 @@ export default function useSelect(name: string, label: string) {
               : (focusedIndex + 1) % totalOptions;
             updateFocusedIndex(newIndex);
             break;
+          }
           case 'Escape':
             e.preventDefault();
             closeSelect();
