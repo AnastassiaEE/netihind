@@ -29,7 +29,7 @@ export default function GoogleAnalytics({
     }
   }, [consent]);
 
-  if (process.env.NODE_ENV == 'development') return null;
+  if (process.env.NODE_ENV === 'development') return null;
 
   return (
     <>

@@ -33,13 +33,13 @@ export default function PackageModal({
       dialogRef={ref}
       className="bg-primary-light"
     >
-      {action == 'connection' && (
+      {action === 'connection' && (
         <PackageConnectionContent
           packageData={selectedPackage}
           address={address}
         />
       )}
-      {action == 'details' && (
+      {action === 'details' && (
         <PackageDetailsContent packageData={selectedPackage} />
       )}
     </Dialog>
