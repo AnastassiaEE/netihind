@@ -1,9 +1,32 @@
 import { useConsentContext } from '@/context/ConsentContext';
 import { useEffect, useState } from 'react';
-import useOverlay from './useOverlay';
+import useOverlay from '@/hooks/useOverlay';
 import { getCookie, hasCookie, setCookie } from 'cookies-next/client';
 
 const CONSENT_COOKIE_KEY = 'COOKIE_CONSENT';
+
+/**
+ * Get user's initial consent preferences from cookie.
+ *
+ * @returns Initial preferences,
+ *   defaulting to `{ necessary: true, statistics: false }` if no valid cookie
+ */
+const getInitialPreferences = (): Record<string, boolean> => {
+  if (hasCookie(CONSENT_COOKIE_KEY)) {
+    const consentCookie = getCookie(CONSENT_COOKIE_KEY);
+    if (consentCookie) {
+      try {
+        return JSON.parse(consentCookie);
+      } catch {
+        // Fallback if parsing fails
+      }
+    }
+  }
+  return {
+    necessary: true,
+    statistics: false,
+  };
+};
 
 /**
  * Manages cookie consent modal state and user preferences.
@@ -30,10 +53,7 @@ export default function useCookiesModal() {
    * Stores current cookie preferences.
    * "necessary" is always enabled by default.
    */
-  const [preferences, setPreferences] = useState<Record<string, boolean>>({
-    necessary: true,
-    statistics: false,
-  });
+  const [preferences, setPreferences] = useState(getInitialPreferences);
   const { setConsent } = useConsentContext();
 
   const {
@@ -46,21 +66,15 @@ export default function useCookiesModal() {
 
   /**
    * Initialize consent state on mount:
-   * - If consent cookie exists, apply stored preferences
-   * - Otherwise, open the cookie consent modal
+   * - Update global consent context with current preferences
+   * - Open modal if no consent cookie exists
    */
   useEffect(() => {
-    if (hasCookie(CONSENT_COOKIE_KEY)) {
-      const consentCookie = getCookie(CONSENT_COOKIE_KEY);
-      if (consentCookie) {
-        const preferences = JSON.parse(consentCookie);
-        setPreferences(preferences);
-        setConsent(preferences);
-      }
-    } else {
-      setConsent(preferences);
+    setConsent(preferences);
+    if (!hasCookie(CONSENT_COOKIE_KEY)) {
       openCookiesModal();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   /**
