@@ -1,7 +1,7 @@
 import { getFilterData } from '@/utils/packagesHelper';
 import { useMemo } from 'react';
 import useSWR from 'swr';
-import { FilterType } from '@/types/filters.types';
+import { FilterType, FilterOptionRaw } from '@/types/filters.types';
 
 /**
  * Fetches and prepares filter data for internet packages,
@@ -28,7 +28,7 @@ export default function usePackagesFilter(
   oid: string,
   searchParams: Record<string, string>,
   fetchKey: string,
-  fetcher: (oid: string) => Promise<any[]>,
+  fetcher: (oid: string) => Promise<FilterOptionRaw[]>,
   queryParamKey: string,
   labelKey: string,
   filterType: FilterType,

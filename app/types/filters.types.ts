@@ -3,6 +3,11 @@ export type FilterOption = {
   label: string;
 };
 
+export type FilterOptionRaw = {
+  id: string;
+  name: string;
+};
+
 export type SortOptions = {
   options: string[];
   selected: string;
