@@ -96,12 +96,18 @@ jobs:
           cd ${{ secrets.DEPLOY_PATH }}
 
           echo "Stopping existing pm2 processes..."
+          if [ "$GITHUB_REF_NAME" = "main" ]; then
           pm2 stop netihind || true
-          pm2 stop netihind-test || true
+          elif [ "$GITHUB_REF_NAME" = "dev" ]; then
+            pm2 stop netihind-test || true
+          else
+            echo "Branch is not main or dev — skipping pm2 stop"
+          fi
 
-          echo "Cleaning old dependencies and build..."
+          echo "Cleaning old build and dependencies..."
           rm -rf node_modules
           rm -rf .next
+          rm -rf .next/cache || true
 
           echo "Installing dependencies..."
           npm ci
