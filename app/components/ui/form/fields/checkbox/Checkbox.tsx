@@ -36,7 +36,8 @@ export default function Checkbox({
   ...props
 }: CheckboxProps) {
   const name = props.name ?? '';
-  const id = `${name}-${props.value ?? React.useId()}`;
+  const generatedId = React.useId();
+  const id = `${name}-${props.value ?? generatedId}`;
   return (
     <FieldLabel htmlFor={id} size={size} className="cursor-pointer">
       <input
