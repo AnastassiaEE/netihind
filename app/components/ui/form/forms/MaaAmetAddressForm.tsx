@@ -7,6 +7,7 @@ import { useTranslations } from 'next-intl';
 import useMaaAmetAddressForm from '@/hooks/useMaaAmetAddressForm';
 import AddressFormLoader from '@/components/ui/loaders/AddressFormLoader';
 import { useNonceContext } from '@/context/NonceContext';
+import { translateKey } from '@/utils/translationHelper';
 
 export default function MaaAmetAddressForm() {
   const t = useTranslations('Form');
@@ -39,7 +40,7 @@ export default function MaaAmetAddressForm() {
                 {t('messages.addressExample')}
               </span>
             ) : (
-              <FieldError size="lg">{t(error as any)}</FieldError>
+              <FieldError size="lg">{translateKey(t, error)}</FieldError>
             )}
           </div>
           <Button
