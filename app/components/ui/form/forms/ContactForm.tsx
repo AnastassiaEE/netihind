@@ -8,6 +8,7 @@ import Input from '@/components/ui/form/fields/input/Input';
 import useForm from '@/hooks/useForm';
 import { useTranslations } from 'next-intl';
 import SendButton from '@/components/ui/buttons/SendButton';
+import { translateKey } from '@/utils/translationHelper';
 
 export default function ContactForm() {
   const t = useTranslations('Form');
@@ -55,7 +56,7 @@ export default function ContactForm() {
           onBlur={(e) => handleBlur(e, 'name')}
           value={values.name as string}
           isValid={!errors.name}
-          error={errors.name ? t(errors.name as any) : ''}
+          error={translateKey(t, errors.name)}
           required={fields['name'].isRequired}
         />
       </div>
@@ -69,7 +70,7 @@ export default function ContactForm() {
           onBlur={(e) => handleBlur(e, 'email')}
           value={values.email as string}
           isValid={!errors.email}
-          error={errors.email ? t(errors.email as any) : ''}
+          error={translateKey(t, errors.email)}
           required={fields['email'].isRequired}
         />
       </div>
@@ -83,7 +84,7 @@ export default function ContactForm() {
           onBlur={(e) => handleBlur(e, 'phone')}
           value={values.phone as string}
           isValid={!errors.phone}
-          error={errors.phone ? t(errors.phone as any) : ''}
+          error={translateKey(t, errors.phone)}
           required={fields['phone'].isRequired}
           icon={{ Icon: Add, isVisible: true }}
         />
@@ -124,7 +125,7 @@ export default function ContactForm() {
       </SendButton>
       {!isSending && response && (
         <FormResponse type={response.type}>
-          {t(response.message as any)}
+          {translateKey(t, response.message)}
         </FormResponse>
       )}
     </form>

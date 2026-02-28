@@ -36,7 +36,7 @@ const responses = {
 export default function useForm(
   fields: FormFields,
   type: FormType,
-  additionalData?: Record<string, any>,
+  additionalData?: Record<string, unknown>,
 ) {
   /**
    * Initialize form values, errors and blur state based on field config.

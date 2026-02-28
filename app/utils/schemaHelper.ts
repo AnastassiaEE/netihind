@@ -1,5 +1,5 @@
 import { Image } from '@/types/schema.types';
-import { TranslationFn } from '@/types/translation.types';
+import { TranslationFn } from '@/types/translations.types';
 import { getPageUrl } from '@/utils/urlHelper';
 import type { Locale } from 'next-intl';
 
