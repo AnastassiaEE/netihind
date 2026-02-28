@@ -1,25 +1,56 @@
-import js from "@eslint/js";
-import globals from "globals";
-import tseslint from "typescript-eslint";
+import js from '@eslint/js';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
 //import pluginReact from "eslint-plugin-react";
 import jsonPlugin from '@eslint/json';
-import markdown from "@eslint/markdown";
-import css from "@eslint/css";
+import markdown from '@eslint/markdown';
+import css from '@eslint/css';
 import tailwind from 'eslint-plugin-tailwindcss';
-import { defineConfig } from "eslint/config";
-import path from "path";
-
-const jsonPluginTyped = jsonPlugin as any;
+import { defineConfig } from 'eslint/config';
+import path from 'path';
+import nextVitals from 'eslint-config-next/core-web-vitals';
+import { ESLint } from 'eslint';
 
 export default defineConfig([
-  { files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"], plugins: { js }, extends: ["js/recommended"], languageOptions: { globals: {...globals.browser, ...globals.node} } },
+  ...nextVitals,
+  {
+    files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    plugins: { js },
+    extends: ['js/recommended'],
+    languageOptions: { globals: { ...globals.browser, ...globals.node } },
+  },
   tseslint.configs.recommended,
   //pluginReact.configs.flat.recommended,
-  { files: ["**/*.json"], plugins: { json: jsonPluginTyped }, language: "json/json", extends: ["json/recommended"] },
-  { files: ["**/*.jsonc"], plugins: { json: jsonPluginTyped }, language: "json/jsonc", extends: ["json/recommended"] },
-  { files: ["**/*.json5"], plugins: { json: jsonPluginTyped }, language: "json/json5", extends: ["json/recommended"] },
-  { files: ["**/*.md"], plugins: { markdown }, language: "markdown/gfm", extends: ["markdown/recommended"] },
-  { files: ["**/*.css"], plugins: { css }, language: "css/css", extends: ["css/recommended"] },
+  {
+    files: ['**/*.json'],
+    plugins: { json: jsonPlugin as unknown as ESLint.Plugin },
+    language: 'json/json',
+    extends: ['json/recommended'],
+  },
+  {
+    files: ['**/*.jsonc'],
+    plugins: { json: jsonPlugin as unknown as ESLint.Plugin },
+    language: 'json/jsonc',
+    extends: ['json/recommended'],
+  },
+  {
+    files: ['**/*.json5'],
+    plugins: { json: jsonPlugin as unknown as ESLint.Plugin },
+    language: 'json/json5',
+    extends: ['json/recommended'],
+  },
+  {
+    files: ['**/*.md'],
+    plugins: { markdown },
+    language: 'markdown/gfm',
+    extends: ['markdown/recommended'],
+  },
+  {
+    files: ['**/*.css'],
+    plugins: { css },
+    language: 'css/css',
+    extends: ['css/recommended'],
+  },
   tailwind.configs['flat/recommended'],
   {
     rules: {
@@ -32,7 +63,7 @@ export default defineConfig([
       'prefer-destructuring': ['error', { object: true, array: false }],
     },
     settings: {
-      react: { version: "detect" },
+      react: { version: 'detect' },
       tailwindcss: {
         config: path.join(__dirname, './tailwind.config.ts'),
         callees: ['classNames', 'classnames', 'clsx', 'twMerge', 'tv'],
