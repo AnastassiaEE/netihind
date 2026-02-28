@@ -10,8 +10,8 @@ import { useEffect, useRef } from 'react';
  * @param state - The current state or prop value to track
  * @returns The value from the previous render.
  */
-const usePrevState = (state: any) => {
-  const prevState = useRef(0);
+const usePrevState = <T>(state: T, initialValue?: T) => {
+  const prevState = useRef<T | undefined>(initialValue);
 
   /**
    * Update the ref with the current state after each render
@@ -19,7 +19,7 @@ const usePrevState = (state: any) => {
   useEffect(() => {
     prevState.current = state;
   }, [state]);
-  
+
   return prevState.current;
 };
 
