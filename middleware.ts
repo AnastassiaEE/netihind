@@ -42,7 +42,6 @@ export default async function middleware(request: NextRequest) {
   }
 
   pathnameWithoutLocale = normalizePath(pathnameWithoutLocale);
-  console.log(pathnameWithoutLocale)
 
   /* -------------------- PREPARE ISR (STATIC/SSG) PAGES -------------------- */
 
@@ -71,7 +70,13 @@ export default async function middleware(request: NextRequest) {
   const scriptSrc =
     isDev || isStaticPage
       ? ["'self'", "'unsafe-inline'", '*']
-      : ["'self'", `'nonce-${nonce}'`, "'strict-dynamic'", "https://www.googletagmanager.com", "https://www.google-analytics.com"];
+      : [
+          "'self'",
+          `'nonce-${nonce}'`,
+          "'strict-dynamic'",
+          'https://www.googletagmanager.com',
+          'https://www.google-analytics.com',
+        ];
 
   const connectSrc = isDev
     ? '*'
@@ -83,7 +88,7 @@ export default async function middleware(request: NextRequest) {
         'https://api.resend.com',
         'https://region1.google-analytics.com',
         'https://www.googletagmanager.com',
-        'https://www.google-analytics.com'
+        'https://www.google-analytics.com',
       ].join(' ');
 
   const cspHeader = `

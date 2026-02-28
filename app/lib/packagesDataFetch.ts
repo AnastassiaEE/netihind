@@ -9,12 +9,9 @@ import { supabase } from '@/lib/supabase';
  * @returns An array of provider objects, or an empty array if none are found
  */
 export const getProviders = async (oid: string) => {
-  let { data: providers} = await supabase.rpc(
-    'get_providers_by_address',
-    {
-      p_oid: oid,
-    },
-  );
+  let { data: providers } = await supabase.rpc('get_providers_by_address', {
+    p_oid: oid,
+  });
   return providers ?? [];
 };
 
@@ -56,7 +53,6 @@ export const getPackages = async (
   providers: string[],
   technologies: string[],
 ) => {
-
   const { data: packages, error: packagesError } = await supabase.rpc(
     'get_internet_packages_by_address',
     {
