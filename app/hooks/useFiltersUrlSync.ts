@@ -46,10 +46,9 @@ export default function useFiltersUrlSync(
     const query = Object.fromEntries(newSearchParams.entries());
     router.replace(
       // `params` + `query` combination is required for i18n routing
-      // @ts-expect-error
+      // @ts-expect-error - TypeScript doesn't recognize the dynamic nature of the query parameters here
       { pathname, params, query },
       { scroll: false },
     );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters, isFiltersInitialized]);
 }

@@ -41,7 +41,7 @@ export default function useSort(
     const searchParamsObject = Object.fromEntries(newSearchParams.entries());
     router.replace(
       // Combine pathname + params + updated query for i18n routing
-      // @ts-expect-error
+      // @ts-expect-error - TypeScript doesn't recognize the dynamic nature of the query parameters here
       { pathname, params, query: searchParamsObject },
       { scroll: false },
     );

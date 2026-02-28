@@ -21,7 +21,7 @@ export default function useButtonsFilter(options: Record<string, boolean>) {
 
   const handleOptionClick = (option: string) => {
     router.replace(
-      // @ts-expect-error
+      // @ts-expect-error - TypeScript doesn't recognize the dynamic nature of the query parameter here
       { pathname, params, query: { filter: option } },
       { scroll: false },
     );
