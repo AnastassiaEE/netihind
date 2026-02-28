@@ -20,8 +20,10 @@ export default function LanguageSwitcher() {
           // @ts-expect-error - The Link component expects a specific type for href, but we are constructing it dynamically here.
           href={{
             pathname,
-            params,
-            query: searchParamsObject,
+            ...(Object.keys(params).length > 0 && { params }),
+            ...(Object.keys(searchParamsObject).length > 0 && {
+              query: searchParamsObject,
+            }),
           }}
           locale={locale}
           current={currentLocale === locale}
