@@ -173,7 +173,7 @@ export default function useForm(
         } else {
           setResponse({ type: 'error', message: responses.error.message });
         }
-      } catch (error) {
+      } catch {
         setResponse({ type: 'error', message: responses.error.message });
       } finally {
         setIsSending(false);

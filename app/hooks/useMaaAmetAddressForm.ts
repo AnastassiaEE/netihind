@@ -160,7 +160,7 @@ export default function useMaaAmetAddressForm(nonce: string) {
         typeof window !== 'undefined' &&
         typeof window.InAadress === 'function'
       ) {
-        const widget = new window.InAadress({
+        new window.InAadress({
           container: 'in-address',
           mode: 3,
           ihist: '0',

@@ -5,8 +5,6 @@ import IconInput from '@/components/ui/form/fields/input/IconInput';
 import Checkbox from '@/components/ui/form/fields/checkbox/Checkbox';
 import Textarea from '@/components/ui/form/fields/input/Textarea';
 import Input from '@/components/ui/form/fields/input/Input';
-import Select from '@/components/ui/form/fields/select/Select';
-import SelectOption from '@/components/ui/form/fields/select/SelectOption';
 import useForm from '@/hooks/useForm';
 import { useTranslations } from 'next-intl';
 import { Add } from '@mui/icons-material';
@@ -78,7 +76,6 @@ export default function PackageForm({
     isSending,
     response,
     handleChange,
-    handleSelectChange,
     handleBlur,
     handleSubmit,
   } = useForm(fields, action, { address: address, ...filteredPackageData });

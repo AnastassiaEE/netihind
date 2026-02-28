@@ -25,7 +25,7 @@ export default function PackagesFilters({
     <>
       {Object.entries(filters)
         .filter(
-          ([_, filterData]) =>
+          ([, filterData]) =>
             filterData.options && filterData.options.length > 0,
         )
         .map(([filterName, filterData]) => (

@@ -1,7 +1,6 @@
 import createMiddleware from 'next-intl/middleware';
 import { routing } from '@/i18n/routing';
 import { NextRequest, NextResponse } from 'next/server';
-import { Locale } from 'next-intl';
 import { isLocale, normalizePath } from '@/utils/routesHelper';
 
 export default async function middleware(request: NextRequest) {
@@ -36,15 +35,14 @@ export default async function middleware(request: NextRequest) {
 
   const segments = pathname.split('/').filter(Boolean);
 
-  let locale: Locale = defaultLocale;
   let pathnameWithoutLocale = pathname;
 
   if (segments[0] && isLocale(segments[0]) && segments[0] !== defaultLocale) {
-    locale = segments[0];
     pathnameWithoutLocale = '/' + segments.slice(1).join('/');
   }
 
   pathnameWithoutLocale = normalizePath(pathnameWithoutLocale);
+  console.log(pathnameWithoutLocale)
 
   /* -------------------- PREPARE ISR (STATIC/SSG) PAGES -------------------- */
 

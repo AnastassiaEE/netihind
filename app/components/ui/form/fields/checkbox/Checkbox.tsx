@@ -48,6 +48,7 @@ export default function Checkbox({
         className={checkboxClasses({
           size,
           isValid,
+          className,
         })}
         {...props}
       />
