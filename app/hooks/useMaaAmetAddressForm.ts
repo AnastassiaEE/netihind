@@ -25,7 +25,11 @@ import { getAddressSlug } from '@/utils/addressHelper';
  */
 export default function useMaaAmetAddressForm(nonce: string) {
   const isWidgetAdded = useRef(false);
-  const [address, setAddress] = useState({
+  const [address, setAddress] = useState<{
+    full: string;
+    oid: string;
+    apartment: string | undefined;
+  }>({
     full: '',
     oid: '',
     apartment: undefined,
@@ -44,18 +48,13 @@ export default function useMaaAmetAddressForm(nonce: string) {
    *             The event's `detail` property should contain an array with address info objects
    */
   const getAddress = (e: Event) => {
-    var info = (e as CustomEvent).detail[0];
+    const info = (e as CustomEvent).detail[0];
     setAddress((prevAddress) => ({
       ...prevAddress,
       full: info.aadress,
       apartment: info.kort_nr,
+      oid: info.hoone_ads_oid || info.ads_oid,
     }));
-    info.hoone_ads_oid
-      ? setAddress((prevAddress) => ({
-          ...prevAddress,
-          oid: info.hoone_ads_oid,
-        }))
-      : setAddress((prevAddress) => ({ ...prevAddress, oid: info.ads_oid }));
   };
 
   /**
