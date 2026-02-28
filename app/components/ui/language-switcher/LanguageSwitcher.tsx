@@ -17,6 +17,7 @@ export default function LanguageSwitcher() {
       {routing.locales.map((locale) => (
         <Language
           key={locale}
+          // @ts-expect-error - The Link component expects a specific type for href, but we are constructing it dynamically here.
           href={{
             pathname,
             params,

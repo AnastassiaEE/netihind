@@ -7,7 +7,7 @@ export default function Language({
   locale,
   current,
 }: {
-  href: any;
+  href: Parameters<typeof Link>[0]['href'];
   locale: Locale;
   current: boolean;
 }) {
