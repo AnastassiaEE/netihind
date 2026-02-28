@@ -14,7 +14,7 @@ export default function Language({
   const t = useTranslations('Buttons.language');
 
   const languageClasses = classNames(
-    'cursor-pointer border-b-2 font-semibold uppercase text-muted-dark transition-colors hover:text-primary',
+    'text-muted-dark hover:text-primary cursor-pointer border-b-2 font-semibold uppercase transition-colors',
     current ? 'border-primary' : 'border-transparent',
   );
 

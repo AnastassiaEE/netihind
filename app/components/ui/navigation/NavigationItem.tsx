@@ -14,8 +14,8 @@ export default function NavigationItem({
     <Link
       href={href}
       className={classNames(
-        'transition-colors hover:text-primary',
-        isActive && 'font-extrabold text-primary',
+        'hover:text-primary transition-colors',
+        isActive && 'text-primary font-extrabold',
       )}
     >
       {children}

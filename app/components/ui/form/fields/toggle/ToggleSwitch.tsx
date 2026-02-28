@@ -7,7 +7,7 @@ const toggleVariants = tv({
   slots: {
     input: 'peer absolute opacity-0',
     switch:
-      "rounded-full after:absolute after:left-1 after:top-1 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-focus-visible:outline-solid",
+      "peer-checked:bg-primary rounded-full peer-focus-visible:outline-solid after:absolute after:top-1 after:left-1 after:rounded-full after:bg-white after:transition-all after:content-['']",
     label: 'ml-2',
   },
   variants: {

@@ -19,7 +19,7 @@ export default function PackageCard({
 }) {
   const t = useTranslations('Packages.details');
   const cardClasses = classNames(
-    'rounded-md border border-muted-light bg-white shadow-md relative',
+    'border-muted-light relative rounded-md border bg-white shadow-md',
     className,
   );
 
@@ -66,12 +66,12 @@ export default function PackageCard({
         <PackageCardDetailsSection
           installation={installation}
           equipment={equipment}
-          className="muted-light border-t border-r-muted-light px-8 py-3 lg:col-span-2 lg:row-start-3 lg:border-r"
+          className="muted-light border-r-muted-light border-t px-8 py-3 lg:col-span-2 lg:row-start-3 lg:border-r"
         />
         <PackageCardPriceSection
           price={price}
           discount={discount}
-          className="flex flex-col items-center justify-center gap-1 border-muted-light p-4 max-lg:border-t lg:row-span-3"
+          className="border-muted-light flex flex-col items-center justify-center gap-1 p-4 max-lg:border-t lg:row-span-3"
         />
       </div>
       <PackageCardActions onActionClick={onActionClick} className="flex" />

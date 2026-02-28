@@ -2,7 +2,7 @@ import { FieldErrorSize } from '@/types/form.types';
 import { tv } from 'tailwind-variants';
 
 const errorClasses = tv({
-  base: 'absolute font-medium text-error',
+  base: 'text-error absolute font-medium',
   variants: {
     size: {
       sm: 'text-xs',

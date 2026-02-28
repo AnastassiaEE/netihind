@@ -5,7 +5,7 @@ import FieldLabel from '@/components/ui/form/fields/FieldLabel';
 import React from 'react';
 
 const checkboxClasses = tv({
-  base: 'checkbox align-sub mr-2 shrink-0 cursor-pointer appearance-none rounded-[.185em] border checked:border-primary checked:bg-primary checked:bg-contain',
+  base: 'checkbox checked:border-primary checked:bg-primary mr-2 shrink-0 cursor-pointer appearance-none rounded-[.185em] border align-sub checked:bg-contain',
   variants: {
     size: sizes,
     isValid: {

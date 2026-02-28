@@ -5,7 +5,7 @@ import { tv } from 'tailwind-variants';
 import { Label, TextareaSize } from '@/types/form.types';
 
 const textAreaClasses = tv({
-  base: 'w-full rounded-md border bg-white text-muted-dark placeholder:text-muted focus:shadow-md focus:outline-hidden',
+  base: 'text-muted-dark placeholder:text-muted w-full rounded-md border bg-white focus:shadow-md focus:outline-hidden',
   variants: {
     size: sizes,
     isValid: {

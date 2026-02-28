@@ -30,7 +30,7 @@ export default function PackageCardPrice({
   const priceClasses = classNames(
     'w-max rounded-md px-2 py-1 text-lg tracking-tight md:text-xl',
     hasDiscount
-      ? 'bg-linear-to-r from-primary via-secondary to-accent text-white'
+      ? 'from-primary via-secondary to-accent bg-linear-to-r text-white'
       : 'bg-primary-light text-muted-dark',
   );
 
@@ -48,7 +48,7 @@ export default function PackageCardPrice({
             aria-hidden="true"
           >
             {formatMoney(price)} €{' '}
-            <span className="bg-linear-to-r from-primary via-secondary to-accent bg-clip-text text-sm font-medium text-transparent">
+            <span className="from-primary via-secondary to-accent bg-linear-to-r bg-clip-text text-sm font-medium text-transparent">
               -{discountPercentage}%{' '}
               {hasDiscountDuration &&
                 t('details.discount.duration', { months: discount_duration })}
