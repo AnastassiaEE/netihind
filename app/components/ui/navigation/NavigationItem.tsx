@@ -6,7 +6,7 @@ export default function NavigationItem({
   isActive = false,
   children,
 }: {
-  href: any;
+  href: Parameters<typeof Link>[0]['href'];
   isActive?: boolean;
   children: React.ReactNode;
 }) {
