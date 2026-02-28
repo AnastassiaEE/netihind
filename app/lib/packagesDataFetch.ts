@@ -9,7 +9,7 @@ import { supabase } from '@/lib/supabase';
  * @returns An array of provider objects, or an empty array if none are found
  */
 export const getProviders = async (oid: string) => {
-  let { data: providers } = await supabase.rpc('get_providers_by_address', {
+  const { data: providers } = await supabase.rpc('get_providers_by_address', {
     p_oid: oid,
   });
   return providers ?? [];
@@ -24,7 +24,7 @@ export const getProviders = async (oid: string) => {
  * @returns An array of technology objects, or an empty array if none are found
  */
 export const getTechnologies = async (oid: string) => {
-  let { data: technologies } = await supabase.rpc(
+  const { data: technologies } = await supabase.rpc(
     'get_technologies_by_address',
     {
       p_oid: oid,

@@ -28,7 +28,7 @@ export default async function middleware(request: NextRequest) {
   /* -------------------- I18N MIDDLEWARE -------------------- */
 
   const handleI18nRouting = createMiddleware(routing);
-  let response = handleI18nRouting(request);
+  const response = handleI18nRouting(request);
 
   const pathname = request.nextUrl.pathname;
   const defaultLocale = routing.defaultLocale;

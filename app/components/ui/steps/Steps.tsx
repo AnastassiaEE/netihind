@@ -12,7 +12,7 @@ const lineStyles = {
 
 export default function Steps({ steps }: { steps: StepItem[] }) {
   const drawLine = (index: number) => {
-    let lineClasses = [];
+    const lineClasses = [];
     if (index === 1) {
       lineClasses.push(lineStyles.bottom, lineStyles.right);
     } else if (index === steps.length) {
