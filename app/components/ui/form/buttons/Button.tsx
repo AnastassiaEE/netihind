@@ -8,11 +8,11 @@ const buttonClasses = tv({
   variants: {
     variant: {
       contained:
-        'border border-primary bg-primary text-white hover:bg-primary-dark shadow-md shadow-primary/30 hover:shadow-none',
+        'border-primary bg-primary hover:bg-primary-dark shadow-primary/30 border text-white shadow-md hover:shadow-none',
       outlined:
-        'border border-primary bg-white text-primary hover:bg-primary hover:text-white',
+        'border-primary text-primary hover:bg-primary border bg-white hover:text-white',
       neutral:
-        'border border-primary-light bg-primary-light text-muted-dark hover:bg-primary hover:text-white',
+        'border-primary-light bg-primary-light text-muted-dark hover:bg-primary border hover:text-white',
       text: 'text-primary hover:text-primary-dark',
     },
     size: sizes,

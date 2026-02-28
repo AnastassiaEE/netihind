@@ -29,7 +29,7 @@ export default function ContactCard({
   className?: string;
 }) {
   const cardClasses = classNames(
-    'flex rounded-md border border-muted-light p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg',
+    'border-muted-light flex rounded-md border p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg',
     className,
   );
 
@@ -45,7 +45,7 @@ export default function ContactCard({
         <p className="mb-3">{description}</p>
         <a
           href={href}
-          className="block py-3 font-semibold text-primary hover:text-primary-dark"
+          className="text-primary hover:text-primary-dark block py-3 font-semibold"
         >
           {contact}
         </a>
