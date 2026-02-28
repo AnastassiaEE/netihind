@@ -5,6 +5,12 @@ import Pros from '@/components/ui/icons/Pros';
 import Cons from '@/components/ui/icons/Cons';
 import { H1, H2 } from '@/components/ui/headings/RestPageHeadings';
 
+type ChildWithClassNameProps = { className?: string };
+type MdxImgProps = { src: string; alt: string };
+
+const isElementWithClassName = (child: React.ReactNode) =>
+  React.isValidElement<ChildWithClassNameProps>(child);
+
 const components = {
   h1: ({ children }: { children: React.ReactNode }) => <H1>{children}</H1>,
   h2: ({ children }: { children: React.ReactNode }) => <H2>{children}</H2>,
@@ -22,12 +28,14 @@ const components = {
     let icon = <Check size="small" className="align-sub" />;
     const hasChildClassName = (className: string) => {
       return Children.toArray(childrenCopy).some(
-        (child: any) => child.props?.className === className,
+        (child) =>
+          isElementWithClassName(child) && child.props.className === className,
       );
     };
     const filterChildrenByClassName = (className: string) => {
       return Children.toArray(childrenCopy).filter(
-        (child: any) => child.props?.className !== className,
+        (child) =>
+          !isElementWithClassName(child) || child.props.className !== className,
       );
     };
     if (hasChildClassName('pros')) {
@@ -45,24 +53,24 @@ const components = {
     );
   },
   table: ({ children }: { children: React.ReactNode }) => (
-    <table className="table-auto border-collapse border border-muted-light text-muted-dark not-last:mb-6">
+    <table className="border-muted-light text-muted-dark table-auto border-collapse border not-last:mb-6">
       {children}
     </table>
   ),
   th: ({ children }: { children: React.ReactNode }) => (
-    <th className="border border-muted-light" style={{ padding: '10px' }}>
+    <th className="border-muted-light border" style={{ padding: '10px' }}>
       {children}
     </th>
   ),
   td: ({ children }: { children: React.ReactNode }) => (
-    <td className="border border-muted-light" style={{ padding: '10px' }}>
+    <td className="border-muted-light border" style={{ padding: '10px' }}>
       {children}
     </td>
   ),
   a: ({ children }: { children: React.ReactNode }) => (
     <a
       href={`mailto:${children}`}
-      className="font-semibold transition-colors hover:text-primary"
+      className="hover:text-primary font-semibold transition-colors"
     >
       {children}
     </a>
@@ -70,7 +78,7 @@ const components = {
   strong: ({ children }: { children: React.ReactNode }) => (
     <strong className="font-bold text-black">{children}</strong>
   ),
-  img: (props: any) => (
+  img: (props: MdxImgProps) => (
     <Image
       src={props.src}
       alt={props.alt}
