@@ -7,7 +7,7 @@ export default function PostContentSection({ content }: { content: string }) {
   return (
     <SectionLayout className="py-24">
       <MdxLayout>
-        <MDXRemote source={content} components={components as {}} />
+        <MDXRemote source={content} components={components} />
       </MdxLayout>
     </SectionLayout>
   );
