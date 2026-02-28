@@ -9,7 +9,7 @@ const iconMap = {
 const hrefMap = {
   email: (contact: string) => `mailto:${contact}`,
   phone: (contact: string) => `tel:${contact}`,
-  address: (contact: string) => `#`,
+  address: () => `#`,
 };
 
 export default function ContactLink({
@@ -23,10 +23,10 @@ export default function ContactLink({
   const href = hrefMap[contactType](contact);
   return (
     <>
-      <Icon className="mr-2 inline align-middle text-primary" />
+      <Icon className="text-primary mr-2 inline align-middle" />
       <a
         href={href}
-        className="font-semibold transition-colors hover:text-primary"
+        className="hover:text-primary font-semibold transition-colors"
       >
         {contact}
       </a>

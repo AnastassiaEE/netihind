@@ -12,7 +12,7 @@ const iconMap = {
 const hrefMap = {
   email: (contact: string) => `mailto:${contact}`,
   phone: (contact: string) => `tel:${contact}`,
-  address: (contact: string) => `#`,
+  address: () => `#`,
 };
 
 export default function ContactCard({
