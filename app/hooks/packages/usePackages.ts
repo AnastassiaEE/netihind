@@ -77,7 +77,7 @@ export default function usePackages(
     if (!isLoading && (packages || error)) {
       onLoaded?.();
     }
-  }, [isLoading, packages, error]);
+  }, [isLoading, packages, error, onLoaded]);
 
   return {
     packages,
