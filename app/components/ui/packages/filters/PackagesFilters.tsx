@@ -2,25 +2,25 @@
 
 import { useTranslations } from 'next-intl';
 import React from 'react';
-import { Filters } from '@/types/filters.types';
+import {
+  Filters,
+  SelectedByFilter,
+  OnFilterChange,
+} from '@/types/filters.types';
 import PackagesFilterAccordion from '@/components/ui/packages/filters/PackagesFilterAccordion';
 import CheckboxFilter from '@/components/ui/filters/CheckboxFilter';
-import useFiltersUrlSync from '@/hooks/useFiltersUrlSync';
 import { translateKey } from '@/utils/translationHelper';
 
 export default function PackagesFilters({
   filters,
-  setFilters,
-  onUserChange,
-  isFiltersLoaded,
+  selectedByFilter,
+  onFilterChange,
 }: {
   filters: Filters;
-  setFilters: React.Dispatch<React.SetStateAction<Filters>>;
-  onUserChange?: () => void;
-  isFiltersLoaded: boolean;
+  selectedByFilter: SelectedByFilter;
+  onFilterChange: OnFilterChange;
 }) {
   const t = useTranslations('Filters.categories');
-  useFiltersUrlSync(filters, isFiltersLoaded);
 
   return (
     <>
@@ -39,8 +39,8 @@ export default function PackagesFilters({
               <CheckboxFilter
                 name={filterName}
                 filter={filterData}
-                setFilters={setFilters}
-                onUserChange={onUserChange}
+                selectedValues={selectedByFilter[filterName] || []}
+                onFilterChange={onFilterChange}
                 size="lg"
               />
             )}

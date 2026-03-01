@@ -1,7 +1,7 @@
 import { getFilterData } from '@/utils/packagesHelper';
 import { useMemo } from 'react';
 import useSWR from 'swr';
-import { FilterType, FilterOptionRaw } from '@/types/filters.types';
+import { FilterType, FilterOption } from '@/types/filters.types';
 
 /**
  * Fetches and prepares filter data for internet packages,
@@ -16,7 +16,7 @@ import { FilterType, FilterOptionRaw } from '@/types/filters.types';
  * @param fetchKey - Unique SWR key for caching and revalidation
  * @param fetcher - Function used to fetch raw filter data
  * @param queryParamKey - URL query parameter key used for this filter
- * @param labelKey - Object key used to display filter labels
+ * @param nameKey - Object key used to display filter names
  * @param filterType - Type of filter (e.g. checkbox or range)
  *
  * @returns An object containing:
@@ -26,11 +26,9 @@ import { FilterType, FilterOptionRaw } from '@/types/filters.types';
  */
 export default function usePackagesFilter(
   oid: string,
-  searchParams: Record<string, string>,
   fetchKey: string,
-  fetcher: (oid: string) => Promise<FilterOptionRaw[]>,
-  queryParamKey: string,
-  labelKey: string,
+  fetcher: (oid: string) => Promise<FilterOption[]>,
+  nameKey: string,
   filterType: FilterType,
 ) {
   const { data, isLoading } = useSWR([fetchKey, oid], () => fetcher(oid), {
@@ -44,26 +42,11 @@ export default function usePackagesFilter(
    * Prepare UI-ready filter data and synchronize with URL query parameters.
    */
   const filterData = useMemo(() => {
-    return getFilterData(
-      searchParams,
-      queryParamKey,
-      'id',
-      labelKey,
-      data ?? [],
-      filterType,
-    );
-  }, [searchParams, data, queryParamKey, labelKey, filterType]);
-
-  /**
-   * Extract selected values from prepared filter data.
-   */
-  const filterSelectedValues = useMemo(() => {
-    return filterData.selected.map((s) => s.value);
-  }, [filterData]);
+    return getFilterData('id', nameKey, data ?? [], filterType);
+  }, [data, nameKey, filterType]);
 
   return {
     filterData,
-    filterSelectedValues,
     isLoading,
   };
 }

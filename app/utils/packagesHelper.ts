@@ -19,68 +19,44 @@ export const getSelectedSortOption = (sortParam: string) => {
 };
 
 /**
- * Converts a list of items into filter options with `value` and `label` keys.
+ * Converts a list of items into filter options with `id` and `name` keys.
  *
  * @param items - Array of objects to convert
- * @param labelKey - Key to use for the label
- * @param valueKey - Key to use for the value
+ * @param idKey - Key to use for the id
+ * @param nameKey - Key to use for the name
  */
 const getFilterOptions = (
   items: Record<string, string>[],
-  labelKey: string,
-  valueKey: string,
+  nameKey: string,
+  idKey: string,
 ) =>
   items.map((item) => ({
-    value: item[valueKey],
-    label: item[labelKey],
+    id: item[idKey],
+    name: item[nameKey],
   }));
-
-/**
- * Maps URL/search params to selected filter options.
- *
- * @param options - Available filter options
- * @param params - Array of strings from URL/search params
- */
-export const getFilterSelectedOptions = (
-  options: {
-    value: string;
-    label: string;
-  }[],
-  params: string[],
-) =>
-  params
-    .map((param) =>
-      options.find((opt) => opt.label.toLowerCase() === param.toLowerCase()),
-    )
-    .filter((opt) => !!opt);
 
 /**
  * Prepares filter data for a UI component from search params and items.
  *
  * @param searchParams - URL or state search parameters
  * @param paramKey - Key in the search params corresponding to this filter
- * @param valueKey - Key in items to use as value
- * @param labelKey - Key in items to use as label
+ * @param idKey - Key in items to use as id
+ * @param nameKey - Key in items to use as name
  * @param items - List of raw items for the filter
  * @param filterType - Type of the filter (checkbox, radio, etc.)
  *
  *  @returns An object containing:
  *  - `type`: the type of the filter (e.g., 'checkbox', 'radio', etc.)
- *  - `options`: array of all available filter options in the form `{ label: string, value: string }`
- *  - `selected`: array of currently selected options, filtered from `options` based on search parameters
+ *  - `options`: array of all available filter options in the form `{ id: string, name: string }`
  */
 export const getFilterData = (
-  searchParams: Record<string, string>,
-  paramKey: string,
-  valueKey: string,
-  labelKey: string,
+  idKey: string,
+  nameKey: string,
   items: Record<string, string>[],
   filterType: FilterType,
 ) => {
-  const params = searchParams[paramKey]?.split(',') || [];
-  const options = getFilterOptions(items, labelKey, valueKey);
-  const selectedOptions = getFilterSelectedOptions(options, params);
-  return { type: filterType, options, selected: selectedOptions };
+  const options = getFilterOptions(items, nameKey, idKey);
+  return { type: filterType, options };
 };
 
 /**

@@ -1,37 +1,35 @@
-import useCheckboxFilter from '@/hooks/useCheckboxFilter';
-import { Filter, Filters } from '@/types/filters.types';
+import { Filter } from '@/types/filters.types';
 import Checkbox from '@/components/ui/form/fields/checkbox/Checkbox';
 import { CheckboxSize } from '@/types/form.types';
+import { OnFilterChange } from '@/types/filters.types';
 
 export default function CheckboxFilter({
   name,
   size,
   filter,
-  setFilters,
-  onUserChange,
+  selectedValues,
+  onFilterChange,
 }: {
   name: string;
   size?: CheckboxSize;
   filter: Filter;
-  setFilters: React.Dispatch<React.SetStateAction<Filters>>;
-  onUserChange?: () => void;
+  selectedValues: string[];
+  onFilterChange: OnFilterChange;
 }) {
-  const { handleChange } = useCheckboxFilter(name, setFilters, onUserChange);
-
   return (
     <>
       {filter.options.map((option) => (
         <Checkbox
-          key={option.value}
+          key={option.id}
           name={name}
-          value={option.value}
-          checked={filter.selected.some(
-            (opt) => opt.value.toString() === option.value.toString(),
-          )}
-          onChange={(e) => handleChange(option.value, e.target.checked)}
+          value={option.id}
+          checked={selectedValues.includes(option.name.toLowerCase())}
+          onChange={(e) =>
+            onFilterChange(name, option.name.toLowerCase(), e.target.checked)
+          }
           size={size}
         >
-          {option.label}
+          {option.name}
         </Checkbox>
       ))}
     </>

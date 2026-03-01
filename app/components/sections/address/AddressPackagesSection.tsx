@@ -45,13 +45,13 @@ export default function AddressPackagesSection({
 
   const {
     filters,
-    setFilters,
+    handleFilterChange,
     isFiltersLoaded,
     clearFilters,
-    providerFilterSelectedValues,
-    technologyFilterSelectedValues,
-    selectedSortOption,
-    setSelectedSortOption,
+    selectedByFilter,
+    selectedIdsByFilter,
+    selectedBySort,
+    handleSortChange,
   } = usePackagesFilters(oid, searchParams, handleUserInteraction);
 
   return (
@@ -71,9 +71,8 @@ export default function AddressPackagesSection({
                 name="packages"
                 variant="labeled"
                 options={SORT_OPTIONS}
-                selectedOption={selectedSortOption}
-                setSelectedOption={setSelectedSortOption}
-                onUserChange={handleUserInteraction}
+                selectedBySort={selectedBySort}
+                onSortChange={handleSortChange}
                 className="border-muted-light rounded-md border bg-white"
               />
             </div>
@@ -81,9 +80,9 @@ export default function AddressPackagesSection({
               <Packages
                 oid={oid}
                 address={address}
-                sortOption={selectedSortOption}
-                providers={providerFilterSelectedValues}
-                technologies={technologyFilterSelectedValues}
+                sortOption={selectedBySort}
+                providers={selectedIdsByFilter.providers}
+                technologies={selectedIdsByFilter.technologies}
                 onLoaded={handlePackagesLoaded}
               />
             </div>
@@ -108,9 +107,8 @@ export default function AddressPackagesSection({
                   </div>
                   <PackagesFilters
                     filters={filters}
-                    setFilters={setFilters}
-                    onUserChange={handleUserInteraction}
-                    isFiltersLoaded={isFiltersLoaded}
+                    selectedByFilter={selectedByFilter}
+                    onFilterChange={handleFilterChange}
                   />
                 </>
               )}
@@ -120,14 +118,13 @@ export default function AddressPackagesSection({
         <PackagesSortingToolbar
           sortOptions={{
             options: SORT_OPTIONS,
-            selected: selectedSortOption,
+            selected: selectedBySort,
           }}
-          setSelectedSortOption={setSelectedSortOption}
+          onSortChange={handleSortChange}
           filters={filters}
-          setFilters={setFilters}
+          selectedByFilter={selectedByFilter}
+          onFilterChange={handleFilterChange}
           clearFilters={clearFilters}
-          onUserChange={handleUserInteraction}
-          isFiltersLoaded={isFiltersLoaded}
           className="md:hidden"
         />
       </>

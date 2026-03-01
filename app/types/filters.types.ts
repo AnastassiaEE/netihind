@@ -1,9 +1,4 @@
 export type FilterOption = {
-  value: string;
-  label: string;
-};
-
-export type FilterOptionRaw = {
   id: string;
   name: string;
 };
@@ -19,12 +14,20 @@ export type Filters = {
   [filterName: string]: {
     type: FilterType;
     options: FilterOption[];
-    selected: FilterOption[];
   };
 };
 
 export type Filter = {
   type: string;
   options: FilterOption[];
-  selected: FilterOption[];
 };
+
+export type SelectedByFilter = {
+  [filterName: string]: string[];
+};
+
+export type OnFilterChange = (
+  filterName: string,
+  optionValue: string,
+  isChecked: boolean,
+) => void;

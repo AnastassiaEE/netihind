@@ -6,26 +6,29 @@ import Sort from '@/components/ui/sorting/Sort';
 import { useTranslations } from 'next-intl';
 import SlideUpPanel from '@/components/ui/overlay/SlideUpPanel';
 import useOverlay from '@/hooks/useOverlay';
-import { Filters, SortOptions } from '@/types/filters.types';
+import {
+  Filters,
+  SelectedByFilter,
+  SortOptions,
+  OnFilterChange,
+} from '@/types/filters.types';
 import PackagesFilters from '@/components/ui/packages/filters/PackagesFilters';
 
 export default function PackagesSortingToolbar({
   sortOptions,
-  setSelectedSortOption,
+  onSortChange,
   filters,
-  setFilters,
+  selectedByFilter,
+  onFilterChange,
   clearFilters,
-  onUserChange,
-  isFiltersLoaded,
   className,
 }: {
   sortOptions: SortOptions;
-  setSelectedSortOption: React.Dispatch<React.SetStateAction<string>>;
+  onSortChange: (option: string) => void;
   filters: Filters;
-  setFilters: React.Dispatch<React.SetStateAction<Filters>>;
+  selectedByFilter: SelectedByFilter;
+  onFilterChange: OnFilterChange;
   clearFilters: () => void;
-  onUserChange?: () => void;
-  isFiltersLoaded: boolean;
   className?: string;
 }) {
   const t = useTranslations('Filters');
@@ -63,9 +66,8 @@ export default function PackagesSortingToolbar({
             variant="plain"
             openDirection="top"
             options={sortOptions.options}
-            selectedOption={sortOptions.selected}
-            setSelectedOption={setSelectedSortOption}
-            onUserChange={onUserChange}
+            selectedBySort={sortOptions.selected}
+            onSortChange={onSortChange}
             className="min-w-37.5 uppercase"
           />
         )}
@@ -82,9 +84,8 @@ export default function PackagesSortingToolbar({
         >
           <PackagesFilters
             filters={filters}
-            setFilters={setFilters}
-            onUserChange={onUserChange}
-            isFiltersLoaded={isFiltersLoaded}
+            selectedByFilter={selectedByFilter}
+            onFilterChange={onFilterChange}
           />
         </SlideUpPanel>
       )}
