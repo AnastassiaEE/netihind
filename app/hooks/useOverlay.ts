@@ -1,5 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+const FOCUSABLE_SELECTOR =
+  'button, a, input, textarea, select, [tabindex]:not([tabindex="-1"])';
+
 /**
  * Manages overlay/modal visibility, mounting, focus trapping, and ESC handling.
  *
@@ -41,13 +44,13 @@ export default function useOverlay(
    * - Stores the previously focused element
    * - Sets visible state on next animation frame for transitions
    */
-  const open = () => {
+  const open = useCallback(() => {
     setIsMounted(true);
     openOverlayElementRef.current = document.activeElement as HTMLElement;
     requestAnimationFrame(() => {
       setIsVisible(true);
     });
-  };
+  }, []);
 
   /**
    * Closes the overlay:
@@ -73,27 +76,6 @@ export default function useOverlay(
     }
   }, [isVisible, isMounted]);
 
-  /* -------------------- FOCUSABLE ELEMENTS -------------------- */
-
-  /**
-   * Updates references to the first and last focusable elements inside the overlay
-   * and sets initial focus on the first element.
-   */
-  const updateFocusableElements = useCallback(() => {
-    const overlayElement = overlayRef.current;
-    if (!overlayElement) return;
-
-    const elements = Array.from(
-      overlayElement.querySelectorAll(
-        'button, a, input, textarea, select, [tabindex]:not([tabindex="-1"])',
-      ),
-    ) as HTMLElement[];
-
-    firstFocusableElementRef.current = elements[0] || null;
-    lastFocusableElementRef.current = elements[elements.length - 1] || null;
-    firstFocusableElementRef.current.focus();
-  }, []);
-
   /* -------------------- INITIAL FOCUS + OBSERVER -------------------- */
 
   /**
@@ -101,6 +83,23 @@ export default function useOverlay(
    */
   useEffect(() => {
     if (!overlayRef.current || !isReady) return;
+
+    /**
+     * Updates references to the first and last focusable elements inside the overlay
+     * and sets initial focus on the first element.
+     */
+    const updateFocusableElements = () => {
+      const elements = Array.from(
+        overlayRef.current!.querySelectorAll(FOCUSABLE_SELECTOR),
+      ) as HTMLElement[];
+
+      firstFocusableElementRef.current = elements[0] || null;
+      lastFocusableElementRef.current = elements[elements.length - 1] || null;
+
+      if (firstFocusableElementRef.current) {
+        firstFocusableElementRef.current.focus();
+      }
+    };
 
     updateFocusableElements();
 
@@ -118,7 +117,7 @@ export default function useOverlay(
     return () => {
       observer.disconnect();
     };
-  }, [isReady, updateFocusableElements]);
+  }, [isReady]);
 
   /* -------------------- TAB TRAP -------------------- */
 
@@ -173,7 +172,7 @@ export default function useOverlay(
 
     overlayElement.addEventListener('keydown', handleEscKey);
     return () => overlayElement.removeEventListener('keydown', handleEscKey);
-  }, [isReady, close]);
+  }, [isReady, close, isClosable]);
 
   return {
     isMounted,
