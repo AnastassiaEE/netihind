@@ -7,19 +7,26 @@
  * @param field - The name of the form field (e.g., 'name', 'email', 'phone', etc.)
  * @param value - The current value of the field (string or boolean for checkboxes)
  * @param isRequired - Whether the field is required
- * 
+ *
  * @returns Validation error message key or empty string
  */
-export const validateField = (field: string, value: string | boolean, isRequired: boolean) => {
+export const validateField = (
+  field: string,
+  value: string | boolean,
+  isRequired: boolean,
+) => {
   let error = '';
   switch (field) {
     case 'name':
-      error = isRequired && (value as string).trim() === '' ? 'errors.emptyName' : '';
+      error =
+        isRequired && (value as string).trim() === '' ? 'errors.emptyName' : '';
       break;
     case 'email':
       if ((value as string).trim() === '') {
         error = isRequired ? 'errors.emptyEmail' : '';
-      } else if (!(value as string).trim().match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g)) {
+      } else if (
+        !(value as string).trim().match(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g)
+      ) {
         error = 'errors.invalidEmail';
       } else {
         error = '';
@@ -40,7 +47,10 @@ export const validateField = (field: string, value: string | boolean, isRequired
       }
       break;
     case 'message':
-      error = isRequired && (value as string).trim() === '' ? 'errors.emptyMessage' : '';
+      error =
+        isRequired && (value as string).trim() === ''
+          ? 'errors.emptyMessage'
+          : '';
       break;
     case 'policy':
       error = isRequired && value === false ? 'Согласитесь с политикой' : '';
