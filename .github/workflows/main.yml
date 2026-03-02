@@ -47,7 +47,6 @@ jobs:
             --exclude='node_modules' \
             --exclude='.next' \
             --exclude='.git' \
-            --exclude='maintenance.html' \
             ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}
 
       # -----------------------------
