@@ -36,17 +36,20 @@ export default function useTabs(name: string, tabs: string[]) {
    *
    * @param index - The zero-based index of the tab.
    * @returns A string representing the unique ID of the tab.
-   * 
+   *
    * @example getTabId(0) // profile-tab-1 (name="profile")
    */
-  const getTabId = (index: number) => `${name}-tab-${index + 1}`;
+  const getTabId = useCallback(
+    (index: number) => `${name}-tab-${index + 1}`,
+    [name],
+  );
 
   /**
    * Generates a unique ID for the corresponding tab panel based on its index.
    *
    * @param index - The zero-based index of the tab panel.
    * @returns A string representing the unique ID of the tab panel.
-   * 
+   *
    * @example getTabPanelId(0) // profile-tabpanel-1 (name="profile")
    */
   const getTabPanelId = (index: number) => `${name}-tabpanel-${index + 1}`;
