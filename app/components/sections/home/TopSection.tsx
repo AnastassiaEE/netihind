@@ -10,7 +10,7 @@ export default function TopSection() {
   const t = useTranslations('HomePage.topSection');
   return (
     <SectionLayout
-      className="relative flex h-screen min-h-162.5 flex-col justify-center pt-20 md:min-h-180 md:pt-35"
+      className="relative flex h-dvh min-h-162.5 flex-col justify-center pt-20 md:min-h-180 md:pt-35"
       bg="bg-linear-to-t from-primary/20 from-0% via-accent/20 via-secondary/20 via-40% to-80%"
     >
       <div className="absolute right-0 bottom-12.5 -z-10 h-auto w-57.5 max-md:top-20 md:w-125">
