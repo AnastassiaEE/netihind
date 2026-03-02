@@ -11,22 +11,28 @@ export default function PackagePriceSection({
   const t = useTranslations('Packages');
   const { price, discount } = packageData || {};
 
+  console.log(packageData);
   return (
     <PackageModalSection
       title={t('modals.connection.sections.total') + ':'}
       className="bg-white"
     >
       {/* { With a discount } */}
-      {discount && (
-        <>
-          <p className="flex items-center justify-between">
-            <span className="font-medium">
-              {`${t('details.price.label')}:`}
-            </span>
-            <span className="bg-linear-to-r from-primary via-secondary to-accent bg-clip-text text-xl font-extrabold text-transparent">
+
+      <>
+        <p className="flex items-center justify-between">
+          <span className="font-medium">{`${t('details.price.label')}:`}</span>
+          {discount ? (
+            <span className="from-primary via-secondary to-accent bg-linear-to-r bg-clip-text text-xl font-extrabold text-transparent">
               {`${formatMoney(discount.price)} €`}
             </span>
-          </p>
+          ) : (
+            <span className="text-xl font-bold">
+              {`${formatMoney(price)} €`}
+            </span>
+          )}
+        </p>
+        {discount && (
           <p className="mb-1 text-right">
             <span aria-hidden="true" className="text-sm font-bold line-through">
               {formatMoney(price)} €
@@ -35,11 +41,12 @@ export default function PackagePriceSection({
               {t('details.price.regularPrice', { price: formatMoney(price) })}
             </span>
           </p>
-        </>
-      )}
-
-      <p className="text-sm">{`+ ${t('details.installation.label')}`}</p>
-      <p className="text-sm">{`+ ${t('details.equipment.label')}`}</p>
+        )}
+      </>
+      <div className="mt-2">
+        <p className="text-sm">{`+ ${t('details.installation.label')}`}</p>
+        <p className="text-sm">{`+ ${t('details.equipment.label')}`}</p>
+      </div>
     </PackageModalSection>
   );
 }
