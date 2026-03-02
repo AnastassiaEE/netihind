@@ -30,8 +30,8 @@ export default async function middleware(request: NextRequest) {
   const handleI18nRouting = createMiddleware(routing);
   const response = handleI18nRouting(request);
 
-  const pathname = request.nextUrl.pathname;
-  const defaultLocale = routing.defaultLocale;
+  const { pathname } = request.nextUrl;
+  const { defaultLocale } = routing;
 
   const segments = pathname.split('/').filter(Boolean);
 
