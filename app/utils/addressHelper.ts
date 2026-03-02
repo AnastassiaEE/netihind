@@ -1,7 +1,7 @@
 import slugify from 'slugify';
 
-const addressRegex = /^[^\d]*[\d\/A-Za-z]*$/g;
-const apartmentRegex = /(?<=\-).*$/g;
+const addressRegex = /^[^\d]*[\d/A-Za-z]*$/g;
+const apartmentRegex = /(?<=-).*$/g;
 
 /**
  * Parses an address object stored in a cookie string.
