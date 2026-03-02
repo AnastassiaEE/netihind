@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 /**
@@ -16,17 +15,6 @@ import { createPortal } from 'react-dom';
  * @returns The portal-rendered children or `null` if not ready / should not render.
  */
 export function usePortal(children: React.ReactNode, shouldRender: boolean) {
-  const [hasMountedPortal, setHasMountedPortal] = useState(false);
-
-  /**
-   * Marks the portal as mounted after the first render
-   * to avoid server/client rendering mismatches.
-   */
-  useEffect(() => {
-    setHasMountedPortal(true);
-  }, []);
-
-  if (!hasMountedPortal || !shouldRender) return null;
-
+  if (!shouldRender || typeof document === 'undefined') return null;
   return createPortal(children, document.body);
 }
