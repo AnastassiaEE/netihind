@@ -9,7 +9,7 @@ export default function Tooltip({
   elementToInteract: React.ReactNode;
   content: string;
 }) {
-  const { isVisible, pos, wrapperRef, tooltipRef, show, hide } = useTooltip();
+  const { isVisible, wrapperRef, tooltipRef, show, hide } = useTooltip();
 
   const tooltipPortal = usePortal(
     <div
@@ -17,8 +17,6 @@ export default function Tooltip({
       ref={tooltipRef}
       className="text-muted-dark fixed z-50 max-w-62.5 rounded-md bg-white p-3 text-sm shadow-md"
       style={{
-        top: pos.top,
-        left: pos.left,
         transform: 'translateX(-50%)',
       }}
     >
