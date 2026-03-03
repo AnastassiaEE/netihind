@@ -1,9 +1,11 @@
 import { RefObject } from 'react';
-import { PackageAction } from '@/types/elements.types';
+import { PackageAction } from '@/types/packages.types';
 
 // type
 export type FormType = 'contact' | PackageAction;
-export type ButtonType = 'button' | 'submit' | 'reset';
+export type FormFields = {
+  [key: string]: { initialValue: string | boolean; isRequired: boolean };
+};
 
 // variant
 export type ButtonVariant = 'contained' | 'outlined' | 'neutral' | 'text';
@@ -30,3 +32,5 @@ export type ComboBoxProps = {
   'aria-haspopup': 'listbox';
   'aria-controls': string;
 };
+
+export type Label = {value: string; className?: string}

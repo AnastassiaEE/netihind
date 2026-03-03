@@ -5,10 +5,10 @@ import usePackages from '@/hooks/packages/usePackages';
 import { useTranslations } from 'next-intl';
 import PackageCard from '@/components/ui/packages/card/PackageCard';
 import PackagesError from '@/components/ui/errors/PackagesError';
-import PackageActionContent from '@/components/ui/packages/action/PackageActionContent';
 import { Link } from '@/i18n/routing';
-import Dialog from '@/components/ui/overlay/Dialog';
 import useOverlay from '@/hooks/useOverlay';
+import { Package } from '@/types/packages.types';
+import PackageModal from '@/components/ui/packages/modal/PackageModal';
 
 export default function Packages({
   oid,
@@ -37,7 +37,8 @@ export default function Packages({
   } = usePackages(oid, sortOption, providers, technologies, onLoaded);
 
   const {
-    isOpened: isModalOpened,
+    isMounted: isModalMounted,
+    isVisible: isModalVisible,
     open: openModal,
     close: closeModal,
     overlayRef: modalRef,
@@ -63,9 +64,9 @@ export default function Packages({
         <PackagesLoader />
       ) : (
         <div>
-          {packages.map((data: { [key: string]: any }, index: number) => (
+          {packages.map((data: Package) => (
             <PackageCard
-              key={data.internet_package_id ?? `package-${index}`}
+              key={data.id}
               data={data}
               className="mb-5 last:mb-0"
               onActionClick={(action) =>
@@ -75,21 +76,15 @@ export default function Packages({
           ))}
         </div>
       )}
-      <Dialog
-        name={selectedAction}
-        title={t(`actions.${selectedAction}.title`)}
-        description={t(`actions.${selectedAction}.description`)}
-        isOpened={isModalOpened}
+      <PackageModal
+        action={selectedAction}
+        isMounted={isModalMounted}
+        isVisible={isModalVisible}
         onClose={closeModal}
-        dialogRef={modalRef}
-        className="bg-primary-light"
-      >
-        <PackageActionContent
-          action={selectedAction}
-          data={selectedPackage}
-          address={address}
-        />
-      </Dialog>
+        ref={modalRef}
+        selectedPackage={selectedPackage}
+        address={address}
+      />
     </>
   );
 }

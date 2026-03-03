@@ -2,11 +2,17 @@ import { use } from 'react';
 import QuestionsSection from '@/components/sections/home/QuestionsSection';
 import ContactsSection from '@/components/sections/home/ContactsSection';
 import StepsSection from '@/components/sections/home/StepsSection';
-import SliderBlogSection from '@/components/sections/home/SliderBlogSection';
+import BlogSection from '@/components/sections/home/BlogSection';
 import TopSection from '@/components/sections/home/TopSection';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Locale, useTranslations } from 'next-intl';
-import { openGraphLogo, website, metadataBaseUrl } from '@/app/shared-metadata';
+import JsonLd from '@/components/seo/JsonLd';
+import {
+  getMetadata,
+  getSchema,
+  getWebsiteSchema,
+  openGraphLogo,
+} from '@/utils/schemaHelper';
 
 export async function generateMetadata(props: {
   params: Promise<{ locale: Locale }>;
@@ -16,22 +22,15 @@ export async function generateMetadata(props: {
 
   const t = await getTranslations({ locale, namespace: 'SEO' });
 
-  return {
-    title: t('homePage.name'),
-    description: t('homePage.description'),
-    alternates: {
-      canonical: t('homePage.url'),
-    },
-    openGraph: {
-      title: t('homePage.name'),
-      description: t('homePage.description'),
-      type: 'website',
-      url: t('homePage.url'),
-      site_name: t('website.name'),
-      locale: locale,
-      images: [openGraphLogo],
-    },
-  };
+  return await getMetadata(
+    t('homePage.title'),
+    t('homePage.description'),
+    'website',
+    t('homePage.url'),
+    t('website.title'),
+    locale,
+    [openGraphLogo],
+  );
 }
 
 export default function Home(props: { params: Promise<{ locale: Locale }> }) {
@@ -42,44 +41,25 @@ export default function Home(props: { params: Promise<{ locale: Locale }> }) {
 
   const t = useTranslations('SEO');
 
-  const homePageUrl = new URL(t('homePage.url'), metadataBaseUrl).toString();
-
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'WebPage',
-        '@id': homePageUrl,
-        name: t('homePage.name'),
-        description: t('homePage.description'),
-        url: homePageUrl,
-        inLanguage: locale,
-        isPartOf: website(t, locale),
-      },
-      {
-        '@type': 'BreadcrumbList',
-        '@id': `${homePageUrl}#breadcrumbs`,
-        itemListElement: [
-          {
-            '@type': 'ListItem',
-            position: 1,
-            name: t('breadcrumbs.home.name'),
-            item: homePageUrl,
-          },
-        ],
-      },
-    ],
-  };
+  const breadcrumbs = [
+    { name: t('breadcrumbs.home.name'), url: t('homePage.url') },
+  ];
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      <JsonLd
+        data={getSchema(
+          t('homePage.title'),
+          t('homePage.description'),
+          t('homePage.url'),
+          breadcrumbs,
+          getWebsiteSchema(t, locale),
+          locale,
+        )}
       />
       <TopSection />
       <StepsSection />
       <QuestionsSection />
-      <SliderBlogSection />
+      <BlogSection />
       <ContactsSection />
     </>
   );

@@ -7,18 +7,18 @@ import { H2, H3 } from '@/components/ui/headings/HomePageHeadings';
 import { useTranslations } from 'next-intl';
 
 export default function ContactsSection() {
-  const t = useTranslations('HomePage');
+  const t = useTranslations('HomePage.contactsSection');
   const { phone, email } = contacts;
   return (
     <SectionLayout className="py-24">
       <div className="md:flex md:items-center md:justify-between">
         <div className="max-md:mb-12 md:w-1/2">
           <div className="mb-20">
-            <H2>{t('contactsSection.title')}</H2>
-            <p className="text-lg">{t('contactsSection.description')}</p>
+            <H2>{t('title')}</H2>
+            <p className="text-lg">{t('description')}</p>
           </div>
           <div>
-            <H3>{t('contactsSection.subtitle')}</H3>
+            <H3>{t('subtitle')}</H3>
             <ContactLinks>
               <ContactLink contactType="phone" contact={phone} />
               <ContactLink contactType="email" contact={email} />

@@ -6,12 +6,15 @@ import Backdrop from '@/components/ui/overlay/Backdrop';
 import PanelActions from '@/components/ui/overlay/PanelActions';
 import CloseButton from '@/components/ui/buttons/CloseButton';
 import { useTranslations } from 'next-intl';
+import { usePortal } from '@/hooks/usePortal';
+import { translateKey } from '@/utils/translationHelper';
 
 export default function SlideUpPanel({
   name,
   title,
   actions,
-  isOpened,
+  isMounted,
+  isVisible,
   onClose,
   panelRef,
   children,
@@ -19,7 +22,8 @@ export default function SlideUpPanel({
   name: string;
   title: string;
   actions?: React.ReactNode;
-  isOpened: boolean;
+  isMounted: boolean;
+  isVisible: boolean;
   onClose: () => void;
   panelRef?: React.RefObject<HTMLDivElement | null>;
   children: React.ReactNode;
@@ -29,12 +33,12 @@ export default function SlideUpPanel({
 
   const panelClasses = classNames(
     'fixed inset-x-0 bottom-0 z-50 h-dvh rounded-t-2xl bg-white',
-    isOpened ? 'slideUpPanel-open' : 'slideUpPanel-close',
+    isVisible ? 'slideUpPanel-visible' : 'slideUpPanel-hidden',
   );
 
-  return (
+  const portalContent = (
     <>
-      <Backdrop isVisible={isOpened} onClose={onClose} />
+      <Backdrop isVisible={isVisible} onClose={onClose} />
       <div
         role="dialog"
         aria-modal="true"
@@ -44,7 +48,7 @@ export default function SlideUpPanel({
         onTouchEnd={handleTouchEnd}
         className={panelClasses}
       >
-        <div className="relative border-b border-muted-light px-6 pb-5 pt-7">
+        <div className="border-muted-light relative border-b px-6 pt-7 pb-5">
           <p
             id={`${name}-panel-title`}
             className="text-center text-xl font-extrabold text-black"
@@ -52,9 +56,9 @@ export default function SlideUpPanel({
             {title}
           </p>
           <CloseButton
-            label={t(`${name}.close` as any)}
+            label={translateKey(t, `${name}.close`)}
             onClick={onClose}
-            className="absolute right-6 top-1/2 -translate-y-1/2"
+            className="absolute top-1/2 right-6 -translate-y-1/2"
           />
         </div>
         <div
@@ -67,4 +71,6 @@ export default function SlideUpPanel({
       </div>
     </>
   );
+
+  return usePortal(portalContent, isMounted);
 }

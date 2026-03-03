@@ -12,13 +12,14 @@ import CookiesInfoSection from '@/components/ui/cookies/sections/CookiesInfoSect
 import useCookiesModal from '@/hooks/useCookiesModal';
 
 export default function CookiesModal() {
-  const b = useTranslations('Buttons');
+  const b = useTranslations('Buttons.cookies');
   const c = useTranslations('Cookies');
   const tabs = [c('tabs.consent'), c('tabs.details'), c('tabs.info')];
 
   const {
     openCookiesModal,
-    isCookiesModalOpened,
+    isCookiesModalMounted,
+    isCookiesModalVisible,
     cookiesModalRef,
     preferences,
     togglePreference,
@@ -27,17 +28,18 @@ export default function CookiesModal() {
 
   return (
     <>
-      <CookiesButton label={b('cookies.open')} handleClick={openCookiesModal} />
+      <CookiesButton label={b('open')} handleClick={openCookiesModal} />
       <Dialogue
         type="modal"
         name="cookies"
         title={c('title')}
-        isOpened={isCookiesModalOpened}
+        isMounted={isCookiesModalMounted}
+        isVisible={isCookiesModalVisible}
         dialogRef={cookiesModalRef}
         className="flex flex-col overflow-hidden bg-white"
       >
         <Tabs name="cookies" tabs={tabs}>
-          <TabPanel className="h-auto overflow-y-auto">
+          <TabPanel className="h-auto space-y-3 overflow-y-auto">
             <CookiesIntroSection />
           </TabPanel>
           <TabPanel className="h-auto overflow-y-auto">
@@ -46,7 +48,7 @@ export default function CookiesModal() {
               togglePreference={togglePreference}
             />
           </TabPanel>
-          <TabPanel className="h-auto overflow-y-auto">
+          <TabPanel className="h-auto space-y-3 overflow-y-auto">
             <CookiesInfoSection />
           </TabPanel>
         </Tabs>

@@ -1,6 +1,81 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+  --animate-show: show 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --color-primary: #6366f1;
+  --color-primary-rgb: 99 102 241;
+  --color-primary-dark: #4044ee;
+  --color-primary-light: #eff2fc;
+  --color-secondary: #8b5cf6;
+  --color-accent: #d946ef;
+  --color-dark: #131022;
+  --color-muted: #9397ad;
+  --color-muted-dark: #585c7b;
+  --color-muted-light: #e2e5f1;
+  --color-valid: #d4d7e5;
+  --color-invalid: #cc0000;
+  --color-error: #990000;
+  --color-success: #22c55e;
+  --color-success-dark: #16a34a;
+  --color-facebook-logo: #0866ff;
+  --color-instagram-logo-shadow: #dc2743;
+  --color-twitter-logo: #333333;
+  --color-youtube-logo: rgb(255, 0, 0);
+  --color-linkedin-logo: #0077b5;
+
+  --background-image-instagram-logo: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+
+  --shadow-top: 0 -4px 8px rgba(0, 0, 0, 0.08), 0 -1px 1px rgba(0, 0, 0, 0.08);
+
+  @keyframes show {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+
+  p,
+  table {
+    color: var(--color-muted-dark);
+  }
+
+  button:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+}
 
 /* Scrollbar */
 
@@ -21,45 +96,40 @@
 
 /* Open/close animations */
 
-.modal-open {
-  transform: translate(-50%, -50%) scale(1);
+.modal-visible {
   opacity: 1;
-  visibility: visible;
-  transition: visibility 0s linear, transform 0.2s ease-out, opacity 0.2s ease-out;
+  transform: translate(-50%, -50%) scale(1);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
-.modal-close {
-  transform: translate(-50%, -50%) scale(0.7);
+.modal-hidden {
   opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: transform 0.2s ease-out, opacity 0.2s ease-out, visibility 0s linear 0.2s;
+  transform: translate(-50%, -50%) scale(0.95);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
-.sidebar-open {
+.sidebar-visible {
   transform: translateX(0);
-  visibility: visible;
-  transition: visibility 0s linear, transform 0.2s ease-out;
+  transition: transform 0.2s ease-out;
 }
 
-.sidebar-close {
+.sidebar-hidden {
   transform: translateX(100%);
-  visibility: hidden;
-  pointer-events: none;
-  transition: transform 0.2s ease-out, visibility 0s linear 0.2s;
+  transition: transform 0.2s ease-out;
 }
 
-.slideUpPanel-open {
+.slideUpPanel-visible {
   transform: translateY(0);
-  visibility: visible;
-  transition: visibility 0s linear, transform 0.2s ease-out;
+  transition: transform 0.2s ease-out;
 }
 
-.slideUpPanel-close {
+.slideUpPanel-hidden {
   transform: translateY(100%);
-  visibility: hidden;
-  pointer-events: none;
-  transition: transform 0.2s ease-out, visibility 0s linear 0.2s;
+  transition: transform 0.2s ease-out;
 }
 
 /* Checkbox */

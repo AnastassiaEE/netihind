@@ -1,19 +1,46 @@
 import { useRef, useState } from 'react';
 import { validateField } from '@/utils/fieldsValidator';
-import { FormType } from '@/types/form.types';
+import { FormFields, FormType } from '@/types/form.types';
 
 const responses = {
   success: { message: 'messages.sentSuccessfully' },
   error: { message: 'messages.somethingWentWrong' },
 };
 
+/**
+ * Generic form management hook with validation and submit handling.
+ *
+ * This hook:
+ * - Manages form values and validation errors
+ * - Tracks blurred fields to avoid premature validation
+ * - Handles form submission with async request
+ * - Returns response and loading state for UI feedback
+ *
+ * Designed to be reusable across different form types.
+ *
+ * @param fields - Form field configuration (initial value & required flag)
+ * @param type - Form type identifier used on submit
+ * @param additionalData - Optional extra payload data sent with the form
+ *
+ * @returns An object containing:
+ *  - `errors`: object mapping each field name to its validation error message (empty string if no error)
+ *  - `values`: object mapping each field name to its current value
+ *  - `isSending`: boolean indicating if the form submission request is in progress
+ *  - `response`: object containing submission result
+ *  - `bluredFields`: ref object tracking which fields have been blurred at least once
+ *  - `handleChange`: function to handle input/textarea value changes
+ *  - `handleSelectChange`: function to handle controlled select value changes
+ *  - `handleBlur`: function to mark a field as blurred and validate it
+ *  - `handleSubmit`: function to handle form submission
+ */
 export default function useForm(
-  fields: {
-    [key: string]: { initialValue: string | boolean; isRequired: boolean };
-  },
+  fields: FormFields,
   type: FormType,
-  additionalData?: { [key: string]: any },
+  additionalData?: Record<string, unknown>,
 ) {
+  /**
+   * Initialize form values, errors and blur state based on field config.
+   */
   const initialValues = Object.fromEntries(
     Object.entries(fields).map(([field, { initialValue }]) => [
       field,
@@ -29,6 +56,11 @@ export default function useForm(
 
   const [errors, setErrors] = useState(initialErrors);
   const [values, setValues] = useState(initialValues);
+
+  /**
+   * Tracks whether a field has been blurred at least once.
+   * Used to avoid showing validation errors too early.
+   */
   const bluredFields = useRef(initialBluredFields);
 
   const [isSending, setIsSending] = useState(false);
@@ -37,10 +69,19 @@ export default function useForm(
     message: string;
   } | null>(null);
 
+  /**
+   * Resets form values to their initial state.
+   */
   const resetValues = () => {
     setValues(initialValues);
   };
 
+  /**
+   * Handles input value changes and performs validation if the field has already been blurred.
+   *
+   * @param e - The input or textarea change event
+   * @param field - The name of the field being changed
+   */
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     field: string,
@@ -57,10 +98,22 @@ export default function useForm(
     }
   };
 
+  /**
+   * Handles controlled select value changes.
+   *
+   * @param name - The name of the select field
+   * @param value - The new value selected by the user
+   */
   const handleSelectChange = (name: string, value: string) => {
     setValues((prev) => ({ ...prev, [name]: value }));
   };
 
+  /**
+   * Marks a field as blurred and validates it once the user leaves the field.
+   *
+   * @param e - The input or textarea blur (focus out) event
+   * @param field - The name of the field being blurred
+   */
   const handleBlur = (
     e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
     field: string,
@@ -79,6 +132,11 @@ export default function useForm(
     }
   };
 
+  /**
+   * Validates all form fields and updates error state.
+   *
+   * @returns true if the form is valid, otherwise `false`
+   */
   const isFormValid = () => {
     const err = Object.fromEntries(
       Object.entries(values).map(([field, value]) => [
@@ -90,6 +148,11 @@ export default function useForm(
     return !Object.values(err).some(Boolean);
   };
 
+  /**
+   * Handles form submission, including validation, async request, and response state management.
+   *
+   * @param e - The form submission event
+   */
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setResponse(null);
@@ -110,7 +173,7 @@ export default function useForm(
         } else {
           setResponse({ type: 'error', message: responses.error.message });
         }
-      } catch (error) {
+      } catch {
         setResponse({ type: 'error', message: responses.error.message });
       } finally {
         setIsSending(false);

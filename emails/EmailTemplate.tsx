@@ -13,9 +13,8 @@ import {
   Text,
 } from '@react-email/components';
 import * as React from 'react';
-import colors from 'tailwindcss/colors';
 
-const labels: { [key: string]: string } = {
+const labels: Record<string, string> = {
   name: 'Nimi',
   email: 'E-post',
   phone: 'Telefon',
@@ -23,12 +22,11 @@ const labels: { [key: string]: string } = {
   time: 'Aeg',
   policy: 'Kas olete nõus privaatsuspoliitikaga?',
   address: 'Aadress',
-  'call-time': 'Kontaktaeg',
 };
 
 export default function EmailTemplate(
   type: FormType,
-  values: { [key: string]: string },
+  values: Record<string, string>,
 ) {
   return (
     <Tailwind
@@ -36,7 +34,7 @@ export default function EmailTemplate(
         theme: {
           extend: {
             colors: {
-              'muted-dark': colors.slate['600'],
+              'muted-dark': '#475569',
             },
           },
         },
@@ -67,7 +65,7 @@ export default function EmailTemplate(
             {Object.keys(values).map((field) => (
               <Text
                 key={values[field]}
-                className="text-base leading-none text-muted-dark"
+                className="text-muted-dark text-base leading-none"
               >
                 <strong>{labels[field] ?? field}: </strong>
                 {values[field].toString()}

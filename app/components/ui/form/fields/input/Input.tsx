@@ -2,10 +2,10 @@ import FieldError from '@/components/ui/form/fields/FieldError';
 import FieldLabel from '@/components/ui/form/fields/FieldLabel';
 import { tv } from 'tailwind-variants';
 import { FormElementSizes as sizes } from '@/components/ui/form/config';
-import { InputSize } from '@/types/form.types';
+import { InputSize, Label } from '@/types/form.types';
 
 const inputClasses = tv({
-  base: 'w-full rounded-md border bg-white text-muted-dark transition-[padding] placeholder:text-muted focus:outline-none',
+  base: 'text-muted-dark placeholder:text-muted w-full rounded-md border bg-white transition-[padding] focus:shadow-md focus:outline-hidden',
   variants: {
     size: sizes,
     isValid: {
@@ -19,61 +19,30 @@ const inputClasses = tv({
   },
 });
 
+interface InputProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
+  size?: InputSize;
+  isValid?: boolean;
+  label?: Label;
+  error?: string;
+}
+
 export default function Input({
-  size = 'sm',
-  name,
-  type = 'text',
-  inputmode = 'text',
-  label,
-  placeholder,
-  onChange,
-  onFocus,
-  onBlur,
-  value,
+  size,
   isValid = true,
+  label,
   error,
-  required,
+  required = false,
   className,
   children,
-}: {
-  size?: InputSize;
-  name: string;
-  type?:
-    | 'text'
-    | 'password'
-    | 'email'
-    | 'tel'
-    | 'url'
-    | 'search'
-    | 'number'
-    | 'range'
-    | 'hidden';
-  inputmode?:
-    | 'text'
-    | 'tel'
-    | 'email'
-    | 'url'
-    | 'numeric'
-    | 'decimal'
-    | 'search'
-    | 'none';
-  label?: string;
-  placeholder?: string;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
-  onFocus?: React.FocusEventHandler<HTMLInputElement>;
-  onBlur?: React.FocusEventHandler<HTMLInputElement>;
-  value?: string;
-  isValid?: boolean;
-  error?: string;
-  required: boolean;
-  className?: string;
-  children?: React.ReactNode;
-}) {
+  ...props
+}: InputProps) {
+  const name = props.name ?? '';
   return (
     <>
       {label && (
-        <FieldLabel htmlFor={name} size={size}>
-          {label}
+        <FieldLabel htmlFor={name} size={size} className={label.className}>
+          {label.value}
         </FieldLabel>
       )}
       <div className="relative">
@@ -81,17 +50,11 @@ export default function Input({
         <input
           id={name}
           name={name}
-          type={type}
-          inputMode={inputmode}
           className={inputClasses({ size, isValid, className })}
-          placeholder={placeholder}
-          onChange={onChange}
-          onFocus={onFocus}
-          onBlur={onBlur}
-          value={value}
           autoComplete={name}
           aria-invalid={!isValid}
           aria-required={required}
+          {...props}
         />
       </div>
       {!isValid && <FieldError size={size}>{error}</FieldError>}

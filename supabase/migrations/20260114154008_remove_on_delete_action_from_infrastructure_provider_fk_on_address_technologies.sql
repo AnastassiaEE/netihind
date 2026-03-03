@@ -1,0 +1,4 @@
+ALTER TABLE address_technologies
+DROP CONSTRAINT address_technologies_infrastructure_provider_id_fkey;
+
+ALTER TABLE address_technologies ADD CONSTRAINT address_technologies_infrastructure_provider_id_fkey FOREIGN KEY (infrastructure_provider_id) REFERENCES infrastructure_providers (id);

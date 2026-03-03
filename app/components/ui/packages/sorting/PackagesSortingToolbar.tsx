@@ -6,32 +6,36 @@ import Sort from '@/components/ui/sorting/Sort';
 import { useTranslations } from 'next-intl';
 import SlideUpPanel from '@/components/ui/overlay/SlideUpPanel';
 import useOverlay from '@/hooks/useOverlay';
-import { Filters, SortOptions } from '@/types/filters.types';
+import {
+  Filters,
+  SelectedByFilter,
+  SortOptions,
+  OnFilterChange,
+} from '@/types/filters.types';
 import PackagesFilters from '@/components/ui/packages/filters/PackagesFilters';
 
 export default function PackagesSortingToolbar({
   sortOptions,
-  setSelectedSortOption,
+  onSortChange,
   filters,
-  setFilters,
+  selectedByFilter,
+  onFilterChange,
   clearFilters,
-  onUserChange,
-  isFiltersInitialized,
   className,
 }: {
   sortOptions: SortOptions;
-  setSelectedSortOption: React.Dispatch<React.SetStateAction<string>>;
+  onSortChange: (option: string) => void;
   filters: Filters;
-  setFilters: React.Dispatch<React.SetStateAction<Filters>>;
+  selectedByFilter: SelectedByFilter;
+  onFilterChange: OnFilterChange;
   clearFilters: () => void;
-  onUserChange?: () => void;
-  isFiltersInitialized: boolean;
   className?: string;
 }) {
   const t = useTranslations('Filters');
 
   const {
-    isOpened: isPanelOpened,
+    isMounted: isPanelMounted,
+    isVisible: isPanelVisible,
     open: openPanel,
     close: closePanel,
     overlayRef: panelRef,
@@ -47,16 +51,12 @@ export default function PackagesSortingToolbar({
     <>
       <div
         className={classNames(
-          'sticky bottom-0 mx-[-2.5%] mt-7 flex w-[105%] flex-wrap justify-around bg-white px-2 py-4 shadow-top',
+          'shadow-top sticky bottom-0 mx-[-2.5%] mt-7 flex w-[105%] flex-wrap justify-around bg-white px-2 py-4',
           className,
         )}
       >
         {filters && (
-          <Button
-            onClick={openPanel}
-            variant="outlined"
-            className="min-w-[150px]"
-          >
+          <Button onClick={openPanel} variant="outlined" className="min-w-37.5">
             {t('buttons.filter').toUpperCase()}
           </Button>
         )}
@@ -66,10 +66,9 @@ export default function PackagesSortingToolbar({
             variant="plain"
             openDirection="top"
             options={sortOptions.options}
-            selectedOption={sortOptions.selected}
-            setSelectedOption={setSelectedSortOption}
-            onUserChange={onUserChange}
-            className="min-w-[150px] uppercase"
+            selectedBySort={sortOptions.selected}
+            onSortChange={onSortChange}
+            className="min-w-37.5 uppercase"
           />
         )}
       </div>
@@ -78,15 +77,15 @@ export default function PackagesSortingToolbar({
           name="filters"
           title={t('labels.filters')}
           actions={panelActions}
-          isOpened={isPanelOpened}
+          isMounted={isPanelMounted}
+          isVisible={isPanelVisible}
           onClose={closePanel}
           panelRef={panelRef}
         >
           <PackagesFilters
             filters={filters}
-            setFilters={setFilters}
-            onUserChange={onUserChange}
-            isFiltersInitialized={isFiltersInitialized}
+            selectedByFilter={selectedByFilter}
+            onFilterChange={onFilterChange}
           />
         </SlideUpPanel>
       )}

@@ -31,7 +31,9 @@ export default function PackagesFilterAccordion({
       </button>
       {isVisible && (
         <div {...getPanelProps()}>
-          <div ref={collapsibleRef}>{children}</div>
+          <div ref={collapsibleRef} className="space-y-1">
+            {children}
+          </div>
         </div>
       )}
     </div>

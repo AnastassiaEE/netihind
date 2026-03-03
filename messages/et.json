@@ -90,19 +90,14 @@
     }
   },
   "Packages": {
-    "units": {
-      "speed": "mbit/s",
-      "channels": "kanalit",
-      "month": "kuus"
-    },
     "buttons": {
-      "connect": "Liituda",
-      "consultation": "Konsultatsioon",
+      "connect": "Liitun",
+      "details": "Vaatan lähemalt",
       "showDetails": "Vaata lähemalt"
     },
-    "actions": {
+    "modals": {
       "connection": {
-        "title": "Ühenduse taotlus",
+        "title": "Liitumise taotlus",
         "description": "",
         "sections": {
           "fillForm": "Kontrollige aadress ja täitke vorm",
@@ -110,27 +105,54 @@
           "total": "Kokku"
         }
       },
-      "consultation": {
-        "title": "Saada konsultatsioon",
-        "description": "Räägime paketist või valime Teie soove arvestades parema",
+      "details": {
         "sections": {
-          "fillForm": "Kontrollige aadress ja täitke vorm",
-          "selectedPackage": "Valitud pakett"
+          "description": "Teenuse kirjeldus",
+          "installation": "Paigaldus",
+          "equipment": "Seadmed"
         }
       }
     },
-    "discount": {
-      "duration": "Esimesed {months} kuud",
-      "durationEnd": "Alates {months}. kuust"
-    },
-    "installation": {
-      "minPrice": "alates {price} €",
-      "free": "tasuta"
-    },
     "details": {
-      "packagePrice": "Kuu hind",
-      "installation": "Paigaldus",
-      "equipment": "Seadmed"
+      "price": {
+        "label": "Paketi kuu hind",
+        "regularPrice": "Tavahind: {price} €."
+      },
+      "discount": {
+        "duration": "esimesed {months} kuud",
+        "percentage": "{discount_percentage}% allahindlus",
+        "campaign": "Kampaania"
+      },
+      "installation": {
+        "label": "Paigaldus",
+        "minPrice": "Paigaldus alates {visit_fee} €",
+        "free": "Paigaldus tasuta",
+        "paidVisit": "Seadmed võid lasta paigaldada tehnikul. <strong> Tehniku tasu on {visit_fee} € väljasõidu eest. </strong>",
+        "freeVisit": "Seadmed võid lasta paigaldada tehnikul. <strong> Tehniku väljasõit on tasuta. </strong>",
+        "additionalTime": "Iga alustatud <strong>{additional_time} minuti töö eest on tasu {additional_time_fee} €</strong>.",
+        "materials": "Materjalide eest võib tulla tasu."
+      },
+      "equipment": {
+        "label": "Seadmed",
+        "rentMinPrice": "Seadme rent alates {rent_fee} € / kuus",
+        "installmentsMinPrice": "Seadme järelmaks alates {installments_fee} € / kuus",
+        "fullPurchaseMinPrice": "Seadme väljaost alates {full_purchase_fee} €",
+        "allCombinations": "Teenuse kasutamiseks on vajalik seadmed. Allpool on esitatud kõik võimalikud seadmekomplektid.",
+        "noEquipment": "Sobivaid seadmeid ei leidu."
+      },
+      "connectionType": "Ühenduse tüüp",
+      "speed": {
+        "download": "Allalaadimise kiirus",
+        "upload": "Üleslaadimise kiirus",
+        "upTo": "kuni {value} {unit}",
+        "unlimited": "piiramatu",
+        "unlimitedRich": "kuni <InfinityIcon></InfinityIcon> {unit}"
+      },
+      "units": {
+        "speed": "Mbit/s",
+        "month": "kuus",
+        "months": "kuud"
+      }
     },
     "errors": {
       "somethingWentWrong": "Midagi läks valesti. Proovige hiljem uuesti.",
@@ -229,9 +251,12 @@
   "Errors": {
     "noPosts": "Postitusi pole."
   },
+  "Dividers": {
+    "or": "or"
+  },
   "SEO": {
     "website": {
-      "name": "Sõltumatu koduinterneti võrdlusportaal – Netihind.ee",
+      "title": "Sõltumatu koduinterneti võrdlusportaal | Netihind.ee",
       "description": "Sõltumatu koduinterneti võrdlusportaal - võrdle pakkumisi hinna, kiiruse ja ühendustehnoloogia järgi ning leia endale parim lahendus!",
       "url": "/"
     },
@@ -242,31 +267,48 @@
       "about": {
         "name": "Meist"
       },
+      "blog": {
+        "name": "Blogi"
+      },
+      "policy": {
+        "name": "Kasutus- ja privaatsustingimused"
+      },
       "contacts": {
         "name": "Kontaktid"
       }
     },
     "homePage": {
-      "name": "Sõltumatu koduinterneti võrdlusportaal – Netihind.ee",
+      "title": "Sõltumatu koduinterneti võrdlusportaal | Netihind.ee",
       "description": "Sõltumatu koduinterneti võrdlusportaal - võrdle pakkumisi hinna, kiiruse ja ühendustehnoloogia järgi ning leia endale parim lahendus!",
       "url": "/"
     },
     "aboutPage": {
-      "name": "Meist - Netihind.ee",
+      "title": "Meist | Netihind.ee",
       "description": "Netihind.ee pakub sõltumatut koduinterneti võrdlust teie aadressi alusel. Leidke parimad paketid kõigi Eesti teenusepakkujate hulgast.",
       "url": "/meist/"
     },
+    "blogPage": {
+      "title": "Blogi | Netihind.ee",
+      "description": "Loe Netihind.ee blogist viimaseid uudiseid ja nõuandeid koduinterneti valimisel Eestis.",
+      "url": "/blogi/"
+    },
+    "policyPage": {
+      "title": "Kasutus- ja privaatsustingimused | Netihind.ee",
+      "description": "Käesolevad kasutus- ja privaatsustingimused kirjeldavad, kuidas Netihind töötlevad teie isikuandmeid ja mis on Portaali kasutustingimused.",
+      "url": "/kasutustingimused/"
+    },
     "contactsPage": {
-      "name": "Kontaktid - Netihind.ee",
+      "title": "Kontaktid | Netihind.ee",
+      "description": "Võta meiega ühendust vormi, e‑posti või telefoni teel.",
       "url": "/kontaktid/"
     }
   },
   "Buttons": {
     "connection": {
-      "close": "Sulge ühenduse modaalaken"
+      "close": "Sulge liitumise modaalaken"
     },
-    "consultation": {
-      "close": "Sulge konsultatsiooni modaalaken"
+    "details": {
+      "close": "Sulge paketiinfo aken"
     },
     "menu": {
       "open": "Ava külgmenüü",

@@ -1,6 +1,22 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import useBoolean from '@/hooks/useBoolean';
 
+/**
+ * Custom hook for managing an accessible accordion component.
+ *
+ * Handles open/close state, collapsible panel height, visibility, and
+ * provides prop getters for button, panel, and arrow elements.
+ *
+ * @param defaultClosed - Whether the accordion is initially closed (default: true)
+ *
+ * @returns An object containing:
+ *  - `isClosed`: boolean indicating if the accordion is closed
+ *  - `isVisible`: boolean controlling whether the panel is rendered
+ *  - `collapsibleRef`: ref to attach to the collapsible panel
+ *  - `getButtonProps`: returns props to spread on the toggle button
+ *  - `getPanelProps`: returns props to spread on the panel element
+ *  - `getArrowProps`: returns the arrow direction for UI
+ */
 export default function useAccordion(defaultClosed: boolean = true) {
   const {
     value: isClosed,
@@ -9,14 +25,11 @@ export default function useAccordion(defaultClosed: boolean = true) {
   } = useBoolean(defaultClosed);
   const collapsibleRef = useRef<HTMLDivElement>(null);
   const [collapsibleHeight, setCollapsibleHeight] = useState(0);
-  const [isVisible, setIsVisible] = useState(!defaultClosed);
-  const panelId = useRef(useId());
+  const [isVisible, setIsVisible] = useState(!defaultClosed); // Controls whether the panel is mounted in the DOM
+  const panelId = useRef(useId());                            // Unique ID for aria-controls / accessibility
 
   /**
-   * Toggles the state of an accordion item between closed and opened.
-   *
-   * - If the item is currently closed, it sets the item to visible and triggers the `open` function.
-   * - If the item is opened, it triggers the `close` function.
+   * Toggle accordion open/closed state and manage visibility.
    */
   const toggle = () => {
     if (isClosed) {
@@ -28,19 +41,14 @@ export default function useAccordion(defaultClosed: boolean = true) {
   };
 
   /**
-   * Handles the transition end event for an accordion.
-   *
-   * If the accordion is closed, it sets the visibility state to false.
+   * Hide panel after collapse transition ends.
    */
   const handleTransitionEnd = () => {
     if (isClosed) setIsVisible(false);
   };
 
   /**
-   * Updates the height of the collapsible element based on its scrollHeight.
-   *
-   * When the 'isClosed' state changes, it sets the height to the element's scrollHeight if not closed,
-   * or 0 if closed. It also updates the height on window resize.
+   * Update panel height on open and on window resize for smooth transitions.
    */
   useEffect(() => {
     const updateHeight = () => {

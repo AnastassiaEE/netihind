@@ -1,14 +1,7 @@
 'use client';
 
+import { RawTranslation, Translations } from '@/types/translations.types';
 import { createContext, ReactNode, useContext } from 'react';
-
-type RawTranslation = {
-  id: number;
-  original: string;
-  et: string;
-  ru: string;
-};
-type Translations = { [key: string]: { et: string; ru: string } };
 
 const TranslationsContext = createContext<Translations | null>(null);
 

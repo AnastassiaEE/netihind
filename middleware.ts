@@ -1,14 +1,15 @@
 import createMiddleware from 'next-intl/middleware';
 import { routing } from '@/i18n/routing';
 import { NextRequest, NextResponse } from 'next/server';
+import { isLocale, normalizePath } from '@/utils/routesHelper';
 
 export default async function middleware(request: NextRequest) {
   const { searchParams } = request.nextUrl;
 
+  /* -------------------- REMOVE TRAILING SLASHES FROM SEARCH PARAMETERS -------------------- */
+
   const updatedSearchParams = new URLSearchParams();
   let needsRedirect = false;
-
-  const isDev = process.env.NODE_ENV === 'development';
 
   searchParams.forEach((value, key) => {
     if (value.endsWith('/')) {
@@ -24,31 +25,77 @@ export default async function middleware(request: NextRequest) {
     return NextResponse.redirect(request.nextUrl, 308);
   }
 
-  const handleI18nRouting = createMiddleware(routing);
-  let response = handleI18nRouting(request);
+  /* -------------------- I18N MIDDLEWARE -------------------- */
 
+  const handleI18nRouting = createMiddleware(routing);
+  const response = handleI18nRouting(request);
+
+  const { pathname } = request.nextUrl;
+  const { defaultLocale } = routing;
+
+  const segments = pathname.split('/').filter(Boolean);
+
+  let pathnameWithoutLocale = pathname;
+
+  if (segments[0] && isLocale(segments[0]) && segments[0] !== defaultLocale) {
+    pathnameWithoutLocale = '/' + segments.slice(1).join('/');
+  }
+
+  pathnameWithoutLocale = normalizePath(pathnameWithoutLocale);
+
+  /* -------------------- PREPARE ISR (STATIC/SSG) PAGES -------------------- */
+
+  const ssgBasePaths = ['/about', '/policy', '/blog', '/blog/[slug]'];
+
+  const ssgPathsLocalized = ssgBasePaths.flatMap((path) => {
+    const val = routing.pathnames[path as keyof typeof routing.pathnames];
+    if (!val) return [];
+    if (typeof val === 'string') return [normalizePath(val)];
+    return Object.values(val).map(normalizePath);
+  });
+
+  const isStaticPage = ssgPathsLocalized.some((p) => {
+    if (p.includes('[slug]')) {
+      const base = p.replace('/[slug]', '');
+      return pathnameWithoutLocale.startsWith(base + '/');
+    }
+    return pathnameWithoutLocale === p;
+  });
+
+  /* -------------------- CSP / NONCE -------------------- */
+
+  const isDev = process.env.NODE_ENV === 'development';
   const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
 
-  const scriptSrc = isDev
-  ? ["'self'", "'unsafe-inline'", "*"] 
-  : ["'self'", `'nonce-${nonce}'`, "'strict-dynamic'"];
+  const scriptSrc =
+    isDev || isStaticPage
+      ? ["'self'", "'unsafe-inline'", '*']
+      : [
+          "'self'",
+          `'nonce-${nonce}'`,
+          "'strict-dynamic'",
+          'https://www.googletagmanager.com',
+          'https://www.google-analytics.com',
+        ];
 
   const connectSrc = isDev
-  ? "*" 
-  : [
-      "'self'",
-      "https://inaadress.maaamet.ee",
-      "https://tshbfrxtlarxxnfegvyl.supabase.co",
-      "https://rxysmdetqttpdqfmrpym.supabase.co",
-      "https://api.resend.com",
-      "https://region1.google-analytics.com",
-    ].join(' ');
+    ? '*'
+    : [
+        "'self'",
+        'https://inaadress.maaamet.ee',
+        'https://tshbfrxtlarxxnfegvyl.supabase.co',
+        'https://rxysmdetqttpdqfmrpym.supabase.co',
+        'https://api.resend.com',
+        'https://region1.google-analytics.com',
+        'https://www.googletagmanager.com',
+        'https://www.google-analytics.com',
+      ].join(' ');
 
   const cspHeader = `
     default-src 'self';
     script-src ${scriptSrc.join(' ')};
-    style-src 'self' 'unsafe-inline';
-    img-src 'self' data: https://cms.netihind.ee https://rxysmdetqttpdqfmrpym.supabase.co;
+    style-src 'self' 'unsafe-inline' https://www.googletagmanager.com;
+    img-src 'self' data: https://cms.netihind.ee https://rxysmdetqttpdqfmrpym.supabase.co https://www.googletagmanager.com https://www.google-analytics.com;
     font-src 'self' data:;
     connect-src ${connectSrc};
     object-src 'none';

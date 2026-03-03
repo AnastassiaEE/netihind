@@ -6,7 +6,7 @@ export default function NavigationItem({
   isActive = false,
   children,
 }: {
-  href: any;
+  href: Parameters<typeof Link>[0]['href'];
   isActive?: boolean;
   children: React.ReactNode;
 }) {
@@ -14,8 +14,8 @@ export default function NavigationItem({
     <Link
       href={href}
       className={classNames(
-        'transition-colors hover:text-primary',
-        isActive && 'font-extrabold text-primary',
+        'hover:text-primary transition-colors',
+        isActive && 'text-primary font-extrabold',
       )}
     >
       {children}

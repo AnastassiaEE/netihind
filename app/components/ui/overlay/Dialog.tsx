@@ -3,14 +3,17 @@ import Backdrop from '@/components/ui/overlay/Backdrop';
 import classNames from 'classnames';
 import CloseButton from '@/components/ui/buttons/CloseButton';
 import { useTranslations } from 'next-intl';
-import { DialogType } from '@/types/elements.types';
+import { DialogType } from '@/types/ui.types';
+import { usePortal } from '@/hooks/usePortal';
+import { translateKey } from '@/utils/translationHelper';
 
 export default function Dialog({
   type = 'modal',
   name,
   title,
   description,
-  isOpened,
+  isMounted,
+  isVisible,
   onClose,
   dialogRef,
   className,
@@ -18,9 +21,10 @@ export default function Dialog({
 }: {
   type?: DialogType;
   name: string;
-  title: string;
+  title?: string;
   description?: string;
-  isOpened: boolean;
+  isMounted: boolean;
+  isVisible: boolean;
   onClose?: () => void;
   dialogRef?: React.RefObject<HTMLDivElement | null>;
   className?: string;
@@ -29,8 +33,8 @@ export default function Dialog({
   const t = useTranslations('Buttons');
 
   const dialogClasses = classNames(
-    'fixed left-1/2 top-1/2 z-50 size-max max-h-dvh max-w-[100vw] overflow-auto rounded-md p-6 shadow-lg focus:outline-none md:p-11 lg:h-max lg:max-h-[90vh] lg:max-w-[90vw]',
-    isOpened ? 'modal-open' : 'modal-close',
+    'fixed top-1/2 left-1/2 z-50 size-max max-h-dvh max-w-screen overflow-auto rounded-md p-6 shadow-lg focus:outline-hidden md:p-11 lg:h-max lg:max-h-[90vh] lg:max-w-[90vw]',
+    isVisible ? 'modal-visible' : 'modal-hidden',
     className,
   );
   const titleClasses = classNames(
@@ -38,9 +42,9 @@ export default function Dialog({
     description ? 'mb-3' : 'mb-6',
   );
 
-  return (
+  const portalContent = (
     <>
-      {type === 'modal' && <Backdrop isVisible={isOpened} onClose={onClose} />}
+      {type === 'modal' && <Backdrop isVisible={isVisible} onClose={onClose} />}
       <div
         role="dialog"
         aria-modal="true"
@@ -53,15 +57,16 @@ export default function Dialog({
       >
         {onClose && (
           <CloseButton
-            label={t(`${name}.close` as any)}
+            label={translateKey(t, `${name}.close`)}
             onClick={onClose}
-            className="absolute right-4 top-4 bg-white"
+            className="absolute top-4 right-4 bg-white"
           />
         )}
-
-        <p id={`${name}-dialog-title`} className={titleClasses}>
-          {title}
-        </p>
+        {title && (
+          <p id={`${name}-dialog-title`} className={titleClasses}>
+            {title}
+          </p>
+        )}
         {description && (
           <p
             id={`${name}-dialog-description`}
@@ -74,4 +79,6 @@ export default function Dialog({
       </div>
     </>
   );
+
+  return usePortal(portalContent, isMounted);
 }

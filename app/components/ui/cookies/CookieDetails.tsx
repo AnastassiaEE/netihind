@@ -18,13 +18,13 @@ export default function CookieDetails({
   type: string;
   className?: string;
 }) {
-  const t = useTranslations('Cookies');
+  const t = useTranslations('Cookies.attributes');
   return (
     <div className={classNames('rounded-md p-3 text-sm', className)}>
       <p className="mb-2 font-semibold text-black">{name}</p>
       <p className="mb-2">{description}</p>
       <p>
-        <span className="font-semibold">{t('attributes.labels.domain')}: </span>
+        <span className="font-semibold">{t('labels.domain')}: </span>
         <a
           href={policy}
           target="_blank"
@@ -35,11 +35,11 @@ export default function CookieDetails({
         </a>
       </p>
       <p>
-        <span className="font-semibold">{t('attributes.labels.maxAge')}: </span>
+        <span className="font-semibold">{t('labels.maxAge')}: </span>
         {maxAge}
       </p>
       <p>
-        <span className="font-semibold">{t('attributes.labels.type')}: </span>
+        <span className="font-semibold">{t('labels.type')}: </span>
         {type}
       </p>
     </div>

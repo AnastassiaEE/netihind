@@ -24,15 +24,15 @@ export default function FaqAccordion({
     'transition-colors',
     isClosed
       ? 'bg-primary-light'
-      : 'bg-primary text-white shadow-md shadow-primary/50',
+      : 'bg-primary shadow-primary/50 text-white shadow-md',
   );
 
   return (
-    <div className="border-x border-muted-light first:rounded-t-md first:border-t last:rounded-b-md last:border-b [&:not(:last-child)]:border-b">
+    <div className="border-muted-light border-x not-last:border-b first:rounded-t-md first:border-t last:rounded-b-md last:border-b">
       <button
         type="button"
         {...getButtonProps()}
-        className="flex w-full flex-row-reverse items-center justify-between border-muted-light p-6 text-left transition-all [&:not(:last-child)]:border-b"
+        className="border-muted-light flex w-full flex-row-reverse items-center justify-between p-6 text-left transition-all not-last:border-b"
       >
         <CircleArrow {...getArrowProps()} className={arrowClasses} />
         <span className="font-semibold">{question}</span>

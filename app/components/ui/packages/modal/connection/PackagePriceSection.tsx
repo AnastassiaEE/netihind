@@ -1,0 +1,52 @@
+import { Package } from '@/types/packages.types';
+import PackageModalSection from '@/components/ui/packages/modal/PackageModalSection';
+import { useTranslations } from 'next-intl';
+import { formatMoney } from '@/utils/numberFormatter';
+
+export default function PackagePriceSection({
+  packageData,
+}: {
+  packageData?: Package;
+}) {
+  const t = useTranslations('Packages');
+  const { price, discount } = packageData || {};
+
+  console.log(packageData);
+  return (
+    <PackageModalSection
+      title={t('modals.connection.sections.total') + ':'}
+      className="bg-white"
+    >
+      {/* { With a discount } */}
+
+      <>
+        <p className="flex items-center justify-between">
+          <span className="font-medium">{`${t('details.price.label')}:`}</span>
+          {discount ? (
+            <span className="from-primary via-secondary to-accent bg-linear-to-r bg-clip-text text-xl font-extrabold text-transparent">
+              {`${formatMoney(discount.price)} €`}
+            </span>
+          ) : (
+            <span className="text-xl font-bold">
+              {`${formatMoney(price)} €`}
+            </span>
+          )}
+        </p>
+        {discount && (
+          <p className="mb-1 text-right">
+            <span aria-hidden="true" className="text-sm font-bold line-through">
+              {formatMoney(price)} €
+            </span>
+            <span className="sr-only">
+              {t('details.price.regularPrice', { price: formatMoney(price) })}
+            </span>
+          </p>
+        )}
+      </>
+      <div className="mt-2">
+        <p className="text-sm">{`+ ${t('details.installation.label')}`}</p>
+        <p className="text-sm">{`+ ${t('details.equipment.label')}`}</p>
+      </div>
+    </PackageModalSection>
+  );
+}

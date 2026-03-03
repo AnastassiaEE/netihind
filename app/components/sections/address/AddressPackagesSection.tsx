@@ -18,7 +18,7 @@ export default function AddressPackagesSection({
   address,
   oid,
 }: {
-  searchParams: { [key: string]: string };
+  searchParams: Record<string, string>;
   address: string;
   oid: string;
 }) {
@@ -45,13 +45,13 @@ export default function AddressPackagesSection({
 
   const {
     filters,
-    setFilters,
-    isFiltersInitialized,
+    handleFilterChange,
+    isFiltersLoaded,
     clearFilters,
-    providerFilterSelectedValues,
-    technologyFilterSelectedValues,
-    selectedSortOption,
-    setSelectedSortOption,
+    selectedByFilter,
+    selectedIdsByFilter,
+    selectedBySort,
+    handleSortChange,
   } = usePackagesFilters(oid, searchParams, handleUserInteraction);
 
   return (
@@ -60,37 +60,36 @@ export default function AddressPackagesSection({
         {tPage('packagesSection.title')}
       </h1>
       <p className="mb-6 font-medium">
-        <HomeIcon className="mr-1 inline align-sub text-primary" />
+        <HomeIcon className="text-primary mr-1 inline align-sub" />
         {address}
       </p>
       <>
         <div className="md:flex" ref={scrollToRef}>
           <div className="md:w-9/12">
-            <div className="sticky top-0 z-10 flex justify-end rounded-l-lg bg-primary-light/80 p-5 backdrop-blur-md max-md:hidden">
+            <div className="bg-primary-light/80 sticky top-0 z-10 flex justify-end rounded-l-lg p-5 backdrop-blur-md max-md:hidden">
               <Sort
                 name="packages"
                 variant="labeled"
                 options={SORT_OPTIONS}
-                selectedOption={selectedSortOption}
-                setSelectedOption={setSelectedSortOption}
-                onUserChange={handleUserInteraction}
-                className="rounded-md border-muted-light bg-white"
+                selectedBySort={selectedBySort}
+                onSortChange={handleSortChange}
+                className="border-muted-light rounded-md border bg-white"
               />
             </div>
-            <div className="md:px-5 md:pt-5">
+            <div className="md:pt-5 md:pr-5">
               <Packages
                 oid={oid}
                 address={address}
-                sortOption={selectedSortOption}
-                providers={providerFilterSelectedValues}
-                technologies={technologyFilterSelectedValues}
+                sortOption={selectedBySort}
+                providers={selectedIdsByFilter.providers}
+                technologies={selectedIdsByFilter.technologies}
                 onLoaded={handlePackagesLoaded}
               />
             </div>
           </div>
-          <aside className="hidden rounded-r-lg rounded-bl-lg bg-primary-light/80 md:block md:w-3/12">
+          <aside className="bg-primary-light/80 hidden rounded-r-lg rounded-bl-lg md:block md:w-3/12">
             <div className="sticky top-0 h-screen overflow-y-auto p-8">
-              {!isFiltersInitialized ? (
+              {!isFiltersLoaded ? (
                 <PingLoader sizeClass="h-10 w-10" />
               ) : (
                 <>
@@ -100,7 +99,7 @@ export default function AddressPackagesSection({
                     </p>
                     <Button
                       variant="text"
-                      className="!p-0"
+                      className="p-0!"
                       onClick={clearFilters}
                     >
                       {tFilters('buttons.clear')}
@@ -108,9 +107,8 @@ export default function AddressPackagesSection({
                   </div>
                   <PackagesFilters
                     filters={filters}
-                    setFilters={setFilters}
-                    onUserChange={handleUserInteraction}
-                    isFiltersInitialized={isFiltersInitialized}
+                    selectedByFilter={selectedByFilter}
+                    onFilterChange={handleFilterChange}
                   />
                 </>
               )}
@@ -120,14 +118,13 @@ export default function AddressPackagesSection({
         <PackagesSortingToolbar
           sortOptions={{
             options: SORT_OPTIONS,
-            selected: selectedSortOption,
+            selected: selectedBySort,
           }}
-          setSelectedSortOption={setSelectedSortOption}
+          onSortChange={handleSortChange}
           filters={filters}
-          setFilters={setFilters}
+          selectedByFilter={selectedByFilter}
+          onFilterChange={handleFilterChange}
           clearFilters={clearFilters}
-          onUserChange={handleUserInteraction}
-          isFiltersInitialized={isFiltersInitialized}
           className="md:hidden"
         />
       </>

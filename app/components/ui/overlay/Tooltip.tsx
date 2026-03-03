@@ -1,41 +1,43 @@
-'use client';
-
+import { usePortal } from '@/hooks/usePortal';
 import useTooltip from '@/hooks/useTooltip';
-import classNames from 'classnames';
 import React from 'react';
 
 export default function Tooltip({
   elementToInteract,
   content,
 }: {
-  elementToInteract: React.ReactElement<any>;
+  elementToInteract: React.ReactNode;
   content: string;
 }) {
-  const { isVisible, show, hide } = useTooltip();
+  const { isVisible, wrapperRef, tooltipRef, show, hide } = useTooltip();
+
+  const tooltipPortal = usePortal(
+    <div
+      id="tooltip-content"
+      ref={tooltipRef}
+      className="text-muted-dark fixed z-50 max-w-62.5 rounded-md bg-white p-3 text-sm shadow-md"
+      style={{
+        transform: 'translateX(-50%)',
+      }}
+    >
+      {content}
+    </div>,
+    isVisible,
+  );
 
   return (
-    <div className="relative">
-      {React.cloneElement(elementToInteract, {
-        onMouseEnter: show,
-        onMouseLeave: hide,
-        onFocus: show,
-        onBlur: hide,
-        className: classNames(
-          elementToInteract.props.className,
-          'cursor-pointer text-xs',
-        ),
-        'aria-describedby': isVisible ? 'tooltip-content' : undefined,
-        tabIndex: 0,
-      })}
-      {isVisible && (
-        <span
-          id="tooltip-content"
-          role="tooltip"
-          className="absolute -left-full bottom-full w-max max-w-xs rounded-md bg-white p-3 text-center text-sm lowercase shadow-md"
-        >
-          {content}
-        </span>
-      )}
+    <div
+      ref={wrapperRef}
+      onMouseEnter={show}
+      onMouseLeave={hide}
+      onFocus={show}
+      onBlur={hide}
+      tabIndex={0}
+      aria-describedby={isVisible ? 'tooltip-content' : undefined}
+      className="relative inline-block cursor-pointer"
+    >
+      {elementToInteract}
+      {tooltipPortal}
     </div>
   );
 }

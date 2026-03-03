@@ -13,7 +13,6 @@ export default function CookiesDetailsAccordion({
   details: React.ReactNode;
 }) {
   const {
-    isClosed,
     isVisible,
     collapsibleRef,
     getButtonProps,
@@ -22,7 +21,7 @@ export default function CookiesDetailsAccordion({
   } = useAccordion();
 
   return (
-    <div className="border-b border-muted-light">
+    <div className="border-muted-light border-b">
       <button
         type="button"
         {...getButtonProps()}
@@ -41,7 +40,7 @@ export default function CookiesDetailsAccordion({
       </button>
       {isVisible && (
         <div {...getPanelProps()}>
-          <div ref={collapsibleRef} className="p-3">
+          <div ref={collapsibleRef} className="space-y-2 p-3">
             {details}
           </div>
         </div>

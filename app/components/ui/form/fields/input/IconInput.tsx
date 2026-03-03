@@ -12,20 +12,9 @@ interface IconInputProps
 }
 
 export default function IconInput({
-  size = 'sm',
-  name,
-  type = 'text',
-  inputmode = 'text',
-  label,
-  placeholder,
-  onChange,
-  onFocus,
-  onBlur,
-  value,
-  isValid,
-  error,
-  required,
   icon: { Icon, isVisible, onClick },
+  size = 'sm',
+  ...props
 }: IconInputProps) {
   const inputClasses = classNames({
     'pl-10': isVisible && size === 'sm',
@@ -38,22 +27,7 @@ export default function IconInput({
   );
 
   return (
-    <Input
-      size={size}
-      name={name}
-      type={type}
-      inputmode={inputmode}
-      label={label}
-      placeholder={placeholder}
-      onChange={onChange}
-      onFocus={onFocus}
-      onBlur={onBlur}
-      value={value}
-      isValid={isValid}
-      error={error}
-      required={required}
-      className={inputClasses}
-    >
+    <Input size={size} className={inputClasses} {...props}>
       <div className={iconWrapperClasses}>
         {onClick ? (
           <button type="button" onClick={onClick}>

@@ -1,77 +1,105 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+const FOCUSABLE_SELECTOR =
+  'button, a, input, textarea, select, [tabindex]:not([tabindex="-1"])';
+
+/**
+ * Manages overlay/modal visibility, mounting, focus trapping, and ESC handling.
+ *
+ * This hook provides state and handlers for overlays or modals, including:
+ * - Mounting/unmounting for animations
+ * - Visibility toggle for CSS transitions
+ * - Focus management inside the overlay (initial focus + tab trap)
+ * - Closing via ESC key if allowed
+ *
+ * @param initialIsOpened - Determines if the overlay is initially opened
+ * @param isClosable - Whether the overlay can be closed via ESC key
+ *
+ * @returns An object containing:
+ *  - `isMounted`: boolean indicating if the overlay is mounted in the DOM
+ *  - `isVisible`: boolean indicating if the overlay is visible (used for CSS transitions)
+ *  - `open`: function to open the overlay and set focus
+ *  - `close`: function to close the overlay and return focus to the previously active element
+ *  - `overlayRef`: React ref attached to the overlay container element
+ */
 export default function useOverlay(
   initialIsOpened: boolean = false,
   isClosable: boolean = true,
 ) {
-  const [isOpened, setIsOpened] = useState(initialIsOpened);
+  const [isMounted, setIsMounted] = useState(initialIsOpened);
+  const [isVisible, setIsVisible] = useState(initialIsOpened);
+
   const overlayRef = useRef<HTMLDivElement | null>(null);
   const openOverlayElementRef = useRef<HTMLElement | null>(null);
   const firstFocusableElementRef = useRef<HTMLElement | null>(null);
   const lastFocusableElementRef = useRef<HTMLElement | null>(null);
 
-  /**
-   * Opens the overlay by setting its state to opened and captures the
-   * currently focused element in the `openOverlayElementRef` to allow restoring focus
-   * when the overlay is closed.
-   */
-  const open = () => {
-    setIsOpened(true);
-    openOverlayElementRef.current = document.activeElement as HTMLElement;
-  };
+  const isReady = isMounted && isVisible;
+
+  /* -------------------- OPEN / CLOSE -------------------- */
 
   /**
-   * Closes the overlay by setting its state to closed and returning focus
-   * to the previously focused element.
+   * Opens the overlay:
+   * - Sets mounted state to true
+   * - Stores the previously focused element
+   * - Sets visible state on next animation frame for transitions
+   */
+  const open = useCallback(() => {
+    setIsMounted(true);
+    openOverlayElementRef.current = document.activeElement as HTMLElement;
+    requestAnimationFrame(() => {
+      setIsVisible(true);
+    });
+  }, []);
+
+  /**
+   * Closes the overlay:
+   * - Sets visible state to false (triggers CSS transition)
+   * - Returns focus to the element that opened the overlay
    */
   const close = useCallback(() => {
-    setIsOpened(false);
+    setIsVisible(false);
     openOverlayElementRef.current?.focus();
   }, []);
 
-  /**
-   * Updates the references to the first and last focusable elements within the overlay element.
-   *
-   * This function queries the overlay element for focusable elements such as buttons, links, inputs,
-   * textareas, selects, and elements with a valid `tabindex`. It then sets the `firstFocusableElementRef`
-   * and `lastFocusableElementRef` to the first and last focusable elements found, respectively.
-   * If no focusable elements are found, the references are set to `null`.
-   *
-   * Additionally, it attempts to focus on the first focusable element.
-   */
-  const updateFocusableElements = useCallback(() => {
-    const overlayElement = overlayRef.current;
-    if (!overlayElement) return;
-
-    const elements = Array.from(
-      overlayElement.querySelectorAll(
-        'button, a, input, textarea, select, [tabindex]:not([tabindex="-1"])',
-      ),
-    ) as HTMLElement[];
-
-    firstFocusableElementRef.current = elements[0] || null;
-    lastFocusableElementRef.current = elements[elements.length - 1] || null;
-    firstFocusableElementRef.current.focus();
-  }, []);
+  /* -------------------- PRESENCE -------------------- */
 
   /**
-   * Manages focus and updates focusable elements when the overlay is opened.
-   *
-   * This effect:
-   * 1. Checks if the overlay is open (`isOpened`) and if `overlayRef.current` is valid. If not, it exits early.
-   * 2. When the overlay is opened, it:
-   *    - Sets focus on the overlay element (`overlayRef.current.focus()`).
-   *    - Calls the `updateFocusableElements` function to identify and update the first and last focusable elements within the overlay.
-   * 3. It sets up a `MutationObserver` to watch for changes to the `tabindex` attribute on the overlay element.
-   *    - This is useful if the focusable elements inside the overlay may change dynamically.
-   * 4. The observer configuration ensures that it only reacts to changes in attributes (specifically `tabindex`).
-   * 5. When a change is detected, it calls `updateFocusableElements` again to keep the list of focusable elements up to date.
-   * 6. The observer is disconnected when the component is unmounted or `isOpened` changes, to avoid memory leaks.
-   *
-   * This ensures that the overlay element is properly focused, and the list of focusable elements is updated dynamically when changes occur.
+   * Unmounts the overlay after transition ends (300ms).
    */
   useEffect(() => {
-    if (!overlayRef.current || !isOpened) return;
+    if (!isVisible && isMounted) {
+      const timeout = setTimeout(() => {
+        setIsMounted(false);
+      }, 300);
+      return () => clearTimeout(timeout);
+    }
+  }, [isVisible, isMounted]);
+
+  /* -------------------- INITIAL FOCUS + OBSERVER -------------------- */
+
+  /**
+   * Sets initial focus and observes overlay DOM changes to update focusable elements.
+   */
+  useEffect(() => {
+    if (!overlayRef.current || !isReady) return;
+
+    /**
+     * Updates references to the first and last focusable elements inside the overlay
+     * and sets initial focus on the first element.
+     */
+    const updateFocusableElements = () => {
+      const elements = Array.from(
+        overlayRef.current!.querySelectorAll(FOCUSABLE_SELECTOR),
+      ) as HTMLElement[];
+
+      firstFocusableElementRef.current = elements[0] || null;
+      lastFocusableElementRef.current = elements[elements.length - 1] || null;
+
+      if (firstFocusableElementRef.current) {
+        firstFocusableElementRef.current.focus();
+      }
+    };
 
     updateFocusableElements();
 
@@ -89,16 +117,12 @@ export default function useOverlay(
     return () => {
       observer.disconnect();
     };
-  }, [isOpened, updateFocusableElements]);
+  }, [isReady]);
+
+  /* -------------------- TAB TRAP -------------------- */
 
   /**
-   * Traps focus within the overlay element when the "Tab" key is pressed.
-   *
-   * 1. The effect creates a `trapFocus` function that listens for the "Tab" key event.
-   * 2. If the "Tab" key is pressed with `shiftKey` (Shift+Tab), it checks if the currently focused element is the first focusable element. If so, it moves focus to the last focusable element.
-   * 3. If the "Tab" key is pressed normally, it checks if the currently focused element is the last focusable element. If so, it moves focus to the first focusable element.
-   * 4. The event listener is added to the overlay element when it is available, ensuring the focus trapping works when the overlay is displayed.
-   * 5. The event listener is cleaned up when the component unmounts, or when the dependencies change, to avoid memory leaks.
+   * Traps focus inside the overlay when pressing Tab or Shift+Tab.
    */
   useEffect(() => {
     const trapFocus = (e: KeyboardEvent) => {
@@ -118,25 +142,20 @@ export default function useOverlay(
     };
 
     const overlayElement = overlayRef.current;
-    if (overlayElement) {
-      overlayElement.addEventListener('keydown', trapFocus);
-      return () => {
-        overlayElement.removeEventListener('keydown', trapFocus);
-      };
-    }
-  }, []);
+
+    if (!overlayElement) return;
+
+    overlayElement.addEventListener('keydown', trapFocus);
+    return () => {
+      overlayElement.removeEventListener('keydown', trapFocus);
+    };
+  }, [isReady]);
+
+  /* -------------------- ESC -------------------- */
 
   /**
-   * Listens for the "Escape" key press to close the overlay.
-   *
-   * This effect:
-   * 1. Sets up an event listener on the `overlayElement` for `keydown` events.
-   * 2. When the "Escape" key is pressed and the overlay is closable, it checks if the target element has the `role="option"`.
-   *    If the target has this role, the function returns early, preventing the close action.
-   * 3. If the target doesn't have the `role="option"`, it calls the `handleClose` function to close the overlay or modal.
-   * 4. The event listener is cleaned up when the component is unmounted or when the `overlayElement` reference changes.
-   *
-   * This ensures that pressing the "Escape" key will close the overlay, except when the focus is on an element with `role="option"`.
+   * Closes the overlay when pressing the Escape key, if allowed.
+   * Ignores ESC presses on elements with role="option".
    */
   useEffect(() => {
     const handleEscKey = (e: KeyboardEvent) => {
@@ -148,14 +167,16 @@ export default function useOverlay(
     };
 
     const overlayElement = overlayRef.current;
-    if (overlayElement) {
-      overlayElement.addEventListener('keydown', handleEscKey);
-      return () => overlayElement.removeEventListener('keydown', handleEscKey);
-    }
-  }, [close]);
+
+    if (!overlayElement) return;
+
+    overlayElement.addEventListener('keydown', handleEscKey);
+    return () => overlayElement.removeEventListener('keydown', handleEscKey);
+  }, [isReady, close, isClosable]);
 
   return {
-    isOpened,
+    isMounted,
+    isVisible,
     open,
     close,
     overlayRef,

@@ -3,12 +3,13 @@ import { useTranslations } from 'next-intl';
 import React from 'react';
 import CookieDetails from '@/components/ui/cookies/CookieDetails';
 import CookiesDetailsAccordion from '@/components/ui/cookies/CookiesDetailsAccordion';
+import { CookieInfo } from '@/types/cookies.types';
 
 export default function CookiesPreferencesSection({
   preferences,
   togglePreference,
 }: {
-  preferences: { [key: string]: boolean };
+  preferences: Record<string, boolean>;
   togglePreference: (cookiesType: string) => void;
 }) {
   const t = useTranslations('Cookies');
@@ -64,15 +65,7 @@ export default function CookiesPreferencesSection({
     },
   };
 
-  const renderCookieDetails = (cookies: {
-    [key: string]: {
-      description: string;
-      domain: string;
-      policy: string;
-      maxAge: string;
-      type: string;
-    };
-  }) => {
+  const renderCookieDetails = (cookies: Record<string, CookieInfo>) => {
     return Object.entries(cookies).map(
       ([name, { description, domain, policy, maxAge, type }]) => (
         <CookieDetails
@@ -83,7 +76,7 @@ export default function CookiesPreferencesSection({
           policy={policy}
           maxAge={maxAge}
           type={type}
-          className="bg-primary-light [&:not(:last-child)]:mb-1.5"
+          className="bg-primary-light"
         />
       ),
     );
@@ -98,7 +91,7 @@ export default function CookiesPreferencesSection({
           <ToggleSwitch
             name="cookie-necessary"
             size="lg"
-            isChecked={preferences.necessary === true}
+            checked={preferences.necessary === true}
             required={true}
             disabled={true}
           />
@@ -117,7 +110,7 @@ export default function CookiesPreferencesSection({
                 `types.statistics.switchState.${preferences.statistics === true}`,
               ),
             })}
-            isChecked={preferences.statistics === true}
+            checked={preferences.statistics === true}
             onChange={() => togglePreference('statistics')}
           />
         }

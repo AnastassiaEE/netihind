@@ -1,15 +1,15 @@
 import { getCookie, hasCookie } from 'cookies-next/server';
 import { cookies } from 'next/headers';
 import { notFound } from 'next/navigation';
-import { getAddressCookieValues } from '@/utils/addressCookieHelper';
-import { getAddressSlug } from '@/utils/addressSlugifier';
+import { getAddressCookieValues } from '@/utils/addressHelper';
+import { getAddressSlug } from '@/utils/addressHelper';
 import { setRequestLocale } from 'next-intl/server';
 import AddressPackagesSection from '@/components/sections/address/AddressPackagesSection';
 import { Locale } from 'next-intl';
 
 export default async function PersonalAddress(props: {
   params: Promise<{ slug: string; locale: Locale }>;
-  searchParams: Promise<{ [key: string]: string }>;
+  searchParams: Promise<Record<string, string>>;
 }) {
   const searchParams = await props.searchParams;
   const params = await props.params;

@@ -21,8 +21,8 @@ export default function SelectOption({
   children: React.ReactNode;
 }) {
   const optionClasses = classNames(
-    'cursor-pointer text-muted-dark hover:bg-primary/10',
-    isSelected && 'font-semibold text-primary',
+    'text-muted-dark hover:bg-primary/10 cursor-pointer',
+    isSelected && 'text-primary font-semibold',
     sizes[size],
     className,
   );

@@ -1,18 +1,19 @@
 import React from 'react';
 import { tv } from 'tailwind-variants';
 import { FormElementSizes as sizes } from '@/components/ui/form/config';
-import { ButtonSize, ButtonType, ButtonVariant } from '@/types/form.types';
+import { ButtonSize, ButtonVariant } from '@/types/form.types';
 
 const buttonClasses = tv({
-  base: 'rounded-md border font-semibold shadow-md transition-all',
+  base: 'rounded-md font-semibold transition-all',
   variants: {
     variant: {
-      contained: 'border-primary bg-primary text-white hover:bg-primary-dark',
+      contained:
+        'border-primary bg-primary hover:bg-primary-dark shadow-primary/30 border text-white shadow-md hover:shadow-none',
       outlined:
-        'border-primary bg-white text-primary hover:bg-primary hover:text-white',
+        'border-primary text-primary hover:bg-primary border bg-white hover:text-white',
       neutral:
-        'border-primary-light bg-primary-light text-muted-dark hover:bg-primary hover:text-white',
-      text: 'border-transparent text-primary shadow-none hover:text-primary-dark',
+        'border-primary-light bg-primary-light text-muted-dark hover:bg-primary border hover:text-white',
+      text: 'text-primary hover:text-primary-dark',
     },
     size: sizes,
     disabled: {
@@ -27,27 +28,18 @@ const buttonClasses = tv({
   },
 });
 
-interface ButtonProps {
-  type?: ButtonType;
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
-  disabled?: boolean;
-  name?: string;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  className?: string;
-  children: React.ReactNode;
-  [key: string]: any;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       type = 'button',
-      variant = 'contained',
-      size = 'sm',
+      variant,
+      size,
       disabled = false,
-      name,
-      onClick,
       className,
       children,
       ...props
@@ -58,11 +50,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         type={type}
-        name={name}
-        onClick={onClick}
-        className={buttonClasses({ variant, size, disabled, className })}
         disabled={disabled}
         {...props}
+        className={buttonClasses({ variant, size, disabled, className })}
       >
         {children}
       </button>

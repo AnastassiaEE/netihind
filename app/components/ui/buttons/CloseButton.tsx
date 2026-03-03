@@ -15,7 +15,7 @@ export default function CloseButton({
     <button
       type="button"
       aria-label={label}
-      className={classNames('size-max rounded-full p-[3px]', className)}
+      className={classNames('size-max rounded-full p-0.75', className)}
       onClick={onClick}
     >
       <CloseIcon className="text-muted transition-colors hover:text-black" />

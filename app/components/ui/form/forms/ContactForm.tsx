@@ -1,13 +1,14 @@
 'use client';
 import FormResponse from '@/components/ui/form/forms/FormResponse';
-import { Loop, Add } from '@mui/icons-material';
+import { Add } from '@mui/icons-material';
 import IconInput from '@/components/ui/form/fields/input/IconInput';
 import Checkbox from '@/components/ui/form/fields/checkbox/Checkbox';
 import Textarea from '@/components/ui/form/fields/input/Textarea';
-import Button from '@/components/ui/form/buttons/Button';
 import Input from '@/components/ui/form/fields/input/Input';
 import useForm from '@/hooks/useForm';
 import { useTranslations } from 'next-intl';
+import SendButton from '@/components/ui/buttons/SendButton';
+import { translateKey } from '@/utils/translationHelper';
 
 export default function ContactForm() {
   const t = useTranslations('Form');
@@ -50,12 +51,12 @@ export default function ContactForm() {
       <div className="mb-6">
         <Input
           name="name"
-          label={t('labels.name')}
+          label={{ value: t('labels.name'), className: 'font-semibold' }}
           onChange={(e) => handleChange(e, 'name')}
           onBlur={(e) => handleBlur(e, 'name')}
           value={values.name as string}
           isValid={!errors.name}
-          error={errors.name ? t(errors.name as any) : ''}
+          error={translateKey(t, errors.name)}
           required={fields['name'].isRequired}
         />
       </div>
@@ -63,13 +64,13 @@ export default function ContactForm() {
         <Input
           name="email"
           type="email"
-          inputmode="email"
-          label={t('labels.email')}
+          inputMode="email"
+          label={{ value: t('labels.email'), className: 'font-semibold' }}
           onChange={(e) => handleChange(e, 'email')}
           onBlur={(e) => handleBlur(e, 'email')}
           value={values.email as string}
           isValid={!errors.email}
-          error={errors.email ? t(errors.email as any) : ''}
+          error={translateKey(t, errors.email)}
           required={fields['email'].isRequired}
         />
       </div>
@@ -77,13 +78,13 @@ export default function ContactForm() {
         <IconInput
           name="phone"
           type="tel"
-          inputmode="tel"
-          label={t('labels.phone')}
+          inputMode="tel"
+          label={{ value: t('labels.phone'), className: 'font-semibold' }}
           onChange={(e) => handleChange(e, 'phone')}
           onBlur={(e) => handleBlur(e, 'phone')}
           value={values.phone as string}
           isValid={!errors.phone}
-          error={errors.phone ? t(errors.phone as any) : ''}
+          error={translateKey(t, errors.phone)}
           required={fields['phone'].isRequired}
           icon={{ Icon: Add, isVisible: true }}
         />
@@ -91,7 +92,7 @@ export default function ContactForm() {
       <div className="mb-6">
         <Textarea
           name="message"
-          label={t('labels.message')}
+          label={{ value: t('labels.message'), className: 'font-semibold' }}
           onChange={(e) => handleChange(e, 'message')}
           onBlur={(e) => handleBlur(e, 'message')}
           value={values.message as string}
@@ -102,7 +103,7 @@ export default function ContactForm() {
         <Checkbox
           name="policy"
           onChange={(e) => handleChange(e, 'policy')}
-          isChecked={values.policy as boolean}
+          checked={values.policy as boolean}
           isValid={!errors.policy}
           required={fields['policy'].isRequired}
         >
@@ -111,7 +112,7 @@ export default function ContactForm() {
               <a
                 href="/policy"
                 target="_blank"
-                className="font-semibold transition-colors hover:text-primary"
+                className="hover:text-primary font-semibold transition-colors"
               >
                 {chunks}
               </a>
@@ -119,16 +120,12 @@ export default function ContactForm() {
           })}
         </Checkbox>
       </div>
-      <Button type="submit" size="lg" disabled={isSending} className="w-full">
-        {isSending ? (
-          <Loop className="mx-auto animate-spin" />
-        ) : (
-          <>{t('buttons.send')}</>
-        )}
-      </Button>
+      <SendButton size="lg" isSending={isSending} className="w-full">
+        {t('buttons.send')}
+      </SendButton>
       {!isSending && response && (
         <FormResponse type={response.type}>
-          {t(response.message as any)}
+          {translateKey(t, response.message)}
         </FormResponse>
       )}
     </form>

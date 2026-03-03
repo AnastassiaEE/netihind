@@ -18,7 +18,7 @@ export default function ScrollTopButton() {
       onClick={handleClick}
     >
       <CircleArrow
-        className="!h-11 !w-11 bg-gray-900/25 text-white"
+        className="h-11! w-11! bg-gray-900/25 text-white"
         direction="up"
       />
     </button>

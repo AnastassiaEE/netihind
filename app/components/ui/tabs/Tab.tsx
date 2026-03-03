@@ -16,8 +16,8 @@ export default function Tab({
   children: React.ReactNode;
 }) {
   const tabClasses = classNames(
-    'flex-1 cursor-pointer p-3 text-center font-semibold transition-colors hover:text-primary focus:outline-none',
-    isActive && 'border-b-2 border-primary text-primary',
+    'hover:text-primary flex-1 cursor-pointer p-3 text-center font-semibold transition-colors focus:outline-hidden',
+    isActive && 'border-primary text-primary border-b-2',
   );
   return (
     <li
