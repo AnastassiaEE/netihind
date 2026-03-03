@@ -34,16 +34,22 @@ export default function PackageEquipmentSection({
   function EquipmentHeader({ device }: { device: EquipmentItem }) {
     const deviceType =
       translations[device.type]?.[currentLocale] ?? device.type;
+
+    const translatedDescription = device.description
+      ? (translations[device.description]?.[currentLocale] ??
+        device.description)
+      : '';
+
+    const tooltipContent = device.model
+      ? `${device.model}${translatedDescription ? ` - ${translatedDescription}` : ''}`
+      : translatedDescription;
+
     return device.model || device.description ? (
       <Tooltip
         elementToInteract={
           <p className="text-primary underline">{deviceType}</p>
         }
-        content={`${device.model ?? ''}${
-          device.model && device.description
-            ? ` - ${translations[device.description]?.[currentLocale] ?? device.description}`
-            : (device.description ?? '')
-        }`}
+        content={tooltipContent}
       />
     ) : (
       <p>{deviceType}</p>
