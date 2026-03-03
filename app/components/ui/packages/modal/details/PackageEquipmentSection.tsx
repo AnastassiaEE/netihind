@@ -8,6 +8,16 @@ import classNames from 'classnames';
 import { useLocale, useTranslations } from 'next-intl';
 import React from 'react';
 
+//  Temporary fixed order
+const PAYMENT_OPTION_ORDER = ['rent', 'installments', 'full_purchase'] as const;
+
+const getPaymentOptionRank = (option: string) => {
+  const index = PAYMENT_OPTION_ORDER.indexOf(
+    option as (typeof PAYMENT_OPTION_ORDER)[number],
+  );
+  return index === -1 ? Number.MAX_SAFE_INTEGER : index;
+};
+
 export default function PackageEquipmentSection({
   equipment,
 }: {
@@ -29,7 +39,10 @@ export default function PackageEquipmentSection({
         combination.flatMap((device) => Object.keys(device.payment)),
       ),
     ),
-  );
+  ).sort((a, b) => {
+    const rankDiff = getPaymentOptionRank(a) - getPaymentOptionRank(b);
+    return rankDiff !== 0 ? rankDiff : a.localeCompare(b);
+  });
 
   function EquipmentHeader({ device }: { device: EquipmentItem }) {
     const deviceType =
