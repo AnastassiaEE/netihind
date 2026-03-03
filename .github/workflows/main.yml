@@ -39,7 +39,7 @@ jobs:
           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
       # -----------------------------
-      # Rsync files to server (excluding node_modules, .next, .git, maintenance.html)
+      # Rsync files to server (excluding node_modules, .next, .git, .github, .maintenance.html)
       # -----------------------------
       - name: Copy files to server with rsync
         run: |
@@ -47,6 +47,8 @@ jobs:
             --exclude='node_modules' \
             --exclude='.next' \
             --exclude='.git' \
+            --exclude='.github' \
+            --exclude='.maintenance.html' \
             ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}
 
       # -----------------------------
