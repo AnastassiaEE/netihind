@@ -11,7 +11,6 @@ export default function PackagePriceSection({
   const t = useTranslations('Packages');
   const { price, discount } = packageData || {};
 
-  console.log(packageData);
   return (
     <PackageModalSection
       title={t('modals.connection.sections.total') + ':'}
