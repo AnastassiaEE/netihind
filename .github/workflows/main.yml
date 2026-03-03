@@ -48,7 +48,7 @@ jobs:
             --exclude='.next' \
             --exclude='.git' \
             --exclude='.github' \
-            --exclude='.maintenance.html' \
+            --exclude='maintenance.html' \
             ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}
 
       # -----------------------------
