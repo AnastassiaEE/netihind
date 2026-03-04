@@ -33,16 +33,13 @@ export default function PackageEquipmentSection({
   const borderlessCellClasses = 'text-[0.95rem] border-b-0 border-t-0 p-1.5';
   const priceClasses = 'font-semibold';
 
-  const paymentOptions = Array.from(
-    new Set(
-      equipment.flatMap((combination) =>
-        combination.flatMap((device) => Object.keys(device.payment)),
-      ),
-    ),
-  ).sort((a, b) => {
-    const rankDiff = getPaymentOptionRank(a) - getPaymentOptionRank(b);
-    return rankDiff !== 0 ? rankDiff : a.localeCompare(b);
-  });
+  const getCombinationPaymentOptions = (combination: EquipmentItem[]) =>
+    Array.from(
+      new Set(combination.flatMap((device) => Object.keys(device.payment))),
+    ).sort((a, b) => {
+      const rankDiff = getPaymentOptionRank(a) - getPaymentOptionRank(b);
+      return rankDiff !== 0 ? rankDiff : a.localeCompare(b);
+    });
 
   function EquipmentHeader({ device }: { device: EquipmentItem }) {
     const deviceType =
@@ -115,61 +112,67 @@ export default function PackageEquipmentSection({
         </p>
       ) : (
         <div className="overflow-x-auto">
-          {equipment.map((combination, i) => (
-            <React.Fragment key={i}>
-              <table className="border-collapse">
-                <tbody>
-                  <tr className="text-center">
-                    <td></td>
-                    <td className={borderlessCellClasses}></td>
-                    {combination.map((device, idx) => (
-                      <React.Fragment key={device.id}>
-                        <td className={borderlessCellClasses}>
-                          <EquipmentHeader device={device} />
-                        </td>
-                        {idx < combination.length - 1 && (
-                          <td className={borderlessCellClasses}>+</td>
-                        )}
-                      </React.Fragment>
-                    ))}
-                  </tr>
+          {equipment.map((combination, i) => {
+            const paymentOptions = getCombinationPaymentOptions(combination);
 
-                  {paymentOptions.map((paymentOption) => (
-                    <tr key={paymentOption}>
-                      <td
-                        className={classNames(
-                          borderlessCellClasses,
-                          'capitalize',
-                        )}
-                      >
-                        {translations[paymentOption]?.[currentLocale] ??
-                          paymentOption}
-                      </td>
+            return (
+              <React.Fragment key={i}>
+                <table className="border-collapse">
+                  <tbody>
+                    <tr className="text-center">
+                      <td></td>
                       <td className={borderlessCellClasses}></td>
-
                       {combination.map((device, idx) => (
                         <React.Fragment key={device.id}>
-                          <td className={getCellClasses(device, paymentOption)}>
-                            {renderEquipmentPayment(
-                              paymentOption,
-                              device.payment[paymentOption],
-                            )}
+                          <td className={borderlessCellClasses}>
+                            <EquipmentHeader device={device} />
                           </td>
                           {idx < combination.length - 1 && (
-                            <td className={borderlessCellClasses}></td>
+                            <td className={borderlessCellClasses}>+</td>
                           )}
                         </React.Fragment>
                       ))}
                     </tr>
-                  ))}
-                </tbody>
-              </table>
 
-              {i < equipment.length - 1 && (
-                <TextDivider text={tDividers('or')} />
-              )}
-            </React.Fragment>
-          ))}
+                    {paymentOptions.map((paymentOption) => (
+                      <tr key={paymentOption}>
+                        <td
+                          className={classNames(
+                            borderlessCellClasses,
+                            'capitalize',
+                          )}
+                        >
+                          {translations[paymentOption]?.[currentLocale] ??
+                            paymentOption}
+                        </td>
+                        <td className={borderlessCellClasses}></td>
+
+                        {combination.map((device, idx) => (
+                          <React.Fragment key={device.id}>
+                            <td
+                              className={getCellClasses(device, paymentOption)}
+                            >
+                              {renderEquipmentPayment(
+                                paymentOption,
+                                device.payment[paymentOption],
+                              )}
+                            </td>
+                            {idx < combination.length - 1 && (
+                              <td className={borderlessCellClasses}></td>
+                            )}
+                          </React.Fragment>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+
+                {i < equipment.length - 1 && (
+                  <TextDivider text={tDividers('or')} />
+                )}
+              </React.Fragment>
+            );
+          })}
         </div>
       )}
     </PackageModalSection>
