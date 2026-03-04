@@ -41,7 +41,8 @@ export default async function RootLayout(props: {
 
   setRequestLocale(locale as Locale);
 
-  const { timeZone } = Intl.DateTimeFormat().resolvedOptions();
+  const resolvedTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const timeZone = resolvedTimeZone || 'Europe/Tallinn';
 
   const nonce = (await headers()).get('x-nonce') ?? ' ';
 
