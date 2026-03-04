@@ -97,6 +97,11 @@ export default function PackageEquipmentSection({
     );
   }
 
+  function getCellClasses(device: EquipmentItem, paymentOption: string) {
+    const hasPayment = device.payment[paymentOption] !== undefined;
+    return hasPayment ? borderedCellClasses : borderlessCellClasses;
+  }
+
   return (
     <PackageModalSection
       title={tPackages('modals.details.sections.equipment')}
@@ -144,7 +149,7 @@ export default function PackageEquipmentSection({
 
                       {combination.map((device, idx) => (
                         <React.Fragment key={device.id}>
-                          <td className={borderedCellClasses}>
+                          <td className={getCellClasses(device, paymentOption)}>
                             {renderEquipmentPayment(
                               paymentOption,
                               device.payment[paymentOption],
