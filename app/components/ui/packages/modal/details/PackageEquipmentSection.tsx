@@ -8,6 +8,16 @@ import classNames from 'classnames';
 import { useLocale, useTranslations } from 'next-intl';
 import React from 'react';
 
+//  Temporary fixed order
+const PAYMENT_OPTION_ORDER = ['rent', 'installments', 'full_purchase'] as const;
+
+const getPaymentOptionRank = (option: string) => {
+  const index = PAYMENT_OPTION_ORDER.indexOf(
+    option as (typeof PAYMENT_OPTION_ORDER)[number],
+  );
+  return index === -1 ? Number.MAX_SAFE_INTEGER : index;
+};
+
 export default function PackageEquipmentSection({
   equipment,
 }: {
@@ -29,21 +39,30 @@ export default function PackageEquipmentSection({
         combination.flatMap((device) => Object.keys(device.payment)),
       ),
     ),
-  );
+  ).sort((a, b) => {
+    const rankDiff = getPaymentOptionRank(a) - getPaymentOptionRank(b);
+    return rankDiff !== 0 ? rankDiff : a.localeCompare(b);
+  });
 
   function EquipmentHeader({ device }: { device: EquipmentItem }) {
     const deviceType =
       translations[device.type]?.[currentLocale] ?? device.type;
+
+    const translatedDescription = device.description
+      ? (translations[device.description]?.[currentLocale] ??
+        device.description)
+      : '';
+
+    const tooltipContent = device.model
+      ? `${device.model}${translatedDescription ? ` - ${translatedDescription}` : ''}`
+      : translatedDescription;
+
     return device.model || device.description ? (
       <Tooltip
         elementToInteract={
           <p className="text-primary underline">{deviceType}</p>
         }
-        content={`${device.model ?? ''}${
-          device.model && device.description
-            ? ` - ${translations[device.description]?.[currentLocale] ?? device.description}`
-            : (device.description ?? '')
-        }`}
+        content={tooltipContent}
       />
     ) : (
       <p>{deviceType}</p>
@@ -76,6 +95,11 @@ export default function PackageEquipmentSection({
         <span className={priceClasses}>{price} €</span>
       </>
     );
+  }
+
+  function getCellClasses(device: EquipmentItem, paymentOption: string) {
+    const hasPayment = device.payment[paymentOption] !== undefined;
+    return hasPayment ? borderedCellClasses : borderlessCellClasses;
   }
 
   return (
@@ -125,7 +149,7 @@ export default function PackageEquipmentSection({
 
                       {combination.map((device, idx) => (
                         <React.Fragment key={device.id}>
-                          <td className={borderedCellClasses}>
+                          <td className={getCellClasses(device, paymentOption)}>
                             {renderEquipmentPayment(
                               paymentOption,
                               device.payment[paymentOption],
