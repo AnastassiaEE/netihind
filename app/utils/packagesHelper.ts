@@ -88,6 +88,7 @@ export const groupEquipmentByCombination = (
  * @returns Object mapping each payment type to the minimum price found
  */
 export const getEquipmentMinPricesByPayment = (equipment: EquipmentItem[]) => {
+  const paymentOrder = ['rent', 'installments', 'full_purchase'];
   const result: Record<string, number> = {};
 
   for (const item of equipment) {
@@ -99,5 +100,12 @@ export const getEquipmentMinPricesByPayment = (equipment: EquipmentItem[]) => {
     }
   }
 
-  return result;
+  const sortedResult: Record<string, number> = {};
+  for (const paymentType of paymentOrder) {
+    if (result[paymentType] !== undefined) {
+      sortedResult[paymentType] = result[paymentType];
+    }
+  }
+
+  return sortedResult;
 };
