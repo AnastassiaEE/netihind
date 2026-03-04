@@ -19,28 +19,6 @@ jobs:
       # -----------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Detect package-lock changes
-        id: lockfile
-        run: |
-          set -e
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-
-          BEFORE_SHA="${{ github.event.before }}"
-          AFTER_SHA="${{ github.sha }}"
-
-          if [ -z "$BEFORE_SHA" ] || [ "$BEFORE_SHA" = "0000000000000000000000000000000000000000" ]; then
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-          elif git diff --name-only "$BEFORE_SHA" "$AFTER_SHA" | grep -qx "package-lock.json"; then
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-          fi
 
       # -----------------------------
       # Setup Supabase CLI (needed for migrations)
@@ -118,8 +96,6 @@ jobs:
           set -e
           cd ${{ secrets.DEPLOY_PATH }}
 
-          FULL_CI_EVERY=10
-
           echo "Stopping existing pm2 processes..."
           if [ "${{ github.ref_name }}" = "main" ]; then
           pm2 stop netihind || true
@@ -132,29 +108,8 @@ jobs:
           echo "Cleaning old build artifacts (preserving cache)..."
           rm -rf .next
 
-          DEPLOY_COUNTER_FILE=".deploy_counter"
-          DEPLOY_COUNT=0
-          if [ -f "$DEPLOY_COUNTER_FILE" ]; then
-            DEPLOY_COUNT=$(cat "$DEPLOY_COUNTER_FILE")
-          fi
-
-          RUN_FULL_CI=false
-          if [ "${{ steps.lockfile.outputs.changed }}" = "true" ]; then
-            RUN_FULL_CI=true
-            echo "package-lock.json changed -> running full clean install"
-          else
-            DEPLOY_COUNT=$((DEPLOY_COUNT + 1))
-            if [ "$DEPLOY_COUNT" -ge "$FULL_CI_EVERY" ]; then
-              RUN_FULL_CI=true
-              DEPLOY_COUNT=0
-              echo "Reached $FULL_CI_EVERY deploys -> running periodic full clean install"
-            fi
-          fi
-
-          echo "$DEPLOY_COUNT" > "$DEPLOY_COUNTER_FILE"
-
           echo "Installing dependencies..."
-          if [ "$RUN_FULL_CI" = "true" ]; then
+          if [ "${{ github.ref_name }}" = "main" ]; then
             rm -rf node_modules
             npm ci --no-audit --no-fund
           else
