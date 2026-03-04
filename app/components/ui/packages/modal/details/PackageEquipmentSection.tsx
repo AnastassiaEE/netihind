@@ -53,19 +53,19 @@ export default function PackageEquipmentSection({
         device.description)
       : '';
 
-    const tooltipContent = device.model
-      ? `${device.model}${translatedDescription ? ` - ${translatedDescription}` : ''}`
-      : translatedDescription;
+    const tooltipContent = translatedDescription || device.model || '';
 
-    return device.model || device.description ? (
+    if (!tooltipContent) {
+      return <p>{deviceType}</p>;
+    }
+
+    return (
       <Tooltip
         elementToInteract={
           <p className="text-primary underline">{deviceType}</p>
         }
         content={tooltipContent}
       />
-    ) : (
-      <p>{deviceType}</p>
     );
   }
 
