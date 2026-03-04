@@ -136,7 +136,7 @@
         "label": "Оборудование",
         "rentMinPrice": "Аренда устройства от {rent_fee} € / мес",
         "installmentsMinPrice": "Рассрочка устройства от {installments_fee} € / мес",
-        "fullPurchaseMinPrice": "Покупка устройства от {full_purchase_fee} €",
+        "full_purchaseMinPrice": "Покупка устройства от {full_purchase_fee} €",
         "allCombinations": "Для использования услуги требуется оборудование. Ниже представлены все возможные комплектации устройств.",
         "noEquipment": "Нет доступных устройств."
       },
