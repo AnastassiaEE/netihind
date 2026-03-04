@@ -34,7 +34,7 @@ export default function PackageModal({
       isVisible={isVisible}
       onClose={onClose}
       dialogRef={ref}
-      className="bg-primary-light"
+      className="bg-primary-light xl:w-[calc(100vw-35%)]"
     >
       {action === 'connection' && (
         <PackageConnectionContent

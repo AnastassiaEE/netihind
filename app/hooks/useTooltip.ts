@@ -1,4 +1,4 @@
-import { useRef, useState, useLayoutEffect } from 'react';
+import { useRef, useState, useLayoutEffect, useEffect } from 'react';
 
 /**
  * Provides tooltip visibility, positioning, and refs for a wrapper and tooltip element.
@@ -36,12 +36,13 @@ export default function useTooltip() {
     const tooltipRect = tooltipRef.current.getBoundingClientRect();
 
     const padding = 8;
-    let top = rect.bottom + 6;
+    const offset = 8;
+    let top = rect.bottom + offset;
     let left = rect.left + rect.width / 2;
 
     // Move tooltip above wrapper if it would overflow bottom
-    if (rect.bottom + tooltipRect.height + 10 > window.innerHeight) {
-      top = rect.top - tooltipRect.height - 6;
+    if (rect.bottom + tooltipRect.height + offset > window.innerHeight) {
+      top = rect.top - tooltipRect.height - offset;
     }
 
     // Adjust horizontal position to stay inside viewport
@@ -54,6 +55,42 @@ export default function useTooltip() {
 
     tooltipRef.current.style.top = `${top}px`;
     tooltipRef.current.style.left = `${left}px`;
+  }, [isVisible]);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const hideOnScroll = () => setIsVisible(false);
+
+    window.addEventListener('scroll', hideOnScroll, true);
+    window.addEventListener('wheel', hideOnScroll, { passive: true });
+    window.addEventListener('touchmove', hideOnScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', hideOnScroll, true);
+      window.removeEventListener('wheel', hideOnScroll);
+      window.removeEventListener('touchmove', hideOnScroll);
+    };
+  }, [isVisible]);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const hideOnOutsideInteraction = (event: MouseEvent | TouchEvent) => {
+      const target = event.target as Node | null;
+      if (!target || wrapperRef.current?.contains(target)) return;
+      setIsVisible(false);
+    };
+
+    document.addEventListener('mousedown', hideOnOutsideInteraction);
+    document.addEventListener('touchstart', hideOnOutsideInteraction, {
+      passive: true,
+    });
+
+    return () => {
+      document.removeEventListener('mousedown', hideOnOutsideInteraction);
+      document.removeEventListener('touchstart', hideOnOutsideInteraction);
+    };
   }, [isVisible]);
 
   return {
