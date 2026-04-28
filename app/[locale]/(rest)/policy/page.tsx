@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { getPage } from '@/app/lib/wpPages';
+import { getPage } from '@/lib/wordpress/pages';
 import { notFound } from 'next/navigation';
 import remarkGfm from 'remark-gfm';
 import SectionLayout from '@/layouts/SectionLayout';

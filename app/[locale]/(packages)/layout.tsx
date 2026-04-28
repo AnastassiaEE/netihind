@@ -1,7 +1,7 @@
 import MainFooter from '@/components/ui/footer/MainFooter';
 import Header from '@/components/ui/header/Header';
 import { TranslationsProvider } from '@/context/TranslationsContext';
-import { getStringTranslations } from '@/lib/packagesDataFetch';
+import { getStringTranslations } from '@/lib/supabase/translations';
 import { Locale } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 

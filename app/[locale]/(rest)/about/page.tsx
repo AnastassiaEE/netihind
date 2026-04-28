@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
-import { getPage } from '@/app/lib/wpPages';
+import { getPage } from '@/lib/wordpress/pages';
 import components from '@/mdx-components';
 import SectionLayout from '@/layouts/SectionLayout';
 import { MDXRemote } from 'next-mdx-remote/rsc';

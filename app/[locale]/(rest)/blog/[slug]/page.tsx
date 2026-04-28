@@ -1,10 +1,10 @@
 import PostHeaderSection from '@/components/sections/blog-post/PostHeaderSection';
 import PostContentSection from '@/components/sections/blog-post/PostContentSection';
 import ParallaxBg from '@/components/ui/ParallaxBg';
-import { getPostBySlug, getPostsWithSlugsOnly } from '@/app/lib/wpPosts';
+import { getPostBySlug, getPostsWithSlugsOnly } from '@/lib/wordpress/posts';
 import { notFound } from 'next/navigation';
 import { Suspense, use } from 'react';
-import getFormattedSlug from '@/utils/slugFormatter';
+import { formatSlug } from '@/utils/slugFormatter';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import PageLoader from '@/components/ui/loaders/PageLoader';
 import { Locale, useTranslations } from 'next-intl';
@@ -70,7 +70,7 @@ export async function generateMetadata(props: {
 export async function generateStaticParams() {
   const posts: BlogPost[] = await getPostsWithSlugsOnly();
   const paths = posts.map((post: BlogPost) => {
-    const slug = getFormattedSlug(post.slug);
+    const slug = formatSlug(post.slug);
     return {
       slug: slug,
     };
