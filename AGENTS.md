@@ -150,7 +150,10 @@
 - **Naming**: PascalCase for component files (e.g., `ContactForm.tsx`)
 - **Location**: Group by feature/type in `components/ui/` or `components/sections/`
 - **Props**: Define inline or in `types/` for reusable types
-- **Exports**: Use default export for components, named exports for utilities
+- **Exports**:
+  - **Components**: Use `export default` for React components
+  - **Utilities**: Always use named exports (`export const`/`export function`)
+  - **UI Library components** (shadcn/ui): Use named exports when exporting multiple items (e.g., `export { Button, buttonVariants }`)
 
 ### Component Patterns
 
@@ -253,9 +256,21 @@ const button = tv({ base: 'btn', variants: { color: { primary: 'btn-primary' }}}
 Use path aliases defined in `tsconfig.json`:
 
 ```typescript
-import { Button } from '@/components/ui/buttons/Button';
+// Components (default exports)
+import ContactForm from '@/components/ui/form/ContactForm';
+import BlogSlider from '@/components/ui/blog/BlogSlider';
+
+// UI Library components (named exports)
+import { Button, buttonVariants } from '@/components/ui/form/buttons/Button';
+
+// Utilities (named exports)
 import { formatMoney } from '@/utils/numberFormatter';
+import { formatSlug } from '@/utils/slugFormatter';
+
+// Types
 import { Package } from '@/types/packages.types';
+
+// Services
 import { supabase } from '@/lib/supabase/client';
 import { getPackages } from '@/lib/supabase/packages';
 import { fetchAPI } from '@/lib/wordpress/client';
@@ -274,7 +289,7 @@ import { fetchAPI } from '@/lib/wordpress/client';
 3. Constants/config
 4. Main component/function
 5. Helper functions (if small and local)
-6. Default export
+6. Export (default for components, named for utilities)
 
 ### Function Style
 
@@ -479,7 +494,7 @@ NEXT_PUBLIC_MAA_AMET_ADDRESS_API_ENDPOINT=
 3. Use TypeScript with proper types
 4. Add JSDoc if complex
 5. Use Tailwind for styling
-6. Export as default if main component
+6. Export component as default (unless it's a UI library component with multiple exports)
 
 #### Adding a Supabase Query
 

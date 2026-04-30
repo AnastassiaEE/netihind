@@ -8,7 +8,6 @@ export type FormFields = {
 };
 
 // variant
-export type ButtonVariant = 'contained' | 'outlined' | 'neutral' | 'text';
 export type SelectVariant = 'plain' | 'labeled';
 
 // size
@@ -33,4 +32,4 @@ export type ComboBoxProps = {
   'aria-controls': string;
 };
 
-export type Label = {value: string; className?: string}
+export type Label = { value: string; className?: string };

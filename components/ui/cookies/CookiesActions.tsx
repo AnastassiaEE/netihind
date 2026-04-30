@@ -1,4 +1,4 @@
-import Button from '@/components/ui/form/buttons/Button';
+import { Button } from '@/components/ui/buttons/Button';
 import classNames from 'classnames';
 import { useTranslations } from 'next-intl';
 
@@ -18,24 +18,24 @@ export default function CookiesActions({
       )}
     >
       <Button
-        variant="outlined"
+        variant="outline"
         size="lg"
-        className="w-full"
+        className="flex-1"
         onClick={() => managePreferences('decline-all')}
       >
         {t('declineAll')}
       </Button>
       <Button
-        variant="outlined"
+        variant="outline"
         size="lg"
-        className="w-full"
+        className="flex-1"
         onClick={() => managePreferences('accept-selected')}
       >
         {t('acceptSelected')}
       </Button>
       <Button
         size="lg"
-        className="w-full"
+        className="flex-1"
         onClick={() => managePreferences('accept-all')}
       >
         {t('acceptAll')}

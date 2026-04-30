@@ -11,7 +11,7 @@ import PingLoader from '@/components/ui/loaders/PingLoader';
 import PackagesFilters from '@/components/ui/packages/filters/PackagesFilters';
 import PackagesSortingToolbar from '@/components/ui/packages/sorting/PackagesSortingToolbar';
 import usePackagesFilters from '@/hooks/packages/usePackagesFilters';
-import Button from '@/components/ui/form/buttons/Button';
+import { Button } from '@/components/ui/buttons/Button';
 
 export default function AddressPackagesSection({
   searchParams,
@@ -98,7 +98,7 @@ export default function AddressPackagesSection({
                       {tFilters('labels.filters')}
                     </p>
                     <Button
-                      variant="text"
+                      variant="link"
                       className="p-0!"
                       onClick={clearFilters}
                     >

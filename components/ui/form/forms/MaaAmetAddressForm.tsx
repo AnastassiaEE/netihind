@@ -1,6 +1,6 @@
 'use client';
 
-import Button from '@/components/ui/form/buttons/Button';
+import { Button } from '@/components/ui/buttons/Button';
 import '@/styles/addressForm.css';
 import FieldError from '@/components/ui/form/fields/FieldError';
 import { useTranslations } from 'next-intl';

@@ -1,6 +1,6 @@
 import SectionLayout from '@/layouts/SectionLayout';
 import questions from '@/data/questions';
-import Button from '@/components/ui/form/buttons/Button';
+import { Button } from '@/components/ui/buttons/Button';
 import { Link } from '@/i18n/routing';
 import { H2 } from '@/components/ui/headings/HomePageHeadings';
 import { useTranslations } from 'next-intl';
@@ -28,11 +28,9 @@ export default function QuestionsSection() {
         <div className="max-md:mb-12 md:w-4/12">
           <H2>{t('title')}</H2>
           <p className="mb-12 text-lg md:mb-8">{t('description')}</p>
-          <Link href="/contacts" className="md:inline-block">
-            <Button size="lg" className="w-full">
-              {t('contactButton')}
-            </Button>
-          </Link>
+          <Button size="lg" className="w-max" asChild>
+            <Link href="/contacts">{t('contactButton')}</Link>
+          </Button>
         </div>
         <div className="md:w-7/12">
           <div>

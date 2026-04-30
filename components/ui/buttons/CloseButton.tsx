@@ -1,4 +1,4 @@
-import CloseIcon from '@mui/icons-material/Close';
+import { X } from 'lucide-react';
 import classNames from 'classnames';
 import React from 'react';
 
@@ -18,7 +18,7 @@ export default function CloseButton({
       className={classNames('size-max rounded-full p-0.75', className)}
       onClick={onClick}
     >
-      <CloseIcon className="text-muted transition-colors hover:text-black" />
+      <X size={24} className="text-muted transition-colors hover:text-black" />
     </button>
   );
 }

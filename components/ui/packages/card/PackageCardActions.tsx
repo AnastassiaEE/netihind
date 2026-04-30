@@ -1,5 +1,5 @@
 import { PackageAction } from '@/types/packages.types';
-import Button from '@/components/ui/form/buttons/Button';
+import { Button } from '@/components/ui/buttons/Button';
 import { useTranslations } from 'next-intl';
 
 export default function PackageCardActions({
@@ -14,14 +14,16 @@ export default function PackageCardActions({
   return (
     <div className={className}>
       <Button
-        className="w-full rounded-t-none rounded-br-none"
+        size="lg"
+        className="flex-1 rounded-t-none rounded-br-none"
         onClick={() => onActionClick('connection')}
       >
         {t('connect')}
       </Button>
       <Button
-        variant="outlined"
-        className="w-full rounded-t-none rounded-bl-none"
+        variant="outline"
+        size="lg"
+        className="flex-1 rounded-t-none rounded-bl-none"
         onClick={() => onActionClick('details')}
       >
         {t('details')}

@@ -1,11 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
 import Arrow from '@/components/ui/icons/Arrow';
-import Button from '@/components/ui/form/buttons/Button';
-import IconButton from '@/components/ui/form/buttons/IconButton';
+import { Button, buttonVariants } from '@/components/ui/buttons/Button';
 import { SvgIconComponent } from '@mui/icons-material';
 import useSelect from '@/hooks/useSelect';
-import { ButtonVariant, SelectSize, SelectVariant } from '@/types/form.types';
+import { SelectSize, SelectVariant } from '@/types/form.types';
+import { VariantProps } from 'class-variance-authority';
 import { FormElementSizes as sizes } from '@/components/ui/form/config';
 
 export default function Select({
@@ -54,37 +54,27 @@ export default function Select({
   );
 
   const renderComboBox = (
-    variant: ButtonVariant,
+    variant: VariantProps<typeof buttonVariants>['variant'],
     hasArrow = true,
     content: string,
     Icon?: SvgIconComponent,
-  ) =>
-    Icon ? (
-      <IconButton
-        variant={variant}
-        Icon={Icon}
-        {...getComboBoxProps()}
-        className={comboBoxClasses}
-      >
-        {content}
-        {hasArrow && <ArrowIcon />}
-      </IconButton>
-    ) : (
-      <Button
-        variant={variant}
-        {...getComboBoxProps()}
-        className={comboBoxClasses}
-      >
-        {content}
-        {hasArrow && <ArrowIcon />}
-      </Button>
-    );
+  ) => (
+    <Button
+      variant={variant}
+      {...getComboBoxProps()}
+      className={comboBoxClasses}
+    >
+      {Icon && <Icon />}
+      {content}
+      {hasArrow && <ArrowIcon />}
+    </Button>
+  );
 
   return (
     <div className="relative">
       {variant === 'plain' &&
-        renderComboBox('outlined', false, buttonLabel ?? name, Icon)}
-      {variant === 'labeled' && renderComboBox('text', true, selected, Icon)}
+        renderComboBox('outline', false, buttonLabel ?? name, Icon)}
+      {variant === 'labeled' && renderComboBox('ghost', true, selected, Icon)}
       <div
         id={listBoxId}
         role="listbox"

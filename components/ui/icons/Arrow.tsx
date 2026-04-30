@@ -1,9 +1,9 @@
 import { ArrowIconDirection } from '@/types/ui.types';
-import { ChevronLeft } from '@mui/icons-material';
-import { tv } from 'tailwind-variants';
+import { ChevronLeft } from 'lucide-react';
+import { cva } from 'class-variance-authority';
+import classNames from 'classnames';
 
-const arrowClasses = tv({
-  base: 'inline transition-transform duration-300',
+const arrowVariants = cva('inline transition-transform duration-300', {
   variants: {
     direction: {
       left: '',
@@ -26,8 +26,8 @@ export default function Arrow({
 }) {
   return (
     <ChevronLeft
-      fontSize="small"
-      className={arrowClasses({ direction, className })}
+      size={20}
+      className={classNames(arrowVariants({ direction }), className)}
     />
   );
 }

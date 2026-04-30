@@ -1,4 +1,9 @@
 @import 'tailwindcss';
+@import 'tw-animate-css';
+/*
+  ---break---
+*/
+@custom-variant dark (&:is(.dark *));
 
 @theme {
   --animate-show: show 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -69,6 +74,9 @@
 
   button:not(:disabled) {
     cursor: pointer;
+  }
+  html {
+    @apply font-sans;
   }
 }
 

@@ -1,9 +1,9 @@
 import Header from '@/components/ui/header/Header';
 import SectionLayout from '@/layouts/SectionLayout';
 import { Link } from '@/i18n/routing';
-import HomeIcon from '@mui/icons-material/Home';
+import { Home } from 'lucide-react';
 import SecondaryFooter from '@/components/ui/footer/SecondaryFooter';
-import IconButton from '@/components/ui/form/buttons/IconButton';
+import { Button } from '@/components/ui/buttons/Button';
 import { useTranslations } from 'next-intl';
 
 export default function NotFound() {
@@ -21,11 +21,12 @@ export default function NotFound() {
                 br: () => <br />,
               })}
             </p>
-            <Link href="/">
-              <IconButton size="lg" Icon={HomeIcon}>
+            <Button size="lg" asChild>
+              <Link href="/">
+                <Home />
                 {t('buttons.returnHome')}
-              </IconButton>
-            </Link>
+              </Link>
+            </Button>
           </div>
         </SectionLayout>
         <SecondaryFooter />

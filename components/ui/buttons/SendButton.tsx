@@ -1,5 +1,5 @@
-import { Loop } from '@mui/icons-material';
-import Button from '@/components/ui/form/buttons/Button';
+import { Loader2 } from 'lucide-react';
+import { Button } from '@/components/ui/buttons/Button';
 
 export default function SendButton({
   isSending,
@@ -11,7 +11,7 @@ export default function SendButton({
 } & React.ComponentProps<typeof Button>) {
   return (
     <Button type="submit" disabled={isSending} {...props}>
-      {isSending ? <Loop className="mx-auto animate-spin" /> : children}
+      {isSending ? <Loader2 className="h-4 w-4 animate-spin" /> : children}
     </Button>
   );
 }

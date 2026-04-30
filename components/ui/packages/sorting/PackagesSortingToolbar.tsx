@@ -1,7 +1,7 @@
 'use client';
 
 import classNames from 'classnames';
-import Button from '@/components/ui/form/buttons/Button';
+import { Button } from '@/components/ui/buttons/Button';
 import Sort from '@/components/ui/sorting/Sort';
 import { useTranslations } from 'next-intl';
 import SlideUpPanel from '@/components/ui/overlay/SlideUpPanel';
@@ -56,7 +56,7 @@ export default function PackagesSortingToolbar({
         )}
       >
         {filters && (
-          <Button onClick={openPanel} variant="outlined" className="min-w-37.5">
+          <Button onClick={openPanel} variant="outline" className="min-w-37.5">
             {t('buttons.filter').toUpperCase()}
           </Button>
         )}
