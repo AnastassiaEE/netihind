@@ -27,6 +27,7 @@
 - `swr` - data fetching and caching
 - `react-scroll-parallax` - parallax effects
 - `next-mdx-remote` - MDX content rendering
+- `classnames` - conditional CSS class merging (required for all components)
 
 ---
 
@@ -208,8 +209,8 @@
 ### Tailwind CSS
 
 - **Version**: 4 (using PostCSS)
-- **Config**: `tailwind.config.ts` (currently empty, relies on defaults)
-- **Utilities**: `tailwind-merge` for conditional class merging
+- **Config**: `tailwind.config.ts` (minimal configuration, most customizations in CSS)
+- **Utilities**: `classnames` for conditional class merging
 - **Variants**: `tailwind-variants` for component variants
 
 ### CSS Conventions
@@ -221,12 +222,15 @@
 
 ### Component Styling Patterns
 
+**IMPORTANT**: For detailed UI component guidelines, see [UI Components Instructions](.github/instructions/ui-components.instructions.md).
+
 ```tsx
 // Preferred: Tailwind classes
 <div className="flex items-center gap-4 rounded-lg bg-white p-6 shadow-md">
 
-// With conditional classes (use classnames or cn utility)
-<button className={classnames('btn', { 'btn-active': isActive })}>
+// With conditional classes (ALWAYS use classNames library)
+import classNames from 'classnames';
+<button className={classNames('btn', { 'btn-active': isActive })}>
 
 // With tailwind-variants for complex variants
 import { tv } from 'tailwind-variants';
@@ -462,6 +466,7 @@ NEXT_PUBLIC_MAA_AMET_ADDRESS_API_ENDPOINT=
 9. **Never** ignore TypeScript errors - fix them properly
 10. **Never** use `console.log` in production code - use proper error handling
 11. **Never** use default exports in utility files - always use named exports
+12. **Never** use template literals, array joins, or manual string concatenation for CSS classes - always use `classNames` library
 
 ### ✅ DOs
 
@@ -475,6 +480,7 @@ NEXT_PUBLIC_MAA_AMET_ADDRESS_API_ENDPOINT=
 8. **Always** use Supabase RPC functions for data operations
 9. **Always** test both locales (et, ru) when modifying routes
 10. **Always** follow existing naming conventions and file structure
+11. **Always** use `classNames` library when combining or conditionally applying CSS classes
 
 ### 🔧 Common Tasks
 
