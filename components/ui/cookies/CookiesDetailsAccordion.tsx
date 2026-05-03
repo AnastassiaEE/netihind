@@ -1,4 +1,11 @@
-import useAccordion from '@/hooks/useAccordion';
+'use client';
+
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from '@/components/ui/accordions/Accordion';
 import Arrow from '@/components/ui/icons/Arrow';
 
 export default function CookiesDetailsAccordion({
@@ -12,39 +19,27 @@ export default function CookiesDetailsAccordion({
   typeToggleSwitch: React.ReactNode;
   details: React.ReactNode;
 }) {
-  const {
-    isVisible,
-    collapsibleRef,
-    getButtonProps,
-    getPanelProps,
-    getArrowProps,
-  } = useAccordion();
-
   return (
-    <div className="border-muted-light border-b">
-      <button
-        type="button"
-        {...getButtonProps()}
-        className="justify-left flex w-full items-center gap-3 p-3 text-left transition-all"
-      >
-        <div>
-          <div className="mb-2 flex items-center justify-between">
-            <p className="font-semibold text-black">
-              <Arrow {...getArrowProps()} className="mr-2" />
-              {typeName}
-            </p>
-            {typeToggleSwitch}
+    <Accordion
+      type="single"
+      collapsible
+      className="border-muted-light border-b"
+    >
+      <AccordionItem value="item-1">
+        <AccordionTrigger className="justify-left gap-3 p-3">
+          <div className="flex-1">
+            <div className="mb-2 flex items-center justify-between">
+              <p className="font-semibold text-black">
+                <Arrow className="mr-2 inline-block -rotate-90 transition-transform group-data-[state=open]/accordion-trigger:rotate-90" />
+                {typeName}
+              </p>
+              {typeToggleSwitch}
+            </div>
+            <p className="text-left">{typeDescription}</p>
           </div>
-          <p>{typeDescription}</p>
-        </div>
-      </button>
-      {isVisible && (
-        <div {...getPanelProps()}>
-          <div ref={collapsibleRef} className="space-y-2 p-3">
-            {details}
-          </div>
-        </div>
-      )}
-    </div>
+        </AccordionTrigger>
+        <AccordionContent className="space-y-2 p-3">{details}</AccordionContent>
+      </AccordionItem>
+    </Accordion>
   );
 }

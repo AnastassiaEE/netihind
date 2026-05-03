@@ -1,6 +1,11 @@
 'use client';
 
-import useAccordion from '@/hooks/useAccordion';
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from '@/components/ui/accordions/Accordion';
 import Arrow from '@/components/ui/icons/Arrow';
 
 export default function PackagesFilterAccordion({
@@ -12,30 +17,19 @@ export default function PackagesFilterAccordion({
   className?: string;
   children: React.ReactNode;
 }) {
-  const {
-    isVisible,
-    collapsibleRef,
-    getButtonProps,
-    getPanelProps,
-    getArrowProps,
-  } = useAccordion(false);
   return (
-    <div className={className}>
-      <button
-        type="button"
-        {...getButtonProps()}
-        className="mb-2 flex w-full flex-row-reverse items-center justify-between text-left text-muted-dark transition-all"
-      >
-        <Arrow {...getArrowProps()} />
-        <span className="text-sm font-semibold">{filterName}</span>
-      </button>
-      {isVisible && (
-        <div {...getPanelProps()}>
-          <div ref={collapsibleRef} className="space-y-1">
-            {children}
-          </div>
-        </div>
-      )}
-    </div>
+    <Accordion type="single" collapsible defaultValue="filter">
+      <AccordionItem value="filter" className={className}>
+        <AccordionTrigger
+          className="text-muted-dark mb-2 flex w-full items-center justify-between text-left transition-all"
+          icon={
+            <Arrow className="-rotate-90 transition-transform group-data-[state=open]/accordion-trigger:rotate-90" />
+          }
+        >
+          <span className="text-sm font-semibold">{filterName}</span>
+        </AccordionTrigger>
+        <AccordionContent className="space-y-1">{children}</AccordionContent>
+      </AccordionItem>
+    </Accordion>
   );
 }

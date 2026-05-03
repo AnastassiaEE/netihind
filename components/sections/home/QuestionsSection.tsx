@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 import { useMemo } from 'react';
 import Check from '@/components/ui/icons/Check';
 import React from 'react';
-import FaqAccordion from '@/components/ui/accordions/FaqAccordion';
+import { FaqAccordion } from '@/components/ui/accordions/FaqAccordion';
 
 export default function QuestionsSection() {
   const t = useTranslations('HomePage.questionsSection');
@@ -33,15 +33,7 @@ export default function QuestionsSection() {
           </Button>
         </div>
         <div className="md:w-7/12">
-          <div>
-            {translatedQuestions.map((question) => (
-              <FaqAccordion
-                key={question.question}
-                question={question.question}
-                answer={question.answer}
-              />
-            ))}
-          </div>
+          <FaqAccordion items={translatedQuestions} />
         </div>
       </div>
     </SectionLayout>

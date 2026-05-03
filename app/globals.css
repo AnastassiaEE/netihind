@@ -7,6 +7,8 @@
 
 @theme {
   --animate-show: show 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --animate-accordion-down: accordion-down 0.3s cubic-bezier(0.87, 0, 0.13, 1);
+  --animate-accordion-up: accordion-up 0.3s cubic-bezier(0.87, 0, 0.13, 1);
 
   --color-primary: #6366f1;
   --color-primary-rgb: 99 102 241;
@@ -41,11 +43,29 @@
   --shadow-top: 0 -4px 8px rgba(0, 0, 0, 0.08), 0 -1px 1px rgba(0, 0, 0, 0.08);
 
   @keyframes show {
-    0% {
+    from {
       transform: translateY(-100%);
     }
-    100% {
+    to {
       transform: translateY(0);
+    }
+  }
+
+  @keyframes accordion-down {
+    from {
+      height: 0px;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0px;
     }
   }
 }
